@@ -7,6 +7,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ### Added
 - This changelog.
+- "You're viewing" bar above the map listing every active theme, filter, verse, connection or journey, each with its own remove button, plus Start over.
+- Home button in the header.
+- Browser and phone back button steps back through verses, connections, filters and journeys.
+- Picture of the full arc map at the top of the welcome page.
+
+### Changed
+- The welcome page is now always the homepage, with a solid background. The map has its own address (`?view=map`).
+- "Reset filters" is now "Reset everything" and also clears the selected verse, connection or journey.
 
 ## [0.4.0] - 2026-11-03
 

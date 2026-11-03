@@ -439,6 +439,7 @@
     }
     ctx.globalAlpha = 1;
     paintAxis(ctx);
+    if (!landing.hidden) paintHero();
   }
 
   function paintAxis(ctx) {
@@ -684,7 +685,7 @@
     }
     const i = hitTest(x, y, tol);
     if (i >= 0) selectRef(i);
-    else if (state.selected >= 0) { state.selected = -1; drawBase(); renderPanel(); syncURL(); }
+    else if (state.selected >= 0) { state.selected = -1; drawBase(); renderPanel(); syncURL(true); }
   }
 
   el.viz.addEventListener('keydown', (e) => {
@@ -731,7 +732,7 @@
   function selectRef(i, opts = {}) {
     state.mode = 'explore'; state.journey = null; updateNav();
     state.selected = i;
-    drawBase(); renderPanel(); syncURL();
+    drawBase(); renderPanel(); syncURL(true);
     announce(`${refLabel(F[i])} connects to ${refLabel(T[i], E[i])}, ${V[i]} votes.${hasNote[i] ? ' Has a note.' : ''}`);
     if (opts.zoom) zoomToRef(i);
   }
@@ -740,7 +741,7 @@
     state.focus = range;
     state.selected = -1;
     computeFocus();
-    drawBase(); renderPanel(); syncURL();
+    drawBase(); renderPanel(); syncURL(true);
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString()} connections.`);
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
@@ -750,7 +751,7 @@
   function clearAll() {
     state.focus = null; state.selected = -1; focusList = new Int32Array(0);
     if (state.mode === 'journey') { state.mode = 'journeys'; state.journey = null; }
-    drawBase(); renderPanel(); syncURL();
+    drawBase(); renderPanel(); syncURL(true);
     announce('Selection cleared.');
   }
 
@@ -866,6 +867,7 @@
     }
     el.panelTitle.textContent = title;
     el.panelBody.innerHTML = html;
+    renderContext();
   }
 
   // ---------- Journeys ----------
@@ -908,7 +910,7 @@
   }
   function showStep() {
     const s = currentStep();
-    drawBase(); renderPanel(); syncURL();
+    drawBase(); renderPanel(); syncURL(true);
     zoomToPair(s.ia, s.ib);
     announce(`Step ${state.journey.step + 1}: ${s.title}. ${refLabel(s.ia)} connects to ${refLabel(s.ib)}.`);
   }
@@ -1028,7 +1030,7 @@
     else if (a === 'focusChapter') { const c = chapters[+btn.dataset.c]; setFocus({ kind: 'chapter', book: c.book, chapter: c.chapter, start: c.start, end: c.start + c.count }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'focusBook') { const b = BOOKS[+btn.dataset.b]; setFocus({ kind: 'book', book: +btn.dataset.b, start: b.start, end: b.end }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'zoomFocus') zoomToSpan(state.focus.start, state.focus.end, state.focus.kind === 'verse' ? 40 : 0.6);
-    else if (a === 'deselect') { state.selected = -1; drawBase(); renderPanel(); syncURL(); focusPanelHeading(); }
+    else if (a === 'deselect') { state.selected = -1; drawBase(); renderPanel(); syncURL(true); focusPanelHeading(); }
     else if (a === 'clear') { clearAll(); focusPanelHeading(); }
     else if (a === 'search') { el.search.value = btn.dataset.q; runSearch(); }
     else if (a === 'mode') setMode(btn.dataset.mode);
@@ -1042,7 +1044,7 @@
       el.fromSel.value = state.from; el.toSel.value = state.to;
       $('filtersBox').open = true;
       state.mode = 'explore'; state.focus = null; state.selected = -1; updateNav();
-      applyFilters(); resetView(); syncURL(); focusPanelHeading();
+      applyFilters(); resetView(); syncURL(true); focusPanelHeading();
       announce(`Showing ${filtered.length.toLocaleString()} connections between ${CATEGORIES[btn.dataset.a].name} and ${CATEGORIES[btn.dataset.b].name}.`);
     }
   });
@@ -1058,7 +1060,7 @@
     if (mode !== 'explore') state.selected = -1;
     state.mode = mode;
     if (mode !== 'journey') state.journey = null;
-    updateNav(); drawBase(); renderPanel(); syncURL(); focusPanelHeading();
+    updateNav(); drawBase(); renderPanel(); syncURL(true); focusPanelHeading();
   }
   function updateNav() {
     document.querySelectorAll('[data-nav]').forEach(b => {
@@ -1079,10 +1081,10 @@
     $('versionSel').innerHTML = Object.entries(VERSIONS).map(([k, v]) => `<option value="${k}">${k}: ${esc(v.name)}</option>`).join('');
   }
 
-  el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(); });
-  el.toSel.addEventListener('change', () => { state.to = el.toSel.value; applyFilters(); syncURL(); });
-  el.theme.addEventListener('change', () => { state.theme = el.theme.value; state.focus = null; state.selected = -1; state.mode = 'explore'; state.journey = null; updateNav(); applyFilters(); syncURL(); });
-  el.notesOnly.addEventListener('change', () => { state.notesOnly = el.notesOnly.checked; applyFilters(); syncURL(); });
+  el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(true); });
+  el.toSel.addEventListener('change', () => { state.to = el.toSel.value; applyFilters(); syncURL(true); });
+  el.theme.addEventListener('change', () => { state.theme = el.theme.value; state.focus = null; state.selected = -1; state.mode = 'explore'; state.journey = null; updateNav(); applyFilters(); syncURL(true); });
+  el.notesOnly.addEventListener('change', () => { state.notesOnly = el.notesOnly.checked; applyFilters(); syncURL(true); });
   let votesT = 0;
   el.votes.addEventListener('input', () => {
     state.minVotes = +el.votes.value;
@@ -1092,11 +1094,6 @@
   });
   el.controls.addEventListener('change', (e) => {
     if (e.target.name === 'colorMode') { state.colorMode = e.target.value; renderLegend(); updateCount(); drawBase(); renderPanel(); syncURL(); }
-  });
-  $('resetAll').addEventListener('click', () => {
-    Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null });
-    el.votes.value = DEFAULT_VOTES; el.votesOut.textContent = DEFAULT_VOTES; el.fromSel.value = 'all'; el.toSel.value = 'all'; el.theme.value = ''; el.notesOnly.checked = false;
-    updateNav(); applyFilters(); resetView(); syncURL(); announce('Filters reset.');
   });
   el.controls.addEventListener('submit', (e) => { e.preventDefault(); runSearch(); });
 
@@ -1172,28 +1169,42 @@
 
   // ---------- Landing page ----------
   const landing = $('landing'), layout = document.querySelector('.layout');
-  const session = {
-    get(k) { try { return sessionStorage.getItem('bc.' + k); } catch { return null; } },
-    set(k, v) { try { sessionStorage.setItem('bc.' + k, v); } catch { /* storage unavailable */ } },
-  };
   const header = document.querySelector('.site-header');
   const setHeaderH = () => document.documentElement.style.setProperty('--header-real', header.getBoundingClientRect().height + 'px');
   if (window.ResizeObserver) new ResizeObserver(setHeaderH).observe(header);
   setHeaderH();
+  const isLanding = () => !landing.hidden;
 
   function showLanding() {
     landing.hidden = false;
     layout.inert = true;
     document.body.classList.add('landing-open');
     landing.scrollTop = 0;
+    resetView(false);
+    paintHero();
   }
   function hideLanding() {
     if (landing.hidden) return false;
     landing.hidden = true;
     layout.inert = false;
     document.body.classList.remove('landing-open');
-    session.set('started', '1');
     return true;
+  }
+  // The hero picture is a copy of the real map, drawn at the full-Bible view.
+  function paintHero() {
+    const hero = $('heroCanvas');
+    if (!hero || landing.hidden || !N || !view.W) return;
+    const w = hero.clientWidth, h = hero.clientHeight;
+    if (!w || !h) return;
+    const dpr = view.dpr;
+    hero.width = Math.round(w * dpr); hero.height = Math.round(h * dpr);
+    const ctx = hero.getContext('2d');
+    const sw = TOTAL * view.k + 8, sh = TOTAL * view.k / 2 + BAR_MAX + 12;
+    const sx0 = view.tx - 4, sy0 = view.ty - TOTAL * view.k / 2 - 4;
+    const scale = Math.min(w / sw, h / sh);
+    const dw = sw * scale, dh = sh * scale;
+    ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, hero.width, hero.height);
+    ctx.drawImage(el.base, sx0 * dpr, sy0 * dpr, sw * dpr, sh * dpr, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
   }
   function buildLanding() {
     const fmt = (n) => n.toLocaleString();
@@ -1205,7 +1216,10 @@
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
-    if (btn.dataset.start === 'map') { hideLanding(); el.viz.focus(); announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`); }
+    if (btn.dataset.start === 'map') {
+      hideLanding(); syncURL(true); el.viz.focus();
+      announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`);
+    }
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
     else if (btn.dataset.theme) {
       hideLanding();
@@ -1222,32 +1236,96 @@
     el.search.value = q;
     runSearch();
   });
-  $('homeLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    clearAll();
-    if (state.mode !== 'explore') setMode('explore');
-    resetView(false);
+  function goHome() {
+    resetState();
     showLanding();
+    syncURL(true);
     landing.querySelector('[data-start=map]').focus();
+  }
+  $('homeLink').addEventListener('click', (e) => { e.preventDefault(); goHome(); });
+  $('homeBtn').addEventListener('click', goHome);
+
+  // ---------- "You're viewing" bar and start over ----------
+  function resetState() {
+    Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance' });
+    syncControls(); renderLegend(); el.search.value = ''; el.searchError.textContent = '';
+    updateNav(); applyFilters();
+  }
+  function startOver() {
+    resetState(); resetView(); syncURL(true);
+    el.viz.focus();
+    announce('Back to the whole Bible. All filters and selections cleared.');
+  }
+  $('resetAll').addEventListener('click', startOver);
+
+  function contextItems() {
+    const items = [];
+    const selName = (v) => (v === 'ot' ? 'Old Testament' : v === 'nt' ? 'New Testament' : v.startsWith('cat:') ? CATEGORIES[v.slice(4)].name : BOOKS[+v.slice(5)].name);
+    if (state.mode === 'journey' && state.journey) items.push(['journey', `Journey: ${JOURNEYS[state.journey.j].name}, step ${state.journey.step + 1}`]);
+    if (state.mode === 'journeys') items.push(['mode', 'Guided journeys']);
+    if (state.mode === 'insights') items.push(['mode', 'Insights']);
+    if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
+    if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
+    if (state.minVotes !== DEFAULT_VOTES) items.push(['votes', `Strength ${state.minVotes}+ votes`]);
+    if (state.notesOnly) items.push(['notes', 'Only with notes']);
+    if (state.focus && state.mode === 'explore') items.push(['focus', state.focus.kind === 'words' ? `Word: ${rangeLabel(state.focus)}` : rangeLabel(state.focus)]);
+    if (state.selected >= 0 && state.mode === 'explore') items.push(['selected', `${refLabel(F[state.selected])} ↔ ${refLabel(T[state.selected], E[state.selected])}`]);
+    return items;
+  }
+  function renderContext() {
+    const bar = $('contextBar');
+    if (!bar || !N) return;
+    const items = contextItems();
+    bar.hidden = !items.length;
+    if (!items.length) { $('contextList').innerHTML = ''; return; }
+    $('contextList').innerHTML = items.map(([k, label]) =>
+      `<li class="ctx-chip"><span>${esc(label)}</span><button type="button" class="ctx-x" data-clear="${k}" aria-label="Remove ${esc(label)}">✕</button></li>`).join('');
+  }
+  $('contextBar').addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.id === 'startOver') { startOver(); return; }
+    const k = btn.dataset.clear;
+    if (k === 'journey' || k === 'mode') { setMode('explore'); }
+    else if (k === 'theme') { state.theme = ''; el.theme.value = ''; state.focus = null; state.selected = -1; applyFilters(); }
+    else if (k === 'between') { state.from = state.to = 'all'; el.fromSel.value = el.toSel.value = 'all'; applyFilters(); }
+    else if (k === 'votes') { state.minVotes = DEFAULT_VOTES; syncControls(); applyFilters(); }
+    else if (k === 'notes') { state.notesOnly = false; syncControls(); applyFilters(); }
+    else if (k === 'focus') { state.focus = null; state.selected = -1; focusList = new Int32Array(0); el.search.value = ''; drawBase(); renderPanel(); resetView(); }
+    else if (k === 'selected') { state.selected = -1; drawBase(); renderPanel(); }
+    syncURL(true);
+    announce('Removed. ' + (contextItems().length ? '' : 'Showing the whole Bible.'));
+    // keep keyboard focus in the bar so several items can be removed in a row
+    requestAnimationFrame(() => ($('contextList').querySelector('.ctx-x') || $('startOverAlt') || el.viz).focus());
   });
 
-  // ---------- URL state (shareable links) ----------
-  function syncURL() {
-    const p = new URLSearchParams();
-    if (state.minVotes !== DEFAULT_VOTES) p.set('min', state.minVotes);
-    if (state.from !== 'all') p.set('from', state.from);
-    if (state.to !== 'all') p.set('to', state.to);
-    if (state.theme) p.set('theme', state.theme);
-    if (state.notesOnly) p.set('notes', '1');
-    if (state.colorMode !== 'distance') p.set('color', state.colorMode);
-    if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
-    else if (state.mode === 'journeys' || state.mode === 'insights') p.set('view', state.mode);
+  // ---------- URL state (shareable links, back button) ----------
+  let restoring = false;
+  function syncURL(push = false) {
+    let url;
+    if (isLanding()) url = location.pathname;
     else {
-      if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
-      if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
+      const p = new URLSearchParams();
+      if (state.minVotes !== DEFAULT_VOTES) p.set('min', state.minVotes);
+      if (state.from !== 'all') p.set('from', state.from);
+      if (state.to !== 'all') p.set('to', state.to);
+      if (state.theme) p.set('theme', state.theme);
+      if (state.notesOnly) p.set('notes', '1');
+      if (state.colorMode !== 'distance') p.set('color', state.colorMode);
+      if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
+      else if (state.mode === 'journeys' || state.mode === 'insights') p.set('view', state.mode);
+      else {
+        if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
+        if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
+      }
+      if (![...p.keys()].length) p.set('view', 'map');
+      url = `?${p}`;
     }
-    const s = p.toString();
-    history.replaceState(null, '', s ? `?${s}` : location.pathname);
+    renderContext();
+    const current = location.search || location.pathname;
+    if (url === current || (url === location.pathname && !location.search)) return;
+    if (push && !restoring) history.pushState(null, '', url);
+    else history.replaceState(null, '', url);
   }
   function readURL() {
     const p = new URLSearchParams(location.search);
@@ -1274,9 +1352,9 @@
   async function restoreFromURL(p) {
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }
-    if (p.get('view') === 'journeys' || p.get('view') === 'insights') { state.mode = p.get('view'); updateNav(); renderPanel(); return; }
+    if (p.get('view') === 'journeys' || p.get('view') === 'insights') { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
-    else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w); }
+    else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {
       const [a, b] = p.get('c').split(/[~_]/).map(osisToIndex);
       const i = a >= 0 && b >= 0 ? findRef(a, b) : -1;
@@ -1290,6 +1368,24 @@
       }
     }
   }
+  // Load the page state described by the current address (start-up and back/forward buttons).
+  async function applyLocation() {
+    restoring = true;
+    try {
+      Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance' });
+      const p = readURL();
+      renderLegend(); updateNav(); applyFilters();
+      if (![...p.keys()].length) { showLanding(); return; }
+      hideLanding();
+      const hasDetail = ['journey', 'ref', 'q', 'c'].some(k => p.has(k));
+      if (!hasDetail) resetView();
+      await restoreFromURL(p);
+    } finally {
+      restoring = false;
+      syncURL();
+    }
+  }
+  window.addEventListener('popstate', () => { if (N) applyLocation(); });
 
   // ---------- Boot ----------
   async function init() {
@@ -1299,15 +1395,11 @@
     buildSelects();
     prepareJourneys();
     initSettingsForm();
-    const params = readURL();
-    renderLegend();
     resize();
-    applyFilters();
     el.loading.remove();
     buildLanding();
-    await restoreFromURL(params);
-    if (!params.toString() && !session.get('started')) showLanding();
-    if (params.toString() && !matchMedia('(max-width: 860px)').matches) requestAnimationFrame(scrollPanel);
+    await applyLocation();
+    if (!isLanding() && location.search !== '?view=map' && !matchMedia('(max-width: 860px)').matches) requestAnimationFrame(scrollPanel);
     document.body.dataset.ready = 'true';
   }
   init();

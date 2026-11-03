@@ -2,10 +2,8 @@ const { test, expect } = require('@playwright/test');
 
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
 
-test.beforeEach(async ({ page }, info) => {
+test.beforeEach(async ({ page }) => {
   page.on('pageerror', (e) => { throw e; });
-  // skip the welcome screen except in the tests that are about it
-  if (!info.title.startsWith('landing')) await page.addInitScript(() => sessionStorage.setItem('bc.started', '1'));
 });
 
 test('landing page shows on first visit and opens the map', async ({ page }) => {
@@ -16,9 +14,22 @@ test('landing page shows on first visit and opens the map', async ({ page }) => 
   await page.click('[data-start=map]');
   await expect(page.locator('#landing')).toBeHidden();
   await expect(page.locator('#viz')).toBeFocused();
+  await expect(page).toHaveURL(/view=map/);
   await page.reload();
   await ready(page);
   await expect(page.locator('#landing')).toBeHidden();
+});
+
+test('landing is always the homepage and the back button returns to it', async ({ page }) => {
+  await page.goto('/');
+  await ready(page);
+  await page.click('[data-start=map]');
+  await expect(page.locator('#landing')).toBeHidden();
+  await page.goBack();
+  await expect(page.locator('#landing')).toBeVisible();
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#landing')).toBeVisible();
 });
 
 test('landing search, theme and journey shortcuts work', async ({ page }) => {
@@ -44,7 +55,7 @@ test('landing is skipped for shared links', async ({ page }) => {
 });
 
 test('loads the map with the default connections', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await expect(page.locator('#count')).toContainText('Showing');
   await expect(page.locator('#panelTitle')).toHaveText('Explore');
@@ -52,7 +63,7 @@ test('loads the map with the default connections', async ({ page }) => {
 });
 
 test('search finds verses, chapters and books', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   for (const [q, title] of [['John 3:16', 'John 3:16'], ['1 Cor 13', '1 Corinthians 13'], ['Psalm 23', 'Psalms 23'], ['II Kings 2', '2 Kings 2'], ['Genesis', 'Genesis']]) {
     await page.fill('#search', q);
@@ -65,7 +76,7 @@ test('search finds verses, chapters and books', async ({ page }) => {
 });
 
 test('word search lists verses and connections', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.fill('#search', 'shepherd');
   await page.press('#search', 'Enter');
@@ -96,7 +107,7 @@ test('a shared connection link opens that connection with its note', async ({ pa
 });
 
 test('selecting a connection updates the URL for sharing', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.locator('.conn-item').first().click();
   await expect(page.locator('#panelTitle')).toHaveText('Connection');
@@ -115,7 +126,7 @@ test('copy references puts text on the clipboard', async ({ page, context, brows
 });
 
 test('guided journey steps forward and back', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.click('[data-nav=journeys]');
   await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
@@ -146,7 +157,7 @@ test('notes-only filter shows explained connections', async ({ page }) => {
 });
 
 test('light mode and high contrast settings apply and persist', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.click('#settingsBtn');
   await page.check('input[name=appearance][value=light]');
@@ -160,7 +171,7 @@ test('light mode and high contrast settings apply and persist', async ({ page })
 
 test('keyboard can explore the map', async ({ page, isMobile }) => {
   test.skip(isMobile);
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.focus('#viz');
   await page.keyboard.press('n');
@@ -171,7 +182,7 @@ test('keyboard can explore the map', async ({ page, isMobile }) => {
 
 test('clicking an arc on the map opens it', async ({ page, isMobile }) => {
   test.skip(isMobile);
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   const box = await page.locator('#viz').boundingBox();
   // sweep upwards from the baseline until an arc is hit
@@ -184,7 +195,7 @@ test('clicking an arc on the map opens it', async ({ page, isMobile }) => {
 
 test('works offline after the first visit', async ({ page, context, browserName }) => {
   test.skip(browserName !== 'chromium');
-  await page.goto('/');
+  await page.goto('/?view=map');
   await ready(page);
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(async () => (await caches.keys()).length > 0 && (await (await caches.open((await caches.keys())[0])).keys()).length >= 10);
@@ -193,4 +204,44 @@ test('works offline after the first visit', async ({ page, context, browserName 
   await ready(page);
   await expect(page.locator('#count')).toContainText('Showing');
   await context.setOffline(false);
+});
+
+test('you are viewing bar removes items one at a time and start over clears everything', async ({ page }) => {
+  await page.goto('/?theme=love&min=10&ref=John+3%3A16');
+  await ready(page);
+  const bar = page.locator('#contextBar');
+  await expect(bar).toBeVisible();
+  await expect(bar.locator('.ctx-chip')).toHaveCount(3);
+  await bar.locator('[data-clear=votes]').click();
+  await expect(bar.locator('.ctx-chip')).toHaveCount(2);
+  await expect(page.locator('#votes')).toHaveValue('7');
+  await page.click('#startOver');
+  await expect(bar).toBeHidden();
+  await expect(page.locator('#theme')).toHaveValue('');
+  await expect(page.locator('#panelTitle')).toHaveText('Explore');
+  await expect(page).toHaveURL(/\?view=map$/);
+});
+
+test('browser back steps back through what you looked at', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await page.fill('#search', 'John 3:16');
+  await page.press('#search', 'Enter');
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await page.locator('.conn-item').first().click();
+  await expect(page.locator('#panelTitle')).toHaveText('Connection');
+  await page.goBack();
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await page.goBack();
+  await expect(page.locator('#panelTitle')).toHaveText('Explore');
+});
+
+test('home button returns to the landing page and clears everything', async ({ page }) => {
+  await page.goto('/?theme=love&ref=John+3%3A16');
+  await ready(page);
+  await page.click('#homeBtn');
+  await expect(page.locator('#landing')).toBeVisible();
+  await expect(page).toHaveURL(/\/$/);
+  await page.click('[data-start=map]');
+  await expect(page.locator('#contextBar')).toBeHidden();
 });

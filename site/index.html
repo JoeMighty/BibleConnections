@@ -22,6 +22,7 @@
       <p class="tagline" id="tagline">Loading cross references…</p>
     </div>
     <nav class="header-nav" aria-label="Main">
+      <button type="button" class="btn ghost nav-btn" id="homeBtn">Home</button>
       <button type="button" class="btn ghost nav-btn" data-nav="journeys" aria-pressed="false">Journeys</button>
       <button type="button" class="btn ghost nav-btn" data-nav="insights" aria-pressed="false">Insights</button>
       <button type="button" class="btn ghost nav-btn" id="settingsBtn" aria-haspopup="dialog">Settings</button>
@@ -31,6 +32,7 @@
 
   <section class="landing" id="landing" aria-labelledby="landingTitle" hidden>
     <div class="landing-inner">
+      <canvas class="hero" id="heroCanvas" role="img" aria-label="Arc diagram showing tens of thousands of cross references spanning the Bible from Genesis to Revelation"></canvas>
       <p class="eyebrow">Explore Scripture visually</p>
       <h2 id="landingTitle">See how the whole Bible fits together</h2>
       <p class="lede">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
@@ -59,6 +61,11 @@
   </section>
 
   <div class="layout">
+    <nav class="context-bar" id="contextBar" aria-label="What you are viewing" hidden>
+      <span class="ctx-label">You're viewing:</span>
+      <ul class="ctx-list" id="contextList"></ul>
+      <button type="button" class="btn small ctx-reset" id="startOver">Start over</button>
+    </nav>
     <main class="viz-wrap" id="main">
       <div class="viz" id="viz" tabindex="0" role="group" aria-roledescription="interactive map"
            aria-label="Map of Bible cross references" aria-describedby="vizHelp">
@@ -123,7 +130,7 @@
               <label><input type="radio" name="colorMode" value="category"> Category</label>
             </div>
           </fieldset>
-          <button type="button" class="btn ghost full" id="resetAll">Reset filters</button>
+          <button type="button" class="btn ghost full" id="resetAll">Reset everything</button>
         </details>
         <p class="count" id="count" aria-live="polite"></p>
       </form>

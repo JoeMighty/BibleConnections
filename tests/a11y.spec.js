@@ -2,17 +2,18 @@ const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
 const pages = [
-  ['home', '/'],
+  ['map', '/?view=map'],
   ['verse', '/?ref=John+3%3A16'],
   ['connection', '/?c=Rom.8.28~Gen.50.20'],
   ['journey', '/?journey=lamb&step=1'],
   ['insights', '/?view=insights'],
+  ['filtered', '/?theme=love&min=10&ref=John+3%3A16'],
 ];
 
 for (const theme of ['dark', 'light']) {
   for (const [name, url] of pages) {
     test(`no accessibility violations: ${name} (${theme})`, async ({ page }) => {
-      await page.addInitScript((t) => { localStorage.setItem('bc.appearance', JSON.stringify(t)); sessionStorage.setItem('bc.started', '1'); }, theme);
+      await page.addInitScript((t) => localStorage.setItem('bc.appearance', JSON.stringify(t)), theme);
       await page.goto(url);
       await page.waitForSelector('body[data-ready=true]');
       await page.evaluate(() => { document.getElementById('filtersBox').open = true; });
@@ -35,8 +36,7 @@ for (const theme of ['dark', 'light']) {
 }
 
 test('settings and about dialogs are accessible', async ({ page }) => {
-  await page.addInitScript(() => sessionStorage.setItem('bc.started', '1'));
-  await page.goto('/');
+  await page.goto('/?view=map');
   await page.waitForSelector('body[data-ready=true]');
   for (const id of ['settingsBtn', 'aboutBtn']) {
     await page.click('#' + id);
