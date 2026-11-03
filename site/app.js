@@ -31,6 +31,7 @@
     MSG: { id: 97, name: 'The Message' },
     NASB2020: { id: 2692, name: 'New American Standard Bible 2020' },
   };
+  const VERSION = '0.5.0';
   const BUCKETS = 32;
   const AXIS_H = 84;          // px reserved under the baseline
   const BAR_MAX = 30;         // px height of the tallest chapter bar
@@ -85,10 +86,14 @@
   let wordIndex = null;
 
   async function loadData() {
-    const [meta, bin] = await Promise.all([
-      fetch('data/books.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    const [meta, bin, themes, notes, journeys, series] = await Promise.all([
+      getJSON('data/books.json'),
       fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }),
+      getJSON('content/themes.json'), getJSON('content/notes.json'), getJSON('content/journeys.json'),
+      getJSON('content/series.json').catch(() => ({ enabled: false })),
     ]);
+    window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
     const raw = new Uint16Array(bin);
     const n = raw.length / 4;
@@ -113,7 +118,7 @@
     // "Why it connects" notes, matched to the data in either direction
     const pairKey = (a, b) => Math.min(a, b) * 65536 + Math.max(a, b);
     const wanted = new Map();
-    for (const [a, b, type, text] of (window.NOTES || [])) {
+    for (const { from: a, to: b, type, note: text } of (window.NOTES || [])) {
       const ia = osisToIndex(a), ib = osisToIndex(b);
       if (ia >= 0 && ib >= 0) wanted.set(pairKey(ia, ib), { type, text });
     }
@@ -601,6 +606,7 @@
   const localPoint = (e) => { const r = el.viz.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
 
   el.viz.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('.tips')) return;   // let the tips card handle its own clicks
     el.viz.setPointerCapture(e.pointerId);
     const [x, y] = localPoint(e);
     pointers.set(e.pointerId, { x, y });
@@ -808,6 +814,7 @@
     if (state.mode === 'journeys') [title, html] = journeysHTML();
     else if (state.mode === 'journey') [title, html] = journeyStepHTML();
     else if (state.mode === 'insights') [title, html] = insightsHTML();
+    else if (state.mode === 'series') [title, html] = seriesHTML();
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
@@ -880,7 +887,11 @@
     let html = '<p>Short guided tours through the story of Scripture. Each step lights up one connection and explains it.</p><ul class="journey-list">';
     JOURNEYS.forEach((j, n) => {
       html += `<li class="journey-card"><h3>${esc(j.name)}</h3><p>${esc(j.summary)}</p>
-        <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button></li>`;
+        <div class="actions tight">
+          <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button>
+          <button type="button" class="btn ghost small" data-action="presentJourney" data-j="${n}">Present<span class="sr-only"> ${esc(j.name)}</span></button>
+          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
+        </div></li>`;
     });
     html += '</ul><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
     return ['Guided journeys', html];
@@ -890,12 +901,16 @@
     const J = JOURNEYS[j], steps = journeySteps[j], s = steps[step];
     let html = `<p class="step-count">${esc(J.name)} · Step ${step + 1} of ${steps.length}</p>
       <div class="progress" aria-hidden="true"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div>
-      <h3 class="step-title">${esc(s.title)}</h3><p class="step-note">${esc(s.note)}</p>`;
+      <h3 class="step-title">${esc(s.title)}</h3><p class="step-note">${esc(s.note)}</p>
+      ${s.question ? `<div class="question"><p class="note-head">Talk about it</p><p>${esc(s.question)}</p></div>` : ''}`;
     html += refCard(s.ia, s.ia, pal.marker) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(s.ib, s.ib, pal.marker);
     html += `<div class="actions nav-row">
       <button type="button" class="btn ghost" data-action="stepPrev" ${step === 0 ? 'disabled' : ''}>Previous</button>
       ${step < steps.length - 1 ? '<button type="button" class="btn" data-action="stepNext">Next step</button>' : '<button type="button" class="btn" data-action="mode" data-mode="journeys">Finish</button>'}
-    </div><div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="journeys">All journeys</button></div>`;
+    </div><div class="actions">
+      <button type="button" class="btn ghost small" data-action="present">Present</button>
+      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a>
+      ${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="journeys">All journeys</button></div>`;
     return [J.name, html];
   }
   function startJourney(j, step = 0) {
@@ -910,10 +925,78 @@
   }
   function showStep() {
     const s = currentStep();
-    drawBase(); renderPanel(); syncURL(true);
+    drawBase(); renderPanel(); renderPresenter(); syncURL(true);
     zoomToPair(s.ia, s.ib);
     announce(`Step ${state.journey.step + 1}: ${s.title}. ${refLabel(s.ia)} connects to ${refLabel(s.ib)}.`);
   }
+
+  // ---------- Presenter mode ----------
+  const presenter = $('presenter');
+  function enterPresenter() {
+    if (state.mode !== 'journey') return;
+    document.body.classList.add('presenting');
+    presenter.hidden = false;
+    document.documentElement.requestFullscreen?.().catch(() => { /* fullscreen not allowed */ });
+    presenterContrastWas = settings.contrast; settings.contrast = true; applyAppearance();
+    requestAnimationFrame(() => { resize(); renderPresenter(); const st = currentStep(); zoomToPair(st.ia, st.ib); $('presNext').focus({ preventScroll: true }); presenter.scrollTop = 0; });
+  }
+  let presenterContrastWas = false;
+  function exitPresenter() {
+    if (presenter.hidden) return;
+    document.body.classList.remove('presenting');
+    presenter.hidden = true;
+    if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+    settings.contrast = presenterContrastWas; applyAppearance();
+    requestAnimationFrame(() => { resize(); const st = currentStep(); if (st) zoomToPair(st.ia, st.ib); focusPanelHeading(); });
+  }
+  function renderPresenter() {
+    if (presenter.hidden || state.mode !== 'journey') return;
+    const { j, step } = state.journey, J = JOURNEYS[j], steps = journeySteps[j], st = steps[step];
+    $('presMeta').textContent = `${J.name} · Step ${step + 1} of ${steps.length}`;
+    $('presTitle').textContent = st.title;
+    $('presRefs').textContent = `${refLabel(st.ia)}  ↔  ${refLabel(st.ib)}`;
+    $('presNote').textContent = st.note;
+    $('presQuestion').textContent = st.question || '';
+    $('presQuestion').hidden = !st.question;
+    $('presPrev').disabled = step === 0;
+    $('presNext').textContent = step < steps.length - 1 ? 'Next' : 'Finish';
+  }
+  $('presPrev').addEventListener('click', () => goStep(-1));
+  $('presNext').addEventListener('click', () => {
+    if (state.journey.step < journeySteps[state.journey.j].length - 1) goStep(1);
+    else { exitPresenter(); setMode('journeys'); }
+  });
+  $('presExit').addEventListener('click', exitPresenter);
+  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && !presenter.hidden) exitPresenter(); });
+  document.addEventListener('keydown', (e) => {
+    if (presenter.hidden) return;
+    // works with presentation clickers, which send arrow, page or space keys
+    if (['ArrowRight', 'PageDown'].includes(e.key) || ([' ', 'Enter'].includes(e.key) && !e.target.closest('button'))) { e.preventDefault(); $('presNext').click(); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); goStep(-1); }
+    else if (e.key === 'Escape') { e.preventDefault(); exitPresenter(); }
+  });
+
+  // ---------- Sermon series ----------
+  function seriesHTML() {
+    const S = window.SERIES || {};
+    let html = `<p>${esc(S.description || '')}</p><ol class="series-list">`;
+    for (const p of S.passages || []) {
+      const r = parseReference(p.ref);
+      if (!r || r.error) continue;
+      html += `<li><p class="series-title">${esc(p.title || '')}</p>
+        <div class="actions tight"><button type="button" class="btn small" data-action="focusRef" data-q="${esc(p.ref)}">Explore ${esc(rangeLabel(r))}</button>
+        ${ext(bibleUrl(r.start, r.kind === 'verse' ? r.end - 1 : r.start, r.kind !== 'verse'), `Read in ${settings.version}<span class="sr-only">: ${esc(rangeLabel(r))}</span>`)}</div></li>`;
+    }
+    html += '</ol><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
+    return [S.title || 'Series', html];
+  }
+
+  // ---------- First-time tips ----------
+  function maybeShowTips() {
+    if (store.get('tipsSeen', false) || isLanding() || document.body.classList.contains('presenting')) return;
+    $('tips').hidden = false;
+  }
+  $('tipsClose').addEventListener('click', () => { $('tips').hidden = true; store.set('tipsSeen', true); el.viz.focus(); });
 
   // ---------- Insights ----------
   let statsCache = null;
@@ -1037,6 +1120,9 @@
     else if (a === 'startJourney') { startJourney(+btn.dataset.j); focusPanelHeading(); }
     else if (a === 'stepNext') { goStep(1); focusPanelHeading(); }
     else if (a === 'stepPrev') { goStep(-1); focusPanelHeading(); }
+    else if (a === 'present') enterPresenter();
+    else if (a === 'presentJourney') { startJourney(+btn.dataset.j); enterPresenter(); }
+    else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
     else if (a === 'share') share();
     else if (a === 'copy') copyText(shareInfo().text);
     else if (a === 'heat') {
@@ -1211,16 +1297,21 @@
     $('landingStats').innerHTML = [
       [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
     ].map(([n, l]) => `<li><strong>${n}</strong><span>${l}</span></li>`).join('');
+    const S = window.SERIES || {};
+    $('landingSeries').hidden = !S.enabled;
+    if (S.enabled) $('landingSeries').innerHTML = `<p class="eyebrow">Current series</p><h3 class="series-name">${esc(S.title)}</h3><p>${esc(S.description || '')}</p><button type="button" class="btn" data-start="series">See the passages</button>`;
+    $('aboutVersion').textContent = VERSION;
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
     if (btn.dataset.start === 'map') {
-      hideLanding(); syncURL(true); el.viz.focus();
+      hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`);
     }
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
+    else if (btn.dataset.start === 'series') { hideLanding(); setMode('series'); }
     else if (btn.dataset.theme) {
       hideLanding();
       el.theme.value = btn.dataset.theme;
@@ -1264,6 +1355,7 @@
     if (state.mode === 'journey' && state.journey) items.push(['journey', `Journey: ${JOURNEYS[state.journey.j].name}, step ${state.journey.step + 1}`]);
     if (state.mode === 'journeys') items.push(['mode', 'Guided journeys']);
     if (state.mode === 'insights') items.push(['mode', 'Insights']);
+    if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
     if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
     if (state.minVotes !== DEFAULT_VOTES) items.push(['votes', `Strength ${state.minVotes}+ votes`]);
@@ -1313,7 +1405,7 @@
       if (state.notesOnly) p.set('notes', '1');
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
-      else if (state.mode === 'journeys' || state.mode === 'insights') p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
@@ -1352,7 +1444,7 @@
   async function restoreFromURL(p) {
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }
-    if (p.get('view') === 'journeys' || p.get('view') === 'insights') { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {
@@ -1380,6 +1472,7 @@
       const hasDetail = ['journey', 'ref', 'q', 'c'].some(k => p.has(k));
       if (!hasDetail) resetView();
       await restoreFromURL(p);
+      maybeShowTips();
     } finally {
       restoring = false;
       syncURL();

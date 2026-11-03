@@ -300,6 +300,43 @@ input[type=range] { width: 100%; min-height: 32px; accent-color: var(--accent); 
 .heat-cell span { background: var(--surface); border-radius: 3px; padding: 0 3px; line-height: 1.5; }
 .heat-cell:hover { outline: 2px solid var(--accent); }
 
+/* Journey questions, series */
+.question { border-left: 4px solid var(--focus); background: var(--surface-2); border-radius: 8px; padding: 8px 12px; margin: 10px 0; }
+.series-list { padding-left: 20px; margin: 0; }
+.series-list li { margin-bottom: 14px; }
+.series-title { font-weight: 700; margin-bottom: 6px !important; }
+.landing-series { background: var(--surface); border: 1px solid var(--accent); border-radius: 14px; padding: 16px; margin: 0 auto 22px; max-width: 520px; }
+.landing-series .series-name { font-size: 1.3rem; text-transform: none; letter-spacing: 0; color: var(--text); margin: 0 0 6px; }
+
+/* First-time tips */
+.tips {
+  position: absolute; left: 12px; bottom: calc(var(--axis-h, 84px) + 12px); z-index: 6; max-width: 300px;
+  background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+.tips h2 { font-size: 1rem; margin: 0 0 6px; }
+.tips ul { margin: 0 0 10px; padding-left: 18px; font-size: .9rem; }
+
+/* Presenter mode */
+.presenter[hidden] { display: none; }
+body.presenting .site-header, body.presenting .sidebar, body.presenting .context-bar,
+body.presenting .legend, body.presenting .viz-tools, body.presenting .tips { display: none !important; }
+body.presenting .layout { display: block; height: 100vh; height: 100dvh; }
+body.presenting .viz-wrap { position: fixed; inset: 0 0 auto 0; height: 52vh; height: 52dvh; }
+.presenter {
+  position: fixed; left: 0; right: 0; bottom: 0; top: 52vh; top: 52dvh; z-index: 40;
+  display: flex; flex-direction: column; gap: 12px; padding: 16px clamp(16px, 4vw, 48px) 20px;
+  background: var(--bg); border-top: 2px solid var(--focus); overflow-y: auto;
+}
+.pres-card { flex: 1; max-width: 1100px; }
+.pres-meta { color: var(--muted); font-size: clamp(.95rem, 1.6vw, 1.2rem); margin: 0 0 4px; }
+.pres-title { font-size: clamp(1.6rem, 3.6vw, 2.8rem); margin: 0 0 6px; }
+.pres-refs { font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 700; color: var(--focus); margin: 0 0 8px; }
+.pres-note { font-size: clamp(1.05rem, 2vw, 1.5rem); line-height: 1.5; margin: 0 0 8px; }
+.pres-question { font-size: clamp(1rem, 1.8vw, 1.35rem); font-style: italic; color: var(--muted); margin: 0; }
+.pres-controls { display: flex; gap: 10px; flex-wrap: wrap; }
+.pres-controls .btn { min-width: 120px; }
+
 /* Toast */
 .toast {
   position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0;

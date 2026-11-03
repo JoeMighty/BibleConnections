@@ -15,11 +15,14 @@ test('notes, journeys and themes resolve to real references', async ({ page }) =
     const pairs = new Set();
     for (let i = 0; i < raw.length; i += 4) { pairs.add(raw[i] + ':' + raw[i + 1]); pairs.add(raw[i + 1] + ':' + raw[i]); }
     const bad = [], missingPairs = [];
-    for (const [a, b] of window.NOTES) {
+    for (const { from: a, to: b } of window.NOTES) {
       if (!idx.has(a) || !idx.has(b)) bad.push(`note ${a} / ${b}`);
       else if (!pairs.has(idx.get(a) + ':' + idx.get(b))) missingPairs.push(`${a} / ${b}`);
     }
-    for (const j of window.JOURNEYS) for (const s of j.steps) for (const r of [s.a, s.b]) if (!idx.has(r)) bad.push(`journey ${j.id} ${r}`);
+    for (const j of window.JOURNEYS) for (const s of j.steps) {
+      for (const r of [s.a, s.b]) if (!idx.has(r)) bad.push(`journey ${j.id} ${r}`);
+      if (!s.title || !s.note || !s.question) bad.push(`journey ${j.id} step missing title, note or question`);
+    }
     for (const t of window.THEMES) for (const r of t.verses) if (!idx.has(r)) bad.push(`theme ${t.id} ${r}`);
     return { bad, missingPairs, notes: window.NOTES.length };
   });

@@ -37,7 +37,8 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Why it connects:** short explanations for the strongest links, with a filter to show only explained connections
 - **Search:** references (`John 3:16`, `Psalm 23`, `1 Cor 13`) or words (`shepherd`, `living water`)
 - **Filters:** Old/New Testament, 10 categories, single books and 12 themes
-- **Guided journeys:** step-by-step tours such as *The Lamb of God* and *Eden to the new creation*
+- **Guided journeys:** nine step-by-step tours with discussion questions, a presenter mode for sermons and classes, and printable handouts
+- **Sermon series:** show the current series passages on the welcome page
 - **Insights:** most connected verses and chapters, plus a category heatmap that filters the map
 - **Sharing:** every view has its own link; Share and Copy buttons on connections, verses, searches and journeys
 - **Settings:** light, dark or system appearance, high contrast mode and Bible.com translation
@@ -46,15 +47,16 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 
 ## Editing content
 
+Notes, journeys, themes and the sermon series are plain data files in `site/content/`, editable on the GitHub website. See [docs/EDITING.md](docs/EDITING.md) for a step-by-step guide.
+
 | What | File |
 | --- | --- |
-| "Why it connects" notes | `site/notes.js` |
-| Guided journeys | `site/journeys.js` |
-| Themes | `site/themes.js` |
+| "Why it connects" notes | `site/content/notes.json` |
+| Guided journeys and discussion questions | `site/content/journeys.json` |
+| Themes | `site/content/themes.json` |
+| Current sermon series | `site/content/series.json` |
 
-Write notes in your own words. Do not quote or closely paraphrase copyrighted translations such as the NIV or ESV.
-
-References use OSIS format, for example `John.3.16` or `1Cor.13.4`. Notes and journeys are drafts and should be reviewed by a pastor or teaching team. The tests check that every reference exists and every note matches a real connection.
+Write everything in your own words. Do not quote or closely paraphrase copyrighted translations such as the NIV or ESV. The tests check that every reference exists and every note matches a real connection.
 
 ## Run locally
 

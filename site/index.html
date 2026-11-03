@@ -47,6 +47,7 @@
           <button type="submit" class="btn">Go</button>
         </div>
       </form>
+      <div class="landing-series" id="landingSeries" hidden></div>
       <ul class="stat-row" id="landingStats" aria-label="At a glance"></ul>
       <h3>Start with a theme</h3>
       <ul class="chip-list" id="landingThemes"></ul>
@@ -73,6 +74,15 @@
         <canvas id="overlayCanvas" aria-hidden="true"></canvas>
         <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
         <div class="loading" id="loading" role="status">Loading the Bible…</div>
+        <section class="tips" id="tips" aria-labelledby="tipsTitle" hidden>
+          <h2 id="tipsTitle">Quick tips</h2>
+          <ul>
+            <li><strong>Zoom:</strong> scroll, pinch or use the + button.</li>
+            <li><strong>Tap an arc</strong> to see the two passages it joins.</li>
+            <li><strong>Tap a bar</strong> along the bottom to see a chapter's links.</li>
+          </ul>
+          <button type="button" class="btn small" id="tipsClose">Got it</button>
+        </section>
       </div>
       <p id="vizHelp" class="sr-only">
         Each arc links two verses that reference each other. Books run from Genesis on the left to Revelation on the right.
@@ -144,6 +154,21 @@
 
   <div class="sr-only" id="announcer" aria-live="polite"></div>
 
+  <section class="presenter" id="presenter" aria-labelledby="presTitle" hidden>
+    <div class="pres-card">
+      <p class="pres-meta" id="presMeta"></p>
+      <h2 class="pres-title" id="presTitle" aria-live="polite"></h2>
+      <p class="pres-refs" id="presRefs"></p>
+      <p class="pres-note" id="presNote"></p>
+      <p class="pres-question" id="presQuestion"></p>
+    </div>
+    <div class="pres-controls">
+      <button type="button" class="btn ghost big" id="presPrev">Previous</button>
+      <button type="button" class="btn big" id="presNext">Next</button>
+      <button type="button" class="btn ghost big" id="presExit">Exit</button>
+    </div>
+  </section>
+
   <dialog id="settings" aria-labelledby="settingsTitle">
     <form class="dialog-inner" id="settingsForm" method="dialog">
       <h2 id="settingsTitle">Settings</h2>
@@ -175,6 +200,7 @@
   <dialog id="about" aria-labelledby="aboutTitle">
     <div class="dialog-inner">
       <h2 id="aboutTitle">About Bible Connections</h2>
+      <p class="muted">Version <span id="aboutVersion"></span> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md" rel="noopener">What's new</a></p>
       <p>Every arc joins two passages of Scripture that point to each other. Short arcs connect nearby verses, long arcs stretch across the whole story of the Bible, from Genesis to Revelation.</p>
       <h3>How to use it</h3>
       <ul>
@@ -197,9 +223,6 @@
     </div>
   </dialog>
 
-  <script src="themes.js"></script>
-  <script src="notes.js"></script>
-  <script src="journeys.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

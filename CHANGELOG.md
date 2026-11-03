@@ -11,6 +11,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Home button in the header.
 - Browser and phone back button steps back through verses, connections, filters and journeys.
 - Picture of the full arc map at the top of the welcome page.
+- Notes, journeys, themes and sermon series moved to editable data files in `site/content/`, with a guide in `docs/EDITING.md`.
+- Discussion questions on every journey step.
+- Four new journeys: God's covenant promises, Out of Egypt, Our great High Priest, Water and new life (nine in total).
+- Presenter mode: full screen, large text, high contrast, works with presentation clickers.
+- Printable journey handouts with references, notes and questions (no Bible text).
+- Sermon series page, shown on the welcome page when switched on in `series.json`.
+- First-time tips on the map.
+- Version number and a "What's new" link in the About box.
 
 ### Changed
 - The welcome page is now always the homepage, with a solid background. The map has its own address (`?view=map`).
@@ -44,7 +52,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Shareable links for connections, searches and journey steps, with Share and Copy buttons.
 - Five guided journeys (Lamb of God, God with us, The promised King, The Spirit poured out, Eden to the new creation).
 - Insights view: most connected verses and chapters, Old/New Testament split and a category heatmap that filters the map.
-- 230 "why it connects" notes and a filter to show only explained connections.
+- 219 "why it connects" notes and a filter to show only explained connections.
 - Settings: light, dark or system appearance, high contrast mode and Bible.com translation.
 - Installable app with offline support.
 - Two-row book labels and an Old/New Testament divider on the axis.

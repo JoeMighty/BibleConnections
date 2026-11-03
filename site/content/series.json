@@ -1,0 +1,11 @@
+{
+  "enabled": false,
+  "title": "Example series: The Story of Rescue",
+  "description": "Replace this with your current sermon series. Set \"enabled\" to true to show it on the welcome page and in the Series view.",
+  "passages": [
+    { "ref": "Genesis 3:15", "title": "Week 1: The first promise" },
+    { "ref": "Exodus 12", "title": "Week 2: The Passover" },
+    { "ref": "Isaiah 53", "title": "Week 3: The suffering servant" },
+    { "ref": "John 19:30", "title": "Week 4: It is finished" }
+  ]
+}
