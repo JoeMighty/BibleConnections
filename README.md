@@ -26,6 +26,8 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 | Guided journeys | `site/journeys.js` |
 | Themes | `site/themes.js` |
 
+Write notes in your own words. Do not quote or closely paraphrase copyrighted translations such as the NIV or ESV.
+
 References use OSIS format, for example `John.3.16` or `1Cor.13.4`. Notes and journeys are drafts and should be reviewed by a pastor or teaching team. The tests check that every reference exists and every note matches a real connection.
 
 ## Run locally
@@ -59,6 +61,9 @@ Downloads the sources into `data-src/` and writes `site/data/`.
 `.github/workflows/ci.yml` runs the tests on every push and pull request. Pushes to `main` that pass are deployed to GitHub Pages. In the repo go to **Settings > Pages** and set **Source** to **GitHub Actions** once.
 
 ## Sources and licences
+
+Full details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
 
 - Cross references: [OpenBible.info](https://www.openbible.info/labs/cross-references/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - Verse counts and word index: [Berean Standard Bible](https://berean.bible/) (public domain), via [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases)
