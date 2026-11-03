@@ -245,3 +245,22 @@ test('home button returns to the landing page and clears everything', async ({ p
   await page.click('[data-start=map]');
   await expect(page.locator('#contextBar')).toBeHidden();
 });
+
+for (const [name, viewport] of [['iPad landscape', { width: 1180, height: 820 }], ['iPad portrait', { width: 820, height: 1180 }], ['phone', { width: 390, height: 664 }]]) {
+  test(`landing can be scrolled to the very bottom on ${name}`, async ({ page, isMobile }) => {
+    test.skip(isMobile);
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    await ready(page);
+    await page.mouse.move(viewport.width / 2, viewport.height / 2);
+    for (let i = 0; i < 20; i++) await page.mouse.wheel(0, 600);
+    await page.waitForTimeout(300);
+    const last = page.locator('#landing .credit-line');
+    const box = await last.boundingBox();
+    // the last line must be fully on screen (and above the tab bar on small screens)
+    const tabbar = await page.locator('.header-nav').boundingBox();
+    const limit = viewport.width <= 860 ? tabbar.y : viewport.height;
+    expect(box.y + box.height).toBeLessThanOrEqual(limit + 1);
+    expect(box.y).toBeGreaterThan(0);
+  });
+}

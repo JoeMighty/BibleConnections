@@ -1687,7 +1687,7 @@
     layout.inert = true;
     updateNav();
     document.body.classList.add('landing-open');
-    landing.scrollTop = 0;
+    window.scrollTo(0, 0);
     resetView(false);
     paintHero();
     renderLandingRecent();
@@ -1698,6 +1698,7 @@
     layout.inert = false;
     updateNav();
     document.body.classList.remove('landing-open');
+    window.scrollTo(0, 0);
     return true;
   }
   // The hero picture is a copy of the real map, drawn at the full-Bible view.

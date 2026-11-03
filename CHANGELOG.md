@@ -17,6 +17,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Standardized on US English spelling (color, favor, honor, center, judgment, license, fulfillment, visualization) and typographic apostrophes and quotes.
 - Fixed "1 verse contain" grammar in word search results.
 - Link and button colors adjusted to keep WCAG AA contrast in the new design.
+- Updates now appear on the first visit after a deploy: the app is fetched fresh when online and only falls back to the saved copy offline.
+
+### Fixed
+- The bottom of the welcome page could not be reached on iPad Safari. The welcome page now scrolls as a normal page instead of a separate scrolling layer.
 
 ### Fixed
 - Links for verse ranges (for example John 1:1-3) now open the first verse on Bible.com. Bible.com does not support ranges in links and showed a generic page. The weekly link check confirmed all 14 translation codes are correct.
