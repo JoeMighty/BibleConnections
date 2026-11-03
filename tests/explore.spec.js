@@ -86,3 +86,24 @@ test('falls back to the 2D canvas renderer', async ({ page }) => {
   expect(await page.evaluate(() => document.body.dataset.renderer)).toBe('canvas');
   await expect(page.locator('#count')).toContainText('Showing');
 });
+
+test.describe(() => {
+test.use({ serviceWorkers: 'block' });
+test('usage stats stay off unless configured, and load when switched on', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('script[src*="goatcounter"], script[src*="gc.zgo.at"]')).toHaveCount(0);
+  await page.route('**/content/config.json', (route) => route.fulfill({ json: { analytics: { provider: 'goatcounter', goatcounterCode: 'example' } } }));
+  await page.route('https://gc.zgo.at/**', (route) => route.fulfill({ body: '', contentType: 'text/javascript' }));
+  await page.reload();
+  await ready(page);
+  await expect(page.locator('script[src="https://gc.zgo.at/count.js"]')).toHaveCount(1);
+  await expect(page.locator('#aboutStats')).not.toHaveAttribute('hidden', '');
+});
+});
+
+test('translation list includes Spanish versions', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('#versionSel optgroup[label="Español"] option[value=NVI]')).toHaveCount(1);
+});

@@ -4,6 +4,7 @@ const CACHE = 'bible-connections-v3';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'handout.html', 'handout.js',
   'content/themes.json', 'content/notes.json', 'content/journeys.json', 'content/series.json',
+  'content/versions.json', 'content/config.json',
   'manifest.webmanifest', 'og-image.png', 'icons/icon.svg', 'icons/icon-192.png',
   'data/books.json', 'data/refs.bin', 'data/words.json',
 ];

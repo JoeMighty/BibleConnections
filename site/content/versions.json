@@ -1,0 +1,16 @@
+[
+  { "code": "NIV", "id": 111, "name": "New International Version", "lang": "en" },
+  { "code": "NLT", "id": 116, "name": "New Living Translation", "lang": "en" },
+  { "code": "ESV", "id": 59, "name": "English Standard Version", "lang": "en" },
+  { "code": "CSB", "id": 1713, "name": "Christian Standard Bible", "lang": "en" },
+  { "code": "NKJV", "id": 114, "name": "New King James Version", "lang": "en" },
+  { "code": "KJV", "id": 1, "name": "King James Version", "lang": "en" },
+  { "code": "AMP", "id": 1588, "name": "Amplified Bible", "lang": "en" },
+  { "code": "MSG", "id": 97, "name": "The Message", "lang": "en" },
+  { "code": "NASB2020", "id": 2692, "name": "New American Standard Bible 2020", "lang": "en" },
+  { "code": "NVI", "id": 128, "name": "Nueva Versión Internacional", "lang": "es" },
+  { "code": "RVR1960", "id": 149, "name": "Reina-Valera 1960", "lang": "es" },
+  { "code": "NTV", "id": 127, "name": "Nueva Traducción Viviente", "lang": "es" },
+  { "code": "LBLA", "id": 89, "name": "La Biblia de las Américas", "lang": "es" },
+  { "code": "TLA", "id": 176, "name": "Traducción en Lenguaje Actual", "lang": "es" }
+]

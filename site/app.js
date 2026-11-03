@@ -20,18 +20,10 @@
     light: { bg: '#fbfbfd', line: '#b9b9c6', sep: '#d5d5df', label: '#262633', sub: '#55556a', sel: '#111111', halo: '#ffffff', marker: '#c2410c', hoverCh: 'rgba(0,0,0,.10)', focus: '#111111', barText: '#ffffff' },
   };
   // Bible.com (YouVersion) translation ids used for "Read" links. No verse text is hosted on this site.
-  const VERSIONS = {
-    NIV: { id: 111, name: 'New International Version' },
-    NLT: { id: 116, name: 'New Living Translation' },
-    ESV: { id: 59, name: 'English Standard Version' },
-    CSB: { id: 1713, name: 'Christian Standard Bible' },
-    NKJV: { id: 114, name: 'New King James Version' },
-    KJV: { id: 1, name: 'King James Version' },
-    AMP: { id: 1588, name: 'Amplified Bible' },
-    MSG: { id: 97, name: 'The Message' },
-    NASB2020: { id: 2692, name: 'New American Standard Bible 2020' },
-  };
+  // Bible.com (YouVersion) translations for "Read" links, loaded from content/versions.json. No verse text is hosted.
+  let VERSIONS = { NIV: { id: 111, name: 'New International Version', lang: 'en' } };
   const VERSION = '0.5.0';
+  let CONFIG = {};
   const BUCKETS = 32;
   const AXIS_H = 84;          // px reserved under the baseline
   const BAR_MAX = 30;         // px height of the tallest chapter bar
@@ -61,7 +53,7 @@
   const settings = {
     appearance: store.get('appearance', 'system'),
     contrast: store.get('contrast', false),
-    version: VERSIONS[store.get('version', 'NIV')] ? store.get('version', 'NIV') : 'NIV',
+    version: store.get('version', 'NIV'),
   };
   const darkQuery = matchMedia('(prefers-color-scheme: dark)');
   const contrastQuery = matchMedia('(prefers-contrast: more)');
@@ -92,6 +84,8 @@
       fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }),
       getJSON('content/themes.json'), getJSON('content/notes.json'), getJSON('content/journeys.json'),
       getJSON('content/series.json').catch(() => ({ enabled: false })),
+      getJSON('content/versions.json').then(list => { VERSIONS = Object.fromEntries(list.map(v => [v.code, v])); }).catch(() => {}),
+      getJSON('content/config.json').then(c => { CONFIG = c; }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -1486,7 +1480,9 @@
     el.fromSel.innerHTML = opts; el.toSel.innerHTML = opts;
     el.theme.innerHTML += THEMES.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
     el.bookList.innerHTML = BOOKS.map(b => `<option value="${esc(b.name)}">`).join('');
-    $('versionSel').innerHTML = Object.entries(VERSIONS).map(([k, v]) => `<option value="${k}">${k}: ${esc(v.name)}</option>`).join('');
+    if (!VERSIONS[settings.version]) settings.version = 'NIV';
+    const group = (lang, label) => `<optgroup label="${label}">${Object.entries(VERSIONS).filter(([, v]) => (v.lang || 'en') === lang).map(([k, v]) => `<option value="${k}">${k}: ${esc(v.name)}</option>`).join('')}</optgroup>`;
+    $('versionSel').innerHTML = group('en', 'English') + group('es', 'Español');
   }
 
   el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(true); });
@@ -1805,7 +1801,7 @@
       if (![...p.keys()].length) { showLanding(); return; }
       hideLanding();
       const hasDetail = ['journey', 'ref', 'q', 'c', 'path'].some(k => p.has(k));
-      if (!hasDetail) resetView();
+      if (!hasDetail) resetView(false);
       await restoreFromURL(p);
       maybeShowTips();
     } finally {
@@ -1815,12 +1811,32 @@
   }
   window.addEventListener('popstate', () => { if (N) applyLocation(); });
 
+  // ---------- Optional privacy-friendly usage stats (off unless set in content/config.json) ----------
+  function loadAnalytics() {
+    const a = (CONFIG && CONFIG.analytics) || {};
+    // respect Do Not Track and Global Privacy Control
+    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+    let src = '', attrs = {};
+    if (a.provider === 'goatcounter' && /^[a-z0-9-]+$/i.test(a.goatcounterCode || '')) {
+      src = 'https://gc.zgo.at/count.js'; attrs = { 'data-goatcounter': `https://${a.goatcounterCode}.goatcounter.com/count` };
+    } else if (a.provider === 'plausible' && /^[a-z0-9.-]+$/i.test(a.plausibleDomain || '')) {
+      src = 'https://plausible.io/js/script.js'; attrs = { 'data-domain': a.plausibleDomain };
+    }
+    if (!src) return;
+    const sc = document.createElement('script');
+    sc.async = true; sc.src = src;
+    for (const [k, v] of Object.entries(attrs)) sc.setAttribute(k, v);
+    document.head.append(sc);
+    $('aboutStats').hidden = false;
+  }
+
   // ---------- Boot ----------
   async function init() {
     applyAppearance();
     try { await loadData(); }
     catch { el.loading.textContent = 'Sorry, the data could not be loaded. Please refresh the page.'; return; }
     buildSelects();
+    loadAnalytics();
     prepareJourneys();
     initSettingsForm();
     resize();

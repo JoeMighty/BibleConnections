@@ -10,6 +10,10 @@ Notes, journeys, themes and the sermon series live in plain data files in `site/
 4. Click **Commit changes**. Choose **Create a new branch and start a pull request** if you want someone to review it first.
 5. The automatic tests check every change. If something is wrong (a missing comma, or a reference that does not exist) the check turns red and the site is not updated. Open the failed check to see which line needs fixing.
 
+## When changes appear
+
+The site updates a minute or two after the change is merged into `main`. People who have visited before may see the old version once, because the site keeps a copy for offline use; it refreshes on their next visit.
+
 ## Copyright rule
 
 Write everything in your own words. Do not copy or closely paraphrase verses from the NIV, ESV, NLT or any other copyrighted translation. Describe what the passage says instead.

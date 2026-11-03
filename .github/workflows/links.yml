@@ -1,0 +1,22 @@
+name: Check Bible.com links
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'   # every Monday
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['site/content/versions.json', 'scripts/check-links.mjs']
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-links.mjs

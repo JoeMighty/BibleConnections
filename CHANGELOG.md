@@ -26,8 +26,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 - WebGL map drawing on devices with a graphics chip, for smooth zooming with all connections. Falls back to the 2D canvas automatically (or with `?renderer=canvas`).
 
+- Weekly automatic check that every Bible.com translation link opens the right translation (`.github/workflows/links.yml`).
+- Lighthouse checks for speed, accessibility, best practices and SEO run before every deploy and block it if scores drop.
+- Monthly workflow that refreshes the OpenBible.info data and opens a pull request for review.
+- Optional privacy-friendly usage stats (GoatCounter or Plausible), off by default, respecting Do Not Track. See `docs/ANALYTICS.md`.
+- Spanish Bible.com translations (NVI, RVR1960, NTV, LBLA, TLA) in the translation list.
+- Guides: `docs/CUSTOM-DOMAIN.md` and `docs/ACCESSIBILITY-TESTING.md` (plan for a session with assistive technology users).
+
 ### Changed (header)
 - Settings and About are now icon buttons to make room for Connect.
+
+### Changed (performance)
+- The map no longer animates its zoom on first load, cutting blocking time from about 800 ms to under 100 ms in Lighthouse.
+- Bible.com translations moved to `site/content/versions.json`.
 
 ### Changed
 - The welcome page is now always the homepage, with a solid background. The map has its own address (`?view=map`).

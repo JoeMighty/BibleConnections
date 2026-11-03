@@ -28,8 +28,27 @@ jobs:
           path: test-results
           retention-days: 7
 
+  lighthouse:
+    # Speed, accessibility, best practice and SEO checks. Fails if scores drop below lighthouserc.json.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx lhci collect --config=lighthouserc.json --settings.chromeFlags="--headless=new --no-sandbox"
+      - run: npx lhci assert --config=lighthouserc.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci
+          retention-days: 14
+
   deploy:
-    needs: test
+    needs: [test, lighthouse]
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:

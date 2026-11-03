@@ -88,6 +88,23 @@ Downloads the sources into `data-src/` and writes `site/data/`.
 
 `.github/workflows/ci.yml` runs the tests on every push and pull request. Pushes to `main` that pass are deployed to GitHub Pages at https://joemighty.github.io/BibleConnections/ (Pages source: **GitHub Actions**).
 
+## More guides
+
+- [Editing the content](docs/EDITING.md)
+- [Usage stats (optional)](docs/ANALYTICS.md)
+- [Using your own web address](docs/CUSTOM-DOMAIN.md)
+- [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
+
+## Automation
+
+| Workflow | When | What it does |
+| --- | --- | --- |
+| `ci.yml` | Every push and pull request | Browser and accessibility tests, Lighthouse checks, then deploys `main` to GitHub Pages |
+| `links.yml` | Weekly | Checks every Bible.com translation link |
+| `data-refresh.yml` | Monthly | Rebuilds the cross reference data and opens a pull request if it changed |
+
+For the monthly refresh to open pull requests, turn on **Settings > Actions > General > Allow GitHub Actions to create and approve pull requests**.
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.

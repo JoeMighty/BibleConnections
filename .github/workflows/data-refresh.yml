@@ -1,0 +1,35 @@
+name: Monthly data refresh
+
+# Downloads the latest OpenBible.info cross references and opens a pull request if anything changed.
+# Requires Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+on:
+  schedule:
+    - cron: '23 5 2 * *'   # 2nd of every month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Rebuild data from the latest sources
+        run: |
+          rm -rf data-src
+          node scripts/build-data.mjs | tee build.log
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data-refresh
+          add-paths: site/data
+          commit-message: Refresh cross reference data
+          title: Monthly data refresh
+          body: |
+            Automatic refresh of the cross reference data from OpenBible.info.
+            The tests run on this pull request. Merge it if they pass.
+          delete-branch: true
