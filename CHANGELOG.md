@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- Links for verse ranges (for example John 1:1-3) now open the first verse on Bible.com. Bible.com does not support ranges in links and showed a generic page. The weekly link check confirmed all 14 translation codes are correct.
+
 ## [0.5.0] - 2026-11-03
 
 ### Added

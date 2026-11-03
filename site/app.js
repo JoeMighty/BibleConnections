@@ -246,9 +246,8 @@
     const ver = settings.version, id = VERSIONS[ver].id;
     const b = BOOKS[verseBook[start]], c = verseChap[start];
     if (chapterOnly) return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${ver}`;
-    let v = String(verseNum[start]);
-    if (end > start && verseBook[end] === verseBook[start] && verseChap[end] === c) v += '-' + verseNum[end];
-    return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${v}.${ver}`;
+    // Bible.com does not support verse ranges in links, so a range opens at its first verse
+    return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${verseNum[start]}.${ver}`;
   }
 
   const ALIASES = {

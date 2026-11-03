@@ -3,7 +3,8 @@
 import fs from 'node:fs';
 
 const versions = JSON.parse(fs.readFileSync(new URL('../site/content/versions.json', import.meta.url)));
-const samples = [['JHN.3.16', 'verse'], ['JHN.1.1-3', 'verse range'], ['PSA.23', 'chapter']];
+// the two link shapes the site uses: a single verse and a whole chapter
+const samples = [['JHN.3.16', 'verse'], ['PSA.23', 'chapter']];
 let failed = 0;
 
 for (const v of versions) {
