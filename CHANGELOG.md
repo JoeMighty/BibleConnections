@@ -5,6 +5,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Credits to [JoeMighty](https://github.com/JoeMighty) on the welcome page, in the About box and in the README.
+- Licenses: code under Apache 2.0 with a NOTICE file that must be kept, and original content under CC BY 4.0, both requiring credit back to this repository. Added `CITATION.cff` for GitHub's "Cite this repository" button.
+- Contributing guide, issue forms (bug, content suggestion, feature idea), `robots.txt`, `sitemap.xml`, structured data for search engines and a GitHub social preview image (`docs/social-preview.png`).
+- Bottom tab bar on phones and small tablets (Home, Journeys, Connect, Insights, Settings), following Apple's Human Interface Guidelines.
+
+### Changed
+- Redesigned the interface following Apple's Human Interface Guidelines: system type scale, grouped lists, segmented controls, switches, translucent bars, line icons and a pure black or white map background.
+- Headings are balanced and paragraphs avoid single-word last lines (widows).
+- Standardized on US English spelling (color, favor, honor, center, judgment, license, fulfillment, visualization) and typographic apostrophes and quotes.
+- Fixed "1 verse contain" grammar in word search results.
+- Link and button colors adjusted to keep WCAG AA contrast in the new design.
+
 ### Fixed
 - Links for verse ranges (for example John 1:1-3) now open the first verse on Bible.com. Bible.com does not support ranges in links and showed a generic page. The weekly link check confirmed all 14 translation codes are correct.
 
@@ -58,14 +71,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Tests for the landing flow and its accessibility in light and dark themes.
 
 ### Changed
-- README: centred header with icon and status badges.
+- README: centered header with icon and status badges.
 - Deploys use the GitHub Pages "GitHub Actions" source. Live at https://joemighty.github.io/BibleConnections/
 
 ## [0.3.0] - 2026-11-03
 
 ### Changed
 - Rewrote all "why it connects" notes and journey steps as original descriptions, removing wording that followed copyrighted translations.
-- About dialog now lists licences, the OpenBible.info changes made, trademark notes and non-affiliation with YouVersion or any Bible publisher.
+- About dialog now lists licenses, the OpenBible.info changes made, trademark notes and non-affiliation with YouVersion or any Bible publisher.
 
 ### Added
 - `THIRD_PARTY_NOTICES.md` covering OpenBible.info (CC BY 4.0), the Berean Standard Bible (public domain), scrollmapper/bible_databases (MIT) and translation trademarks.

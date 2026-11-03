@@ -31,7 +31,7 @@ The book codes are listed in `site/data/books.json` (the `osis` value), for exam
 { "from": "Rom.8.28", "to": "Gen.50.20", "type": "Echo", "note": "Joseph's story is the classic picture of Romans 8:28." }
 ```
 
-- `type` is one of: Quotation, Fulfilment, Parallel, Promise, Echo, Same truth, Contrast.
+- `type` is one of: Quotation, Fulfillment, Parallel, Promise, Echo, Same truth, Contrast.
 - The two references must be a connection that exists in the map (the tests check this).
 
 ### `journeys.json`: guided journeys

@@ -63,5 +63,5 @@ test('about shows the version and a link to what is new', async ({ page }) => {
   await ready(page);
   await page.click('#aboutBtn');
   await expect(page.locator('#aboutVersion')).toHaveText(/^\d+\.\d+\.\d+$/);
-  await expect(page.locator('#about a', { hasText: "What's new" })).toHaveAttribute('href', /CHANGELOG/);
+  await expect(page.locator('#about a', { hasText: 'What’s new' })).toHaveAttribute('href', /CHANGELOG/);
 });

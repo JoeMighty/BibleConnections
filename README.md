@@ -1,11 +1,13 @@
 <div align="center">
 
-<img src="site/icons/icon.svg" alt="" width="96" height="96">
+<a href="https://joemighty.github.io/BibleConnections/"><img src="docs/social-preview.png" alt="Bible Connections: a rainbow of arcs linking passages from Genesis to Revelation" width="720"></a>
 
 <h1>Bible Connections</h1>
 
 <p><strong>An interactive map of the cross references in the Bible.</strong><br>
 Every arc joins two passages that point to each other, from Genesis on the left to Revelation on the right.</p>
+
+<p>Created by <a href="https://github.com/JoeMighty">JoeMighty</a></p>
 
 <p>
   <a href="https://joemighty.github.io/BibleConnections/"><img alt="Live site" src="https://img.shields.io/badge/live%20site-open-38d9a9?style=plastic&logo=githubpages&logoColor=white"></a>
@@ -22,6 +24,11 @@ Every arc joins two passages that point to each other, from Genesis on the left 
   <a href="https://www.openbible.info/labs/cross-references/"><img alt="Cross references: OpenBible.info CC BY 4.0" src="https://img.shields.io/badge/cross%20references-OpenBible.info%20CC%20BY%204.0-ffa94d?style=plastic"></a>
   <a href="https://www.bible.com"><img alt="Reading links: Bible.com" src="https://img.shields.io/badge/reading%20links-Bible.com-c92a2a?style=plastic"></a>
   <img alt="No Bible text hosted" src="https://img.shields.io/badge/Bible%20text%20hosted-none-555?style=plastic">
+</p>
+<p>
+  <a href="LICENSE"><img alt="Code license: Apache 2.0" src="https://img.shields.io/badge/code-Apache%202.0-blue?style=plastic"></a>
+  <a href="LICENSE-CONTENT.md"><img alt="Content license: CC BY 4.0" src="https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey?style=plastic"></a>
+  <img alt="Languages: English and Spanish" src="https://img.shields.io/badge/languages-English%20%7C%20Espa%C3%B1ol-orange?style=plastic">
 </p>
 
 <p><a href="https://joemighty.github.io/BibleConnections/"><strong>Open the live site</strong></a></p>
@@ -98,6 +105,7 @@ Downloads the sources into `data-src/` and writes `site/data/`.
 - [Usage stats (optional)](docs/ANALYTICS.md)
 - [Using your own web address](docs/CUSTOM-DOMAIN.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
+- [Growing the reach of the project](docs/PROMOTION.md)
 
 ## Automation
 
@@ -109,15 +117,32 @@ Downloads the sources into `data-src/` and writes `site/data/`.
 
 For the monthly refresh to open pull requests, turn on **Settings > Actions > General > Allow GitHub Actions to create and approve pull requests**.
 
+## Contributing
+
+Suggestions for notes, journeys, themes and translations are very welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), or open an issue using one of the forms.
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
 
-## Sources and licences
+## License and credit
+
+Bible Connections is created by [JoeMighty](https://github.com/JoeMighty).
+
+- **Code:** [Apache License 2.0](LICENSE). Anyone who copies or builds on the code must keep the [NOTICE](NOTICE) file, which credits JoeMighty and links to this repository.
+- **Notes, journeys, themes, translations and guides:** [CC BY 4.0](LICENSE-CONTENT.md). Anyone who shares or adapts them must give credit with a link back here.
+
+If you reuse any part of this project, please credit it like this:
+
+> [Bible Connections](https://github.com/JoeMighty/BibleConnections) by [JoeMighty](https://github.com/JoeMighty)
+
+GitHub also shows a **Cite this repository** button (from [CITATION.cff](CITATION.cff)).
+
+## Sources and licenses
 
 Full details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 - Cross references: [OpenBible.info](https://www.openbible.info/labs/cross-references/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - Verse counts and word index: [Berean Standard Bible](https://berean.bible/) (public domain), via [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases)
 - Reading links: [Bible.com](https://www.bible.com) (not affiliated)
-- Inspired by the cross reference visualisation by Chris Harrison and Christoph Römhild
+- Inspired by the cross reference visualization by Chris Harrison and Christoph Römhild

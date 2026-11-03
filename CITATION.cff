@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or build on Bible Connections, please credit it as below."
+title: "Bible Connections"
+abstract: "An interactive map of the cross references in the Bible, with guided journeys, themes and a path finder between passages."
+type: software
+authors:
+  - alias: JoeMighty
+    website: "https://github.com/JoeMighty"
+repository-code: "https://github.com/JoeMighty/BibleConnections"
+url: "https://joemighty.github.io/BibleConnections/"
+license: Apache-2.0
+version: 0.5.0
+date-released: 2026-11-03
+keywords:
+  - bible
+  - cross references
+  - data visualization
+  - webgl
+  - accessibility

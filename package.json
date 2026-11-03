@@ -1,9 +1,14 @@
 {
   "name": "bible-connections",
   "private": true,
+  "license": "Apache-2.0",
+  "author": "JoeMighty (https://github.com/JoeMighty)",
+  "homepage": "https://joemighty.github.io/BibleConnections/",
+  "repository": "github:JoeMighty/BibleConnections",
   "description": "Interactive map of Bible cross references",
   "scripts": {
     "build:data": "node scripts/build-data.mjs",
+    "build:sitemap": "node scripts/sitemap.mjs",
     "serve": "python3 -m http.server 8000 --directory site",
     "test": "playwright test"
   },

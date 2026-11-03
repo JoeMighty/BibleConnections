@@ -10,14 +10,14 @@
     minor:      { name: 'Minor Prophets',  dark: '#38d9a9', light: '#0b7285' },
     gospels:    { name: 'Gospels',         dark: '#4dabf7', light: '#1864ab' },
     acts:       { name: 'Acts',            dark: '#91a7ff', light: '#3b5bdb' },
-    paul:       { name: 'Paul\'s Letters', dark: '#da77f2', light: '#862e9c' },
+    paul:       { name: 'Paul’s Letters', dark: '#da77f2', light: '#862e9c' },
     general:    { name: 'General Letters', dark: '#f783ac', light: '#c2255c' },
     revelation: { name: 'Revelation',      dark: '#e9ecef', light: '#343a40' },
   };
   const catKeys = Object.keys(CATEGORIES);
   const PALETTES = {
-    dark:  { bg: '#08080c', line: '#3a3a4a', sep: '#2a2a38', label: '#c9c9d6', sub: '#9a9aae', sel: '#ffffff', halo: '#000000', marker: '#ffd43b', hoverCh: 'rgba(255,255,255,.18)', focus: '#ffffff', barText: '#08080c' },
-    light: { bg: '#fbfbfd', line: '#b9b9c6', sep: '#d5d5df', label: '#262633', sub: '#55556a', sel: '#111111', halo: '#ffffff', marker: '#c2410c', hoverCh: 'rgba(0,0,0,.10)', focus: '#111111', barText: '#ffffff' },
+    dark:  { bg: '#000000', line: '#3a3a4a', sep: '#2a2a38', label: '#c9c9d6', sub: '#9a9aae', sel: '#ffffff', halo: '#000000', marker: '#ffd43b', hoverCh: 'rgba(255,255,255,.18)', focus: '#ffffff', barText: '#08080c' },
+    light: { bg: '#ffffff', line: '#b9b9c6', sep: '#d5d5df', label: '#262633', sub: '#55556a', sel: '#111111', halo: '#ffffff', marker: '#c2410c', hoverCh: 'rgba(0,0,0,.10)', focus: '#111111', barText: '#ffffff' },
   };
   // Bible.com (YouVersion) translation ids used for "Read" links. No verse text is hosted on this site.
   // Bible.com (YouVersion) translations for "Read" links, loaded from content/versions.json. No verse text is hosted.
@@ -378,7 +378,7 @@
     el.tagline.textContent = `${fmt(filtered.length)} connections across ${fmt(TOTAL)} verses`;
   }
 
-  // ---------- Colour ----------
+  // ---------- Color ----------
   let distColors = [], catColors = [];
   function buildColors() {
     distColors = Array.from({ length: BUCKETS }, (_, b) => {
@@ -1040,7 +1040,7 @@
       const f = state.focus;
       title = rangeLabel(f);
       if (f.kind === 'words') {
-        html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? '' : 's'} contain ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>
+        html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>
           <p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>
           <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
           <h3>Verses</h3><ul class="verse-list">`;
@@ -1074,7 +1074,7 @@
         }
         html += '</ul>';
       } else {
-        html += `<p>Each arc joins two passages that point to each other. Tap or click an arc to see the connection and read it on Bible.com. Tap a bar along the bottom to see a chapter's connections.</p>
+        html += `<p>Each arc joins two passages that point to each other. Tap or click an arc to see the connection and read it on Bible.com. Tap a bar along the bottom to see a chapter’s connections.</p>
           <p class="muted">Try <button type="button" class="chip" data-action="search" data-q="John 3:16">John 3:16</button> <button type="button" class="chip" data-action="search" data-q="Isaiah 53">Isaiah 53</button> <button type="button" class="chip" data-action="search" data-q="shepherd">shepherd</button>
           or take a <button type="button" class="chip" data-action="mode" data-mode="journeys">guided journey</button></p>`;
       }
@@ -1210,7 +1210,7 @@
   // ---------- How are these connected? (shortest chain of cross references) ----------
   let graph = null;
   function buildGraph() {
-    // undirected adjacency in compressed form, strongest links first so ties favour well-supported chains
+    // undirected adjacency in compressed form, strongest links first so ties favor well-supported chains
     const deg = new Uint32Array(TOTAL + 1);
     for (let i = 0; i < N; i++) { deg[F[i] + 1]++; deg[T[i] + 1]++; }
     for (let v = 0; v < TOTAL; v++) deg[v + 1] += deg[v];
@@ -1445,7 +1445,7 @@
       html += `<li><button type="button" class="link-btn" data-action="focusChapter" data-c="${c}">${esc(BOOKS[ch.book].name)} ${ch.chapter}</button><span class="bar" style="--w:${s.chap[c] / maxC * 100}%" aria-hidden="true"></span><span class="num">${fmt(s.chap[c])}</span></li>`;
     }
     html += `</ol><h3 id="heatTitle">Connections between categories</h3>
-      <p class="hint">Stronger colour means more connections. Select a cell to show only those connections on the map.</p>
+      <p class="hint">Stronger color means more connections. Select a cell to show only those connections on the map.</p>
       <div class="heat-wrap" tabindex="0" role="region" aria-labelledby="heatTitle"><table class="heat"><caption class="sr-only">Number of connections between each pair of categories</caption><thead><tr><td></td>`;
     const short = { law: 'Law', history: 'Hist', wisdom: 'Wis', major: 'MjP', minor: 'MnP', gospels: 'Gos', acts: 'Acts', paul: 'Paul', general: 'GenL', revelation: 'Rev' };
     catKeys.forEach(k => { html += `<th scope="col"><abbr title="${esc(CATEGORIES[k].name)}">${short[k]}</abbr></th>`; });
@@ -1558,6 +1558,7 @@
     updateNav(); drawBase(); renderPanel(); syncURL(true); focusPanelHeading();
   }
   function updateNav() {
+    $('homeBtn').setAttribute('aria-pressed', String(!landing.hidden));
     document.querySelectorAll('[data-nav]').forEach(b => {
       const on = state.mode === b.dataset.nav || (b.dataset.nav === 'journeys' && state.mode === 'journey');
       b.setAttribute('aria-pressed', String(on));
@@ -1684,6 +1685,7 @@
   function showLanding() {
     landing.hidden = false;
     layout.inert = true;
+    updateNav();
     document.body.classList.add('landing-open');
     landing.scrollTop = 0;
     resetView(false);
@@ -1694,6 +1696,7 @@
     if (landing.hidden) return false;
     landing.hidden = true;
     layout.inert = false;
+    updateNav();
     document.body.classList.remove('landing-open');
     return true;
   }

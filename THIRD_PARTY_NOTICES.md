@@ -5,20 +5,20 @@ This project publishes no copyrighted Bible text. Below is everything it uses fr
 ## Cross references: OpenBible.info
 
 - Source: https://www.openbible.info/labs/cross-references/
-- Licence: Creative Commons Attribution 4.0 (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
+- License: Creative Commons Attribution 4.0 (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
 - Attribution: "Cross references from OpenBible.info, CC BY 4.0"
 - Changes made: references with fewer than 3 votes were removed, duplicate pairs were merged, verse references were converted to verse numbers and stored in a compact binary file (`site/data/refs.bin`).
 
 ## Verse counts and word index: Berean Standard Bible
 
 - Source: https://berean.bible/
-- Licence: public domain (dedicated to the public domain in 2023).
+- License: public domain (dedicated to the public domain in 2023).
 - Used only to count verses per chapter and to build a word to verse number index (`site/data/words.json`) for word search. No verse text is published.
 
 ## Data packaging: scrollmapper/bible_databases
 
 - Source: https://github.com/scrollmapper/bible_databases
-- Licence: MIT
+- License: MIT
 
 ```
 MIT License
@@ -53,7 +53,7 @@ SOFTWARE.
 
 ## Design inspiration
 
-- The arc layout is inspired by the 2007 cross reference visualisation by Chris Harrison and Christoph Römhild. No artwork or data from that work is used.
+- The arc layout is inspired by the 2007 cross reference visualization by Chris Harrison and Christoph Römhild. No artwork or data from that work is used.
 
 ## Development tools (not shipped with the site)
 

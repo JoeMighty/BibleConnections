@@ -45,11 +45,11 @@ test('switching language in Settings reloads in that language', async ({ page })
   await page.goto('/?view=map');
   await ready(page);
   await page.click('#settingsBtn');
-  await Promise.all([page.waitForURL(/lang=es/), page.check('input[name=language][value=es]')]);
+  await Promise.all([page.waitForURL(/lang=es/), page.click('label:has(input[name=language][value=es])')]);
   await ready(page);
   await expect(page.locator('[data-nav=path]')).toHaveText('Conectar');
   await page.click('#settingsBtn');
-  await Promise.all([page.waitForURL((u) => !u.search.includes('lang=es')), page.check('input[name=language][value=en]')]);
+  await Promise.all([page.waitForURL((u) => !u.search.includes('lang=es')), page.click('label:has(input[name=language][value=en])')]);
   await ready(page);
   await expect(page.locator('[data-nav=path]')).toHaveText('Connect');
 });
