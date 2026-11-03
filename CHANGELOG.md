@@ -94,8 +94,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...main
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...HEAD
+[0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...d022afc
 [0.4.0]: https://github.com/JoeMighty/BibleConnections/compare/0c2e1a9...c8f5413
 [0.3.0]: https://github.com/JoeMighty/BibleConnections/compare/df4c68b...0c2e1a9
 [0.2.0]: https://github.com/JoeMighty/BibleConnections/compare/febbd6c...df4c68b
