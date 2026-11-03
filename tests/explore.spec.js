@@ -90,15 +90,28 @@ test('falls back to the 2D canvas renderer', async ({ page }) => {
 test.describe(() => {
 test.use({ serviceWorkers: 'block' });
 test('usage stats stay off unless configured, and load when switched on', async ({ page }) => {
+  await page.route('**/content/config.json', (route) => route.fulfill({ json: { analytics: { provider: '' } } }));
   await page.goto('/?view=map');
   await ready(page);
   await expect(page.locator('script[src*="goatcounter"], script[src*="gc.zgo.at"]')).toHaveCount(0);
+  await page.unroute('**/content/config.json');
   await page.route('**/content/config.json', (route) => route.fulfill({ json: { analytics: { provider: 'goatcounter', goatcounterCode: 'example' } } }));
   await page.route('https://gc.zgo.at/**', (route) => route.fulfill({ body: '', contentType: 'text/javascript' }));
   await page.reload();
   await ready(page);
   await expect(page.locator('script[src="https://gc.zgo.at/count.js"]')).toHaveCount(1);
   await expect(page.locator('#aboutStats')).not.toHaveAttribute('hidden', '');
+});
+
+test('the live site counts visits with GoatCounter and respects Do Not Track', async ({ page, context }) => {
+  await page.route('https://gc.zgo.at/**', (route) => route.fulfill({ body: '', contentType: 'text/javascript' }));
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('script[data-goatcounter="https://bibleconnections.goatcounter.com/count"]')).toHaveCount(1);
+  await page.addInitScript(() => Object.defineProperty(navigator, 'doNotTrack', { get: () => '1' }));
+  await page.reload();
+  await ready(page);
+  await expect(page.locator('script[data-goatcounter]')).toHaveCount(0);
 });
 });
 

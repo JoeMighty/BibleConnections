@@ -19,6 +19,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Link and button colors adjusted to keep WCAG AA contrast in the new design.
 - Updates now appear on the first visit after a deploy: the app is fetched fresh when online and only falls back to the saved copy offline.
 
+- Privacy-friendly visit counts switched on with GoatCounter (`bibleconnections.goatcounter.com`). No cookies, and visitors with Do Not Track or Global Privacy Control are not counted.
+- README: removed the editing, local setup, testing and data rebuild instructions.
+
 ### Fixed
 - The bottom of the welcome page could not be reached on iPad Safari. The welcome page now scrolls as a normal page instead of a separate scrolling layer.
 

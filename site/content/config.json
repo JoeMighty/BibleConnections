@@ -1,7 +1,7 @@
 {
   "analytics": {
-    "provider": "",
-    "goatcounterCode": "",
+    "provider": "goatcounter",
+    "goatcounterCode": "bibleconnections",
     "plausibleDomain": ""
   }
 }

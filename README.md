@@ -56,52 +56,12 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Installable and offline:** works as an app and without a connection after the first visit (reading links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
-## Editing content
-
-Notes, journeys, themes and the sermon series are plain data files in `site/content/`, editable on the GitHub website. See [docs/EDITING.md](docs/EDITING.md) for a step-by-step guide.
-
-| What | File |
-| --- | --- |
-| "Why it connects" notes | `site/content/notes.json` |
-| Guided journeys and discussion questions | `site/content/journeys.json` |
-| Themes | `site/content/themes.json` |
-| Current sermon series | `site/content/series.json` |
-
-Write everything in your own words. Do not quote or closely paraphrase copyrighted translations such as the NIV or ESV. The tests check that every reference exists and every note matches a real connection.
-
-## Run locally
-
-```sh
-npm run serve
-```
-
-Open http://localhost:8000.
-
-## Tests
-
-```sh
-npm install
-npx playwright install chromium
-npm test
-```
-
-The tests run on desktop and mobile sizes. They cover search, sharing links, journeys, presenter mode, handouts, the chain finder, insights, settings, Spanish, keyboard use, offline mode, both renderers and accessibility (axe, WCAG 2.1 AA) in light and dark themes. Lighthouse checks speed, accessibility, best practices and SEO.
-
-## Rebuild the data
-
-```sh
-npm run build:data
-```
-
-Downloads the sources into `data-src/` and writes `site/data/`.
-
 ## Deploy
 
 `.github/workflows/ci.yml` runs the tests on every push and pull request. Pushes to `main` that pass are deployed to GitHub Pages at https://joemighty.github.io/BibleConnections/ (Pages source: **GitHub Actions**).
 
 ## More guides
 
-- [Editing the content](docs/EDITING.md)
 - [Usage stats (optional)](docs/ANALYTICS.md)
 - [Using your own web address](docs/CUSTOM-DOMAIN.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
