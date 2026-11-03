@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bible Connections</title>
+  <meta name="description" content="Explore tens of thousands of cross references across the whole Bible. Zoom in, tap any arc and follow guided journeys through Scripture.">
+  <meta name="theme-color" content="#08080c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#panel">Skip to connection details</a>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>Bible Connections</h1>
+      <p class="tagline" id="tagline">Loading cross references…</p>
+    </div>
+    <nav class="header-nav" aria-label="Main">
+      <button type="button" class="btn ghost nav-btn" data-nav="journeys" aria-pressed="false">Journeys</button>
+      <button type="button" class="btn ghost nav-btn" data-nav="insights" aria-pressed="false">Insights</button>
+      <button type="button" class="btn ghost nav-btn" id="settingsBtn" aria-haspopup="dialog">Settings</button>
+      <button type="button" class="btn ghost nav-btn" id="aboutBtn" aria-haspopup="dialog">About</button>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <main class="viz-wrap" id="main">
+      <div class="viz" id="viz" tabindex="0" role="group" aria-roledescription="interactive map"
+           aria-label="Map of Bible cross references" aria-describedby="vizHelp">
+        <canvas id="baseCanvas" aria-hidden="true"></canvas>
+        <canvas id="overlayCanvas" aria-hidden="true"></canvas>
+        <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
+        <div class="loading" id="loading" role="status">Loading the Bible…</div>
+      </div>
+      <p id="vizHelp" class="sr-only">
+        Each arc links two verses that reference each other. Books run from Genesis on the left to Revelation on the right.
+        Keyboard: arrow keys pan, plus and minus zoom, 0 resets the view, N and P step through the listed connections or journey steps, Escape clears the selection.
+        Every connection is also listed in the details panel.
+      </p>
+      <div class="viz-tools" role="toolbar" aria-label="Map controls">
+        <button type="button" class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button>
+        <button type="button" class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button>
+        <button type="button" class="icon-btn" id="zoomReset" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="legend" id="legend" aria-label="Colour legend"></div>
+    </main>
+
+    <aside class="sidebar" aria-label="Filters and details">
+      <form class="controls" id="controls" role="search" aria-label="Find and filter connections">
+        <div class="field search-field">
+          <label for="search">Find a verse, chapter, book or word</label>
+          <div class="search-row">
+            <input id="search" type="search" list="bookList" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false" aria-describedby="searchError">
+            <button type="submit" class="btn">Go</button>
+          </div>
+          <datalist id="bookList"></datalist>
+          <p class="field-error" id="searchError" role="alert"></p>
+        </div>
+
+        <details class="filters" id="filtersBox">
+          <summary>Filters &amp; categories <span class="filters-count" id="filtersCount"></span></summary>
+          <div class="field">
+            <label for="theme">Theme</label>
+            <select id="theme"><option value="">Whole Bible (no theme)</option></select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fromSel">Between</label>
+              <select id="fromSel"></select>
+            </div>
+            <div class="field">
+              <label for="toSel">and</label>
+              <select id="toSel"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="votes">Minimum strength: <output id="votesOut" for="votes">7</output> votes</label>
+            <input id="votes" type="range" min="3" max="40" step="1" value="7" aria-describedby="votesHelp">
+            <p class="hint" id="votesHelp">Strength is how many people confirmed the link on OpenBible.info. Lower shows more arcs.</p>
+          </div>
+          <div class="field check">
+            <label><input type="checkbox" id="notesOnly"> Only connections with “why it connects” notes</label>
+          </div>
+          <fieldset class="field">
+            <legend>Colour arcs by</legend>
+            <div class="segmented">
+              <label><input type="radio" name="colorMode" value="distance" checked> Distance</label>
+              <label><input type="radio" name="colorMode" value="category"> Category</label>
+            </div>
+          </fieldset>
+          <button type="button" class="btn ghost full" id="resetAll">Reset filters</button>
+        </details>
+        <p class="count" id="count" aria-live="polite"></p>
+      </form>
+
+      <section class="panel" id="panel" tabindex="-1" aria-labelledby="panelTitle">
+        <h2 id="panelTitle">Explore</h2>
+        <div id="panelBody"></div>
+      </section>
+    </aside>
+  </div>
+
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+
+  <dialog id="settings" aria-labelledby="settingsTitle">
+    <form class="dialog-inner" id="settingsForm" method="dialog">
+      <h2 id="settingsTitle">Settings</h2>
+      <fieldset class="field">
+        <legend>Appearance</legend>
+        <div class="segmented three">
+          <label><input type="radio" name="appearance" value="system"> System</label>
+          <label><input type="radio" name="appearance" value="light"> Light</label>
+          <label><input type="radio" name="appearance" value="dark"> Dark</label>
+        </div>
+      </fieldset>
+      <div class="field check">
+        <label><input type="checkbox" id="contrastToggle"> High contrast (bolder arcs and text)</label>
+      </div>
+      <div class="field">
+        <label for="versionSel">Open verses on Bible.com in</label>
+        <select id="versionSel"></select>
+        <p class="hint">Verses are not stored on this site. Links open the passage on Bible.com in this translation.</p>
+      </div>
+      <div class="field">
+        <p class="label-like">Use it like an app</p>
+        <button type="button" class="btn ghost" id="installBtn" hidden>Install Bible Connections</button>
+        <p class="hint" id="installHelp">Works offline after your first visit. To install, use your browser menu and choose “Install app” or “Add to Home Screen”. On iPhone, tap Share then Add to Home Screen.</p>
+      </div>
+      <button class="btn">Done</button>
+    </form>
+  </dialog>
+
+  <dialog id="about" aria-labelledby="aboutTitle">
+    <div class="dialog-inner">
+      <h2 id="aboutTitle">About Bible Connections</h2>
+      <p>Every arc joins two passages of Scripture that point to each other. Short arcs connect nearby verses, long arcs stretch across the whole story of the Bible, from Genesis to Revelation.</p>
+      <h3>How to use it</h3>
+      <ul>
+        <li>Scroll, pinch or use the + and − buttons to zoom. Drag to move around.</li>
+        <li>Tap an arc to see the two passages, then read them on Bible.com.</li>
+        <li>Tap the bars along the bottom to see every connection in that chapter.</li>
+        <li>Search for a reference or a word, pick a theme, or take a guided journey.</li>
+        <li>Use Share to send someone the exact connection you are looking at.</li>
+      </ul>
+      <h3>Sources and copyright</h3>
+      <ul>
+        <li>Cross references from <a href="https://www.openbible.info/labs/cross-references/" rel="noopener">OpenBible.info</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Filtered to links with 3 or more votes and converted to a compact format.</li>
+        <li>Verse counts and word search come from the public domain <a href="https://berean.bible/" rel="noopener">Berean Standard Bible</a>. No Bible text is published on this site.</li>
+        <li>Reading links open <a href="https://www.bible.com/" rel="noopener">Bible.com</a>. Translation names are trademarks of their owners. This site is not affiliated with or endorsed by YouVersion or any Bible publisher.</li>
+        <li>Data packaged by <a href="https://github.com/scrollmapper/bible_databases" rel="noopener">scrollmapper/bible_databases</a> (MIT licence).</li>
+        <li>Notes, journeys and themes are original descriptions written for this site.</li>
+        <li>The arc layout is inspired by the cross reference visualisation by Chris Harrison and Christoph Römhild.</li>
+      </ul>
+      <form method="dialog"><button class="btn" autofocus>Close</button></form>
+    </div>
+  </dialog>
+
+  <script src="themes.js"></script>
+  <script src="notes.js"></script>
+  <script src="journeys.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
