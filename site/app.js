@@ -257,6 +257,7 @@
       out.push(i);
     }
     filtered = Int32Array.from(out);
+    listVersion++;
     if (state.selected >= 0 && !filtered.includes(state.selected)) state.selected = -1;
     topCache = null; statsCache = null;
     computeFocus();
@@ -325,6 +326,8 @@
     const prevW = view.W, prevFit = view.fitK;
     view.W = r.width; view.H = r.height; view.dpr = dpr;
     for (const c of [el.base, el.overlay]) { c.width = Math.round(r.width * dpr); c.height = Math.round(r.height * dpr); }
+    // the GL canvas renders at up to 1.5x: its 1 device pixel lines then match the 2D renderer's weight
+    if (glr) glr.resize(r.width * Math.min(dpr, 1.5), r.height * Math.min(dpr, 1.5));
     const usableH = view.H - AXIS_H - 20;
     view.fitK = Math.min((view.W - 2 * MARGIN) / TOTAL, (usableH * 2) / TOTAL);
     if (!prevW) resetView(false);
@@ -417,32 +420,133 @@
   }
   const arcPath = (path, i) => arcBetween(path, F[i], T[i]);
 
+  // ---------- WebGL renderer (fast path) ----------
+  // Every arc is one instance of a shared half-circle drawn as line segments. The GPU places each
+  // instance from its two verse positions, so zooming only updates a few numbers per frame.
+  // Falls back to the 2D canvas renderer when WebGL2 is not available.
+  const glr = (() => {
+    const forced = new URLSearchParams(location.search).get('renderer');
+    if (forced === 'canvas') return null;
+    const canvas = $('glCanvas');
+    const gl = canvas && canvas.getContext('webgl2', { alpha: false, antialias: true, preserveDrawingBuffer: true });
+    if (!gl) return null;
+    // software WebGL (no graphics chip) is slower than the 2D canvas, so only use real GPUs
+    const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    const gpu = String(dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER));
+    if (forced !== 'webgl' && /swiftshader|llvmpipe|softpipe|software|basic render/i.test(gpu)) return null;
+    const vs = `#version 300 es
+      precision highp float;
+      in float u; in vec2 ab; in float bucket;
+      uniform float k, tx, ty; uniform vec2 size; uniform vec3 colors[32];
+      out vec3 col;
+      void main() {
+        float lo = min(ab.x, ab.y) + 0.5, hi = max(ab.x, ab.y) + 0.5;
+        float r = (hi - lo) * 0.5 * k;
+        float cx = tx + (lo + hi) * 0.5 * k;
+        // segments are packed densely near the ends so zoomed-in "legs" stay smooth
+        float ang = 3.14159265 * (0.5 - 0.5 * cos(3.14159265 * u));
+        vec2 p = vec2(cx + r * cos(ang), ty - r * sin(ang));
+        gl_Position = vec4(p.x / size.x * 2.0 - 1.0, 1.0 - p.y / size.y * 2.0, 0.0, 1.0);
+        col = colors[int(bucket)];
+      }`;
+    const fs = `#version 300 es
+      precision mediump float;
+      in vec3 col; uniform float alpha; out vec4 outColor;
+      void main() { outColor = vec4(col, alpha); }`;
+    const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(o)); return o; };
+    let prog;
+    try {
+      prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+    } catch { return null; }
+    const SEG = 64, uv = new Float32Array(SEG * 2);
+    for (let n = 0; n < SEG; n++) { uv[n * 2] = n / SEG; uv[n * 2 + 1] = (n + 1) / SEG; }
+    const loc = (n) => gl.getAttribLocation(prog, n), uni = (n) => gl.getUniformLocation(prog, n);
+    const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+    const uBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, uBuf); gl.bufferData(gl.ARRAY_BUFFER, uv, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(loc('u')); gl.vertexAttribPointer(loc('u'), 1, gl.FLOAT, false, 0, 0);
+    const iBuf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, iBuf);
+    gl.enableVertexAttribArray(loc('ab')); gl.vertexAttribPointer(loc('ab'), 2, gl.FLOAT, false, 12, 0); gl.vertexAttribDivisor(loc('ab'), 1);
+    gl.enableVertexAttribArray(loc('bucket')); gl.vertexAttribPointer(loc('bucket'), 1, gl.FLOAT, false, 12, 8); gl.vertexAttribDivisor(loc('bucket'), 1);
+    const U = { k: uni('k'), tx: uni('tx'), ty: uni('ty'), size: uni('size'), colors: uni('colors'), alpha: uni('alpha') };
+    let count = 0, key = null, lost = false;
+    canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); lost = true; canvas.hidden = true; drawBase(); });
+    const toRGB = (css) => {
+      const m = css.match(/^hsl\(([\d.]+),\s*([\d.]+)%,\s*([\d.]+)%\)$/);
+      if (m) {
+        const h = +m[1] / 360, sat = +m[2] / 100, l = +m[3] / 100;
+        const q = l < 0.5 ? l * (1 + sat) : l + sat - l * sat, p2 = 2 * l - q;
+        const f = (t) => { t = (t + 1) % 1; return t < 1 / 6 ? p2 + (q - p2) * 6 * t : t < 1 / 2 ? q : t < 2 / 3 ? p2 + (q - p2) * (2 / 3 - t) * 6 : p2; };
+        return [f(h + 1 / 3), f(h), f(h - 1 / 3)];
+      }
+      const n = parseInt(css.slice(1), 16);
+      return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255];
+    };
+    return {
+      get ok() { return !lost; },
+      canvas,
+      resize(w, h) { canvas.width = Math.round(w); canvas.height = Math.round(h); },
+      draw(list, bucketFn, palette, alpha, bg) {
+        const k2 = list.length + ':' + state.colorMode + ':' + (list === filtered ? listVersion : -1);
+        if (k2 !== key) {
+          // far-reaching arcs first so nearer (smaller) arcs sit on top
+          const order = Array.from(list).map(i => [i, bucketFn(i)]).sort((x, y) => y[1] - x[1]);
+          const data = new Float32Array(order.length * 3);
+          order.forEach(([i, b], n) => { data[n * 3] = F[i]; data[n * 3 + 1] = T[i]; data[n * 3 + 2] = b; });
+          gl.bindBuffer(gl.ARRAY_BUFFER, iBuf); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+          count = order.length; key = k2;
+        }
+        const [r, g, b] = toRGB(bg);
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clearColor(r, g, b, 1); gl.clear(gl.COLOR_BUFFER_BIT);
+        if (!count) return;
+        gl.useProgram(prog); gl.bindVertexArray(vao);
+        gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        const cols = new Float32Array(32 * 3);
+        palette.forEach((c, n) => cols.set(toRGB(c), n * 3));
+        gl.uniform3fv(U.colors, cols);
+        gl.uniform1f(U.k, view.k); gl.uniform1f(U.tx, view.tx); gl.uniform1f(U.ty, view.ty);
+        gl.uniform2f(U.size, view.W, view.H); gl.uniform1f(U.alpha, alpha);
+        gl.drawArraysInstanced(gl.LINES, 0, SEG * 2, count);
+      },
+    };
+  })();
+  let listVersion = 0;
+  document.body.dataset.renderer = glr ? 'webgl' : 'canvas';
+  if (!glr) $('glCanvas').hidden = true;
+
   function paintBase() {
     const ctx = bctx, { W, H, dpr } = view;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = pal.bg;
-    ctx.fillRect(0, 0, W, H);
+    const useGL = glr && glr.ok;
+    if (useGL) ctx.clearRect(0, 0, W, H);
+    else { ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H); }
     if (!N) return;
 
     const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || (state.mode === 'path' && !!state.path?.edges);
     const nb = state.colorMode === 'category' ? catKeys.length : BUCKETS;
-    const paths = Array.from({ length: nb }, () => new Path2D());
-    for (const i of filtered) arcPath(paths[bucketOf(i)], i);
-
     const zoom = view.k / view.fitK;
     let alpha = Math.min(0.9, Math.max(0.05, 22 / Math.sqrt(Math.max(1, filtered.length)) * Math.sqrt(zoom)));
     if (highContrast) alpha = Math.min(1, alpha * 1.8);
     if (isLight) alpha = Math.min(1, alpha * 1.3);
     if (dim) alpha *= highContrast ? 0.15 : 0.3;
-    ctx.globalAlpha = alpha;
-    ctx.lineWidth = (zoom > 20 ? 1.2 : 0.8) + (highContrast ? 0.4 : 0);
-    // far-reaching arcs first so nearer (smaller) arcs sit on top
-    for (let b = nb - 1; b >= 0; b--) {
-      ctx.strokeStyle = state.colorMode === 'category' ? catColors[b] : distColors[b];
-      ctx.stroke(paths[b]);
+    if (useGL) {
+      glr.draw(filtered, bucketOf, state.colorMode === 'category' ? catColors : distColors, Math.min(1, alpha * (highContrast ? 1.3 : 1.15)), pal.bg);
+    } else {
+      const paths = Array.from({ length: nb }, () => new Path2D());
+      for (const i of filtered) arcPath(paths[bucketOf(i)], i);
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = (zoom > 20 ? 1.2 : 0.8) + (highContrast ? 0.4 : 0);
+      // far-reaching arcs first so nearer (smaller) arcs sit on top
+      for (let b = nb - 1; b >= 0; b--) {
+        ctx.strokeStyle = state.colorMode === 'category' ? catColors[b] : distColors[b];
+        ctx.stroke(paths[b]);
+      }
+      ctx.globalAlpha = 1;
     }
-    ctx.globalAlpha = 1;
     paintAxis(ctx);
     if (!landing.hidden) paintHero();
   }
@@ -1509,6 +1613,10 @@
     const scale = Math.min(w / sw, h / sh);
     const dw = sw * scale, dh = sh * scale;
     ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, hero.width, hero.height);
+    if (glr && glr.ok) {
+      const gd = glr.canvas.width / view.W;
+      ctx.drawImage(glr.canvas, sx0 * gd, sy0 * gd, sw * gd, sh * gd, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
+    }
     ctx.drawImage(el.base, sx0 * dpr, sy0 * dpr, sw * dpr, sh * dpr, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
   }
   function buildLanding() {

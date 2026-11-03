@@ -24,6 +24,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Link preview image and tags, so shared links show a picture in messaging apps and social media.
 - Save items and see recently viewed (stored on the device only), also shown on the welcome page.
 
+- WebGL map drawing on devices with a graphics chip, for smooth zooming with all connections. Falls back to the 2D canvas automatically (or with `?renderer=canvas`).
+
 ### Changed (header)
 - Settings and About are now icon buttons to make room for Connect.
 

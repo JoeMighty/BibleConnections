@@ -60,3 +60,29 @@ test('link preview tags are present', async ({ page, request }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /og-image\.png$/);
   expect((await request.get('/og-image.png')).status()).toBe(200);
 });
+
+test('WebGL renderer draws the arcs when available', async ({ page, isMobile }) => {
+  test.skip(isMobile);
+  test.setTimeout(90_000);
+  await page.goto('/?view=map&renderer=webgl');
+  await ready(page);
+  const renderer = await page.evaluate(() => document.body.dataset.renderer);
+  test.skip(renderer !== 'webgl', 'WebGL2 not available in this browser');
+  await page.waitForTimeout(3000);
+  const lit = await page.evaluate(() => {
+    const src = document.getElementById('glCanvas');
+    const c = document.createElement('canvas'); c.width = 200; c.height = 100;
+    const ctx = c.getContext('2d'); ctx.drawImage(src, 0, 0, 200, 100);
+    const d = ctx.getImageData(0, 0, 200, 100).data;
+    let n = 0; for (let i = 0; i < d.length; i += 4) if (d[i] + d[i + 1] + d[i + 2] > 120) n++;
+    return n;
+  });
+  expect(lit).toBeGreaterThan(500);
+});
+
+test('falls back to the 2D canvas renderer', async ({ page }) => {
+  await page.goto('/?view=map&renderer=canvas');
+  await ready(page);
+  expect(await page.evaluate(() => document.body.dataset.renderer)).toBe('canvas');
+  await expect(page.locator('#count')).toContainText('Showing');
+});
