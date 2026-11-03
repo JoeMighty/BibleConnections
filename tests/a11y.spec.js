@@ -7,6 +7,7 @@ const pages = [
   ['connection', '/?c=Rom.8.28~Gen.50.20'],
   ['journey', '/?journey=lamb&step=1'],
   ['insights', '/?view=insights'],
+  ['chain', '/?path=Genesis+3%3A15~Revelation+12%3A9'],
   ['filtered', '/?theme=love&min=10&ref=John+3%3A16'],
 ];
 

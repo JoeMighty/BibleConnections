@@ -7,6 +7,16 @@
   <meta name="description" content="Explore tens of thousands of cross references across the whole Bible. Zoom in, tap any arc and follow guided journeys through Scripture.">
   <meta name="theme-color" content="#08080c">
   <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bible Connections">
+  <meta property="og:title" content="Bible Connections: see how the whole Bible fits together">
+  <meta property="og:description" content="Explore tens of thousands of cross references from Genesis to Revelation. Guided journeys, themes and a map you can zoom into.">
+  <meta property="og:url" content="https://joemighty.github.io/BibleConnections/">
+  <meta property="og:image" content="https://joemighty.github.io/BibleConnections/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A rainbow of arcs connecting passages across the Bible">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,9 +34,10 @@
     <nav class="header-nav" aria-label="Main">
       <button type="button" class="btn ghost nav-btn" id="homeBtn">Home</button>
       <button type="button" class="btn ghost nav-btn" data-nav="journeys" aria-pressed="false">Journeys</button>
+      <button type="button" class="btn ghost nav-btn" data-nav="path" aria-pressed="false">Connect</button>
       <button type="button" class="btn ghost nav-btn" data-nav="insights" aria-pressed="false">Insights</button>
-      <button type="button" class="btn ghost nav-btn" id="settingsBtn" aria-haspopup="dialog">Settings</button>
-      <button type="button" class="btn ghost nav-btn" id="aboutBtn" aria-haspopup="dialog">About</button>
+      <button type="button" class="btn ghost nav-btn icon-nav" id="settingsBtn" aria-haspopup="dialog" aria-label="Settings" title="Settings"><span aria-hidden="true">⚙</span></button>
+      <button type="button" class="btn ghost nav-btn icon-nav" id="aboutBtn" aria-haspopup="dialog" aria-label="About" title="About"><span aria-hidden="true">ⓘ</span></button>
     </nav>
   </header>
 
@@ -48,6 +59,7 @@
         </div>
       </form>
       <div class="landing-series" id="landingSeries" hidden></div>
+      <div class="landing-recent" id="landingRecent" hidden></div>
       <ul class="stat-row" id="landingStats" aria-label="At a glance"></ul>
       <h3>Start with a theme</h3>
       <ul class="chip-list" id="landingThemes"></ul>
@@ -93,6 +105,7 @@
         <button type="button" class="icon-btn" id="zoomIn" aria-label="Zoom in">+</button>
         <button type="button" class="icon-btn" id="zoomOut" aria-label="Zoom out">−</button>
         <button type="button" class="icon-btn" id="zoomReset" aria-label="Reset view">⟲</button>
+        <button type="button" class="icon-btn" id="saveImage" aria-label="Save an image of this view">⤓</button>
       </div>
       <div class="legend" id="legend" aria-label="Colour legend"></div>
     </main>

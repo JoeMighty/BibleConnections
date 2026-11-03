@@ -19,6 +19,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Sermon series page, shown on the welcome page when switched on in `series.json`.
 - First-time tips on the map.
 - Version number and a "What's new" link in the About box.
+- "How are these connected?" (Connect): finds and animates the shortest chain of cross references between any two passages.
+- Save image button for the current view, with the filters and site address in the caption.
+- Link preview image and tags, so shared links show a picture in messaging apps and social media.
+- Save items and see recently viewed (stored on the device only), also shown on the welcome page.
+
+### Changed (header)
+- Settings and About are now icon buttons to make room for Connect.
 
 ### Changed
 - The welcome page is now always the homepage, with a solid background. The map has its own address (`?view=map`).

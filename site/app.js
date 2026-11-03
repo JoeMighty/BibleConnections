@@ -425,7 +425,7 @@
     ctx.fillRect(0, 0, W, H);
     if (!N) return;
 
-    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey';
+    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || (state.mode === 'path' && !!state.path?.edges);
     const nb = state.colorMode === 'category' ? catKeys.length : BUCKETS;
     const paths = Array.from({ length: nb }, () => new Path2D());
     for (const i of filtered) arcPath(paths[bucketOf(i)], i);
@@ -568,6 +568,17 @@
     if (state.mode === 'journey') { const s = currentStep(); if (s) highlightPair(ctx, s.ia, s.ib); }
     if (state.hover >= 0 && state.hover !== state.selected) strokePair(ctx, F[state.hover], T[state.hover], pal.sel, 1.6, 0.75);
     if (state.selected >= 0) highlightPair(ctx, F[state.selected], T[state.selected]);
+    if (state.mode === 'path' && state.path && state.path.edges) {
+      const edges = state.path.edges.slice(0, state.path.shown);
+      edges.forEach(e => highlightPair(ctx, e.a, e.b));
+      ctx.font = '700 12px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const nodes = [state.path.edges[0]?.a, ...edges.map(e => e.b)].filter(v => v !== undefined);
+      nodes.forEach((v, n) => {
+        const x = sx(v + 0.5), y = view.ty - 16;
+        ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fillStyle = pal.marker; ctx.fill();
+        ctx.fillStyle = '#000'; ctx.fillText(String(n + 1), x, y + 0.5);
+      });
+    }
     if (state.hoverChapter >= 0) {
       const ch = chapters[state.hoverChapter];
       ctx.fillStyle = pal.hoverCh;
@@ -803,8 +814,13 @@
     if (shown < list.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="more">Show more (${(list.length - shown).toLocaleString()} left)</button></div>`;
     return html;
   }
-  const shareButtons = () => `<button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
-      <button type="button" class="btn ghost small" data-action="copy">Copy references</button>`;
+  const shareButtons = () => {
+    const saved = isSaved();
+    return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${saved ? '★ Saved' : '☆ Save'}</button>
+      <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
+      <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
+      <button type="button" class="btn ghost small" data-action="image">Save image</button>`;
+  };
 
   function renderPanel() {
     let title = 'Explore', html = '';
@@ -815,6 +831,7 @@
     else if (state.mode === 'journey') [title, html] = journeyStepHTML();
     else if (state.mode === 'insights') [title, html] = insightsHTML();
     else if (state.mode === 'series') [title, html] = seriesHTML();
+    else if (state.mode === 'path') [title, html] = pathHTML();
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
@@ -870,6 +887,7 @@
           <p class="muted">Try <button type="button" class="chip" data-action="search" data-q="John 3:16">John 3:16</button> <button type="button" class="chip" data-action="search" data-q="Isaiah 53">Isaiah 53</button> <button type="button" class="chip" data-action="search" data-q="shepherd">shepherd</button>
           or take a <button type="button" class="chip" data-action="mode" data-mode="journeys">guided journey</button></p>`;
       }
+      html += savedRecentHTML();
       html += `<h3>Strongest connections</h3>` + listHTML(topList(), false);
     }
     el.panelTitle.textContent = title;
@@ -998,6 +1016,200 @@
   }
   $('tipsClose').addEventListener('click', () => { $('tips').hidden = true; store.set('tipsSeen', true); el.viz.focus(); });
 
+  // ---------- How are these connected? (shortest chain of cross references) ----------
+  let graph = null;
+  function buildGraph() {
+    // undirected adjacency in compressed form, strongest links first so ties favour well-supported chains
+    const deg = new Uint32Array(TOTAL + 1);
+    for (let i = 0; i < N; i++) { deg[F[i] + 1]++; deg[T[i] + 1]++; }
+    for (let v = 0; v < TOTAL; v++) deg[v + 1] += deg[v];
+    const nbr = new Uint16Array(deg[TOTAL]), via = new Int32Array(deg[TOTAL]), fill = deg.slice(0, TOTAL);
+    const order = Array.from({ length: N }, (_, i) => i).sort((a, b) => V[b] - V[a]);
+    for (const i of order) {
+      nbr[fill[F[i]]] = T[i]; via[fill[F[i]]++] = i;
+      nbr[fill[T[i]]] = F[i]; via[fill[T[i]]++] = i;
+    }
+    graph = { start: deg, nbr, via };
+  }
+  function shortestChain(from, to, maxDepth = 8) {
+    if (!graph) buildGraph();
+    const prev = new Int32Array(TOTAL).fill(-2), prevEdge = new Int32Array(TOTAL).fill(-1);
+    let frontier = [];
+    for (let v = from.start; v < from.end; v++) { prev[v] = -1; frontier.push(v); }
+    for (let v = from.start; v < from.end; v++) if (v >= to.start && v < to.end) return { edges: [], same: true };
+    for (let depth = 0; depth < maxDepth && frontier.length; depth++) {
+      const next = [];
+      for (const u of frontier) {
+        for (let k = graph.start[u]; k < graph.start[u + 1]; k++) {
+          const w = graph.nbr[k];
+          if (prev[w] !== -2) continue;
+          prev[w] = u; prevEdge[w] = graph.via[k];
+          if (w >= to.start && w < to.end) {
+            const edges = [];
+            for (let x = w; prev[x] !== -1; x = prev[x]) edges.unshift({ a: prev[x], b: x, i: prevEdge[x] });
+            return { edges };
+          }
+          next.push(w);
+        }
+      }
+      frontier = next;
+    }
+    return { edges: null };
+  }
+  function findPath(fromText, toText, { push = true } = {}) {
+    const a = parseReference(fromText), b = parseReference(toText);
+    state.mode = 'path'; state.selected = -1; state.focus = null; state.journey = null;
+    state.path = { fromText, toText, error: '' };
+    if (!a || a.error || !b || b.error) {
+      state.path.error = (a && a.error) || (b && b.error) || 'Enter two references, for example Genesis 3:15 and Revelation 12:9.';
+    } else {
+      const res = shortestChain(a, b);
+      Object.assign(state.path, { fromLabel: rangeLabel(a), toLabel: rangeLabel(b), edges: res.edges, same: res.same, shown: 0 });
+    }
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+    const P = state.path;
+    if (P.edges && P.edges.length) {
+      const lo = Math.min(...P.edges.map(e => Math.min(e.a, e.b))), hi = Math.max(...P.edges.map(e => Math.max(e.a, e.b)));
+      zoomToSpan(lo, hi + 1, 0.08);
+      animatePath();
+      announce(`Found a chain of ${P.edges.length} link${P.edges.length === 1 ? '' : 's'} from ${P.fromLabel} to ${P.toLabel}.`);
+    } else if (P.error) announce(P.error);
+    else announce(`No chain found between ${P.fromLabel} and ${P.toLabel}.`);
+  }
+  let pathTimer = 0;
+  function animatePath() {
+    clearInterval(pathTimer);
+    const P = state.path;
+    if (!P || !P.edges) return;
+    if (reducedMotion) { P.shown = P.edges.length; drawOverlay(); return; }
+    P.shown = 0; drawOverlay();
+    pathTimer = setInterval(() => {
+      if (state.mode !== 'path' || state.path !== P) { clearInterval(pathTimer); return; }
+      P.shown++; drawOverlay();
+      if (P.shown >= P.edges.length) clearInterval(pathTimer);
+    }, 650);
+  }
+  function pathHTML() {
+    const P = state.path || {};
+    let html = `<p>Pick any two passages and see the shortest chain of cross references that links them.</p>
+      <form class="path-form" id="pathForm">
+        <div class="field"><label for="pathFrom">From</label><input id="pathFrom" type="search" list="bookList" value="${esc(P.fromText || '')}" placeholder="e.g. Genesis 3:15" autocomplete="off"></div>
+        <div class="field"><label for="pathTo">To</label><input id="pathTo" type="search" list="bookList" value="${esc(P.toText || '')}" placeholder="e.g. Revelation 12:9" autocomplete="off"></div>
+        <button type="submit" class="btn">Find the link</button>
+      </form>
+      <p class="hint">Try <button type="button" class="chip" data-action="pathExample" data-a="Genesis 3:15" data-b="Revelation 12:9">Genesis 3:15 to Revelation 12:9</button>
+      <button type="button" class="chip" data-action="pathExample" data-a="Exodus 12" data-b="John 1:29">Exodus 12 to John 1:29</button></p>`;
+    if (P.error) html += `<p class="field-error" role="alert">${esc(P.error)}</p>`;
+    else if (P.same) html += `<p>Those passages overlap, so they are already connected.</p>`;
+    else if (P.edges === null) html += `<p>No chain of 8 links or fewer was found between ${esc(P.fromLabel)} and ${esc(P.toLabel)}. Try a nearby verse or a whole chapter.</p>`;
+    else if (P.edges) {
+      html += `<h3>${P.edges.length} link${P.edges.length === 1 ? '' : 's'} from ${esc(P.fromLabel)} to ${esc(P.toLabel)}</h3><ol class="chain">`;
+      html += `<li><span class="chain-num" aria-hidden="true">1</span><div><p class="ref">${esc(refLabel(P.edges[0].a))}</p>${ext(bibleUrl(P.edges[0].a), `Read<span class="sr-only"> ${esc(refLabel(P.edges[0].a))}</span>`, 'mini-link')}</div></li>`;
+      P.edges.forEach((e, n) => {
+        const note = noteMap.get(e.i);
+        html += `<li><span class="chain-num" aria-hidden="true">${n + 2}</span><div><p class="ref">${esc(refLabel(e.b))} <span class="votes">${V[e.i]} votes</span></p>
+          ${note ? `<p class="chain-note">${esc(note.text)}</p>` : ''}
+          ${ext(bibleUrl(e.b), `Read<span class="sr-only"> ${esc(refLabel(e.b))}</span>`, 'mini-link')}</div></li>`;
+      });
+      html += `</ol><div class="actions"><button type="button" class="btn ghost small" data-action="replayPath">Play again</button>${shareButtons()}</div>`;
+    }
+    html += `<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>`;
+    return ['How are these connected?', html];
+  }
+  el.panelBody.addEventListener('submit', (e) => {
+    if (e.target.id !== 'pathForm') return;
+    e.preventDefault();
+    findPath($('pathFrom').value, $('pathTo').value);
+    focusPanelHeading();
+  });
+  el.panelBody.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action=pathExample]');
+    if (btn) { findPath(btn.dataset.a, btn.dataset.b); focusPanelHeading(); }
+  });
+
+  // ---------- Saved items and recently viewed (stored on this device only) ----------
+  function currentEntry() {
+    let label = '';
+    if (state.mode === 'journey' && state.journey) label = `${JOURNEYS[state.journey.j].name}, step ${state.journey.step + 1}`;
+    else if (state.mode === 'path' && state.path && state.path.edges) label = `${state.path.fromLabel} to ${state.path.toLabel}`;
+    else if (state.mode === 'explore' && state.selected >= 0) label = `${refLabel(F[state.selected])} ↔ ${refLabel(T[state.selected], E[state.selected])}`;
+    else if (state.mode === 'explore' && state.focus) label = rangeLabel(state.focus);
+    else if (state.mode === 'explore' && state.theme) label = `Theme: ${THEMES.find(t => t.id === state.theme).name}`;
+    return label ? { label, url: location.search } : null;
+  }
+  const isSaved = () => store.get('saved', []).some(x => x.url === location.search);
+  function toggleSave() {
+    const entry = currentEntry();
+    if (!entry) return;
+    let saved = store.get('saved', []);
+    if (saved.some(x => x.url === entry.url)) { saved = saved.filter(x => x.url !== entry.url); announce('Removed from saved.'); }
+    else { saved.unshift(entry); announce('Saved on this device.'); }
+    store.set('saved', saved.slice(0, 50));
+    renderPanel();
+    el.panelBody.querySelector('[data-action=save]')?.focus();
+  }
+  function removeSaved(url) { store.set('saved', store.get('saved', []).filter(x => x.url !== url)); announce('Removed from saved.'); }
+  function recordRecent() {
+    const entry = currentEntry();
+    if (!entry) return;
+    const recent = store.get('recent', []).filter(x => x.url !== entry.url);
+    recent.unshift(entry);
+    store.set('recent', recent.slice(0, 10));
+  }
+  function savedRecentHTML() {
+    const saved = store.get('saved', []), recent = store.get('recent', []);
+    let html = '';
+    if (saved.length) {
+      html += `<h3>Saved</h3><ul class="mini-list">${saved.map(x => `<li><button type="button" class="link-btn" data-action="goto" data-url="${esc(x.url)}">${esc(x.label)}</button>
+        <button type="button" class="ctx-x" data-action="unsave" data-url="${esc(x.url)}" aria-label="Remove ${esc(x.label)} from saved">✕</button></li>`).join('')}</ul>`;
+    }
+    if (recent.length) {
+      html += `<h3>Recently viewed</h3><ul class="mini-list">${recent.slice(0, 6).map(x => `<li><button type="button" class="link-btn" data-action="goto" data-url="${esc(x.url)}">${esc(x.label)}</button></li>`).join('')}</ul>
+        <div class="actions tight"><button type="button" class="btn ghost small" data-action="clearRecent">Clear recently viewed</button></div>`;
+    }
+    return html;
+  }
+  function renderLandingRecent() {
+    const recent = store.get('recent', []).slice(0, 3), box = $('landingRecent');
+    box.hidden = !recent.length;
+    box.innerHTML = recent.length ? `<h3>Pick up where you left off</h3><ul class="chip-list">${recent.map(x => `<li><button type="button" class="chip" data-goto="${esc(x.url)}">${esc(x.label)}</button></li>`).join('')}</ul>` : '';
+  }
+  function goTo(url) {
+    history.pushState(null, '', url || '?view=map');
+    applyLocation();
+    focusPanelHeading();
+  }
+
+  // ---------- Save an image of the current view ----------
+  async function exportImage() {
+    const W = view.W, H = view.H, foot = 64, scale = 2;
+    const c = document.createElement('canvas');
+    c.width = W * scale; c.height = (H + foot) * scale;
+    const ctx = c.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H + foot);
+    for (const src of [$('glCanvas'), el.base, el.overlay]) if (src && !src.hidden && src.width) ctx.drawImage(src, 0, 0, W, H);
+    const items = contextItems().map(x => x[1]);
+    const title = items.length ? items.join(' · ') : 'The whole Bible';
+    ctx.fillStyle = pal.label; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.font = '700 16px system-ui, sans-serif';
+    ctx.fillText(title.length > 110 ? title.slice(0, 107) + '…' : title, 14, H + 26);
+    ctx.font = '12px system-ui, sans-serif'; ctx.fillStyle = pal.sub;
+    ctx.fillText(`Bible Connections · ${location.host}${location.pathname} · Cross references: OpenBible.info (CC BY 4.0)`, 14, H + 48);
+    const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+    if (!blob) { announce('Sorry, the image could not be created.'); return; }
+    const file = new File([blob], 'bible-connections.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] }) && matchMedia('(pointer: coarse)').matches) {
+      try { await navigator.share({ files: [file], title: 'Bible Connections' }); return; } catch { /* cancelled, fall back to download */ }
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = file.name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    announce('Image saved.'); flash('Image saved');
+  }
+  $('saveImage').addEventListener('click', exportImage);
+
   // ---------- Insights ----------
   let statsCache = null;
   function computeStats() {
@@ -1121,6 +1333,12 @@
     else if (a === 'stepNext') { goStep(1); focusPanelHeading(); }
     else if (a === 'stepPrev') { goStep(-1); focusPanelHeading(); }
     else if (a === 'present') enterPresenter();
+    else if (a === 'save') toggleSave();
+    else if (a === 'image') exportImage();
+    else if (a === 'goto') goTo(btn.dataset.url);
+    else if (a === 'unsave') { removeSaved(btn.dataset.url); renderPanel(); el.panelBody.querySelector('[data-action=goto]')?.focus(); }
+    else if (a === 'clearRecent') { store.set('recent', []); renderPanel(); announce('Recently viewed cleared.'); }
+    else if (a === 'replayPath') { animatePath(); }
     else if (a === 'presentJourney') { startJourney(+btn.dataset.j); enterPresenter(); }
     else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
     else if (a === 'share') share();
@@ -1268,6 +1486,7 @@
     landing.scrollTop = 0;
     resetView(false);
     paintHero();
+    renderLandingRecent();
   }
   function hideLanding() {
     if (landing.hidden) return false;
@@ -1301,11 +1520,13 @@
     $('landingSeries').hidden = !S.enabled;
     if (S.enabled) $('landingSeries').innerHTML = `<p class="eyebrow">Current series</p><h3 class="series-name">${esc(S.title)}</h3><p>${esc(S.description || '')}</p><button type="button" class="btn" data-start="series">See the passages</button>`;
     $('aboutVersion').textContent = VERSION;
+    renderLandingRecent();
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
+    if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`);
@@ -1356,6 +1577,7 @@
     if (state.mode === 'journeys') items.push(['mode', 'Guided journeys']);
     if (state.mode === 'insights') items.push(['mode', 'Insights']);
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
+    if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
     if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
     if (state.minVotes !== DEFAULT_VOTES) items.push(['votes', `Strength ${state.minVotes}+ votes`]);
@@ -1405,7 +1627,8 @@
       if (state.notesOnly) p.set('notes', '1');
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
-      else if (['journeys', 'insights', 'series'].includes(state.mode)) p.set('view', state.mode);
+      else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
+      else if (['journeys', 'insights', 'series', 'path'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
@@ -1418,6 +1641,9 @@
     if (url === current || (url === location.pathname && !location.search)) return;
     if (push && !restoring) history.pushState(null, '', url);
     else history.replaceState(null, '', url);
+    if (push && !restoring) recordRecent();
+    const sb = el.panelBody.querySelector('[data-action=save]');
+    if (sb) { const on = isSaved(); sb.setAttribute('aria-pressed', on); sb.textContent = on ? '★ Saved' : '☆ Save'; }
   }
   function readURL() {
     const p = new URLSearchParams(location.search);
@@ -1444,7 +1670,8 @@
   async function restoreFromURL(p) {
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }
-    if (['journeys', 'insights', 'series'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (p.get('path')) { const [a, b] = p.get('path').split('~'); findPath(a || '', b || '', { push: false }); return; }
+    if (['journeys', 'insights', 'series', 'path'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {
@@ -1469,7 +1696,7 @@
       renderLegend(); updateNav(); applyFilters();
       if (![...p.keys()].length) { showLanding(); return; }
       hideLanding();
-      const hasDetail = ['journey', 'ref', 'q', 'c'].some(k => p.has(k));
+      const hasDetail = ['journey', 'ref', 'q', 'c', 'path'].some(k => p.has(k));
       if (!hasDetail) resetView();
       await restoreFromURL(p);
       maybeShowTips();

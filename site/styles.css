@@ -337,6 +337,26 @@ body.presenting .viz-wrap { position: fixed; inset: 0 0 auto 0; height: 52vh; he
 .pres-controls { display: flex; gap: 10px; flex-wrap: wrap; }
 .pres-controls .btn { min-width: 120px; }
 
+/* How are these connected? */
+.path-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: end; margin-bottom: 8px; }
+.path-form .btn { grid-column: 1 / -1; }
+.path-form .field { margin: 0; }
+.chain { list-style: none; padding: 0; margin: 0; }
+.chain li { display: flex; gap: 10px; padding: 6px 0; border-left: 2px solid var(--focus); margin-left: 13px; padding-left: 14px; position: relative; }
+.chain-num {
+  position: absolute; left: -14px; top: 6px; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--focus); color: #000; font-weight: 700; display: grid; place-items: center; font-size: .8rem;
+}
+.chain li > div { padding-left: 8px; }
+.chain .ref { font-weight: 700; margin: 2px 0 0 !important; }
+.chain .votes { font-weight: 400; color: var(--muted); font-size: .8rem; }
+.chain-note { font-size: .9rem; color: var(--muted); margin: 2px 0 0 !important; }
+.mini-list { list-style: none; padding: 0; margin: 0 0 6px; }
+.mini-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.landing-recent { margin: 0 auto 18px; }
+.icon-nav { font-size: 1.15rem; min-width: 44px; }
+@media (max-width: 640px) { .path-form { grid-template-columns: 1fr; } }
+
 /* Toast */
 .toast {
   position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0;
