@@ -50,11 +50,72 @@
     get(k, d) { try { const v = localStorage.getItem('bc.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('bc.' + k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
   };
+  // Language: a ?lang= link wins, then the saved choice, then the browser language.
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  const LANG = ['en', 'es'].includes(urlLang) ? urlLang
+    : store.get('lang', (navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en');
+  document.documentElement.lang = LANG;
   const settings = {
     appearance: store.get('appearance', 'system'),
     contrast: store.get('contrast', false),
-    version: store.get('version', 'NIV'),
+    version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
   };
+
+  // ---------- Translation ----------
+  // English text is the key. A watcher translates text as it appears on the page, so the
+  // rest of the code can stay in English. Missing translations simply show the English.
+  const I18N = { strings: {}, patterns: [] };
+  const escRe = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function tr(text) {
+    if (LANG === 'en' || !text) return text;
+    const m = String(text).match(/^(\s*)([\s\S]*?)(\s*)$/);
+    const core = m[2].replace(/\s+/g, ' ');
+    if (!core) return text;
+    let out = I18N.strings[core];
+    if (out === undefined) {
+      for (const [re, v] of I18N.patterns) {
+        const r = core.match(re);
+        if (r) { out = v.replace(/\{(\w+)\}/g, (_, k) => tr(r.groups[k])); break; }
+      }
+    }
+    return out === undefined ? text : m[1] + out + m[3];
+  }
+  const lastOut = new WeakMap();
+  const I18N_ATTRS = ['placeholder', 'aria-label', 'title', 'label', 'alt'];
+  function translateText(node) {
+    if (lastOut.get(node) === node.data) return;
+    const out = tr(node.data);
+    if (out !== node.data) node.data = out;
+    lastOut.set(node, node.data);
+  }
+  function translateAttr(elm, a) {
+    const v = elm.getAttribute(a);
+    if (v === null) return;
+    const out = tr(v);
+    if (out !== v) elm.setAttribute(a, out);
+  }
+  function translateTree(root) {
+    if (root.nodeType === 3) { if (!root.parentElement?.closest('[lang="en"]')) translateText(root); return; }
+    if (root.nodeType !== 1 || root.closest?.('script, style, [lang="en"]')) return;
+    for (const a of I18N_ATTRS) if (root.hasAttribute(a)) translateAttr(root, a);
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) {
+      if (n.nodeType === 3) { if (!n.parentElement.closest('script, style, [lang="en"]')) translateText(n); }
+      else for (const a of I18N_ATTRS) if (n.hasAttribute(a)) translateAttr(n, a);
+    }
+  }
+  function startTranslating() {
+    if (LANG === 'en') return;
+    translateTree(document.body);
+    document.title = tr(document.title);
+    new MutationObserver((muts) => {
+      for (const mu of muts) {
+        if (mu.type === 'childList') mu.addedNodes.forEach(translateTree);
+        else if (mu.type === 'characterData') { if (!mu.target.parentElement?.closest('[lang="en"]')) translateText(mu.target); }
+        else if (mu.type === 'attributes') translateAttr(mu.target, mu.attributeName);
+      }
+    }).observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: I18N_ATTRS });
+  }
   const darkQuery = matchMedia('(prefers-color-scheme: dark)');
   const contrastQuery = matchMedia('(prefers-contrast: more)');
   let pal = PALETTES.dark, isLight = false, highContrast = false;
@@ -89,6 +150,7 @@
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
+    await applyLanguageData();
     const raw = new Uint16Array(bin);
     const n = raw.length / 4;
     F = new Uint16Array(n); T = new Uint16Array(n); E = new Uint16Array(n); V = new Uint16Array(n);
@@ -122,6 +184,33 @@
       if (note) { hasNote[i] = 1; noteMap.set(i, note); }
     }
     N = n;
+  }
+
+  // Spanish book names are always loaded so Spanish references work in any language.
+  async function applyLanguageData() {
+    const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    const es = await getJSON('content/i18n/es.json').catch(() => null);
+    BOOKS.forEach((b, i) => {
+      b.nameEn = b.name; b.nameEs = es ? es.books[i] : b.name;
+      b.abbr = LANG === 'es' && es ? es.abbr[i] : b.osis;
+      if (LANG === 'es' && es) b.name = es.books[i];
+    });
+    if (LANG !== 'es' || !es) return;
+    I18N.strings = es.strings || {};
+    I18N.patterns = Object.entries(es.patterns || {}).map(([k, v]) =>
+      [new RegExp('^' + escRe(k).replace(/\\\{(\w+)\\\}/g, '(?<$1>[\\s\\S]+?)') + '$'), v]);
+    for (const k of Object.keys(CATEGORIES)) CATEGORIES[k].name = es.categories[k] || CATEGORIES[k].name;
+    const [themesEs, journeysEs] = await Promise.all([
+      getJSON('content/themes.es.json').catch(() => []), getJSON('content/journeys.es.json').catch(() => []),
+    ]);
+    for (const t of THEMES) Object.assign(t, themesEs.find(x => x.id === t.id) || {});
+    for (const j of JOURNEYS) {
+      const x = journeysEs.find(y => y.id === j.id);
+      if (!x) continue;
+      if (x.name) j.name = x.name;
+      if (x.summary) j.summary = x.summary;
+      (x.steps || []).forEach((st, n) => { if (j.steps[n]) for (const f of ['title', 'note', 'question']) if (st[f]) j.steps[n][f] = st[f]; });
+    }
   }
 
   function loadWords() {
@@ -167,22 +256,27 @@
     sos: 'Song of Songs', songofsolomon: 'Song of Songs', song: 'Song of Songs', canticles: 'Song of Songs',
     revelations: 'Revelation', rev: 'Revelation', phil: 'Philippians', phm: 'Philemon', philem: 'Philemon',
     jas: 'James', jdg: 'Judges', judg: 'Judges', ezk: 'Ezekiel', eze: 'Ezekiel', prov: 'Proverbs', eccles: 'Ecclesiastes',
+    // Spanish
+    salmo: 'Psalms', sal: 'Psalms', cantardeloscantares: 'Song of Songs', cantar: 'Song of Songs', apoc: 'Revelation',
+    sanjuan: 'John', sanmateo: 'Matthew', sanmarcos: 'Mark', sanlucas: 'Luke', hch: 'Acts', stgo: 'James', ex: 'Exodus',
   };
-  const norm = (s) => s.toLowerCase().trim()
+  const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
     .replace(/^(iii|3rd|third)\s+/, '3').replace(/^(ii|2nd|second)\s+/, '2').replace(/^(i|1st|first)\s+/, '1')
     .replace(/[^a-z0-9]/g, '');
   function findBook(q, allowPrefix) {
     const n = norm(q);
     if (!n) return -1;
-    if (ALIASES[n]) return BOOKS.findIndex(b => b.name === ALIASES[n]);
-    let bi = BOOKS.findIndex(b => norm(b.name) === n || norm(b.osis) === n);
+    if (ALIASES[n]) return BOOKS.findIndex(b => b.nameEn === ALIASES[n]);
+    const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr].map(norm);
+    let bi = BOOKS.findIndex(b => names(b).includes(n));
     if (bi < 0 && allowPrefix && n.length >= 2) {
-      bi = BOOKS.findIndex(b => norm(b.name).startsWith(n));
-      if (bi < 0) bi = BOOKS.findIndex(b => norm(b.osis).startsWith(n));
+      bi = BOOKS.findIndex(b => norm(LANG === 'es' ? b.nameEs : b.nameEn).startsWith(n));
+      if (bi < 0) bi = BOOKS.findIndex(b => names(b).some(x => x.startsWith(n)));
     }
     return bi;
   }
   function parseReference(input) {
+    input = input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     const m = input.trim().match(/^([1-3]?\s*[a-z][a-z .]*?)\s*(\d+)?(?:\s*[:.\s]\s*(\d+)(?:\s*-\s*(\d+))?)?\s*$/i);
     if (!m) return null;
     // a bare word only counts as a book when it is a full book name ("Mark"); otherwise it is a word search
@@ -581,7 +675,7 @@
       ctx.fillStyle = pal.sep;
       ctx.fillRect(x0, y0 + 2, 1, BAR_MAX + 6);
       const w = Math.min(x1, W) - Math.max(x0, 0);
-      const label = w > ctx.measureText(b.name).width + 6 ? b.name : b.osis;
+      const label = w > ctx.measureText(b.name).width + 6 ? b.name : b.abbr;
       const lw = ctx.measureText(label).width;
       let cx = (Math.max(x0, 0) + Math.min(x1, W)) / 2;
       if (w > lw + 4) cx = Math.min(Math.max(cx, x0 + lw / 2 + 2), x1 - lw / 2 - 2);
@@ -616,8 +710,8 @@
     ctx.font = '600 10px system-ui, sans-serif';
     ctx.fillStyle = pal.sub;
     const capY = y0 + AXIS_H - 16;
-    if (ntx > 90) { ctx.textAlign = 'right'; ctx.fillText('Old Testament', Math.min(ntx - 6, W - 6), capY); }
-    if (ntx < W - 90) { ctx.textAlign = 'left'; ctx.fillText('New Testament', Math.max(ntx + 6, 6), capY); }
+    if (ntx > 90) { ctx.textAlign = 'right'; ctx.fillText(tr('Old Testament'), Math.min(ntx - 6, W - 6), capY); }
+    if (ntx < W - 90) { ctx.textAlign = 'left'; ctx.fillText(tr('New Testament'), Math.max(ntx + 6, 6), capY); }
     ctx.textAlign = 'center';
   }
 
@@ -883,7 +977,7 @@
         ${ext(bibleUrl(start, start, true), `Whole chapter<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
       </div></div>`;
   }
-  const noteHTML = (n) => `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p>${esc(n.text)}</p></div>`;
+  const noteHTML = (n) => `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>${LANG !== 'en' ? '<p class="hint">Note available in English only.</p>' : ''}</div>`;
 
   function connItem(i, otherSide) {
     const cur = i === state.selected ? ' aria-current="true"' : '';
@@ -1006,7 +1100,7 @@
         <div class="actions tight">
           <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button>
           <button type="button" class="btn ghost small" data-action="presentJourney" data-j="${n}">Present<span class="sr-only"> ${esc(j.name)}</span></button>
-          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
+          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
         </div></li>`;
     });
     html += '</ul><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
@@ -1025,7 +1119,7 @@
       ${step < steps.length - 1 ? '<button type="button" class="btn" data-action="stepNext">Next step</button>' : '<button type="button" class="btn" data-action="mode" data-mode="journeys">Finish</button>'}
     </div><div class="actions">
       <button type="button" class="btn ghost small" data-action="present">Present</button>
-      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a>
       ${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="journeys">All journeys</button></div>`;
     return [J.name, html];
   }
@@ -1206,7 +1300,7 @@
       P.edges.forEach((e, n) => {
         const note = noteMap.get(e.i);
         html += `<li><span class="chain-num" aria-hidden="true">${n + 2}</span><div><p class="ref">${esc(refLabel(e.b))} <span class="votes">${V[e.i]} votes</span></p>
-          ${note ? `<p class="chain-note">${esc(note.text)}</p>` : ''}
+          ${note ? `<p class="chain-note"${LANG !== 'en' ? ' lang="en"' : ''}>${esc(note.text)}</p>` : ''}
           ${ext(bibleUrl(e.b), `Read<span class="sr-only"> ${esc(refLabel(e.b))}</span>`, 'mini-link')}</div></li>`;
       });
       html += `</ol><div class="actions"><button type="button" class="btn ghost small" data-action="replayPath">Play again</button>${shareButtons()}</div>`;
@@ -1288,12 +1382,12 @@
     ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H + foot);
     for (const src of [$('glCanvas'), el.base, el.overlay]) if (src && !src.hidden && src.width) ctx.drawImage(src, 0, 0, W, H);
     const items = contextItems().map(x => x[1]);
-    const title = items.length ? items.join(' · ') : 'The whole Bible';
+    const title = items.length ? items.map(tr).join(' · ') : tr('The whole Bible');
     ctx.fillStyle = pal.label; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
     ctx.font = '700 16px system-ui, sans-serif';
     ctx.fillText(title.length > 110 ? title.slice(0, 107) + '…' : title, 14, H + 26);
     ctx.font = '12px system-ui, sans-serif'; ctx.fillStyle = pal.sub;
-    ctx.fillText(`Bible Connections · ${location.host}${location.pathname} · Cross references: OpenBible.info (CC BY 4.0)`, 14, H + 48);
+    ctx.fillText(`Bible Connections · ${location.host}${location.pathname} · ${tr('Cross references: OpenBible.info (CC BY 4.0)')}`, 14, H + 48);
     const blob = await new Promise(r => c.toBlob(r, 'image/png'));
     if (!blob) { announce('Sorry, the image could not be created.'); return; }
     const file = new File([blob], 'bible-connections.png', { type: 'image/png' });
@@ -1549,11 +1643,20 @@
     const f = $('settingsForm');
     f.querySelector(`input[name=appearance][value="${settings.appearance}"]`).checked = true;
     $('contrastToggle').checked = settings.contrast;
+    f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
     $('versionSel').value = settings.version;
     f.addEventListener('change', (e) => {
       if (e.target.name === 'appearance') settings.appearance = e.target.value;
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
       if (e.target.id === 'versionSel') settings.version = e.target.value;
+      if (e.target.name === 'language' && e.target.value !== LANG) {
+        store.set('lang', e.target.value);
+        if (!store.get('version', null)) settings.version = e.target.value === 'es' ? 'NVI' : 'NIV';
+        const u = new URL(location.href); u.searchParams.delete('lang');
+        if (e.target.value !== 'en') u.searchParams.set('lang', e.target.value);
+        location.replace(u.toString());
+        return;
+      }
       store.set('appearance', settings.appearance); store.set('contrast', settings.contrast); store.set('version', settings.version);
       applyAppearance();
     });
@@ -1730,6 +1833,7 @@
       if (state.theme) p.set('theme', state.theme);
       if (state.notesOnly) p.set('notes', '1');
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
+      if (LANG !== 'en') p.set('lang', LANG);
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
       else if (['journeys', 'insights', 'series', 'path'].includes(state.mode)) p.set('view', state.mode);
@@ -1737,7 +1841,7 @@
         if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
       }
-      if (![...p.keys()].length) p.set('view', 'map');
+      if (![...p.keys()].filter(k => k !== 'lang').length) p.set('view', 'map');
       url = `?${p}`;
     }
     renderContext();
@@ -1835,6 +1939,7 @@
     applyAppearance();
     try { await loadData(); }
     catch { el.loading.textContent = 'Sorry, the data could not be loaded. Please refresh the page.'; return; }
+    startTranslating();
     buildSelects();
     loadAnalytics();
     prepareJourneys();

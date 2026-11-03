@@ -49,7 +49,7 @@ SOFTWARE.
 
 ## Notes, journeys and themes
 
-- Written for this project. They describe passages in original words and do not quote or closely paraphrase copyrighted translations. Please keep it that way when editing.
+- Written for this project in English and Spanish. They describe passages in original words and do not quote or closely paraphrase copyrighted translations (English or Spanish, for example NIV, ESV, NVI or RVR1960). Please keep it that way when editing.
 
 ## Design inspiration
 

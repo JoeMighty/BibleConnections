@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-03
+
 ### Added
 - This changelog.
 - "You're viewing" bar above the map listing every active theme, filter, verse, connection or journey, each with its own remove button, plus Start over.
@@ -32,6 +34,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Optional privacy-friendly usage stats (GoatCounter or Plausible), off by default, respecting Do Not Track. See `docs/ANALYTICS.md`.
 - Spanish Bible.com translations (NVI, RVR1960, NTV, LBLA, TLA) in the translation list.
 - Guides: `docs/CUSTOM-DOMAIN.md` and `docs/ACCESSIBILITY-TESTING.md` (plan for a session with assistive technology users).
+- Spanish version: menus, messages, book names and abbreviations, categories, themes, all nine journeys and their discussion questions, and the printable handouts. Chosen from the browser language, Settings, or `?lang=es` links. Spanish users get NVI reading links by default. Spanish and English references both work in either language (with or without accents). "Why it connects" notes are shown in English and marked as such.
 
 ### Changed (header)
 - Settings and About are now icon buttons to make room for Connect.
@@ -88,7 +91,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...main
 [0.4.0]: https://github.com/JoeMighty/BibleConnections/compare/0c2e1a9...c8f5413
 [0.3.0]: https://github.com/JoeMighty/BibleConnections/compare/df4c68b...0c2e1a9
 [0.2.0]: https://github.com/JoeMighty/BibleConnections/compare/febbd6c...df4c68b

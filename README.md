@@ -32,18 +32,22 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 
 ## Features
 
-- **Map:** around 200,000 cross references, a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan
-- **Connections:** tap any arc to see both passages, read them on Bible.com, or open the whole chapter
-- **Why it connects:** short explanations for the strongest links, with a filter to show only explained connections
-- **Search:** references (`John 3:16`, `Psalm 23`, `1 Cor 13`) or words (`shepherd`, `living water`)
-- **Filters:** Old/New Testament, 10 categories, single books and 12 themes
-- **Guided journeys:** nine step-by-step tours with discussion questions, a presenter mode for sermons and classes, and printable handouts
-- **Sermon series:** show the current series passages on the welcome page
-- **Insights:** most connected verses and chapters, plus a category heatmap that filters the map
-- **Sharing:** every view has its own link; Share and Copy buttons on connections, verses, searches and journeys
-- **Settings:** light, dark or system appearance, high contrast mode and Bible.com translation
-- **Installable and offline:** works as an app and without a connection after the first visit (reading links still need the internet)
-- **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support
+- **Map:** around 200,000 cross references with a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan. Uses WebGL where a graphics chip is available.
+- **Welcome page:** a picture of the full map, quick starts, themes, the current sermon series and "pick up where you left off".
+- **Connections:** tap any arc to see both passages and read them on Bible.com in your chosen translation.
+- **Why it connects:** 219 short explanations for the strongest links, with a filter to show only explained connections.
+- **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`) or words (`shepherd`).
+- **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.
+- **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
+- **Guided journeys:** nine step-by-step tours with discussion questions, presenter mode for sermons and classes (works with clickers), and printable handouts.
+- **Sermon series:** show the current series passages on the welcome page.
+- **Insights:** most connected verses and chapters, plus a category heatmap that filters the map.
+- **Sharing:** every view has its own link, back button support, Share, Copy and Save image, plus link previews in messaging apps.
+- **Saved and recent:** save items and see recently viewed, stored on the device only.
+- **Spanish:** full Spanish interface, journeys and handouts, with Spanish Bible.com translations.
+- **Settings:** language, light, dark or system appearance, high contrast mode and Bible.com translation.
+- **Installable and offline:** works as an app and without a connection after the first visit (reading links still need the internet).
+- **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
 ## Editing content
 
@@ -74,7 +78,7 @@ npx playwright install chromium
 npm test
 ```
 
-The tests run on desktop and mobile sizes. They cover search, sharing links, journeys, insights, settings, keyboard use, offline mode and accessibility (axe, WCAG 2.1 AA) in light and dark themes.
+The tests run on desktop and mobile sizes. They cover search, sharing links, journeys, presenter mode, handouts, the chain finder, insights, settings, Spanish, keyboard use, offline mode, both renderers and accessibility (axe, WCAG 2.1 AA) in light and dark themes. Lighthouse checks speed, accessibility, best practices and SEO.
 
 ## Rebuild the data
 
