@@ -1,0 +1,14 @@
+{
+  "name": "bible-connections",
+  "private": true,
+  "description": "Interactive map of Bible cross references",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "serve": "python3 -m http.server 8000 --directory site",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "1.63.0"
+  }
+}

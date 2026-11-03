@@ -1,6 +1,7 @@
 // Builds the static data files used by the site.
 // Sources (downloaded automatically if missing):
 //   Berean Standard Bible (public domain) via github.com/scrollmapper/bible_databases
+//     used only for verse counts and a word search index. No verse text is published.
 //   OpenBible.info cross references (CC-BY) via the same repository
 // Usage: node scripts/build-data.mjs
 import fs from 'node:fs';
@@ -15,6 +16,10 @@ const SOURCES = {
   'cross_references.txt': BASE + 'sources/extras/cross_references.txt',
 };
 const MIN_VOTES = 3; // weakest links kept in the dataset (the UI can raise this)
+
+// USFM codes are used to build bible.com links
+const USFM = 'GEN EXO LEV NUM DEU JOS JDG RUT 1SA 2SA 1KI 2KI 1CH 2CH EZR NEH EST JOB PSA PRO ECC SNG ISA JER LAM EZK DAN HOS JOL AMO OBA JON MIC NAM HAB ZEP HAG ZEC MAL MAT MRK LUK JHN ACT ROM 1CO 2CO GAL EPH PHP COL 1TH 2TH 1TI 2TI TIT PHM HEB JAS 1PE 2PE 1JN 2JN 3JN JUD REV'.split(' ');
+const STOP = new Set('a an and are as at be but by for from had has have he her him his i if in into is it its me my no not of on or our out shall she so than that the their them then there these they this those to up us was we were what when which who will with you your all am do did said says say also o'.split(' '));
 
 const BOOKS = [
   ['Genesis','Gen','law'],['Exodus','Exod','law'],['Leviticus','Lev','law'],['Numbers','Num','law'],['Deuteronomy','Deut','law'],
@@ -64,7 +69,8 @@ function parseCSV(text) {
 }
 
 await ensureSources();
-fs.mkdirSync(path.join(OUT, 'text'), { recursive: true });
+fs.rmSync(path.join(OUT, 'text'), { recursive: true, force: true });
+fs.mkdirSync(OUT, { recursive: true });
 
 // ---- Bible text ----
 const rows = parseCSV(fs.readFileSync(path.join(SRC, 'BSB.csv'), 'utf8')).slice(1).filter(r => r.length >= 4);
@@ -84,11 +90,30 @@ bookOrder.forEach((srcName, bi) => {
   const chapters = byBook.get(srcName);
   const counts = chapters.map(ch => ch.length);
   for (const ch of chapters) for (let i = 0; i < ch.length; i++) ch[i] ??= '';
-  books.push({ name, osis, cat, start: verseOffset, chapters: counts });
+  books.push({ name, osis, usfm: USFM[bi], cat, start: verseOffset, chapters: counts });
   osisIndex.set(osis, bi);
   verseOffset += counts.reduce((a, b) => a + b, 0);
-  fs.writeFileSync(path.join(OUT, 'text', `${osis}.json`), JSON.stringify(chapters));
 });
+
+// ---- Word index (word -> verse numbers), so keyword search works without hosting text ----
+const postings = new Map();
+let vi = 0;
+for (const srcName of bookOrder) for (const ch of byBook.get(srcName)) for (const text of ch) {
+  const words = new Set(text.toLowerCase().replace(/[’']s\b/g, '').match(/[a-z]+/g) || []);
+  for (const w of words) {
+    if (w.length < 3 || STOP.has(w)) continue;
+    if (!postings.has(w)) postings.set(w, []);
+    postings.get(w).push(vi);
+  }
+  vi++;
+}
+// delta encode in base36 to keep the file small
+const index = {};
+for (const w of [...postings.keys()].sort()) {
+  let prev = 0;
+  index[w] = postings.get(w).map(v => { const d = v - prev; prev = v; return d.toString(36); }).join(',');
+}
+fs.writeFileSync(path.join(OUT, 'words.json'), JSON.stringify(index));
 const TOTAL = verseOffset;
 
 // chapter start offsets for fast lookup
