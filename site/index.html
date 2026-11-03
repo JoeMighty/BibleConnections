@@ -18,7 +18,7 @@
 
   <header class="site-header">
     <div class="brand">
-      <h1>Bible Connections</h1>
+      <h1><a href="./" class="home-link" id="homeLink" aria-label="Bible Connections, home">Bible Connections</a></h1>
       <p class="tagline" id="tagline">Loading cross references…</p>
     </div>
     <nav class="header-nav" aria-label="Main">
@@ -28,6 +28,35 @@
       <button type="button" class="btn ghost nav-btn" id="aboutBtn" aria-haspopup="dialog">About</button>
     </nav>
   </header>
+
+  <section class="landing" id="landing" aria-labelledby="landingTitle" hidden>
+    <div class="landing-inner">
+      <p class="eyebrow">Explore Scripture visually</p>
+      <h2 id="landingTitle">See how the whole Bible fits together</h2>
+      <p class="lede">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
+      <div class="landing-actions">
+        <button type="button" class="btn big" data-start="map">Explore the map</button>
+        <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
+      </div>
+      <form class="landing-search" id="landingSearch" role="search" aria-label="Jump to a verse or word">
+        <label for="landingQ">Or jump straight to a verse, chapter or word</label>
+        <div class="search-row">
+          <input id="landingQ" type="search" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false">
+          <button type="submit" class="btn">Go</button>
+        </div>
+      </form>
+      <ul class="stat-row" id="landingStats" aria-label="At a glance"></ul>
+      <h3>Start with a theme</h3>
+      <ul class="chip-list" id="landingThemes"></ul>
+      <h3>How it works</h3>
+      <ol class="how">
+        <li><strong>Zoom in</strong><span>Scroll, pinch or use the + button to move closer to any book.</span></li>
+        <li><strong>Tap an arc</strong><span>See the two passages it joins and why they connect.</span></li>
+        <li><strong>Read and share</strong><span>Open the passages on Bible.com or send the link to a friend.</span></li>
+      </ol>
+      <p class="fine">Cross references from OpenBible.info. Passages open on Bible.com. No Bible text is stored on this site.</p>
+    </div>
+  </section>
 
   <div class="layout">
     <main class="viz-wrap" id="main">

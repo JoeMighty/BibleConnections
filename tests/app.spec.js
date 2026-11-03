@@ -2,8 +2,45 @@ const { test, expect } = require('@playwright/test');
 
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page }, info) => {
   page.on('pageerror', (e) => { throw e; });
+  // skip the welcome screen except in the tests that are about it
+  if (!info.title.startsWith('landing')) await page.addInitScript(() => sessionStorage.setItem('bc.started', '1'));
+});
+
+test('landing page shows on first visit and opens the map', async ({ page }) => {
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#landing')).toBeVisible();
+  await expect(page.locator('#landingStats li')).toHaveCount(4);
+  await page.click('[data-start=map]');
+  await expect(page.locator('#landing')).toBeHidden();
+  await expect(page.locator('#viz')).toBeFocused();
+  await page.reload();
+  await ready(page);
+  await expect(page.locator('#landing')).toBeHidden();
+});
+
+test('landing search, theme and journey shortcuts work', async ({ page }) => {
+  await page.goto('/');
+  await ready(page);
+  await page.fill('#landingQ', 'John 3:16');
+  await page.press('#landingQ', 'Enter');
+  await expect(page.locator('#landing')).toBeHidden();
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await page.click('#homeLink');
+  await expect(page.locator('#landing')).toBeVisible();
+  await page.locator('#landingThemes [data-theme=messiah]').click();
+  await expect(page.locator('#theme')).toHaveValue('messiah');
+  await page.click('#homeLink');
+  await page.click('[data-start=journeys]');
+  await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+});
+
+test('landing is skipped for shared links', async ({ page }) => {
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  await expect(page.locator('#landing')).toBeHidden();
 });
 
 test('loads the map with the default connections', async ({ page }) => {

@@ -1139,6 +1139,7 @@
   $('aboutBtn').addEventListener('click', () => el.about.showModal());
   $('settingsBtn').addEventListener('click', () => el.settings.showModal());
   document.querySelectorAll('[data-nav]').forEach(b => b.addEventListener('click', () => {
+    if (hideLanding()) { setMode(b.dataset.nav); return; }
     const on = b.getAttribute('aria-pressed') === 'true';
     setMode(on ? 'explore' : b.dataset.nav);
   }));
@@ -1168,6 +1169,67 @@
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
     window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { /* offline support unavailable */ }));
   }
+
+  // ---------- Landing page ----------
+  const landing = $('landing'), layout = document.querySelector('.layout');
+  const session = {
+    get(k) { try { return sessionStorage.getItem('bc.' + k); } catch { return null; } },
+    set(k, v) { try { sessionStorage.setItem('bc.' + k, v); } catch { /* storage unavailable */ } },
+  };
+  const header = document.querySelector('.site-header');
+  const setHeaderH = () => document.documentElement.style.setProperty('--header-real', header.getBoundingClientRect().height + 'px');
+  if (window.ResizeObserver) new ResizeObserver(setHeaderH).observe(header);
+  setHeaderH();
+
+  function showLanding() {
+    landing.hidden = false;
+    layout.inert = true;
+    document.body.classList.add('landing-open');
+    landing.scrollTop = 0;
+  }
+  function hideLanding() {
+    if (landing.hidden) return false;
+    landing.hidden = true;
+    layout.inert = false;
+    document.body.classList.remove('landing-open');
+    session.set('started', '1');
+    return true;
+  }
+  function buildLanding() {
+    const fmt = (n) => n.toLocaleString();
+    $('landingStats').innerHTML = [
+      [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
+    ].map(([n, l]) => `<li><strong>${n}</strong><span>${l}</span></li>`).join('');
+    $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
+  }
+  landing.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.dataset.start === 'map') { hideLanding(); el.viz.focus(); announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`); }
+    else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
+    else if (btn.dataset.theme) {
+      hideLanding();
+      el.theme.value = btn.dataset.theme;
+      el.theme.dispatchEvent(new Event('change'));
+      focusPanelHeading();
+    }
+  });
+  $('landingSearch').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = $('landingQ').value.trim();
+    if (!q) { $('landingQ').focus(); return; }
+    hideLanding();
+    el.search.value = q;
+    runSearch();
+  });
+  $('homeLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    clearAll();
+    if (state.mode !== 'explore') setMode('explore');
+    resetView(false);
+    showLanding();
+    landing.querySelector('[data-start=map]').focus();
+  });
 
   // ---------- URL state (shareable links) ----------
   function syncURL() {
@@ -1242,7 +1304,9 @@
     resize();
     applyFilters();
     el.loading.remove();
+    buildLanding();
     await restoreFromURL(params);
+    if (!params.toString() && !session.get('started')) showLanding();
     if (params.toString() && !matchMedia('(max-width: 860px)').matches) requestAnimationFrame(scrollPanel);
     document.body.dataset.ready = 'true';
   }

@@ -12,7 +12,7 @@ const pages = [
 for (const theme of ['dark', 'light']) {
   for (const [name, url] of pages) {
     test(`no accessibility violations: ${name} (${theme})`, async ({ page }) => {
-      await page.addInitScript((t) => localStorage.setItem('bc.appearance', JSON.stringify(t)), theme);
+      await page.addInitScript((t) => { localStorage.setItem('bc.appearance', JSON.stringify(t)); sessionStorage.setItem('bc.started', '1'); }, theme);
       await page.goto(url);
       await page.waitForSelector('body[data-ready=true]');
       await page.evaluate(() => { document.getElementById('filtersBox').open = true; });
@@ -23,7 +23,19 @@ for (const theme of ['dark', 'light']) {
   }
 }
 
+for (const theme of ['dark', 'light']) {
+  test(`no accessibility violations: landing (${theme})`, async ({ page }) => {
+    await page.addInitScript((t) => localStorage.setItem('bc.appearance', JSON.stringify(t)), theme);
+    await page.goto('/');
+    await page.waitForSelector('body[data-ready=true]');
+    await expect(page.locator('#landing')).toBeVisible();
+    const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    expect(results.violations.map(v => `${v.id}: ${v.nodes.slice(0, 3).map(n => n.target.join(' ')).join(' | ')}`)).toEqual([]);
+  });
+}
+
 test('settings and about dialogs are accessible', async ({ page }) => {
+  await page.addInitScript(() => sessionStorage.setItem('bc.started', '1'));
   await page.goto('/');
   await page.waitForSelector('body[data-ready=true]');
   for (const id of ['settingsBtn', 'aboutBtn']) {
