@@ -86,6 +86,10 @@ Downloads the sources into `data-src/` and writes `site/data/`.
 
 `.github/workflows/ci.yml` runs the tests on every push and pull request. Pushes to `main` that pass are deployed to GitHub Pages at https://joemighty.github.io/BibleConnections/ (Pages source: **GitHub Actions**).
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
+
 ## Sources and licences
 
 Full details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
