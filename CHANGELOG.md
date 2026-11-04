@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- The About window shows the current version (it still said 0.5.0). A test now checks that the version in the app and in CITATION.cff matches the latest release in the changelog.
+
 ## [0.8.0] - 2026-11-04 - Study Tools
 
 ### Added

@@ -46,3 +46,14 @@ test('no Bible text is published with the site', async ({ request }) => {
   const res = await request.get('/data/text/John.json');
   expect(res.status()).toBe(404);
 });
+
+test('the version shown in About matches the latest release in the changelog', async ({ page }) => {
+  const fs = require('fs');
+  const latest = fs.readFileSync('CHANGELOG.md', 'utf8').match(/^## \[(\d+\.\d+\.\d+)\]/m)[1];
+  expect(fs.readFileSync('site/app.js', 'utf8')).toContain(`const VERSION = '${latest}';`);
+  expect(fs.readFileSync('CITATION.cff', 'utf8')).toMatch(new RegExp(`^version: ${latest.replace(/\./g, '\\.')}$`, 'm'));
+  await page.goto('/?view=map');
+  await page.waitForSelector('body[data-ready=true]');
+  await page.click('#aboutBtn');
+  await expect(page.locator('#aboutVersion')).toHaveText(latest);
+});
