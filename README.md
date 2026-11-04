@@ -53,6 +53,11 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Passage explorer:** open any verse to see its original Hebrew, Aramaic or Greek words, its place in the chapter, an introduction to the book, connections split by Testament, people, places and topics, and questions for reflection.
 - **Word study:** about 13,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry.
 - **Chronological view:** rearrange the books by when their events happen.
+- **Listen:** a headphones button opens the chapter in Bible.com's audio Bible where the translation has one.
+- **My notes:** private notes on any verse, kept on the device, with export and import.
+- **Printable handouts** for any verse as well as for journeys.
+- **Places on a map:** 1,277 places from OpenBible.info with every verse that mentions them.
+- **Shared connections:** find the passages that two passages both link to.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
 - **Kids mode:** bigger text, simpler words and three journeys written for children.
 - **Insights:** most connected verses and chapters, plus a category heatmap that filters the map.

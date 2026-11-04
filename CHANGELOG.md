@@ -5,6 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Listen: a headphones button next to Read opens the chapter in Bible.com's audio Bible, for the 65 translations that have audio there. The weekly link check now checks these too.
+- Printable passage handout for any verse: book introduction, original words, strongest connections, reflection questions and space for notes (or your saved note).
+- My notes: write your own notes on any verse, kept on this device only, with a list of all notes, export and import.
+- Places on a map: 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place. Verse pages show the places named in them.
+- Shared connections: pick two passages to find the passages they both link to, and show them on the map.
+
 ### Changed
 - Welcome page: the numbers are back in a centred band, and the search box is centred.
 - Clicking outside a pop-up (About, Settings, QR code, Embed, Poster, Add to collection) closes it.

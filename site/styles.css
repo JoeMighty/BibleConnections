@@ -6,6 +6,8 @@
 */
 :root {
   /* dark appearance (default) */
+  --map-water: #10202e;
+  --map-land: #2a2a2e;
   --bg: #000000;
   --bar: rgba(22, 22, 24, 0.78);
   --surface: #1c1c1e;
@@ -51,6 +53,8 @@
   color-scheme: dark;
 }
 :root[data-theme="light"] {
+  --map-water: #d9e8f5;
+  --map-land: #f4f1ea;
   --bg: #ffffff;
   --bar: rgba(249, 249, 251, 0.8);
   --surface: #f2f2f7;
@@ -725,3 +729,24 @@ table.forms td:last-child, table.forms th:last-child { text-align: right; }
 details.lexicon { margin-top: 16px; background: var(--surface-2); border-radius: var(--radius); padding: 8px 12px; }
 details.lexicon summary { cursor: pointer; font-weight: 600; min-height: 32px; display: flex; align-items: center; }
 details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top: 8px; overflow-wrap: anywhere; }
+
+/* Listen (audio Bible) button: a square headphones icon */
+.btn.listen { min-width: 44px; min-height: 40px; padding: 8px 10px; justify-content: center; }
+.btn.listen .icon { width: 20px; height: 20px; }
+
+/* My notes */
+#verseNote, .notes-list textarea {
+  width: 100%; min-height: 96px; padding: 10px 12px; font: inherit; font-size: var(--t-body); line-height: 1.5; color: var(--text);
+  background: var(--surface-2); border: 0.5px solid var(--separator); border-radius: var(--radius-s); resize: vertical;
+}
+#verseNote:focus-visible { outline: 3px solid var(--link); outline-offset: 1px; }
+.notes-list { list-style: none; padding: 0; margin: 0; }
+.notes-list li { padding: 12px 0; border-bottom: 0.5px solid var(--separator); }
+.notes-list p { margin: 4px 0 8px; white-space: pre-wrap; }
+.file-btn { position: relative; overflow: hidden; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.file-btn:focus-within { outline: 3px solid var(--link); outline-offset: 2px; }
+
+/* Places map */
+.places-map { display: block; width: 100%; border-radius: var(--radius); margin: 12px 0; cursor: pointer; }
+.places-map.mini { cursor: default; }

@@ -1033,13 +1033,29 @@
       <div class="actions tight">
         ${ext(bibleUrl(start, end), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn small')}
         ${ext(bibleUrl(start, start, true), `Whole chapter<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
+        ${listenBtn(start)}
       </div>
       ${second() ? `<div class="actions tight compare-row">
         ${ext(bibleUrl(start, end, false, second()), `Read in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn ghost small')}
-        ${ext(bibleUrl(start, start, true, second()), `Whole chapter in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}` : ''}
+        ${ext(bibleUrl(start, start, true, second()), `Whole chapter in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
+        ${listenBtn(start, second())}` : ''}
       </div></div>`;
   }
   // small "Read" links for lists, plus the comparison translation when one is chosen
+  // "Listen" opens the chapter in Bible.com's audio Bible, for translations that have one
+  const HEADPHONES = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h3v6H5.5A1.5 1.5 0 0 1 4 18.5zM20 14h-3v6h1.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>';
+  function audioUrl(start, ver = settings.version) {
+    if (VERSIONS[ver].nt && verseBook[start] < 39) ver = 'NIV';
+    const V0 = VERSIONS[ver];
+    if (!V0.audio) return '';
+    return `https://www.bible.com/audio-bible/${V0.id}/${BOOKS[verseBook[start]].usfm}.${verseChap[start]}.${V0.code || ver}`;
+  }
+  const listenBtn = (start, ver = settings.version) => {
+    const u = audioUrl(start, ver);
+    if (!u) return '';
+    const label = `Listen to ${BOOKS[verseBook[start]].name} ${verseChap[start]} in ${vLabel(ver)}`;
+    return `<a class="btn ghost small listen" href="${esc(u)}" target="_blank" rel="noopener" title="${esc(label)}">${HEADPHONES}<span class="sr-only">${esc(label)} (opens Bible.com in a new tab)</span></a>`;
+  };
   const miniRead = (v) => ext(bibleUrl(v), `Read<span class="sr-only"> ${esc(refLabel(v))} in ${esc(vLabel(settings.version))}</span>`, 'mini-link')
     + (second() ? ` ${ext(bibleUrl(v, v, false, second()), `${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(v))}</span>`, 'mini-link')}` : '');
   const readBoth = (v, text) => ext(bibleUrl(v), `${text} in ${esc(vLabel(settings.version))}`)
@@ -1102,6 +1118,9 @@
     else if (state.mode === 'topics') [title, html] = topicsHTML();
     else if (state.mode === 'game') [title, html] = gameHTML();
     else if (state.mode === 'wordstudy') [title, html] = wordStudyHTML();
+    else if (state.mode === 'notes') [title, html] = notesHTML();
+    else if (state.mode === 'places') [title, html] = placesHTML();
+    else if (state.mode === 'shared') [title, html] = sharedHTML();
     else if (state.mode === 'collections') [title, html] = collectionsHTML();
     else if (state.mode === 'collection' && state.collection) [title, html] = collectionHTML();
     else if (i >= 0) {
@@ -1130,6 +1149,11 @@
             ${w.v ? `<p>Used in ${w.n.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString()} verses, too many to show on the map.</p>`}
             <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted">Loading the full word study…</p></div>
             <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0. Dictionary entries are from Brown-Driver-Briggs and Abbott-Smith (public domain).</p>`;
+        } else if (f.entity && f.entity.type === 'geo') {
+          const P0 = f.entity.place;
+          html += `<canvas class="places-map mini" id="geoMini" data-i="${P0.i}" role="img" aria-label="Map showing ${esc(P0.label)}"></canvas>
+            <p>${esc(P0.label)} <span class="muted">(${esc(P0.type)})</span> is mentioned in ${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? '' : 's'}, touching ${focusList.length.toLocaleString()} connections. ${confText(P0.conf)}</p>
+            <p class="hint">Location from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0).</p>`;
         } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
         else html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>`;
         html += `
@@ -1149,7 +1173,7 @@
         if (f.kind === 'verse') html += refCard(f.start, f.end - 1, pal.focus);
         else {
           const label = f.kind === 'book' ? `${BOOKS[f.book].name} 1` : rangeLabel(f);
-          html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${esc(vLabel(settings.version))}`, 'btn small')}${second() ? ext(bibleUrl(f.start, f.start, true, second()), `Read ${esc(label)} in ${esc(vLabel(second()))}`, 'btn ghost small') : ''}</div>`;
+          html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${esc(vLabel(settings.version))}`, 'btn small')}${listenBtn(f.start)}${second() ? ext(bibleUrl(f.start, f.start, true, second()), `Read ${esc(label)} in ${esc(vLabel(second()))}`, 'btn ghost small') + listenBtn(f.start, second()) : ''}</div>`;
         }
         html += `<p>${focusList.length.toLocaleString()} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
           <p class="summary">${esc(describeView())}</p>
@@ -1516,6 +1540,9 @@
       ['people', 'People and places', 'See where a person or place appears across the whole Bible.'],
       ['topics', 'Topics', 'Explore what Scripture says about worry, forgiveness, money, rest and more.'],
       ['wordstudy', 'Word study', 'Follow a Hebrew or Greek word, such as hesed or agape, through the Bible.'],
+      ['notes', 'My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
+      ['places', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
+      ['shared', 'Shared connections', 'Pick two passages and find the passages they both link to.'],
       ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
       ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
       ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
@@ -2106,6 +2133,7 @@
       </section>
       <section class="study-sec" aria-labelledby="secPeople"><h3 id="secPeople">People, places and topics</h3>
         <div id="verseEntities" data-v="${v}"><p class="muted">Looking for people, places and topics…</p></div>
+        <div id="versePlaces" data-v="${v}"></div>
       </section>
       ${noted.length ? `<section class="study-sec" aria-labelledby="secNotes"><h3 id="secNotes">Explained connections</h3><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></section>` : ''}
       <section class="study-sec" aria-labelledby="secRefs"><h3 id="secRefs">Connections</h3>
@@ -2113,11 +2141,34 @@
         <h4>Old Testament</h4>${ot.length ? listHTML(ot, true) : '<p class="muted">None with the current filters.</p>'}
         <h4>New Testament</h4>${nt.length ? listHTML(nt, true) : '<p class="muted">None with the current filters.</p>'}
       </section>
+      <section class="study-sec" aria-labelledby="secNote"><h3 id="secNote">My notes</h3>
+        <label for="verseNote" class="sr-only">My notes on ${esc(refLabel(v))}</label>
+        <textarea id="verseNote" data-key="${esc(noteKey(v))}" rows="4" placeholder="Write what you notice, questions or a prayer…">${esc((getNotes()[noteKey(v)] || {}).text || '')}</textarea>
+        <p class="hint"><span id="noteStatus" role="status">Kept on this device only.</span> <button type="button" class="link-btn" data-action="mode" data-mode="notes">All my notes</button></p>
+      </section>
       ${q.length ? `<section class="study-sec" aria-labelledby="secReflect"><h3 id="secReflect">Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
-        <p class="hint">General questions for personal or group study.</p></section>` : ''}`;
+        <p class="hint">General questions for personal or group study.</p></section>` : ''}
+      <div class="actions"><a class="btn ghost small" href="handout.html?verse=${esc(toOsis(v))}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> for ${esc(refLabel(v))} (opens in a new tab)</span></a></div>`;
   }
 
   function fillStudy() {
+    const gm = $('geoMini');
+    if (gm) loadPlaces().then(d => { const P0 = d.places[+gm.dataset.i]; const near = P0.lon > 33.7 && P0.lon < 36.9 && P0.lat > 29.4 && P0.lat < 33.6; drawPlaces(gm, { view: near ? 'israel' : 'lands', highlight: [P0.i], labels: false }); }, () => {});
+    const pm = $('placesMap');
+    if (pm) drawPlaces(pm, { view: pm.dataset.view });
+    const vp = $('versePlaces');
+    if (vp) {
+      const v = +vp.dataset.v;
+      loadPlaces().then(d => {
+        if (!vp.isConnected) return;
+        const here = d.places.filter(p => decodePostings(p.vs).includes(v));
+        if (!here.length) return;
+        vp.innerHTML = `<p class="muted">Places in this verse</p><ul class="chip-list">${here.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)} <span class="muted">place</span></button></li>`).join('')}</ul>
+          <canvas class="places-map mini" id="versePlacesMap" role="img" aria-label="Map of the places in this verse"></canvas>`;
+        const all = here.every(p => p.lon > 33.7 && p.lon < 36.9 && p.lat > 29.4 && p.lat < 33.6);
+        drawPlaces($('versePlacesMap'), { view: all ? 'israel' : 'lands', highlight: here.map(p => p.i), labels: false });
+      }, () => {});
+    }
     const wd = $('wordDetail');
     if (wd) wordDetailHTML(wd.dataset.code).then(h => { if (wd.isConnected) wd.innerHTML = h; }, () => { if (wd.isConnected) wd.innerHTML = '<p class="muted">The full word study could not load. Check your connection.</p>'; });
     const ot = $('origText');
@@ -2154,6 +2205,239 @@
       }, () => { if (ve.isConnected) ve.innerHTML = ''; });
     }
   }
+
+
+  // ---------- My notes: personal study notes, kept on this device only ----------
+  const getNotes = () => store.get('notes', {});
+  const noteKey = (v) => toOsis(v);
+  let noteTimer = 0;
+  el.panelBody.addEventListener('input', (e) => {
+    if (e.target.id !== 'verseNote') return;
+    clearTimeout(noteTimer);
+    const key = e.target.dataset.key, text = e.target.value;
+    noteTimer = setTimeout(() => {
+      const all = getNotes();
+      if (text.trim()) all[key] = { text, t: Date.now() }; else delete all[key];
+      store.set('notes', all);
+      const st = $('noteStatus');
+      if (st) st.textContent = text.trim() ? 'Saved on this device.' : 'Note removed.';
+    }, 400);
+  });
+  function notesHTML() {
+    const all = Object.entries(getNotes()).map(([k, n]) => [k, n, osisToIndex(k)]).filter(x => x[2] >= 0).sort((a, b) => a[2] - b[2]);
+    let html = `<p>Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device.</p>
+      <div class="actions tight">
+        <button type="button" class="btn small" data-action="exportNotes"${all.length ? '' : ' disabled'}>Export notes</button>
+        <label class="btn ghost small file-btn">Import notes<input type="file" id="importNotes" accept="application/json,.json"></label>
+      </div><p id="notesMsg" class="hint" role="status"></p>`;
+    if (!all.length) html += '<p class="muted">No notes yet. Open any verse and write in the My notes box.</p>';
+    else html += `<h3>${all.length} note${all.length === 1 ? '' : 's'}</h3><ul class="notes-list">${all.map(([k, n, v]) => `<li>
+        <button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button>
+        <p>${esc(n.text.length > 220 ? n.text.slice(0, 217) + '…' : n.text)}</p>
+        <button type="button" class="btn ghost small" data-action="deleteNote" data-key="${esc(k)}">Delete<span class="sr-only"> note on ${esc(refLabel(v))}</span></button></li>`).join('')}</ul>`;
+    html += '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>';
+    return ['My notes', html];
+  }
+  function exportNotes() {
+    const blob = new Blob([JSON.stringify({ app: 'Bible Connections', type: 'notes', version: 1, notes: getNotes() }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `bible-connections-notes-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    announce('Notes exported.');
+  }
+  el.panelBody.addEventListener('change', async (e) => {
+    if (e.target.id !== 'importNotes' || !e.target.files[0]) return;
+    let added = 0;
+    try {
+      const data = JSON.parse(await e.target.files[0].text());
+      const incoming = data && data.notes && typeof data.notes === 'object' ? data.notes : null;
+      if (!incoming) throw new Error('format');
+      const all = getNotes();
+      for (const [k, n] of Object.entries(incoming)) {
+        if (osisToIndex(k) < 0 || !n || typeof n.text !== 'string') continue;
+        if (!all[k] || (n.t || 0) > (all[k].t || 0)) { all[k] = { text: n.text.slice(0, 20000), t: n.t || Date.now() }; added++; }
+      }
+      store.set('notes', all);
+      renderPanel();
+      const msg = `Imported ${added} note${added === 1 ? '' : 's'}.`;
+      if ($('notesMsg')) $('notesMsg').textContent = msg;
+      announce(msg);
+    } catch {
+      if ($('notesMsg')) $('notesMsg').textContent = 'That file could not be read. Choose a notes file exported from Bible Connections.';
+    }
+  });
+
+  // ---------- Places map (OpenBible.info Bible Geocoding Data, CC BY 4.0; Natural Earth coastline) ----------
+  let placesPromise = null, PLACES = null;
+  function loadPlaces() {
+    if (!placesPromise) placesPromise = fetchJSON('data/places.json').then(d => {
+      d.places = d.places.map(([name, lon, lat, conf, type, vs], i) => ({ i, name, label: name.replace(/ \d+$/, ''), lon, lat, conf, type, vs, n: vs.split(',').length }));
+      PLACES = d; return d;
+    }).catch(e => { placesPromise = null; throw e; });
+    return placesPromise;
+  }
+  const PLACE_VIEWS = { lands: [-10, 12, 62, 46], israel: [33.7, 29.4, 36.9, 33.6] };
+  function drawPlaces(canvas, { view = 'lands', highlight = [], labels = true } = {}) {
+    const d = PLACES; if (!d || !canvas.isConnected) return;
+    const [w0, s0, e0, n0] = PLACE_VIEWS[view] || view;
+    const css = getComputedStyle(document.documentElement);
+    const W = canvas.clientWidth, k = Math.cos(((s0 + n0) / 2) * Math.PI / 180);
+    const H = Math.round(W * (n0 - s0) / ((e0 - w0) * k));
+    canvas.style.height = H + 'px';
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const X = (lon) => (lon - w0) / (e0 - w0) * W, Y = (lat) => (n0 - lat) / (n0 - s0) * H;
+    ctx.fillStyle = css.getPropertyValue('--map-water').trim() || '#1b2a3a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = css.getPropertyValue('--map-land').trim() || '#2c2c2e';
+    for (const r of d.land) { ctx.beginPath(); for (let j = 0; j < r.length; j += 2) (j ? ctx.lineTo : ctx.moveTo).call(ctx, X(r[j]), Y(r[j + 1])); ctx.closePath(); ctx.fill(); }
+    const dot = css.getPropertyValue('--link').trim(), hl = pal.marker, ink = css.getPropertyValue('--text').trim(), bg = css.getPropertyValue('--map-land').trim();
+    const visible = d.places.filter(p => p.lon >= w0 && p.lon <= e0 && p.lat >= s0 && p.lat <= n0);
+    canvas._hit = [];
+    for (const p of visible) {
+      const r = Math.max(1.6, Math.min(6, Math.log2(p.n + 1) * (view === 'lands' ? 0.7 : 1)));
+      ctx.globalAlpha = p.conf === 2 ? 0.9 : p.conf === 1 ? 0.6 : 0.3;
+      ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(X(p.lon), Y(p.lat), r, 0, 7); ctx.fill();
+      canvas._hit.push([X(p.lon), Y(p.lat), p.i]);
+    }
+    ctx.globalAlpha = 1;
+    const boxes = [];
+    const label = (p, bold) => {
+      const x = X(p.lon), y = Y(p.lat);
+      ctx.font = `${bold ? 600 : 500} ${bold ? 13 : 11}px ${css.getPropertyValue('--font')}`;
+      const tw = ctx.measureText(p.label).width, bx = [x + 6, y - 7, x + 10 + tw, y + 7];
+      if (!bold && (bx[2] > W || boxes.some(b => !(bx[2] < b[0] || bx[0] > b[2] || bx[3] < b[1] || bx[1] > b[3])))) return;
+      boxes.push(bx);
+      ctx.lineWidth = 3; ctx.strokeStyle = bg; ctx.strokeText(p.label, x + 7, y + 4);
+      ctx.fillStyle = ink; ctx.fillText(p.label, x + 7, y + 4);
+    };
+    for (const i of highlight) {
+      const p = d.places[i];
+      ctx.fillStyle = hl; ctx.strokeStyle = bg; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(X(p.lon), Y(p.lat), 6, 0, 7); ctx.fill(); ctx.stroke();
+      label(p, true);
+    }
+    if (labels) for (const p of visible.filter(p => p.conf === 2).slice(0, view === 'lands' ? 28 : 40)) label(p, false);
+  }
+  function placesHTML() {
+    if (!PLACES) {
+      loadPlaces().then(() => { if (state.mode === 'places') renderPanel(); }, () => {});
+      return ['Places', '<p class="muted">Loading the map…</p>'];
+    }
+    const view = state.placesView || 'lands';
+    const top = PLACES.places.filter(p => p.conf >= 1).slice(0, 40);
+    return ['Places', `<p>See where the places named in the Bible were. Choose a place to see every verse that mentions it.</p>
+      <div class="actions tight" role="group" aria-label="Map area">
+        <button type="button" class="btn ${view === 'lands' ? '' : 'ghost '}small" data-action="placesView" data-view="lands" aria-pressed="${view === 'lands'}">Bible lands</button>
+        <button type="button" class="btn ${view === 'israel' ? '' : 'ghost '}small" data-action="placesView" data-view="israel" aria-pressed="${view === 'israel'}">Israel and nearby</button>
+      </div>
+      <canvas class="places-map" id="placesMap" data-view="${view}" role="img" aria-label="Map of ${PLACES.places.length.toLocaleString()} places named in the Bible. Use the list below to choose a place."></canvas>
+      <div class="field"><label for="placeQ">Find a place</label><input id="placeQ" type="search" placeholder="e.g. Bethlehem" autocomplete="off" spellcheck="false"></div>
+      <div id="placeResults" aria-live="polite"></div>
+      <h3>Most mentioned</h3><ul class="chip-list">${top.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)} <span class="muted">${p.n}</span></button></li>`).join('')}</ul>
+      <p class="hint">Locations from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`];
+  }
+  const confText = (c) => (c === 2 ? 'Location known with confidence.' : c === 1 ? 'Location is likely but not certain.' : 'Location is uncertain.');
+  async function openGeo(ref, opts = {}) {
+    const d = await loadPlaces();
+    const p = typeof ref === 'number' ? d.places[ref] : d.places.find(x => x.name === ref || x.label === ref);
+    if (!p) return;
+    const verses = Int32Array.from(decodePostings(p.vs));
+    const mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    track('geo/' + p.name, p.label);
+    setFocus({ kind: 'words', query: p.label, verses, mask, start: verses[0], end: verses[verses.length - 1] + 1,
+      entity: { type: 'geo', id: p.name, name: p.label, place: p } }, { zoom: true, ...opts });
+  }
+  el.panelBody.addEventListener('click', (e) => {
+    const c = e.target.closest('canvas.places-map');
+    if (!c || !c._hit) return;
+    const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    let best = null, bd = 14;
+    for (const [hx, hy, i] of c._hit) { const dd = Math.hypot(hx - x, hy - y); if (dd < bd) { bd = dd; best = i; } }
+    if (best !== null) openGeo(best).then(focusPanelHeading);
+  });
+  el.panelBody.addEventListener('input', (e) => {
+    if (e.target.id !== 'placeQ' || !PLACES) return;
+    const q = plain(e.target.value.trim()), box = $('placeResults');
+    if (q.length < 2) { box.innerHTML = ''; return; }
+    const hits = PLACES.places.filter(p => plain(p.label).includes(q)).sort((a, b) => (plain(b.label).startsWith(q) - plain(a.label).startsWith(q)) || b.n - a.n).slice(0, 20);
+    box.innerHTML = hits.length ? `<ul class="conn-list">${hits.map(p => `<li><button type="button" class="conn-item" data-action="openGeo" data-i="${p.i}"><span class="label">${esc(p.label)} <span class="muted">${esc(p.type)}${p.conf < 2 ? ', location less certain' : ''}</span></span><span class="votes">${p.n} verse${p.n === 1 ? '' : 's'}</span></button></li>`).join('')}</ul>` : '<p class="muted">No places found.</p>';
+  });
+
+  // ---------- Shared connections: passages that two verses both link to ----------
+  function neighbours(r) {
+    const m = new Map();
+    const add = (v, w) => { if (v >= r.start && v < r.end) return; m.set(v, (m.get(v) || 0) + w); };
+    for (let i = 0; i < N; i++) {
+      if (F[i] >= r.start && F[i] < r.end) for (let v = T[i]; v <= E[i]; v++) add(v, V[i]);
+      else if (T[i] < r.end && E[i] >= r.start) add(F[i], V[i]);
+    }
+    return m;
+  }
+  function findShared(aText, bText, { push = true } = {}) {
+    const a = parseReference(aText), b = parseReference(bText);
+    state.mode = 'shared'; state.selected = -1; state.focus = null; state.journey = null;
+    const S = state.shared = { aText, bText, error: '' };
+    if (!a || a.error || !b || b.error) S.error = (a && a.error) || (b && b.error) || 'Enter two references, for example Psalm 23 and John 10.';
+    else {
+      const na = neighbours(a), nb = neighbours(b), list = [];
+      for (const [v, w] of na) if (nb.has(v) && !(v >= b.start && v < b.end)) list.push([v, w + nb.get(v)]);
+      list.sort((x, y) => y[1] - x[1]);
+      let direct = false;
+      for (let i = 0; i < N && !direct; i++) {
+        const fa = F[i] >= a.start && F[i] < a.end, fb = F[i] >= b.start && F[i] < b.end;
+        const ta = T[i] < a.end && E[i] >= a.start, tb = T[i] < b.end && E[i] >= b.start;
+        direct = (fa && tb) || (fb && ta);
+      }
+      Object.assign(S, { aLabel: rangeLabel(a), bLabel: rangeLabel(b), list, direct, a, b });
+      if (push) track('shared', `${aText} and ${bText}`);
+    }
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+    announce(S.error || `${S.list.length} passage${S.list.length === 1 ? '' : 's'} connect to both ${S.aLabel} and ${S.bLabel}.`);
+  }
+  function sharedHTML() {
+    const S = state.shared || {};
+    let html = `<p>Pick two passages to find the passages that both of them link to. Good for spotting themes they share.</p>
+      <form class="path-form" id="sharedForm">
+        <div class="field"><label for="sharedA">First passage</label><input id="sharedA" type="search" list="bookList" value="${esc(S.aText || '')}" placeholder="e.g. Psalm 23" autocomplete="off"></div>
+        <div class="field"><label for="sharedB">Second passage</label><input id="sharedB" type="search" list="bookList" value="${esc(S.bText || '')}" placeholder="e.g. John 10" autocomplete="off"></div>
+        <button type="submit" class="btn">Find shared links</button>
+      </form>
+      <p class="hint">Try <button type="button" class="chip" data-action="sharedExample" data-a="Psalm 23" data-b="John 10">Psalm 23 and John 10</button>
+      <button type="button" class="chip" data-action="sharedExample" data-a="Genesis 22" data-b="Hebrews 11">Genesis 22 and Hebrews 11</button></p>`;
+    if (S.error) html += `<p class="field-error" role="alert">${esc(S.error)}</p>`;
+    else if (S.list) {
+      html += `<h3>${S.list.length.toLocaleString()} shared passage${S.list.length === 1 ? '' : 's'}</h3>
+        <p>${S.direct ? `${esc(S.aLabel)} and ${esc(S.bLabel)} also link to each other directly.` : `${esc(S.aLabel)} and ${esc(S.bLabel)} do not link to each other directly.`}</p>`;
+      if (S.list.length) {
+        html += `<ol class="verse-list shared-list">${S.list.slice(0, 40).map(([v]) => `<li><button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button> ${miniRead(v)}</li>`).join('')}</ol>
+          ${S.list.length > 40 ? `<p class="hint">Showing the 40 strongest of ${S.list.length.toLocaleString()}.</p>` : ''}
+          <div class="actions"><button type="button" class="btn small" data-action="sharedMap">Show on the map</button>${shareButtons()}</div>`;
+      } else html += '<p class="muted">No passages link to both. Try whole chapters instead of single verses.</p>';
+    }
+    html += `<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="path">How are these connected?</button><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>`;
+    return ['Shared connections', html];
+  }
+  function sharedOnMap() {
+    const S = state.shared;
+    if (!S || !S.list) return;
+    const vs = new Set(S.list.map(x => x[0]));
+    for (let v = S.a.start; v < S.a.end; v++) vs.add(v);
+    for (let v = S.b.start; v < S.b.end; v++) vs.add(v);
+    const verses = Int32Array.from([...vs].sort((x, y) => x - y)), mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    setFocus({ kind: 'words', query: `${S.aLabel} and ${S.bLabel}`, verses, mask, start: verses[0], end: verses[verses.length - 1] + 1,
+      entity: { type: 'shared', id: `${S.aText}~${S.bText}`, name: `Shared by ${S.aLabel} and ${S.bLabel}` } }, { zoom: true });
+  }
+  el.panelBody.addEventListener('submit', (e) => {
+    if (e.target.id !== 'sharedForm') return;
+    e.preventDefault();
+    findShared($('sharedA').value, $('sharedB').value);
+  });
 
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
@@ -2491,6 +2775,12 @@
     else if (a === 'present') enterPresenter();
     else if (a === 'qr') openQR();
     else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
+    else if (a === 'exportNotes') exportNotes();
+    else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
+    else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
+    else if (a === 'openGeo') { openGeo(+btn.dataset.i).then(focusPanelHeading); }
+    else if (a === 'sharedExample') { findShared(btn.dataset.a, btn.dataset.b); focusPanelHeading(); }
+    else if (a === 'sharedMap') { sharedOnMap(); focusPanelHeading(); }
     else if (a === 'openSense') { openSense(btn.dataset.code, btn.dataset.sense).then(focusPanelHeading); }
     else if (a === 'addToCollection') openAddToCollection();
     else if (a === 'openCollection') { openCollection(getCollections()[+btn.dataset.n]); focusPanelHeading(); }
@@ -2984,8 +3274,9 @@
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
       else if (state.mode === 'plan' && state.plan) { p.set('plan', state.plan.id); p.set('day', state.plan.day + 1); }
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
+      else if (state.mode === 'shared' && state.shared && state.shared.aLabel) p.set('shared', `${state.shared.aLabel}~${state.shared.bLabel}`);
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections'].includes(state.mode)) p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -3038,7 +3329,9 @@
     if (p.get('path')) { const [a, b] = p.get('path').split('~'); findPath(a || '', b || '', { push: false }); return; }
     if (p.get('collection')) { const col = decodeCollection(p.get('collection')); if (col) { col.shared = !getCollections().some(c => c.name === col.name && c.items.length === col.items.length); openCollection(col, { push: false }); return; } }
     if (p.get('word')) { await openWord(p.get('word')); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (p.get('geo')) { await openGeo(p.get('geo')); return; }
+    if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {

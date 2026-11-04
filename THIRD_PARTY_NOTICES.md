@@ -25,6 +25,16 @@ This project publishes no copyrighted Bible text. Below is everything it uses fr
 - The lexicon entries in TBESH and TBESG are drawn from Brown-Driver-Briggs (1906) and Abbott-Smith (1922), which are in the public domain.
 - No English or other modern translation text is included. Word meanings shown under the original words are dictionary glosses, not a translation of the verse.
 
+## Places: OpenBible.info Bible Geocoding Data
+
+- Source: https://github.com/openbibleinfo/Bible-Geocoding-Data
+- License: Creative Commons Attribution 4.0 (CC BY 4.0). Credit: "OpenBible.info" linked to https://www.openbible.info/geo/
+- Changes made: each ancient place is placed at its most likely modern location, confidence is reduced to three levels, places outside the Bible lands are left out, and verse references are converted to verse numbers in `site/data/places.json` (built by `scripts/build-places.mjs`).
+
+## Coastline: Natural Earth
+
+- Source: Natural Earth 1:50m land, https://www.naturalearthdata.com (public domain). Simplified and limited to the Bible lands.
+
 ## Data packaging: scrollmapper/bible_databases
 
 - Source: https://github.com/scrollmapper/bible_databases

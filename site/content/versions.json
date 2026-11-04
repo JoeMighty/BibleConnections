@@ -4,42 +4,48 @@
     "id": 111,
     "name": "New International Version",
     "lang": "en",
-    "label": "NIV"
+    "label": "NIV",
+    "audio": true
   },
   {
     "code": "NLT",
     "id": 116,
     "name": "New Living Translation",
     "lang": "en",
-    "label": "NLT"
+    "label": "NLT",
+    "audio": true
   },
   {
     "code": "ESV",
     "id": 59,
     "name": "English Standard Version",
     "lang": "en",
-    "label": "ESV"
+    "label": "ESV",
+    "audio": true
   },
   {
     "code": "CSB",
     "id": 1713,
     "name": "Christian Standard Bible",
     "lang": "en",
-    "label": "CSB"
+    "label": "CSB",
+    "audio": true
   },
   {
     "code": "NKJV",
     "id": 114,
     "name": "New King James Version",
     "lang": "en",
-    "label": "NKJV"
+    "label": "NKJV",
+    "audio": true
   },
   {
     "code": "KJV",
     "id": 1,
     "name": "King James Version",
     "lang": "en",
-    "label": "KJV"
+    "label": "KJV",
+    "audio": true
   },
   {
     "code": "AMP",
@@ -53,42 +59,48 @@
     "id": 97,
     "name": "The Message",
     "lang": "en",
-    "label": "MSG"
+    "label": "MSG",
+    "audio": true
   },
   {
     "code": "NASB2020",
     "id": 2692,
     "name": "New American Standard Bible 2020",
     "lang": "en",
-    "label": "NASB"
+    "label": "NASB",
+    "audio": true
   },
   {
     "code": "NVI",
     "id": 128,
     "name": "Nueva Versión Internacional",
     "lang": "es",
-    "label": "NVI"
+    "label": "NVI",
+    "audio": true
   },
   {
     "code": "RVR1960",
     "id": 149,
     "name": "Reina-Valera 1960",
     "lang": "es",
-    "label": "RVR1960"
+    "label": "RVR1960",
+    "audio": true
   },
   {
     "code": "NTV",
     "id": 127,
     "name": "Nueva Traducción Viviente",
     "lang": "es",
-    "label": "NTV"
+    "label": "NTV",
+    "audio": true
   },
   {
     "code": "LBLA",
     "id": 89,
     "name": "La Biblia de las Américas",
     "lang": "es",
-    "label": "LBLA"
+    "label": "LBLA",
+    "audio": true
   },
   {
     "code": "TLA",
@@ -102,7 +114,8 @@
     "id": 1693,
     "name": "സത്യവേദപുസ്തകം OV (Bible Society of India)",
     "label": "Malayalam OV",
-    "lang": "ml"
+    "lang": "ml",
+    "audio": true
   },
   {
     "code": "MALCLBSI",
@@ -117,21 +130,24 @@
     "id": 1912,
     "name": "ഇന്ത്യൻ റിവൈസ്ഡ് വേർഷൻ (Indian Revised Version)",
     "label": "Malayalam IRV",
-    "lang": "ml"
+    "lang": "ml",
+    "audio": true
   },
   {
     "code": "MCV",
     "id": 2431,
     "name": "സമകാലിക മലയാളവിവർത്തനം (Malayalam Contemporary Version)",
     "label": "Malayalam MCV",
-    "lang": "ml"
+    "lang": "ml",
+    "audio": true
   },
   {
     "code": "NAA",
     "id": 1840,
     "name": "Nova Almeida Atualizada",
     "lang": "pt",
-    "label": "NAA"
+    "label": "NAA",
+    "audio": true
   },
   {
     "code": "NVI",
@@ -139,77 +155,88 @@
     "name": "Nova Versão Internacional",
     "lang": "pt",
     "label": "NVI (Português)",
-    "key": "NVI-PT"
+    "key": "NVI-PT",
+    "audio": true
   },
   {
     "code": "NVT",
     "id": 1930,
     "name": "Nova Versão Transformadora",
     "lang": "pt",
-    "label": "NVT"
+    "label": "NVT",
+    "audio": true
   },
   {
     "code": "ARA",
     "id": 1608,
     "name": "Almeida Revista e Atualizada",
     "lang": "pt",
-    "label": "ARA"
+    "label": "ARA",
+    "audio": true
   },
   {
     "code": "ARC",
     "id": 212,
     "name": "Almeida Revista e Corrigida",
     "lang": "pt",
-    "label": "ARC"
+    "label": "ARC",
+    "audio": true
   },
   {
     "code": "NTLH",
     "id": 211,
     "name": "Nova Tradução na Linguagem de Hoje",
     "lang": "pt",
-    "label": "NTLH"
+    "label": "NTLH",
+    "audio": true
   },
   {
     "code": "LSG",
     "id": 93,
     "name": "Louis Segond 1910",
     "lang": "fr",
-    "label": "LSG"
+    "label": "LSG",
+    "audio": true
   },
   {
     "code": "S21",
     "id": 152,
     "name": "La Bible Segond 21",
     "lang": "fr",
-    "label": "S21"
+    "label": "S21",
+    "audio": true
   },
   {
     "code": "BDS",
     "id": 21,
     "name": "La Bible du Semeur 2015",
     "lang": "fr",
-    "label": "BDS"
+    "label": "BDS",
+    "audio": true
   },
   {
     "code": "PDV2017",
     "id": 133,
     "name": "Parole de Vie 2017",
     "lang": "fr",
-    "label": "PDV2017"
+    "label": "PDV2017",
+    "audio": true
   },
   {
     "code": "DELUT",
     "id": 51,
     "name": "Lutherbibel 1912",
     "lang": "de",
-    "label": "DELUT"
+    "label": "DELUT",
+    "audio": true
   },
   {
     "code": "Hfa",
     "id": 73,
     "name": "Hoffnung für alle",
     "lang": "de",
-    "label": "Hfa"
+    "label": "Hfa",
+    "audio": true
   },
   {
     "code": "SCH2000",
@@ -237,7 +264,8 @@
     "id": 400,
     "name": "Синодальный перевод (Russian Synodal)",
     "lang": "ru",
-    "label": "SYNO"
+    "label": "SYNO",
+    "audio": true
   },
   {
     "code": "RSP",
@@ -251,7 +279,8 @@
     "id": 385,
     "name": "Восточный перевод (Eastern Translation)",
     "lang": "ru",
-    "label": "CARS"
+    "label": "CARS",
+    "audio": true
   },
   {
     "code": "BTI",
@@ -265,7 +294,8 @@
     "id": 122,
     "name": "Nuova Riveduta 2006",
     "lang": "it",
-    "label": "NR06"
+    "label": "NR06",
+    "audio": true
   },
   {
     "code": "NR94",
@@ -286,7 +316,8 @@
     "id": 1197,
     "name": "Parola del Signore, lingua corrente",
     "lang": "it",
-    "label": "ICL00P"
+    "label": "ICL00P",
+    "audio": true
   },
   {
     "code": "KRV",
@@ -307,7 +338,8 @@
     "id": 86,
     "name": "현대인의 성경 (Korean Living Bible)",
     "lang": "ko",
-    "label": "KLB"
+    "label": "KLB",
+    "audio": true
   },
   {
     "code": "WB",
@@ -321,7 +353,8 @@
     "id": 2516,
     "name": "Holy Bible Nigerian Pidgin English",
     "lang": "pcm",
-    "label": "pcm"
+    "label": "pcm",
+    "audio": true
   },
   {
     "code": "YCE",
@@ -335,42 +368,48 @@
     "id": 911,
     "name": "Bíbélì Mímọ́ ní Èdè Yorùbá Òde-Òní",
     "lang": "yo",
-    "label": "BMYO"
+    "label": "BMYO",
+    "audio": true
   },
   {
     "code": "YBCV",
     "id": 2754,
     "name": "Bibeli Mimọ",
     "lang": "yo",
-    "label": "YBCV"
+    "label": "YBCV",
+    "audio": true
   },
   {
     "code": "IGBOB",
     "id": 77,
     "name": "Bible Nso",
     "lang": "ig",
-    "label": "IGBOB"
+    "label": "IGBOB",
+    "audio": true
   },
   {
     "code": "BIU",
     "id": 1624,
     "name": "Baịbụlụ Nsọ nʼIgbo Ndị Ugbu a",
     "lang": "ig",
-    "label": "BIU"
+    "label": "BIU",
+    "audio": true
   },
   {
     "code": "HAU",
     "id": 71,
     "name": "Littafi Mai Tsarki",
     "lang": "ha",
-    "label": "HAU"
+    "label": "HAU",
+    "audio": true
   },
   {
     "code": "SRK",
     "id": 1614,
     "name": "Sabon Rai Don Kowa 2020",
     "lang": "ha",
-    "label": "SRK"
+    "label": "SRK",
+    "audio": true
   },
   {
     "code": "SUV",
@@ -391,28 +430,32 @@
     "id": 1627,
     "name": "Neno",
     "lang": "sw",
-    "label": "NEN"
+    "label": "NEN",
+    "audio": true
   },
   {
     "code": "BHN",
     "id": 74,
     "name": "Biblia Habari Njema",
     "lang": "sw",
-    "label": "BHN"
+    "label": "BHN",
+    "audio": true
   },
   {
     "code": "NASV",
     "id": 1260,
     "name": "አዲሱ መደበኛ ትርጒም (New Amharic Standard Version)",
     "lang": "am",
-    "label": "NASV"
+    "label": "NASV",
+    "audio": true
   },
   {
     "code": "MacQul",
     "id": 3202,
     "name": "Macaafa Qulqulluu Afaan Oromoo",
     "lang": "om",
-    "label": "MacQul"
+    "label": "MacQul",
+    "audio": true
   },
   {
     "code": "KQTAB",
@@ -426,7 +469,8 @@
     "id": 3552,
     "name": "Hiikkaa Ammayyaa Haaraa",
     "lang": "om",
-    "label": "HAH"
+    "label": "HAH",
+    "audio": true
   },
   {
     "code": "TIG24",
@@ -441,7 +485,8 @@
     "id": 1964,
     "name": "Mokanda na Bomoi",
     "lang": "ln",
-    "label": "MNB"
+    "label": "MNB",
+    "audio": true
   },
   {
     "code": "NTK50",
@@ -463,7 +508,8 @@
     "id": 2918,
     "name": "Mukanda wa Myidi Mukulu",
     "lang": "lua",
-    "label": "TSH96"
+    "label": "TSH96",
+    "audio": true
   },
   {
     "code": "ZUL59",
@@ -526,7 +572,8 @@
     "id": 117,
     "name": "Nuwe Lewende Vertaling",
     "lang": "af",
-    "label": "NLV"
+    "label": "NLV",
+    "audio": true
   },
   {
     "code": "AFR53",
@@ -540,35 +587,40 @@
     "id": 1622,
     "name": "Kiugo Gĩtheru Kĩa Ngai",
     "lang": "ki",
-    "label": "GKY"
+    "label": "GKY",
+    "audio": true
   },
   {
     "code": "GKN",
     "id": 1201,
     "name": "Kĩrĩkanĩro Gĩa Gĩkũyũ",
     "lang": "ki",
-    "label": "GKN"
+    "label": "GKN",
+    "audio": true
   },
   {
     "code": "DHO15",
     "id": 1810,
     "name": "Muma Maler 2015",
     "lang": "luo",
-    "label": "DHO15"
+    "label": "DHO15",
+    "audio": true
   },
   {
     "code": "MLM",
     "id": 2652,
     "name": "Motingʼo Loko Manyien",
     "lang": "luo",
-    "label": "MLM"
+    "label": "MLM",
+    "audio": true
   },
   {
     "code": "ASD",
     "id": 1264,
     "name": "Ang Salita ng Diyos",
     "lang": "tl",
-    "label": "ASD"
+    "label": "ASD",
+    "audio": true
   },
   {
     "code": "TLAB",
@@ -589,7 +641,8 @@
     "id": 562,
     "name": "Ang Bag-ong Maayong Balita Biblia",
     "lang": "ceb",
-    "label": "RCPV"
+    "label": "RCPV",
+    "audio": true
   },
   {
     "code": "ABCEB",
@@ -603,14 +656,16 @@
     "id": 9,
     "name": "Ang Pulong sa Dios",
     "lang": "ceb",
-    "label": "APD"
+    "label": "APD",
+    "audio": true
   },
   {
     "code": "RIPV",
     "id": 782,
     "name": "Ti Baro a Naimbag a Damag Biblia",
     "lang": "ilo",
-    "label": "RIPV"
+    "label": "RIPV",
+    "audio": true
   },
   {
     "code": "TB1973",
@@ -624,70 +679,80 @@
     "id": 339,
     "name": "பரிசுத்த வேதாகமம் O.V. (Bible Society of India)",
     "lang": "ta",
-    "label": "TAOVBSI"
+    "label": "TAOVBSI",
+    "audio": true
   },
   {
     "code": "IRVTam",
     "id": 1899,
     "name": "இண்டியன் ரிவைஸ்டு வெர்ஸன் (Indian Revised Version)",
     "lang": "ta",
-    "label": "IRVTam"
+    "label": "IRVTam",
+    "audio": true
   },
   {
     "code": "TCV",
     "id": 2730,
     "name": "இந்திய சமகால தமிழ் மொழிப்பெயர்ப்பு (Tamil Contemporary Version)",
     "lang": "ta",
-    "label": "TCV"
+    "label": "TCV",
+    "audio": true
   },
   {
     "code": "TELUBSI",
     "id": 1787,
     "name": "పరిశుద్ధ గ్రంథము O.V. (Bible Society of India)",
     "lang": "te",
-    "label": "TELUBSI"
+    "label": "TELUBSI",
+    "audio": true
   },
   {
     "code": "IRVTel",
     "id": 1895,
     "name": "ఇండియన్ రివైజ్డ్ వెర్షన్ (Indian Revised Version)",
     "lang": "te",
-    "label": "IRVTel"
+    "label": "IRVTel",
+    "audio": true
   },
   {
     "code": "TSA",
     "id": 3268,
     "name": "తెలుగు సమకాలీన అనువాదం (Telugu Contemporary Version)",
     "lang": "te",
-    "label": "TSA"
+    "label": "TSA",
+    "audio": true
   },
   {
     "code": "HINOVBSI",
     "id": 1683,
     "name": "पवित्र बाइबिल OV (Bible Society of India)",
     "lang": "hi",
-    "label": "HINOVBSI"
+    "label": "HINOVBSI",
+    "audio": true
   },
   {
     "code": "HINCLBSI",
     "id": 1682,
     "name": "पवित्र बाइबिल CL (Bible Society of India)",
     "lang": "hi",
-    "label": "HINCLBSI"
+    "label": "HINCLBSI",
+    "audio": true
   },
   {
     "code": "IRVHin",
     "id": 1980,
     "name": "इंडियन रिवाइज्ड वर्जन (Indian Revised Version)",
     "lang": "hi",
-    "label": "IRVHin"
+    "label": "IRVHin",
+    "audio": true
   },
   {
     "code": "HCV",
     "id": 1628,
     "name": "सरल हिन्दी बाइबल (Hindi Contemporary Version)",
     "lang": "hi",
-    "label": "HCV"
+    "label": "HCV",
+    "audio": true
   },
   {
     "code": "HHBD",
