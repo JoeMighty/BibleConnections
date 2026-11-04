@@ -14,8 +14,10 @@ for (const v of versions) {
       const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': 'BibleConnections link check' } });
       const html = await res.text();
       const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || '';
-      // Bible.com page titles include the version code, for example "John 3:16 (NIV)" or "... (MALOVBSI)"
-      const ok = res.ok && title.toUpperCase().includes(v.code.replace(/\d{4}$/, '').toUpperCase());
+      // Bible.com page titles include the version code, for example "John 3:16 (NIV)" or "... (MALOVBSI)".
+      // A few versions show another label instead (IRVMAL shows "മലയാളം"); versions.json can set it as titleHint.
+      const hint = (v.titleHint || v.code.replace(/\d{4}$/, '')).toUpperCase();
+      const ok = res.ok && title.toUpperCase().includes(hint);
       console.log(`${ok ? 'OK  ' : 'FAIL'} ${v.code.padEnd(9)} ${kind.padEnd(11)} ${res.status} ${title.slice(0, 70)}  ${url}`);
       if (!ok) failed++;
     } catch (err) {
