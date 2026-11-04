@@ -2818,6 +2818,9 @@
     const scale = Math.min(w / sw, h / sh);
     const dw = sw * scale, dh = sh * scale;
     ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, hero.width, hero.height);
+    // line the Old and New Testament timeline up with the drawn map
+    const axis = $('landingAxis'), inset = (w - dw) / 2 + 4 * scale;
+    if (axis) { axis.style.marginLeft = axis.style.marginRight = `${Math.max(0, inset)}px`; }
     if (glr && glr.ok) {
       const gd = glr.canvas.width / view.W;
       ctx.drawImage(glr.canvas, sx0 * gd, sy0 * gd, sw * gd, sh * gd, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
@@ -2828,7 +2831,7 @@
     const fmt = (n) => n.toLocaleString();
     $('landingStats').innerHTML = [
       [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
-    ].map(([n, l]) => `<li><strong>${n}</strong><span>${l}</span></li>`).join('');
+    ].map(([n, l]) => `<li><strong>${n}</strong> <span>${l}</span></li>`).join('');
     const S = window.SERIES || {};
     $('landingSeries').hidden = !S.enabled;
     if (S.enabled) $('landingSeries').innerHTML = `<p class="eyebrow">Current series</p><h3 class="series-name">${esc(S.title)}</h3><p>${esc(S.description || '')}</p><button type="button" class="btn" data-start="series">See the passages</button>`;
@@ -2837,10 +2840,8 @@
     $('landingCotd').hidden = cotd < 0;
     if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     renderLandingRecent();
-    // book groups from Genesis to Revelation, sized by number of verses, in the map's colors
-    const groups = [];
-    for (const b of BOOKS) { const n = b.end - b.start; const g = groups[groups.length - 1]; if (g && g.cat === b.cat) g.n += n; else groups.push({ cat: b.cat, n }); }
-    $('landingSpectrum').innerHTML = groups.map(g => `<span style="flex-grow:${g.n};--cd:${CATEGORIES[g.cat].dark};--cl:${CATEGORIES[g.cat].light}" title="${esc(CATEGORIES[g.cat].name)}"><i>${esc(CATEGORIES[g.cat].name)}</i></span>`).join('');
+    // the timeline under the picture: Old and New Testament widths match their share of verses
+    $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
   landing.addEventListener('click', (e) => {

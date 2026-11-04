@@ -645,7 +645,10 @@
     "Plans, people and places": "Planes, personas y lugares",
     "Reading plans, 56 people and places, topics and a group game.": "Planes de lectura, 56 personas y lugares, temas y un juego para grupos.",
     "Genesis": "Génesis",
-    "Revelation": "Apocalipsis"
+    "Revelation": "Apocalipsis",
+    "Ways in": "Por dónde empezar",
+    "Jump to a verse, chapter or word": "Ir a un versículo, capítulo o palabra",
+    "Matthew": "Mateo"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

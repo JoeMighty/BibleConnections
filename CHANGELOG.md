@@ -13,7 +13,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Releases can be named in the changelog heading.
 
 ### Changed
-- Redesigned welcome page: a two column hero with a larger picture of the map, a color strip of the book groups from Genesis to Revelation, a numbers band, cards for the main ways to explore, and a wider layout.
+- Redesigned welcome page: a serif headline, the map as a large picture with an Old and New Testament timeline lined up underneath, a simple list of ways in, and a wider layout that adapts from phones to large screens.
 
 ## [0.6.0] - 2026-11-04 - Many Languages
 

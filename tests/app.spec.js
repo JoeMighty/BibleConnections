@@ -274,7 +274,7 @@ for (const [name, viewport] of [['iPad landscape', { width: 1180, height: 820 }]
 test('welcome page cards open word study and the passage explorer', async ({ page }) => {
   await page.goto('/');
   await ready(page);
-  await expect(page.locator('#landingSpectrum span')).toHaveCount(10);
+  await expect(page.locator('#landingAxis')).toContainText('New Testament');
   await page.locator('.way[data-start=wordstudy]').click();
   await expect(page.locator('#landing')).toBeHidden();
   await expect(page.locator('#panelTitle')).toHaveText('Word study');
