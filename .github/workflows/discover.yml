@@ -10,4 +10,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node discover.mjs por rus fra deu pcm tgl fil swh swa amh ita kor yor ibo hau lin kng kwy ktu lua gaz orm hae tir ceb ilo zul xho afr kik luo tam tel hin
+      - run: node discover.mjs
