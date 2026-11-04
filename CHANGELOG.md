@@ -6,6 +6,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Changed
+- Welcome page: the numbers are back in a centred band, and the search box is centred.
 - Clicking outside a pop-up (About, Settings, QR code, Embed, Poster, Add to collection) closes it.
 
 ## [0.7.0] - 2026-11-04 - Passage Explorer
