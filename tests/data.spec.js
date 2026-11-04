@@ -24,12 +24,20 @@ test('notes, journeys and themes resolve to real references', async ({ page }) =
       if (!s.title || !s.note || !s.question) bad.push(`journey ${j.id} step missing title, note or question`);
     }
     for (const t of window.THEMES) for (const r of t.verses) if (!idx.has(r)) bad.push(`theme ${t.id} ${r}`);
+    const words = await (await fetch('data/words.json')).json();
+    const people = await (await fetch('content/people-places.json')).json();
+    const topics = await (await fetch('content/topics.json')).json();
+    for (const e of [...people, ...topics]) for (const w of e.words) if (!words[w] && !Object.keys(words).some(k => k.startsWith(w))) bad.push(`word ${e.id}:${w}`);
+    for (const p of await (await fetch('content/plans.json')).json()) {
+      if (p.source === 'theme' && !window.THEMES.some(t => t.id === p.theme)) bad.push(`plan ${p.id} theme`);
+      if (!p.name || !p.description || !(p.perDay > 0)) bad.push(`plan ${p.id} fields`);
+    }
     return { bad, missingPairs, notes: window.NOTES.length };
   });
   expect(report.bad).toEqual([]);
   // every note should describe a connection that exists in the cross reference data
   expect(report.missingPairs).toEqual([]);
-  expect(report.notes).toBeGreaterThan(100);
+  expect(report.notes).toBeGreaterThan(300);
 });
 
 test('no Bible text is published with the site', async ({ request }) => {

@@ -55,7 +55,7 @@
         <button type="button" class="btn ghost nav-btn" id="homeBtn" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11.5 12 5l8 6.5M6.5 9.8V19h11V9.8M10 19v-5h4v5"/></svg><span class="nav-label">Home</span></button>
         <button type="button" class="btn ghost nav-btn" data-nav="journeys" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5.5a3 3 0 0 0 0-6h-3a3 3 0 0 1 0-6H16"/></svg><span class="nav-label">Journeys</span></button>
         <button type="button" class="btn ghost nav-btn" data-nav="path" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 18.5h19M4 18.5a5.5 5.5 0 0 1 11 0M10 18.5a5 5 0 0 1 10 0"/></svg><span class="nav-label">Connect</span></button>
-        <button type="button" class="btn ghost nav-btn" data-nav="insights" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 20v-7M10 20V6M15 20v-9M20 20v-4"/></svg><span class="nav-label">Insights</span></button>
+        <button type="button" class="btn ghost nav-btn" data-nav="study" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2zM12 6.5v13"/></svg><span class="nav-label">Study</span></button>
         <button type="button" class="btn ghost nav-btn icon-nav" id="settingsBtn" aria-haspopup="dialog" title="Settings"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.2"/><circle cx="12" cy="12" r="2.4"/><path d="M19.20 12.00L21.60 12.00M17.09 17.09L18.79 18.79M12.00 19.20L12.00 21.60M6.91 17.09L5.21 18.79M4.80 12.00L2.40 12.00M6.91 6.91L5.21 5.21M12.00 4.80L12.00 2.40M17.09 6.91L18.79 5.21"/></svg><span class="nav-label">Settings</span></button>
       </nav>
       <button type="button" class="btn ghost nav-btn icon-nav about-btn" id="aboutBtn" aria-haspopup="dialog" aria-label="About" title="About"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6v.4"/></svg></button>
@@ -81,6 +81,7 @@
       </form>
       <div class="landing-series" id="landingSeries" hidden></div>
       <div class="landing-recent" id="landingRecent" hidden></div>
+      <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
       <ul class="stat-row" id="landingStats" aria-label="At a glance"></ul>
       <h3>Start with a theme</h3>
       <ul class="chip-list" id="landingThemes"></ul>
@@ -190,6 +191,50 @@
 
   <div class="sr-only" id="announcer" aria-live="polite"></div>
 
+  <div class="embed-bar" id="embedBar" hidden>
+    <span class="embed-title" id="embedTitle">The whole Bible</span>
+    <a class="btn small" id="embedOpen" href="./" target="_blank" rel="noopener">Open in Bible Connections<span class="sr-only"> (opens in a new tab)</span></a>
+  </div>
+
+  <dialog id="qrDialog" aria-labelledby="qrTitle">
+    <div class="dialog-inner center">
+      <h2 id="qrTitle">QR code</h2>
+      <p class="muted" id="qrLabel"></p>
+      <div class="qr-image" id="qrImage"></div>
+      <p class="hint qr-url" id="qrUrl"></p>
+      <div class="actions"><button type="button" class="btn" id="qrDownload">Download image</button></div>
+      <form method="dialog"><button class="btn ghost">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="embedDialog" aria-labelledby="embedTitleH">
+    <div class="dialog-inner">
+      <h2 id="embedTitleH">Embed on a website</h2>
+      <p>Paste this code into your church website or blog to show this view. It links back to the full site.</p>
+      <div class="field">
+        <label for="embedHeight">Height</label>
+        <select id="embedHeight"><option value="420">Small (420 pixels)</option><option value="560" selected>Medium (560 pixels)</option><option value="720">Large (720 pixels)</option></select>
+      </div>
+      <div class="field">
+        <label for="embedCode">Embed code</label>
+        <textarea id="embedCode" rows="5" readonly></textarea>
+      </div>
+      <div class="actions"><button type="button" class="btn" id="embedCopy">Copy code</button></div>
+      <form method="dialog"><button class="btn ghost">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="posterDialog" aria-labelledby="posterTitle">
+    <div class="dialog-inner">
+      <h2 id="posterTitle">Print a poster</h2>
+      <p>Download the whole map with the current filters. The SVG file is a vector image that prints sharply at any size; the PNG is 3840 pixels wide.</p>
+      <div class="field check"><label for="posterDark"><span>Black background</span><input type="checkbox" class="switch" id="posterDark" checked></label></div>
+      <div class="field check"><label for="posterCategory"><span>Color by category instead of distance</span><input type="checkbox" class="switch" id="posterCategory"></label></div>
+      <div class="actions"><button type="button" class="btn" id="posterSvg">Download SVG (for printing)</button><button type="button" class="btn ghost" id="posterPng">Download PNG</button></div>
+      <form method="dialog"><button class="btn ghost">Close</button></form>
+    </div>
+  </dialog>
+
   <section class="presenter" id="presenter" aria-labelledby="presTitle" hidden>
     <div class="pres-card">
       <p class="pres-meta" id="presMeta"></p>
@@ -270,6 +315,7 @@
     </div>
   </dialog>
 
+  <script src="vendor/qrcode.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

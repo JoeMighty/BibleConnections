@@ -1,0 +1,408 @@
+[
+  {
+    "id": "anxiety",
+    "name": "Anxiety and worry",
+    "words": [
+      "anxious",
+      "anxiety",
+      "worry",
+      "worried",
+      "troubled"
+    ],
+    "name_es": "Ansiedad y preocupación"
+  },
+  {
+    "id": "fear",
+    "name": "Fear and courage",
+    "words": [
+      "afraid",
+      "fear",
+      "courage",
+      "courageous"
+    ],
+    "name_es": "Temor y valentía"
+  },
+  {
+    "id": "peace",
+    "name": "Peace",
+    "words": [
+      "peace"
+    ],
+    "name_es": "Paz"
+  },
+  {
+    "id": "joy",
+    "name": "Joy",
+    "words": [
+      "joy",
+      "rejoice",
+      "glad"
+    ],
+    "name_es": "Gozo"
+  },
+  {
+    "id": "hope",
+    "name": "Hope",
+    "words": [
+      "hope"
+    ],
+    "name_es": "Esperanza"
+  },
+  {
+    "id": "comfort",
+    "name": "Comfort",
+    "words": [
+      "comfort"
+    ],
+    "name_es": "Consuelo"
+  },
+  {
+    "id": "forgiveness",
+    "name": "Forgiveness",
+    "words": [
+      "forgive",
+      "forgiven",
+      "forgiveness",
+      "pardon"
+    ],
+    "name_es": "Perdón"
+  },
+  {
+    "id": "mercy",
+    "name": "Mercy",
+    "words": [
+      "mercy",
+      "merciful",
+      "compassion"
+    ],
+    "name_es": "Misericordia"
+  },
+  {
+    "id": "grace",
+    "name": "Grace",
+    "words": [
+      "grace",
+      "gracious"
+    ],
+    "name_es": "Gracia"
+  },
+  {
+    "id": "faith",
+    "name": "Faith",
+    "words": [
+      "faith",
+      "believe",
+      "believed"
+    ],
+    "name_es": "Fe"
+  },
+  {
+    "id": "prayer",
+    "name": "Prayer",
+    "words": [
+      "pray",
+      "prayer"
+    ],
+    "name_es": "Oración"
+  },
+  {
+    "id": "wisdom",
+    "name": "Wisdom",
+    "words": [
+      "wisdom",
+      "wise"
+    ],
+    "name_es": "Sabiduría"
+  },
+  {
+    "id": "healing",
+    "name": "Healing",
+    "words": [
+      "heal",
+      "healed",
+      "healing"
+    ],
+    "name_es": "Sanidad"
+  },
+  {
+    "id": "strength",
+    "name": "Strength",
+    "words": [
+      "strength",
+      "strengthen"
+    ],
+    "name_es": "Fortaleza"
+  },
+  {
+    "id": "patience",
+    "name": "Patience",
+    "words": [
+      "patience",
+      "patient",
+      "endurance",
+      "persevere"
+    ],
+    "name_es": "Paciencia"
+  },
+  {
+    "id": "kindness",
+    "name": "Kindness",
+    "words": [
+      "kindness",
+      "kind"
+    ],
+    "name_es": "Bondad"
+  },
+  {
+    "id": "humility",
+    "name": "Humility",
+    "words": [
+      "humble",
+      "humility"
+    ],
+    "name_es": "Humildad"
+  },
+  {
+    "id": "pride",
+    "name": "Pride",
+    "words": [
+      "pride",
+      "proud",
+      "arrogant"
+    ],
+    "name_es": "Orgullo"
+  },
+  {
+    "id": "anger",
+    "name": "Anger",
+    "words": [
+      "anger",
+      "angry",
+      "wrath"
+    ],
+    "name_es": "Ira"
+  },
+  {
+    "id": "temptation",
+    "name": "Temptation",
+    "words": [
+      "tempt",
+      "tempted",
+      "temptation"
+    ],
+    "name_es": "Tentación"
+  },
+  {
+    "id": "suffering",
+    "name": "Suffering",
+    "words": [
+      "suffer",
+      "suffering",
+      "affliction",
+      "afflicted"
+    ],
+    "name_es": "Sufrimiento"
+  },
+  {
+    "id": "money",
+    "name": "Money and wealth",
+    "words": [
+      "money",
+      "wealth",
+      "riches",
+      "rich"
+    ],
+    "name_es": "Dinero y riqueza"
+  },
+  {
+    "id": "generosity",
+    "name": "Generosity",
+    "words": [
+      "generous",
+      "generosity",
+      "give"
+    ],
+    "name_es": "Generosidad"
+  },
+  {
+    "id": "work",
+    "name": "Work",
+    "words": [
+      "work",
+      "labor",
+      "diligent"
+    ],
+    "name_es": "Trabajo"
+  },
+  {
+    "id": "rest",
+    "name": "Rest and Sabbath",
+    "words": [
+      "rest",
+      "sabbath"
+    ],
+    "name_es": "Descanso y día de reposo"
+  },
+  {
+    "id": "marriage",
+    "name": "Marriage",
+    "words": [
+      "marriage",
+      "married",
+      "husband",
+      "wife"
+    ],
+    "name_es": "Matrimonio"
+  },
+  {
+    "id": "children",
+    "name": "Children and parents",
+    "words": [
+      "children",
+      "child",
+      "parents"
+    ],
+    "name_es": "Hijos y padres"
+  },
+  {
+    "id": "friendship",
+    "name": "Friendship",
+    "words": [
+      "friend",
+      "friends"
+    ],
+    "name_es": "Amistad"
+  },
+  {
+    "id": "justice",
+    "name": "Justice",
+    "words": [
+      "justice",
+      "righteousness"
+    ],
+    "name_es": "Justicia"
+  },
+  {
+    "id": "poor",
+    "name": "The poor and needy",
+    "words": [
+      "poor",
+      "needy",
+      "widow",
+      "orphan"
+    ],
+    "name_es": "Los pobres y necesitados"
+  },
+  {
+    "id": "truth",
+    "name": "Truth",
+    "words": [
+      "truth",
+      "true"
+    ],
+    "name_es": "Verdad"
+  },
+  {
+    "id": "light",
+    "name": "Light",
+    "words": [
+      "light"
+    ],
+    "name_es": "Luz"
+  },
+  {
+    "id": "water",
+    "name": "Water",
+    "words": [
+      "water",
+      "river",
+      "spring"
+    ],
+    "name_es": "Agua"
+  },
+  {
+    "id": "shepherd",
+    "name": "Shepherd and sheep",
+    "words": [
+      "shepherd",
+      "sheep",
+      "flock"
+    ],
+    "name_es": "Pastor y ovejas"
+  },
+  {
+    "id": "worship",
+    "name": "Worship and praise",
+    "words": [
+      "worship",
+      "praise"
+    ],
+    "name_es": "Adoración y alabanza"
+  },
+  {
+    "id": "thanks",
+    "name": "Thanksgiving",
+    "words": [
+      "thanks",
+      "thanksgiving",
+      "thankful",
+      "grateful"
+    ],
+    "name_es": "Gratitud"
+  },
+  {
+    "id": "holiness",
+    "name": "Holiness",
+    "words": [
+      "holy",
+      "holiness"
+    ],
+    "name_es": "Santidad"
+  },
+  {
+    "id": "obedience",
+    "name": "Obedience",
+    "words": [
+      "obey",
+      "obedience",
+      "obedient"
+    ],
+    "name_es": "Obediencia"
+  },
+  {
+    "id": "repentance",
+    "name": "Repentance",
+    "words": [
+      "repent",
+      "repentance"
+    ],
+    "name_es": "Arrepentimiento"
+  },
+  {
+    "id": "heaven",
+    "name": "Heaven",
+    "words": [
+      "heaven"
+    ],
+    "name_es": "Cielo"
+  },
+  {
+    "id": "eternal",
+    "name": "Eternal life",
+    "words": [
+      "eternal",
+      "everlasting"
+    ],
+    "name_es": "Vida eterna"
+  },
+  {
+    "id": "death",
+    "name": "Death and life",
+    "words": [
+      "death",
+      "die",
+      "died"
+    ],
+    "name_es": "Muerte y vida"
+  }
+]

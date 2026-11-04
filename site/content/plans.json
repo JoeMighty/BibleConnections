@@ -1,0 +1,30 @@
+[
+  {
+    "id": "story",
+    "name": "The story of Scripture",
+    "name_es": "La historia de la Biblia",
+    "description": "All nine guided journeys, two steps a day, in about a month.",
+    "description_es": "Los nueve recorridos guiados, dos pasos al día, en aproximadamente un mes.",
+    "source": "journeys",
+    "perDay": 2
+  },
+  {
+    "id": "messiah",
+    "name": "Jesus foretold",
+    "name_es": "Jesús anunciado",
+    "description": "A promise about the Messiah and where it is fulfilled, two a day.",
+    "description_es": "Una promesa sobre el Mesías y dónde se cumple, dos por día.",
+    "source": "theme",
+    "theme": "messiah",
+    "perDay": 2
+  },
+  {
+    "id": "themes",
+    "name": "Twelve themes",
+    "name_es": "Doce temas",
+    "description": "One theme a day for twelve days, with its key connections.",
+    "description_es": "Un tema al día durante doce días, con sus conexiones clave.",
+    "source": "themes",
+    "perDay": 3
+  }
+]

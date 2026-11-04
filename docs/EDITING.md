@@ -70,6 +70,32 @@ The book codes are listed in `site/data/books.json` (the `osis` value), for exam
 - Set `enabled` to `true` to show the series on the welcome page, `false` to hide it.
 - `ref` uses normal references such as `John 3:16`, `Psalm 23` or `Isaiah 53`.
 
+### `people-places.json`: people and places
+
+```json
+{ "id": "david", "type": "person", "name": "David", "words": ["david"], "description": "One sentence.", "name_es": "David", "description_es": "Una frase." }
+```
+
+- `type` is `person` or `place`. `words` are the names to look for in the Berean Standard Bible (lower case).
+
+### `topics.json`: topics
+
+```json
+{ "id": "peace", "name": "Peace", "words": ["peace"], "name_es": "Paz" }
+```
+
+- Each word also matches its longer forms (for example `forgive` matches `forgiven` and `forgives`).
+
+### `plans.json`: reading plans
+
+```json
+{ "id": "story", "name": "The story of Scripture", "description": "One sentence.", "source": "journeys", "perDay": 2 }
+```
+
+- `source` is `journeys` (all journey steps in order), `theme` (one theme's key verses, add `"theme": "messiah"`) or `themes` (one theme per day).
+- `perDay` is how many connections each day has.
+- Changing a plan's `id` resets everyone's saved progress for it.
+
 ## Spanish text
 
 Spanish versions of themes and journeys are in `themes.es.json` and `journeys.es.json`. They use the same `id` values. If a Spanish entry is missing, the English text is shown.

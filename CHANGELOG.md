@@ -6,6 +6,24 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- Study section (replaces the Insights tab; Insights is now inside it).
+- Reading plans: The story of Scripture (about a month), Jesus foretold and Twelve themes, with progress saved on the device.
+- People and places: 35 people and 21 places, lighting up every verse that names them.
+- Topics: 42 topics such as anxiety, forgiveness, money and rest, found by key words in the public domain Berean Standard Bible. OpenBible.info's topic data was not used because no download or license could be confirmed.
+- Guess the connection: a quiz with score and streak, for personal use or small groups.
+- Connection of the day on the welcome page and in Study, the same for everyone each day.
+- QR code for any view, with a downloadable image for slides and bulletins.
+- Embed code for church websites and blogs, with a compact embedded view that links back to the full site.
+- Printable poster of the whole map as SVG (any print size) or PNG.
+- "Suggest a note" link on connections without a note, opening a pre-filled GitHub issue form.
+- 143 new "why it connects" notes for the key verses in every theme (362 in total).
+- Usage events in GoatCounter for journeys, themes, plans, the game, Connect, QR codes, embeds, posters and note suggestions (no personal data).
+- QR code library: qrcode-generator (MIT), listed in THIRD_PARTY_NOTICES.md.
+
+### Fixed
+- Moving the pointer over the map while it was still loading could cause an error.
+
+### Added
 - Credits to [JoeMighty](https://github.com/JoeMighty) on the welcome page, in the About box and in the README.
 - Licenses: code under Apache 2.0 with a NOTICE file that must be kept, and original content under CC BY 4.0, both requiring credit back to this repository. Added `CITATION.cff` for GitHub's "Cite this repository" button.
 - Contributing guide, issue forms (bug, content suggestion, feature idea), `robots.txt`, `sitemap.xml`, structured data for search engines and a GitHub social preview image (`docs/social-preview.png`).

@@ -42,6 +42,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## QR codes: qrcode-generator
+
+- Source: https://github.com/kazuhikoarase/qrcode-generator (npm package `qrcode-generator` 1.4.4), included as `site/vendor/qrcode.js`
+- License: MIT, Copyright (c) 2009 Kazuhiko Arase. The copyright and license notice are kept at the top of the file.
+- "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+
 ## Bible.com links and translation names
 
 - Passages link to Bible.com (YouVersion). No content from Bible.com is copied or embedded.
@@ -57,4 +63,4 @@ SOFTWARE.
 
 ## Development tools (not shipped with the site)
 
-- Playwright (Apache 2.0), axe-core and @axe-core/playwright (MPL 2.0).
+- Playwright (Apache 2.0), axe-core and @axe-core/playwright (MPL 2.0), Lighthouse CI (Apache 2.0).

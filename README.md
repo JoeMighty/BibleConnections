@@ -42,14 +42,17 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Map:** around 200,000 cross references with a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan. Uses WebGL where a graphics chip is available.
 - **Welcome page:** a picture of the full map, quick starts, themes, the current sermon series and "pick up where you left off".
 - **Connections:** tap any arc to see both passages and read them on Bible.com in your chosen translation.
-- **Why it connects:** 219 short explanations for the strongest links, with a filter to show only explained connections.
+- **Why it connects:** 362 short explanations for the strongest links, with a filter to show only explained connections.
 - **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`) or words (`shepherd`).
 - **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.
 - **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
 - **Guided journeys:** nine step-by-step tours with discussion questions, presenter mode for sermons and classes (works with clickers), and printable handouts.
 - **Sermon series:** show the current series passages on the welcome page.
+- **Study:** reading plans with saved progress, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Connection of the day** on the welcome page.
 - **Insights:** most connected verses and chapters, plus a category heatmap that filters the map.
-- **Sharing:** every view has its own link, back button support, Share, Copy and Save image, plus link previews in messaging apps.
+- **Sharing:** every view has its own link, back button support, Share, Copy, Save image, QR codes for slides and bulletins, embed code for church websites, and link previews in messaging apps.
+- **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
 - **Spanish:** full Spanish interface, journeys and handouts, with Spanish Bible.com translations.
 - **Settings:** language, light, dark or system appearance, high contrast mode and Bible.com translation.

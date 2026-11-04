@@ -23,7 +23,8 @@
   // Bible.com (YouVersion) translations for "Read" links, loaded from content/versions.json. No verse text is hosted.
   let VERSIONS = { NIV: { id: 111, name: 'New International Version', lang: 'en' } };
   const VERSION = '0.5.0';
-  let CONFIG = {};
+  let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [];
+  const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
   const AXIS_H = 84;          // px reserved under the baseline
   const BAR_MAX = 30;         // px height of the tallest chapter bar
@@ -147,6 +148,9 @@
       getJSON('content/series.json').catch(() => ({ enabled: false })),
       getJSON('content/versions.json').then(list => { VERSIONS = Object.fromEntries(list.map(v => [v.code, v])); }).catch(() => {}),
       getJSON('content/config.json').then(c => { CONFIG = c; }).catch(() => {}),
+      getJSON('content/people-places.json').then(x => { PEOPLE = x; }).catch(() => {}),
+      getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
+      getJSON('content/plans.json').then(x => { PLANS = x; }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -228,6 +232,7 @@
     return `${b} ${c}:${v} to ${refLabel(end)}`;
   }
   function rangeLabel(r) {
+    if (r.entity) return r.entity.name;
     if (r.kind === 'words') return `“${r.query}”`;
     if (r.kind === 'book') return BOOKS[r.book].name;
     if (r.kind === 'chapter') return `${BOOKS[r.book].name} ${r.chapter}`;
@@ -613,7 +618,7 @@
     else { ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H); }
     if (!N) return;
 
-    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || (state.mode === 'path' && !!state.path?.edges);
+    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || state.mode === 'plan' || (state.mode === 'game' && state.game?.answered != null) || (state.mode === 'path' && !!state.path?.edges);
     const nb = state.colorMode === 'category' ? catKeys.length : BUCKETS;
     const zoom = view.k / view.fitK;
     let alpha = Math.min(0.9, Math.max(0.05, 22 / Math.sqrt(Math.max(1, filtered.length)) * Math.sqrt(zoom)));
@@ -759,6 +764,11 @@
     if (state.mode === 'journey') { const s = currentStep(); if (s) highlightPair(ctx, s.ia, s.ib); }
     if (state.hover >= 0 && state.hover !== state.selected) strokePair(ctx, F[state.hover], T[state.hover], pal.sel, 1.6, 0.75);
     if (state.selected >= 0) highlightPair(ctx, F[state.selected], T[state.selected]);
+    if (state.mode === 'plan' && state.plan) {
+      const plan = PLANS.find(x => x.id === state.plan.id);
+      for (const it of planDays(plan)[state.plan.day].items) highlightPair(ctx, it.a, it.b);
+    }
+    if (state.mode === 'game' && state.game && state.game.answered !== null) highlightPair(ctx, F[state.game.i], T[state.game.i]);
     if (state.mode === 'path' && state.path && state.path.edges) {
       const edges = state.path.edges.slice(0, state.path.shown);
       edges.forEach(e => highlightPair(ctx, e.a, e.b));
@@ -779,6 +789,7 @@
 
   // ---------- Hit testing ----------
   function hitTest(px, py, tol) {
+    if (!N) return -1;
     if (py > view.ty + 2) return -1;
     const pool = state.focus ? focusList : filtered;
     let best = -1, bestD = tol;
@@ -794,6 +805,7 @@
     return best;
   }
   function chapterAt(px, py) {
+    if (!N) return -1;   // data still loading
     if (py < view.ty || py > view.ty + BAR_MAX + 30) return -1;
     const x = (px - view.tx) / view.k;
     if (x < 0 || x >= TOTAL) return -1;
@@ -1010,7 +1022,9 @@
     return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${saved ? '★ Saved' : '☆ Save'}</button>
       <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
       <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
-      <button type="button" class="btn ghost small" data-action="image">Save image</button>`;
+      <button type="button" class="btn ghost small" data-action="image">Save image</button>
+      <button type="button" class="btn ghost small" data-action="qr">QR code</button>
+      <button type="button" class="btn ghost small" data-action="embed">Embed</button>`;
   };
 
   function renderPanel() {
@@ -1023,12 +1037,19 @@
     else if (state.mode === 'insights') [title, html] = insightsHTML();
     else if (state.mode === 'series') [title, html] = seriesHTML();
     else if (state.mode === 'path') [title, html] = pathHTML();
+    else if (state.mode === 'study') [title, html] = studyHTML();
+    else if (state.mode === 'plans') [title, html] = plansHTML();
+    else if (state.mode === 'plan' && state.plan) [title, html] = planHTML();
+    else if (state.mode === 'people') [title, html] = peopleHTML();
+    else if (state.mode === 'topics') [title, html] = topicsHTML();
+    else if (state.mode === 'game') [title, html] = gameHTML();
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
       html += refCard(F[i], F[i], color) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(T[i], E[i], color);
       const n = noteMap.get(i);
       if (n) html += noteHTML(n);
+      else html += `<p class="hint">No note yet for this connection. <a href="${esc(suggestUrl(i))}" target="_blank" rel="noopener" data-track="suggest">Suggest a note<span class="sr-only"> (opens GitHub in a new tab)</span></a></p>`;
       html += `<p class="muted">Strength: ${V[i]} votes on OpenBible.info</p>
         <div class="actions"><button type="button" class="btn small" data-action="zoomRef">Zoom to this arc</button>${shareButtons()}</div>
         <div class="actions">
@@ -1040,7 +1061,9 @@
       const f = state.focus;
       title = rangeLabel(f);
       if (f.kind === 'words') {
-        html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>
+        if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
+        else html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>`;
+        html += `
           <p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>
           <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
           <h3>Verses</h3><ul class="verse-list">`;
@@ -1123,6 +1146,7 @@
     return [J.name, html];
   }
   function startJourney(j, step = 0) {
+    track('journey/' + JOURNEYS[j].id, JOURNEYS[j].name);
     state.mode = 'journey'; state.journey = { j, step }; state.selected = -1; state.focus = null;
     updateNav(); showStep();
   }
@@ -1202,7 +1226,7 @@
 
   // ---------- First-time tips ----------
   function maybeShowTips() {
-    if (store.get('tipsSeen', false) || isLanding() || document.body.classList.contains('presenting')) return;
+    if (EMBED || store.get('tipsSeen', false) || isLanding() || document.body.classList.contains('presenting')) return;
     $('tips').hidden = false;
   }
   $('tipsClose').addEventListener('click', () => { $('tips').hidden = true; store.set('tipsSeen', true); el.viz.focus(); });
@@ -1251,6 +1275,7 @@
     const a = parseReference(fromText), b = parseReference(toText);
     state.mode = 'path'; state.selected = -1; state.focus = null; state.journey = null;
     state.path = { fromText, toText, error: '' };
+    if (push) track('connect', `${fromText} to ${toText}`);
     if (!a || a.error || !b || b.error) {
       state.path.error = (a && a.error) || (b && b.error) || 'Enter two references, for example Genesis 3:15 and Revelation 12:9.';
     } else {
@@ -1401,6 +1426,345 @@
   }
   $('saveImage').addEventListener('click', exportImage);
 
+  // ---------- Usage events (only when visit counting is on; no personal data) ----------
+  function track(name, title) {
+    try { window.goatcounter?.count?.({ path: `event/${name}`, title: title || name, event: true }); } catch { /* stats unavailable */ }
+  }
+
+  // ---------- Study hub ----------
+  const STUDY_MODES = ['study', 'plans', 'plan', 'people', 'topics', 'game', 'insights'];
+  const nameOf = (x) => (LANG === 'es' && x.name_es) || x.name;
+  const descOf = (x) => (LANG === 'es' && x.description_es) || x.description;
+  function studyHTML() {
+    const cards = [
+      ['plans', 'Reading plans', 'Follow the connections a few at a time, with your progress saved on this device.'],
+      ['people', 'People and places', 'See where a person or place appears across the whole Bible.'],
+      ['topics', 'Topics', 'Explore what Scripture says about worry, forgiveness, money, rest and more.'],
+      ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
+      ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
+    ];
+    let html = '<ul class="study-list">';
+    for (const [mode, title, text] of cards) {
+      html += `<li><button type="button" class="study-card" data-action="mode" data-mode="${mode}"><strong>${title}</strong><span>${text}</span></button></li>`;
+    }
+    html += `<li><button type="button" class="study-card" data-action="poster"><strong>Print a poster</strong><span>Download the whole map as a high-resolution image for printing.</span></button></li></ul>`;
+    const cotd = connectionOfTheDay();
+    if (cotd >= 0) html += `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
+    return ['Study', html];
+  }
+
+  // ---------- Connection of the day ----------
+  let notedList = null;
+  function connectionOfTheDay() {
+    if (!notedList) notedList = [...noteMap.keys()].sort((a, b) => a - b);
+    if (!notedList.length) return -1;
+    const day = Math.floor(Date.now() / 86400000);
+    // the same connection for everyone on a given day, moving through all noted connections
+    return notedList[(Math.imul(day, 2654435761) >>> 0) % notedList.length];
+  }
+  function cotdHTML(i) {
+    const n = noteMap.get(i);
+    return `<div class="cotd">
+      <p class="cotd-refs">${esc(refLabel(F[i]))} <span aria-hidden="true">↔</span><span class="sr-only"> and </span> ${esc(refLabel(T[i], E[i]))}</p>
+      <p><span class="tag">${esc(n.type)}</span></p>
+      <p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>
+      <div class="actions tight">
+        <button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button>
+        ${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`)}
+        ${ext(bibleUrl(T[i]), `Read ${esc(refLabel(T[i]))}`)}
+      </div></div>`;
+  }
+
+  // ---------- Reading plans ----------
+  function strongestFor(v, preferNoted = true) {
+    let best = -1;
+    for (let i = 0; i < N; i++) {
+      if (F[i] !== v && T[i] !== v) continue;
+      const score = V[i] + (preferNoted && hasNote[i] ? 100000 : 0);
+      if (best < 0 || score > V[best] + (preferNoted && hasNote[best] ? 100000 : 0)) best = i;
+    }
+    return best;
+  }
+  const planCache = new Map();
+  function planDays(plan) {
+    if (planCache.has(plan.id)) return planCache.get(plan.id);
+    let items = [];
+    if (plan.source === 'journeys') {
+      JOURNEYS.forEach((j, jn) => journeySteps[jn].forEach(s => items.push({ a: s.ia, b: s.ib, title: s.title, note: s.note, group: j.name })));
+    } else if (plan.source === 'theme') {
+      const t = THEMES.find(x => x.id === plan.theme);
+      for (const o of t.verses) {
+        const v = osisToIndex(o), i = strongestFor(v);
+        if (i >= 0) items.push({ a: v, b: F[i] === v ? T[i] : F[i], ref: i });
+      }
+    }
+    let days = [];
+    if (plan.source === 'themes') {
+      days = THEMES.map(t => ({ title: nameOf(t), items: t.verses.slice(0, plan.perDay).map(o => {
+        const v = osisToIndex(o), i = strongestFor(v);
+        return i >= 0 ? { a: v, b: F[i] === v ? T[i] : F[i], ref: i } : null;
+      }).filter(Boolean) }));
+    } else {
+      for (let n = 0; n < items.length; n += plan.perDay) days.push({ title: items[n].group || '', items: items.slice(n, n + plan.perDay) });
+    }
+    planCache.set(plan.id, days);
+    return days;
+  }
+  const planProgress = (id) => (store.get('plans', {})[id] || { done: [] });
+  function setPlanDone(id, day, done) {
+    const all = store.get('plans', {});
+    const p = all[id] || { done: [] };
+    p.done = done ? [...new Set([...p.done, day])] : p.done.filter(d => d !== day);
+    all[id] = p; store.set('plans', all);
+  }
+  function plansHTML() {
+    let html = '<p>Short daily readings that follow the connections. Your progress is saved on this device.</p><ul class="journey-list">';
+    for (const plan of PLANS) {
+      const days = planDays(plan), done = planProgress(plan.id).done.length;
+      const next = Math.min(days.length - 1, firstUndone(plan));
+      html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>
+        <div class="progress" role="img" aria-label="${done} of ${days.length} days done"><span style="width:${(done / days.length) * 100}%"></span></div>
+        <p class="step-count">${done} of ${days.length} days done</p>
+        <div class="actions tight"><button type="button" class="btn small" data-action="openPlan" data-plan="${plan.id}" data-day="${next}">${done ? 'Continue' : 'Start'}<span class="sr-only"> ${esc(nameOf(plan))}</span></button></div></li>`;
+    }
+    return ['Reading plans', html + '</ul><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>'];
+  }
+  function firstUndone(plan) {
+    const done = new Set(planProgress(plan.id).done), days = planDays(plan);
+    for (let d = 0; d < days.length; d++) if (!done.has(d)) return d;
+    return 0;
+  }
+  function planHTML() {
+    const plan = PLANS.find(p => p.id === state.plan.id), days = planDays(plan), d = state.plan.day, day = days[d];
+    const done = new Set(planProgress(plan.id).done);
+    let html = `<p class="step-count">${esc(nameOf(plan))} · Day ${d + 1} of ${days.length}</p>
+      <div class="progress" aria-hidden="true"><span style="width:${(done.size / days.length) * 100}%"></span></div>`;
+    if (day.title) html += `<h3 class="step-title">${esc(day.title)}</h3>`;
+    for (const it of day.items) {
+      const note = it.note || (it.ref !== undefined && noteMap.get(it.ref)?.text);
+      html += `<div class="plan-item">${it.title ? `<p class="series-title">${esc(it.title)}</p>` : ''}
+        ${refCard(it.a, it.a, pal.marker)}<p class="link-arrow" aria-hidden="true">connects to</p>${refCard(it.b, it.b, pal.marker)}
+        ${note ? `<p${!it.note && LANG !== 'en' ? ' lang="en"' : ''}>${esc(note)}</p>` : ''}</div>`;
+    }
+    const isDone = done.has(d);
+    html += `<div class="actions"><button type="button" class="btn${isDone ? ' ghost' : ''}" data-action="planDone" aria-pressed="${isDone}">${isDone ? '✓ Day complete' : 'Mark day complete'}</button></div>
+      <div class="actions nav-row">
+        <button type="button" class="btn ghost" data-action="planDay" data-day="${d - 1}" ${d === 0 ? 'disabled' : ''}>Previous day</button>
+        <button type="button" class="btn ghost" data-action="planDay" data-day="${d + 1}" ${d === days.length - 1 ? 'disabled' : ''}>Next day</button>
+      </div><div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="plans">All plans</button></div>`;
+    return [nameOf(plan), html];
+  }
+  function openPlan(id, day, { push = true } = {}) {
+    const plan = PLANS.find(p => p.id === id);
+    if (!plan) return;
+    const days = planDays(plan);
+    state.mode = 'plan'; state.plan = { id, day: Math.max(0, Math.min(days.length - 1, day)) };
+    state.selected = -1; state.focus = null; state.journey = null;
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+    const its = days[state.plan.day].items;
+    if (its.length) {
+      const lo = Math.min(...its.map(x => Math.min(x.a, x.b))), hi = Math.max(...its.map(x => Math.max(x.a, x.b)));
+      zoomToSpan(lo, hi + 1, 0.08);
+    }
+    announce(`${nameOf(plan)}, day ${state.plan.day + 1}.`);
+  }
+
+  // ---------- People, places and topics ----------
+  function entityListHTML(list, label) {
+    return `<h3>${label}</h3><ul class="chip-list">${list.map(e => `<li><button type="button" class="chip" data-action="entity" data-type="${e.type || 'topic'}" data-id="${e.id}">${esc(nameOf(e))}</button></li>`).join('')}</ul>`;
+  }
+  function peopleHTML() {
+    const html = `<p>Choose a person or place to light up every verse that mentions them and the connections around them.</p>
+      ${entityListHTML(PEOPLE.filter(e => e.type === 'person'), 'People')}${entityListHTML(PEOPLE.filter(e => e.type === 'place'), 'Places')}
+      <p class="hint">Names are matched in the Berean Standard Bible, so a name shared by several people (such as Mary or John) shows all of them.</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`;
+    return ['People and places', html];
+  }
+  function topicsHTML() {
+    const html = `<p>Choose a topic to see the verses about it and how they connect.</p>${entityListHTML(TOPICS.map(t => ({ ...t, type: 'topic' })), 'Topics')}
+      <p class="hint">Topics are found by key words in the Berean Standard Bible, so they are a starting point rather than a complete list.</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`;
+    return ['Topics', html];
+  }
+  async function entitySearch(type, id) {
+    const e = type === 'topic' ? TOPICS.find(t => t.id === id) : PEOPLE.find(p => p.id === id && p.type === type);
+    if (!e) return null;
+    let idx;
+    try { idx = await loadWords(); } catch { return null; }
+    const set = new Set();
+    const keys = type === 'topic' ? Object.keys(idx) : null;
+    for (const w of e.words) {
+      const matches = type === 'topic' ? keys.filter(k => k === w || (k.startsWith(w) && k.length - w.length <= 3)) : (idx[w] ? [w] : []);
+      for (const k of matches) for (const v of decodePostings(idx[k])) set.add(v);
+    }
+    if (!set.size) return null;
+    const verses = Int32Array.from(set).sort();
+    const mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    return { kind: 'words', query: nameOf(e), entity: { type, id, name: nameOf(e), description: type === 'topic' ? '' : descOf(e) }, verses, mask, start: verses[0], end: verses[verses.length - 1] + 1 };
+  }
+  async function openEntity(type, id, opts = {}) {
+    const f = await entitySearch(type, id);
+    if (!f) return;
+    track(`${type}/${id}`, f.entity.name);
+    setFocus(f, { zoom: true, ...opts });
+  }
+
+  // ---------- Guess the connection ----------
+  function newQuestion() {
+    if (!notedList) connectionOfTheDay();
+    const pick = () => notedList[Math.floor(Math.random() * notedList.length)];
+    const i = pick(), flip = Math.random() < 0.5;
+    const a = flip ? T[i] : F[i], correct = flip ? F[i] : T[i];
+    const options = [correct], books = new Set([verseBook[correct], verseBook[a]]);
+    let guard = 0;
+    while (options.length < 3 && guard++ < 200) {
+      const j = pick(), v = Math.random() < 0.5 ? F[j] : T[j];
+      if (books.has(verseBook[v]) || options.includes(v)) continue;
+      books.add(verseBook[v]); options.push(v);
+    }
+    options.sort(() => Math.random() - 0.5);
+    state.game = { i, a, correct, options, answered: null };
+  }
+  function gameHTML() {
+    if (!state.game) newQuestion();
+    const g = state.game, sc = store.get('game', { right: 0, total: 0, streak: 0, best: 0 });
+    let html = `<p>Which passage is linked to <strong>${esc(refLabel(g.a))}</strong>? Read it first if you like.</p>
+      <div class="actions tight">${ext(bibleUrl(g.a), `Read ${esc(refLabel(g.a))}`)}</div>
+      <ul class="answer-list" aria-label="Answers">`;
+    for (const v of g.options) {
+      const state2 = g.answered === null ? '' : v === g.correct ? ' correct' : v === g.answered ? ' wrong' : '';
+      html += `<li><button type="button" class="answer${state2}" data-action="answer" data-v="${v}" ${g.answered !== null ? 'disabled' : ''}>${esc(refLabel(v))}${state2 === ' correct' ? '<span class="sr-only"> (correct answer)</span>' : state2 === ' wrong' ? '<span class="sr-only"> (your answer)</span>' : ''}</button></li>`;
+    }
+    html += '</ul>';
+    if (g.answered !== null) {
+      const ok = g.answered === g.correct, n = noteMap.get(g.i);
+      html += `<p class="result ${ok ? 'ok' : 'no'}" role="status">${ok ? 'Correct!' : `Not quite. The answer is ${esc(refLabel(g.correct))}.`}</p>
+        ${n ? `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p></div>` : ''}
+        <div class="actions"><button type="button" class="btn" data-action="nextQuestion">Next question</button>${ext(bibleUrl(g.correct), `Read ${esc(refLabel(g.correct))}`)}</div>`;
+    }
+    html += `<p class="step-count">Score: ${sc.right} of ${sc.total} · Streak: ${sc.streak} · Best streak: ${sc.best}</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="resetGame">Reset score</button><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`;
+    return ['Guess the connection', html];
+  }
+  function answerQuestion(v) {
+    const g = state.game;
+    if (!g || g.answered !== null) return;
+    g.answered = v;
+    const ok = v === g.correct, sc = store.get('game', { right: 0, total: 0, streak: 0, best: 0 });
+    sc.total++; if (ok) { sc.right++; sc.streak++; sc.best = Math.max(sc.best, sc.streak); } else sc.streak = 0;
+    store.set('game', sc);
+    track('game/answer', ok ? 'correct' : 'wrong');
+    drawBase(); renderPanel();
+    zoomToPair(F[g.i], T[g.i]);
+    el.panelBody.querySelector('.result')?.focus?.();
+  }
+
+  // ---------- QR code ----------
+  function cleanUrl() { const u = new URL(location.href); u.searchParams.delete('embed'); return u.toString(); }
+  function openQR() {
+    if (typeof qrcode !== 'function') return;
+    const url = cleanUrl(), qr = qrcode(0, 'M');
+    qr.addData(url); qr.make();
+    $('qrImage').innerHTML = qr.createSvgTag({ cellSize: 6, margin: 4, scalable: true, alt: `QR code for ${url}` });
+    $('qrLabel').textContent = contextItems().map(x => tr(x[1])).join(' · ') || tr('The whole Bible');
+    $('qrUrl').textContent = url;
+    $('qrDialog').showModal();
+    $('qrDialog').dataset.url = url;
+    track('share/qr');
+  }
+  $('qrDownload').addEventListener('click', () => {
+    const qr = qrcode(0, 'M'); qr.addData($('qrDialog').dataset.url); qr.make();
+    const n = qr.getModuleCount(), cell = 16, pad = 4 * cell, size = n * cell + pad * 2;
+    const c = document.createElement('canvas'); c.width = c.height = size;
+    const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, size, size); ctx.fillStyle = '#000';
+    for (let r = 0; r < n; r++) for (let col = 0; col < n; col++) if (qr.isDark(r, col)) ctx.fillRect(pad + col * cell, pad + r * cell, cell, cell);
+    c.toBlob(b => downloadBlob(b, 'bible-connections-qr.png'), 'image/png');
+  });
+  function downloadBlob(blob, name) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+  }
+
+  // ---------- Embed ----------
+  function openEmbed() {
+    const u = new URL(cleanUrl()); u.searchParams.set('embed', '1');
+    const label = contextItems().map(x => x[1]).join(', ') || 'The whole Bible';
+    const h = $('embedHeight').value;
+    $('embedCode').value = `<iframe src="${u}" title="Bible Connections: ${label.replace(/"/g, '&quot;')}" width="100%" height="${h}" style="border:0;border-radius:12px" loading="lazy" allow="fullscreen"></iframe>`;
+    $('embedDialog').showModal();
+    track('share/embed');
+  }
+  $('embedHeight').addEventListener('change', openEmbed);
+  $('embedCopy').addEventListener('click', () => copyText($('embedCode').value));
+
+  // ---------- Poster ----------
+  function posterSVG({ dark, category }) {
+    const W = 4800, M = 160, inner = W - 2 * M, k = inner / TOTAL, R = (TOTAL * k) / 2;
+    const by = M + R + 40, H = by + 520;
+    const bg = dark ? '#000000' : '#ffffff', fg = dark ? '#ffffff' : '#000000', sub = dark ? '#a1a1aa' : '#52525b';
+    const isL = !dark, cols = category ? catKeys.map(c => CATEGORIES[c][isL ? 'light' : 'dark'])
+      : Array.from({ length: BUCKETS }, (_, b) => { const t = b / (BUCKETS - 1); return `hsl(${(285 + t * 195) % 360}, ${isL ? 85 : 95}%, ${isL ? 42 - t * 4 : 60 - t * 6}%)`; });
+    const nb = cols.length, paths = Array.from({ length: nb }, () => []);
+    for (const i of filtered) {
+      const a = M + (Math.min(F[i], T[i]) + 0.5) * k, b = M + (Math.max(F[i], T[i]) + 0.5) * k, r = (b - a) / 2;
+      if (r < 0.2) continue;
+      const bucket = category ? catKeys.indexOf(BOOKS[verseBook[F[i]]].cat) : Math.min(BUCKETS - 1, Math.floor(Math.sqrt(Math.abs(T[i] - F[i]) / TOTAL) * BUCKETS));
+      paths[bucket].push(`M${a.toFixed(1)} ${by}A${r.toFixed(1)} ${r.toFixed(1)} 0 0 1 ${b.toFixed(1)} ${by}`);
+    }
+    const alpha = Math.min(0.9, Math.max(0.06, 30 / Math.sqrt(Math.max(1, filtered.length))));
+    let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="-apple-system, 'SF Pro Display', 'Segoe UI', Roboto, Arial, sans-serif">
+<rect width="100%" height="100%" fill="${bg}"/><g fill="none" stroke-width="1.6" stroke-opacity="${alpha.toFixed(3)}">`;
+    for (let b = nb - 1; b >= 0; b--) if (paths[b].length) s += `<path stroke="${cols[b]}" d="${paths[b].join('')}"/>`;
+    s += `</g><g>`;
+    let lastRight = [-1e9, -1e9];
+    BOOKS.forEach(bk => {
+      const x0 = M + bk.start * k, x1 = M + bk.end * k, col = CATEGORIES[bk.cat][isL ? 'light' : 'dark'];
+      s += `<rect x="${x0.toFixed(1)}" y="${by + 6}" width="${Math.max(1, x1 - x0 - 2).toFixed(1)}" height="14" fill="${col}"/>`;
+      const label = (x1 - x0) > bk.name.length * 15 ? bk.name : bk.abbr, cx = (x0 + x1) / 2, w = label.length * 15;
+      for (let row = 0; row < 2; row++) if (cx - w / 2 > lastRight[row] + 8) {
+        s += `<text x="${cx.toFixed(1)}" y="${by + 60 + row * 36}" font-size="26" fill="${sub}" text-anchor="middle">${esc(label)}</text>`;
+        lastRight[row] = cx + w / 2; break;
+      }
+    });
+    const ntx = M + BOOKS[39].start * k;
+    s += `<rect x="${ntx - 1.5}" y="${by}" width="3" height="120" fill="${fg}"/>
+<text x="${ntx - 16}" y="${by + 150}" font-size="28" fill="${sub}" text-anchor="end">${esc(tr('Old Testament'))}</text>
+<text x="${ntx + 16}" y="${by + 150}" font-size="28" fill="${sub}">${esc(tr('New Testament'))}</text>
+<text x="${W / 2}" y="${by + 300}" font-size="110" font-weight="700" fill="${fg}" text-anchor="middle">Bible Connections</text>
+<text x="${W / 2}" y="${by + 380}" font-size="40" fill="${sub}" text-anchor="middle">${esc(`${filtered.length.toLocaleString()} ${tr('cross references')}`)} · ${esc(tr('Cross references: OpenBible.info (CC BY 4.0)'))} · joemighty.github.io/BibleConnections</text>
+</g></svg>`;
+    return { svg: s, W, H };
+  }
+  async function makePoster(format) {
+    const dark = $('posterDark').checked, category = $('posterCategory').checked;
+    const { svg, W, H } = posterSVG({ dark, category });
+    track('poster/' + format);
+    if (format === 'svg') { downloadBlob(new Blob([svg], { type: 'image/svg+xml' }), 'bible-connections-poster.svg'); return; }
+    const img = new Image(), url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+    img.src = url;
+    try { await img.decode(); } catch { announce('Sorry, the poster image could not be created. Try the SVG version.'); return; }
+    const scale = 3840 / W, c = document.createElement('canvas');
+    c.width = 3840; c.height = Math.round(H * scale);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    URL.revokeObjectURL(url);
+    c.toBlob(b => downloadBlob(b, 'bible-connections-poster.png'), 'image/png');
+  }
+  $('posterSvg').addEventListener('click', () => makePoster('svg'));
+  $('posterPng').addEventListener('click', () => makePoster('png'));
+
+  // ---------- Suggest a note ----------
+  function suggestUrl(i) {
+    const label = `${refLabel(F[i])} and ${refLabel(T[i], E[i])}`;
+    const q = new URLSearchParams({
+      template: 'content_suggestion.yml', labels: 'content', title: `Note: ${label}`, kind: 'A new or better note',
+      details: `Connection: ${label} (${toOsis(F[i])} and ${toOsis(T[i])})\nLink: ${cleanUrl()}\n\nWhy do these passages connect? Please write in your own words.\n`,
+    });
+    return `https://github.com/JoeMighty/BibleConnections/issues/new?${q}`;
+  }
+
   // ---------- Insights ----------
   let statsCache = null;
   function computeStats() {
@@ -1505,6 +1869,8 @@
 
   // ---------- Panel events ----------
   el.panelBody.addEventListener('click', (e) => {
+    const tracked = e.target.closest('a[data-track]');
+    if (tracked) track(tracked.dataset.track);
     const btn = e.target.closest('button');
     if (!btn) return;
     if (btn.dataset.ref) { selectRef(+btn.dataset.ref); focusPanelHeading(); return; }
@@ -1524,6 +1890,23 @@
     else if (a === 'stepNext') { goStep(1); focusPanelHeading(); }
     else if (a === 'stepPrev') { goStep(-1); focusPanelHeading(); }
     else if (a === 'present') enterPresenter();
+    else if (a === 'qr') openQR();
+    else if (a === 'embed') openEmbed();
+    else if (a === 'poster') { $('posterDialog').showModal(); }
+    else if (a === 'openPlan') { openPlan(btn.dataset.plan, +btn.dataset.day); track('plan/' + btn.dataset.plan); focusPanelHeading(); }
+    else if (a === 'planDay') { openPlan(state.plan.id, +btn.dataset.day); focusPanelHeading(); }
+    else if (a === 'planDone') {
+      const done = btn.getAttribute('aria-pressed') !== 'true';
+      setPlanDone(state.plan.id, state.plan.day, done);
+      if (done) track('plan/day-complete', state.plan.id);
+      renderPanel(); el.panelBody.querySelector('[data-action=planDone]')?.focus();
+      announce(done ? 'Day marked complete.' : 'Day marked not complete.');
+    }
+    else if (a === 'entity') { openEntity(btn.dataset.type, btn.dataset.id).then(focusPanelHeading); }
+    else if (a === 'answer') answerQuestion(+btn.dataset.v);
+    else if (a === 'nextQuestion') { newQuestion(); drawBase(); renderPanel(); el.panelBody.querySelector('.answer')?.focus(); }
+    else if (a === 'resetGame') { store.set('game', { right: 0, total: 0, streak: 0, best: 0 }); renderPanel(); announce('Score reset.'); }
+    else if (a === 'gotoRef') { if (btn.dataset.cotd) track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); }
     else if (a === 'save') toggleSave();
     else if (a === 'image') exportImage();
     else if (a === 'goto') goTo(btn.dataset.url);
@@ -1560,7 +1943,7 @@
   function updateNav() {
     $('homeBtn').setAttribute('aria-pressed', String(!landing.hidden));
     document.querySelectorAll('[data-nav]').forEach(b => {
-      const on = state.mode === b.dataset.nav || (b.dataset.nav === 'journeys' && state.mode === 'journey');
+      const on = state.mode === b.dataset.nav || (b.dataset.nav === 'journeys' && state.mode === 'journey') || (b.dataset.nav === 'study' && STUDY_MODES.includes(state.mode));
       b.setAttribute('aria-pressed', String(on));
     });
   }
@@ -1581,7 +1964,8 @@
 
   el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(true); });
   el.toSel.addEventListener('change', () => { state.to = el.toSel.value; applyFilters(); syncURL(true); });
-  el.theme.addEventListener('change', () => { state.theme = el.theme.value; state.focus = null; state.selected = -1; state.mode = 'explore'; state.journey = null; updateNav(); applyFilters(); syncURL(true); });
+  el.theme.addEventListener('change', () => {
+    if (el.theme.value) track('theme/' + el.theme.value); state.theme = el.theme.value; state.focus = null; state.selected = -1; state.mode = 'explore'; state.journey = null; updateNav(); applyFilters(); syncURL(true); });
   el.notesOnly.addEventListener('change', () => { state.notesOnly = el.notesOnly.checked; applyFilters(); syncURL(true); });
   let votesT = 0;
   el.votes.addEventListener('input', () => {
@@ -1730,6 +2114,9 @@
     $('landingSeries').hidden = !S.enabled;
     if (S.enabled) $('landingSeries').innerHTML = `<p class="eyebrow">Current series</p><h3 class="series-name">${esc(S.title)}</h3><p>${esc(S.description || '')}</p><button type="button" class="btn" data-start="series">See the passages</button>`;
     $('aboutVersion').textContent = VERSION;
+    const cotd = connectionOfTheDay();
+    $('landingCotd').hidden = cotd < 0;
+    if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     renderLandingRecent();
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
@@ -1737,6 +2124,7 @@
     const btn = e.target.closest('button');
     if (!btn) return;
     if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
+    if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`);
@@ -1786,13 +2174,22 @@
     if (state.mode === 'journey' && state.journey) items.push(['journey', `Journey: ${JOURNEYS[state.journey.j].name}, step ${state.journey.step + 1}`]);
     if (state.mode === 'journeys') items.push(['mode', 'Guided journeys']);
     if (state.mode === 'insights') items.push(['mode', 'Insights']);
+    if (state.mode === 'study') items.push(['mode', 'Study']);
+    if (state.mode === 'plans') items.push(['mode', 'Reading plans']);
+    if (state.mode === 'plan' && state.plan) items.push(['mode', `Reading plan: ${nameOf(PLANS.find(p => p.id === state.plan.id))}, day ${state.plan.day + 1}`]);
+    if (state.mode === 'people') items.push(['mode', 'People and places']);
+    if (state.mode === 'topics') items.push(['mode', 'Topics']);
+    if (state.mode === 'game') items.push(['mode', 'Guess the connection']);
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
     if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
     if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
     if (state.minVotes !== DEFAULT_VOTES) items.push(['votes', `Strength ${state.minVotes}+ votes`]);
     if (state.notesOnly) items.push(['notes', 'Only with notes']);
-    if (state.focus && state.mode === 'explore') items.push(['focus', state.focus.kind === 'words' ? `Word: ${rangeLabel(state.focus)}` : rangeLabel(state.focus)]);
+    if (state.focus && state.mode === 'explore') {
+      const en = state.focus.entity;
+      items.push(['focus', en ? `${en.type === 'person' ? 'Person' : en.type === 'place' ? 'Place' : 'Topic'}: ${en.name}` : state.focus.kind === 'words' ? `Word: ${rangeLabel(state.focus)}` : rangeLabel(state.focus)]);
+    }
     if (state.selected >= 0 && state.mode === 'explore') items.push(['selected', `${refLabel(F[state.selected])} ↔ ${refLabel(T[state.selected], E[state.selected])}`]);
     return items;
   }
@@ -1800,6 +2197,10 @@
     const bar = $('contextBar');
     if (!bar || !N) return;
     const items = contextItems();
+    if (EMBED) {
+      $('embedTitle').textContent = items.map(x => x[1]).join(' · ') || 'The whole Bible';
+      $('embedOpen').href = cleanUrl();
+    }
     bar.hidden = !items.length;
     if (!items.length) { $('contextList').innerHTML = ''; return; }
     $('contextList').innerHTML = items.map(([k, label]) =>
@@ -1837,14 +2238,19 @@
       if (state.notesOnly) p.set('notes', '1');
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
       if (LANG !== 'en') p.set('lang', LANG);
+      if (EMBED) p.set('embed', '1');
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
+      else if (state.mode === 'plan' && state.plan) { p.set('plan', state.plan.id); p.set('day', state.plan.day + 1); }
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
-      else if (['journeys', 'insights', 'series', 'path'].includes(state.mode)) p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game'].includes(state.mode)) p.set('view', state.mode);
       else {
-        if (state.focus) { if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus)); }
+        if (state.focus) {
+          if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
+          else if (state.focus.kind === 'words') p.set('q', state.focus.query); else p.set('ref', rangeLabel(state.focus));
+        }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
       }
-      if (![...p.keys()].filter(k => k !== 'lang').length) p.set('view', 'map');
+      if (![...p.keys()].filter(k => k !== 'lang' && k !== 'embed').length) p.set('view', 'map');
       url = `?${p}`;
     }
     renderContext();
@@ -1852,7 +2258,7 @@
     if (url === current || (url === location.pathname && !location.search)) return;
     if (push && !restoring) history.pushState(null, '', url);
     else history.replaceState(null, '', url);
-    if (push && !restoring) recordRecent();
+    if (push && !restoring && !EMBED) recordRecent();
     const sb = el.panelBody.querySelector('[data-action=save]');
     if (sb) { const on = isSaved(); sb.setAttribute('aria-pressed', on); sb.textContent = on ? '★ Saved' : '☆ Save'; }
   }
@@ -1881,8 +2287,10 @@
   async function restoreFromURL(p) {
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }
+    if (p.get('plan')) { openPlan(p.get('plan'), (+p.get('day') || 1) - 1, { push: false }); return; }
+    for (const type of ['person', 'place', 'topic']) if (p.get(type)) { await openEntity(type, p.get(type)); return; }
     if (p.get('path')) { const [a, b] = p.get('path').split('~'); findPath(a || '', b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {
@@ -1905,9 +2313,9 @@
       Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance' });
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
-      if (![...p.keys()].length) { showLanding(); return; }
+      if (![...p.keys()].filter(k => k !== 'embed').length && !EMBED) { showLanding(); return; }
       hideLanding();
-      const hasDetail = ['journey', 'ref', 'q', 'c', 'path'].some(k => p.has(k));
+      const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic'].some(k => p.has(k));
       if (!hasDetail) resetView(false);
       await restoreFromURL(p);
       maybeShowTips();
@@ -1939,6 +2347,7 @@
 
   // ---------- Boot ----------
   async function init() {
+    if (EMBED) { document.body.classList.add('embed'); $('embedBar').hidden = false; }
     applyAppearance();
     try { await loadData(); }
     catch { el.loading.textContent = 'Sorry, the data could not be loaded. Please refresh the page.'; return; }
