@@ -18,7 +18,6 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>
   <img alt="Accessibility: WCAG 2.1 AA tested" src="https://img.shields.io/badge/accessibility-WCAG%202.1%20AA%20tested-0b5cad?style=plastic">
   <img alt="Works offline" src="https://img.shields.io/badge/PWA-works%20offline-5a0fc8?style=plastic&logo=pwa&logoColor=white">
-  <img alt="No build step" src="https://img.shields.io/badge/build-none%20needed-lightgrey?style=plastic&logo=javascript&logoColor=white">
   <img alt="Tested with Playwright" src="https://img.shields.io/badge/tested%20with-Playwright-2EAD33?style=plastic&logo=googlechrome&logoColor=white">
 </p>
 <p>
@@ -81,14 +80,9 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Installable and offline:** works as an app and without a connection after the first visit. Studied passages and places are saved for offline use (Bible.com links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
-## Deploy
-
-`.github/workflows/ci.yml` runs the tests on every push and pull request. Pushes to `main` that pass are deployed to GitHub Pages at https://joemighty.github.io/BibleConnections/ (Pages source: **GitHub Actions**).
-
 ## More guides
 
 - [Usage stats (optional)](docs/ANALYTICS.md)
-- [Using your own web address](docs/CUSTOM-DOMAIN.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
 - [Growing the reach of the project](docs/PROMOTION.md)
 - [Content review packet for pastors](docs/THEOLOGY-REVIEW.md)
@@ -118,12 +112,8 @@ See [CHANGELOG.md](CHANGELOG.md) for what changed in each version, and [Releases
 
 Bible Connections is created by [JoeMighty](https://github.com/JoeMighty).
 
-- **Code:** [Apache License 2.0](LICENSE). Anyone who copies or builds on the code must keep the [NOTICE](NOTICE) file, which credits JoeMighty and links to this repository.
-- **Notes, journeys, book introductions, questions, themes, translations and guides:** [CC BY 4.0](LICENSE-CONTENT.md). Anyone who shares or adapts them must give credit with a link back here.
-
-If you reuse any part of this project, please credit it like this:
-
-> [Bible Connections](https://github.com/JoeMighty/BibleConnections) by [JoeMighty](https://github.com/JoeMighty)
+- **Code:** [Apache License 2.0](LICENSE), with the [NOTICE](NOTICE) file.
+- **Notes, journeys, book introductions, questions, themes, translations and guides:** [CC BY 4.0](LICENSE-CONTENT.md).
 
 GitHub also shows a **Cite this repository** button (from [CITATION.cff](CITATION.cff)).
 
