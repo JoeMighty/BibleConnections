@@ -198,13 +198,6 @@
     "label": "PDV2017"
   },
   {
-    "code": "BFC",
-    "id": 63,
-    "name": "Bible en français courant",
-    "lang": "fr",
-    "label": "BFC"
-  },
-  {
     "code": "DELUT",
     "id": 51,
     "name": "Lutherbibel 1912",
