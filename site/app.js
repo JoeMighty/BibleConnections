@@ -2837,6 +2837,10 @@
     $('landingCotd').hidden = cotd < 0;
     if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     renderLandingRecent();
+    // book groups from Genesis to Revelation, sized by number of verses, in the map's colors
+    const groups = [];
+    for (const b of BOOKS) { const n = b.end - b.start; const g = groups[groups.length - 1]; if (g && g.cat === b.cat) g.n += n; else groups.push({ cat: b.cat, n }); }
+    $('landingSpectrum').innerHTML = groups.map(g => `<span style="flex-grow:${g.n};--cd:${CATEGORIES[g.cat].dark};--cl:${CATEGORIES[g.cat].light}" title="${esc(CATEGORIES[g.cat].name)}"><i>${esc(CATEGORIES[g.cat].name)}</i></span>`).join('');
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
   landing.addEventListener('click', (e) => {
@@ -2851,6 +2855,8 @@
     }
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
     else if (btn.dataset.start === 'series') { hideLanding(); setMode('series'); }
+    else if (btn.dataset.start === 'study' || btn.dataset.start === 'wordstudy') { hideLanding(); setMode(btn.dataset.start); }
+    else if (btn.dataset.start === 'passage') { hideLanding(); el.search.value = 'John 3:16'; runSearch(); focusPanelHeading(); }
     else if (btn.dataset.theme) {
       hideLanding();
       el.theme.value = btn.dataset.theme;

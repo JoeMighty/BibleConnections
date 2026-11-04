@@ -64,37 +64,64 @@
   </header>
 
   <section class="landing" id="landing" aria-labelledby="landingTitle" hidden>
-    <div class="landing-inner">
-      <canvas class="hero" id="heroCanvas" role="img" aria-label="Arc diagram showing tens of thousands of cross references spanning the Bible from Genesis to Revelation"></canvas>
-      <p class="eyebrow">Explore Scripture visually</p>
-      <h2 id="landingTitle">See how the whole Bible fits together</h2>
-      <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Tap one to find out how they connect!</p>
-      <p class="lede adult-only">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
-      <div class="landing-actions">
-        <button type="button" class="btn big" data-start="map">Explore the map</button>
-        <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
-      </div>
-      <form class="landing-search" id="landingSearch" role="search" aria-label="Jump to a verse or word">
-        <label for="landingQ">Or jump straight to a verse, chapter or word</label>
-        <div class="search-row">
-          <input id="landingQ" type="search" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false">
-          <button type="submit" class="btn">Go</button>
+    <div class="landing-hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Explore Scripture visually</p>
+          <h2 id="landingTitle">See how the whole Bible <span class="spectrum-text">fits together</span></h2>
+          <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Tap one to find out how they connect!</p>
+          <p class="lede adult-only">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
+          <div class="landing-actions">
+            <button type="button" class="btn big" data-start="map">Explore the map</button>
+            <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
+          </div>
+          <form class="landing-search" id="landingSearch" role="search" aria-label="Jump to a verse or word">
+            <label for="landingQ">Or jump straight to a verse, chapter or word</label>
+            <div class="search-row">
+              <input id="landingQ" type="search" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false">
+              <button type="submit" class="btn">Go</button>
+            </div>
+          </form>
         </div>
-      </form>
+        <figure class="hero-figure">
+          <canvas class="hero" id="heroCanvas" role="img" aria-label="Arc diagram showing tens of thousands of cross references spanning the Bible from Genesis to Revelation"></canvas>
+          <div class="spectrum" id="landingSpectrum" aria-hidden="true"></div>
+          <figcaption class="spectrum-ends"><span>Genesis</span><span>Revelation</span></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="stat-band"><ul class="stat-row" id="landingStats" aria-label="At a glance"></ul></div>
+    <div class="landing-inner">
       <div class="landing-series" id="landingSeries" hidden></div>
       <div class="landing-recent" id="landingRecent" hidden></div>
-      <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
-      <ul class="stat-row" id="landingStats" aria-label="At a glance"></ul>
-      <h3>Start with a theme</h3>
-      <ul class="chip-list" id="landingThemes"></ul>
-      <h3>How it works</h3>
-      <ol class="how">
-        <li><strong>Zoom in</strong><span>Scroll, pinch or use the + button to move closer to any book.</span></li>
-        <li><strong>Tap an arc</strong><span>See the two passages it joins and why they connect.</span></li>
-        <li><strong>Read and share</strong><span>Open the passages on Bible.com or send the link to a friend.</span></li>
-      </ol>
-      <p class="fine">Cross references from OpenBible.info. Passages open on Bible.com. No Bible text is stored on this site.</p>
-      <p class="fine credit-line">Created by <a href="https://github.com/JoeMighty" rel="noopener author">JoeMighty</a> · <a href="https://github.com/JoeMighty/BibleConnections" rel="noopener">Source on GitHub</a> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/LICENSE" rel="noopener">License</a></p>
+      <div class="landing-split">
+        <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
+        <section class="landing-themes" aria-labelledby="themesTitle">
+          <h3 id="themesTitle">Start with a theme</h3>
+          <ul class="chip-list" id="landingThemes"></ul>
+        </section>
+      </div>
+      <section aria-labelledby="waysTitle">
+        <h3 id="waysTitle">Ways to explore</h3>
+        <ul class="ways">
+          <li><button type="button" class="way" data-start="journeys"><span class="way-mark" aria-hidden="true">→</span><strong>Guided journeys</strong><span>Step by step tours through the story of Scripture, with questions for groups.</span></button></li>
+          <li><button type="button" class="way" data-start="passage"><span class="way-mark" aria-hidden="true">¶</span><strong>Study a passage</strong><span>Open any verse to see its original words, context, connections and questions.</span></button></li>
+          <li><button type="button" class="way" data-start="wordstudy"><span class="way-mark" lang="el" aria-hidden="true">α</span><strong>Hebrew and Greek words</strong><span>Follow a word like shalom or agape through the whole Bible.</span></button></li>
+          <li><button type="button" class="way" data-start="study"><span class="way-mark" aria-hidden="true">✦</span><strong>Plans, people and places</strong><span>Reading plans, 56 people and places, topics and a group game.</span></button></li>
+        </ul>
+      </section>
+      <section aria-labelledby="howTitle">
+        <h3 id="howTitle">How it works</h3>
+        <ol class="how">
+          <li><strong>Zoom in</strong><span>Scroll, pinch or use the + button to move closer to any book.</span></li>
+          <li><strong>Tap an arc</strong><span>See the two passages it joins and why they connect.</span></li>
+          <li><strong>Read and share</strong><span>Open the passages on Bible.com or send the link to a friend.</span></li>
+        </ol>
+      </section>
+      <footer class="landing-foot">
+        <p class="fine">Cross references from OpenBible.info. Passages open on Bible.com. No Bible text is stored on this site.</p>
+        <p class="fine credit-line">Created by <a href="https://github.com/JoeMighty" rel="noopener author">JoeMighty</a> · <a href="https://github.com/JoeMighty/BibleConnections" rel="noopener">Source on GitHub</a> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/LICENSE" rel="noopener">License</a></p>
+      </footer>
     </div>
   </section>
 

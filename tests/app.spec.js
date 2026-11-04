@@ -270,3 +270,17 @@ for (const [name, viewport] of [['iPad landscape', { width: 1180, height: 820 }]
     expect(box.y).toBeGreaterThan(0);
   });
 }
+
+test('welcome page cards open word study and the passage explorer', async ({ page }) => {
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#landingSpectrum span')).toHaveCount(10);
+  await page.locator('.way[data-start=wordstudy]').click();
+  await expect(page.locator('#landing')).toBeHidden();
+  await expect(page.locator('#panelTitle')).toHaveText('Word study');
+  await page.goto('/');
+  await ready(page);
+  await page.locator('.way[data-start=passage]').click();
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await expect(page.locator('#secContext')).toBeVisible();
+});
