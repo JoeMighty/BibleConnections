@@ -284,3 +284,19 @@ test('welcome page cards open word study and the passage explorer', async ({ pag
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
   await expect(page.locator('#secContext')).toBeVisible();
 });
+
+test('clicking outside a pop-up closes it', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await page.click('#aboutBtn');
+  await expect(page.locator('#about')).toBeVisible();
+  // a click inside the box keeps it open
+  await page.locator('#aboutTitle').click();
+  await expect(page.locator('#about')).toBeVisible();
+  await page.mouse.click(5, 5);
+  await expect(page.locator('#about')).toBeHidden();
+  await page.click('#settingsBtn');
+  await expect(page.locator('#settings')).toBeVisible();
+  await page.mouse.click(5, 5);
+  await expect(page.locator('#settings')).toBeHidden();
+});

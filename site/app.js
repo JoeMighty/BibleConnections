@@ -2732,6 +2732,13 @@
   $('compareWith').addEventListener('change', () => setVersions(settings.version, $('compareWith').value));
 
   // ---------- Header: settings, about, install ----------
+  // clicking the dimmed area outside a pop-up closes it, like Escape
+  for (const d of document.querySelectorAll('dialog')) {
+    let downOutside = false;
+    const outside = (e) => { const r = d.getBoundingClientRect(); return e.target === d && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom); };
+    d.addEventListener('pointerdown', (e) => { downOutside = outside(e); });
+    d.addEventListener('click', (e) => { if (downOutside && outside(e)) d.close(); downOutside = false; });
+  }
   $('aboutBtn').addEventListener('click', () => el.about.showModal());
   $('settingsBtn').addEventListener('click', () => el.settings.showModal());
   document.querySelectorAll('[data-nav]').forEach(b => b.addEventListener('click', () => {
