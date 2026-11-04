@@ -96,6 +96,18 @@ The book codes are listed in `site/data/books.json` (the `osis` value), for exam
 - `perDay` is how many connections each day has.
 - Changing a plan's `id` resets everyone's saved progress for it.
 
+### `words.json`: featured Hebrew and Greek words
+
+```json
+[{ "id": "H2617" }, { "id": "G0026" }]
+```
+
+- `id` is a Strong's number: `H` for Hebrew, `G` for Greek, with four digits.
+
+### Kids journeys
+
+Add `"kids": true` to a journey in `journeys.json` to list it under "For kids". Keep the words simple and the steps short.
+
 ## Spanish text
 
 Spanish versions of themes and journeys are in `themes.es.json` and `journeys.es.json`. They use the same `id` values. If a Spanish entry is missing, the English text is shown.

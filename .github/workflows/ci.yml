@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '7 0 * * *'   # daily, so the connection of the day feeds stay current
 
 permissions:
   contents: read
@@ -20,6 +22,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - run: node scripts/feeds.mjs
       - run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -62,6 +65,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the daily feeds
+        run: node scripts/feeds.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

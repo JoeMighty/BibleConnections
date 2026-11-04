@@ -23,7 +23,7 @@
   // Bible.com (YouVersion) translations for "Read" links, loaded from content/versions.json. No verse text is hosted.
   let VERSIONS = { NIV: { id: 111, name: 'New International Version', lang: 'en' } };
   const VERSION = '0.5.0';
-  let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [];
+  let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
   const AXIS_H = 84;          // px reserved under the baseline
@@ -59,6 +59,7 @@
   const settings = {
     appearance: store.get('appearance', 'system'),
     contrast: store.get('contrast', false),
+    kids: store.get('kids', false),
     version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
   };
 
@@ -126,6 +127,7 @@
     pal = isLight ? PALETTES.light : PALETTES.dark;
     document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
     document.documentElement.dataset.contrast = highContrast ? 'more' : 'normal';
+    document.documentElement.dataset.kids = settings.kids ? 'on' : 'off';
     document.querySelector('meta[name=theme-color]').content = pal.bg;
     buildColors();
     if (N) { renderLegend(); drawBase(); renderPanel(); }
@@ -134,6 +136,22 @@
   contrastQuery.addEventListener?.('change', applyAppearance);
 
   // ---------- Data ----------
+  // Book order on the line: Bible order or approximate chronological order (by when events happen).
+  const CHRONO = 'Gen Job Exod Lev Num Deut Josh Judg Ruth 1Sam 2Sam 1Chr Ps 1Kgs Prov Eccl Song 2Chr 2Kgs Jonah Amos Hos Isa Mic Nah Zeph Hab Jer Lam Obad Joel Ezek Dan Ezra Hag Zech Esth Neh Mal Matt Mark Luke John Acts Jas Gal 1Thess 2Thess 1Cor 2Cor Rom Eph Phil Col Phlm 1Tim Titus 1Pet 2Tim 2Pet Heb Jude 1John 2John 3John Rev'.split(' ');
+  let POS, INV, CHAP_OF, NT_POS = 0, BOOKS_BY_POS = [], CHAPTERS_BY_POS = [];
+  function setOrder(order) {
+    POS = new Uint16Array(TOTAL); INV = new Uint16Array(TOTAL);
+    const seq = order === 'chrono' ? CHRONO.map(o => BOOKS.findIndex(b => b.osis === o)) : BOOKS.map((_, i) => i);
+    let p = 0;
+    for (const bi of seq) {
+      const b = BOOKS[bi];
+      b.pos = p;
+      for (let v = b.start; v < b.end; v++) { POS[v] = p; INV[p] = v; p++; }
+    }
+    BOOKS_BY_POS = seq.map(i => BOOKS[i]);
+    CHAPTERS_BY_POS = [...chapters].sort((a, b) => POS[a.start] - POS[b.start]);
+    NT_POS = Math.min(...BOOKS.slice(39).map(b => b.pos));
+  }
   let BOOKS, TOTAL, N = 0, F, T, E, V, verseBook, verseChap, verseNum, chapters, NT_START;
   const noteMap = new Map();
   let hasNote = new Uint8Array(0);
@@ -151,6 +169,7 @@
       getJSON('content/people-places.json').then(x => { PEOPLE = x; }).catch(() => {}),
       getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
       getJSON('content/plans.json').then(x => { PLANS = x; }).catch(() => {}),
+      getJSON('content/words.json').then(x => { FEATURED_WORDS = x.map(w => w.id); }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -174,6 +193,9 @@
       });
     });
     NT_START = BOOKS[39].start;
+    CHAP_OF = new Uint16Array(TOTAL);
+    chapters.forEach((c, n) => { for (let v = 0; v < c.count; v++) CHAP_OF[c.start + v] = n; });
+    setOrder(state.order);
 
     // "Why it connects" notes, matched to the data in either direction
     const pairKey = (a, b) => Math.min(a, b) * 65536 + Math.max(a, b);
@@ -299,7 +321,7 @@
 
   // ---------- State ----------
   const state = {
-    minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', colorMode: 'distance', notesOnly: false,
+    minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', colorMode: 'distance', notesOnly: false, order: 'bible',
     focus: null,       // {kind: book|chapter|verse|words, start, end, mask?, verses?, query?}
     selected: -1,      // index into refs
     hover: -1, hoverChapter: -1,
@@ -377,7 +399,7 @@
 
   function updateCount() {
     const fmt = (n) => n.toLocaleString();
-    const active = [state.theme, state.from !== 'all', state.to !== 'all', state.minVotes !== DEFAULT_VOTES, state.notesOnly, state.colorMode !== 'distance'].filter(Boolean).length;
+    const active = [state.theme, state.from !== 'all', state.to !== 'all', state.minVotes !== DEFAULT_VOTES, state.notesOnly, state.colorMode !== 'distance', state.order !== 'bible'].filter(Boolean).length;
     $('filtersCount').textContent = active ? `${active} active` : '';
     el.count.textContent = `Showing ${fmt(filtered.length)} of ${fmt(N)} connections`;
     el.tagline.textContent = `${fmt(filtered.length)} connections across ${fmt(TOTAL)} verses`;
@@ -396,7 +418,7 @@
   const catColor = (cat) => catColors[catKeys.indexOf(cat)];
   function bucketOf(i) {
     if (state.colorMode === 'category') return catKeys.indexOf(BOOKS[verseBook[F[i]]].cat);
-    const span = Math.abs(T[i] - F[i]) / TOTAL;
+    const span = Math.abs(POS[T[i]] - POS[F[i]]) / TOTAL;
     return Math.min(BUCKETS - 1, Math.floor(Math.sqrt(span) * BUCKETS));
   }
   const colorOf = (i) => (state.colorMode === 'category' ? catColors[bucketOf(i)] : distColors[bucketOf(i)]);
@@ -481,7 +503,13 @@
     const kk = Math.max(view.fitK, Math.min(k, kh));
     animateTo({ k: kk, tx: view.W / 2 - ((s + e) / 2) * kk, ty: view.H - AXIS_H }, true);
   }
-  const zoomToPair = (a, b) => zoomToSpan(Math.min(a, b), Math.max(a, b) + 1, 0.1);
+  const zoomToPair = (a, b) => zoomToSpan(Math.min(POS[a], POS[b]), Math.max(POS[a], POS[b]) + 1, 0.1);
+  // a contiguous verse range (a verse, chapter or book) is contiguous in either book order
+  const zoomToRange = (s, e, pad) => zoomToSpan(POS[s], POS[s] + (e - s), pad);
+  const spanOfPairs = (pairs) => {
+    const xs = pairs.flatMap(([a, b]) => [POS[a], POS[b]]);
+    zoomToSpan(Math.min(...xs), Math.max(...xs) + 1, 0.08);
+  };
   const zoomToRef = (i) => zoomToPair(F[i], T[i]);
   const sx = (x) => view.tx + x * view.k;
 
@@ -491,7 +519,7 @@
   function drawOverlay() { if (!overlayQueued) { overlayQueued = true; requestAnimationFrame(() => { overlayQueued = false; paintOverlay(); }); } }
 
   function arcBetween(path, a, b) {
-    a += 0.5; b += 0.5;
+    a = POS[a] + 0.5; b = POS[b] + 0.5;
     const lo = Math.min(a, b), hi = Math.max(a, b);
     const r = (hi - lo) / 2 * view.k;
     const cx = view.tx + (lo + hi) / 2 * view.k;
@@ -581,12 +609,12 @@
       canvas,
       resize(w, h) { canvas.width = Math.round(w); canvas.height = Math.round(h); },
       draw(list, bucketFn, palette, alpha, bg) {
-        const k2 = list.length + ':' + state.colorMode + ':' + (list === filtered ? listVersion : -1);
+        const k2 = list.length + ':' + state.colorMode + ':' + state.order + ':' + (list === filtered ? listVersion : -1);
         if (k2 !== key) {
           // far-reaching arcs first so nearer (smaller) arcs sit on top
           const order = Array.from(list).map(i => [i, bucketFn(i)]).sort((x, y) => y[1] - x[1]);
           const data = new Float32Array(order.length * 3);
-          order.forEach(([i, b], n) => { data[n * 3] = F[i]; data[n * 3 + 1] = T[i]; data[n * 3 + 2] = b; });
+          order.forEach(([i, b], n) => { data[n * 3] = POS[F[i]]; data[n * 3 + 1] = POS[T[i]]; data[n * 3 + 2] = b; });
           gl.bindBuffer(gl.ARRAY_BUFFER, iBuf); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
           count = order.length; key = k2;
         }
@@ -651,7 +679,7 @@
     const zoomedIn = view.k > 14;
     for (let c = 0; c < chapters.length; c++) {
       const ch = chapters[c];
-      const x0 = sx(ch.start), x1 = sx(ch.start + ch.count);
+      const x0 = sx(POS[ch.start]), x1 = x0 + ch.count * view.k;
       if (x1 < 0 || x0 > W) continue;
       const h = zoomedIn ? BAR_MAX : 3 + (ch.count / 176) * BAR_MAX;
       const inFocus = focus && ch.start < focus.end && ch.start + ch.count > focus.start;
@@ -664,7 +692,7 @@
     ctx.fillRect(0, y0, W, 1);
 
     // Old / New Testament divider
-    const ntx = sx(NT_START);
+    const ntx = sx(NT_POS);
     if (ntx > 0 && ntx < W) { ctx.fillStyle = pal.label; ctx.fillRect(Math.round(ntx) - 1, y0, 2, AXIS_H - 6); }
 
     ctx.textBaseline = 'top';
@@ -673,8 +701,8 @@
     const lastRight = [-Infinity, -Infinity];
     ctx.font = `${highContrast ? 700 : 600} 11px system-ui, sans-serif`;
     ctx.textAlign = 'center';
-    for (const b of BOOKS) {
-      const x0 = sx(b.start), x1 = sx(b.end);
+    for (const b of BOOKS_BY_POS) {
+      const x0 = sx(b.pos), x1 = x0 + (b.end - b.start) * view.k;
       if (x1 < 0 || x0 > W) continue;
       ctx.fillStyle = pal.sep;
       ctx.fillRect(x0, y0 + 2, 1, BAR_MAX + 6);
@@ -696,15 +724,15 @@
     if (showChapters) {
       ctx.font = `${highContrast ? 600 : 400} 10px system-ui, sans-serif`;
       let last = -Infinity;
-      for (const ch of chapters) {
-        const x0 = sx(ch.start), x1 = sx(ch.start + ch.count);
+      for (const ch of CHAPTERS_BY_POS) {
+        const x0 = sx(POS[ch.start]), x1 = x0 + ch.count * view.k;
         if (x1 < 0 || x0 > W) continue;
         const cx = (x0 + x1) / 2;
         if (x1 - x0 >= 16 && cx >= last + 22) { ctx.fillStyle = pal.sub; ctx.fillText(String(ch.chapter), cx, row[1]); last = cx; }
         if (zoomedIn) {
           ctx.fillStyle = pal.barText;
           for (let v = 0; v < ch.count; v++) {
-            const vx = sx(ch.start + v + 0.5);
+            const vx = sx(POS[ch.start] + v + 0.5);
             if (vx >= 0 && vx <= W) ctx.fillText(String(v + 1), vx, y0 + 12);
           }
         }
@@ -721,7 +749,7 @@
 
   function strokePair(ctx, a, b, color, width, alpha = 1) {
     const p = new Path2D();
-    if (!arcBetween(p, a, b)) { ctx.fillStyle = color; ctx.fillRect(sx(a + 0.5) - 1.5, view.ty - 3, 3, 3); return; }
+    if (!arcBetween(p, a, b)) { ctx.fillStyle = color; ctx.fillRect(sx(POS[a] + 0.5) - 1.5, view.ty - 3, 3, 3); return; }
     ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = width;
     ctx.stroke(p);
     ctx.globalAlpha = 1;
@@ -729,7 +757,7 @@
   function highlightPair(ctx, a, b) {
     strokePair(ctx, a, b, pal.halo, 6, 0.6);
     strokePair(ctx, a, b, pal.sel, 2.5);
-    for (const x of [sx(a + 0.5), sx(b + 0.5)]) {
+    for (const x of [sx(POS[a] + 0.5), sx(POS[b] + 0.5)]) {
       ctx.beginPath(); ctx.arc(x, view.ty, 4.5, 0, Math.PI * 2);
       ctx.fillStyle = pal.marker; ctx.fill();
       ctx.lineWidth = 1.5; ctx.strokeStyle = pal.halo; ctx.stroke();
@@ -755,9 +783,9 @@
       ctx.globalAlpha = 1;
       ctx.fillStyle = pal.focus;
       if (state.focus.verses) {
-        for (const v of state.focus.verses) { const x = sx(v + 0.5); if (x >= 0 && x <= W) ctx.fillRect(x - 0.75, view.ty - 6, 1.5, 6); }
+        for (const v of state.focus.verses) { const x = sx(POS[v] + 0.5); if (x >= 0 && x <= W) ctx.fillRect(x - 0.75, view.ty - 6, 1.5, 6); }
       } else {
-        const x0 = sx(state.focus.start), x1 = sx(state.focus.end);
+        const x0 = sx(POS[state.focus.start]), x1 = x0 + (state.focus.end - state.focus.start) * view.k;
         ctx.fillRect(x0, view.ty - 1, Math.max(2, x1 - x0), 3);
       }
     }
@@ -775,7 +803,7 @@
       ctx.font = '700 12px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       const nodes = [state.path.edges[0]?.a, ...edges.map(e => e.b)].filter(v => v !== undefined);
       nodes.forEach((v, n) => {
-        const x = sx(v + 0.5), y = view.ty - 16;
+        const x = sx(POS[v] + 0.5), y = view.ty - 16;
         ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fillStyle = pal.marker; ctx.fill();
         ctx.fillStyle = '#000'; ctx.fillText(String(n + 1), x, y + 0.5);
       });
@@ -783,7 +811,7 @@
     if (state.hoverChapter >= 0) {
       const ch = chapters[state.hoverChapter];
       ctx.fillStyle = pal.hoverCh;
-      ctx.fillRect(sx(ch.start), view.ty, Math.max(2, ch.count * view.k), BAR_MAX + 6);
+      ctx.fillRect(sx(POS[ch.start]), view.ty, Math.max(2, ch.count * view.k), BAR_MAX + 6);
     }
   }
 
@@ -794,7 +822,7 @@
     const pool = state.focus ? focusList : filtered;
     let best = -1, bestD = tol;
     for (const i of pool) {
-      const a = F[i] + 0.5, b = T[i] + 0.5;
+      const a = POS[F[i]] + 0.5, b = POS[T[i]] + 0.5;
       const lo = Math.min(a, b), hi = Math.max(a, b);
       const r = (hi - lo) / 2 * view.k;
       const cx = view.tx + (lo + hi) / 2 * view.k;
@@ -807,11 +835,9 @@
   function chapterAt(px, py) {
     if (!N) return -1;   // data still loading
     if (py < view.ty || py > view.ty + BAR_MAX + 30) return -1;
-    const x = (px - view.tx) / view.k;
+    const x = Math.floor((px - view.tx) / view.k);
     if (x < 0 || x >= TOTAL) return -1;
-    let lo = 0, hi = chapters.length - 1;
-    while (lo < hi) { const m = (lo + hi + 1) >> 1; if (chapters[m].start <= x) lo = m; else hi = m - 1; }
-    return lo;
+    return CHAP_OF[INV[x]];
   }
 
   // ---------- Pointer & keyboard ----------
@@ -922,6 +948,7 @@
       case 'n': case 'N': case ']': if (state.mode === 'journey') goStep(1); else stepSelection(1); break;
       case 'p': case 'P': case '[': if (state.mode === 'journey') goStep(-1); else stepSelection(-1); break;
       case 'Escape': clearAll(); break;
+      case 'd': case 'D': describeAloud(); break;
       default: handled = false;
     }
     if (handled) e.preventDefault();
@@ -965,7 +992,7 @@
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString()} connections.`);
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
-      else zoomToSpan(range.start, range.end, range.kind === 'verse' ? 40 : 0.6);
+      else zoomToRange(range.start, range.end, range.kind === 'verse' ? 40 : 0.6);
     }
   }
   function clearAll() {
@@ -1023,6 +1050,8 @@
       <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
       <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
       <button type="button" class="btn ghost small" data-action="image">Save image</button>
+      <button type="button" class="btn ghost small" data-action="addToCollection">Add to collection</button>
+      ${state.selected >= 0 && state.mode === 'explore' ? '<button type="button" class="btn ghost small" data-action="story">Story image</button>' : ''}
       <button type="button" class="btn ghost small" data-action="qr">QR code</button>
       <button type="button" class="btn ghost small" data-action="embed">Embed</button>`;
   };
@@ -1043,6 +1072,9 @@
     else if (state.mode === 'people') [title, html] = peopleHTML();
     else if (state.mode === 'topics') [title, html] = topicsHTML();
     else if (state.mode === 'game') [title, html] = gameHTML();
+    else if (state.mode === 'wordstudy') [title, html] = wordStudyHTML();
+    else if (state.mode === 'collections') [title, html] = collectionsHTML();
+    else if (state.mode === 'collection' && state.collection) [title, html] = collectionHTML();
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
@@ -1061,10 +1093,17 @@
       const f = state.focus;
       title = rangeLabel(f);
       if (f.kind === 'words') {
-        if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
+        if (f.entity && f.entity.type === 'word') {
+          const w = f.entity.word, heb = f.entity.id[0] === 'H';
+          html += `<p class="lemma" lang="${heb ? 'he' : 'el'}"${heb ? ' dir="rtl"' : ''}>${esc(w.l)}</p>
+            <p><strong>${esc(w.t)}</strong> · ${esc(w.g)} · <span class="muted">${heb ? 'Hebrew' : 'Greek'} ${esc(f.entity.id)}</span></p>
+            ${w.d ? `<p class="hint" lang="en">${esc(w.d)}</p>` : ''}
+            ${w.v ? `<p>Used in ${w.n.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString()} verses, too many to show on the map.</p>`}
+            <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0.</p>`;
+        } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
         else html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>`;
         html += `
-          <p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>
+          ${f.entity && f.entity.type === 'word' ? '' : '<p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>'}
           <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
           <h3>Verses</h3><ul class="verse-list">`;
         const vs = Math.min(versesShown, f.verses.length);
@@ -1082,6 +1121,7 @@
           html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${settings.version}`, 'btn small')}</div>`;
         }
         html += `<p>${focusList.length.toLocaleString()} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
+          <p class="summary">${esc(describeView())}</p>
           <div class="actions"><button type="button" class="btn ghost small" data-action="zoomFocus">Zoom to ${esc(rangeLabel(f))}</button>`;
         if (f.kind !== 'book') html += `<button type="button" class="btn ghost small" data-action="focusBook" data-b="${f.book}">Whole book</button>`;
         html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
@@ -1116,16 +1156,18 @@
   }
   const currentStep = () => (state.journey ? journeySteps[state.journey.j]?.[state.journey.step] : null);
   function journeysHTML() {
-    let html = '<p>Short guided tours through the story of Scripture. Each step lights up one connection and explains it.</p><ul class="journey-list">';
-    JOURNEYS.forEach((j, n) => {
-      html += `<li class="journey-card"><h3>${esc(j.name)}</h3><p>${esc(j.summary)}</p>
+    const card = (j, n) => `<li class="journey-card"><h3>${esc(j.name)}</h3><p>${esc(j.summary)}</p>
         <div class="actions tight">
           <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button>
           <button type="button" class="btn ghost small" data-action="presentJourney" data-j="${n}">Present<span class="sr-only"> ${esc(j.name)}</span></button>
           <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
         </div></li>`;
-    });
-    html += '</ul><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
+    const all = JOURNEYS.map((j, n) => [j, n]);
+    const kids = all.filter(([j]) => j.kids), grown = all.filter(([j]) => !j.kids);
+    const groups = settings.kids ? [['For kids', kids], ['More journeys', grown]] : [['Journeys', grown], ['For kids', kids]];
+    let html = '<p>Short guided tours through the story of Scripture. Each step lights up one connection and explains it.</p>';
+    for (const [label, list] of groups) if (list.length) html += `<h3>${label}</h3><ul class="journey-list">${list.map(([j, n]) => card(j, n)).join('')}</ul>`;
+    html += '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
     return ['Guided journeys', html];
   }
   function journeyStepHTML() {
@@ -1285,8 +1327,7 @@
     updateNav(); drawBase(); renderPanel(); syncURL(push);
     const P = state.path;
     if (P.edges && P.edges.length) {
-      const lo = Math.min(...P.edges.map(e => Math.min(e.a, e.b))), hi = Math.max(...P.edges.map(e => Math.max(e.a, e.b)));
-      zoomToSpan(lo, hi + 1, 0.08);
+      spanOfPairs(P.edges.map(e => [e.a, e.b]));
       animatePath();
       announce(`Found a chain of ${P.edges.length} link${P.edges.length === 1 ? '' : 's'} from ${P.fromLabel} to ${P.toLabel}.`);
     } else if (P.error) announce(P.error);
@@ -1432,7 +1473,7 @@
   }
 
   // ---------- Study hub ----------
-  const STUDY_MODES = ['study', 'plans', 'plan', 'people', 'topics', 'game', 'insights'];
+  const STUDY_MODES = ['study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
   const nameOf = (x) => (LANG === 'es' && x.name_es) || x.name;
   const descOf = (x) => (LANG === 'es' && x.description_es) || x.description;
   function studyHTML() {
@@ -1440,6 +1481,8 @@
       ['plans', 'Reading plans', 'Follow the connections a few at a time, with your progress saved on this device.'],
       ['people', 'People and places', 'See where a person or place appears across the whole Bible.'],
       ['topics', 'Topics', 'Explore what Scripture says about worry, forgiveness, money, rest and more.'],
+      ['wordstudy', 'Word study', 'Follow a Hebrew or Greek word, such as hesed or agape, through the Bible.'],
+      ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
       ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
       ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
     ];
@@ -1450,7 +1493,17 @@
     html += `<li><button type="button" class="study-card" data-action="poster"><strong>Print a poster</strong><span>Download the whole map as a high-resolution image for printing.</span></button></li></ul>`;
     const cotd = connectionOfTheDay();
     if (cotd >= 0) html += `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
+    html += feedsHTML();
     return ['Study', html];
+  }
+
+  function feedsHTML() {
+    const base = location.origin + location.pathname;
+    return `<h3>Get it every day</h3><p>Subscribe once and the connection of the day comes to you.</p>
+      <div class="actions tight">
+        <a class="btn ghost small" href="${esc(base.replace(/^https?:/, 'webcal:'))}feeds/daily.ics" data-track="feed/calendar">Add to calendar</a>
+        <a class="btn ghost small" href="${esc(base)}feeds/daily.xml" data-track="feed/rss">RSS feed</a>
+      </div>`;
   }
 
   // ---------- Connection of the day ----------
@@ -1472,6 +1525,7 @@
         <button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button>
         ${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`)}
         ${ext(bibleUrl(T[i]), `Read ${esc(refLabel(T[i]))}`)}
+        <button type="button" class="btn ghost small" data-action="story" data-ref="${i}" data-keep="1">Story image</button>
       </div></div>`;
   }
 
@@ -1551,7 +1605,7 @@
       <div class="actions nav-row">
         <button type="button" class="btn ghost" data-action="planDay" data-day="${d - 1}" ${d === 0 ? 'disabled' : ''}>Previous day</button>
         <button type="button" class="btn ghost" data-action="planDay" data-day="${d + 1}" ${d === days.length - 1 ? 'disabled' : ''}>Next day</button>
-      </div><div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="plans">All plans</button></div>`;
+      </div><div class="actions"><button type="button" class="btn ghost small" data-action="planCalendar">Add reminders to calendar</button>${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="plans">All plans</button></div>`;
     return [nameOf(plan), html];
   }
   function openPlan(id, day, { push = true } = {}) {
@@ -1563,8 +1617,7 @@
     updateNav(); drawBase(); renderPanel(); syncURL(push);
     const its = days[state.plan.day].items;
     if (its.length) {
-      const lo = Math.min(...its.map(x => Math.min(x.a, x.b))), hi = Math.max(...its.map(x => Math.max(x.a, x.b)));
-      zoomToSpan(lo, hi + 1, 0.08);
+      spanOfPairs(its.map(x => [x.a, x.b]));
     }
     announce(`${nameOf(plan)}, day ${state.plan.day + 1}.`);
   }
@@ -1709,9 +1762,9 @@
       : Array.from({ length: BUCKETS }, (_, b) => { const t = b / (BUCKETS - 1); return `hsl(${(285 + t * 195) % 360}, ${isL ? 85 : 95}%, ${isL ? 42 - t * 4 : 60 - t * 6}%)`; });
     const nb = cols.length, paths = Array.from({ length: nb }, () => []);
     for (const i of filtered) {
-      const a = M + (Math.min(F[i], T[i]) + 0.5) * k, b = M + (Math.max(F[i], T[i]) + 0.5) * k, r = (b - a) / 2;
+      const a = M + (Math.min(POS[F[i]], POS[T[i]]) + 0.5) * k, b = M + (Math.max(POS[F[i]], POS[T[i]]) + 0.5) * k, r = (b - a) / 2;
       if (r < 0.2) continue;
-      const bucket = category ? catKeys.indexOf(BOOKS[verseBook[F[i]]].cat) : Math.min(BUCKETS - 1, Math.floor(Math.sqrt(Math.abs(T[i] - F[i]) / TOTAL) * BUCKETS));
+      const bucket = category ? catKeys.indexOf(BOOKS[verseBook[F[i]]].cat) : Math.min(BUCKETS - 1, Math.floor(Math.sqrt(Math.abs(POS[T[i]] - POS[F[i]]) / TOTAL) * BUCKETS));
       paths[bucket].push(`M${a.toFixed(1)} ${by}A${r.toFixed(1)} ${r.toFixed(1)} 0 0 1 ${b.toFixed(1)} ${by}`);
     }
     const alpha = Math.min(0.9, Math.max(0.06, 30 / Math.sqrt(Math.max(1, filtered.length))));
@@ -1720,8 +1773,8 @@
     for (let b = nb - 1; b >= 0; b--) if (paths[b].length) s += `<path stroke="${cols[b]}" d="${paths[b].join('')}"/>`;
     s += `</g><g>`;
     let lastRight = [-1e9, -1e9];
-    BOOKS.forEach(bk => {
-      const x0 = M + bk.start * k, x1 = M + bk.end * k, col = CATEGORIES[bk.cat][isL ? 'light' : 'dark'];
+    BOOKS_BY_POS.forEach(bk => {
+      const x0 = M + bk.pos * k, x1 = M + (bk.pos + bk.end - bk.start) * k, col = CATEGORIES[bk.cat][isL ? 'light' : 'dark'];
       s += `<rect x="${x0.toFixed(1)}" y="${by + 6}" width="${Math.max(1, x1 - x0 - 2).toFixed(1)}" height="14" fill="${col}"/>`;
       const label = (x1 - x0) > bk.name.length * 15 ? bk.name : bk.abbr, cx = (x0 + x1) / 2, w = label.length * 15;
       for (let row = 0; row < 2; row++) if (cx - w / 2 > lastRight[row] + 8) {
@@ -1729,7 +1782,7 @@
         lastRight[row] = cx + w / 2; break;
       }
     });
-    const ntx = M + BOOKS[39].start * k;
+    const ntx = M + NT_POS * k;
     s += `<rect x="${ntx - 1.5}" y="${by}" width="3" height="120" fill="${fg}"/>
 <text x="${ntx - 16}" y="${by + 150}" font-size="28" fill="${sub}" text-anchor="end">${esc(tr('Old Testament'))}</text>
 <text x="${ntx + 16}" y="${by + 150}" font-size="28" fill="${sub}">${esc(tr('New Testament'))}</text>
@@ -1760,10 +1813,288 @@
     const label = `${refLabel(F[i])} and ${refLabel(T[i], E[i])}`;
     const q = new URLSearchParams({
       template: 'content_suggestion.yml', labels: 'content', title: `Note: ${label}`, kind: 'A new or better note',
-      details: `Connection: ${label} (${toOsis(F[i])} and ${toOsis(T[i])})\nLink: ${cleanUrl()}\n\nWhy do these passages connect? Please write in your own words.\n`,
+      from: toOsis(F[i]), to: toOsis(T[i]),
+      details: `Link: ${cleanUrl()}`,
     });
     return `https://github.com/JoeMighty/BibleConnections/issues/new?${q}`;
   }
+
+  // ---------- Word study: original Hebrew and Greek words (STEP Bible data, CC BY 4.0) ----------
+  let strongsPromise = null, STRONGS = null;
+  function loadStrongs() {
+    if (!strongsPromise) strongsPromise = fetch('data/strongs.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    strongsPromise.then(d => { STRONGS = d; }, () => { strongsPromise = null; });
+    return strongsPromise;
+  }
+  const plain = (x) => String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[.'’ʼ]/g, '').toLowerCase();
+  const wordLabel = (code, w) => `${w.t} (${w.g})`;
+  function wordChip(code) {
+    const w = STRONGS[code];
+    return `<li><button type="button" class="chip" data-action="openWord" data-code="${code}">${esc(w.t)} <span class="muted">${esc(w.g)}</span></button></li>`;
+  }
+  function wordStudyHTML() {
+    if (!STRONGS) {
+      loadStrongs().then(() => { if (state.mode === 'wordstudy') renderPanel(); }, () => {});
+      return ['Word study', '<p class="muted">Loading Hebrew and Greek words…</p>'];
+    }
+    const heb = FEATURED_WORDS.filter(c => c.startsWith('H') && STRONGS[c]), grk = FEATURED_WORDS.filter(c => c.startsWith('G') && STRONGS[c]);
+    const html = `<p>Explore a word from the original Hebrew or Greek and see every verse where it is used.</p>
+      <div class="field"><label for="wordQ">Search by English meaning, Hebrew or Greek word, or Strong’s number</label>
+      <input id="wordQ" type="search" placeholder="e.g. love, shalom or G26" autocomplete="off" spellcheck="false"></div>
+      <div id="wordResults" aria-live="polite"></div>
+      <h3>Hebrew (Old Testament)</h3><ul class="chip-list">${heb.map(wordChip).join('')}</ul>
+      <h3>Greek (New Testament)</h3><ul class="chip-list">${grk.map(wordChip).join('')}</ul>
+      <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0.</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`;
+    return ['Word study', html];
+  }
+  let wordT = 0;
+  el.panelBody.addEventListener('input', (e) => {
+    if (e.target.id !== 'wordQ') return;
+    clearTimeout(wordT);
+    wordT = setTimeout(() => {
+      const q = plain(e.target.value.trim()), box = $('wordResults');
+      if (!box) return;
+      if (q.length < 2) { box.innerHTML = ''; return; }
+      const code = q.toUpperCase().match(/^([GH])0*(\d{1,4})$/);
+      const hits = [];
+      for (const [c, w] of Object.entries(STRONGS)) {
+        let score = 0;
+        if (code && c === code[1] + code[2].padStart(4, '0')) score = 1e9;
+        else if (plain(w.t) === q || plain(w.g) === q) score = 1e6 + w.n;
+        else if (plain(w.t).startsWith(q)) score = 5e5 + w.n;
+        else if (plain(w.g).split(/[^a-z]+/).includes(q)) score = 1e5 + w.n;
+        if (score) hits.push([score, c]);
+      }
+      hits.sort((a, b) => b[0] - a[0]);
+      box.innerHTML = hits.length
+        ? `<p class="muted">${hits.length.toLocaleString()} matching word${hits.length === 1 ? '' : 's'}</p><ul class="conn-list">${hits.slice(0, 25).map(([, c]) => {
+          const w = STRONGS[c];
+          return `<li><button type="button" class="conn-item" data-action="openWord" data-code="${c}"><span class="label"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(w.l)}</span> · ${esc(w.t)} · ${esc(w.g)}</span><span class="votes">${w.n.toLocaleString()} verses</span></button></li>`;
+        }).join('')}</ul>`
+        : '<p class="muted">No words found. Try another English word.</p>';
+    }, 150);
+  });
+  async function openWord(code, opts = {}) {
+    let d;
+    try { d = await loadStrongs(); } catch { announce('Word study could not load. Check your connection.'); return; }
+    const w = d[code];
+    if (!w) return;
+    const verses = w.v ? Int32Array.from(decodePostings(w.v)) : new Int32Array(0);
+    const mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    track('word/' + code, w.t);
+    setFocus({ kind: 'words', query: wordLabel(code, w), verses, mask, start: verses[0] || 0, end: (verses[verses.length - 1] || 0) + 1,
+      entity: { type: 'word', id: code, name: wordLabel(code, w), word: w } }, { zoom: true, ...opts });
+  }
+
+  // ---------- Collections ----------
+  const getCollections = () => store.get('collections', []);
+  const saveCollections = (c) => store.set('collections', c);
+  let colPlay = null;   // { items, name, idx } while stepping through a collection
+  function openAddToCollection() {
+    const entry = currentEntry();
+    if (!entry) { announce('Open a verse, connection, journey step or search first.'); return; }
+    const cols = getCollections();
+    $('colSelect').innerHTML = cols.map((c, n) => `<option value="${n}">${esc(c.name)} (${c.items.length})</option>`).join('') + '<option value="new">New collection…</option>';
+    $('colSelect').value = cols.length ? '0' : 'new';
+    $('colNewWrap').hidden = !!cols.length;
+    $('colNewName').value = '';
+    $('colItemLabel').textContent = entry.label;
+    $('collectionDialog').showModal();
+  }
+  $('colSelect').addEventListener('change', () => { $('colNewWrap').hidden = $('colSelect').value !== 'new'; if (!$('colNewWrap').hidden) $('colNewName').focus(); });
+  $('colAdd').addEventListener('click', (e) => {
+    e.preventDefault();
+    const entry = currentEntry(), cols = getCollections();
+    let n = $('colSelect').value;
+    if (n === 'new') {
+      const name = $('colNewName').value.trim();
+      if (!name) { $('colNewName').focus(); return; }
+      cols.push({ id: Date.now().toString(36), name, items: [] }); n = cols.length - 1;
+    }
+    const col = cols[+n];
+    if (!col.items.some(x => x.url === entry.url)) col.items.push(entry);
+    saveCollections(cols);
+    $('collectionDialog').close();
+    announce(`Added to ${col.name}.`); flash('Added');
+    track('collection/add');
+  });
+  function encodeCollection(col) {
+    const json = JSON.stringify({ n: col.name, i: col.items.map(x => [x.label, x.url]) });
+    return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function decodeCollection(s) {
+    try {
+      const json = decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))));
+      const o = JSON.parse(json);
+      return { name: String(o.n).slice(0, 80), items: (o.i || []).slice(0, 50).map(([label, url]) => ({ label: String(label).slice(0, 120), url: String(url).startsWith('?') ? String(url) : '?view=map' })) };
+    } catch { return null; }
+  }
+  function collectionsHTML() {
+    const cols = getCollections();
+    let html = '<p>Group connections, verses, journey steps and searches into a collection, for a sermon, a lesson or a small group. Use “Add to collection” on any view.</p>';
+    if (!cols.length) html += '<p class="muted">You have no collections yet.</p>';
+    else html += `<ul class="journey-list">${cols.map((c, n) => `<li class="journey-card"><h3>${esc(c.name)}</h3><p>${c.items.length} item${c.items.length === 1 ? '' : 's'}</p>
+      <div class="actions tight"><button type="button" class="btn small" data-action="openCollection" data-n="${n}">Open<span class="sr-only"> ${esc(c.name)}</span></button>
+      <button type="button" class="btn ghost small" data-action="deleteCollection" data-n="${n}">Delete<span class="sr-only"> ${esc(c.name)}</span></button></div></li>`).join('')}</ul>`;
+    return ['Collections', html + '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>'];
+  }
+  function collectionHTML() {
+    const col = state.collection;
+    let html = col.shared ? '<p class="muted">Someone shared this collection with you.</p>' : '';
+    html += `<ol class="series-list">${col.items.map((x, n) => `<li><p class="series-title">${esc(x.label)}</p><div class="actions tight">
+      <button type="button" class="btn small" data-action="playCollection" data-idx="${n}">Open</button>
+      ${col.shared ? '' : `<button type="button" class="btn ghost small" data-action="removeItem" data-idx="${n}">Remove<span class="sr-only"> ${esc(x.label)}</span></button>`}</div></li>`).join('')}</ol>`;
+    if (!col.items.length) html += '<p class="muted">This collection is empty.</p>';
+    html += `<div class="actions">${col.items.length ? '<button type="button" class="btn" data-action="playCollection" data-idx="0">Step through</button>' : ''}
+      <button type="button" class="btn ghost small" data-action="shareCollection">Share collection</button>
+      ${col.shared ? '<button type="button" class="btn ghost small" data-action="keepCollection">Save to my collections</button>' : ''}
+      <button type="button" class="btn ghost small" data-action="mode" data-mode="collections">All collections</button></div>`;
+    return [col.name, html];
+  }
+  function openCollection(col, { push = true } = {}) {
+    state.mode = 'collection'; state.collection = col; state.selected = -1; state.focus = null; state.journey = null;
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+  }
+  function renderColBar() {
+    const bar = $('colBar');
+    bar.hidden = !colPlay;
+    if (!colPlay) return;
+    $('colBarText').textContent = `${colPlay.name} · ${colPlay.idx + 1} of ${colPlay.items.length}`;
+    $('colPrev').disabled = colPlay.idx === 0;
+    $('colNext').disabled = colPlay.idx === colPlay.items.length - 1;
+  }
+  async function playCollection(idx) {
+    const col = state.collection || colPlay?.col;
+    colPlay = { col, name: col.name, items: col.items, idx };
+    history.pushState(null, '', col.items[idx].url);
+    await applyLocation();
+    renderColBar();
+    focusPanelHeading();
+  }
+  $('colPrev').addEventListener('click', () => playCollection(colPlay.idx - 1));
+  $('colNext').addEventListener('click', () => playCollection(colPlay.idx + 1));
+  $('colExit').addEventListener('click', () => { const col = colPlay.col; colPlay = null; renderColBar(); openCollection(col); focusPanelHeading(); });
+
+  // ---------- Calendar reminders for reading plans ----------
+  function planCalendar() {
+    const plan = PLANS.find(p => p.id === state.plan.id), days = planDays(plan);
+    const pad = (n) => String(n).padStart(2, '0');
+    const fmt = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+    const esc2 = (x) => String(x).replace(/[\\,;]/g, (m) => '\\' + m).replace(/\n/g, '\\n');
+    const start = new Date(); start.setDate(start.getDate() + 1);
+    const base = location.origin + location.pathname;
+    let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Bible Connections//Reading plan//EN\r\nCALSCALE:GREGORIAN\r\n';
+    const done = new Set(planProgress(plan.id).done);
+    let n = 0;
+    days.forEach((day, d) => {
+      if (done.has(d)) return;
+      const date = new Date(start); date.setDate(start.getDate() + n++);
+      const url = `${base}?plan=${plan.id}&day=${d + 1}`;
+      ics += `BEGIN:VEVENT\r\nUID:${plan.id}-${d + 1}-${fmt(date)}@bibleconnections\r\nDTSTAMP:${fmt(new Date())}T000000Z\r\nDTSTART:${fmt(date)}T070000\r\nDURATION:PT15M\r\n`
+        + `SUMMARY:${esc2(`${nameOf(plan)}: day ${d + 1}`)}\r\nDESCRIPTION:${esc2(`${day.title ? day.title + '\n' : ''}${url}`)}\r\nURL:${url}\r\n`
+        + 'BEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Bible Connections reading\r\nTRIGGER:PT0M\r\nEND:VALARM\r\nEND:VEVENT\r\n';
+    });
+    ics += 'END:VCALENDAR\r\n';
+    downloadBlob(new Blob([ics], { type: 'text/calendar' }), `bible-connections-${plan.id}.ics`);
+    track('plan/calendar', plan.id);
+    announce('Calendar file downloaded. Open it to add a daily reminder at 7 am.');
+  }
+
+  // ---------- Story image (tall image for social media stories) ----------
+  function wrapText(ctx, text, maxW) {
+    const words = text.split(/\s+/), lines = [];
+    let line = '';
+    for (const w of words) {
+      const t = line ? line + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t;
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+  async function storyImage(i) {
+    const W = 1080, H = 1920, c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const ctx = c.getContext('2d');
+    const font = (w, s) => `${w} ${s}px -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif`;
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    // a single glowing arc between the two passages
+    const g = ctx.createLinearGradient(140, 0, W - 140, 0);
+    g.addColorStop(0, '#da77f2'); g.addColorStop(0.5, '#ffd43b'); g.addColorStop(1, '#38d9a9');
+    ctx.strokeStyle = g; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.arc(W / 2, 760, W / 2 - 140, Math.PI, 0); ctx.stroke();
+    ctx.fillStyle = '#ffd60a';
+    for (const x of [140, W - 140]) { ctx.beginPath(); ctx.arc(x, 760, 18, 0, Math.PI * 2); ctx.fill(); }
+    ctx.textAlign = 'center'; ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 34);
+    ctx.fillText(tr('Connection').toUpperCase(), W / 2, 200);
+    ctx.fillStyle = '#fff'; ctx.font = font(700, 64);
+    ctx.fillText(refLabel(F[i]), W / 2, 880);
+    ctx.fillStyle = 'rgba(235,235,245,.7)'; ctx.font = font(500, 40);
+    ctx.fillText(tr('connects to'), W / 2, 950);
+    ctx.fillStyle = '#fff'; ctx.font = font(700, 64);
+    ctx.fillText(refLabel(T[i], E[i]), W / 2, 1040);
+    const n = noteMap.get(i);
+    if (n) {
+      ctx.font = font(400, 42); ctx.fillStyle = 'rgba(235,235,245,.9)';
+      wrapText(ctx, n.text, W - 200).slice(0, 7).forEach((l, k) => ctx.fillText(l, W / 2, 1160 + k * 60));
+    }
+    ctx.font = font(700, 44); ctx.fillStyle = '#fff'; ctx.fillText('Bible Connections', W / 2, H - 170);
+    ctx.font = font(400, 30); ctx.fillStyle = 'rgba(235,235,245,.7)';
+    ctx.fillText(`${location.host}${location.pathname}`, W / 2, H - 120);
+    ctx.font = font(400, 24); ctx.fillText(tr('Cross references: OpenBible.info (CC BY 4.0)'), W / 2, H - 76);
+    const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+    const file = new File([blob], 'bible-connection-story.png', { type: 'image/png' });
+    track('share/story');
+    if (navigator.canShare && navigator.canShare({ files: [file] }) && matchMedia('(pointer: coarse)').matches) {
+      try { await navigator.share({ files: [file] }); return; } catch { /* fall back to download */ }
+    }
+    downloadBlob(blob, file.name);
+    announce('Story image saved.');
+  }
+
+  // ---------- Describe this view (plain-language summary) ----------
+  function describeView() {
+    const fmt = (n) => n.toLocaleString();
+    const topBooks = (list, side) => {
+      const count = new Map();
+      for (const i of list) for (const v of side(i)) { const b = verseBook[v]; count.set(b, (count.get(b) || 0) + 1); }
+      return [...count.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([b, n]) => `${BOOKS[b].name} (${fmt(n)})`);
+    };
+    if (state.selected >= 0) {
+      const i = state.selected, n = noteMap.get(i);
+      const same = verseBook[F[i]] === verseBook[T[i]];
+      const testament = (v) => (v < NT_START ? 'Old' : 'New');
+      return `${refLabel(F[i])} in the ${testament(F[i])} Testament links to ${refLabel(T[i], E[i])} in the ${testament(T[i])} Testament${same ? ', in the same book' : ''}. ${V[i]} people confirmed this link.${n ? ` It is a ${n.type.toLowerCase()} connection.` : ''}`;
+    }
+    if (state.focus && focusList.length) {
+      const f = state.focus;
+      const inside = (v) => (f.mask ? f.mask[v] : v >= f.start && v < f.end);
+      const others = topBooks(focusList, (i) => [inside(F[i]) ? T[i] : F[i]]);
+      const nt = [...focusList].filter(i => (inside(F[i]) ? T[i] : F[i]) >= NT_START).length;
+      return `${rangeLabel(f)} has ${fmt(focusList.length)} connections. Most lead to ${others.join(', ')}. ${Math.round(nt / focusList.length * 100)}% reach the New Testament.`;
+    }
+    if (state.focus) return `${rangeLabel(state.focus)} has no connections with the current filters.`;
+    const books = topBooks(filtered, (i) => [F[i], T[i]]);
+    return `Showing ${fmt(filtered.length)} connections. The most connected books are ${books.join(', ')}.`;
+  }
+  function describeAloud() {
+    const text = tr(describeView());
+    announce(text);
+    flash(text.length > 90 ? text.slice(0, 87) + '…' : text);
+    track('describe');
+  }
+  $('describeBtn').addEventListener('click', describeAloud);
+
+  // ---------- Error reports (counted privately with visit stats, at most 3 per visit) ----------
+  let errorsSent = 0;
+  function reportError(msg) {
+    if (errorsSent >= 3) return;
+    errorsSent++;
+    track('error', String(msg || 'unknown').slice(0, 120));
+  }
+  window.addEventListener('error', (e) => reportError(e.message));
+  window.addEventListener('unhandledrejection', (e) => reportError(e.reason && (e.reason.message || e.reason)));
 
   // ---------- Insights ----------
   let statsCache = null;
@@ -1873,7 +2204,7 @@
     if (tracked) track(tracked.dataset.track);
     const btn = e.target.closest('button');
     if (!btn) return;
-    if (btn.dataset.ref) { selectRef(+btn.dataset.ref); focusPanelHeading(); return; }
+    if (btn.dataset.ref && !btn.dataset.action) { selectRef(+btn.dataset.ref); focusPanelHeading(); return; }
     const a = btn.dataset.action;
     if (a === 'more') { listShown += PAGE; renderPanel(); el.panelBody.querySelectorAll('.conn-item')[listShown - PAGE]?.focus(); }
     else if (a === 'moreVerses') { versesShown += 40; renderPanel(); el.panelBody.querySelectorAll('.verse-list .link-btn')[versesShown - 40]?.focus(); }
@@ -1881,7 +2212,7 @@
     else if (a === 'focusVerse') { const v = +btn.dataset.v; setFocus({ kind: 'verse', book: verseBook[v], start: v, end: v + 1 }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'focusChapter') { const c = chapters[+btn.dataset.c]; setFocus({ kind: 'chapter', book: c.book, chapter: c.chapter, start: c.start, end: c.start + c.count }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'focusBook') { const b = BOOKS[+btn.dataset.b]; setFocus({ kind: 'book', book: +btn.dataset.b, start: b.start, end: b.end }, { zoom: true }); focusPanelHeading(); }
-    else if (a === 'zoomFocus') zoomToSpan(state.focus.start, state.focus.end, state.focus.kind === 'verse' ? 40 : 0.6);
+    else if (a === 'zoomFocus') zoomToRange(state.focus.start, state.focus.end, state.focus.kind === 'verse' ? 40 : 0.6);
     else if (a === 'deselect') { state.selected = -1; drawBase(); renderPanel(); syncURL(true); focusPanelHeading(); }
     else if (a === 'clear') { clearAll(); focusPanelHeading(); }
     else if (a === 'search') { el.search.value = btn.dataset.q; runSearch(); }
@@ -1891,6 +2222,27 @@
     else if (a === 'stepPrev') { goStep(-1); focusPanelHeading(); }
     else if (a === 'present') enterPresenter();
     else if (a === 'qr') openQR();
+    else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
+    else if (a === 'addToCollection') openAddToCollection();
+    else if (a === 'openCollection') { openCollection(getCollections()[+btn.dataset.n]); focusPanelHeading(); }
+    else if (a === 'deleteCollection') {
+      const cols = getCollections(), c = cols[+btn.dataset.n];
+      if (confirm(tr(`Delete the collection “${c.name}”?`))) { cols.splice(+btn.dataset.n, 1); saveCollections(cols); renderPanel(); announce('Collection deleted.'); }
+    }
+    else if (a === 'removeItem') {
+      const cols = getCollections(), c = cols.find(x => x.name === state.collection.name && x.items.length === state.collection.items.length);
+      state.collection.items.splice(+btn.dataset.idx, 1);
+      if (c) { c.items = state.collection.items; saveCollections(cols); }
+      renderPanel(); syncURL(); announce('Removed from collection.');
+    }
+    else if (a === 'playCollection') playCollection(+btn.dataset.idx);
+    else if (a === 'shareCollection') { copyText(location.href); track('collection/share'); }
+    else if (a === 'keepCollection') {
+      const cols = getCollections(); cols.push({ id: Date.now().toString(36), name: state.collection.name, items: state.collection.items });
+      saveCollections(cols); state.collection.shared = false; renderPanel(); announce('Saved to your collections.');
+    }
+    else if (a === 'planCalendar') planCalendar();
+    else if (a === 'story') storyImage(btn.dataset.ref !== undefined ? +btn.dataset.ref : state.selected);
     else if (a === 'embed') openEmbed();
     else if (a === 'poster') { $('posterDialog').showModal(); }
     else if (a === 'openPlan') { openPlan(btn.dataset.plan, +btn.dataset.day); track('plan/' + btn.dataset.plan); focusPanelHeading(); }
@@ -1935,6 +2287,7 @@
     requestAnimationFrame(() => { el.panel.focus({ preventScroll: true }); scrollPanel(); });
   }
   function setMode(mode) {
+    if (colPlay && mode !== 'explore') { colPlay = null; renderColBar(); }
     if (mode !== 'explore') state.selected = -1;
     state.mode = mode;
     if (mode !== 'journey') state.journey = null;
@@ -1975,6 +2328,13 @@
     votesT = setTimeout(() => { applyFilters(); syncURL(); }, 60);
   });
   el.controls.addEventListener('change', (e) => {
+    if (e.target.name === 'order') {
+      state.order = e.target.value; setOrder(state.order); updateCount();
+      resetView(false); drawBase(); renderPanel(); syncURL(true);
+      track('order/' + state.order);
+      announce(state.order === 'chrono' ? 'Books arranged in approximate chronological order.' : 'Books arranged in Bible order.');
+      return;
+    }
     if (e.target.name === 'colorMode') { state.colorMode = e.target.value; renderLegend(); updateCount(); drawBase(); renderPanel(); syncURL(); }
   });
   el.controls.addEventListener('submit', (e) => { e.preventDefault(); runSearch(); });
@@ -2027,11 +2387,13 @@
     const f = $('settingsForm');
     f.querySelector(`input[name=appearance][value="${settings.appearance}"]`).checked = true;
     $('contrastToggle').checked = settings.contrast;
+    $('kidsToggle').checked = settings.kids;
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
     $('versionSel').value = settings.version;
     f.addEventListener('change', (e) => {
       if (e.target.name === 'appearance') settings.appearance = e.target.value;
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
+      if (e.target.id === 'kidsToggle') { settings.kids = e.target.checked; store.set('kids', settings.kids); track('kids/' + (settings.kids ? 'on' : 'off')); }
       if (e.target.id === 'versionSel') settings.version = e.target.value;
       if (e.target.name === 'language' && e.target.value !== LANG) {
         store.set('lang', e.target.value);
@@ -2124,6 +2486,7 @@
     const btn = e.target.closest('button');
     if (!btn) return;
     if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
+    if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
@@ -2157,7 +2520,9 @@
 
   // ---------- "You're viewing" bar and start over ----------
   function resetState() {
-    Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance' });
+    colPlay = null; renderColBar();
+    Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance', order: 'bible' });
+    if (POS) setOrder('bible');
     syncControls(); renderLegend(); el.search.value = ''; el.searchError.textContent = '';
     updateNav(); applyFilters();
   }
@@ -2180,15 +2545,19 @@
     if (state.mode === 'people') items.push(['mode', 'People and places']);
     if (state.mode === 'topics') items.push(['mode', 'Topics']);
     if (state.mode === 'game') items.push(['mode', 'Guess the connection']);
+    if (state.mode === 'wordstudy') items.push(['mode', 'Word study']);
+    if (state.mode === 'collections') items.push(['mode', 'Collections']);
+    if (state.mode === 'collection' && state.collection) items.push(['mode', `Collection: ${state.collection.name}`]);
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
     if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
     if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
     if (state.minVotes !== DEFAULT_VOTES) items.push(['votes', `Strength ${state.minVotes}+ votes`]);
     if (state.notesOnly) items.push(['notes', 'Only with notes']);
+    if (state.order === 'chrono') items.push(['order', 'Chronological order']);
     if (state.focus && state.mode === 'explore') {
       const en = state.focus.entity;
-      items.push(['focus', en ? `${en.type === 'person' ? 'Person' : en.type === 'place' ? 'Place' : 'Topic'}: ${en.name}` : state.focus.kind === 'words' ? `Word: ${rangeLabel(state.focus)}` : rangeLabel(state.focus)]);
+      items.push(['focus', en ? `${{ person: 'Person', place: 'Place', topic: 'Topic', word: 'Original word' }[en.type]}: ${en.name}` : state.focus.kind === 'words' ? `Word: ${rangeLabel(state.focus)}` : rangeLabel(state.focus)]);
     }
     if (state.selected >= 0 && state.mode === 'explore') items.push(['selected', `${refLabel(F[state.selected])} ↔ ${refLabel(T[state.selected], E[state.selected])}`]);
     return items;
@@ -2216,6 +2585,7 @@
     else if (k === 'between') { state.from = state.to = 'all'; el.fromSel.value = el.toSel.value = 'all'; applyFilters(); }
     else if (k === 'votes') { state.minVotes = DEFAULT_VOTES; syncControls(); applyFilters(); }
     else if (k === 'notes') { state.notesOnly = false; syncControls(); applyFilters(); }
+    else if (k === 'order') { state.order = 'bible'; setOrder('bible'); syncControls(); updateCount(); resetView(false); drawBase(); }
     else if (k === 'focus') { state.focus = null; state.selected = -1; focusList = new Int32Array(0); el.search.value = ''; drawBase(); renderPanel(); resetView(); }
     else if (k === 'selected') { state.selected = -1; drawBase(); renderPanel(); }
     syncURL(true);
@@ -2237,12 +2607,14 @@
       if (state.theme) p.set('theme', state.theme);
       if (state.notesOnly) p.set('notes', '1');
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
+      if (state.order !== 'bible') p.set('order', state.order);
       if (LANG !== 'en') p.set('lang', LANG);
       if (EMBED) p.set('embed', '1');
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
       else if (state.mode === 'plan' && state.plan) { p.set('plan', state.plan.id); p.set('day', state.plan.day + 1); }
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game'].includes(state.mode)) p.set('view', state.mode);
+      else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -2270,6 +2642,8 @@
     if (validSel(p.get('to'))) state.to = p.get('to');
     if (THEMES.some(t => t.id === p.get('theme'))) state.theme = p.get('theme');
     if (p.get('color') === 'category') state.colorMode = 'category';
+    state.order = p.get('order') === 'chrono' ? 'chrono' : 'bible';
+    if (POS) setOrder(state.order);
     state.notesOnly = p.get('notes') === '1';
     syncControls();
     return p;
@@ -2278,6 +2652,7 @@
     el.votes.value = state.minVotes; el.votesOut.textContent = state.minVotes;
     el.fromSel.value = state.from; el.toSel.value = state.to; el.theme.value = state.theme; el.notesOnly.checked = state.notesOnly;
     el.controls.querySelector(`input[value="${state.colorMode}"]`).checked = true;
+    el.controls.querySelector(`input[name=order][value="${state.order}"]`).checked = true;
   }
   function findRef(a, b) {
     let best = -1;
@@ -2290,7 +2665,9 @@
     if (p.get('plan')) { openPlan(p.get('plan'), (+p.get('day') || 1) - 1, { push: false }); return; }
     for (const type of ['person', 'place', 'topic']) if (p.get(type)) { await openEntity(type, p.get(type)); return; }
     if (p.get('path')) { const [a, b] = p.get('path').split('~'); findPath(a || '', b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (p.get('collection')) { const col = decodeCollection(p.get('collection')); if (col) { col.shared = !getCollections().some(c => c.name === col.name && c.items.length === col.items.length); openCollection(col, { push: false }); return; } }
+    if (p.get('word')) { await openWord(p.get('word')); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {
@@ -2310,12 +2687,13 @@
   async function applyLocation() {
     restoring = true;
     try {
-      Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance' });
+      Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance', order: 'bible' });
+    if (POS) setOrder('bible');
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
       if (![...p.keys()].filter(k => k !== 'embed').length && !EMBED) { showLanding(); return; }
       hideLanding();
-      const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic'].some(k => p.has(k));
+      const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic', 'word'].some(k => p.has(k));
       if (!hasDetail) resetView(false);
       await restoreFromURL(p);
       maybeShowTips();

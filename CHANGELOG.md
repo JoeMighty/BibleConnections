@@ -20,6 +20,19 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Usage events in GoatCounter for journeys, themes, plans, the game, Connect, QR codes, embeds, posters and note suggestions (no personal data).
 - QR code library: qrcode-generator (MIT), listed in THIRD_PARTY_NOTICES.md.
 
+- Word study: about 14,000 Hebrew and Greek words from STEP Bible (CC BY 4.0), searchable by English meaning, transliteration or Strong's number, with 32 featured words such as hesed, shalom, agape and charis.
+- Chronological view: books can be arranged by when their events happen (approximate), with arcs, labels, colors and posters following the new order.
+- Collections: group connections, verses, journey steps and searches, step through them, and share a whole collection as one link.
+- Kids mode: bigger text and targets, simpler welcome text, fewer advanced filters, and three kids journeys (God keeps His promises, Jesus the Good Shepherd, God's big rescues) in English and Spanish.
+- Reading plan reminders as a calendar file (a daily 7 am reminder for each remaining day).
+- Daily calendar and RSS feeds of the connection of the day, rebuilt every day by the deploy workflow.
+- Story-sized images (1080 by 1920) of a connection or the connection of the day, for Instagram and WhatsApp stories.
+- "Describe this view": a plain-language summary of the map (button, D key and a summary line in the details panel).
+- Automatic pull requests from approved note suggestions, automatic releases from the changelog, screenshot tests with baselines taken on GitHub, and private error counts in GoatCounter.
+
+### Changed
+- The content suggestion form now has separate fields for the two passages, the kind of connection and the note.
+
 ### Fixed
 - Moving the pointer over the map while it was still loading could cause an error.
 

@@ -7,6 +7,7 @@
   <meta name="description" content="Explore tens of thousands of cross references across the whole Bible. Zoom in, tap any arc and follow guided journeys through Scripture.">
   <meta name="theme-color" content="#08080c">
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Bible Connections: connection of the day" href="feeds/daily.xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bible Connections">
   <meta property="og:title" content="Bible Connections: see how the whole Bible fits together">
@@ -67,7 +68,8 @@
       <canvas class="hero" id="heroCanvas" role="img" aria-label="Arc diagram showing tens of thousands of cross references spanning the Bible from Genesis to Revelation"></canvas>
       <p class="eyebrow">Explore Scripture visually</p>
       <h2 id="landingTitle">See how the whole Bible fits together</h2>
-      <p class="lede">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
+      <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Tap one to find out how they connect!</p>
+      <p class="lede adult-only">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
       <div class="landing-actions">
         <button type="button" class="btn big" data-start="map">Explore the map</button>
         <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
@@ -129,6 +131,7 @@
         <button type="button" class="icon-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></button>
         <button type="button" class="icon-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></button>
         <button type="button" class="icon-btn" id="zoomReset" aria-label="Reset view" title="Reset view"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4.5v4.2h4.2"/></svg></button>
+        <button type="button" class="icon-btn" id="describeBtn" aria-label="Describe this view" title="Describe this view (D)"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 10.5h16M4 15h10M4 19.5h7"/></svg></button>
         <button type="button" class="icon-btn" id="saveImage" aria-label="Save an image of this view" title="Save an image of this view"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg></button>
       </div>
       <div class="legend" id="legend" aria-label="Color legend"></div>
@@ -177,11 +180,27 @@
               <label><input type="radio" name="colorMode" value="category"> Category</label>
             </div>
           </fieldset>
+          <fieldset class="field">
+            <legend>Book order</legend>
+            <div class="segmented">
+              <label><input type="radio" name="order" value="bible" checked> Bible order</label>
+              <label><input type="radio" name="order" value="chrono"> Chronological</label>
+            </div>
+            <p class="hint">Chronological order is approximate: books are placed by when their events happen.</p>
+          </fieldset>
           <button type="button" class="btn ghost full" id="resetAll">Reset everything</button>
         </details>
         <p class="count" id="count" aria-live="polite"></p>
       </form>
 
+      <div class="col-bar" id="colBar" role="region" aria-label="Collection" hidden>
+        <span id="colBarText"></span>
+        <div class="actions tight">
+          <button type="button" class="btn ghost small" id="colPrev">Previous</button>
+          <button type="button" class="btn small" id="colNext">Next</button>
+          <button type="button" class="btn ghost small" id="colExit">Back to collection</button>
+        </div>
+      </div>
       <section class="panel" id="panel" tabindex="-1" aria-labelledby="panelTitle">
         <h2 id="panelTitle">Explore</h2>
         <div id="panelBody"></div>
@@ -195,6 +214,16 @@
     <span class="embed-title" id="embedTitle">The whole Bible</span>
     <a class="btn small" id="embedOpen" href="./" target="_blank" rel="noopener">Open in Bible Connections<span class="sr-only"> (opens in a new tab)</span></a>
   </div>
+
+  <dialog id="collectionDialog" aria-labelledby="colTitle">
+    <form class="dialog-inner" method="dialog">
+      <h2 id="colTitle">Add to collection</h2>
+      <p class="muted" id="colItemLabel"></p>
+      <div class="field"><label for="colSelect">Collection</label><select id="colSelect"></select></div>
+      <div class="field" id="colNewWrap"><label for="colNewName">New collection name</label><input id="colNewName" type="text" placeholder="e.g. Sunday: The Good Shepherd" autocomplete="off"></div>
+      <div class="actions"><button type="button" class="btn" id="colAdd">Add</button><button class="btn ghost">Cancel</button></div>
+    </form>
+  </dialog>
 
   <dialog id="qrDialog" aria-labelledby="qrTitle">
     <div class="dialog-inner center">
@@ -269,6 +298,9 @@
         </div>
       </fieldset>
       <div class="field check">
+        <label for="kidsToggle"><span>Kids mode (bigger text, simpler words and journeys for children)</span><input type="checkbox" class="switch" id="kidsToggle"></label>
+      </div>
+      <div class="field check">
         <label for="contrastToggle"><span>High contrast (bolder arcs and text)</span><input type="checkbox" class="switch" id="contrastToggle"></label>
       </div>
       <div class="field">
@@ -304,6 +336,7 @@
         <li>Cross references from <a href="https://www.openbible.info/labs/cross-references/" rel="noopener">OpenBible.info</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Filtered to links with 3 or more votes and converted to a compact format.</li>
         <li>Verse counts and word search come from the public domain <a href="https://berean.bible/" rel="noopener">Berean Standard Bible</a>. No Bible text is published on this site.</li>
         <li>Reading links open <a href="https://www.bible.com/" rel="noopener">Bible.com</a>. Translation names are trademarks of their owners. This site is not affiliated with or endorsed by YouVersion or any Bible publisher.</li>
+        <li>Hebrew and Greek word data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a> (Tyndale House), licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</li>
         <li>Data packaged by <a href="https://github.com/scrollmapper/bible_databases" rel="noopener">scrollmapper/bible_databases</a> (MIT license).</li>
         <li>Notes, journeys and themes are original descriptions written for this site.</li>
         <li id="aboutStats" hidden>This site counts visits with a privacy-friendly service that uses no cookies and collects no personal data. It respects Do Not Track.</li>

@@ -356,5 +356,86 @@
         "question": "¿Cómo podría tu vida ser un canal por el que la vida de Dios llegue a otros?"
       }
     ]
+  },
+  {
+    "id": "kids-promises",
+    "name": "Dios cumple sus promesas",
+    "summary": "Para niños: Dios siempre hace lo que dice.",
+    "steps": [
+      {
+        "title": "El arcoíris",
+        "note": "Después del diluvio, Dios puso un arcoíris en el cielo como señal de su promesa. En el cielo, Juan ve un arcoíris alrededor del trono de Dios.",
+        "question": "¿Qué te recuerda un arcoíris acerca de Dios?"
+      },
+      {
+        "title": "Cuenta las estrellas",
+        "note": "Dios le dijo a Abraham que mirara las estrellas y le prometió una familia así de grande. ¡Hebreos dice que de verdad pasó!",
+        "question": "¿Puedes pensar en una promesa que alguien te cumplió?"
+      },
+      {
+        "title": "Un bebé para Sara",
+        "note": "Sara era muy anciana, pero Dios le dio un bebé tal como lo había prometido.",
+        "question": "¿Hay algo demasiado difícil para Dios?"
+      },
+      {
+        "title": "Todas las promesas",
+        "note": "Josué dijo que ninguna de las buenas promesas de Dios falló. Pablo dice que todas las promesas de Dios son un sí en Jesús.",
+        "question": "¿Qué promesa de Dios quieres recordar esta semana?"
+      }
+    ]
+  },
+  {
+    "id": "kids-shepherd",
+    "name": "Jesús, el Buen Pastor",
+    "summary": "Para niños: Jesús cuida a sus ovejas.",
+    "steps": [
+      {
+        "title": "Mi pastor",
+        "note": "David dijo que el Señor es su pastor. Jesús dijo: yo soy el buen pastor.",
+        "question": "¿Qué hace un pastor por sus ovejas?"
+      },
+      {
+        "title": "La oveja perdida",
+        "note": "Dios dijo que buscaría a sus ovejas perdidas. Jesús contó la historia de un pastor que buscó hasta encontrar la que se había perdido.",
+        "question": "¿Cómo crees que se sintió la oveja cuando la encontraron?"
+      },
+      {
+        "title": "Cerca de su corazón",
+        "note": "Isaías dice que Dios lleva a los corderitos cerca de su corazón. Jesús tomó a los niños en sus brazos y los bendijo.",
+        "question": "¿Cómo te sientes al saber que Jesús ama a los niños?"
+      },
+      {
+        "title": "Seguir al pastor",
+        "note": "Las ovejas de Jesús conocen su voz y lo siguen. Un día Él las llevará a agua fresca y secará todas sus lágrimas.",
+        "question": "¿Cómo podemos escuchar a Jesús?"
+      }
+    ]
+  },
+  {
+    "id": "kids-rescue",
+    "name": "Los grandes rescates de Dios",
+    "summary": "Para niños: historias de Dios salvando a su pueblo.",
+    "steps": [
+      {
+        "title": "El arca de Noé",
+        "note": "Dios le dijo a Noé que construyera un barco grande, y mantuvo a salvo a su familia en el diluvio.",
+        "question": "¿Qué llevarías en el arca de Noé?"
+      },
+      {
+        "title": "El foso de los leones",
+        "note": "Dios envió un ángel para cerrar la boca de los leones y Daniel estuvo a salvo. Hebreos recuerda a personas que confiaron en Dios así.",
+        "question": "¿Cuándo necesitas ser valiente?"
+      },
+      {
+        "title": "Jonás y el gran pez",
+        "note": "Jonás oró dentro del pez y Dios lo rescató. Jesús dijo que su propio rescate sería como los tres días de Jonás.",
+        "question": "¿Dónde puedes orar a Dios? (¡En cualquier lugar!)"
+      },
+      {
+        "title": "El rescate más grande",
+        "note": "Dios prometió buscar a los perdidos. Jesús dijo que vino a buscar y salvar a los que estaban perdidos.",
+        "question": "¿A quién le podrías contar de Jesús?"
+      }
+    ]
   }
 ]

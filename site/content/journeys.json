@@ -474,5 +474,113 @@
         "question": "How could your life be a channel for God’s life to reach others?"
       }
     ]
+  },
+  {
+    "id": "kids-promises",
+    "kids": true,
+    "name": "God keeps His promises",
+    "summary": "For kids: God always does what He says.",
+    "steps": [
+      {
+        "a": "Gen.9.13",
+        "b": "Rev.4.3",
+        "title": "The rainbow",
+        "note": "After the flood God put a rainbow in the sky as a sign of His promise. In heaven, John sees a rainbow all around God’s throne.",
+        "question": "What does a rainbow remind you about God?"
+      },
+      {
+        "a": "Gen.15.5",
+        "b": "Heb.11.12",
+        "title": "Count the stars",
+        "note": "God told Abraham to look at the stars and promised him a family that big. Hebrews says it really happened!",
+        "question": "Can you think of a promise someone kept for you?"
+      },
+      {
+        "a": "Gen.21.1",
+        "b": "Heb.11.11",
+        "title": "A baby for Sarah",
+        "note": "Sarah was very old, but God gave her a baby boy just like He promised.",
+        "question": "Is anything too hard for God?"
+      },
+      {
+        "a": "Josh.21.45",
+        "b": "2Cor.1.20",
+        "title": "Every promise",
+        "note": "Joshua said not one of God’s good promises failed. Paul says every promise of God is a yes in Jesus.",
+        "question": "Which promise of God would you like to remember this week?"
+      }
+    ]
+  },
+  {
+    "id": "kids-shepherd",
+    "kids": true,
+    "name": "Jesus, the Good Shepherd",
+    "summary": "For kids: Jesus looks after His sheep.",
+    "steps": [
+      {
+        "a": "Ps.23.1",
+        "b": "John.10.11",
+        "title": "My shepherd",
+        "note": "David said the Lord is his shepherd. Jesus said, I am the good shepherd.",
+        "question": "What does a shepherd do for the sheep?"
+      },
+      {
+        "a": "Ezek.34.12",
+        "b": "Luke.15.4",
+        "title": "The lost sheep",
+        "note": "God said He would go looking for His lost sheep. Jesus told a story about a shepherd who searched until he found the one that was lost.",
+        "question": "How do you think the lost sheep felt when it was found?"
+      },
+      {
+        "a": "Isa.40.11",
+        "b": "Mark.10.16",
+        "title": "Carried close",
+        "note": "Isaiah says God carries the little lambs close to His heart. Jesus took the children in His arms and blessed them.",
+        "question": "How does it feel to know Jesus loves children?"
+      },
+      {
+        "a": "John.10.27",
+        "b": "Rev.7.17",
+        "title": "Following the shepherd",
+        "note": "Jesus’ sheep know His voice and follow Him. One day He will lead them to fresh water and wipe away every tear.",
+        "question": "How can we listen to Jesus?"
+      }
+    ]
+  },
+  {
+    "id": "kids-rescue",
+    "kids": true,
+    "name": "God’s big rescues",
+    "summary": "For kids: stories of God saving His people.",
+    "steps": [
+      {
+        "a": "Gen.6.14",
+        "b": "1Pet.3.20",
+        "title": "Noah’s ark",
+        "note": "God told Noah to build a big boat, and it kept his family safe in the flood.",
+        "question": "What would you take on Noah’s ark?"
+      },
+      {
+        "a": "Dan.6.22",
+        "b": "Heb.11.33",
+        "title": "The lions’ den",
+        "note": "God sent an angel to shut the lions’ mouths so Daniel was safe. Hebrews remembers people who trusted God like that.",
+        "question": "When do you need to be brave?"
+      },
+      {
+        "a": "Jonah.2.9",
+        "b": "Matt.12.40",
+        "title": "Jonah and the big fish",
+        "note": "Jonah prayed inside the fish, and God rescued him. Jesus said His own rescue would be like Jonah’s three days.",
+        "question": "Where could you pray to God? (Anywhere!)"
+      },
+      {
+        "a": "Ezek.34.16",
+        "b": "Luke.19.10",
+        "title": "The greatest rescue",
+        "note": "God promised to look for the lost. Jesus said He came to find and save people who are lost.",
+        "question": "Who is someone you could tell about Jesus?"
+      }
+    ]
   }
 ]

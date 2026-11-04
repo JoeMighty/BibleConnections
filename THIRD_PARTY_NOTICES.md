@@ -15,6 +15,13 @@ This project publishes no copyrighted Bible text. Below is everything it uses fr
 - License: public domain (dedicated to the public domain in 2023).
 - Used only to count verses per chapter and to build a word to verse number index (`site/data/words.json`) for word search. No verse text is published.
 
+## Hebrew and Greek words: STEP Bible
+
+- Source: STEPBible-Data (TAHOT, TAGNT, TBESH and TBESG), https://github.com/STEPBible/STEPBible-Data
+- Created by Tyndale House Cambridge and curated by STEP Bible, https://www.STEPBible.org
+- License: Creative Commons Attribution 4.0 (CC BY 4.0). Credit: "STEP Bible" linked to www.STEPBible.org
+- Changes made: Strong's numbers were grouped by base number, prefixes were left out, definitions were shortened to about 110 characters, and verse references were converted to verse numbers in `site/data/strongs.json` (built by `scripts/build-strongs.mjs`).
+
 ## Data packaging: scrollmapper/bible_databases
 
 - Source: https://github.com/scrollmapper/bible_databases

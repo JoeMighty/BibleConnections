@@ -9,10 +9,28 @@ body:
       options: ["A new or better note", "A new journey", "A new theme", "A discussion question", "A Spanish translation fix", "Other"]
     validations:
       required: true
+  - type: input
+    id: from
+    attributes:
+      label: First passage (for notes)
+      description: Book.Chapter.Verse, for example Gen.50.20
+  - type: input
+    id: to
+    attributes:
+      label: Second passage (for notes)
+      description: Book.Chapter.Verse, for example Rom.8.28
+  - type: dropdown
+    id: type
+    attributes:
+      label: Kind of connection (for notes)
+      options: ["Same truth", "Echo", "Promise", "Fulfillment", "Quotation", "Parallel", "Contrast"]
+  - type: textarea
+    id: note
+    attributes:
+      label: Why do these passages connect? (for notes)
+      description: One or two sentences in your own words. Please do not copy text from copyrighted Bible translations.
   - type: textarea
     id: details
     attributes:
       label: Details
-      description: Include references (for example John 3:16). Please write in your own words and do not copy text from copyrighted Bible translations.
-    validations:
-      required: true
+      description: Anything else, including suggestions that are not notes.

@@ -1,0 +1,44 @@
+name: Note suggestion to pull request
+
+# When a "Content suggestion" issue is labeled "approved", add its note to notes.json and open a pull request.
+# Requires Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  note:
+    if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'content')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: note
+        run: node scripts/issue-to-note.mjs
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+      - if: steps.note.outputs.ok == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: note-issue-${{ github.event.issue.number }}
+          add-paths: site/content/notes.json
+          commit-message: "Add note: ${{ steps.note.outputs.label }}"
+          title: "Add note: ${{ steps.note.outputs.label }}"
+          body: |
+            Adds the note suggested in #${{ github.event.issue.number }}.
+            Please check the wording is original (no copied translation text) before merging.
+
+            Closes #${{ github.event.issue.number }}
+          delete-branch: true
+      - if: steps.note.outputs.ok != 'true'
+        run: gh issue comment ${{ github.event.issue.number }} --body "This suggestion could not be turned into a note automatically. It needs a first passage, a second passage (for example Gen.50.20) and a note of at least 20 characters."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}

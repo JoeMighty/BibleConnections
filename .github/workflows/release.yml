@@ -1,0 +1,32 @@
+name: Release
+
+# When CHANGELOG.md gets a new numbered version (for example "## [0.6.0] - 2026-11-04"),
+# create the matching tag and GitHub release with that section as the notes.
+on:
+  push:
+    branches: [main]
+    paths: [CHANGELOG.md]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find the latest version in the changelog
+        id: v
+        run: |
+          version=$(grep -m1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+(?=\])' CHANGELOG.md || true)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          awk -v v="$version" '$0 ~ "^## \\[" v "\\]" {f=1; next} f && /^## \[/ {exit} f' CHANGELOG.md > notes.md
+      - name: Create the release if it does not exist yet
+        if: steps.v.outputs.version != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          V: ${{ steps.v.outputs.version }}
+        run: |
+          if gh release view "v$V" >/dev/null 2>&1; then echo "v$V already released"; exit 0; fi
+          gh release create "v$V" --title "Bible Connections $V" --notes-file notes.md --target "$GITHUB_SHA"

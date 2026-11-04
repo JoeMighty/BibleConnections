@@ -225,7 +225,7 @@ button, input, select { font: inherit; letter-spacing: inherit; }
   background: var(--surface-2); border-radius: var(--radius); padding: 8px 12px; margin: 0;
 }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-input[type=search], select {
+input[type=search], input[type=text], select {
   width: 100%; min-height: 44px; padding: 8px 12px; color: var(--text); font-size: var(--t-body);
   background: var(--surface-2); border: 0.5px solid var(--separator); border-radius: var(--radius-s);
 }
@@ -458,6 +458,26 @@ body.embed { padding-bottom: 0 !important; }
   padding: 0 12px; background: var(--surface); border-top: 0.5px solid var(--separator);
 }
 .embed-title { font-weight: 600; font-size: var(--t-subhead); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Word study, collections, summaries */
+.lemma { font-size: 40px; line-height: 1.2; margin: 0 0 4px !important; font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif; }
+.summary { background: var(--surface-2); border-radius: var(--radius); padding: 10px 14px; font-size: var(--t-subhead); }
+.col-bar {
+  position: sticky; top: 0; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 10px 16px; background: var(--accent-soft); border-bottom: 0.5px solid var(--separator); font-weight: 600;
+}
+.col-bar[hidden] { display: none; }
+
+/* Kids mode: bigger type and targets, fewer advanced controls */
+.kids-only { display: none; }
+:root[data-kids="on"] .kids-only { display: block; }
+:root[data-kids="on"] .adult-only { display: none; }
+:root[data-kids="on"] body { font-size: 18px; }
+:root[data-kids="on"] .panel p, :root[data-kids="on"] .step-note { font-size: 19px; }
+:root[data-kids="on"] .btn.small, :root[data-kids="on"] .chip { min-height: 48px; font-size: 17px; padding: 10px 16px; }
+:root[data-kids="on"] .conn-item { min-height: 56px; font-size: 18px; }
+:root[data-kids="on"] .filters, :root[data-kids="on"] .count { display: none; }
+:root[data-kids="on"] .step-title { font-size: 26px !important; }
 
 /* ---------- Welcome page ---------- */
 .landing { position: relative; z-index: 2; background: var(--bg); }

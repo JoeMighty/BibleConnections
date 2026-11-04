@@ -1,0 +1,33 @@
+name: Update screenshot baselines
+
+# Run this by hand (Actions > Update screenshot baselines > Run workflow) after an intended design change.
+# It takes new screenshots on GitHub's machines and opens a pull request with them.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  baselines:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test tests/visual.spec.js --project=desktop --update-snapshots
+        env:
+          UPDATE_BASELINES: '1'
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: screenshot-baselines
+          add-paths: tests/visual.spec.js-snapshots
+          commit-message: Update screenshot baselines
+          title: Update screenshot baselines
+          body: New screenshot baselines taken on GitHub. Check the images look right, then merge.
+          delete-branch: true

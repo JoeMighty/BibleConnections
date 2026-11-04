@@ -48,10 +48,14 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
 - **Guided journeys:** nine step-by-step tours with discussion questions, presenter mode for sermons and classes (works with clickers), and printable handouts.
 - **Sermon series:** show the current series passages on the welcome page.
-- **Study:** reading plans with saved progress, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
-- **Connection of the day** on the welcome page.
+- **Study:** reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Connection of the day** on the welcome page, also available as a daily calendar and RSS feed.
+- **Word study:** follow about 14,000 Hebrew and Greek words (from STEP Bible) through the Bible.
+- **Chronological view:** rearrange the books by when their events happen.
+- **Collections:** group connections and verses for a sermon or small group and share them as one link.
+- **Kids mode:** bigger text, simpler words and three journeys written for children.
 - **Insights:** most connected verses and chapters, plus a category heatmap that filters the map.
-- **Sharing:** every view has its own link, back button support, Share, Copy, Save image, QR codes for slides and bulletins, embed code for church websites, and link previews in messaging apps.
+- **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites, and link previews in messaging apps.
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
 - **Spanish:** full Spanish interface, journeys and handouts, with Spanish Bible.com translations.
@@ -74,9 +78,12 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 
 | Workflow | When | What it does |
 | --- | --- | --- |
-| `ci.yml` | Every push and pull request | Browser and accessibility tests, Lighthouse checks, then deploys `main` to GitHub Pages |
+| `ci.yml` | Every push, pull request and daily | Browser and accessibility tests, Lighthouse checks, then deploys `main` to GitHub Pages |
 | `links.yml` | Weekly | Checks every Bible.com translation link |
 | `data-refresh.yml` | Monthly | Rebuilds the cross reference data and opens a pull request if it changed |
+| `note-from-issue.yml` | When a content suggestion is labeled `approved` | Adds the suggested note and opens a pull request |
+| `release.yml` | When a new version appears in the changelog | Creates the tag and GitHub release |
+| `visual-baselines.yml` | By hand, after a design change | Takes new screenshot baselines and opens a pull request |
 
 For the monthly refresh to open pull requests, turn on **Settings > Actions > General > Allow GitHub Actions to create and approve pull requests**.
 

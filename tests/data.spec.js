@@ -32,6 +32,8 @@ test('notes, journeys and themes resolve to real references', async ({ page }) =
       if (p.source === 'theme' && !window.THEMES.some(t => t.id === p.theme)) bad.push(`plan ${p.id} theme`);
       if (!p.name || !p.description || !(p.perDay > 0)) bad.push(`plan ${p.id} fields`);
     }
+    const strongs = await (await fetch('data/strongs.json')).json();
+    for (const w of await (await fetch('content/words.json')).json()) if (!strongs[w.id] || !strongs[w.id].v) bad.push(`featured word ${w.id}`);
     return { bad, missingPairs, notes: window.NOTES.length };
   });
   expect(report.bad).toEqual([]);
