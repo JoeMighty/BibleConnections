@@ -61,6 +61,7 @@
     contrast: store.get('contrast', false),
     kids: store.get('kids', false),
     version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
+    version2: store.get('version2', ''),
   };
 
   // ---------- Translation ----------
@@ -269,8 +270,11 @@
     const ci = Math.min(Math.max(+c, 1), b.chapters.length) - 1;
     return b.chapterStart[ci] + Math.min(Math.max(+v, 1), b.chapters[ci]) - 1;
   }
-  function bibleUrl(start, end = start, chapterOnly = false) {
-    const ver = settings.version, id = VERSIONS[ver].id;
+  const vLabel = (ver) => (VERSIONS[ver] && VERSIONS[ver].label) || ver;
+  // an optional second translation shown next to the first, for comparing
+  const second = () => (settings.version2 && VERSIONS[settings.version2] && settings.version2 !== settings.version ? settings.version2 : '');
+  function bibleUrl(start, end = start, chapterOnly = false, ver = settings.version) {
+    const id = VERSIONS[ver].id;
     const b = BOOKS[verseBook[start]], c = verseChap[start];
     if (chapterOnly) return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${ver}`;
     // Bible.com does not support verse ranges in links, so a range opens at its first verse
@@ -1011,10 +1015,19 @@
     return `<div class="verse-card" style="--c:${color}">
       <p class="ref">${esc(refLabel(start, end))}</p>
       <div class="actions tight">
-        ${ext(bibleUrl(start, end), `Read in ${settings.version}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn small')}
+        ${ext(bibleUrl(start, end), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn small')}
         ${ext(bibleUrl(start, start, true), `Whole chapter<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
+      </div>
+      ${second() ? `<div class="actions tight compare-row">
+        ${ext(bibleUrl(start, end, false, second()), `Read in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn ghost small')}
+        ${ext(bibleUrl(start, start, true, second()), `Whole chapter in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}` : ''}
       </div></div>`;
   }
+  // small "Read" links for lists, plus the comparison translation when one is chosen
+  const miniRead = (v) => ext(bibleUrl(v), `Read<span class="sr-only"> ${esc(refLabel(v))} in ${esc(vLabel(settings.version))}</span>`, 'mini-link')
+    + (second() ? ` ${ext(bibleUrl(v, v, false, second()), `${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(v))}</span>`, 'mini-link')}` : '');
+  const readBoth = (v, text) => ext(bibleUrl(v), `${text} in ${esc(vLabel(settings.version))}`)
+    + (second() ? ext(bibleUrl(v, v, false, second()), `${text} in ${esc(vLabel(second()))}`) : '');
   const noteHTML = (n) => `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>${LANG !== 'en' ? '<p class="hint">Note available in English only.</p>' : ''}</div>`;
 
   function connItem(i, otherSide) {
@@ -1109,7 +1122,7 @@
         const vs = Math.min(versesShown, f.verses.length);
         for (let n = 0; n < vs; n++) {
           const v = f.verses[n];
-          html += `<li><button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button> ${ext(bibleUrl(v), `Read<span class="sr-only"> ${esc(refLabel(v))}</span>`, 'mini-link')}</li>`;
+          html += `<li><button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button> ${miniRead(v)}</li>`;
         }
         html += '</ul>';
         if (vs < f.verses.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="moreVerses">Show more verses (${(f.verses.length - vs).toLocaleString()} left)</button></div>`;
@@ -1118,7 +1131,7 @@
         if (f.kind === 'verse') html += refCard(f.start, f.end - 1, pal.focus);
         else {
           const label = f.kind === 'book' ? `${BOOKS[f.book].name} 1` : rangeLabel(f);
-          html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${settings.version}`, 'btn small')}</div>`;
+          html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${esc(vLabel(settings.version))}`, 'btn small')}${second() ? ext(bibleUrl(f.start, f.start, true, second()), `Read ${esc(label)} in ${esc(vLabel(second()))}`, 'btn ghost small') : ''}</div>`;
         }
         html += `<p>${focusList.length.toLocaleString()} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
           <p class="summary">${esc(describeView())}</p>
@@ -1260,7 +1273,8 @@
       if (!r || r.error) continue;
       html += `<li><p class="series-title">${esc(p.title || '')}</p>
         <div class="actions tight"><button type="button" class="btn small" data-action="focusRef" data-q="${esc(p.ref)}">Explore ${esc(rangeLabel(r))}</button>
-        ${ext(bibleUrl(r.start, r.kind === 'verse' ? r.end - 1 : r.start, r.kind !== 'verse'), `Read in ${settings.version}<span class="sr-only">: ${esc(rangeLabel(r))}</span>`)}</div></li>`;
+        ${ext(bibleUrl(r.start, r.kind === 'verse' ? r.end - 1 : r.start, r.kind !== 'verse'), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(rangeLabel(r))}</span>`)}
+        ${second() ? ext(bibleUrl(r.start, r.kind === 'verse' ? r.end - 1 : r.start, r.kind !== 'verse', second()), `Read in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(rangeLabel(r))}</span>`) : ''}</div></li>`;
     }
     html += '</ol><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="explore">Back to explore</button></div>';
     return [S.title || 'Series', html];
@@ -1361,12 +1375,12 @@
     else if (P.edges === null) html += `<p>No chain of 8 links or fewer was found between ${esc(P.fromLabel)} and ${esc(P.toLabel)}. Try a nearby verse or a whole chapter.</p>`;
     else if (P.edges) {
       html += `<h3>${P.edges.length} link${P.edges.length === 1 ? '' : 's'} from ${esc(P.fromLabel)} to ${esc(P.toLabel)}</h3><ol class="chain">`;
-      html += `<li><span class="chain-num" aria-hidden="true">1</span><div><p class="ref">${esc(refLabel(P.edges[0].a))}</p>${ext(bibleUrl(P.edges[0].a), `Read<span class="sr-only"> ${esc(refLabel(P.edges[0].a))}</span>`, 'mini-link')}</div></li>`;
+      html += `<li><span class="chain-num" aria-hidden="true">1</span><div><p class="ref">${esc(refLabel(P.edges[0].a))}</p>${miniRead(P.edges[0].a)}</div></li>`;
       P.edges.forEach((e, n) => {
         const note = noteMap.get(e.i);
         html += `<li><span class="chain-num" aria-hidden="true">${n + 2}</span><div><p class="ref">${esc(refLabel(e.b))} <span class="votes">${V[e.i]} votes</span></p>
           ${note ? `<p class="chain-note"${LANG !== 'en' ? ' lang="en"' : ''}>${esc(note.text)}</p>` : ''}
-          ${ext(bibleUrl(e.b), `Read<span class="sr-only"> ${esc(refLabel(e.b))}</span>`, 'mini-link')}</div></li>`;
+          ${miniRead(e.b)}</div></li>`;
       });
       html += `</ol><div class="actions"><button type="button" class="btn ghost small" data-action="replayPath">Play again</button>${shareButtons()}</div>`;
     }
@@ -1523,8 +1537,8 @@
       <p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>
       <div class="actions tight">
         <button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button>
-        ${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`)}
-        ${ext(bibleUrl(T[i]), `Read ${esc(refLabel(T[i]))}`)}
+        ${readBoth(F[i], `Read ${esc(refLabel(F[i]))}`)}
+        ${readBoth(T[i], `Read ${esc(refLabel(T[i]))}`)}
         <button type="button" class="btn ghost small" data-action="story" data-ref="${i}" data-keep="1">Story image</button>
       </div></div>`;
   }
@@ -1683,7 +1697,7 @@
     if (!state.game) newQuestion();
     const g = state.game, sc = store.get('game', { right: 0, total: 0, streak: 0, best: 0 });
     let html = `<p>Which passage is linked to <strong>${esc(refLabel(g.a))}</strong>? Read it first if you like.</p>
-      <div class="actions tight">${ext(bibleUrl(g.a), `Read ${esc(refLabel(g.a))}`)}</div>
+      <div class="actions tight">${readBoth(g.a, `Read ${esc(refLabel(g.a))}`)}</div>
       <ul class="answer-list" aria-label="Answers">`;
     for (const v of g.options) {
       const state2 = g.answered === null ? '' : v === g.correct ? ' correct' : v === g.answered ? ' wrong' : '';
@@ -1694,7 +1708,7 @@
       const ok = g.answered === g.correct, n = noteMap.get(g.i);
       html += `<p class="result ${ok ? 'ok' : 'no'}" role="status">${ok ? 'Correct!' : `Not quite. The answer is ${esc(refLabel(g.correct))}.`}</p>
         ${n ? `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p></div>` : ''}
-        <div class="actions"><button type="button" class="btn" data-action="nextQuestion">Next question</button>${ext(bibleUrl(g.correct), `Read ${esc(refLabel(g.correct))}`)}</div>`;
+        <div class="actions"><button type="button" class="btn" data-action="nextQuestion">Next question</button>${readBoth(g.correct, `Read ${esc(refLabel(g.correct))}`)}</div>`;
     }
     html += `<p class="step-count">Score: ${sc.right} of ${sc.total} · Streak: ${sc.streak} · Best streak: ${sc.best}</p>
       <div class="actions"><button type="button" class="btn ghost small" data-action="resetGame">Reset score</button><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`;
@@ -2172,7 +2186,8 @@
     if (state.selected >= 0) {
       const i = state.selected, n = noteMap.get(i);
       const text = `${refLabel(F[i])} ↔ ${refLabel(T[i], E[i])}` + (n ? `\n${n.text}` : '') +
-        `\n${refLabel(F[i])}: ${bibleUrl(F[i])}\n${refLabel(T[i], E[i])}: ${bibleUrl(T[i], E[i])}\n${url}`;
+        `\n${refLabel(F[i])}: ${bibleUrl(F[i])}\n${refLabel(T[i], E[i])}: ${bibleUrl(T[i], E[i])}`
+        + (second() ? `\n${vLabel(second())}: ${bibleUrl(F[i], F[i], false, second())} ${bibleUrl(T[i], T[i], false, second())}` : '') + `\n${url}`;
       return { title: 'Bible connection', text, url };
     }
     if (state.focus) {
@@ -2311,8 +2326,12 @@
     el.theme.innerHTML += THEMES.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
     el.bookList.innerHTML = BOOKS.map(b => `<option value="${esc(b.name)}">`).join('');
     if (!VERSIONS[settings.version]) settings.version = 'NIV';
-    const group = (lang, label) => `<optgroup label="${label}">${Object.entries(VERSIONS).filter(([, v]) => (v.lang || 'en') === lang).map(([k, v]) => `<option value="${k}">${k}: ${esc(v.name)}</option>`).join('')}</optgroup>`;
-    $('versionSel').innerHTML = group('en', 'English') + group('es', 'Español');
+    if (settings.version2 && !VERSIONS[settings.version2]) settings.version2 = '';
+    const group = (lang, label) => `<optgroup label="${label}">${Object.entries(VERSIONS).filter(([, v]) => (v.lang || 'en') === lang).map(([k, v]) => `<option value="${k}">${esc(v.label || k)}: ${esc(v.name)}</option>`).join('')}</optgroup>`;
+    const all = group('en', 'English') + group('es', 'Español') + group('ml', 'മലയാളം (Malayalam)');
+    for (const id of ['versionSel', 'readIn']) $(id).innerHTML = all;
+    for (const id of ['version2Sel', 'compareWith']) $(id).innerHTML = '<option value="">None</option>' + all;
+    syncVersionSelects();
   }
 
   el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(true); });
@@ -2374,6 +2393,24 @@
     return { kind: 'words', query: terms.join(' '), verses, mask, start: verses[0], end: verses[verses.length - 1] + 1 };
   }
 
+  // ---------- Translations: one to read in, and an optional one to compare with ----------
+  function syncVersionSelects() {
+    $('versionSel').value = $('readIn').value = settings.version;
+    $('version2Sel').value = $('compareWith').value = settings.version2 || '';
+  }
+  function setVersions(v1, v2) {
+    settings.version = VERSIONS[v1] ? v1 : settings.version;
+    settings.version2 = v2 && VERSIONS[v2] && v2 !== settings.version ? v2 : '';
+    store.set('version', settings.version); store.set('version2', settings.version2);
+    syncVersionSelects();
+    renderPanel();
+    if (!landing.hidden) buildLanding();
+    track('translation/' + settings.version + (settings.version2 ? '+' + settings.version2 : ''));
+    announce(settings.version2 ? `Reading links open in ${vLabel(settings.version)} and ${vLabel(settings.version2)}.` : `Reading links open in ${vLabel(settings.version)}.`);
+  }
+  $('readIn').addEventListener('change', () => setVersions($('readIn').value, settings.version2));
+  $('compareWith').addEventListener('change', () => setVersions(settings.version, $('compareWith').value));
+
   // ---------- Header: settings, about, install ----------
   $('aboutBtn').addEventListener('click', () => el.about.showModal());
   $('settingsBtn').addEventListener('click', () => el.settings.showModal());
@@ -2389,12 +2426,12 @@
     $('contrastToggle').checked = settings.contrast;
     $('kidsToggle').checked = settings.kids;
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
-    $('versionSel').value = settings.version;
+    syncVersionSelects();
     f.addEventListener('change', (e) => {
       if (e.target.name === 'appearance') settings.appearance = e.target.value;
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
       if (e.target.id === 'kidsToggle') { settings.kids = e.target.checked; store.set('kids', settings.kids); track('kids/' + (settings.kids ? 'on' : 'off')); }
-      if (e.target.id === 'versionSel') settings.version = e.target.value;
+      if (e.target.id === 'versionSel' || e.target.id === 'version2Sel') { setVersions($('versionSel').value, $('version2Sel').value); return; }
       if (e.target.name === 'language' && e.target.value !== LANG) {
         store.set('lang', e.target.value);
         if (!store.get('version', null)) settings.version = e.target.value === 'es' ? 'NVI' : 'NIV';

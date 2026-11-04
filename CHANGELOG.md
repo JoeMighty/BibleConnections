@@ -6,6 +6,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- Optional second translation: pick "Read in" and "Compare with" right in the sidebar, and every reading link also opens in the second translation. Notes and the interface stay in the site language.
+- Malayalam translations on Bible.com: Malayalam OV, Malayalam C.L., Malayalam IRV and Malayalam MCV.
 - Study section (replaces the Insights tab; Insights is now inside it).
 - Reading plans: The story of Scripture (about a month), Jesus foretold and Twelve themes, with progress saved on the device.
 - People and places: 35 people and 21 places, lighting up every verse that names them.

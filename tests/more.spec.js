@@ -161,3 +161,31 @@ for (const url of ['/?view=wordstudy', '/?word=G0026', '/?view=collections', '/?
     expect(results.violations.map(v => `${v.id}: ${v.nodes.slice(0, 3).map(n => n.target.join(' ')).join(' | ')}`)).toEqual([]);
   });
 }
+
+test('an optional second translation adds comparison links without changing the site language', async ({ page }) => {
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  await expect(page.locator('.compare-row')).toHaveCount(0);
+  await page.selectOption('#compareWith', 'MALOVBSI');
+  const second = page.locator('.verse-card .compare-row a').first();
+  await expect(second).toHaveAttribute('href', 'https://www.bible.com/bible/1693/JHN.3.16.MALOVBSI');
+  await expect(second).toContainText('Read in Malayalam OV');
+  await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/111/JHN.3.16.NIV');
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  // the choice is remembered and mirrored in Settings
+  await page.reload();
+  await ready(page);
+  await expect(page.locator('#compareWith')).toHaveValue('MALOVBSI');
+  await expect(page.locator('#version2Sel')).toHaveValue('MALOVBSI');
+  // choosing None goes back to one translation
+  await page.selectOption('#compareWith', '');
+  await expect(page.locator('.compare-row')).toHaveCount(0);
+});
+
+test('the reading translation can be changed without opening Settings', async ({ page }) => {
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  await page.selectOption('#readIn', 'IRVMAL');
+  await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/1912/JHN.3.16.IRVMAL');
+  await expect(page.locator('#versionSel')).toHaveValue('IRVMAL');
+});

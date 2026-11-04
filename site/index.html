@@ -149,6 +149,14 @@
           <p class="field-error" id="searchError" role="alert"></p>
         </div>
 
+        <fieldset class="field translations">
+          <legend>Translations</legend>
+          <div class="field-row">
+            <div class="field"><label for="readIn">Read in</label><select id="readIn"></select></div>
+            <div class="field"><label for="compareWith">Compare with (optional)</label><select id="compareWith"></select></div>
+          </div>
+        </fieldset>
+
         <details class="filters" id="filtersBox">
           <summary>Filters &amp; categories <span class="filters-count" id="filtersCount"></span></summary>
           <div class="field">
@@ -306,6 +314,10 @@
       <div class="field">
         <label for="versionSel">Open verses on Bible.com in</label>
         <select id="versionSel"></select>
+      </div>
+      <div class="field">
+        <label for="version2Sel">Compare with a second translation (optional)</label>
+        <select id="version2Sel"></select>
         <p class="hint">Verses are not stored on this site. Links open the passage on Bible.com in this translation.</p>
       </div>
       <div class="field">

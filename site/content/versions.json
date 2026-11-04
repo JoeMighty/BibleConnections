@@ -1,16 +1,128 @@
 [
-  { "code": "NIV", "id": 111, "name": "New International Version", "lang": "en" },
-  { "code": "NLT", "id": 116, "name": "New Living Translation", "lang": "en" },
-  { "code": "ESV", "id": 59, "name": "English Standard Version", "lang": "en" },
-  { "code": "CSB", "id": 1713, "name": "Christian Standard Bible", "lang": "en" },
-  { "code": "NKJV", "id": 114, "name": "New King James Version", "lang": "en" },
-  { "code": "KJV", "id": 1, "name": "King James Version", "lang": "en" },
-  { "code": "AMP", "id": 1588, "name": "Amplified Bible", "lang": "en" },
-  { "code": "MSG", "id": 97, "name": "The Message", "lang": "en" },
-  { "code": "NASB2020", "id": 2692, "name": "New American Standard Bible 2020", "lang": "en" },
-  { "code": "NVI", "id": 128, "name": "Nueva Versión Internacional", "lang": "es" },
-  { "code": "RVR1960", "id": 149, "name": "Reina-Valera 1960", "lang": "es" },
-  { "code": "NTV", "id": 127, "name": "Nueva Traducción Viviente", "lang": "es" },
-  { "code": "LBLA", "id": 89, "name": "La Biblia de las Américas", "lang": "es" },
-  { "code": "TLA", "id": 176, "name": "Traducción en Lenguaje Actual", "lang": "es" }
+  {
+    "code": "NIV",
+    "id": 111,
+    "name": "New International Version",
+    "lang": "en",
+    "label": "NIV"
+  },
+  {
+    "code": "NLT",
+    "id": 116,
+    "name": "New Living Translation",
+    "lang": "en",
+    "label": "NLT"
+  },
+  {
+    "code": "ESV",
+    "id": 59,
+    "name": "English Standard Version",
+    "lang": "en",
+    "label": "ESV"
+  },
+  {
+    "code": "CSB",
+    "id": 1713,
+    "name": "Christian Standard Bible",
+    "lang": "en",
+    "label": "CSB"
+  },
+  {
+    "code": "NKJV",
+    "id": 114,
+    "name": "New King James Version",
+    "lang": "en",
+    "label": "NKJV"
+  },
+  {
+    "code": "KJV",
+    "id": 1,
+    "name": "King James Version",
+    "lang": "en",
+    "label": "KJV"
+  },
+  {
+    "code": "AMP",
+    "id": 1588,
+    "name": "Amplified Bible",
+    "lang": "en",
+    "label": "AMP"
+  },
+  {
+    "code": "MSG",
+    "id": 97,
+    "name": "The Message",
+    "lang": "en",
+    "label": "MSG"
+  },
+  {
+    "code": "NASB2020",
+    "id": 2692,
+    "name": "New American Standard Bible 2020",
+    "lang": "en",
+    "label": "NASB"
+  },
+  {
+    "code": "NVI",
+    "id": 128,
+    "name": "Nueva Versión Internacional",
+    "lang": "es",
+    "label": "NVI"
+  },
+  {
+    "code": "RVR1960",
+    "id": 149,
+    "name": "Reina-Valera 1960",
+    "lang": "es",
+    "label": "RVR1960"
+  },
+  {
+    "code": "NTV",
+    "id": 127,
+    "name": "Nueva Traducción Viviente",
+    "lang": "es",
+    "label": "NTV"
+  },
+  {
+    "code": "LBLA",
+    "id": 89,
+    "name": "La Biblia de las Américas",
+    "lang": "es",
+    "label": "LBLA"
+  },
+  {
+    "code": "TLA",
+    "id": 176,
+    "name": "Traducción en Lenguaje Actual",
+    "lang": "es",
+    "label": "TLA"
+  },
+  {
+    "code": "MALOVBSI",
+    "id": 1693,
+    "name": "സത്യവേദപുസ്തകം OV (Bible Society of India)",
+    "label": "Malayalam OV",
+    "lang": "ml"
+  },
+  {
+    "code": "MALCLBSI",
+    "id": 1685,
+    "name": "സത്യവേദപുസ്തകം C.L. (Bible Society of India)",
+    "label": "Malayalam C.L.",
+    "lang": "ml"
+  },
+  {
+    "code": "IRVMAL",
+    "id": 1912,
+    "name": "ഇന്ത്യൻ റിവൈസ്ഡ് വേർഷൻ (Indian Revised Version)",
+    "label": "Malayalam IRV",
+    "lang": "ml"
+  },
+  {
+    "code": "MCV",
+    "id": 2431,
+    "name": "സമകാലിക മലയാളവിവർത്തനം (Malayalam Contemporary Version)",
+    "label": "Malayalam MCV",
+    "lang": "ml"
+  }
 ]

@@ -501,7 +501,12 @@
     "Books arranged in Bible order.": "Libros en orden bíblico.",
     "Word search could not load. Check your connection.": "No se pudo cargar el estudio de palabras. Revisa tu conexión.",
     "Hebrew and Greek word data from": "Datos de palabras hebreas y griegas de",
-    "(Tyndale House), licensed": "(Tyndale House), con licencia"
+    "(Tyndale House), licensed": "(Tyndale House), con licencia",
+    "Translations": "Traducciones",
+    "Read in": "Leer en",
+    "Compare with (optional)": "Comparar con (opcional)",
+    "Compare with a second translation (optional)": "Comparar con una segunda traducción (opcional)",
+    "None": "Ninguna"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -584,6 +589,9 @@
     "{a} in the Old Testament links to {b} in the Old Testament{c}": "{a}, del Antiguo Testamento, se vincula con {b}, del Antiguo Testamento{c}",
     "{a} in the Old Testament links to {b} in the New Testament{c}": "{a}, del Antiguo Testamento, se vincula con {b}, del Nuevo Testamento{c}",
     "{a} in the New Testament links to {b} in the Old Testament{c}": "{a}, del Nuevo Testamento, se vincula con {b}, del Antiguo Testamento{c}",
-    "{a} in the New Testament links to {b} in the New Testament{c}": "{a}, del Nuevo Testamento, se vincula con {b}, del Nuevo Testamento{c}"
+    "{a} in the New Testament links to {b} in the New Testament{c}": "{a}, del Nuevo Testamento, se vincula con {b}, del Nuevo Testamento{c}",
+    "Whole chapter in {v}": "Capítulo completo en {v}",
+    "Reading links open in {a} and {b}.": "Los enlaces de lectura se abren en {a} y {b}.",
+    "Reading links open in {a}.": "Los enlaces de lectura se abren en {a}."
   }
 }

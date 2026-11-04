@@ -58,7 +58,7 @@ SOFTWARE.
 ## Bible.com links and translation names
 
 - Passages link to Bible.com (YouVersion). No content from Bible.com is copied or embedded.
-- Translation names and abbreviations (NIV, ESV, NLT, CSB, NKJV, KJV, AMP, MSG, NASB) are used only to label links. They are trademarks of their respective owners. This project is not affiliated with or endorsed by YouVersion or any Bible publisher.
+- Translation names and abbreviations (NIV, ESV, NLT, CSB, NKJV, KJV, AMP, MSG, NASB, the Spanish versions, and the Malayalam versions MALOVBSI, MALCLBSI, IRVMAL and MCV) are used only to label links. They are trademarks of their respective owners. This project is not affiliated with or endorsed by YouVersion or any Bible publisher.
 
 ## Notes, journeys and themes
 

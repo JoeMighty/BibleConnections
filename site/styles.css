@@ -468,6 +468,11 @@ body.embed { padding-bottom: 0 !important; }
 }
 .col-bar[hidden] { display: none; }
 
+/* Second translation */
+.compare-row { margin-top: 8px !important; }
+.translations .field-row .field { margin-bottom: 0; }
+.translations .field > label { text-transform: none; letter-spacing: -0.01em; font-size: var(--t-footnote); }
+
 /* Kids mode: bigger type and targets, fewer advanced controls */
 .kids-only { display: none; }
 :root[data-kids="on"] .kids-only { display: block; }
