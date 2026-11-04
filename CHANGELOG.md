@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-04 - Study Tools
+
 ### Added
 - Listen: a headphones button next to Read opens the chapter in Bible.com's audio Bible, for the 65 translations that have audio there. The weekly link check now checks these too.
 - Printable passage handout for any verse: book introduction, original words, strongest connections, reflection questions and space for notes (or your saved note).
@@ -174,7 +176,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/8331ef9...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/5834d40...HEAD
+[0.8.0]: https://github.com/JoeMighty/BibleConnections/compare/8331ef9...5834d40
 [0.7.0]: https://github.com/JoeMighty/BibleConnections/compare/bc8cb41...8331ef9
 [0.6.0]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...bc8cb41
 [0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...d022afc
