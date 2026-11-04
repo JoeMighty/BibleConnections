@@ -6,6 +6,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- 76 more Bible.com translations in 28 more languages: Portuguese, French, German, Russian, Italian, Korean, Nigerian Pidgin, Yoruba, Igbo, Hausa, Swahili, Amharic, Oromo, Tigrinya, Lingala, Kikongo (Kituba), Tshiluba, Zulu, Xhosa, Afrikaans, Kikuyu, Luo, Tagalog, Cebuano, Ilocano, Tamil, Telugu and Hindi.
+- Searchable translation picker: type a language (in English or in the language itself), a translation name or a code.
 - Optional second translation: pick "Read in" and "Compare with" right in the sidebar, and every reading link also opens in the second translation. Notes and the interface stay in the site language.
 - Malayalam translations on Bible.com: Malayalam OV, Malayalam C.L., Malayalam IRV and Malayalam MCV.
 - Study section (replaces the Insights tab; Insights is now inside it).

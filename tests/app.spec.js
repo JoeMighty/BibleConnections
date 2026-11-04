@@ -1,6 +1,12 @@
 const { test, expect } = require('@playwright/test');
 
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
+// choose a translation in the searchable picker by typing its code
+const pickVersion = async (page, id, query) => {
+  await page.click(`#${id}Pick`);
+  await page.fill(`#${id}Pick`, query);
+  await page.keyboard.press('Enter');
+};
 
 test.beforeEach(async ({ page }) => {
   page.on('pageerror', (e) => { throw e; });
@@ -92,7 +98,7 @@ test('verses link to Bible.com in the chosen translation', async ({ page }) => {
   await expect(link).toHaveAttribute('href', 'https://www.bible.com/bible/111/JHN.3.16.NIV');
   await expect(link).toHaveAttribute('target', '_blank');
   await page.click('#settingsBtn');
-  await page.selectOption('#versionSel', 'ESV');
+  await pickVersion(page, 'versionSel', 'ESV');
   await page.click('#settingsForm button.btn:not(#installBtn)');
   await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.16.ESV');
   await expect(page.locator('.verse-card a').nth(1)).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.ESV');

@@ -59,7 +59,7 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
 - **Spanish:** full Spanish interface, journeys and handouts, with Spanish Bible.com translations.
-- **Two translations:** choose a reading translation and an optional second one to compare, right in the sidebar. Includes English, Spanish and Malayalam versions on Bible.com.
+- **Two translations:** choose a reading translation and an optional second one to compare, right in the sidebar. About 100 Bible.com translations in 31 languages, with a searchable picker.
 - **Settings:** language, light, dark or system appearance, high contrast mode and Bible.com translation.
 - **Installable and offline:** works as an app and without a connection after the first visit (reading links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.

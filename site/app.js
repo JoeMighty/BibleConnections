@@ -22,6 +22,18 @@
   // Bible.com (YouVersion) translation ids used for "Read" links. No verse text is hosted on this site.
   // Bible.com (YouVersion) translations for "Read" links, loaded from content/versions.json. No verse text is hosted.
   let VERSIONS = { NIV: { id: 111, name: 'New International Version', lang: 'en' } };
+  // Languages for the translation picker, in display order: [English name, native name]
+  const LANG_NAMES = {
+    en: ['English', 'English'], es: ['Spanish', 'Español'], pt: ['Portuguese', 'Português'], fr: ['French', 'Français'],
+    de: ['German', 'Deutsch'], ru: ['Russian', 'Русский'], it: ['Italian', 'Italiano'], ko: ['Korean', '한국어'],
+    pcm: ['Nigerian Pidgin', 'Naijá'], yo: ['Yoruba', 'Yorùbá'], ig: ['Igbo', 'Igbo'], ha: ['Hausa', 'Hausa'],
+    sw: ['Swahili', 'Kiswahili'], am: ['Amharic', 'አማርኛ'], om: ['Oromo', 'Afaan Oromoo'], ti: ['Tigrinya', 'ትግርኛ'],
+    ln: ['Lingala', 'Lingála'], kg: ['Kikongo (Kituba)', 'Kikongo ya Leta'], lua: ['Tshiluba', 'Tshiluba'],
+    zu: ['Zulu', 'isiZulu'], xh: ['Xhosa', 'isiXhosa'], af: ['Afrikaans', 'Afrikaans'], ki: ['Kikuyu', 'Gĩkũyũ'], luo: ['Luo', 'Dholuo'],
+    tl: ['Tagalog', 'Tagalog'], ceb: ['Cebuano', 'Cebuano'], ilo: ['Ilocano', 'Ilokano'],
+    ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
+  };
+  const pickers = [];
   const VERSION = '0.5.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
@@ -165,7 +177,7 @@
       fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }),
       getJSON('content/themes.json'), getJSON('content/notes.json'), getJSON('content/journeys.json'),
       getJSON('content/series.json').catch(() => ({ enabled: false })),
-      getJSON('content/versions.json').then(list => { VERSIONS = Object.fromEntries(list.map(v => [v.code, v])); }).catch(() => {}),
+      getJSON('content/versions.json').then(list => { VERSIONS = Object.fromEntries(list.map(v => [v.key || v.code, v])); }).catch(() => {}),
       getJSON('content/config.json').then(c => { CONFIG = c; }).catch(() => {}),
       getJSON('content/people-places.json').then(x => { PEOPLE = x; }).catch(() => {}),
       getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
@@ -274,11 +286,11 @@
   // an optional second translation shown next to the first, for comparing
   const second = () => (settings.version2 && VERSIONS[settings.version2] && settings.version2 !== settings.version ? settings.version2 : '');
   function bibleUrl(start, end = start, chapterOnly = false, ver = settings.version) {
-    const id = VERSIONS[ver].id;
+    const { id } = VERSIONS[ver], code = VERSIONS[ver].code || ver;
     const b = BOOKS[verseBook[start]], c = verseChap[start];
-    if (chapterOnly) return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${ver}`;
+    if (chapterOnly) return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${code}`;
     // Bible.com does not support verse ranges in links, so a range opens at its first verse
-    return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${verseNum[start]}.${ver}`;
+    return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${verseNum[start]}.${code}`;
   }
 
   const ALIASES = {
@@ -2327,10 +2339,17 @@
     el.bookList.innerHTML = BOOKS.map(b => `<option value="${esc(b.name)}">`).join('');
     if (!VERSIONS[settings.version]) settings.version = 'NIV';
     if (settings.version2 && !VERSIONS[settings.version2]) settings.version2 = '';
-    const group = (lang, label) => `<optgroup label="${label}">${Object.entries(VERSIONS).filter(([, v]) => (v.lang || 'en') === lang).map(([k, v]) => `<option value="${k}">${esc(v.label || k)}: ${esc(v.name)}</option>`).join('')}</optgroup>`;
-    const all = group('en', 'English') + group('es', 'Español') + group('ml', 'മലയാളം (Malayalam)');
+    const langs = [...new Set([...Object.keys(LANG_NAMES), ...Object.values(VERSIONS).map(v => v.lang || 'en')])];
+    const all = langs.map(lang => {
+      const vs = Object.entries(VERSIONS).filter(([, v]) => (v.lang || 'en') === lang);
+      if (!vs.length) return '';
+      const [en, native] = LANG_NAMES[lang] || [lang, lang];
+      const label = en === native ? en : `${native} (${en})`;
+      return `<optgroup label="${esc(label)}" data-search="${esc(en + ' ' + native + ' ' + lang)}">${vs.map(([k, v]) => `<option value="${k}" data-search="${esc(k + ' ' + (v.code || ''))}">${esc(v.label || k)}: ${esc(v.name)}</option>`).join('')}</optgroup>`;
+    }).join('');
     for (const id of ['versionSel', 'readIn']) $(id).innerHTML = all;
     for (const id of ['version2Sel', 'compareWith']) $(id).innerHTML = '<option value="">None</option>' + all;
+    if (!pickers.length) for (const id of ['readIn', 'compareWith', 'versionSel', 'version2Sel']) pickers.push(versionPicker($(id)));
     syncVersionSelects();
   }
 
@@ -2394,9 +2413,68 @@
   }
 
   // ---------- Translations: one to read in, and an optional one to compare with ----------
+  // Searchable translation picker (ARIA combobox). The original <select> stays as the source of truth.
+  const fold = (x) => x.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  function versionPicker(sel) {
+    const wrap = document.createElement('div'); wrap.className = 'vpick';
+    const input = document.createElement('input');
+    const list = document.createElement('ul');
+    input.type = 'text'; input.id = sel.id + 'Pick'; input.className = 'vpick-input';
+    input.autocomplete = 'off'; input.spellcheck = false; input.placeholder = 'Type a language or translation';
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list');
+    input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', sel.id + 'List');
+    list.id = sel.id + 'List'; list.className = 'vpick-list'; list.setAttribute('role', 'listbox'); list.hidden = true;
+    const label = document.querySelector(`label[for="${sel.id}"]`);
+    if (label) { label.htmlFor = input.id; list.setAttribute('aria-label', label.textContent); }
+    sel.hidden = true; sel.tabIndex = -1; sel.setAttribute('aria-hidden', 'true');
+    sel.after(wrap); wrap.append(input, list);
+    let items = [], active = -1;
+    const sync = () => { const o = sel.selectedOptions[0]; input.value = o ? o.textContent : ''; };
+    const setActive = (i) => {
+      active = i;
+      list.querySelectorAll('[role=option]').forEach(li => li.classList.toggle('active', +li.dataset.i === i));
+      const li = i >= 0 && list.querySelector(`[data-i="${i}"]`);
+      if (li) { input.setAttribute('aria-activedescendant', li.id); li.scrollIntoView({ block: 'nearest' }); } else input.removeAttribute('aria-activedescendant');
+    };
+    const render = (q) => {
+      const f = fold(q.trim()); items = []; let html = '';
+      const opt = (o) => { items.push(o); const i = items.length - 1; return `<li role="option" id="${list.id}-${i}" data-i="${i}" aria-selected="${o.selected}">${esc(o.textContent)}</li>`; };
+      for (const node of sel.children) {
+        if (node.tagName === 'OPTION') { if (!f || fold(node.textContent).includes(f)) html += opt(node); continue; }
+        const groupHit = f && fold(node.label + ' ' + (node.dataset.search || '')).includes(f);
+        const opts = [...node.children].filter(o => !f || groupHit || fold(o.textContent + ' ' + (o.dataset.search || '')).includes(f));
+        if (opts.length) html += `<li role="presentation" class="vpick-group">${esc(node.label)}</li>` + opts.map(opt).join('');
+      }
+      list.innerHTML = html || '<li role="presentation" class="vpick-empty">No translations match</li>';
+      const cur = items.indexOf(sel.selectedOptions[0]);
+      setActive(!f && cur >= 0 ? cur : (items.length ? 0 : -1));
+    };
+    const open = () => { if (!list.hidden) return; render(''); list.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+    const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); sync(); };
+    const choose = (o) => { const changed = sel.value !== o.value; sel.value = o.value; close(); if (changed) sel.dispatchEvent(new Event('change', { bubbles: true })); };
+    input.addEventListener('focus', () => { open(); input.select(); });
+    input.addEventListener('click', open);
+    input.addEventListener('input', () => { if (list.hidden) { list.hidden = false; input.setAttribute('aria-expanded', 'true'); } render(input.value); });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault(); if (list.hidden) { open(); return; }
+        if (items.length) setActive((active + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length);
+      } else if (e.key === 'Enter') {
+        if (!list.hidden) { e.preventDefault(); if (active >= 0) choose(items[active]); }
+      } else if (e.key === 'Escape') {
+        if (!list.hidden) { e.preventDefault(); e.stopPropagation(); close(); input.select(); }
+      } else if (e.key === 'Tab') close();
+    });
+    list.addEventListener('mousedown', (e) => e.preventDefault());
+    list.addEventListener('click', (e) => { const li = e.target.closest('[role=option]'); if (li) choose(items[+li.dataset.i]); });
+    wrap.addEventListener('focusout', (e) => { if (!wrap.contains(e.relatedTarget)) close(); });
+    sync();
+    return { sync };
+  }
   function syncVersionSelects() {
     $('versionSel').value = $('readIn').value = settings.version;
     $('version2Sel').value = $('compareWith').value = settings.version2 || '';
+    pickers.forEach(p => p.sync());
   }
   function setVersions(v1, v2) {
     settings.version = VERSIONS[v1] ? v1 : settings.version;

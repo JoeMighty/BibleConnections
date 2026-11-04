@@ -125,5 +125,580 @@
     "name": "സമകാലിക മലയാളവിവർത്തനം (Malayalam Contemporary Version)",
     "label": "Malayalam MCV",
     "lang": "ml"
+  },
+  {
+    "code": "NAA",
+    "id": 1840,
+    "name": "Nova Almeida Atualizada",
+    "lang": "pt",
+    "label": "NAA"
+  },
+  {
+    "code": "NVI",
+    "id": 129,
+    "name": "Nova Versão Internacional",
+    "lang": "pt",
+    "label": "NVI (Português)",
+    "key": "NVI-PT"
+  },
+  {
+    "code": "NVT",
+    "id": 1930,
+    "name": "Nova Versão Transformadora",
+    "lang": "pt",
+    "label": "NVT"
+  },
+  {
+    "code": "ARA",
+    "id": 1608,
+    "name": "Almeida Revista e Atualizada",
+    "lang": "pt",
+    "label": "ARA"
+  },
+  {
+    "code": "ARC",
+    "id": 212,
+    "name": "Almeida Revista e Corrigida",
+    "lang": "pt",
+    "label": "ARC"
+  },
+  {
+    "code": "NTLH",
+    "id": 211,
+    "name": "Nova Tradução na Linguagem de Hoje",
+    "lang": "pt",
+    "label": "NTLH"
+  },
+  {
+    "code": "LSG",
+    "id": 93,
+    "name": "Louis Segond 1910",
+    "lang": "fr",
+    "label": "LSG"
+  },
+  {
+    "code": "S21",
+    "id": 152,
+    "name": "La Bible Segond 21",
+    "lang": "fr",
+    "label": "S21"
+  },
+  {
+    "code": "BDS",
+    "id": 21,
+    "name": "La Bible du Semeur 2015",
+    "lang": "fr",
+    "label": "BDS"
+  },
+  {
+    "code": "PDV2017",
+    "id": 133,
+    "name": "Parole de Vie 2017",
+    "lang": "fr",
+    "label": "PDV2017"
+  },
+  {
+    "code": "BFC",
+    "id": 63,
+    "name": "Bible en français courant",
+    "lang": "fr",
+    "label": "BFC"
+  },
+  {
+    "code": "DELUT",
+    "id": 51,
+    "name": "Lutherbibel 1912",
+    "lang": "de",
+    "label": "DELUT"
+  },
+  {
+    "code": "Hfa",
+    "id": 73,
+    "name": "Hoffnung für alle",
+    "lang": "de",
+    "label": "Hfa"
+  },
+  {
+    "code": "SCH2000",
+    "id": 157,
+    "name": "Schlachter 2000",
+    "lang": "de",
+    "label": "SCH2000"
+  },
+  {
+    "code": "NGU2011",
+    "id": 108,
+    "name": "Neue Genfer Übersetzung",
+    "lang": "de",
+    "label": "NGU2011"
+  },
+  {
+    "code": "ELBBK",
+    "id": 2351,
+    "name": "Elberfelder Übersetzung",
+    "lang": "de",
+    "label": "ELBBK"
+  },
+  {
+    "code": "SYNO",
+    "id": 400,
+    "name": "Синодальный перевод (Russian Synodal)",
+    "lang": "ru",
+    "label": "SYNO"
+  },
+  {
+    "code": "RSP",
+    "id": 201,
+    "name": "Современный перевод (Contemporary Russian)",
+    "lang": "ru",
+    "label": "RSP"
+  },
+  {
+    "code": "CARS",
+    "id": 385,
+    "name": "Восточный перевод (Eastern Translation)",
+    "lang": "ru",
+    "label": "CARS"
+  },
+  {
+    "code": "BTI",
+    "id": 313,
+    "name": "Библия под ред. Кулакова (Kulakov)",
+    "lang": "ru",
+    "label": "BTI"
+  },
+  {
+    "code": "NR06",
+    "id": 122,
+    "name": "Nuova Riveduta 2006",
+    "lang": "it",
+    "label": "NR06"
+  },
+  {
+    "code": "NR94",
+    "id": 123,
+    "name": "Nuova Riveduta 1994",
+    "lang": "it",
+    "label": "NR94"
+  },
+  {
+    "code": "RDV24",
+    "id": 141,
+    "name": "Versione Diodati Riveduta",
+    "lang": "it",
+    "label": "RDV24"
+  },
+  {
+    "code": "ICL00P",
+    "id": 1197,
+    "name": "Parola del Signore, lingua corrente",
+    "lang": "it",
+    "label": "ICL00P"
+  },
+  {
+    "code": "KRV",
+    "id": 88,
+    "name": "개역한글 (Korean Revised Version)",
+    "lang": "ko",
+    "label": "KRV"
+  },
+  {
+    "code": "RNKSV",
+    "id": 142,
+    "name": "새번역 (New Korean Standard Version)",
+    "lang": "ko",
+    "label": "RNKSV"
+  },
+  {
+    "code": "KLB",
+    "id": 86,
+    "name": "현대인의 성경 (Korean Living Bible)",
+    "lang": "ko",
+    "label": "KLB"
+  },
+  {
+    "code": "WB",
+    "id": 4639,
+    "name": "우리말 성경 (Woorimal Bible)",
+    "lang": "ko",
+    "label": "WB"
+  },
+  {
+    "code": "pcm",
+    "id": 2516,
+    "name": "Holy Bible Nigerian Pidgin English",
+    "lang": "pcm",
+    "label": "pcm"
+  },
+  {
+    "code": "YCE",
+    "id": 207,
+    "name": "Yoruba Bible",
+    "lang": "yo",
+    "label": "YCE"
+  },
+  {
+    "code": "BMYO",
+    "id": 911,
+    "name": "Bíbélì Mímọ́ ní Èdè Yorùbá Òde-Òní",
+    "lang": "yo",
+    "label": "BMYO"
+  },
+  {
+    "code": "YBCV",
+    "id": 2754,
+    "name": "Bibeli Mimọ",
+    "lang": "yo",
+    "label": "YBCV"
+  },
+  {
+    "code": "IGBOB",
+    "id": 77,
+    "name": "Bible Nso",
+    "lang": "ig",
+    "label": "IGBOB"
+  },
+  {
+    "code": "BIU",
+    "id": 1624,
+    "name": "Baịbụlụ Nsọ nʼIgbo Ndị Ugbu a",
+    "lang": "ig",
+    "label": "BIU"
+  },
+  {
+    "code": "HAU",
+    "id": 71,
+    "name": "Littafi Mai Tsarki",
+    "lang": "ha",
+    "label": "HAU"
+  },
+  {
+    "code": "SRK",
+    "id": 1614,
+    "name": "Sabon Rai Don Kowa 2020",
+    "lang": "ha",
+    "label": "SRK"
+  },
+  {
+    "code": "SUV",
+    "id": 164,
+    "name": "Swahili Union Version",
+    "lang": "sw",
+    "label": "SUV"
+  },
+  {
+    "code": "SRUV",
+    "id": 1818,
+    "name": "Swahili Revised Union Version",
+    "lang": "sw",
+    "label": "SRUV"
+  },
+  {
+    "code": "NEN",
+    "id": 1627,
+    "name": "Neno",
+    "lang": "sw",
+    "label": "NEN"
+  },
+  {
+    "code": "BHN",
+    "id": 74,
+    "name": "Biblia Habari Njema",
+    "lang": "sw",
+    "label": "BHN"
+  },
+  {
+    "code": "NASV",
+    "id": 1260,
+    "name": "አዲሱ መደበኛ ትርጒም (New Amharic Standard Version)",
+    "lang": "am",
+    "label": "NASV"
+  },
+  {
+    "code": "MacQul",
+    "id": 3202,
+    "name": "Macaafa Qulqulluu Afaan Oromoo",
+    "lang": "om",
+    "label": "MacQul"
+  },
+  {
+    "code": "KQTAB",
+    "id": 4456,
+    "name": "Katabbiiwwan Qulqulluu 2024",
+    "lang": "om",
+    "label": "KQTAB"
+  },
+  {
+    "code": "HAH",
+    "id": 3552,
+    "name": "Hiikkaa Ammayyaa Haaraa",
+    "lang": "om",
+    "label": "HAH"
+  },
+  {
+    "code": "TIG24",
+    "id": 3988,
+    "name": "ትግርኛ (Contemporary Tigrinya Bible 2024)",
+    "lang": "ti",
+    "label": "TIG24"
+  },
+  {
+    "code": "MNB",
+    "id": 1964,
+    "name": "Mokanda na Bomoi",
+    "lang": "ln",
+    "label": "MNB"
+  },
+  {
+    "code": "NTK50",
+    "id": 1491,
+    "name": "Nouveau Testament en Kikwango 1950 (New Testament only)",
+    "lang": "kg",
+    "label": "NTK50"
+  },
+  {
+    "code": "TSH",
+    "id": 2919,
+    "name": "Mukanda wa Nzambi 2003",
+    "lang": "lua",
+    "label": "TSH"
+  },
+  {
+    "code": "TSH96",
+    "id": 2918,
+    "name": "Mukanda wa Myidi Mukulu",
+    "lang": "lua",
+    "label": "TSH96"
+  },
+  {
+    "code": "ZUL59",
+    "id": 286,
+    "name": "Ibhayibheli Elingcwele",
+    "lang": "zu",
+    "label": "ZUL59"
+  },
+  {
+    "code": "ZUL20",
+    "id": 3500,
+    "name": "IsiZulu 2020",
+    "lang": "zu",
+    "label": "ZUL20"
+  },
+  {
+    "code": "CZB24",
+    "id": 3846,
+    "name": "Contemporary Zulu Bible 2024",
+    "lang": "zu",
+    "label": "CZB24"
+  },
+  {
+    "code": "XHO96",
+    "id": 282,
+    "name": "IBhayibhile",
+    "lang": "xh",
+    "label": "XHO96"
+  },
+  {
+    "code": "XHO75",
+    "id": 281,
+    "name": "Izibhalo Ezingcwele",
+    "lang": "xh",
+    "label": "XHO75"
+  },
+  {
+    "code": "CXB24",
+    "id": 3602,
+    "name": "Contemporary Xhosa Bible 2024",
+    "lang": "xh",
+    "label": "CXB24"
+  },
+  {
+    "code": "AFR83",
+    "id": 6,
+    "name": "Afrikaans 1983",
+    "lang": "af",
+    "label": "AFR83"
+  },
+  {
+    "code": "AFR20",
+    "id": 3499,
+    "name": "Die Bybel 2020-vertaling",
+    "lang": "af",
+    "label": "AFR20"
+  },
+  {
+    "code": "NLV",
+    "id": 117,
+    "name": "Nuwe Lewende Vertaling",
+    "lang": "af",
+    "label": "NLV"
+  },
+  {
+    "code": "AFR53",
+    "id": 5,
+    "name": "Afrikaans 1933/1953",
+    "lang": "af",
+    "label": "AFR53"
+  },
+  {
+    "code": "GKY",
+    "id": 1622,
+    "name": "Kiugo Gĩtheru Kĩa Ngai",
+    "lang": "ki",
+    "label": "GKY"
+  },
+  {
+    "code": "GKN",
+    "id": 1201,
+    "name": "Kĩrĩkanĩro Gĩa Gĩkũyũ",
+    "lang": "ki",
+    "label": "GKN"
+  },
+  {
+    "code": "DHO15",
+    "id": 1810,
+    "name": "Muma Maler 2015",
+    "lang": "luo",
+    "label": "DHO15"
+  },
+  {
+    "code": "MLM",
+    "id": 2652,
+    "name": "Motingʼo Loko Manyien",
+    "lang": "luo",
+    "label": "MLM"
+  },
+  {
+    "code": "ASD",
+    "id": 1264,
+    "name": "Ang Salita ng Diyos",
+    "lang": "tl",
+    "label": "ASD"
+  },
+  {
+    "code": "TLAB",
+    "id": 177,
+    "name": "Ang Biblia",
+    "lang": "tl",
+    "label": "TLAB"
+  },
+  {
+    "code": "MBB05",
+    "id": 144,
+    "name": "Magandang Balita Biblia 2005",
+    "lang": "tl",
+    "label": "MBB05"
+  },
+  {
+    "code": "RCPV",
+    "id": 562,
+    "name": "Ang Bag-ong Maayong Balita Biblia",
+    "lang": "ceb",
+    "label": "RCPV"
+  },
+  {
+    "code": "ABCEB",
+    "id": 2187,
+    "name": "Ang Biblia 2011",
+    "lang": "ceb",
+    "label": "ABCEB"
+  },
+  {
+    "code": "APD",
+    "id": 9,
+    "name": "Ang Pulong sa Dios",
+    "lang": "ceb",
+    "label": "APD"
+  },
+  {
+    "code": "RIPV",
+    "id": 782,
+    "name": "Ti Baro a Naimbag a Damag Biblia",
+    "lang": "ilo",
+    "label": "RIPV"
+  },
+  {
+    "code": "TB1973",
+    "id": 2192,
+    "name": "Ti Biblia 1973",
+    "lang": "ilo",
+    "label": "TB1973"
+  },
+  {
+    "code": "TAOVBSI",
+    "id": 339,
+    "name": "பரிசுத்த வேதாகமம் O.V. (Bible Society of India)",
+    "lang": "ta",
+    "label": "TAOVBSI"
+  },
+  {
+    "code": "IRVTam",
+    "id": 1899,
+    "name": "இண்டியன் ரிவைஸ்டு வெர்ஸன் (Indian Revised Version)",
+    "lang": "ta",
+    "label": "IRVTam"
+  },
+  {
+    "code": "TCV",
+    "id": 2730,
+    "name": "இந்திய சமகால தமிழ் மொழிப்பெயர்ப்பு (Tamil Contemporary Version)",
+    "lang": "ta",
+    "label": "TCV"
+  },
+  {
+    "code": "TELUBSI",
+    "id": 1787,
+    "name": "పరిశుద్ధ గ్రంథము O.V. (Bible Society of India)",
+    "lang": "te",
+    "label": "TELUBSI"
+  },
+  {
+    "code": "IRVTel",
+    "id": 1895,
+    "name": "ఇండియన్ రివైజ్డ్ వెర్షన్ (Indian Revised Version)",
+    "lang": "te",
+    "label": "IRVTel"
+  },
+  {
+    "code": "TSA",
+    "id": 3268,
+    "name": "తెలుగు సమకాలీన అనువాదం (Telugu Contemporary Version)",
+    "lang": "te",
+    "label": "TSA"
+  },
+  {
+    "code": "HINOVBSI",
+    "id": 1683,
+    "name": "पवित्र बाइबिल OV (Bible Society of India)",
+    "lang": "hi",
+    "label": "HINOVBSI"
+  },
+  {
+    "code": "HINCLBSI",
+    "id": 1682,
+    "name": "पवित्र बाइबिल CL (Bible Society of India)",
+    "lang": "hi",
+    "label": "HINCLBSI"
+  },
+  {
+    "code": "IRVHin",
+    "id": 1980,
+    "name": "इंडियन रिवाइज्ड वर्जन (Indian Revised Version)",
+    "lang": "hi",
+    "label": "IRVHin"
+  },
+  {
+    "code": "HCV",
+    "id": 1628,
+    "name": "सरल हिन्दी बाइबल (Hindi Contemporary Version)",
+    "lang": "hi",
+    "label": "HCV"
+  },
+  {
+    "code": "HHBD",
+    "id": 819,
+    "name": "Hindi Holy Bible",
+    "lang": "hi",
+    "label": "HHBD"
   }
 ]

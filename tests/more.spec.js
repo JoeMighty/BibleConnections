@@ -3,6 +3,12 @@ const AxeBuilder = require('@axe-core/playwright').default;
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
+// choose a translation in the searchable picker by typing its code
+const pickVersion = async (page, id, query) => {
+  await page.click(`#${id}Pick`);
+  await page.fill(`#${id}Pick`, query);
+  await page.keyboard.press('Enter');
+};
 
 test.use({ serviceWorkers: 'block' });
 test.beforeEach(async ({ page }) => {
@@ -166,7 +172,7 @@ test('an optional second translation adds comparison links without changing the 
   await page.goto('/?ref=John+3%3A16');
   await ready(page);
   await expect(page.locator('.compare-row')).toHaveCount(0);
-  await page.selectOption('#compareWith', 'MALOVBSI');
+  await pickVersion(page, 'compareWith', 'MALOVBSI');
   const second = page.locator('.verse-card .compare-row a').first();
   await expect(second).toHaveAttribute('href', 'https://www.bible.com/bible/1693/JHN.3.16.MALOVBSI');
   await expect(second).toContainText('Read in Malayalam OV');
@@ -177,15 +183,41 @@ test('an optional second translation adds comparison links without changing the 
   await ready(page);
   await expect(page.locator('#compareWith')).toHaveValue('MALOVBSI');
   await expect(page.locator('#version2Sel')).toHaveValue('MALOVBSI');
+  await expect(page.locator('#compareWithPick')).toHaveValue(/Malayalam OV/);
   // choosing None goes back to one translation
-  await page.selectOption('#compareWith', '');
+  await pickVersion(page, 'compareWith', 'None');
   await expect(page.locator('.compare-row')).toHaveCount(0);
+});
+
+test('the translation picker can be searched by language name, in English or the language itself', async ({ page }) => {
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  const input = page.locator('#readInPick');
+  await input.click();
+  await expect(input).toHaveAttribute('aria-expanded', 'true');
+  await input.fill('portug');
+  await expect(page.locator('#readInList .vpick-group')).toHaveText(['Português (Portuguese)']);
+  await input.fill('kiswahili');
+  await expect(page.locator('#readInList .vpick-group')).toHaveText(['Kiswahili (Swahili)']);
+  await input.fill('zzzz');
+  await expect(page.locator('#readInList')).toContainText('No translations match');
+  await page.keyboard.press('Escape');
+  await expect(input).toHaveAttribute('aria-expanded', 'false');
+  await expect(input).toHaveValue(/^NIV/);
+  // keyboard: filter, move down, choose
+  await input.fill('hindi');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', /bible\.com\/bible\/\d+\/JHN\.3\.16\.[A-Z0-9]+$/);
+  await expect(page.locator('#readIn')).not.toHaveValue('NIV');
+  const results = await new AxeBuilder({ page }).include('.translations').analyze();
+  expect(results.violations).toEqual([]);
 });
 
 test('the reading translation can be changed without opening Settings', async ({ page }) => {
   await page.goto('/?ref=John+3%3A16');
   await ready(page);
-  await page.selectOption('#readIn', 'IRVMAL');
+  await pickVersion(page, 'readIn', 'IRVMAL');
   await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/1912/JHN.3.16.IRVMAL');
   await expect(page.locator('#versionSel')).toHaveValue('IRVMAL');
 });

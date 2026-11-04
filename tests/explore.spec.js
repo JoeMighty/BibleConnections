@@ -118,5 +118,5 @@ test('the live site counts visits with GoatCounter and respects Do Not Track', a
 test('translation list includes Spanish versions', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await expect(page.locator('#versionSel optgroup[label="Español"] option[value=NVI]')).toHaveCount(1);
+  await expect(page.locator('#versionSel optgroup[label="Español (Spanish)"] option[value=NVI]')).toHaveCount(1);
 });

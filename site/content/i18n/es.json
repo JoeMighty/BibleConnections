@@ -506,7 +506,9 @@
     "Read in": "Leer en",
     "Compare with (optional)": "Comparar con (opcional)",
     "Compare with a second translation (optional)": "Comparar con una segunda traducción (opcional)",
-    "None": "Ninguna"
+    "None": "Ninguna",
+    "Type a language or translation": "Escribe un idioma o una traducción",
+    "No translations match": "Ninguna traducción coincide"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
