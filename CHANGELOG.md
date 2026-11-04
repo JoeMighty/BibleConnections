@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-04 - Many Languages
+
 ### Added
 - 75 more Bible.com translations in 28 more languages: Portuguese, French, German, Russian, Italian, Korean, Nigerian Pidgin, Yoruba, Igbo, Hausa, Swahili, Amharic, Oromo, Tigrinya, Lingala, Kikongo (Kituba), Tshiluba, Zulu, Xhosa, Afrikaans, Kikuyu, Luo, Tagalog, Cebuano, Ilocano, Tamil, Telugu and Hindi.
 - Searchable translation picker: type a language (in English or in the language itself), a translation name or a code.
@@ -149,7 +151,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/bc8cb41...HEAD
+[0.6.0]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...bc8cb41
 [0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...d022afc
 [0.4.0]: https://github.com/JoeMighty/BibleConnections/compare/0c2e1a9...c8f5413
 [0.3.0]: https://github.com/JoeMighty/BibleConnections/compare/df4c68b...0c2e1a9
