@@ -12,6 +12,7 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>
   <a href="https://joemighty.github.io/BibleConnections/"><img alt="Live site" src="https://img.shields.io/badge/live%20site-open-38d9a9?style=plastic&logo=githubpages&logoColor=white"></a>
   <a href="https://github.com/JoeMighty/BibleConnections/actions/workflows/ci.yml"><img alt="Test and deploy" src="https://img.shields.io/github/actions/workflow/status/JoeMighty/BibleConnections/ci.yml?branch=main&style=plastic&label=tests%20%26%20deploy&logo=githubactions&logoColor=white"></a>
+  <a href="https://github.com/JoeMighty/BibleConnections/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/JoeMighty/BibleConnections?style=plastic&label=release"></a>
   <a href="https://github.com/JoeMighty/BibleConnections/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/JoeMighty/BibleConnections?style=plastic"></a>
 </p>
 <p>
@@ -23,51 +24,61 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>
   <a href="https://www.openbible.info/labs/cross-references/"><img alt="Cross references: OpenBible.info CC BY 4.0" src="https://img.shields.io/badge/cross%20references-OpenBible.info%20CC%20BY%204.0-ffa94d?style=plastic"></a>
   <a href="https://www.bible.com"><img alt="Reading links: Bible.com" src="https://img.shields.io/badge/reading%20links-Bible.com-c92a2a?style=plastic"></a>
-  <img alt="No Bible text hosted" src="https://img.shields.io/badge/Bible%20text%20hosted-none-555?style=plastic">
+  <a href="https://www.stepbible.org"><img alt="Hebrew and Greek: STEP Bible CC BY 4.0" src="https://img.shields.io/badge/Hebrew%20%26%20Greek-STEP%20Bible%20CC%20BY%204.0-2f9e44?style=plastic"></a>
+  <img alt="No translation text hosted" src="https://img.shields.io/badge/translation%20text%20hosted-none-555?style=plastic">
 </p>
 <p>
   <a href="LICENSE"><img alt="Code license: Apache 2.0" src="https://img.shields.io/badge/code-Apache%202.0-blue?style=plastic"></a>
   <a href="LICENSE-CONTENT.md"><img alt="Content license: CC BY 4.0" src="https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey?style=plastic"></a>
-  <img alt="Languages: English and Spanish" src="https://img.shields.io/badge/languages-English%20%7C%20Espa%C3%B1ol-orange?style=plastic">
+  <img alt="Interface: English and Spanish" src="https://img.shields.io/badge/interface-English%20%7C%20Espa%C3%B1ol-orange?style=plastic">
+  <img alt="99 translations in 31 languages" src="https://img.shields.io/badge/translations-99%20in%2031%20languages-e8590c?style=plastic">
 </p>
 
 <p><a href="https://joemighty.github.io/BibleConnections/"><strong>Open the live site</strong></a></p>
 
 </div>
 
-No Bible text is published on this site. Every passage links out to [Bible.com](https://www.bible.com) in the reader's chosen translation (NIV by default).
+No Bible translation is published on this site. Every passage links out to [Bible.com](https://www.bible.com) in the reader's chosen translation (NIV by default). The only Scripture text shown is the original Hebrew, Aramaic and Greek, from STEP Bible under CC BY 4.0.
 
 ## Features
 
-- **Map:** around 200,000 cross references with a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan. Uses WebGL where a graphics chip is available.
-- **Welcome page:** a picture of the full map, quick starts, themes, the current sermon series and "pick up where you left off".
-- **Connections:** tap any arc to see both passages and read them on Bible.com in your chosen translation.
+### Explore the map
+- **Map:** 199,275 cross references with a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan. Uses WebGL where a graphics chip is available.
+- **Welcome page:** a picture of the full map with an Old and New Testament timeline, search, connection of the day, themes, the current sermon series and "pick up where you left off".
+- **Connections:** tap any arc to see both passages and open them on Bible.com.
 - **Why it connects:** 362 short explanations for the strongest links, with a filter to show only explained connections.
 - **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`) or words (`shepherd`).
-- **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.
 - **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
-- **Guided journeys:** nine step-by-step tours with discussion questions, presenter mode for sermons and classes (works with clickers), and printable handouts.
-- **Sermon series:** show the current series passages on the welcome page.
-- **Study:** reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
-- **Connection of the day** on the welcome page, also available as a daily calendar and RSS feed.
-- **Passage explorer:** open any verse to see its original Hebrew, Aramaic or Greek words, its place in the chapter, an introduction to the book, connections split by Testament, people, places and topics, and questions for reflection.
-- **Word study:** about 13,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry.
 - **Chronological view:** rearrange the books by when their events happen.
-- **Listen:** a headphones button opens the chapter in Bible.com's audio Bible where the translation has one.
-- **My notes:** private notes on any verse, kept on the device, with export and import.
-- **Printable handouts** for any verse as well as for journeys.
-- **Places on a map:** 1,277 places from OpenBible.info with every verse that mentions them.
-- **Shared connections:** find the passages that two passages both link to.
+- **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.
+- **Shared connections:** pick two passages and find the passages they both link to.
+
+### Study
+- **Passage explorer:** open any verse to see its original Hebrew, Aramaic or Greek words, its place in the chapter, an introduction to the book (all 66), connections split by Testament, people, places and topics, reflection questions and your own notes.
+- **Word study:** about 14,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry.
+- **Places on a map:** 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place.
+- **My notes:** private notes on any verse, kept on the device only, with export and import.
+- **Study hub:** 3 reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed.
+
+### Read and listen
+- **Bible.com links:** 99 translations in 31 languages, with a searchable picker. Choose a reading translation and an optional second one to compare, right in the sidebar.
+- **Listen:** a headphones button opens the chapter in Bible.com's audio Bible for the 65 translations that have one.
+
+### Teach and share
+- **Guided journeys:** 12 step-by-step tours (3 written for children) with discussion questions, presenter mode for sermons and classes (works with clickers).
+- **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
+- **Sermon series:** show the current series passages on the welcome page.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
-- **Kids mode:** bigger text, simpler words and three journeys written for children.
-- **Insights:** most connected verses and chapters, plus a category heatmap that filters the map.
 - **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites, and link previews in messaging apps.
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
+
+### For everyone
+- **Kids mode:** bigger text, simpler words and journeys written for children.
+- **Spanish:** full Spanish interface, journeys, book introductions, questions and handouts.
+- **Settings:** language, light, dark or system appearance, high contrast mode and Bible.com translations.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
-- **Spanish:** full Spanish interface, journeys and handouts, with Spanish Bible.com translations.
-- **Two translations:** choose a reading translation and an optional second one to compare, right in the sidebar. About 100 Bible.com translations in 31 languages, with a searchable picker.
-- **Settings:** language, light, dark or system appearance, high contrast mode and Bible.com translation.
-- **Installable and offline:** works as an app and without a connection after the first visit (reading links still need the internet).
+- **Installable and offline:** works as an app and without a connection after the first visit. Studied passages and places are saved for offline use (Bible.com links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
 ## Deploy
@@ -87,7 +98,7 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 | Workflow | When | What it does |
 | --- | --- | --- |
 | `ci.yml` | Every push, pull request and daily | Browser and accessibility tests, Lighthouse checks, then deploys `main` to GitHub Pages |
-| `links.yml` | Weekly | Checks every Bible.com translation link |
+| `links.yml` | Weekly, and when translations change | Checks every Bible.com reading and Listen link. Run it by hand with **discover audio** ticked to list which translations have audio |
 | `data-refresh.yml` | Monthly | Rebuilds the cross reference data and opens a pull request if it changed |
 | `note-from-issue.yml` | When a content suggestion is labeled `approved` | Adds the suggested note and opens a pull request |
 | `release.yml` | When a new version appears in the changelog | Creates the tag and GitHub release |
@@ -101,14 +112,14 @@ Suggestions for notes, journeys, themes and translations are very welcome. See [
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
+See [CHANGELOG.md](CHANGELOG.md) for what changed in each version, and [Releases](https://github.com/JoeMighty/BibleConnections/releases) for each published version.
 
 ## License and credit
 
 Bible Connections is created by [JoeMighty](https://github.com/JoeMighty).
 
 - **Code:** [Apache License 2.0](LICENSE). Anyone who copies or builds on the code must keep the [NOTICE](NOTICE) file, which credits JoeMighty and links to this repository.
-- **Notes, journeys, themes, translations and guides:** [CC BY 4.0](LICENSE-CONTENT.md). Anyone who shares or adapts them must give credit with a link back here.
+- **Notes, journeys, book introductions, questions, themes, translations and guides:** [CC BY 4.0](LICENSE-CONTENT.md). Anyone who shares or adapts them must give credit with a link back here.
 
 If you reuse any part of this project, please credit it like this:
 
@@ -121,6 +132,8 @@ GitHub also shows a **Cite this repository** button (from [CITATION.cff](CITATIO
 Full details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 - Cross references: [OpenBible.info](https://www.openbible.info/labs/cross-references/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Hebrew, Aramaic and Greek text, word data and lexicons: [STEP Bible](https://www.stepbible.org) (Tyndale House), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Dictionary entries from Brown-Driver-Briggs and Abbott-Smith (public domain)
+- Places: [OpenBible.info Bible Geocoding Data](https://www.openbible.info/geo/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Coastline: [Natural Earth](https://www.naturalearthdata.com) (public domain)
 - Verse counts and word index: [Berean Standard Bible](https://berean.bible/) (public domain), via [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases)
-- Reading links: [Bible.com](https://www.bible.com) (not affiliated)
+- Reading and listening links: [Bible.com](https://www.bible.com) (not affiliated)
 - Inspired by the cross reference visualization by Chris Harrison and Christoph Römhild
