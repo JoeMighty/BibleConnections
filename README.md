@@ -50,7 +50,8 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - **Sermon series:** show the current series passages on the welcome page.
 - **Study:** reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
 - **Connection of the day** on the welcome page, also available as a daily calendar and RSS feed.
-- **Word study:** follow about 14,000 Hebrew and Greek words (from STEP Bible) through the Bible.
+- **Passage explorer:** open any verse to see its original Hebrew, Aramaic or Greek words, its place in the chapter, an introduction to the book, connections split by Testament, people, places and topics, and questions for reflection.
+- **Word study:** about 13,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry.
 - **Chronological view:** rearrange the books by when their events happen.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
 - **Kids mode:** bigger text, simpler words and three journeys written for children.
@@ -74,6 +75,7 @@ No Bible text is published on this site. Every passage links out to [Bible.com](
 - [Using your own web address](docs/CUSTOM-DOMAIN.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
 - [Growing the reach of the project](docs/PROMOTION.md)
+- [Content review packet for pastors](docs/THEOLOGY-REVIEW.md)
 
 ## Automation
 

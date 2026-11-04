@@ -21,6 +21,9 @@ This project publishes no copyrighted Bible text. Below is everything it uses fr
 - Created by Tyndale House Cambridge and curated by STEP Bible, https://www.STEPBible.org
 - License: Creative Commons Attribution 4.0 (CC BY 4.0). Credit: "STEP Bible" linked to www.STEPBible.org
 - Changes made: Strong's numbers were grouped by base number, prefixes were left out, definitions were shortened to about 110 characters, and verse references were converted to verse numbers in `site/data/strongs.json` (built by `scripts/build-strongs.mjs`).
+- The original Hebrew, Aramaic and Greek text of each verse (from TAHOT, based on the Westminster Leningrad Codex, and the NA28 words of TAGNT) and the full lexicon entries are in `site/data/text/` and `site/data/lex/` (built by `scripts/build-original.mjs`). Changes made: Hebrew cantillation marks and morpheme dividers were removed, only Leningrad Codex and NA28 words were kept, and lexicon markup was simplified.
+- The lexicon entries in TBESH and TBESG are drawn from Brown-Driver-Briggs (1906) and Abbott-Smith (1922), which are in the public domain.
+- No English or other modern translation text is included. Word meanings shown under the original words are dictionary glosses, not a translation of the verse.
 
 ## Data packaging: scrollmapper/bible_databases
 

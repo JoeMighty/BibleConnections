@@ -635,3 +635,39 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 .vpick-list [role=option].active, .vpick-list [role=option]:hover { background: var(--accent); color: #fff; }
 .vpick-group { padding: 10px 10px 4px; font-size: var(--t-footnote); font-weight: 600; color: var(--muted); }
 .vpick-empty { padding: 10px; color: var(--muted); }
+
+/* Passage explorer */
+.study-sec { margin-top: 20px; padding-top: 4px; border-top: 0.5px solid var(--separator); }
+.study-sec h4 { font-size: var(--t-subhead); margin: 14px 0 6px; color: var(--muted); }
+.book-intro { background: var(--surface-2); border-radius: var(--radius); padding: 10px 12px; }
+.reflect { padding-left: 1.4em; }
+.reflect li { margin: 6px 0; }
+ol.orig { list-style: none; padding: 0; margin: 8px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.orig-word {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 44px; min-height: 44px; padding: 6px 8px;
+  background: var(--surface-2); color: var(--text); border: 0.5px solid var(--separator); border-radius: var(--radius-s); font: inherit; text-align: center;
+}
+button.orig-word { cursor: pointer; }
+button.orig-word:hover { border-color: var(--accent); }
+.o-word { font-size: 1.35rem; line-height: 1.3; }
+.orig.rtl .o-word { font-family: 'SBL Hebrew', 'Ezra SIL', 'Noto Serif Hebrew', 'Times New Roman', serif; font-size: 1.5rem; }
+.o-tr { font-size: var(--t-footnote); color: var(--muted); font-style: italic; }
+.o-gl { font-size: var(--t-footnote); max-width: 9em; }
+
+/* Word study */
+.word-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 12px 0; }
+.word-facts div { background: var(--surface-2); border-radius: var(--radius-s); padding: 8px 10px; }
+.word-facts dt { font-size: var(--t-footnote); color: var(--muted); }
+.word-facts dd { margin: 2px 0 0; font-weight: 600; }
+.sense-list { list-style: none; padding: 0; margin: 0; }
+.book-bars { list-style: none; padding: 0; margin: 8px 0; }
+.book-bars li { display: grid; grid-template-columns: 9em 1fr 3em; align-items: center; gap: 8px; min-height: 32px; }
+.book-bars .bar { height: 10px; border-radius: 5px; background: var(--accent); width: var(--w); }
+.book-bars .count { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+table.forms { width: 100%; border-collapse: collapse; font-size: var(--t-subhead); }
+table.forms th, table.forms td { text-align: left; padding: 6px 4px; border-bottom: 0.5px solid var(--separator); vertical-align: top; }
+table.forms td[lang="he"], table.forms td[lang="arc"] { font-size: 1.2rem; }
+table.forms td:last-child, table.forms th:last-child { text-align: right; }
+details.lexicon { margin-top: 16px; background: var(--surface-2); border-radius: var(--radius); padding: 8px 12px; }
+details.lexicon summary { cursor: pointer; font-weight: 600; min-height: 32px; display: flex; align-items: center; }
+details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top: 8px; overflow-wrap: anywhere; }

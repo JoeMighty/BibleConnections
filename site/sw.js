@@ -1,10 +1,10 @@
 // Offline support: the app and its data are cached so the map works without a connection.
 // Reading links still need the internet because they open Bible.com.
-const CACHE = 'bible-connections-v10';
+const CACHE = 'bible-connections-v11';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'handout.html', 'handout.js',
   'content/themes.json', 'content/notes.json', 'content/journeys.json', 'content/series.json',
-  'content/versions.json', 'content/config.json', 'content/people-places.json', 'content/topics.json', 'content/plans.json', 'vendor/qrcode.js', 'content/words.json', 'content/i18n/es.json', 'content/themes.es.json', 'content/journeys.es.json',
+  'content/versions.json', 'content/config.json', 'content/people-places.json', 'content/topics.json', 'content/plans.json', 'vendor/qrcode.js', 'content/words.json', 'content/i18n/es.json', 'content/themes.es.json', 'content/journeys.es.json', 'content/book-intros.json', 'content/reflect.json',
   'manifest.webmanifest', 'og-image.png', 'robots.txt', 'icons/icon.svg', 'icons/icon-192.png',
   'data/books.json', 'data/refs.bin', 'data/words.json',
 ];
@@ -20,7 +20,8 @@ self.addEventListener('activate', (e) => {
 // The app (pages, code, styles, content) is fetched fresh when online so updates show immediately,
 // falling back to the saved copy offline. The large data files are served from the saved copy and
 // refreshed in the background.
-const BIG = /\/data\/(refs\.bin|words\.json)$/;
+// Hebrew and Greek text and lexicon files are saved as they are opened, so studied passages work offline.
+const BIG = /\/data\/(refs\.bin|words\.json|strongs\.json|text\/\d+\.json|lex\/[GH]\d+\.json)$/;
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;

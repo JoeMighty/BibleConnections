@@ -5,6 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Passage explorer: a single verse now shows its original Hebrew, Aramaic or Greek words (each one opens a word study), its place in the chapter with previous and next verse, a short introduction to the book, connections split into Old and New Testament, people, places and topics named in the verse, and three reflection questions.
+- Expanded word study: language (Hebrew, Aramaic or Greek), Strong's number, approximate pronunciation, meanings by context with their own verse lists, where the word is used by book, its most common forms with grammar in plain words, related words and the full dictionary entry.
+- Introductions to all 66 books and reflection questions for each kind of book, in English and Spanish.
+- Content review packet for pastors (`docs/THEOLOGY-REVIEW.md`).
+- Releases can be named in the changelog heading.
+
 ## [0.6.0] - 2026-11-04 - Many Languages
 
 ### Added

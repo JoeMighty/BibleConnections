@@ -168,7 +168,7 @@
   let BOOKS, TOTAL, N = 0, F, T, E, V, verseBook, verseChap, verseNum, chapters, NT_START;
   const noteMap = new Map();
   let hasNote = new Uint8Array(0);
-  let wordIndex = null;
+  let wordIndex = null, INTROS = {}, REFLECT = {};
 
   async function loadData() {
     const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
@@ -183,6 +183,8 @@
       getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
       getJSON('content/plans.json').then(x => { PLANS = x; }).catch(() => {}),
       getJSON('content/words.json').then(x => { FEATURED_WORDS = x.map(w => w.id); }).catch(() => {}),
+      getJSON('content/book-intros.json').then(x => { INTROS = Object.fromEntries(x.map(b => [b.osis, b])); }).catch(() => {}),
+      getJSON('content/reflect.json').then(x => { REFLECT = x; }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -1126,7 +1128,8 @@
             <p><strong>${esc(w.t)}</strong> · ${esc(w.g)} · <span class="muted">${heb ? 'Hebrew' : 'Greek'} ${esc(f.entity.id)}</span></p>
             ${w.d ? `<p class="hint" lang="en">${esc(w.d)}</p>` : ''}
             ${w.v ? `<p>Used in ${w.n.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString()} verses, too many to show on the map.</p>`}
-            <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0.</p>`;
+            <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted">Loading the full word study…</p></div>
+            <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0. Dictionary entries are from Brown-Driver-Briggs and Abbott-Smith (public domain).</p>`;
         } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
         else html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>`;
         html += `
@@ -1142,6 +1145,7 @@
         if (vs < f.verses.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="moreVerses">Show more verses (${(f.verses.length - vs).toLocaleString()} left)</button></div>`;
         html += `<h3>Connections</h3>` + listHTML(focusList, true);
       } else {
+        const single = f.kind === 'verse' && f.end - f.start === 1;
         if (f.kind === 'verse') html += refCard(f.start, f.end - 1, pal.focus);
         else {
           const label = f.kind === 'book' ? `${BOOKS[f.book].name} 1` : rangeLabel(f);
@@ -1151,8 +1155,9 @@
           <p class="summary">${esc(describeView())}</p>
           <div class="actions"><button type="button" class="btn ghost small" data-action="zoomFocus">Zoom to ${esc(rangeLabel(f))}</button>`;
         if (f.kind !== 'book') html += `<button type="button" class="btn ghost small" data-action="focusBook" data-b="${f.book}">Whole book</button>`;
-        html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
-          <h3>Connections</h3>` + listHTML(focusList, true);
+        html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>`;
+        if (single) html += passageStudyHTML(f.start);
+        else html += `<h3>Connections</h3>` + listHTML(focusList, true);
       }
     } else {
       if (theme) {
@@ -1174,6 +1179,7 @@
     el.panelTitle.textContent = title;
     el.panelBody.innerHTML = html;
     renderContext();
+    fillStudy();
   }
 
   // ---------- Journeys ----------
@@ -1916,6 +1922,239 @@
       entity: { type: 'word', id: code, name: wordLabel(code, w), word: w } }, { zoom: true, ...opts });
   }
 
+
+  // ---------- Passage explorer and full word study ----------
+  // Original language text and lexicon from STEP Bible (CC BY 4.0). No English Bible text is shown.
+  const textCache = new Map(), lexCache = new Map();
+  const fetchJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  function loadBookText(bi) {
+    if (!textCache.has(bi)) textCache.set(bi, fetchJSON(`data/text/${bi}.json`).catch(e => { textCache.delete(bi); throw e; }));
+    return textCache.get(bi);
+  }
+  function loadLex(code) {
+    const shard = code.slice(0, 3);
+    if (!lexCache.has(shard)) lexCache.set(shard, fetchJSON(`data/lex/${shard}.json`).catch(e => { lexCache.delete(shard); throw e; }));
+    return lexCache.get(shard).then(d => d[code]);
+  }
+  const LANG_NAME = { H: 'Hebrew', A: 'Aramaic', G: 'Greek' };
+  const langAttr = (l) => (l === 'G' ? 'el' : l === 'A' ? 'arc' : 'he');
+
+  // readable descriptions of grammar codes (Robinson codes for Greek, OSHB codes for Hebrew and Aramaic)
+  const G_CASE = { N: 'nominative', G: 'genitive', D: 'dative', A: 'accusative', V: 'vocative' };
+  const NUM = { S: 'singular', P: 'plural', s: 'singular', p: 'plural', d: 'dual' };
+  const G_GEN = { M: 'masculine', F: 'feminine', N: 'neuter' };
+  const G_TENSE = { P: 'present', I: 'imperfect', F: 'future', A: 'aorist', R: 'perfect', L: 'pluperfect', X: 'no tense' };
+  const G_VOICE = { A: 'active', M: 'middle', P: 'passive', E: 'middle or passive', D: 'middle', O: 'passive', N: 'middle or passive' };
+  const G_MOOD = { I: 'indicative', S: 'subjunctive', O: 'optative', M: 'imperative', N: 'infinitive', P: 'participle' };
+  const G_POS = { N: 'noun', A: 'adjective', T: 'article', V: 'verb', P: 'personal pronoun', R: 'relative pronoun', D: 'demonstrative pronoun',
+    C: 'reciprocal pronoun', F: 'reflexive pronoun', I: 'interrogative pronoun', K: 'correlative pronoun', Q: 'correlative pronoun', S: 'possessive pronoun', X: 'indefinite pronoun',
+    ADV: 'adverb', CONJ: 'conjunction', PREP: 'preposition', PRT: 'particle', INJ: 'interjection', COND: 'conditional', HEB: 'Hebrew word', ARAM: 'Aramaic word' };
+  function cng(x) {
+    const m = x.match(/^([123])?([NGDAV])?([SP])?([MFN])?/);
+    if (!m) return [];
+    return [m[1] && `${m[1]}${m[1] === '1' ? 'st' : m[1] === '2' ? 'nd' : 'rd'} person`, G_CASE[m[2]], NUM[m[3]], G_GEN[m[4]]].filter(Boolean);
+  }
+  function greekGrammar(code) {
+    const [pos, a = '', b = ''] = code.split('-');
+    if (pos === 'V') {
+      const m = a.match(/^(2)?([PIFARLX])([AMPEDON])([ISOMNP])$/);
+      if (!m) return 'verb';
+      const parts = ['verb', (m[1] ? 'second ' : '') + G_TENSE[m[2]], G_VOICE[m[3]], G_MOOD[m[4]]];
+      if (b) parts.push(...(m[4] === 'P' ? cng(b) : cng(b.replace(/^([123])([SP])$/, '$1$2'))));
+      return parts.join(', ');
+    }
+    return [G_POS[pos] || pos.toLowerCase(), ...cng(a)].join(', ');
+  }
+  const H_POS = { A: 'adjective', C: 'conjunction', D: 'adverb', N: 'noun', P: 'pronoun', R: 'preposition', S: 'suffix', T: 'particle', V: 'verb' };
+  const H_STEM = { q: 'qal', N: 'niphal', p: 'piel', P: 'pual', h: 'hiphil', H: 'hophal', t: 'hithpael', o: 'polel', O: 'polal', r: 'hithpolel',
+    m: 'poel', M: 'poal', k: 'palel', K: 'pulal', Q: 'qal passive', l: 'pilpel', L: 'polpal', f: 'hithpalpel', D: 'nithpael', j: 'pealal',
+    i: 'pilel', u: 'hothpaal', c: 'tiphil', v: 'hishtaphel', w: 'nithpalel', y: 'nithpoel', z: 'hithpoel' };
+  const A_STEM = { q: 'peal', Q: 'peil', u: 'hithpeel', p: 'pael', P: 'ithpaal', M: 'hithpaal', a: 'aphel', h: 'haphel', s: 'saphel', e: 'shaphel',
+    H: 'hophal', i: 'ithpeel', t: 'hishtaphel', v: 'ishtaphel', w: 'hithaphel', o: 'polel', z: 'ithpoel', r: 'hithpolel', f: 'hithpalpel',
+    b: 'hephal', c: 'tiphel', m: 'poel', l: 'palpel', L: 'ithpalpel', O: 'ithpolel', G: 'ittaphal' };
+  const H_VTYPE = { p: 'perfect', q: 'sequential perfect', i: 'imperfect', w: 'sequential imperfect', h: 'cohortative', j: 'jussive',
+    v: 'imperative', r: 'active participle', s: 'passive participle', a: 'infinitive absolute', c: 'infinitive construct' };
+  const H_GEN = { m: 'masculine', f: 'feminine', b: 'both genders', c: 'common' };
+  const H_STATE = { a: 'absolute', c: 'construct', d: 'determined' };
+  function hebrewGrammar(lang, code) {
+    const pos = code[0], rest = code.slice(1);
+    const pgn = (x) => { const m = x.match(/^([123])?([mfbc])?([spd])?([acd])?/) || []; return [m[1] && `${m[1]}${m[1] === '1' ? 'st' : m[1] === '2' ? 'nd' : 'rd'} person`, H_GEN[m[2]], NUM[m[3]], H_STATE[m[4]]].filter(Boolean); };
+    if (pos === 'V') {
+      const stem = (lang === 'A' ? A_STEM : H_STEM)[rest[0]], type = H_VTYPE[rest[1]];
+      return ['verb', stem, type, ...pgn(rest.slice(2))].filter(Boolean).join(', ');
+    }
+    if (pos === 'N') return [rest[0] === 'p' ? 'proper noun' : rest[0] === 'g' ? 'gentilic noun' : 'noun', ...pgn(rest.slice(1))].join(', ');
+    if (pos === 'A') return [{ a: 'adjective', c: 'number', g: 'gentilic adjective', o: 'ordinal number' }[rest[0]] || 'adjective', ...pgn(rest.slice(1))].join(', ');
+    if (pos === 'P') return [{ d: 'demonstrative pronoun', f: 'indefinite pronoun', i: 'interrogative pronoun', p: 'personal pronoun', r: 'relative pronoun' }[rest[0]] || 'pronoun', ...pgn(rest.slice(1))].join(', ');
+    if (pos === 'T') return { a: 'particle of affirmation', d: 'definite article', e: 'particle of exhortation', i: 'interrogative particle', j: 'interjection', m: 'demonstrative particle', n: 'negative particle', o: 'object marker', r: 'relative particle' }[rest[0]] || 'particle';
+    return H_POS[pos] || code;
+  }
+  function grammarText(g) {
+    const [lang, code = ''] = g.split(':');
+    if (!code) return '';
+    return (lang === 'G' ? greekGrammar(code) : hebrewGrammar(lang, code)).split(', ').map(tr).join(', ');
+  }
+
+  // approximate English sounding pronunciation with the stressed syllable in capitals
+  function pronounce(code, lemma, translit) {
+    if (!translit) return '';
+    let sylls;
+    if (code[0] === 'H') {
+      sylls = translit.toLowerCase().replace(/['ʼ’]/g, '').split(/[.\-\s]+/).filter(Boolean);
+      const stress = /֫/.test(lemma) && sylls.length > 1 ? sylls.length - 2 : sylls.length - 1;
+      const sound = (x) => x.replace(/ch|kh/g, 'kh').replace(/a/g, 'ah').replace(/e/g, 'eh').replace(/i/g, 'ee').replace(/o/g, 'oh').replace(/u/g, 'oo').replace(/hh/g, 'h');
+      return sylls.map((x, n) => (n === stress ? sound(x).toUpperCase() : sound(x))).join('-');
+    }
+    // Greek: split into syllables around vowel groups, stress from the accent in the Greek lemma
+    const t = translit.toLowerCase();
+    const parts = t.match(/[^aeiouyēō]*(?:ai|ei|oi|ui|au|eu|ēu|ou|[aeiouyēō])(?:[^aeiouyēō]*$)?/g) || [t];
+    sylls = [];
+    for (const p of parts) {
+      const m = p.match(/^([^aeiouyēō]*)(.*)$/);
+      if (sylls.length && m[1].length > 1) { sylls[sylls.length - 1] += m[1][0]; sylls.push(m[1].slice(1) + m[2]); } else sylls.push(p);
+    }
+    const nf = lemma.normalize('NFD');
+    const vowelGroups = nf.match(/(?:[αεηιουω][̀-ͯ]*(?:[ιυ](?![̈])[̀-ͯ]*)?)/gi) || [];
+    let fromEnd = vowelGroups.length - 1 - vowelGroups.findIndex(g => /[̀́͂]/.test(g));
+    if (fromEnd >= vowelGroups.length || fromEnd < 0) fromEnd = 0;
+    const stress = Math.max(0, sylls.length - 1 - fromEnd);
+    const sound = (x) => x.replace(/ou/g, 'oo').replace(/ai/g, 'eye').replace(/ei/g, 'ay').replace(/oi/g, 'oy').replace(/au/g, 'ow').replace(/eu/g, 'yoo')
+      .replace(/ē/g, 'ay').replace(/ō/g, 'oh').replace(/ch/g, 'kh').replace(/ph/g, 'f').replace(/a(?![hy])/g, 'ah').replace(/(?<![ay])e(?!y)/g, 'eh').replace(/i(?!e)/g, 'ee').replace(/y/g, 'ee');
+    return sylls.map((x, n) => (n === stress ? sound(x).toUpperCase() : sound(x))).join('-');
+  }
+
+  // light markup from the lexicon: **bold**, _italic_, [[Ref.1.2|label]]
+  function lexMarkup(s) {
+    return esc(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/(^|[\s(])_([^_]+)_/g, '$1<em>$2</em>')
+      .replace(/\[\[([^|\]]+)\|([^\]]*)\]\]/g, (m, r, l) => {
+        const v = osisToIndex(r.replace(/^Jude\.(\d+)$/, 'Jude.1.$1'));
+        return v >= 0 ? `<button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${l || esc(refLabel(v))}</button>` : l;
+      }).replace(/\n/g, '<br>');
+  }
+
+  function versesByBook(verses) {
+    const counts = new Map();
+    for (const v of verses) counts.set(verseBook[v], (counts.get(verseBook[v]) || 0) + 1);
+    return [...counts].sort((a, b) => b[1] - a[1]);
+  }
+  async function wordDetailHTML(code) {
+    const [d, w] = await Promise.all([loadLex(code), loadStrongs().then(x => x[code])]);
+    if (!d || !w) return '<p class="muted">No further details for this word.</p>';
+    const verses = w.v ? decodePostings(w.v) : [];
+    const lang = d.lang;
+    let html = `<dl class="word-facts">
+      <div><dt>Language</dt><dd>${LANG_NAME[lang]}</dd></div>
+      <div><dt>Strong’s number</dt><dd>${esc(code.replace(/^([GH])0+/, '$1'))} <span class="muted">(${esc(code)})</span></dd></div>
+      <div><dt>Say it</dt><dd>${esc(pronounce(code, w.l, w.t))} <span class="muted">(approximate)</span></dd></div>
+      ${d.pos ? `<div><dt>Part of speech</dt><dd>${esc(greekOrHebPos(d.pos))}</dd></div>` : ''}
+    </dl>`;
+    if (d.senses) {
+      html += `<h3>Meanings in context</h3><p class="hint">The same word can carry different shades of meaning. Choose one to see only those verses.</p><ul class="sense-list">`;
+      for (const [x, gloss, n, vs] of d.senses) html += `<li><button type="button" class="conn-item" ${vs ? `data-action="openSense" data-code="${esc(code)}" data-sense="${esc(x)}"` : 'disabled'}><span class="label">${esc(gloss)} <span class="muted">${esc(x)}</span></span><span class="votes">${n.toLocaleString()} verse${n === 1 ? '' : 's'}</span></button></li>`;
+      html += '</ul>';
+    }
+    if (verses.length) {
+      const ot = verses.filter(v => verseBook[v] < 39).length;
+      const books = versesByBook(verses).slice(0, 8), max = books[0][1];
+      html += `<h3>Where it is used</h3><p>${ot ? `${ot.toLocaleString()} in the Old Testament` : ''}${ot && ot < verses.length ? ' and ' : ''}${ot < verses.length ? `${(verses.length - ot).toLocaleString()} in the New Testament` : ''}.</p>
+        <ul class="book-bars" aria-label="Books where this word is used most">${books.map(([b, n]) => `<li><button type="button" class="link-btn" data-action="focusBook" data-b="${b}">${esc(BOOKS[b].name)}</button><span class="bar" style="--w:${Math.max(4, (n / max) * 100)}%" aria-hidden="true"></span><span class="count">${n}</span></li>`).join('')}</ul>`;
+    }
+    if (d.forms && d.forms.length) {
+      html += `<h3>Forms in the text</h3><table class="forms"><caption class="sr-only">Most common forms of this word</caption><thead><tr><th scope="col">Form</th><th scope="col">Grammar</th><th scope="col">Times</th></tr></thead><tbody>`;
+      for (const [form, gram, n] of d.forms) html += `<tr><td lang="${langAttr(gram[0])}"${gram[0] !== 'G' ? ' dir="rtl"' : ''}>${esc(form)}</td><td>${esc(grammarText(gram))}</td><td>${n}</td></tr>`;
+      html += '</tbody></table>';
+    }
+    const related = (d.related || []).filter(c => STRONGS[c]);
+    if (related.length) html += `<h3>Related words</h3><ul class="chip-list">${related.map(c => `<li><button type="button" class="chip" data-action="openWord" data-code="${c}"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(STRONGS[c].l)}</span> ${esc(STRONGS[c].t)} <span class="muted">${esc(STRONGS[c].g)}</span></button></li>`).join('')}</ul>`;
+    if (LANG !== 'en') html += '<p class="hint">Word meanings and the dictionary entry are in English.</p>';
+    if (d.def) html += `<details class="lexicon"><summary>Dictionary entry</summary><div lang="en">${lexMarkup(d.def)}</div></details>`;
+    return html;
+  }
+  function greekOrHebPos(p) {
+    const k = p.split(':')[1] || p;
+    const map = { N: 'noun', V: 'verb', A: 'adjective', ADV: 'adverb', CONJ: 'conjunction', PREP: 'preposition', PRT: 'particle', INJ: 'interjection', 'N-M': 'noun, masculine', 'N-F': 'noun, feminine', 'N-N': 'noun, neuter', 'N-PRI': 'proper name', 'N-M-P': 'proper name (person)', 'N-F-P': 'proper name (person)', 'N-M-L': 'proper name (place)', 'N-F-L': 'proper name (place)', R: 'preposition', D: 'adverb', C: 'conjunction', T: 'particle', P: 'pronoun' };
+    return map[k] || map[k.split('-')[0]] || k;
+  }
+  async function openSense(code, sense) {
+    const [d, all] = await Promise.all([loadLex(code), loadStrongs()]);
+    const s = d && d.senses && d.senses.find(x => x[0] === sense), w = all[code];
+    if (!s || !s[3]) return;
+    const verses = Int32Array.from(decodePostings(s[3]));
+    const mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    setFocus({ kind: 'words', query: `${w.t} (${s[1]})`, verses, mask, start: verses[0], end: verses[verses.length - 1] + 1,
+      entity: { type: 'word', id: code, name: `${w.t}: ${s[1]}`, word: { ...w, n: verses.length } } }, { zoom: true });
+  }
+
+  function passageStudyHTML(v) {
+    const b = BOOKS[verseBook[v]], c = verseChap[v], n = verseNum[v], inChap = b.chapters[c - 1];
+    const intro = INTROS[b.osis], cat = b.cat;
+    const ot = [], nt = [];
+    for (const i of focusList) { const other = F[i] === v ? T[i] : F[i]; (verseBook[other] < 39 ? ot : nt).push(i); }
+    const q = (REFLECT[cat] || {})[LANG] || (REFLECT[cat] || {}).en || [];
+    const noted = [...focusList].filter(i => hasNote[i]).slice(0, 6);
+    return `<section class="study-sec" aria-labelledby="secContext"><h3 id="secContext">In context</h3>
+        <p>Verse ${n} of ${inChap} in ${esc(b.name)} ${c} · <span class="muted">${esc(CATEGORIES[cat].name)}</span></p>
+        <div class="actions tight">
+          ${v > b.start ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v - 1}">Previous verse<span class="sr-only">: ${esc(refLabel(v - 1))}</span></button>` : ''}
+          ${v < b.end - 1 ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v + 1}">Next verse<span class="sr-only">: ${esc(refLabel(v + 1))}</span></button>` : ''}
+        </div>
+        ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(LANG === 'es' && intro.about_es ? intro.about_es : intro.about)}</p>` : ''}
+      </section>
+      <section class="study-sec" aria-labelledby="secOrig"><h3 id="secOrig">Original text</h3>
+        <div id="origText" data-v="${v}"><p class="muted">Loading the original text…</p></div>
+      </section>
+      <section class="study-sec" aria-labelledby="secPeople"><h3 id="secPeople">People, places and topics</h3>
+        <div id="verseEntities" data-v="${v}"><p class="muted">Looking for people, places and topics…</p></div>
+      </section>
+      ${noted.length ? `<section class="study-sec" aria-labelledby="secNotes"><h3 id="secNotes">Explained connections</h3><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></section>` : ''}
+      <section class="study-sec" aria-labelledby="secRefs"><h3 id="secRefs">Connections</h3>
+        <p>${ot.length.toLocaleString()} to the Old Testament and ${nt.length.toLocaleString()} to the New Testament, strongest first.</p>
+        <h4>Old Testament</h4>${ot.length ? listHTML(ot, true) : '<p class="muted">None with the current filters.</p>'}
+        <h4>New Testament</h4>${nt.length ? listHTML(nt, true) : '<p class="muted">None with the current filters.</p>'}
+      </section>
+      ${q.length ? `<section class="study-sec" aria-labelledby="secReflect"><h3 id="secReflect">Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+        <p class="hint">General questions for personal or group study.</p></section>` : ''}`;
+  }
+
+  function fillStudy() {
+    const wd = $('wordDetail');
+    if (wd) wordDetailHTML(wd.dataset.code).then(h => { if (wd.isConnected) wd.innerHTML = h; }, () => { if (wd.isConnected) wd.innerHTML = '<p class="muted">The full word study could not load. Check your connection.</p>'; });
+    const ot = $('origText');
+    if (ot) {
+      const v = +ot.dataset.v;
+      Promise.all([loadBookText(verseBook[v]), loadStrongs()]).then(([t]) => {
+        if (!ot.isConnected) return;
+        const words = (t.v[v - t.s] || '').split('~').filter(Boolean).map(x => x.split('|'));
+        if (!words.length) { ot.innerHTML = '<p class="muted">No original text for this verse.</p>'; return; }
+        const lang = words[0][3][0], rtl = lang !== 'G';
+        const aram = words.filter(w => w[3][0] === 'A').length;
+        const langNote = lang === 'G' ? 'Greek' : !aram ? 'Hebrew' : aram === words.length ? 'Aramaic' : 'Hebrew and Aramaic';
+        ot.innerHTML = `<p class="muted">Language: ${langNote}</p>
+          <ol class="orig${rtl ? ' rtl' : ''}" lang="${langAttr(aram === words.length ? 'A' : lang)}"${rtl ? ' dir="rtl"' : ''} aria-label="Original words. Choose a word to study it.">${words.map(([surf, tr, code, gram]) => {
+            const base = code.replace(/[A-Z]$/, ''), w = STRONGS[base];
+            const gloss = w ? w.g : '';
+            const inner = `<span class="o-word">${esc(surf)}</span><span class="o-tr" lang="en" dir="ltr">${esc(tr.replace(/\./g, ''))}</span><span class="o-gl" lang="en" dir="ltr">${esc(gloss)}</span>`;
+            return `<li>${w ? `<button type="button" class="orig-word" data-action="openWord" data-code="${base}" title="${esc(grammarText(gram))}">${inner}<span class="sr-only">, ${esc(grammarText(gram))}. Study this word</span></button>` : `<span class="orig-word">${inner}</span>`}</li>`;
+          }).join('')}</ol>
+          <p class="hint">Each word shows its pronunciation and dictionary meaning, not a translation of the verse. Choose a word to study it. Text from STEP Bible (CC BY 4.0).</p>`;
+      }, () => { if (ot.isConnected) ot.innerHTML = '<p class="muted">The original text could not load. Check your connection.</p>'; });
+    }
+    const ve = $('verseEntities');
+    if (ve) {
+      const v = +ve.dataset.v;
+      loadWords().then(idx => {
+        if (!ve.isConnected) return;
+        const has = (words) => words.some(wd => { const s = idx[wd]; return s && decodePostings(s).includes(v); });
+        const ppl = (PEOPLE || []).filter(p => has(p.words)), tps = (TOPICS || []).filter(t => has(t.words));
+        const nm = (x) => (LANG === 'es' && x.name_es) || x.name;
+        ve.innerHTML = ppl.length || tps.length
+          ? `<ul class="chip-list">${ppl.map(p => `<li><button type="button" class="chip" data-action="entity" data-type="${p.type === 'place' ? 'place' : 'person'}" data-id="${esc(p.id)}">${esc(nm(p))} <span class="muted">${p.type === 'place' ? 'place' : 'person'}</span></button></li>`).join('')}${tps.map(t => `<li><button type="button" class="chip" data-action="entity" data-type="topic" data-id="${esc(t.id)}">${esc(nm(t))} <span class="muted">topic</span></button></li>`).join('')}</ul>`
+          : '<p class="muted">None of the site’s people, places or topics are named in this verse.</p>';
+      }, () => { if (ve.isConnected) ve.innerHTML = ''; });
+    }
+  }
+
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
   const saveCollections = (c) => store.set('collections', c);
@@ -2252,6 +2491,7 @@
     else if (a === 'present') enterPresenter();
     else if (a === 'qr') openQR();
     else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
+    else if (a === 'openSense') { openSense(btn.dataset.code, btn.dataset.sense).then(focusPanelHeading); }
     else if (a === 'addToCollection') openAddToCollection();
     else if (a === 'openCollection') { openCollection(getCollections()[+btn.dataset.n]); focusPanelHeading(); }
     else if (a === 'deleteCollection') {
