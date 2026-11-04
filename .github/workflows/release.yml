@@ -2,6 +2,8 @@ name: Release
 
 # When CHANGELOG.md gets a new numbered version (for example "## [0.6.0] - 2026-11-04"),
 # create the matching tag and GitHub release with that section as the notes.
+# Optional release name after the date: "## [0.6.0] - 2026-11-04 - Many Languages"
+# gives the release the title "Bible Connections 0.6.0: Many Languages".
 on:
   push:
     branches: [main]
@@ -21,12 +23,15 @@ jobs:
         run: |
           version=$(grep -m1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+(?=\])' CHANGELOG.md || true)
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          name=$(grep -m1 -P "^## \\[$version\\]" CHANGELOG.md | sed -E 's/^## \[[^]]*\]( - [0-9-]+)?( - )?//')
+          echo "name=$name" >> "$GITHUB_OUTPUT"
           awk -v v="$version" '$0 ~ "^## \\[" v "\\]" {f=1; next} f && /^## \[/ {exit} f' CHANGELOG.md > notes.md
       - name: Create the release if it does not exist yet
         if: steps.v.outputs.version != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           V: ${{ steps.v.outputs.version }}
+          NAME: ${{ steps.v.outputs.name }}
         run: |
           if gh release view "v$V" >/dev/null 2>&1; then echo "v$V already released"; exit 0; fi
-          gh release create "v$V" --title "Bible Connections $V" --notes-file notes.md --target "$GITHUB_SHA"
+          gh release create "v$V" --title "Bible Connections $V${NAME:+: $NAME}" --notes-file notes.md --target "$GITHUB_SHA"
