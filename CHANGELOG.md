@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-04 - Passage Explorer
+
 ### Added
 - Passage explorer: a single verse now shows its original Hebrew, Aramaic or Greek words (each one opens a word study), its place in the chapter with previous and next verse, a short introduction to the book, connections split into Old and New Testament, people, places and topics named in the verse, and three reflection questions.
 - Expanded word study: language (Hebrew, Aramaic or Greek), Strong's number, approximate pronunciation, meanings by context with their own verse lists, where the word is used by book, its most common forms with grammar in plain words, related words and the full dictionary entry.
@@ -161,7 +163,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/bc8cb41...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/8331ef9...HEAD
+[0.7.0]: https://github.com/JoeMighty/BibleConnections/compare/bc8cb41...8331ef9
 [0.6.0]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...bc8cb41
 [0.5.0]: https://github.com/JoeMighty/BibleConnections/compare/c8f5413...d022afc
 [0.4.0]: https://github.com/JoeMighty/BibleConnections/compare/0c2e1a9...c8f5413
