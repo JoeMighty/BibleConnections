@@ -438,9 +438,10 @@
   {
     "code": "TIG24",
     "id": 3988,
-    "name": "ትግርኛ (Contemporary Tigrinya Bible 2024)",
+    "name": "ትግርኛ (Contemporary Tigrinya Bible 2024, New Testament only)",
     "lang": "ti",
-    "label": "TIG24"
+    "label": "TIG24",
+    "nt": true
   },
   {
     "code": "MNB",
@@ -454,7 +455,8 @@
     "id": 1491,
     "name": "Nouveau Testament en Kikwango 1950 (New Testament only)",
     "lang": "kg",
-    "label": "NTK50"
+    "label": "NTK50",
+    "nt": true
   },
   {
     "code": "TSH",

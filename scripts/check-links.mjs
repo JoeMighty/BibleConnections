@@ -8,7 +8,8 @@ const samples = [['JHN.3.16', 'verse'], ['PSA.23', 'chapter']];
 let failed = 0;
 
 for (const v of versions) {
-  for (const [ref, kind] of samples) {
+  // New Testament only versions have no Psalms, so only the verse link is checked
+  for (const [ref, kind] of v.nt ? samples.slice(0, 1) : samples) {
     const url = `https://www.bible.com/bible/${v.id}/${ref}.${v.code}`;
     try {
       const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': 'BibleConnections link check' } });

@@ -286,6 +286,8 @@
   // an optional second translation shown next to the first, for comparing
   const second = () => (settings.version2 && VERSIONS[settings.version2] && settings.version2 !== settings.version ? settings.version2 : '');
   function bibleUrl(start, end = start, chapterOnly = false, ver = settings.version) {
+    // New Testament only versions open Old Testament passages in the NIV
+    if (VERSIONS[ver].nt && verseBook[start] < 39) ver = 'NIV';
     const { id } = VERSIONS[ver], code = VERSIONS[ver].code || ver;
     const b = BOOKS[verseBook[start]], c = verseChap[start];
     if (chapterOnly) return `https://www.bible.com/bible/${id}/${b.usfm}.${c}.${code}`;
