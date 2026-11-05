@@ -808,3 +808,6 @@ details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top
 .arc-style:has(input:checked) { background: var(--surface-2); }
 .arc-style input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); }
 .arc-swatch { height: 12px; border-radius: 6px; }
+
+#aboutTitle:focus { outline: none; }
+#aboutTitle:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; border-radius: 4px; }

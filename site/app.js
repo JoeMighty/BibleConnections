@@ -3383,7 +3383,13 @@
     d.addEventListener('pointerdown', (e) => { downOutside = outside(e); });
     d.addEventListener('click', (e) => { if (downOutside && outside(e)) d.close(); downOutside = false; });
   }
-  $('aboutBtn').addEventListener('click', () => el.about.showModal());
+  $('aboutBtn').addEventListener('click', () => {
+    el.about.showModal();
+    // start at the top of the window, with the title focused
+    const inner = el.about.querySelector('.dialog-inner');
+    if (inner) inner.scrollTop = 0;
+    $('aboutTitle').focus({ preventScroll: true });
+  });
   $('settingsBtn').addEventListener('click', () => el.settings.showModal());
   document.querySelectorAll('[data-nav]').forEach(b => b.addEventListener('click', () => {
     if (hideLanding()) { setMode(b.dataset.nav); return; }

@@ -300,3 +300,13 @@ test('clicking outside a pop-up closes it', async ({ page }) => {
   await page.mouse.click(5, 5);
   await expect(page.locator('#settings')).toBeHidden();
 });
+
+test('the About window opens at the top', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await page.click('#aboutBtn');
+  await expect(page.locator('#about')).toBeVisible();
+  await expect(page.locator('#aboutTitle')).toBeFocused();
+  await expect(page.locator('#aboutTitle')).toBeInViewport();
+  expect(await page.locator('#about .dialog-inner').evaluate(e => e.scrollTop)).toBe(0);
+});
