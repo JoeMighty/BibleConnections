@@ -8,6 +8,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ### Added
 - Tapping the map where several arcs lie close together shows a short list to choose from, instead of guessing.
 - Text size setting (Standard, Large, Extra large) for the whole site.
+- Words in common: each connection shows the Hebrew and Greek words both passages use, including a Greek word and the Hebrew word it stands for (for example "beginning" in Genesis 1:1 and John 1:1).
+- Chapter study: opening a chapter shows an introduction to the book, its key Hebrew or Greek words, the places it names on a small map, and reflection questions.
+- Key words of a book: opening a book shows the original words that stand out in it compared with the rest of the Bible.
 - Easier-to-read font option (Atkinson Hyperlegible), stored with the site and only downloaded when turned on.
 
 ### Fixed

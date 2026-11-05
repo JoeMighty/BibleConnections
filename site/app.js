@@ -1195,6 +1195,7 @@
       const n = noteMap.get(i);
       if (n) html += noteHTML(n);
       else html += `<p class="hint">No note yet for this connection. <a href="${esc(suggestUrl(i))}" target="_blank" rel="noopener" data-track="suggest">Suggest a note<span class="sr-only"> (opens GitHub in a new tab)</span></a></p>`;
+      html += `<div id="commonWords" data-a="${F[i]}" data-b="${T[i]}" data-e="${E[i]}"></div>`;
       html += `<p class="muted">Strength: ${V[i]} votes on OpenBible.info</p>
         <div class="actions"><button type="button" class="btn small" data-action="zoomRef">Zoom to this arc</button>${shareButtons()}</div>
         <div class="actions">
@@ -1246,7 +1247,10 @@
         if (f.kind !== 'book') html += `<button type="button" class="btn ghost small" data-action="focusBook" data-b="${f.book}">Whole book</button>`;
         html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>`;
         if (single) html += passageStudyHTML(f.start);
-        else html += `<h3>Connections</h3>` + listHTML(focusList, true);
+        else {
+          if ((f.kind === 'chapter' || f.kind === 'book') && verseBook[f.start] === verseBook[f.end - 1]) html += `<div id="rangeStudy" data-start="${f.start}" data-end="${f.end}" data-kind="${f.kind}"></div>`;
+          html += `<h3>Connections</h3>` + listHTML(focusList, true);
+        }
       }
     } else {
       if (theme) {
@@ -2217,6 +2221,10 @@
   }
 
   function fillStudy() {
+    const cw = $('commonWords');
+    if (cw) fillCommonWords(cw);
+    const rs = $('rangeStudy');
+    if (rs) fillRangeStudy(rs);
     const gm = $('geoMini');
     if (gm) loadPlaces().then(d => { const P0 = d.places[+gm.dataset.i]; const near = P0.lon > 33.7 && P0.lon < 36.9 && P0.lat > 29.4 && P0.lat < 33.6; drawPlaces(gm, { view: near ? 'israel' : 'lands', highlight: [P0.i], labels: false }); }, () => {});
     const pm = $('placesMap');
@@ -2503,6 +2511,101 @@
     e.preventDefault();
     findShared($('sharedA').value, $('sharedB').value);
   });
+
+
+  // ---------- Words in common, key words and chapter study (STEP Bible data) ----------
+  let equivPromise = null;
+  const loadEquiv = () => (equivPromise ||= fetchJSON('data/equiv.json').catch(e => { equivPromise = null; throw e; }));
+  const glossKey = (g) => String(g || '').split(':')[0].toLowerCase().replace(/^to /, '').replace(/[^a-z ]/g, '').trim();
+  // every meaning in a gloss such as "first: beginning" or "to come/go"
+  const glossParts = (g) => String(g || '').toLowerCase().split(/[:/;,]/).map(x => x.replace(/\(.*?\)/g, '').replace(/^\s*to /, '').replace(/[^a-z ]/g, '').trim()).filter(x => x.length > 2);
+  // nouns, verbs and adjectives carry the meaning; leave out articles, particles and the like
+  const isContent = (gram, names = true) => {
+    const [l, c = ''] = gram.split(':');
+    if (l === 'G') return /^(N|V|A)-/.test(c) && (names || !/-(P|L|PRI|LI|LG|T)$/.test(c) && c !== 'N-PRI');
+    return /^(N|V|A)/.test(c) && (names || !/^Np/.test(c));
+  };
+  // base Strong's numbers used in a range of verses, with how many verses use each
+  async function wordsInRange(start, end, names = true) {
+    const counts = new Map();
+    for (let bi = verseBook[start]; bi <= verseBook[end - 1]; bi++) {
+      const t = await loadBookText(bi);
+      for (let v = Math.max(start, t.s); v < Math.min(end, t.s + t.v.length); v++) {
+        const seen = new Set();
+        for (const w of (t.v[v - t.s] || '').split('~')) {
+          if (!w) continue;
+          const [, , code, gram] = w.split('|');
+          if (!code || !isContent(gram, names)) continue;
+          const base = code.replace(/[A-Z]$/, '');
+          if (!seen.has(base)) { seen.add(base); counts.set(base, (counts.get(base) || 0) + 1); }
+        }
+      }
+    }
+    return counts;
+  }
+  async function wordsInCommon(a0, a1, b0, b1) {
+    const [A, B, S, EQ] = await Promise.all([wordsInRange(a0, a1), wordsInRange(b0, b1), loadStrongs(), loadEquiv()]);
+    // very common words (God, to be, to say) say little about why two passages connect
+    const useful = (c) => S[c] && S[c].n <= 1000;
+    const out = [], used = new Set();
+    const label = (x, y) => { const p = glossParts(S[y].g); return glossParts(S[x].g).find(g => p.includes(g)) || glossKey(S[x].g) || S[x].g; };
+    const push = (x, y) => { const k = label(x, y); if (used.has(x) || used.has(y) || used.has('g:' + k)) return; used.add(x); used.add(y); used.add('g:' + k); out.push([x, y, k]); };
+    for (const c of A.keys()) if (useful(c) && B.has(c)) push(c, c);
+    const byGloss = new Map();
+    for (const c of B.keys()) if (useful(c)) for (const k of glossParts(S[c].g)) if (!byGloss.has(k)) byGloss.set(k, c);
+    for (const c of A.keys()) {
+      if (!useful(c)) continue;
+      const eq = c[0] === 'G' ? (EQ[c] || []).find(h => B.has(h)) : [...B.keys()].find(g => g[0] === 'G' && (EQ[g] || []).includes(c));
+      if (eq && useful(eq)) { push(c, eq); continue; }
+      const m = glossParts(S[c].g).map(k => byGloss.get(k)).find(Boolean);
+      if (m && m !== c) push(c, m);
+    }
+    return out.sort((x, y) => S[x[0]].n - S[y[0]].n).slice(0, 8);
+  }
+  async function keyWords(start, end, max = 12) {
+    const [C, S] = await Promise.all([wordsInRange(start, end, false), loadStrongs()]);
+    const span = end - start, scored = [];
+    for (const [c, n] of C) {
+      const w = S[c];
+      // leave out everyday words (to be, to say, to come) and words used only once in a long book
+      if (!w || w.n > 800 || (span > 40 && n < 3)) continue;
+      const lift = (n / span) / (w.n / TOTAL);
+      if (lift <= 1.5) continue;
+      scored.push([n * Math.log(lift), c, n]);
+    }
+    return scored.sort((x, y) => y[0] - x[0]).slice(0, max);
+  }
+  const wordBtn = (c, S) => `<button type="button" class="chip" data-action="openWord" data-code="${c}"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(S[c].l)}</span> <span class="muted">${esc(S[c].t)}</span></button>`;
+  async function fillCommonWords(box) {
+    const a = +box.dataset.a, b = +box.dataset.b, e = +box.dataset.e;
+    try {
+      const [list, S] = await Promise.all([wordsInCommon(a, a + 1, b, e + 1), loadStrongs()]);
+      if (!box.isConnected) return;
+      box.innerHTML = list.length ? `<h3>Words in common</h3>
+        <p class="hint">Original words both passages use, or a Greek word and the Hebrew word it stands for.</p>
+        <ul class="common-words">${list.map(([x, y, k]) => `<li><strong>${esc(k)}</strong> ${wordBtn(x, S)}${y !== x ? wordBtn(y, S) : ''}</li>`).join('')}</ul>` : '';
+    } catch { if (box.isConnected) box.innerHTML = ''; }
+  }
+  async function fillRangeStudy(box) {
+    const start = +box.dataset.start, end = +box.dataset.end, kind = box.dataset.kind, b = BOOKS[verseBook[start]];
+    const intro = INTROS[b.osis];
+    let html = intro ? `<section class="study-sec"><h3>About ${esc(b.name)}</h3><p>${esc(LANG === 'es' && intro.about_es ? intro.about_es : intro.about)}</p></section>` : '';
+    box.innerHTML = html + '<p class="muted">Finding key words and places…</p>';
+    try {
+      const [kw, S, d] = await Promise.all([keyWords(start, end), loadStrongs(), loadPlaces().catch(() => null)]);
+      if (!box.isConnected) return;
+      if (kw.length) html += `<section class="study-sec"><h3>Key words</h3><p class="hint">Hebrew and Greek words that stand out in this ${kind === 'book' ? 'book' : 'chapter'} compared with the rest of the Bible.</p>
+        <ul class="chip-list">${kw.map(([, c, n]) => `<li><button type="button" class="chip" data-action="openWord" data-code="${c}"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(S[c].l)}</span> ${esc(S[c].g)} <span class="muted">${n}</span></button></li>`).join('')}</ul></section>`;
+      const here = d ? d.places.filter(p => decodePostings(p.vs).some(v => v >= start && v < end)).slice(0, 24) : [];
+      if (here.length) html += `<section class="study-sec"><h3>Places</h3><ul class="chip-list">${here.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)}</button></li>`).join('')}</ul>
+        <canvas class="places-map mini" id="rangePlacesMap" role="img" aria-label="Map of the places named here"></canvas></section>`;
+      const q = kind === 'chapter' ? ((REFLECT[b.cat] || {})[LANG] || (REFLECT[b.cat] || {}).en || []) : [];
+      if (q.length) html += `<section class="study-sec"><h3>Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol></section>`;
+      box.innerHTML = html;
+      const m = $('rangePlacesMap');
+      if (m) { const all = here.every(p => p.lon > 33.7 && p.lon < 36.9 && p.lat > 29.4 && p.lat < 33.6); drawPlaces(m, { view: all ? 'israel' : 'lands', highlight: here.map(p => p.i), labels: false }); }
+    } catch { if (box.isConnected) box.innerHTML = html; }
+  }
 
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);

@@ -130,6 +130,15 @@ for (const base of bases) {
   if (!shards.has(shard)) shards.set(shard, {});
   shards.get(shard)[base] = entry;
 }
+// Greek words linked to the Hebrew words they stand for (from the lexicon's Septuagint notes), used to find
+// words two passages share across the two Testaments
+const equiv = {};
+for (const sh of shards.values()) for (const [code, e] of Object.entries(sh)) {
+  if (code[0] !== 'G') continue;
+  const heb = (e.related || []).filter(c => c[0] === 'H');
+  if (heb.length) equiv[code] = heb;
+}
+fs.writeFileSync(path.join(ROOT, 'site/data/equiv.json'), JSON.stringify(equiv));
 fs.mkdirSync(path.join(ROOT, 'site/data/lex'), { recursive: true });
 for (const [k, v] of shards) fs.writeFileSync(path.join(ROOT, `site/data/lex/${k}.json`), JSON.stringify(v));
 console.log(`Words in text: ${words}, lexicon entries: ${[...shards.values()].reduce((a, s) => a + Object.keys(s).length, 0)}, shards: ${shards.size}`);

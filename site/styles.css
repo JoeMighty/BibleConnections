@@ -787,3 +787,8 @@ details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top
 .arc-picker .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
 .arc-picker .votes { margin-left: auto; color: var(--muted); font-size: var(--t-footnote); font-variant-numeric: tabular-nums; }
 .arc-picker .link-btn { min-height: 44px; }
+
+/* Words in common */
+.common-words { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+.common-words li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.common-words strong { min-width: 6em; text-transform: capitalize; }
