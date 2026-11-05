@@ -79,7 +79,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.
 - **Spanish:** full Spanish interface, journeys, book introductions, questions and handouts.
-- **Settings:** language, light, dark or system appearance, text size, an easier-to-read font, high contrast mode and Bible.com translations.
+- **Settings:** language, light, dark or system appearance, five arc color styles (including a color-blind friendly one), text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
 - **Installable and offline:** works as an app and without a connection after the first visit. Studied passages are saved as you go, and **Save for offline** downloads all the original language text, word studies and places at once (Bible.com links still need the internet).

@@ -801,3 +801,10 @@ details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top
 .common-words { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
 .common-words li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
 .common-words strong { min-width: 6em; text-transform: capitalize; }
+
+/* Arc colour styles in Settings */
+.arc-styles { display: grid; gap: 6px; }
+.arc-style { display: grid; grid-template-columns: auto 72px 1fr; align-items: center; gap: 12px; min-height: 44px; padding: 6px 10px; border-radius: var(--radius-s); cursor: pointer; }
+.arc-style:has(input:checked) { background: var(--surface-2); }
+.arc-style input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); }
+.arc-swatch { height: 12px; border-radius: 6px; }

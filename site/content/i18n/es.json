@@ -720,7 +720,14 @@
     "Original Greek text": "Texto griego original",
     "Study image saved.": "Imagen del estudio guardada.",
     "Original text: STEP Bible (CC BY 4.0). Cross references: OpenBible.info (CC BY 4.0).": "Texto original: STEP Bible (CC BY 4.0). Referencias cruzadas: OpenBible.info (CC BY 4.0).",
-    "Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device. To back up everything, use Settings.": "Las notas que escribes en cualquier versículo se guardan solo en este dispositivo. Nadie más puede verlas. Expórtalas para guardar una copia o pasarlas a otro dispositivo. Para hacer una copia de todo, usa Ajustes."
+    "Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device. To back up everything, use Settings.": "Las notas que escribes en cualquier versículo se guardan solo en este dispositivo. Nadie más puede verlas. Expórtalas para guardar una copia o pasarlas a otro dispositivo. Para hacer una copia de todo, usa Ajustes.",
+    "Arc colors": "Colores de los arcos",
+    "Rainbow": "Arcoíris",
+    "Ocean": "Océano",
+    "Sunset": "Atardecer",
+    "Color-blind friendly": "Apto para daltonismo",
+    "Single color": "Un solo color",
+    "Colors show how far apart the two passages are. To color arcs by type of book instead, use “Color arcs by” in the filters.": "Los colores muestran qué tan lejos están los dos pasajes. Para colorear los arcos por tipo de libro, usa “Color de los arcos según” en los filtros."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

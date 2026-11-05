@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Arc color styles in Settings: Rainbow (the default), Ocean, Sunset, Color-blind friendly and Single color, each with a preview. They apply to the map, the welcome page picture and the legend, in light and dark mode.
+
 ### Changed
 - The site title in the header now has the Bible Connections icon beside it, sized for phones and larger screens. Tapping the icon also goes home.
 

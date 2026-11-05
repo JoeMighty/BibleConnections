@@ -51,3 +51,22 @@ test('tapping where several arcs cross offers a choice', async ({ page }) => {
   await expect(page.locator('#panelTitle')).toHaveText('Connection');
   await expect(page.locator('.verse-card .ref').first()).toHaveText(label.split(' ↔ ')[0]);
 });
+
+test('arc colors can be changed to another style and are remembered', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  const legend = () => page.locator('#legend .grad').getAttribute('style');
+  const rainbow = await legend();
+  await page.click('#settingsBtn');
+  await expect(page.locator('#arcStyles input')).toHaveCount(5);
+  await expect(page.locator('#arcStyles input[value=rainbow]')).toBeChecked();
+  await page.locator('#arcStyles label', { hasText: 'Color-blind friendly' }).click();
+  await expect.poll(legend).not.toBe(rainbow);
+  expect(await legend()).toMatch(/#a68a00|#fde725/);
+  await page.reload();
+  await ready(page);
+  await page.click('#settingsBtn');
+  await expect(page.locator('#arcStyles input[value=clear]')).toBeChecked();
+  const results = await new AxeBuilder({ page }).include('#settings').analyze();
+  expect(results.violations).toEqual([]);
+});

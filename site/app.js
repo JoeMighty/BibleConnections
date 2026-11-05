@@ -74,6 +74,7 @@
     kids: store.get('kids', false),
     textsize: store.get('textsize', 'standard'),
     readable: store.get('readable', false),
+    arcStyle: store.get('arcStyle', 'rainbow'),
     version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
     version2: store.get('version2', ''),
   };
@@ -147,6 +148,7 @@
     document.documentElement.dataset.readable = settings.readable ? 'on' : 'off';
     document.querySelector('meta[name=theme-color]').content = pal.bg;
     buildColors();
+    renderArcStyles();
     if (N) { renderLegend(); drawBase(); renderPanel(); }
   }
   darkQuery.addEventListener?.('change', applyAppearance);
@@ -431,12 +433,24 @@
 
   // ---------- Color ----------
   let distColors = [], catColors = [];
+  // Arc colour styles: t runs from near (0) to far apart (1). Rainbow is the default.
+  const mixHex = (stops, t) => {
+    const x = t * (stops.length - 1), i = Math.min(stops.length - 2, Math.floor(x)), f = x - i;
+    const a = parseInt(stops[i].slice(1), 16), b = parseInt(stops[i + 1].slice(1), 16);
+    const ch = (sh) => Math.round(((a >> sh) & 255) * (1 - f) + ((b >> sh) & 255) * f);
+    return '#' + [16, 8, 0].map(sh => ch(sh).toString(16).padStart(2, '0')).join('');
+  };
+  const ARC_STYLES = {
+    rainbow: { name: 'Rainbow', color: (t) => `hsl(${(285 + t * 195) % 360}, ${isLight ? 85 : 95}%, ${isLight ? 42 - t * 4 : 60 - t * 6}%)` },
+    ocean: { name: 'Ocean', color: (t) => `hsl(${165 + t * 95}, ${isLight ? 80 : 85}%, ${isLight ? 36 + t * 4 : 58 + t * 6}%)` },
+    sunset: { name: 'Sunset', color: (t) => `hsl(${(48 - t * 78 + 360) % 360}, ${isLight ? 85 : 95}%, ${isLight ? 42 : 60 - t * 4}%)` },
+    // yellow, green, teal and blue: easy to tell apart with the common kinds of colour blindness
+    clear: { name: 'Color-blind friendly', color: (t) => mixHex(isLight ? ['#a68a00', '#3f8f2a', '#14806e', '#1c6aa6', '#3a44b0'] : ['#fde725', '#7ad151', '#22a884', '#2a9ec4', '#6f86ef'], t) },
+    mono: { name: 'Single color', color: (t) => (isLight ? `hsl(214, 70%, ${26 + t * 22}%)` : `hsl(210, ${30 + t * 40}%, ${88 - t * 26}%)`) },
+  };
   function buildColors() {
-    distColors = Array.from({ length: BUCKETS }, (_, b) => {
-      const t = b / (BUCKETS - 1);
-      const l = isLight ? 42 - t * 4 : 60 - t * 6;
-      return `hsl(${(285 + t * 195) % 360}, ${isLight ? 85 : 95}%, ${l}%)`;
-    });
+    const style = ARC_STYLES[settings.arcStyle] || ARC_STYLES.rainbow;
+    distColors = Array.from({ length: BUCKETS }, (_, b) => style.color(b / (BUCKETS - 1)));
     catColors = catKeys.map(k => CATEGORIES[k][isLight ? 'light' : 'dark']);
   }
   const catColor = (cat) => catColors[catKeys.indexOf(cat)];
@@ -3377,12 +3391,22 @@
     setMode(on ? 'explore' : b.dataset.nav);
   }));
 
+  // a small preview of each colour style, from near to far apart
+  function renderArcStyles() {
+    const box = $('arcStyles');
+    if (!box) return;
+    box.innerHTML = Object.entries(ARC_STYLES).map(([id, st]) => {
+      const stops = [0, 0.25, 0.5, 0.75, 1].map(t => st.color(t)).join(',');
+      return `<label class="arc-style"><input type="radio" name="arcStyle" value="${id}"${settings.arcStyle === id ? ' checked' : ''}><span class="arc-swatch" style="background:linear-gradient(90deg,${stops})" aria-hidden="true"></span><span>${esc(st.name)}</span></label>`;
+    }).join('');
+  }
   function initSettingsForm() {
     const f = $('settingsForm');
     f.querySelector(`input[name=appearance][value="${settings.appearance}"]`).checked = true;
     $('contrastToggle').checked = settings.contrast;
     $('kidsToggle').checked = settings.kids;
     $('readableToggle').checked = settings.readable;
+    renderArcStyles();
     (f.querySelector(`input[name=textsize][value="${settings.textsize}"]`) || f.querySelector('input[name=textsize]')).checked = true;
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
     syncVersionSelects();
@@ -3390,6 +3414,7 @@
       if (e.target.name === 'appearance') settings.appearance = e.target.value;
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
       if (e.target.name === 'textsize') { settings.textsize = e.target.value; store.set('textsize', settings.textsize); track('textsize/' + settings.textsize); }
+      if (e.target.name === 'arcStyle') { settings.arcStyle = ARC_STYLES[e.target.value] ? e.target.value : 'rainbow'; store.set('arcStyle', settings.arcStyle); track('arcs/' + settings.arcStyle); }
       if (e.target.id === 'readableToggle') { settings.readable = e.target.checked; store.set('readable', settings.readable); track('readable/' + (settings.readable ? 'on' : 'off')); }
       if (e.target.id === 'kidsToggle') { settings.kids = e.target.checked; store.set('kids', settings.kids); track('kids/' + (settings.kids ? 'on' : 'off')); }
       if (e.target.id === 'versionSel' || e.target.id === 'version2Sel') { setVersions($('versionSel').value, $('version2Sel').value); return; }
