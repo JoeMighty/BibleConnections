@@ -35,6 +35,11 @@ This project publishes no copyrighted Bible text. Below is everything it uses fr
 
 - Source: Natural Earth 1:50m land, https://www.naturalearthdata.com (public domain). Simplified and limited to the Bible lands.
 
+## Font: Atkinson Hyperlegible
+
+- Created by the Braille Institute of America. Licensed under the SIL Open Font License 1.1, included as `site/fonts/OFL-Atkinson-Hyperlegible.txt`.
+- Files from the Fontsource package (`@fontsource/atkinson-hyperlegible`), Latin and Latin Extended, regular and bold.
+
 ## Data packaging: scrollmapper/bible_databases
 
 - Source: https://github.com/scrollmapper/bible_databases

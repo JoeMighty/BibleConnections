@@ -750,3 +750,40 @@ details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top
 /* Places map */
 .places-map { display: block; width: 100%; border-radius: var(--radius); margin: 12px 0; cursor: pointer; }
 .places-map.mini { cursor: default; }
+
+/* Easier-to-read font: Atkinson Hyperlegible (SIL Open Font License), loaded only when turned on */
+@font-face { font-family: 'Atkinson Hyperlegible'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-ext-400-normal.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Atkinson Hyperlegible'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/atkinson-hyperlegible-latin-ext-700-normal.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+:root[data-readable="on"] {
+  --font: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+:root[data-readable="on"] body { letter-spacing: 0.01em; word-spacing: 0.04em; }
+
+/* Text size */
+:root[data-textsize="large"] {
+  --t-large: 38px; --t-title1: 32px; --t-title2: 25px; --t-title3: 23px; --t-headline: 19px; --t-body: 19px;
+  --t-callout: 18px; --t-subhead: 17px; --t-footnote: 15px; --t-caption: 14px;
+}
+:root[data-textsize="xlarge"] {
+  --t-large: 42px; --t-title1: 36px; --t-title2: 28px; --t-title3: 26px; --t-headline: 22px; --t-body: 22px;
+  --t-callout: 21px; --t-subhead: 20px; --t-footnote: 17px; --t-caption: 16px;
+}
+
+/* Choosing between arcs that lie close together */
+.arc-picker {
+  position: absolute; z-index: 30; width: min(320px, calc(100% - 16px)); padding: 12px; border-radius: var(--radius);
+  background: var(--surface); color: var(--text); border: 0.5px solid var(--border-strong); box-shadow: var(--shadow);
+}
+.arc-picker p { margin: 0 0 8px; font-size: var(--t-subhead); font-weight: 600; }
+.arc-picker ul { list-style: none; margin: 0 0 6px; padding: 0; }
+.arc-picker li button {
+  width: 100%; min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 8px; text-align: left;
+  background: none; border: 0; border-radius: var(--radius-s); color: var(--text); font: inherit; font-size: var(--t-subhead); cursor: pointer;
+}
+.arc-picker li button:hover, .arc-picker li button:focus-visible { background: var(--surface-2); outline: 2px solid var(--link); outline-offset: -2px; }
+.arc-picker .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.arc-picker .votes { margin-left: auto; color: var(--muted); font-size: var(--t-footnote); font-variant-numeric: tabular-nums; }
+.arc-picker .link-btn { min-height: 44px; }

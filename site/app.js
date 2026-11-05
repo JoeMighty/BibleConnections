@@ -72,6 +72,8 @@
     appearance: store.get('appearance', 'system'),
     contrast: store.get('contrast', false),
     kids: store.get('kids', false),
+    textsize: store.get('textsize', 'standard'),
+    readable: store.get('readable', false),
     version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
     version2: store.get('version2', ''),
   };
@@ -141,6 +143,8 @@
     document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
     document.documentElement.dataset.contrast = highContrast ? 'more' : 'normal';
     document.documentElement.dataset.kids = settings.kids ? 'on' : 'off';
+    document.documentElement.dataset.textsize = settings.textsize;
+    document.documentElement.dataset.readable = settings.readable ? 'on' : 'off';
     document.querySelector('meta[name=theme-color]').content = pal.bg;
     buildColors();
     if (N) { renderLegend(); drawBase(); renderPanel(); }
@@ -866,8 +870,9 @@
   const localPoint = (e) => { const r = el.viz.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
 
   el.viz.addEventListener('pointerdown', (e) => {
-    if (e.target.closest('.tips')) return;   // let the tips card handle its own clicks
-    el.viz.setPointerCapture(e.pointerId);
+    if (e.target.closest('.tips')) return;
+    closeArcPicker(false);   // let the tips card handle its own clicks
+    try { el.viz.setPointerCapture(e.pointerId); } catch { /* pointer already released */ }
     const [x, y] = localPoint(e);
     pointers.set(e.pointerId, { x, y });
     if (pointers.size === 1) drag = { x, y, tx: view.tx, ty: view.ty, moved: false, type: e.pointerType };
@@ -949,10 +954,70 @@
       setFocus({ kind: 'chapter', book: c.book, chapter: c.chapter, start: c.start, end: c.start + c.count });
       return;
     }
+    // on touch screens a finger often covers several arcs: offer a short list to choose from
+    if (tol > 6) {
+      const near = hitTestAll(x, y, tol);
+      if (near.length > 1) { showArcPicker(x, y, near.slice(0, 6)); return; }
+    }
     const i = hitTest(x, y, tol);
     if (i >= 0) selectRef(i);
     else if (state.selected >= 0) { state.selected = -1; drawBase(); renderPanel(); syncURL(true); }
   }
+  function hitTestAll(px, py, tol) {
+    if (!N || py > view.ty + 2) return [];
+    const pool = state.focus ? focusList : filtered, out = [];
+    for (const i of pool) {
+      const a = POS[F[i]] + 0.5, b = POS[T[i]] + 0.5;
+      const lo = Math.min(a, b), hi = Math.max(a, b);
+      const r = (hi - lo) / 2 * view.k, cx = view.tx + (lo + hi) / 2 * view.k;
+      if (px < cx - r - tol || px > cx + r + tol) continue;
+      const d = Math.abs(Math.hypot(px - cx, py - view.ty) - r);
+      if (d < tol) out.push([d, i]);
+    }
+    out.sort((p, q) => p[0] - q[0] || V[q[1]] - V[p[1]]);
+    // keep the ones about as close as the nearest, strongest first
+    const best = out.length ? out[0][0] : 0;
+    return out.filter(([d]) => d <= best + 6).map(([, i]) => i).sort((p, q) => V[q] - V[p]);
+  }
+  const picker = document.createElement('div');
+  picker.className = 'arc-picker'; picker.hidden = true;
+  picker.setAttribute('role', 'dialog'); picker.setAttribute('aria-label', 'Choose a connection');
+  el.viz.append(picker);
+  function closeArcPicker(refocus = true) {
+    if (picker.hidden) return;
+    picker.hidden = true; state.hover = -1; drawOverlay();
+    if (refocus) el.viz.focus();
+  }
+  function showArcPicker(x, y, list) {
+    picker.innerHTML = `<p>Several connections here. Which one?</p><ul>${list.map(i => `<li><button type="button" data-i="${i}"><span class="dot" style="background:${colorOf(i)}" aria-hidden="true"></span><span>${esc(refLabel(F[i]))} ↔ ${esc(refLabel(T[i], E[i]))}</span><span class="votes">${V[i]}</span></button></li>`).join('')}</ul><button type="button" class="link-btn" data-close>Cancel</button>`;
+    picker.hidden = false;
+    const W = el.viz.clientWidth, H = el.viz.clientHeight, pw = picker.offsetWidth, ph = picker.offsetHeight;
+    picker.style.left = Math.max(8, Math.min(W - pw - 8, x - pw / 2)) + 'px';
+    picker.style.top = Math.max(8, Math.min(H - ph - 8, y - ph - 16)) + 'px';
+    picker.querySelector('button').focus();
+    announce(`${list.length} connections here. Choose one.`);
+  }
+  picker.addEventListener('pointerdown', (e) => e.stopPropagation());
+  picker.addEventListener('pointerup', (e) => e.stopPropagation());
+  picker.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.close !== undefined) { closeArcPicker(); return; }
+    closeArcPicker(false);
+    selectRef(+b.dataset.i);
+    focusPanelHeading();
+  });
+  picker.addEventListener('pointerover', (e) => { const b = e.target.closest('button[data-i]'); if (b) { state.hover = +b.dataset.i; drawOverlay(); } });
+  picker.addEventListener('focusin', (e) => { const b = e.target.closest('button[data-i]'); if (b) { state.hover = +b.dataset.i; drawOverlay(); } });
+  picker.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.stopPropagation(); closeArcPicker(); }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault(); e.stopPropagation();
+      const bs = [...picker.querySelectorAll('button')], k = bs.indexOf(document.activeElement);
+      bs[(k + (e.key === 'ArrowDown' ? 1 : -1) + bs.length) % bs.length].focus();
+    }
+  });
 
   el.viz.addEventListener('keydown', (e) => {
     const step = view.W * 0.12;
@@ -3042,11 +3107,15 @@
     f.querySelector(`input[name=appearance][value="${settings.appearance}"]`).checked = true;
     $('contrastToggle').checked = settings.contrast;
     $('kidsToggle').checked = settings.kids;
+    $('readableToggle').checked = settings.readable;
+    (f.querySelector(`input[name=textsize][value="${settings.textsize}"]`) || f.querySelector('input[name=textsize]')).checked = true;
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
     syncVersionSelects();
     f.addEventListener('change', (e) => {
       if (e.target.name === 'appearance') settings.appearance = e.target.value;
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
+      if (e.target.name === 'textsize') { settings.textsize = e.target.value; store.set('textsize', settings.textsize); track('textsize/' + settings.textsize); }
+      if (e.target.id === 'readableToggle') { settings.readable = e.target.checked; store.set('readable', settings.readable); track('readable/' + (settings.readable ? 'on' : 'off')); }
       if (e.target.id === 'kidsToggle') { settings.kids = e.target.checked; store.set('kids', settings.kids); track('kids/' + (settings.kids ? 'on' : 'off')); }
       if (e.target.id === 'versionSel' || e.target.id === 'version2Sel') { setVersions($('versionSel').value, $('version2Sel').value); return; }
       if (e.target.name === 'language' && e.target.value !== LANG) {

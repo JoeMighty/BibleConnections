@@ -5,6 +5,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Tapping the map where several arcs lie close together shows a short list to choose from, instead of guessing.
+- Text size setting (Standard, Large, Extra large) for the whole site.
+- Easier-to-read font option (Atkinson Hyperlegible), stored with the site and only downloaded when turned on.
+
 ### Fixed
 - The About window shows the current version (it still said 0.5.0). A test now checks that the version in the app and in CITATION.cff matches the latest release in the changelog.
 
