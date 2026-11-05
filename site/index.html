@@ -366,6 +366,19 @@
         <button type="button" class="btn ghost" id="installBtn" hidden>Install Bible Connections</button>
         <p class="hint" id="installHelp">Works offline after your first visit. To install, use your browser menu and choose “Install app” or “Add to Home Screen”. On iPhone, tap Share then Add to Home Screen.</p>
       </div>
+      <div class="field">
+        <p class="label-like">Save for offline</p>
+        <button type="button" class="btn ghost" id="offlineBtn">Save everything for offline</button>
+        <p class="hint" id="offlineStatus" role="status">Downloads the Hebrew and Greek text, word studies and places (about 25 MB) so they work without a connection. Bible.com links still need the internet.</p>
+      </div>
+      <div class="field">
+        <p class="label-like">Your data</p>
+        <div class="actions tight">
+          <button type="button" class="btn ghost" id="backupBtn">Back up everything</button>
+          <label class="btn ghost file-btn">Restore a backup<input type="file" id="restoreFile" accept="application/json,.json"></label>
+        </div>
+        <p class="hint" id="backupStatus" role="status">Notes, saved items, collections, reading plan progress and settings are kept on this device only. Back them up to one file to keep a copy or move them to another device.</p>
+      </div>
       <button class="btn">Done</button>
     </form>
   </dialog>

@@ -11,6 +11,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Words in common: each connection shows the Hebrew and Greek words both passages use, including a Greek word and the Hebrew word it stands for (for example "beginning" in Genesis 1:1 and John 1:1).
 - Chapter study: opening a chapter shows an introduction to the book, its key Hebrew or Greek words, the places it names on a small map, and reflection questions.
 - Key words of a book: opening a book shows the original words that stand out in it compared with the rest of the Bible.
+- Back up everything: one file with notes, saved items, collections, reading plan progress and settings, and a restore that merges it into the device (in Settings).
+- Save for offline: download all the Hebrew and Greek text, word studies and places in one go (in Settings).
+- Share a verse study as an image: reference, book introduction, the original words, the passages it connects to and a question, sized for social media.
 - Easier-to-read font option (Atkinson Hyperlegible), stored with the site and only downloaded when turned on.
 
 ### Fixed

@@ -59,6 +59,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Chapter and book study:** key original words, places on a map, the book's introduction and reflection questions for any chapter or book.
 - **Places on a map:** 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
+- **Back up everything:** notes, saved items, collections, plan progress and settings in one file, restored on any device.
 - **Study hub:** 3 reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
 - **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed.
 
@@ -68,6 +69,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### Teach and share
 - **Guided journeys:** 12 step-by-step tours (3 written for children) with discussion questions, presenter mode for sermons and classes (works with clickers).
+- **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
@@ -80,7 +82,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Settings:** language, light, dark or system appearance, text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
-- **Installable and offline:** works as an app and without a connection after the first visit. Studied passages and places are saved for offline use (Bible.com links still need the internet).
+- **Installable and offline:** works as an app and without a connection after the first visit. Studied passages are saved as you go, and **Save for offline** downloads all the original language text, word studies and places at once (Bible.com links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
 ## More guides

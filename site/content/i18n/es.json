@@ -699,7 +699,28 @@
     "Finding key words and places…": "Buscando palabras clave y lugares…",
     "Hebrew and Greek words that stand out in this chapter compared with the rest of the Bible.": "Palabras hebreas y griegas que destacan en este capítulo comparado con el resto de la Biblia.",
     "Hebrew and Greek words that stand out in this book compared with the rest of the Bible.": "Palabras hebreas y griegas que destacan en este libro comparado con el resto de la Biblia.",
-    "Map of the places named here": "Mapa de los lugares mencionados aquí"
+    "Map of the places named here": "Mapa de los lugares mencionados aquí",
+    "Save for offline": "Guardar sin conexión",
+    "Save everything for offline": "Guardar todo para usar sin conexión",
+    "Downloads the Hebrew and Greek text, word studies and places (about 25 MB) so they work without a connection. Bible.com links still need the internet.": "Descarga el texto hebreo y griego, los estudios de palabras y los lugares (unos 25 MB) para que funcionen sin conexión. Los enlaces a Bible.com siguen necesitando internet.",
+    "Your data": "Tus datos",
+    "Back up everything": "Hacer una copia de todo",
+    "Restore a backup": "Restaurar una copia",
+    "Notes, saved items, collections, reading plan progress and settings are kept on this device only. Back them up to one file to keep a copy or move them to another device.": "Las notas, los elementos guardados, las colecciones, el progreso de los planes de lectura y los ajustes se guardan solo en este dispositivo. Haz una copia en un archivo para conservarlos o pasarlos a otro dispositivo.",
+    "Backup saved. Keep the file somewhere safe.": "Copia guardada. Guarda el archivo en un lugar seguro.",
+    "That file could not be read. Choose a backup made by Bible Connections.": "No se pudo leer ese archivo. Elige una copia hecha con Bible Connections.",
+    "Offline saving needs the installed app or a reload of this page first. Reload, then try again.": "Para guardar sin conexión, primero recarga esta página o usa la app instalada. Recarga y vuelve a intentarlo.",
+    "Everything is saved for offline use on this device.": "Todo está guardado para usarlo sin conexión en este dispositivo.",
+    "Saved for offline use on this device. Save again to refresh.": "Guardado para usar sin conexión en este dispositivo. Vuelve a guardar para actualizar.",
+    "Saving stopped. Check your connection and try again.": "Se detuvo la descarga. Revisa tu conexión y vuelve a intentarlo.",
+    "Share as image": "Compartir como imagen",
+    "Passage study": "Estudio del pasaje",
+    "Connects to": "Se conecta con",
+    "Original Hebrew text": "Texto hebreo original",
+    "Original Greek text": "Texto griego original",
+    "Study image saved.": "Imagen del estudio guardada.",
+    "Original text: STEP Bible (CC BY 4.0). Cross references: OpenBible.info (CC BY 4.0).": "Texto original: STEP Bible (CC BY 4.0). Referencias cruzadas: OpenBible.info (CC BY 4.0).",
+    "Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device. To back up everything, use Settings.": "Las notas que escribes en cualquier versículo se guardan solo en este dispositivo. Nadie más puede verlas. Expórtalas para guardar una copia o pasarlas a otro dispositivo. Para hacer una copia de todo, usa Ajustes."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -807,6 +828,10 @@
     "{p} is mentioned in {n} verses, touching {c} connections.": "{p} se menciona en {n} versículos y toca {c} conexiones.",
     "Shared by {a} and {b}": "Compartidos por {a} y {b}",
     "{n} connections here. Choose one.": "Hay {n} conexiones aquí. Elige una.",
-    "About {b}": "Acerca de {b}"
+    "About {b}": "Acerca de {b}",
+    "Saving {a} of {b} files…": "Guardando {a} de {b} archivos…",
+    "Restored {n} items. Reloading…": "Se restauraron {n} elementos. Recargando…",
+    "Restored {n} item. Reloading…": "Se restauró {n} elemento. Recargando…",
+    "Saved {a} of {b} files. Try again with a better connection to finish.": "Se guardaron {a} de {b} archivos. Vuelve a intentarlo con mejor conexión para terminar."
   }
 }

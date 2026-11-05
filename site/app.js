@@ -2217,7 +2217,7 @@
       </section>
       ${q.length ? `<section class="study-sec" aria-labelledby="secReflect"><h3 id="secReflect">Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
         <p class="hint">General questions for personal or group study.</p></section>` : ''}
-      <div class="actions"><a class="btn ghost small" href="handout.html?verse=${esc(toOsis(v))}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> for ${esc(refLabel(v))} (opens in a new tab)</span></a></div>`;
+      <div class="actions"><button type="button" class="btn ghost small" data-action="studyImage" data-v="${v}">Share as image</button><a class="btn ghost small" href="handout.html?verse=${esc(toOsis(v))}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> for ${esc(refLabel(v))} (opens in a new tab)</span></a></div>`;
   }
 
   function fillStudy() {
@@ -2298,7 +2298,7 @@
   });
   function notesHTML() {
     const all = Object.entries(getNotes()).map(([k, n]) => [k, n, osisToIndex(k)]).filter(x => x[2] >= 0).sort((a, b) => a[2] - b[2]);
-    let html = `<p>Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device.</p>
+    let html = `<p>Notes you write on any verse are kept on this device only. Nobody else can see them. Export them to keep a copy or move them to another device. To back up everything, use Settings.</p>
       <div class="actions tight">
         <button type="button" class="btn small" data-action="exportNotes"${all.length ? '' : ' disabled'}>Export notes</button>
         <label class="btn ghost small file-btn">Import notes<input type="file" id="importNotes" accept="application/json,.json"></label>
@@ -2605,6 +2605,177 @@
       const m = $('rangePlacesMap');
       if (m) { const all = here.every(p => p.lon > 33.7 && p.lon < 36.9 && p.lat > 29.4 && p.lat < 33.6); drawPlaces(m, { view: all ? 'israel' : 'lands', highlight: here.map(p => p.i), labels: false }); }
     } catch { if (box.isConnected) box.innerHTML = html; }
+  }
+
+
+  // ---------- Back up and restore everything kept on this device ----------
+  const BACKUP_KEYS = ['notes', 'saved', 'recent', 'collections', 'plans', 'game', 'appearance', 'contrast', 'kids', 'textsize', 'readable', 'version', 'version2', 'lang'];
+  $('backupBtn').addEventListener('click', () => {
+    const data = {};
+    for (const k of BACKUP_KEYS) { const v = store.get(k, undefined); if (v !== undefined) data[k] = v; }
+    const blob = new Blob([JSON.stringify({ app: 'Bible Connections', type: 'backup', version: 2, made: new Date().toISOString(), data }, null, 2)], { type: 'application/json' });
+    downloadBlob(blob, `bible-connections-backup-${new Date().toISOString().slice(0, 10)}.json`);
+    $('backupStatus').textContent = 'Backup saved. Keep the file somewhere safe.';
+    track('backup');
+  });
+  function mergeBackup(data) {
+    let n = 0;
+    const notes = getNotes();
+    for (const [k, v] of Object.entries(data.notes || {})) {
+      if (osisToIndex(k) < 0 || !v || typeof v.text !== 'string') continue;
+      if (!notes[k] || (v.t || 0) > (notes[k].t || 0)) { notes[k] = { text: v.text.slice(0, 20000), t: v.t || Date.now() }; n++; }
+    }
+    store.set('notes', notes);
+    for (const k of ['saved', 'recent', 'collections']) {
+      if (!Array.isArray(data[k])) continue;
+      const cur = store.get(k, []), keyOf = (x) => (x && (x.id || x.url)) || JSON.stringify(x);
+      const have = new Set(cur.map(keyOf));
+      for (const x of data[k]) if (x && typeof x === 'object' && !have.has(keyOf(x))) { cur.push(x); n++; }
+      store.set(k, k === 'recent' ? cur.slice(0, 30) : cur);
+    }
+    if (data.plans && typeof data.plans === 'object') {
+      const cur = store.get('plans', {});
+      for (const [id, p] of Object.entries(data.plans)) {
+        if (!p || !Array.isArray(p.done)) continue;
+        const done = new Set([...((cur[id] && cur[id].done) || []), ...p.done.filter(d => Number.isInteger(d))]);
+        cur[id] = { ...(cur[id] || {}), ...p, done: [...done].sort((a, b) => a - b) }; n++;
+      }
+      store.set('plans', cur);
+    }
+    if (data.game && typeof data.game === 'object') store.set('game', data.game);
+    const ok = { appearance: ['system', 'light', 'dark'], textsize: ['standard', 'large', 'xlarge'], lang: ['en', 'es'] };
+    for (const k of ['appearance', 'textsize', 'lang']) if (ok[k].includes(data[k])) store.set(k, data[k]);
+    for (const k of ['contrast', 'kids', 'readable']) if (typeof data[k] === 'boolean') store.set(k, data[k]);
+    for (const k of ['version', 'version2']) if (data[k] === '' || VERSIONS[data[k]]) store.set(k, data[k]);
+    return n;
+  }
+  $('restoreFile').addEventListener('change', async (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    try {
+      const j = JSON.parse(await f.text());
+      if (!j || j.app !== 'Bible Connections' || !(j.type === 'backup' || j.type === 'notes')) throw new Error('format');
+      const n = mergeBackup(j.type === 'notes' ? { notes: j.notes } : (j.data || {}));
+      $('backupStatus').textContent = `Restored ${n} item${n === 1 ? '' : 's'}. Reloading…`;
+      track('restore');
+      setTimeout(() => location.reload(), 900);
+    } catch {
+      $('backupStatus').textContent = 'That file could not be read. Choose a backup made by Bible Connections.';
+    }
+    e.target.value = '';
+  });
+
+  // ---------- Save everything for offline ----------
+  $('offlineBtn').addEventListener('click', async () => {
+    const btn = $('offlineBtn'), st = $('offlineStatus');
+    if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) {
+      st.textContent = 'Offline saving needs the installed app or a reload of this page first. Reload, then try again.';
+      return;
+    }
+    btn.disabled = true;
+    try {
+      if (navigator.storage && navigator.storage.persist) await navigator.storage.persist().catch(() => false);
+      const S = await loadStrongs();
+      const files = ['data/strongs.json', 'data/places.json', 'data/equiv.json', 'data/words.json', 'content/book-intros.json', 'content/reflect.json'];
+      for (let b = 0; b < BOOKS.length; b++) files.push(`data/text/${b}.json`);
+      for (const sh of new Set(Object.keys(S).map(c => c.slice(0, 3)))) files.push(`data/lex/${sh}.json`);
+      let done = 0, failed = 0;
+      const queue = [...files];
+      const worker = async () => {
+        while (queue.length) {
+          const u = queue.shift();
+          try { const r = await fetch(u); if (!r.ok) failed++; else await r.arrayBuffer(); } catch { failed++; }
+          done++;
+          if (done % 8 === 0 || done === files.length) st.textContent = `Saving ${done} of ${files.length} files…`;
+        }
+      };
+      await Promise.all([worker(), worker(), worker(), worker()]);
+      store.set('offlineSaved', Date.now());
+      st.textContent = failed ? `Saved ${files.length - failed} of ${files.length} files. Try again with a better connection to finish.` : 'Everything is saved for offline use on this device.';
+      announce(st.textContent);
+      track('offline/save');
+    } catch {
+      st.textContent = 'Saving stopped. Check your connection and try again.';
+    }
+    btn.disabled = false;
+  });
+  if (store.get('offlineSaved', 0)) $('offlineStatus').textContent = 'Saved for offline use on this device. Save again to refresh.';
+
+  // ---------- Shareable image for a verse study ----------
+  async function studyImage(v) {
+    const W = 1080, H = 1350, c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const ctx = c.getContext('2d');
+    const font = (w, sz, fam = '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif') => `${w} ${sz}px ${fam}`;
+    const b = BOOKS[verseBook[v]], intro = INTROS[b.osis];
+    ctx.fillStyle = '#0b0b0f'; ctx.fillRect(0, 0, W, H);
+    // a thin band in the colour of the book's group, like the map
+    ctx.fillStyle = CATEGORIES[b.cat].dark; ctx.fillRect(0, 0, W, 14);
+    const L = 90;
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 30);
+    ctx.fillText(tr('Passage study').toUpperCase(), L, 120);
+    ctx.fillStyle = '#fff'; ctx.font = font(800, 92);
+    ctx.fillText(refLabel(v), L, 230);
+    let y = 300;
+    if (intro) {
+      ctx.fillStyle = 'rgba(235,235,245,.75)'; ctx.font = font(400, 32);
+      // whole sentences only, up to three lines
+      const sentences = (LANG === 'es' && intro.about_es ? intro.about_es : intro.about).match(/[^.!?]+[.!?]+/g) || [];
+      let text = sentences[0] || '';
+      for (const sen of sentences.slice(1)) { if (wrapText(ctx, text + sen, W - 2 * L).length > 3) break; text += sen; }
+      for (const line of wrapText(ctx, text.trim(), W - 2 * L).slice(0, 3)) { ctx.fillText(line, L, y); y += 44; }
+    }
+    // the original words of the verse
+    try {
+      const t = await loadBookText(verseBook[v]);
+      const words = (t.v[v - t.s] || '').split('~').filter(Boolean).map(w => w.split('|')[0]);
+      if (words.length) {
+        const heb = verseBook[v] < 39;
+        y += 40;
+        ctx.font = font(400, 46, heb ? '"SBL Hebrew", "Ezra SIL", "Noto Serif Hebrew", "Times New Roman", serif' : '"Gentium Plus", "Noto Serif", "Times New Roman", serif');
+        ctx.fillStyle = '#ffd43b';
+        ctx.direction = heb ? 'rtl' : 'ltr'; ctx.textAlign = heb ? 'right' : 'left';
+        const lines = wrapText(ctx, words.join(' '), W - 2 * L).slice(0, 3);
+        for (const line of lines) { ctx.fillText(line, heb ? W - L : L, y); y += 62; }
+        ctx.direction = 'ltr'; ctx.textAlign = 'left';
+        ctx.fillStyle = 'rgba(235,235,245,.6)'; ctx.font = font(400, 24);
+        ctx.fillText(tr(heb ? 'Original Hebrew text' : 'Original Greek text'), L, y); y += 30;
+      }
+    } catch { /* image works without the original words */ }
+    // strongest connections
+    const seen = new Set(), conns = [];
+    // one line per passage: skip a range that starts where an earlier one did
+    for (const i of focusList) {
+      const start = F[i] === v ? T[i] : F[i], o = F[i] === v ? refLabel(T[i], E[i]) : refLabel(F[i]);
+      if (!seen.has(start)) { seen.add(start); conns.push(o); }
+      if (conns.length === 4) break;
+    }
+    if (conns.length) {
+      y += 50;
+      ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 28); ctx.fillText(tr('Connects to').toUpperCase(), L, y); y += 52;
+      ctx.fillStyle = '#fff'; ctx.font = font(600, 40);
+      for (const r of conns) { ctx.fillText(r, L, y); y += 54; }
+    }
+    const q = ((REFLECT[b.cat] || {})[LANG] || (REFLECT[b.cat] || {}).en || [])[1];
+    if (q && y < H - 330) {
+      y += 40;
+      ctx.fillStyle = 'rgba(235,235,245,.9)'; ctx.font = font(500, 34);
+      for (const line of wrapText(ctx, q, W - 2 * L).slice(0, 3)) { ctx.fillText(line, L, y); y += 46; }
+    }
+    ctx.fillStyle = '#fff'; ctx.font = font(700, 38); ctx.fillText('Bible Connections', L, H - 130);
+    ctx.fillStyle = 'rgba(235,235,245,.7)'; ctx.font = font(400, 26);
+    ctx.fillText(`${location.host}${location.pathname}`, L, H - 88);
+    ctx.font = font(400, 20);
+    ctx.fillText(tr('Original text: STEP Bible (CC BY 4.0). Cross references: OpenBible.info (CC BY 4.0).'), L, H - 52);
+    const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+    const file = new File([blob], `${b.osis}-${verseChap[v]}-${verseNum[v]}-study.png`, { type: 'image/png' });
+    track('share/study-image');
+    if (navigator.canShare && navigator.canShare({ files: [file] }) && matchMedia('(pointer: coarse)').matches) {
+      try { await navigator.share({ files: [file] }); return; } catch { /* fall back to download */ }
+    }
+    downloadBlob(blob, file.name);
+    announce('Study image saved.');
   }
 
   // ---------- Collections ----------
@@ -2944,6 +3115,7 @@
     else if (a === 'qr') openQR();
     else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
     else if (a === 'exportNotes') exportNotes();
+    else if (a === 'studyImage') studyImage(+btn.dataset.v);
     else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
     else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
     else if (a === 'openGeo') { openGeo(+btn.dataset.i).then(focusPanelHeading); }
