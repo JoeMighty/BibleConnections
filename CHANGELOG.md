@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-05 - Comfort and Depth
+
 ### Added
 - Tapping the map where several arcs lie close together shows a short list to choose from, instead of guessing.
 - Text size setting (Standard, Large, Extra large) for the whole site.
@@ -190,7 +192,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/5834d40...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/634e316...HEAD
+[0.9.0]: https://github.com/JoeMighty/BibleConnections/compare/5834d40...634e316
 [0.8.0]: https://github.com/JoeMighty/BibleConnections/compare/8331ef9...5834d40
 [0.7.0]: https://github.com/JoeMighty/BibleConnections/compare/bc8cb41...8331ef9
 [0.6.0]: https://github.com/JoeMighty/BibleConnections/compare/d022afc...bc8cb41
