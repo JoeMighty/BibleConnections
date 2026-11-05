@@ -92,19 +92,6 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Growing the reach of the project](docs/PROMOTION.md)
 - [Content review packet for pastors](docs/THEOLOGY-REVIEW.md)
 
-## Automation
-
-| Workflow | When | What it does |
-| --- | --- | --- |
-| `ci.yml` | Every push, pull request and daily | Browser and accessibility tests, Lighthouse checks, then deploys `main` to GitHub Pages |
-| `links.yml` | Weekly, and when translations change | Checks every Bible.com reading and Listen link. Run it by hand with **discover audio** ticked to list which translations have audio |
-| `data-refresh.yml` | Monthly | Rebuilds the cross reference data and opens a pull request if it changed |
-| `note-from-issue.yml` | When a content suggestion is labeled `approved` | Adds the suggested note and opens a pull request |
-| `release.yml` | When a new version appears in the changelog | Creates the tag and GitHub release |
-| `visual-baselines.yml` | By hand, after a design change | Takes new screenshot baselines and opens a pull request |
-
-For the monthly refresh to open pull requests, turn on **Settings > Actions > General > Allow GitHub Actions to create and approve pull requests**.
-
 ## Contributing
 
 Suggestions for notes, journeys, themes and translations are very welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), or open an issue using one of the forms.
@@ -131,4 +118,5 @@ Full details are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 - Places: [OpenBible.info Bible Geocoding Data](https://www.openbible.info/geo/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Coastline: [Natural Earth](https://www.naturalearthdata.com) (public domain)
 - Verse counts and word index: [Berean Standard Bible](https://berean.bible/) (public domain), via [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases)
 - Reading and listening links: [Bible.com](https://www.bible.com) (not affiliated)
+- Easier-to-read font: [Atkinson Hyperlegible](https://www.brailleinstitute.org/freefont/) by the Braille Institute, [SIL Open Font License](https://openfontlicense.org)
 - Inspired by the cross reference visualization by Chris Harrison and Christoph Römhild
