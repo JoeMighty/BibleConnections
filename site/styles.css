@@ -122,8 +122,17 @@ button, input, select { font: inherit; letter-spacing: inherit; }
 }
 .brand h1 { margin: 0; font-size: var(--t-headline); font-weight: 600; letter-spacing: -0.02em; }
 .home-link { color: inherit; text-decoration: none; }
-.home-link:hover { text-decoration: underline; }
+.home-link:hover .brand-name { text-decoration: underline; }
+/* the icon sits beside both lines: the name and the count underneath */
+.brand { position: relative; min-width: 0; padding-left: 48px; }
+.brand-mark { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 9px; display: block; }
+:root[data-theme="light"] .brand-mark { box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12); }
 .tagline { margin: 0; color: var(--muted); font-size: var(--t-footnote); }
+.brand h1, .tagline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 760px) {
+  .brand { padding-left: 42px; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 8px; }
+}
 .header-right { display: flex; align-items: center; gap: 4px; }
 .header-nav { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
 .nav-btn .icon { display: none; }

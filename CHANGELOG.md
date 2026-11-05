@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- The site title in the header now has the Bible Connections icon beside it, sized for phones and larger screens. Tapping the icon also goes home.
+
 ## [0.9.0] - 2026-11-05 - Comfort and Depth
 
 ### Added
