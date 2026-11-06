@@ -785,7 +785,10 @@
     "Timeline": "Línea de tiempo",
     "Loading the timeline…": "Cargando la línea de tiempo…",
     "Key events of the Bible story in order. Choose an event to see its passage and connections, or show a whole period on the map.": "Los acontecimientos clave de la historia bíblica en orden. Elige uno para ver su pasaje y sus conexiones, o muestra todo un período en el mapa.",
-    "Key events of the Bible story in order, with their passages and places.": "Los acontecimientos clave de la historia bíblica en orden, con sus pasajes y lugares."
+    "Key events of the Bible story in order, with their passages and places.": "Los acontecimientos clave de la historia bíblica en orden, con sus pasajes y lugares.",
+    "Advent": "Adviento",
+    "Christmas": "Navidad",
+    "Starts on Advent Sunday,": "Empieza el primer domingo de Adviento,"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

@@ -1,5 +1,110 @@
 [
   {
+    "id": "advent",
+    "name": "Advent: waiting for the King",
+    "summary": "Seven promises of the coming King and how they came true in Jesus.",
+    "steps": [
+      {
+        "a": "Gen.3.15",
+        "b": "Gal.4.4",
+        "title": "The first promise",
+        "note": "At the very start of the story, God promises a child who will defeat evil. Paul says Jesus came at exactly the right time, born of a woman.",
+        "question": "Why do you think God made this promise so soon after things went wrong?"
+      },
+      {
+        "a": "2Sam.7.12",
+        "b": "Luke.1.32",
+        "title": "A king from David's family",
+        "note": "God promises David a son whose kingdom will last. Gabriel tells Mary her son will receive David's throne.",
+        "question": "What kind of king were people expecting, and what kind of king did Jesus turn out to be?"
+      },
+      {
+        "a": "Isa.7.14",
+        "b": "Matt.1.23",
+        "title": "God with us",
+        "note": "Isaiah gives a sign of a child called Immanuel. Matthew sees its full meaning in Jesus, God with us.",
+        "question": "What difference does it make that God came to be with us, not just to help from a distance?"
+      },
+      {
+        "a": "Isa.9.6",
+        "b": "Luke.2.11",
+        "title": "A child is born",
+        "note": "Isaiah announces a child with names like Wonderful Counselor and Prince of Peace. The angels announce the Savior born in Bethlehem.",
+        "question": "Which of Isaiah's names for this child means the most to you right now?"
+      },
+      {
+        "a": "Isa.40.3",
+        "b": "Mark.1.3",
+        "title": "Prepare the way",
+        "note": "A voice calls for a road to be made ready for God. John the Baptist is that voice, preparing people for Jesus.",
+        "question": "What would preparing the way for Jesus look like in your life this Advent?"
+      },
+      {
+        "a": "Mic.5.2",
+        "b": "Matt.2.6",
+        "title": "Little Bethlehem",
+        "note": "God chooses a small town for the birth of a great ruler. The scholars point Herod to Micah's words.",
+        "question": "Why might God choose small and humble places to do great things?"
+      },
+      {
+        "a": "Mal.4.2",
+        "b": "Luke.1.78",
+        "title": "The sunrise",
+        "note": "The last Old Testament prophet pictures the sun of righteousness rising with healing. Zechariah sings that this sunrise has come.",
+        "question": "Where do you need God's light and healing as you wait for Christmas?"
+      }
+    ]
+  },
+  {
+    "id": "christmas",
+    "name": "Christmas: the Word became flesh",
+    "summary": "Why the birth of Jesus matters, from creation to the wise men.",
+    "steps": [
+      {
+        "a": "Gen.1.1",
+        "b": "John.1.1",
+        "title": "In the beginning",
+        "note": "John begins his Gospel with the same words as Genesis. The one born at Christmas was there at creation.",
+        "question": "How does it change your view of Christmas that the baby in the manger is the Word who made the world?"
+      },
+      {
+        "a": "Phil.2.7",
+        "b": "John.1.14",
+        "title": "The Word became flesh",
+        "note": "Paul describes Christ choosing to become a servant and be born as a man. John says the Word made his home among us.",
+        "question": "What does it tell you about God that he came in such a humble way?"
+      },
+      {
+        "a": "Isa.9.2",
+        "b": "Matt.4.16",
+        "title": "A great light",
+        "note": "People living in darkness see a great light. Jesus brings that light to Galilee.",
+        "question": "Who do you know who is walking in darkness this Christmas?"
+      },
+      {
+        "a": "Isa.49.6",
+        "b": "Luke.2.32",
+        "title": "A light for every nation",
+        "note": "God's servant will bring salvation to the ends of the earth. Old Simeon holds the baby and praises God for this light.",
+        "question": "Why is it good news that Jesus came for every nation, not just one?"
+      },
+      {
+        "a": "Ps.72.10",
+        "b": "Matt.2.11",
+        "title": "Gifts for the king",
+        "note": "The psalm pictures kings from far away honoring Israel's king. The wise men worship the child and give their gifts.",
+        "question": "What could you give to Jesus this Christmas?"
+      },
+      {
+        "a": "Hos.11.1",
+        "b": "Matt.2.15",
+        "title": "Out of Egypt",
+        "note": "Hosea remembers God calling his son Israel out of Egypt. Matthew sees Jesus retracing Israel's story as the family returns from Egypt.",
+        "question": "How does Jesus living out Israel's story help us understand who he is?"
+      }
+    ]
+  },
+  {
     "id": "lamb",
     "name": "The Lamb of God",
     "summary": "From a mountain in Genesis to the throne in Revelation, follow the Lamb who takes away sin.",
@@ -582,5 +687,41 @@
         "question": "Who is someone you could tell about Jesus?"
       }
     ]
+  },
+  {
+    "id": "kids-christmas",
+    "name": "The first Christmas",
+    "summary": "For kids: God kept his promises when Jesus was born.",
+    "steps": [
+      {
+        "a": "Mic.5.2",
+        "b": "Matt.2.6",
+        "title": "Born in Bethlehem",
+        "note": "Long before Jesus was born, God said a special king would come from little Bethlehem. And that is just where Jesus was born!",
+        "question": "Why do you think God picked a small town?"
+      },
+      {
+        "a": "Isa.7.14",
+        "b": "Matt.1.23",
+        "title": "God with us",
+        "note": "God promised a baby called Immanuel, which means God with us. Jesus is God who came to be with us.",
+        "question": "How does it feel to know God is always with you?"
+      },
+      {
+        "a": "Num.24.17",
+        "b": "Matt.2.2",
+        "title": "Follow the star",
+        "note": "God said a star would come from Jacob's family. Wise men saw a star and followed it all the way to Jesus.",
+        "question": "If you could bring a gift to baby Jesus, what would it be?"
+      },
+      {
+        "a": "Isa.9.6",
+        "b": "Luke.2.11",
+        "title": "A baby who is King",
+        "note": "God promised a child who would be a king of peace. Angels told shepherds that this Savior had been born!",
+        "question": "Who can you tell the good news to this Christmas?"
+      }
+    ],
+    "kids": true
   }
 ]

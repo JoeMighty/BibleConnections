@@ -27,7 +27,7 @@ test('reading plan progress is saved', async ({ page }) => {
   await expect(page.locator('[data-action=planDone]')).toHaveAttribute('aria-pressed', 'true');
   await page.goto('/?view=plans');
   await ready(page);
-  await expect(page.locator('.journey-card').first()).toContainText('1 of');
+  await expect(page.locator('.journey-card', { hasText: 'The story of Scripture' })).toContainText('1 of');
   await expect(page.locator('[data-action=openPlan][data-plan=story]')).toContainText('Continue');
 });
 

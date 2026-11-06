@@ -140,7 +140,7 @@ test('guided journey steps forward and back', async ({ page }) => {
   await expect(page.locator('.step-count')).toContainText('Step 1 of');
   await page.click('[data-action=stepNext]');
   await expect(page.locator('.step-count')).toContainText('Step 2 of');
-  await expect(page).toHaveURL(/journey=lamb&step=2/);
+  await expect(page).toHaveURL(/journey=advent&step=2/);
   await page.click('[data-action=stepPrev]');
   await expect(page.locator('.step-count')).toContainText('Step 1 of');
 });

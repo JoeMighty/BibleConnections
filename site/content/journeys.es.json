@@ -1,5 +1,84 @@
 [
   {
+    "id": "advent",
+    "name": "Adviento: esperando al Rey",
+    "summary": "Siete promesas del Rey que vendría y cómo se cumplieron en Jesús.",
+    "steps": [
+      {
+        "title": "La primera promesa",
+        "note": "Al comienzo mismo de la historia, Dios promete un niño que vencerá al mal. Pablo dice que Jesús vino en el momento exacto, nacido de mujer.",
+        "question": "¿Por qué crees que Dios hizo esta promesa tan pronto después de que todo salió mal?"
+      },
+      {
+        "title": "Un rey de la familia de David",
+        "note": "Dios promete a David un hijo cuyo reino durará. Gabriel le dice a María que su hijo recibirá el trono de David.",
+        "question": "¿Qué clase de rey esperaba la gente, y qué clase de rey resultó ser Jesús?"
+      },
+      {
+        "title": "Dios con nosotros",
+        "note": "Isaías da la señal de un niño llamado Emanuel. Mateo ve su pleno sentido en Jesús, Dios con nosotros.",
+        "question": "¿Qué diferencia hace que Dios viniera a estar con nosotros y no solo a ayudarnos desde lejos?"
+      },
+      {
+        "title": "Un niño nos ha nacido",
+        "note": "Isaías anuncia un niño con nombres como Consejero admirable y Príncipe de paz. Los ángeles anuncian al Salvador nacido en Belén.",
+        "question": "¿Cuál de los nombres que Isaías da a este niño significa más para ti ahora?"
+      },
+      {
+        "title": "Preparen el camino",
+        "note": "Una voz pide que se prepare un camino para Dios. Juan el Bautista es esa voz, que prepara a la gente para Jesús.",
+        "question": "¿Cómo sería preparar el camino para Jesús en tu vida este Adviento?"
+      },
+      {
+        "title": "La pequeña Belén",
+        "note": "Dios elige un pueblo pequeño para el nacimiento de un gran gobernante. Los maestros le señalan a Herodes las palabras de Miqueas.",
+        "question": "¿Por qué crees que Dios elige lugares pequeños y humildes para hacer cosas grandes?"
+      },
+      {
+        "title": "La aurora",
+        "note": "El último profeta del Antiguo Testamento describe el sol de justicia que sale con sanidad. Zacarías canta que esa aurora ha llegado.",
+        "question": "¿Dónde necesitas la luz y la sanidad de Dios mientras esperas la Navidad?"
+      }
+    ]
+  },
+  {
+    "id": "christmas",
+    "name": "Navidad: el Verbo se hizo carne",
+    "summary": "Por qué importa el nacimiento de Jesús, desde la creación hasta los sabios.",
+    "steps": [
+      {
+        "title": "En el principio",
+        "note": "Juan comienza su Evangelio con las mismas palabras que Génesis. El que nació en Navidad estaba allí en la creación.",
+        "question": "¿Cómo cambia tu visión de la Navidad saber que el niño del pesebre es el Verbo que hizo el mundo?"
+      },
+      {
+        "title": "El Verbo se hizo carne",
+        "note": "Pablo describe a Cristo eligiendo hacerse siervo y nacer como hombre. Juan dice que el Verbo habitó entre nosotros.",
+        "question": "¿Qué te dice de Dios que viniera de una manera tan humilde?"
+      },
+      {
+        "title": "Una gran luz",
+        "note": "El pueblo que vivía en oscuridad ve una gran luz. Jesús lleva esa luz a Galilea.",
+        "question": "¿A quién conoces que esté caminando en oscuridad esta Navidad?"
+      },
+      {
+        "title": "Una luz para todas las naciones",
+        "note": "El siervo de Dios llevará la salvación hasta los confines de la tierra. El anciano Simeón toma al niño y alaba a Dios por esta luz.",
+        "question": "¿Por qué es una buena noticia que Jesús viniera para todas las naciones y no solo para una?"
+      },
+      {
+        "title": "Regalos para el rey",
+        "note": "El salmo describe reyes lejanos que honran al rey de Israel. Los sabios adoran al niño y le dan sus regalos.",
+        "question": "¿Qué le podrías dar a Jesús esta Navidad?"
+      },
+      {
+        "title": "De Egipto",
+        "note": "Oseas recuerda a Dios llamando a su hijo Israel de Egipto. Mateo ve a Jesús recorriendo de nuevo la historia de Israel cuando la familia regresa de Egipto.",
+        "question": "¿Cómo nos ayuda a entender quién es Jesús que él viva la historia de Israel?"
+      }
+    ]
+  },
+  {
     "id": "lamb",
     "name": "El Cordero de Dios",
     "summary": "Desde un monte en Génesis hasta el trono en Apocalipsis, sigue al Cordero que quita el pecado.",
@@ -435,6 +514,33 @@
         "title": "El rescate más grande",
         "note": "Dios prometió buscar a los perdidos. Jesús dijo que vino a buscar y salvar a los que estaban perdidos.",
         "question": "¿A quién le podrías contar de Jesús?"
+      }
+    ]
+  },
+  {
+    "id": "kids-christmas",
+    "name": "La primera Navidad",
+    "summary": "Para niños: Dios cumplió sus promesas cuando nació Jesús.",
+    "steps": [
+      {
+        "title": "Nacido en Belén",
+        "note": "Mucho antes de que Jesús naciera, Dios dijo que un rey especial vendría de la pequeña Belén. ¡Y allí mismo nació Jesús!",
+        "question": "¿Por qué crees que Dios eligió un pueblo pequeño?"
+      },
+      {
+        "title": "Dios con nosotros",
+        "note": "Dios prometió un bebé llamado Emanuel, que significa Dios con nosotros. Jesús es Dios que vino a estar con nosotros.",
+        "question": "¿Cómo te sientes al saber que Dios siempre está contigo?"
+      },
+      {
+        "title": "Sigue la estrella",
+        "note": "Dios dijo que una estrella saldría de la familia de Jacob. Unos sabios vieron una estrella y la siguieron hasta llegar a Jesús.",
+        "question": "Si pudieras llevarle un regalo al niño Jesús, ¿qué le llevarías?"
+      },
+      {
+        "title": "Un bebé que es Rey",
+        "note": "Dios prometió un niño que sería un rey de paz. ¡Los ángeles les dijeron a los pastores que este Salvador había nacido!",
+        "question": "¿A quién le puedes contar la buena noticia esta Navidad?"
       }
     ]
   }

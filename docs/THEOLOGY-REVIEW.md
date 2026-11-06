@@ -250,3 +250,116 @@ For each topic the draft approach is a short neutral note. Please choose: **keep
 - Open a "Content suggestion" form on GitHub: <https://github.com/JoeMighty/BibleConnections/issues/new/choose>
 
 Thank you. Your review helps make sure the site helps people read the Bible well.
+
+## 9. Added after the first packet (live on the site)
+
+These were written after the first version of this packet. Please review them in the same way.
+
+### Advent reading plan (27 days, from Advent Sunday to Christmas Day)
+
+| Day | Passages | Title | Note |
+| --- | --- | --- | --- |
+| 1 | Genesis 3:15 and Galatians 4:4 | Hope: the first promise | Right after the fall, God promises that a child of the woman will defeat the serpent. Paul says that when the time had fully come, God sent his Son, born of a woman. |
+| 2 | Genesis 12:3 and Galatians 3:8 | Hope: a blessing for every nation | God tells Abraham that all the families of the earth will be blessed through him. Paul calls this the gospel announced ahead of time. |
+| 3 | Genesis 49:10 and Revelation 5:5 | Hope: the lion of Judah | Jacob blesses Judah with a ruler's staff that will not depart. In Revelation the Lion of the tribe of Judah has won the victory. |
+| 4 | Numbers 24:17 and Matthew 2:2 | Hope: a star out of Jacob | Balaam sees a star rising from Jacob and a ruler from Israel. The wise men follow a star to find the newborn king. |
+| 5 | Deuteronomy 18:15 and Acts 3:22 | Hope: a prophet like Moses | Moses promises that God will raise up a prophet like him. Peter tells the crowd in Jerusalem that this prophet is Jesus. |
+| 6 | 2 Samuel 7:12 and Luke 1:32 | Hope: a son of David | God promises David a descendant whose kingdom will last. The angel tells Mary that her son will be given the throne of his father David. |
+| 7 | Psalms 2:7 and Hebrews 1:5 | Hope: you are my Son | In the psalm, God declares his chosen king to be his Son. Hebrews uses these words to show that Jesus is greater than the angels. |
+| 8 | Isaiah 7:14 and Matthew 1:23 | Peace: God with us | Isaiah gives a sign: a child called Immanuel, God with us. Matthew sees the full meaning of the sign in the birth of Jesus. |
+| 9 | Isaiah 9:6 and Luke 2:11 | Peace: a child is born | Isaiah announces a child who will be called Prince of Peace. The angels tell the shepherds that a Savior has been born in the town of David. |
+| 10 | Isaiah 9:7 and Luke 1:33 | Peace: a kingdom without end | Isaiah says the peace of this king's rule will never end. Gabriel tells Mary that her son's kingdom will have no end. |
+| 11 | Isaiah 11:1 and Romans 15:12 | Peace: a shoot from Jesse | From what looks like a dead stump, a new shoot grows from Jesse's family. Paul says the nations put their hope in this root of Jesse. |
+| 12 | Isaiah 40:3 and Mark 1:3 | Peace: prepare the way | A voice calls for a road to be prepared for the Lord. Mark begins his Gospel with John the Baptist as that voice in the wilderness. |
+| 13 | Isaiah 40:11 and John 10:11 | Peace: the gentle shepherd | Isaiah pictures God carrying his lambs close to his heart. Jesus calls himself the good shepherd who lays down his life for the sheep. |
+| 14 | Isaiah 52:7 and Romans 10:15 | Peace: good news on the mountains | Isaiah celebrates the messenger who brings news of peace and salvation. Paul applies it to those who carry the good news about Jesus. |
+| 15 | Isaiah 35:5 and Matthew 11:5 | Joy: eyes opened | Isaiah promises that the blind will see and the lame will leap. When John's followers ask who Jesus is, he points to these very signs. |
+| 16 | Isaiah 61:1 and Luke 4:18 | Joy: good news for the poor | The servant is anointed to bring good news to the poor and freedom to captives. In Nazareth, Jesus reads this passage and says it is fulfilled today. |
+| 17 | Isaiah 42:1 and Matthew 12:18 | Joy: my chosen servant | God introduces his servant, full of the Spirit and gentle with the weak. Matthew quotes this to explain the quiet, healing way of Jesus. |
+| 18 | Isaiah 9:2 and Matthew 4:16 | Joy: a great light | People walking in darkness see a great light. Matthew says this happened when Jesus began his ministry in Galilee. |
+| 19 | Jeremiah 23:5 and Luke 1:32 | Joy: a righteous Branch | Jeremiah promises a righteous Branch from David who will reign wisely. Luke announces Jesus as the son of David who will reign for ever. |
+| 20 | Malachi 4:2 and Luke 1:78 | Joy: the sunrise from on high | Malachi pictures the sun of righteousness rising with healing. Zechariah sings that the rising sun will visit us from heaven. |
+| 21 | Malachi 3:1 and Mark 1:2 | Joy: my messenger | God promises to send a messenger ahead of him. Mark opens with John the Baptist preparing the way for Jesus. |
+| 22 | Isaiah 53:5 and 1 Peter 2:24 | Love: by his wounds | The servant is wounded for the wrongs of others. Peter says Christ carried our sins in his body, so that we might be healed. |
+| 23 | Jeremiah 31:31 and Luke 22:20 | Love: a new covenant | Jeremiah promises a new covenant written on the heart. At the Last Supper Jesus calls the cup the new covenant in his blood. |
+| 24 | Micah 5:2 and Matthew 2:6 | Love: little Bethlehem | Micah names small Bethlehem as the birthplace of Israel's ruler. When Herod asks, the scholars answer from this passage. |
+| 25 | Isaiah 49:6 and Luke 2:32 | Love: a light for the nations | The servant will be a light for the nations, not only for Israel. Holding the baby Jesus, Simeon praises God for this light. |
+| 26 | Psalms 72:10 and Matthew 2:11 | Love: gifts for the king | The psalm pictures kings from far away bringing gifts to Israel's king. The wise men kneel before the child and open their treasures. |
+| 27 | Philippians 2:7 and John 1:14 | Christmas Day: the Word became flesh | Paul describes Christ taking the nature of a servant and being born as a man. John says the Word became flesh and lived among us, full of grace and truth. |
+
+### Seasonal journeys
+
+**Advent: waiting for the King**: Seven promises of the coming King and how they came true in Jesus.
+
+1. **The first promise** (Genesis 3:15 and Galatians 4:4): At the very start of the story, God promises a child who will defeat evil. Paul says Jesus came at exactly the right time, born of a woman. *Question:* Why do you think God made this promise so soon after things went wrong?
+2. **A king from David's family** (2 Samuel 7:12 and Luke 1:32): God promises David a son whose kingdom will last. Gabriel tells Mary her son will receive David's throne. *Question:* What kind of king were people expecting, and what kind of king did Jesus turn out to be?
+3. **God with us** (Isaiah 7:14 and Matthew 1:23): Isaiah gives a sign of a child called Immanuel. Matthew sees its full meaning in Jesus, God with us. *Question:* What difference does it make that God came to be with us, not just to help from a distance?
+4. **A child is born** (Isaiah 9:6 and Luke 2:11): Isaiah announces a child with names like Wonderful Counselor and Prince of Peace. The angels announce the Savior born in Bethlehem. *Question:* Which of Isaiah's names for this child means the most to you right now?
+5. **Prepare the way** (Isaiah 40:3 and Mark 1:3): A voice calls for a road to be made ready for God. John the Baptist is that voice, preparing people for Jesus. *Question:* What would preparing the way for Jesus look like in your life this Advent?
+6. **Little Bethlehem** (Micah 5:2 and Matthew 2:6): God chooses a small town for the birth of a great ruler. The scholars point Herod to Micah's words. *Question:* Why might God choose small and humble places to do great things?
+7. **The sunrise** (Malachi 4:2 and Luke 1:78): The last Old Testament prophet pictures the sun of righteousness rising with healing. Zechariah sings that this sunrise has come. *Question:* Where do you need God's light and healing as you wait for Christmas?
+
+**Christmas: the Word became flesh**: Why the birth of Jesus matters, from creation to the wise men.
+
+1. **In the beginning** (Genesis 1:1 and John 1:1): John begins his Gospel with the same words as Genesis. The one born at Christmas was there at creation. *Question:* How does it change your view of Christmas that the baby in the manger is the Word who made the world?
+2. **The Word became flesh** (Philippians 2:7 and John 1:14): Paul describes Christ choosing to become a servant and be born as a man. John says the Word made his home among us. *Question:* What does it tell you about God that he came in such a humble way?
+3. **A great light** (Isaiah 9:2 and Matthew 4:16): People living in darkness see a great light. Jesus brings that light to Galilee. *Question:* Who do you know who is walking in darkness this Christmas?
+4. **A light for every nation** (Isaiah 49:6 and Luke 2:32): God's servant will bring salvation to the ends of the earth. Old Simeon holds the baby and praises God for this light. *Question:* Why is it good news that Jesus came for every nation, not just one?
+5. **Gifts for the king** (Psalms 72:10 and Matthew 2:11): The psalm pictures kings from far away honoring Israel's king. The wise men worship the child and give their gifts. *Question:* What could you give to Jesus this Christmas?
+6. **Out of Egypt** (Hosea 11:1 and Matthew 2:15): Hosea remembers God calling his son Israel out of Egypt. Matthew sees Jesus retracing Israel's story as the family returns from Egypt. *Question:* How does Jesus living out Israel's story help us understand who he is?
+
+**The first Christmas** (for kids): For kids: God kept his promises when Jesus was born.
+
+1. **Born in Bethlehem** (Micah 5:2 and Matthew 2:6): Long before Jesus was born, God said a special king would come from little Bethlehem. And that is just where Jesus was born! *Question:* Why do you think God picked a small town?
+2. **God with us** (Isaiah 7:14 and Matthew 1:23): God promised a baby called Immanuel, which means God with us. Jesus is God who came to be with us. *Question:* How does it feel to know God is always with you?
+3. **Follow the star** (Numbers 24:17 and Matthew 2:2): God said a star would come from Jacob's family. Wise men saw a star and followed it all the way to Jesus. *Question:* If you could bring a gift to baby Jesus, what would it be?
+4. **A baby who is King** (Isaiah 9:6 and Luke 2:11): God promised a child who would be a king of peace. Angels told shepherds that this Savior had been born! *Question:* Who can you tell the good news to this Christmas?
+
+### Timeline of events
+
+Dates are approximate. Many early dates are debated, and Genesis 1 to 11 is left undated. Where scholars hold different dates (the exodus, the conquest, the crucifixion), both are given.
+
+| Period | When | Event | Passage |
+| --- | --- | --- | --- |
+| Beginnings | undated | Creation | Genesis 1:1 to Genesis 2:3 |
+| Beginnings | undated | The fall | Genesis 3:1 to Genesis 3:24 |
+| Beginnings | undated | The flood | Genesis 6:9 to Genesis 9:17 |
+| Beginnings | undated | The tower of Babel | Genesis 11:1 to Genesis 11:9 |
+| The patriarchs | about 2000 BC | God calls Abraham | Genesis 12:1 to Genesis 12:9 |
+| The patriarchs | about 1900 BC | Abraham offers Isaac | Genesis 22:1 to Genesis 22:19 |
+| The patriarchs | about 1850 BC | Jacob's dream at Bethel | Genesis 28:10 to Genesis 28:22 |
+| The patriarchs | about 1800 BC | Joseph in Egypt | Genesis 37:1 to Genesis 50:26 |
+| Exodus and wilderness | about 1446 or 1260 BC (scholars differ) | The Passover and the exodus | Exodus 12:1 to Exodus 14:31 |
+| Exodus and wilderness | soon after the exodus | The law at Mount Sinai | Exodus 19:1 to Exodus 20:21 |
+| Exodus and wilderness | forty years in the wilderness | Moses' farewell on the plains of Moab | Deuteronomy 34:1 to Deuteronomy 34:12 |
+| Into the land | about 1400 or 1220 BC | Crossing the Jordan and Jericho | Joshua 3:1 to Joshua 6:27 |
+| Into the land | the time of the judges | Gideon | Judges 6:11 to Judges 7:25 |
+| Into the land | the time of the judges | Ruth and Boaz | Ruth 1:1 to Ruth 4:22 |
+| The kingdom | about 1050 BC | Saul becomes king | 1 Samuel 10:1 to 1 Samuel 10:27 |
+| The kingdom | about 1010 BC | David becomes king | 2 Samuel 5:1 to 2 Samuel 5:12 |
+| The kingdom | about 1000 BC | God's covenant with David | 2 Samuel 7:1 to 2 Samuel 7:29 |
+| The kingdom | about 960 BC | Solomon dedicates the temple | 1 Kings 8:1 to 1 Kings 8:66 |
+| The divided kingdom | about 930 BC | The kingdom divides | 1 Kings 12:1 to 1 Kings 12:24 |
+| The divided kingdom | about 860 BC | Elijah on Mount Carmel | 1 Kings 18:20 to 1 Kings 18:40 |
+| The divided kingdom | about 740 BC | Isaiah's call | Isaiah 6:1 to Isaiah 6:13 |
+| The divided kingdom | 722 BC | Samaria falls to Assyria | 2 Kings 17:1 to 2 Kings 17:23 |
+| The divided kingdom | about 620 BC | Josiah renews the covenant | 2 Kings 23:1 to 2 Kings 23:25 |
+| Exile and return | 586 BC | Jerusalem falls to Babylon | 2 Kings 25:1 to 2 Kings 25:21 |
+| Exile and return | during the exile | Daniel in Babylon | Daniel 6:1 to Daniel 6:28 |
+| Exile and return | 538 BC | Cyrus lets the exiles return | Ezra 1:1 to Ezra 1:11 |
+| Exile and return | about 480 BC | Esther saves her people | Esther 4:1 to Esther 4:17 |
+| Exile and return | about 445 BC | Nehemiah rebuilds the walls | Nehemiah 2:1 to Nehemiah 2:20 |
+| The life of Jesus | about 6 to 4 BC | Jesus is born | Luke 2:1 to Luke 2:20 |
+| The life of Jesus | about AD 27 | Jesus is baptized | Matthew 3:13 to Matthew 3:17 |
+| The life of Jesus | about AD 28 | The Sermon on the Mount | Matthew 5:1 to Matthew 5:16 |
+| The life of Jesus | about AD 30 or 33 | The Last Supper | Luke 22:7 to Luke 22:23 |
+| The life of Jesus | about AD 30 or 33 | The crucifixion | John 19:16 to John 19:37 |
+| The life of Jesus | three days later | The resurrection | John 20:1 to John 20:18 |
+| The early church | fifty days later | The Spirit comes at Pentecost | Acts 2:1 to Acts 2:41 |
+| The early church | about AD 34 | Saul meets Jesus on the road to Damascus | Acts 9:1 to Acts 9:19 |
+| The early church | about AD 49 | The council in Jerusalem | Acts 15:1 to Acts 15:35 |
+| The early church | about AD 50 | The gospel reaches Europe at Philippi | Acts 16:6 to Acts 16:40 |
+| The early church | about AD 60 | Paul preaches in Rome | Acts 28:16 to Acts 28:31 |
+| The early church | about AD 95 | John's vision on Patmos | Revelation 1:9 to Revelation 1:20 |
+
+**Questions for you:** Are any notes or dates misleading? Should the exodus and crucifixion dates show one view or both?

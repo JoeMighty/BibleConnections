@@ -1711,19 +1711,64 @@
 
   // ---------- Connection of the day ----------
   let notedList = null;
+  // ---------- Church seasons ----------
+  // ?today=2026-12-01 lets the seasonal content be checked on any date
+  const todayParam = new URLSearchParams(location.search).get('today');
+  const today = () => { const d = todayParam && /^\d{4}-\d{2}-\d{2}$/.test(todayParam) ? new Date(todayParam + 'T12:00:00') : new Date(); d.setHours(12, 0, 0, 0); return d; };
+  // Advent starts on the fourth Sunday before Christmas
+  function adventStart(year) {
+    const eve = new Date(year, 11, 24, 12);
+    eve.setDate(eve.getDate() - eve.getDay() - 21);
+    return eve;
+  }
+  const dayDiff = (a, b) => Math.round((b - a) / 86400000);
+  // { season, day } for Advent (to Christmas Day) and the twelve days of Christmas (to 5 January)
+  function season(d = today()) {
+    const y = d.getMonth() === 0 ? d.getFullYear() - 1 : d.getFullYear();
+    const start = adventStart(y), xmas = new Date(y, 11, 25, 12);
+    if (d >= start && d <= xmas) return { season: 'advent', day: dayDiff(start, d), start };
+    const twelfth = new Date(y + 1, 0, 5, 12);
+    if (d > xmas && d <= twelfth) return { season: 'christmas', day: dayDiff(xmas, d) - 1, start };
+    return null;
+  }
+  // the seasonal pair for today, with its own note, or null outside the seasons
+  function seasonalPair() {
+    const s = season();
+    if (!s) return null;
+    let a, b, title, text, type;
+    if (s.season === 'advent') {
+      const plan = PLANS.find(p => p.season === 'advent');
+      const day = plan && plan.days[Math.min(s.day, plan.days.length - 1)];
+      if (!day) return null;
+      a = day.a; b = day.b; title = (LANG === 'es' && day.title_es) || day.title; text = (LANG === 'es' && day.note_es) || day.note;
+      type = s.day >= plan.days.length - 1 ? 'Christmas' : 'Advent';
+    } else {
+      const jn = JOURNEYS.findIndex(j => j.id === 'christmas');
+      if (jn < 0) return null;
+      const st = JOURNEYS[jn].steps[s.day % JOURNEYS[jn].steps.length];
+      a = st.a; b = st.b; title = st.title; text = st.note; type = 'Christmas';
+    }
+    const va = osisToIndex(a), vb = osisToIndex(b);
+    let i = -1;
+    for (let k = 0; k < N && i < 0; k++) if ((F[k] === va && T[k] <= vb && vb <= E[k]) || (F[k] === vb && T[k] <= va && va <= E[k])) i = k;
+    return i < 0 ? null : { i, title, text, type };
+  }
   function connectionOfTheDay() {
     if (!notedList) notedList = [...noteMap.keys()].sort((a, b) => a - b);
+    const sp = seasonalPair();
+    if (sp) return sp.i;
     if (!notedList.length) return -1;
-    const day = Math.floor(Date.now() / 86400000);
+    const day = Math.floor(today().getTime() / 86400000);
     // the same connection for everyone on a given day, moving through all noted connections
     return notedList[(Math.imul(day, 2654435761) >>> 0) % notedList.length];
   }
   function cotdHTML(i) {
-    const n = noteMap.get(i);
+    const sp = seasonalPair();
+    const n = sp && sp.i === i ? { type: sp.type, text: sp.text, seasonal: true } : noteMap.get(i);
     return `<div class="cotd">
       <p class="cotd-refs">${esc(refLabel(F[i]))} <span aria-hidden="true">↔</span><span class="sr-only"> and </span> ${esc(refLabel(T[i], E[i]))}</p>
       <p><span class="tag">${esc(n.type)}</span></p>
-      <p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>
+      <p${LANG !== 'en' && !n.seasonal ? ' lang="en"' : ''}>${esc(n.text)}</p>
       <div class="actions tight">
         <button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button>
         ${readBoth(F[i], `Read ${esc(refLabel(F[i]))}`)}
@@ -1748,6 +1793,11 @@
     let items = [];
     if (plan.source === 'journeys') {
       JOURNEYS.forEach((j, jn) => journeySteps[jn].forEach(s => items.push({ a: s.ia, b: s.ib, title: s.title, note: s.note, group: j.name })));
+    } else if (plan.source === 'days') {
+      for (const d of plan.days) {
+        const a = osisToIndex(d.a), b = osisToIndex(d.b);
+        if (a >= 0 && b >= 0) items.push({ a, b, title: (LANG === 'es' && d.title_es) || d.title, note: (LANG === 'es' && d.note_es) || d.note, group: (LANG === 'es' && d.title_es) || d.title });
+      }
     } else if (plan.source === 'theme') {
       const t = THEMES.find(x => x.id === plan.theme);
       for (const o of t.verses) {
@@ -1762,7 +1812,7 @@
         return i >= 0 ? { a: v, b: F[i] === v ? T[i] : F[i], ref: i } : null;
       }).filter(Boolean) }));
     } else {
-      for (let n = 0; n < items.length; n += plan.perDay) days.push({ title: items[n].group || '', items: items.slice(n, n + plan.perDay) });
+      for (let n = 0; n < items.length; n += plan.perDay) days.push({ title: items[n].group || '', items: items.slice(n, n + plan.perDay).map(it => (plan.source === 'days' ? { ...it, title: '' } : it)) });
     }
     planCache.set(plan.id, days);
     return days;
@@ -1778,8 +1828,11 @@
     let html = '<p>Short daily readings that follow the connections. Your progress is saved on this device.</p><ul class="journey-list">';
     for (const plan of PLANS) {
       const days = planDays(plan), done = planProgress(plan.id).done.length;
-      const next = Math.min(days.length - 1, firstUndone(plan));
-      html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>
+      const sn = season();
+      const next = plan.season === 'advent' && sn && sn.season === 'advent' ? Math.min(days.length - 1, sn.day) : Math.min(days.length - 1, firstUndone(plan));
+      const adv = plan.season === 'advent' ? adventStart(today().getMonth() === 0 ? today().getFullYear() - 1 : today().getFullYear()) : null;
+      const advNote = adv ? `<p class="hint">${esc(tr('Starts on Advent Sunday,'))} ${esc(adv.toLocaleDateString(LANG === 'es' ? 'es' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
+      html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>${advNote}
         <div class="progress" role="img" aria-label="${done} of ${days.length} days done"><span style="width:${(done / days.length) * 100}%"></span></div>
         <p class="step-count">${done} of ${days.length} days done</p>
         <div class="actions tight"><button type="button" class="btn small" data-action="openPlan" data-plan="${plan.id}" data-day="${next}">${done ? 'Continue' : 'Start'}<span class="sr-only"> ${esc(nameOf(plan))}</span></button></div></li>`;
@@ -3091,14 +3144,18 @@
     const pad = (n) => String(n).padStart(2, '0');
     const fmt = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
     const esc2 = (x) => String(x).replace(/[\\,;]/g, (m) => '\\' + m).replace(/\n/g, '\\n');
-    const start = new Date(); start.setDate(start.getDate() + 1);
+    const start = new Date(); start.setDate(start.getDate() + 1); start.setHours(12, 0, 0, 0);
+    // the Advent plan has one reading for each date of Advent, from Advent Sunday to Christmas Day
+    const adv = plan.season === 'advent' ? adventStart(today().getMonth() === 0 ? today().getFullYear() - 1 : today().getFullYear()) : null;
     const base = location.origin + location.pathname;
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Bible Connections//Reading plan//EN\r\nCALSCALE:GREGORIAN\r\n';
     const done = new Set(planProgress(plan.id).done);
     let n = 0;
     days.forEach((day, d) => {
       if (done.has(d)) return;
-      const date = new Date(start); date.setDate(start.getDate() + n++);
+      let date;
+      if (adv) { date = new Date(adv); date.setDate(adv.getDate() + d); if (date < start) return; }
+      else { date = new Date(start); date.setDate(start.getDate() + n++); }
       const url = `${base}?plan=${plan.id}&day=${d + 1}`;
       ics += `BEGIN:VEVENT\r\nUID:${plan.id}-${d + 1}-${fmt(date)}@bibleconnections\r\nDTSTAMP:${fmt(new Date())}T000000Z\r\nDTSTART:${fmt(date)}T070000\r\nDURATION:PT15M\r\n`
         + `SUMMARY:${esc2(`${nameOf(plan)}: day ${d + 1}`)}\r\nDESCRIPTION:${esc2(`${day.title ? day.title + '\n' : ''}${url}`)}\r\nURL:${url}\r\n`
@@ -4008,7 +4065,7 @@
     if (POS) setOrder('bible');
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
-      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'motion').length && !EMBED) { showLanding(); return; }
+      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'motion' && k !== 'today').length && !EMBED) { showLanding(); return; }
       hideLanding();
       const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic', 'word'].some(k => p.has(k));
       if (!hasDetail) resetView(false);

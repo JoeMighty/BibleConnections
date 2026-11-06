@@ -30,7 +30,27 @@ const pick = (day) => noted[(Math.imul(day, 2654435761) >>> 0) % noted.length];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = Math.floor(Date.now() / 86400000);
+// Advent and Christmas follow the same seasonal readings as the website
+const plans = JSON.parse(read('content/plans.json')), journeys = JSON.parse(read('content/journeys.json'));
+const advent = plans.find(p => p.season === 'advent'), christmas = journeys.find(j => j.id === 'christmas');
+function adventStart(year) { const d = new Date(Date.UTC(year, 11, 24)); d.setUTCDate(d.getUTCDate() - d.getUTCDay() - 21); return d; }
+function seasonal(day) {
+  const d = new Date(day * 86400000), y = d.getUTCMonth() === 0 ? d.getUTCFullYear() - 1 : d.getUTCFullYear();
+  const start = Math.round(adventStart(y) / 86400000), xmas = Math.round(Date.UTC(y, 11, 25) / 86400000), twelfth = Math.round(Date.UTC(y + 1, 0, 5) / 86400000);
+  let pair = null, type = '';
+  if (advent && day >= start && day <= xmas) { pair = advent.days[Math.min(day - start, advent.days.length - 1)]; pair = { a: pair.a, b: pair.b, note: pair.note }; type = day === xmas ? 'Christmas' : 'Advent'; }
+  else if (christmas && day > xmas && day <= twelfth) { const st = christmas.steps[(day - xmas - 1) % christmas.steps.length]; pair = { a: st.a, b: st.b, note: st.note }; type = 'Christmas'; }
+  if (!pair) return null;
+  const va = osisToIndex(pair.a), vb = osisToIndex(pair.b);
+  for (let i = 0; i < raw.length / 4; i++) {
+    const f = raw[i * 4], t = raw[i * 4 + 1], e = raw[i * 4 + 2];
+    if ((f === va && t <= vb && vb <= e) || (f === vb && t <= va && va <= e)) return { f, t, note: pair.note, type };
+  }
+  return null;
+}
 const entry = (day) => {
+  const s = seasonal(day);
+  if (s) return { day, title: `${label(s.f)} and ${label(s.t)}`, note: s.note, type: s.type, url: `${SITE}?c=${toOsis(s.f)}_${toOsis(s.t)}` };
   const i = pick(day), f = raw[i * 4], t = raw[i * 4 + 1];
   const n = wanted.get(key(f, t));
   return { day, title: `${label(f)} and ${label(t)}`, note: n.note, type: n.type, url: `${SITE}?c=${toOsis(f)}_${toOsis(t)}` };

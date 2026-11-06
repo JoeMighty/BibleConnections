@@ -63,15 +63,15 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Places on a map:** 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
 - **Back up everything:** notes, saved items, collections, plan progress and settings in one file, restored on any device.
-- **Study hub:** 3 reading plans with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
-- **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed.
+- **Study hub:** 4 reading plans (including a 27-day Advent plan) with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed. It follows Advent and Christmas in season.
 
 ### Read and listen
 - **Bible.com links:** 99 translations in 31 languages, with a searchable picker. Choose a reading translation and an optional second one to compare, right in the sidebar.
 - **Listen:** a headphones button opens the chapter in Bible.com's audio Bible for the 65 translations that have one.
 
 ### Teach and share
-- **Guided journeys:** 12 step-by-step tours (3 written for children) with discussion questions, presenter mode for sermons and classes (works with clickers).
+- **Guided journeys:** 15 step-by-step tours (4 written for children), including Advent and Christmas journeys, with discussion questions, presenter mode for sermons and classes (works with clickers).
 - **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.

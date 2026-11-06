@@ -12,6 +12,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by Hebrew or Greek (ἀγάπη, שלום) or by Strong's number (G26, H7965) to open a word study.
 - Grammar toggle: show each original word's grammar in plain words under the Hebrew or Greek text (remembered on this device).
 - Timeline: 40 key events in nine periods, from creation to John's vision on Patmos, each with its passage, place and reading link; show a whole period on the map. Dates are approximate and Genesis 1 to 11 is left undated.
+- Advent reading plan: 27 days from Advent Sunday (29 November 2026) to Christmas Day, one Old Testament promise and its New Testament fulfilment each day, through hope, peace, joy and love. During Advent it opens on today's reading, and calendar reminders fall on the right dates.
+- Three seasonal journeys: Advent: waiting for the King, Christmas: the Word became flesh, and The first Christmas for kids.
+- Seasonal connection of the day: during Advent it follows the Advent plan, and over the twelve days of Christmas it follows the Christmas journey.
 - Keyboard shortcuts list: press ? (also linked from About). / goes to the search box.
 
 ## [0.9.2] - 2026-11-06 - Motion
