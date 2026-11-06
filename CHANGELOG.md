@@ -5,8 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.9.2] - 2026-11-06 - Motion
+
+### Changed
+- About window: updated for the newer study tools, settings and sources (original language text, places, coastline, dictionaries and font), with a plain License section.
+
 ### Added
-- Animations on larger screens with a mouse or trackpad: on the welcome page the heading rises in, the map is drawn from Genesis to Revelation, the numbers count up and sections ease in as you scroll; selecting a connection sends a light along its arc; the side panel eases in new content; buttons respond when pressed. They are off for anyone who has asked their device for reduced motion, and can be switched off in Settings.
+- Animations on larger screens with a mouse or trackpad: on the welcome page the heading rises in, the numbers count up and sections ease in as you scroll; selecting a connection sends a light along its arc; the side panel eases in new content; buttons respond when pressed. They are off for anyone who has asked their device for reduced motion, and can be switched off in Settings.
 
 ## [0.9.1] - 2026-11-05 - Colors and Polish
 
@@ -206,7 +211,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/40bc154...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/33ec141...HEAD
+[0.9.2]: https://github.com/JoeMighty/BibleConnections/compare/40bc154...33ec141
 [0.9.1]: https://github.com/JoeMighty/BibleConnections/compare/634e316...40bc154
 [0.9.0]: https://github.com/JoeMighty/BibleConnections/compare/5834d40...634e316
 [0.8.0]: https://github.com/JoeMighty/BibleConnections/compare/8331ef9...5834d40

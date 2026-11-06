@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.9.1';
+  const VERSION = '0.9.2';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;

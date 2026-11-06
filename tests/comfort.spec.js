@@ -100,6 +100,7 @@ test('animations are off in automated browsers, for reduced motion and when swit
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.motion')))).toBe(false);
   await page.goto('/?motion=on');
   await ready(page);
-  const anims = await page.evaluate(() => { document.documentElement.dataset.motion = 'on'; return getComputedStyle(document.querySelector('.hero')).animationName; });
-  expect(typeof anims).toBe('string');
+  // the welcome page picture never animates
+  const anim = await page.evaluate(() => getComputedStyle(document.querySelector('.hero')).animationName);
+  expect(anim).toBe('none');
 });
