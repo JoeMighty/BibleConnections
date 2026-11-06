@@ -324,6 +324,16 @@
   const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
     .replace(/^(iii|3rd|third)\s+/, '3').replace(/^(ii|2nd|second)\s+/, '2').replace(/^(i|1st|first)\s+/, '1')
     .replace(/[^a-z0-9]/g, '');
+  // edit distance with swapped letters counted as one change, for misspelled book names ("Phillipians")
+  function editDistance(a, b) {
+    const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+    for (let j = 1; j <= b.length; j++) d[0][j] = j;
+    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+    }
+    return d[a.length][b.length];
+  }
   function findBook(q, allowPrefix) {
     const n = norm(q);
     if (!n) return -1;
@@ -333,6 +343,12 @@
     if (bi < 0 && allowPrefix && n.length >= 2) {
       bi = BOOKS.findIndex(b => norm(LANG === 'es' ? b.nameEs : b.nameEn).startsWith(n));
       if (bi < 0) bi = BOOKS.findIndex(b => names(b).some(x => x.startsWith(n)));
+    }
+    // a near miss on a full book name: one change for short names, two for longer ones
+    if (bi < 0 && n.length >= 4 && (allowPrefix || n.length >= 7)) {
+      let best = -1, bestD = n.length >= 7 ? 3 : 2;
+      BOOKS.forEach((b, i) => { for (const x of [norm(b.nameEn), norm(b.nameEs)]) { const dd = editDistance(n, x); if (dd < bestD) { bestD = dd; best = i; } } });
+      bi = best;
     }
     return bi;
   }
@@ -1313,7 +1329,8 @@
       } else {
         html += `<p>Each arc joins two passages that point to each other. Tap or click an arc to see the connection and read it on Bible.com. Tap a bar along the bottom to see a chapter’s connections.</p>
           <p class="muted">Try <button type="button" class="chip" data-action="search" data-q="John 3:16">John 3:16</button> <button type="button" class="chip" data-action="search" data-q="Isaiah 53">Isaiah 53</button> <button type="button" class="chip" data-action="search" data-q="shepherd">shepherd</button>
-          or take a <button type="button" class="chip" data-action="mode" data-mode="journeys">guided journey</button></p>`;
+          or take a <button type="button" class="chip" data-action="mode" data-mode="journeys">guided journey</button>
+          <button type="button" class="chip" data-action="surprise">Surprise me</button></p>`;
       }
       html += savedRecentHTML();
       html += `<h3>Strongest connections</h3>` + listHTML(topList(), false);
@@ -2832,6 +2849,103 @@
     announce('Study image saved.');
   }
 
+
+  // ---------- Search suggestions (books, recent searches, topics, people and places) ----------
+  function attachSuggest(input, submit) {
+    const list = document.createElement('ul');
+    list.className = 'vpick-list suggest-list'; list.id = input.id + 'Suggest'; list.setAttribute('role', 'listbox'); list.hidden = true;
+    list.setAttribute('aria-label', 'Suggestions');
+    input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-expanded', 'false'); input.setAttribute('aria-controls', list.id);
+    const wrap = input.closest('.search-row') || input.parentElement;
+    wrap.style.position = 'relative'; wrap.append(list);
+    let items = [], active = -1;
+    const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
+    const setActive = (i) => {
+      active = i;
+      list.querySelectorAll('[role=option]').forEach((li, k) => li.classList.toggle('active', k === i));
+      if (i >= 0) input.setAttribute('aria-activedescendant', `${list.id}-${i}`); else input.removeAttribute('aria-activedescendant');
+    };
+    const pick = (i) => { input.value = items[i].value; close(); submit(); };
+    const build = () => {
+      const q = input.value.trim(), n = norm(q);
+      const out = [];
+      const add = (value, label, kind) => { if (out.length < 8 && !out.some(o => o.value.toLowerCase() === value.toLowerCase())) out.push({ value, label, kind }); };
+      if (!q) for (const r of store.get('searches', [])) add(r, r, 'Recent');
+      else {
+        // a book name, with any chapter and verse typed after it
+        const m = q.match(/^([1-3]?\s*[^\d:]+?)\s*(\d+(?:\s*[:.]\s*\d+)?)?\s*$/);
+        if (m) {
+          const bi = findBook(m[1], true);
+          const tail = m[2] ? ' ' + m[2].replace(/\s+/g, '').replace('.', ':') : '';
+          if (bi >= 0) add(BOOKS[bi].name + tail, BOOKS[bi].name + tail, 'Book');
+          const nb = norm(m[1]);
+          if (nb.length >= 2) for (const b of BOOKS) if (norm(b.name).startsWith(nb)) add(b.name + tail, b.name + tail, 'Book');
+        }
+        for (const r of store.get('searches', [])) if (norm(r).includes(n) && n.length >= 2) add(r, r, 'Recent');
+        if (n.length >= 3) {
+          const nm = (x) => (LANG === 'es' && x.name_es) || x.name;
+          for (const t of TOPICS || []) if (norm(nm(t)).includes(n) || (t.words || []).some(w => w.startsWith(n))) add(t.words[0], nm(t), 'Topic');
+          for (const p of PEOPLE || []) if (norm(nm(p)).startsWith(n)) add((p.words || [p.name])[0], nm(p), p.type === 'place' ? 'Place' : 'Person');
+        }
+      }
+      items = out;
+      if (!out.length || document.activeElement !== input) { close(); return; }
+      list.innerHTML = out.map((o, i) => `<li role="option" id="${list.id}-${i}" data-i="${i}" aria-selected="false"><span>${esc(o.label)}</span><span class="muted">${esc(tr(o.kind))}</span></li>`).join('');
+      list.hidden = false; input.setAttribute('aria-expanded', 'true'); setActive(-1);
+    };
+    let blurTimer = 0;
+    input.addEventListener('input', build);
+    input.addEventListener('focus', () => { clearTimeout(blurTimer); build(); });
+    input.addEventListener('keydown', (e) => {
+      if (list.hidden) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        // moving past either end returns to what was typed
+        e.preventDefault();
+        let next = active + (e.key === 'ArrowDown' ? 1 : -1);
+        if (next >= items.length) next = -1; else if (next < -1) next = items.length - 1;
+        setActive(next);
+      }
+      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); pick(active); }
+      else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); }
+    });
+    list.addEventListener('mousedown', (e) => e.preventDefault());
+    list.addEventListener('click', (e) => { const li = e.target.closest('[role=option]'); if (li) pick(+li.dataset.i); });
+    input.addEventListener('blur', () => { clearTimeout(blurTimer); blurTimer = setTimeout(close, 120); });
+    input.form && input.form.addEventListener('submit', close);
+  }
+
+  // ---------- How are you feeling? and Surprise me ----------
+  const FEELINGS = [['Anxious', 'anxiety'], ['Afraid', 'fear'], ['Grieving', 'comfort'], ['Tired', 'rest'], ['Guilty', 'forgiveness'], ['Angry', 'anger'],
+    ['Tempted', 'temptation'], ['Weak', 'strength'], ['Waiting', 'patience'], ['Suffering', 'suffering'], ['Thankful', 'thanks'], ['Joyful', 'joy']];
+  function renderFeelings() {
+    const box = $('landingFeelings');
+    if (box) box.innerHTML = FEELINGS.filter(([, id]) => (TOPICS || []).some(t => t.id === id)).map(([label, id]) => `<li><button type="button" class="chip" data-feel="${id}">${esc(label)}</button></li>`).join('');
+  }
+  function surprise() {
+    if (!notedList) connectionOfTheDay();
+    if (!notedList || !notedList.length) return;
+    const i = notedList[Math.floor(Math.random() * notedList.length)];
+    track('surprise');
+    selectRef(i, { zoom: true });
+    focusPanelHeading();
+  }
+
+  // ---------- Keyboard shortcuts ----------
+  function openKeys() {
+    const d = $('keysDialog');
+    if (d.open) return;
+    d.showModal(); d.querySelector('.dialog-inner').scrollTop = 0; $('keysTitle').focus({ preventScroll: true });
+  }
+  $('keysLink').addEventListener('click', () => { el.about.close(); openKeys(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target;
+    if (t.closest('input, textarea, select, [contenteditable]') || document.querySelector('dialog[open]') || !presenter.hidden) return;
+    if (e.key === '?') { e.preventDefault(); openKeys(); }
+    else if (e.key === '/') { e.preventDefault(); const box = landing.hidden ? el.search : $('landingQ'); box.focus(); box.select(); }
+    else if ((e.key === 's' || e.key === 'S') && !t.closest('button, a')) { e.preventDefault(); if (!landing.hidden) hideLanding(); surprise(); }
+  });
+
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
   const saveCollections = (c) => store.set('collections', c);
@@ -3169,6 +3283,7 @@
     else if (a === 'qr') openQR();
     else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
     else if (a === 'exportNotes') exportNotes();
+    else if (a === 'surprise') surprise();
     else if (a === 'studyImage') studyImage(+btn.dataset.v);
     else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
     else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
@@ -3263,6 +3378,11 @@
     el.fromSel.innerHTML = opts; el.toSel.innerHTML = opts;
     el.theme.innerHTML += THEMES.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
     el.bookList.innerHTML = BOOKS.map(b => `<option value="${esc(b.name)}">`).join('');
+    if (!el.search.dataset.suggest) {
+      el.search.dataset.suggest = '1';
+      attachSuggest(el.search, () => el.controls.requestSubmit ? el.controls.requestSubmit() : runSearch());
+      attachSuggest($('landingQ'), () => $('landingSearch').requestSubmit());
+    }
     if (!VERSIONS[settings.version]) settings.version = 'NIV';
     if (settings.version2 && !VERSIONS[settings.version2]) settings.version2 = '';
     const langs = [...new Set([...Object.keys(LANG_NAMES), ...Object.values(VERSIONS).map(v => v.lang || 'en')])];
@@ -3303,10 +3423,38 @@
   });
   el.controls.addEventListener('submit', (e) => { e.preventDefault(); runSearch(); });
 
+  // Hebrew or Greek typed in the search box, or a Strong's number such as G26 or H7965
+  const stripMarks = (x) => x.normalize('NFD').replace(/[\u0300-\u036f\u0591-\u05C7]/g, '').toLowerCase();
+  async function originalWordSearch(q) {
+    const code = q.toUpperCase().match(/^([GH])0*(\d{1,4})$/);
+    const isOrig = /[\u0370-\u03FF\u1F00-\u1FFF\u0590-\u05FF]/.test(q);
+    if (!code && !isOrig) return false;
+    let S;
+    try { S = await loadStrongs(); } catch { el.searchError.textContent = 'Word study could not load. Check your connection and try again.'; return true; }
+    if (code) {
+      const c = code[1] + code[2].padStart(4, '0');
+      if (S[c]) { await openWord(c); focusPanelHeading(); return true; }
+      el.searchError.textContent = `No word found for ${q}.`;
+      return true;
+    }
+    const t = stripMarks(q).replace(/[^\p{L}]/gu, '');
+    let best = null, bestScore = 0;
+    for (const [c, w] of Object.entries(S)) {
+      const l = stripMarks(w.l).replace(/[^\p{L}]/gu, '');
+      const score = l === t ? 1e6 + w.n : l.startsWith(t) && t.length >= 2 ? 1e3 + w.n : 0;
+      if (score > bestScore) { bestScore = score; best = c; }
+    }
+    if (best) { await openWord(best); focusPanelHeading(); return true; }
+    el.searchError.textContent = `No Hebrew or Greek word found for ${q}.`;
+    return true;
+  }
+  const rememberSearch = (q) => { const list = store.get('searches', []).filter(x => x.toLowerCase() !== q.toLowerCase()); list.unshift(q); store.set('searches', list.slice(0, 8)); };
   async function runSearch() {
     const q = el.search.value.trim();
     el.searchError.textContent = '';
     if (!q) return;
+    rememberSearch(q);
+    if (await originalWordSearch(q)) return;
     const quoted = /^["“].*["”]$/.test(q);
     const r = quoted ? null : parseReference(q);
     if (r && r.error) { el.searchError.textContent = r.error; return; }
@@ -3579,6 +3727,7 @@
     renderLandingRecent();
     // the timeline under the picture: Old and New Testament widths match their share of verses
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
+    renderFeelings();
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
   }
   landing.addEventListener('click', (e) => {
@@ -3594,6 +3743,8 @@
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
     else if (btn.dataset.start === 'series') { hideLanding(); setMode('series'); }
     else if (btn.dataset.start === 'study' || btn.dataset.start === 'wordstudy') { hideLanding(); setMode(btn.dataset.start); }
+    else if (btn.dataset.start === 'surprise') { hideLanding(); surprise(); }
+    else if (btn.dataset.feel) { hideLanding(); track('feeling/' + btn.dataset.feel); openEntity('topic', btn.dataset.feel).then(focusPanelHeading); }
     else if (btn.dataset.start === 'passage') { hideLanding(); el.search.value = 'John 3:16'; runSearch(); focusPanelHeading(); }
     else if (btn.dataset.theme) {
       hideLanding();
@@ -3608,7 +3759,7 @@
     if (!q) { $('landingQ').focus(); return; }
     hideLanding();
     el.search.value = q;
-    runSearch();
+    runSearch().then(focusPanelHeading);
   });
   function goHome() {
     resetState();

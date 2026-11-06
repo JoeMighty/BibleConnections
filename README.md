@@ -46,7 +46,9 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Welcome page:** a picture of the full map with an Old and New Testament timeline, search, connection of the day, themes, the current sermon series and "pick up where you left off".
 - **Connections:** tap any arc to see both passages and open them on Bible.com.
 - **Why it connects:** 362 short explanations for the strongest links, with a filter to show only explained connections.
-- **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`) or words (`shepherd`).
+- **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`), words (`shepherd`), Hebrew or Greek (`ἀγάπη`) or Strong's numbers (`G26`), with suggestions as you type and help with misspelled book names.
+- **How are you feeling?** and **Surprise me** on the welcome page, for an easy way in.
+- **Keyboard shortcuts:** press `?` to see them all.
 - **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
 - **Chronological view:** rearrange the books by when their events happen.
 - **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.

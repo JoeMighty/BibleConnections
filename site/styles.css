@@ -829,3 +829,17 @@ details.lexicon div { font-size: var(--t-subhead); line-height: 1.55; margin-top
 @media (prefers-reduced-motion: reduce) {
   :root[data-motion="on"] *, :root[data-motion="on"] *::before, :root[data-motion="on"] *::after { animation: none !important; transition: none !important; }
 }
+
+/* Search suggestions */
+.suggest-list { top: calc(100% + 4px); }
+.suggest-list [role=option] { justify-content: space-between; gap: 12px; }
+.suggest-list [role=option].active .muted, .suggest-list [role=option]:hover .muted { color: #fff; }
+/* How are you feeling? */
+.feelings .chip-list { margin-bottom: 12px; }
+.surprise-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 8px 0 0; }
+/* Keyboard shortcuts */
+table.keys { width: 100%; border-collapse: collapse; margin: 8px 0 12px; }
+table.keys th, table.keys td { text-align: left; padding: 8px 6px; border-bottom: 0.5px solid var(--separator); vertical-align: middle; font-weight: 400; }
+table.keys th { white-space: nowrap; width: 1%; padding-right: 16px; }
+kbd { display: inline-block; min-width: 1.8em; padding: 2px 6px; border-radius: 6px; border: 0.5px solid var(--border-strong); background: var(--surface-2); font: 600 var(--t-footnote) var(--font); text-align: center; }
+#keysTitle:focus { outline: none; }

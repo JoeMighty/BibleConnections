@@ -5,6 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- How are you feeling? on the welcome page: tap anxious, afraid, grieving, tired, guilty, thankful and more to open the matching topic.
+- Surprise me: opens a random connection that has an explanation (on the welcome page, in Explore, or press S).
+- Smarter search: suggestions as you type (books, recent searches, topics, people and places), and misspelled book names are understood (Phillipians 4:6, Revelations 3, Genisis 1).
+- Search by Hebrew or Greek (ἀγάπη, שלום) or by Strong's number (G26, H7965) to open a word study.
+- Keyboard shortcuts list: press ? (also linked from About). / goes to the search box.
+
 ## [0.9.2] - 2026-11-06 - Motion
 
 ### Changed

@@ -89,7 +89,7 @@
         <form class="landing-search" id="landingSearch" role="search" aria-label="Jump to a verse or word">
         <label for="landingQ">Jump to a verse, chapter or word</label>
         <div class="search-row">
-          <input id="landingQ" type="search" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false">
+          <input id="landingQ" type="search" placeholder="e.g. John 3:16, shepherd or ἀγάπη" autocomplete="off" spellcheck="false">
           <button type="submit" class="btn">Go</button>
         </div>
       </form>
@@ -97,6 +97,11 @@
     <div class="landing-inner">
       <div class="landing-series" id="landingSeries" hidden></div>
       <div class="landing-recent" id="landingRecent" hidden></div>
+      <section class="feelings" aria-labelledby="feelTitle">
+        <h3 id="feelTitle">How are you feeling?</h3>
+        <ul class="chip-list" id="landingFeelings"></ul>
+        <p class="surprise-row"><button type="button" class="btn ghost" data-start="surprise">Surprise me</button> <span class="muted">Opens a random connection with an explanation.</span></p>
+      </section>
       <div class="landing-split">
         <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
         <section class="landing-themes" aria-labelledby="themesTitle">
@@ -172,7 +177,7 @@
         <div class="field search-field">
           <label for="search">Find a verse, chapter, book or word</label>
           <div class="search-row">
-            <input id="search" type="search" list="bookList" placeholder="e.g. John 3:16 or shepherd" autocomplete="off" spellcheck="false" aria-describedby="searchError">
+            <input id="search" type="search" placeholder="e.g. John 3:16, shepherd or ἀγάπη" autocomplete="off" spellcheck="false" aria-describedby="searchError">
             <button type="submit" class="btn">Go</button>
           </div>
           <datalist id="bookList"></datalist>
@@ -391,10 +396,31 @@
     </form>
   </dialog>
 
+  <dialog id="keysDialog" aria-labelledby="keysTitle">
+    <div class="dialog-inner">
+      <h2 id="keysTitle" tabindex="-1">Keyboard shortcuts</h2>
+      <table class="keys">
+        <caption class="sr-only">Keyboard shortcuts</caption>
+        <tbody>
+          <tr><th scope="row"><kbd>?</kbd></th><td>Show this list</td></tr>
+          <tr><th scope="row"><kbd>/</kbd></th><td>Go to the search box</td></tr>
+          <tr><th scope="row"><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></th><td>Move around the map (when the map is focused)</td></tr>
+          <tr><th scope="row"><kbd>+</kbd> <kbd>−</kbd></th><td>Zoom in and out</td></tr>
+          <tr><th scope="row"><kbd>0</kbd></th><td>Show the whole Bible again</td></tr>
+          <tr><th scope="row"><kbd>N</kbd> <kbd>P</kbd></th><td>Next and previous connection, or journey step</td></tr>
+          <tr><th scope="row"><kbd>D</kbd></th><td>Describe what the map is showing</td></tr>
+          <tr><th scope="row"><kbd>S</kbd></th><td>Surprise me: open a random explained connection</td></tr>
+          <tr><th scope="row"><kbd>Esc</kbd></th><td>Clear the selection, or close a window</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Click or tab to the map first for the map keys. Shortcuts do not apply while you are typing.</p>
+      <form method="dialog"><button class="btn">Close</button></form>
+    </div>
+  </dialog>
   <dialog id="about" aria-labelledby="aboutTitle">
     <div class="dialog-inner">
       <h2 id="aboutTitle" tabindex="-1">About Bible Connections</h2>
-      <p class="muted">Version <span id="aboutVersion"></span> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md" rel="noopener">What’s new</a></p>
+      <p class="muted">Version <span id="aboutVersion"></span> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md" rel="noopener">What’s new</a> · <button type="button" class="link-btn" id="keysLink">Keyboard shortcuts</button></p>
       <p class="credit-line">Created by <a href="https://github.com/JoeMighty" rel="noopener author">JoeMighty</a> · <a href="https://github.com/JoeMighty/BibleConnections" rel="noopener">Source code on GitHub</a></p>
       <p>Every arc joins two passages of Scripture that point to each other. Short arcs connect nearby verses, long arcs stretch across the whole story of the Bible, from Genesis to Revelation.</p>
       <h3>How to use it</h3>
