@@ -843,3 +843,16 @@ table.keys th, table.keys td { text-align: left; padding: 8px 6px; border-bottom
 table.keys th { white-space: nowrap; width: 1%; padding-right: 16px; }
 kbd { display: inline-block; min-width: 1.8em; padding: 2px 6px; border-radius: 6px; border: 0.5px solid var(--border-strong); background: var(--surface-2); font: 600 var(--t-footnote) var(--font); text-align: center; }
 #keysTitle:focus { outline: none; }
+
+/* Grammar under original words */
+.orig-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.o-gr { display: none; font-size: var(--t-caption); color: var(--muted); max-width: 10em; line-height: 1.3; }
+.show-grammar .o-gr { display: block; }
+
+/* Timeline */
+.tl-era-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+ol.timeline { list-style: none; margin: 0 0 8px; padding: 0 0 0 18px; border-left: 2px solid var(--separator); }
+ol.timeline li { position: relative; padding: 8px 0 14px; }
+ol.timeline li::before { content: ''; position: absolute; left: -25px; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--link); box-shadow: 0 0 0 3px var(--bg); }
+.tl-when { margin: 0; font-size: var(--t-footnote); color: var(--muted); }
+.tl-title { margin: 2px 0 6px; font-weight: 600; font-size: var(--t-headline); }

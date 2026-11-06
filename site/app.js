@@ -1251,6 +1251,7 @@
     else if (state.mode === 'notes') [title, html] = notesHTML();
     else if (state.mode === 'places') [title, html] = placesHTML();
     else if (state.mode === 'shared') [title, html] = sharedHTML();
+    else if (state.mode === 'timeline') [title, html] = timelineHTML();
     else if (state.mode === 'collections') [title, html] = collectionsHTML();
     else if (state.mode === 'collection' && state.collection) [title, html] = collectionHTML();
     else if (i >= 0) {
@@ -1683,6 +1684,7 @@
       ['notes', 'My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
       ['places', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
       ['shared', 'Shared connections', 'Pick two passages and find the passages they both link to.'],
+      ['timeline', 'Timeline', 'Key events of the Bible story in order, with their passages and places.'],
       ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
       ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
       ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
@@ -2325,11 +2327,13 @@
         const lang = words[0][3][0], rtl = lang !== 'G';
         const aram = words.filter(w => w[3][0] === 'A').length;
         const langNote = lang === 'G' ? 'Greek' : !aram ? 'Hebrew' : aram === words.length ? 'Aramaic' : 'Hebrew and Aramaic';
-        ot.innerHTML = `<p class="muted">Language: ${langNote}</p>
-          <ol class="orig${rtl ? ' rtl' : ''}" lang="${langAttr(aram === words.length ? 'A' : lang)}"${rtl ? ' dir="rtl"' : ''} aria-label="Original words. Choose a word to study it.">${words.map(([surf, tr, code, gram]) => {
+        const showGram = store.get('showGrammar', false);
+        ot.innerHTML = `<div class="orig-head"><p class="muted">Language: ${langNote}</p>
+          <button type="button" class="btn ghost small" data-action="toggleGrammar" aria-pressed="${showGram}">${showGram ? 'Hide grammar' : 'Show grammar'}</button></div>
+          <ol class="orig${rtl ? ' rtl' : ''}${showGram ? ' show-grammar' : ''}" lang="${langAttr(aram === words.length ? 'A' : lang)}"${rtl ? ' dir="rtl"' : ''} aria-label="Original words. Choose a word to study it.">${words.map(([surf, tr, code, gram]) => {
             const base = code.replace(/[A-Z]$/, ''), w = STRONGS[base];
             const gloss = w ? w.g : '';
-            const inner = `<span class="o-word">${esc(surf)}</span><span class="o-tr" lang="en" dir="ltr">${esc(tr.replace(/\./g, ''))}</span><span class="o-gl" lang="en" dir="ltr">${esc(gloss)}</span>`;
+            const inner = `<span class="o-word">${esc(surf)}</span><span class="o-tr" lang="en" dir="ltr">${esc(tr.replace(/\./g, ''))}</span><span class="o-gl" lang="en" dir="ltr">${esc(gloss)}</span><span class="o-gr" dir="ltr">${esc(grammarText(gram))}</span>`;
             return `<li>${w ? `<button type="button" class="orig-word" data-action="openWord" data-code="${base}" title="${esc(grammarText(gram))}">${inner}<span class="sr-only">, ${esc(grammarText(gram))}. Study this word</span></button>` : `<span class="orig-word">${inner}</span>`}</li>`;
           }).join('')}</ol>
           <p class="hint">Each word shows its pronunciation and dictionary meaning, not a translation of the verse. Choose a word to study it. Text from STEP Bible (CC BY 4.0).</p>`;
@@ -2946,6 +2950,52 @@
     else if ((e.key === 's' || e.key === 'S') && !t.closest('button, a')) { e.preventDefault(); if (!landing.hidden) hideLanding(); surprise(); }
   });
 
+
+  // ---------- Timeline of events (original writing; dates are approximate) ----------
+  let timelinePromise = null, TIMELINE = null;
+  const loadTimeline = () => (timelinePromise ||= fetchJSON('content/timeline.json').then(d => { TIMELINE = d; return d; }).catch(e => { timelinePromise = null; throw e; }));
+  const tl = (o, k) => (LANG === 'es' && o[k + '_es']) || o[k];
+  function timelineHTML() {
+    if (!TIMELINE) {
+      loadTimeline().then(() => { if (state.mode === 'timeline') renderPanel(); }, () => {});
+      return ['Timeline', '<p class="muted">Loading the timeline…</p>'];
+    }
+    let html = `<p>Key events of the Bible story in order. Choose an event to see its passage and connections, or show a whole period on the map.</p><p class="hint">${esc(tl(TIMELINE, 'note'))}</p>`;
+    for (const era of TIMELINE.eras) {
+      const evs = TIMELINE.events.filter(e => e.era === era.id);
+      if (!evs.length) continue;
+      html += `<section class="tl-era"><div class="tl-era-head"><h3>${esc(tl(era, 'name'))}</h3><button type="button" class="btn ghost small" data-action="openEra" data-era="${esc(era.id)}">Show on the map<span class="sr-only">: ${esc(tl(era, 'name'))}</span></button></div><ol class="timeline">`;
+      for (const e of evs) {
+        const a = osisToIndex(e.ref), z = e.end ? osisToIndex(e.end) : a;
+        if (a < 0) continue;
+        html += `<li><p class="tl-when">${esc(tl(e, 'when') || '')}</p><p class="tl-title">${esc(tl(e, 'title'))}</p>
+          <div class="actions tight">
+            <button type="button" class="chip" data-action="focusRange" data-s="${a}" data-e="${z}">${esc(refLabel(a, z))}</button>
+            ${e.place ? `<button type="button" class="chip" data-action="openGeoName" data-name="${esc(e.place)}">${esc(e.place)} <span class="muted">place</span></button>` : ''}
+            ${miniRead(a)}
+          </div></li>`;
+      }
+      html += '</ol></section>';
+    }
+    html += '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>';
+    return ['Timeline', html];
+  }
+  async function openEra(id) {
+    const d = await loadTimeline();
+    const era = d.eras.find(x => x.id === id);
+    if (!era) return;
+    const set = new Set();
+    for (const e of d.events.filter(x => x.era === id)) {
+      const a = osisToIndex(e.ref), z = e.end ? osisToIndex(e.end) : a;
+      if (a >= 0) for (let v = a; v <= z; v++) set.add(v);
+    }
+    const verses = Int32Array.from([...set].sort((x, y) => x - y)), mask = new Uint8Array(TOTAL);
+    for (const v of verses) mask[v] = 1;
+    track('era/' + id);
+    setFocus({ kind: 'words', query: tl(era, 'name'), verses, mask, start: verses[0], end: verses[verses.length - 1] + 1,
+      entity: { type: 'era', id, name: tl(era, 'name'), description: `Passages for the events in this period: ${d.events.filter(x => x.era === id).map(x => tl(x, 'title')).join(', ')}.` } }, { zoom: true });
+  }
+
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
   const saveCollections = (c) => store.set('collections', c);
@@ -3284,6 +3334,17 @@
     else if (a === 'openWord') { openWord(btn.dataset.code).then(focusPanelHeading); }
     else if (a === 'exportNotes') exportNotes();
     else if (a === 'surprise') surprise();
+    else if (a === 'toggleGrammar') {
+      const on = !store.get('showGrammar', false);
+      store.set('showGrammar', on);
+      btn.setAttribute('aria-pressed', on); btn.textContent = tr(on ? 'Hide grammar' : 'Show grammar');
+      const list = $('origText') && $('origText').querySelector('ol.orig');
+      if (list) list.classList.toggle('show-grammar', on);
+      announce(on ? 'Grammar shown under each word.' : 'Grammar hidden.');
+    }
+    else if (a === 'openEra') openEra(btn.dataset.era).then(focusPanelHeading);
+    else if (a === 'focusRange') { const st = +btn.dataset.s, en = +btn.dataset.e; setFocus({ kind: 'verse', book: verseBook[st], start: st, end: en + 1 }, { zoom: true }); focusPanelHeading(); }
+    else if (a === 'openGeoName') openGeo(btn.dataset.name).then(focusPanelHeading);
     else if (a === 'studyImage') studyImage(+btn.dataset.v);
     else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
     else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
@@ -3867,7 +3928,7 @@
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
       else if (state.mode === 'shared' && state.shared && state.shared.aLabel) p.set('shared', `${state.shared.aLabel}~${state.shared.bLabel}`);
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared'].includes(state.mode)) p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -3921,8 +3982,9 @@
     if (p.get('collection')) { const col = decodeCollection(p.get('collection')); if (col) { col.shared = !getCollections().some(c => c.name === col.name && c.items.length === col.items.length); openCollection(col, { push: false }); return; } }
     if (p.get('word')) { await openWord(p.get('word')); return; }
     if (p.get('geo')) { await openGeo(p.get('geo')); return; }
+    if (p.get('era')) { await openEra(p.get('era')); return; }
     if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {

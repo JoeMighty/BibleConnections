@@ -10,6 +10,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Surprise me: opens a random connection that has an explanation (on the welcome page, in Explore, or press S).
 - Smarter search: suggestions as you type (books, recent searches, topics, people and places), and misspelled book names are understood (Phillipians 4:6, Revelations 3, Genisis 1).
 - Search by Hebrew or Greek (ἀγάπη, שלום) or by Strong's number (G26, H7965) to open a word study.
+- Grammar toggle: show each original word's grammar in plain words under the Hebrew or Greek text (remembered on this device).
+- Timeline: 40 key events in nine periods, from creation to John's vision on Patmos, each with its passage, place and reading link; show a whole period on the map. Dates are approximate and Genesis 1 to 11 is left undated.
 - Keyboard shortcuts list: press ? (also linked from About). / goes to the search box.
 
 ## [0.9.2] - 2026-11-06 - Motion

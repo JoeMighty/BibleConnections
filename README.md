@@ -56,9 +56,10 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### Study
 - **Passage explorer:** open any verse to see its original Hebrew, Aramaic or Greek words, its place in the chapter, an introduction to the book (all 66), connections split by Testament, people, places and topics, reflection questions and your own notes.
-- **Word study:** about 14,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry.
+- **Word study:** about 14,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry. A grammar toggle shows each word's grammar in plain words under the original text.
 - **Words in common:** every connection shows the Hebrew and Greek words both passages share, across the two Testaments too.
 - **Chapter and book study:** key original words, places on a map, the book's introduction and reflection questions for any chapter or book.
+- **Timeline:** 40 key events in order, from creation to Patmos, linked to their passages, places and the map.
 - **Places on a map:** 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
 - **Back up everything:** notes, saved items, collections, plan progress and settings in one file, restored on any device.

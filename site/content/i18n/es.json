@@ -777,7 +777,15 @@
     "Topic": "Tema",
     "Person": "Persona",
     "Place": "Lugar",
-    "e.g. John 3:16, shepherd or ἀγάπη": "p. ej., Juan 3:16, pastor o ἀγάπη"
+    "e.g. John 3:16, shepherd or ἀγάπη": "p. ej., Juan 3:16, pastor o ἀγάπη",
+    "Show grammar": "Mostrar gramática",
+    "Hide grammar": "Ocultar gramática",
+    "Grammar shown under each word.": "Gramática visible debajo de cada palabra.",
+    "Grammar hidden.": "Gramática oculta.",
+    "Timeline": "Línea de tiempo",
+    "Loading the timeline…": "Cargando la línea de tiempo…",
+    "Key events of the Bible story in order. Choose an event to see its passage and connections, or show a whole period on the map.": "Los acontecimientos clave de la historia bíblica en orden. Elige uno para ver su pasaje y sus conexiones, o muestra todo un período en el mapa.",
+    "Key events of the Bible story in order, with their passages and places.": "Los acontecimientos clave de la historia bíblica en orden, con sus pasajes y lugares."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -891,6 +899,7 @@
     "Restored {n} item. Reloading…": "Se restauró {n} elemento. Recargando…",
     "Saved {a} of {b} files. Try again with a better connection to finish.": "Se guardaron {a} de {b} archivos. Vuelve a intentarlo con mejor conexión para terminar.",
     "No word found for {q}.": "No se encontró ninguna palabra para {q}.",
-    "No Hebrew or Greek word found for {q}.": "No se encontró ninguna palabra hebrea o griega para {q}."
+    "No Hebrew or Greek word found for {q}.": "No se encontró ninguna palabra hebrea o griega para {q}.",
+    "Passages for the events in this period: {x}.": "Pasajes de los acontecimientos de este período: {x}."
   }
 }
