@@ -11,10 +11,13 @@
   <script>
     // light or dark before the page draws, matching the main site
     (function () {
-      var a = 'system';
-      try { a = JSON.parse(localStorage.getItem('bc.appearance')) || 'system'; } catch (e) { /* storage unavailable */ }
+      var get = function (k, d) { try { var v = JSON.parse(localStorage.getItem('bc.' + k)); return v === null ? d : v; } catch (e) { return d; } };
+      var a = get('appearance', 'system'), root = document.documentElement;
       var light = a === 'light' || (a === 'system' && !matchMedia('(prefers-color-scheme: dark)').matches);
-      document.documentElement.dataset.theme = light ? 'light' : 'dark';
+      root.dataset.theme = light ? 'light' : 'dark';
+      root.dataset.textsize = get('textsize', 'standard');
+      root.dataset.readable = get('readable', false) ? 'on' : 'off';
+      root.dataset.contrast = get('contrast', false) || matchMedia('(prefers-contrast: more)').matches ? 'more' : 'normal';
     })();
   </script>
 </head>

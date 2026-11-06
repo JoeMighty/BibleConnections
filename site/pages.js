@@ -43,16 +43,24 @@
     } else {
       const r = await (await fetch('content/roadmap.json')).json();
       document.title = `${t('Roadmap')} · Bible Connections`;
+      // status symbols in the style of SF Symbols: a filled dot, an empty circle and a checkmark
+      const sym = {
+        progress: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="4.5" fill="currentColor"/></svg>',
+        planned: '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>',
+        shipped: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5 8.3 14 15.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      };
+      const st = (k) => `<span class="status ${k}">${sym[k]}<span class="sr-only">${esc(t(k === 'progress' ? 'In progress' : k === 'planned' ? 'Planned' : 'Shipped'))}: </span></span>`;
+      const row = (k, x) => `<li>${st(k)}<div class="row-text"><h3>${esc(pick(x, 'title'))}</h3><p>${esc(pick(x, 'text'))}</p></div></li>`;
       main.innerHTML = `<h1>${esc(t('Roadmap'))}</h1>
         <p class="lede">${esc(t('What is new, what we are working on, and what is planned. Ideas and feedback are welcome on GitHub.'))}</p>
-        <ul class="legend"><li><span class="pill progress">${esc(t('In progress'))}</span></li><li><span class="pill planned">${esc(t('Planned'))}</span></li><li><span class="pill shipped">${esc(t('Shipped'))}</span></li></ul>
+        <ul class="legend" aria-hidden="true"><li>${sym.progress.replace('<svg', '<svg class="status progress"')}${esc(t('In progress'))}</li><li>${sym.planned.replace('<svg', '<svg class="status planned"')}${esc(t('Planned'))}</li><li>${sym.shipped.replace('<svg', '<svg class="status shipped"')}${esc(t('Shipped'))}</li></ul>
         <section aria-labelledby="progress"><h2 id="progress">${esc(t('In progress'))}</h2>
-          <ul class="road progress">${r.in_progress.map(x => `<li><h3>${esc(pick(x, 'title'))}</h3><p>${esc(pick(x, 'text'))}</p></li>`).join('')}</ul></section>
+          <ul class="group">${r.in_progress.map(x => row('progress', x)).join('')}</ul></section>
         <section aria-labelledby="planned"><h2 id="planned">${esc(t('Planned'))}</h2>
-          <p class="lede">${esc(t('Plans can change. Dates are not promised.'))} <a href="https://github.com/JoeMighty/BibleConnections/issues/new/choose" rel="noopener">${esc(t('Suggest an idea'))}</a></p>
-          ${r.planned.map(g => `<p class="when">${esc(pick(g, 'when'))}</p><ul class="road">${g.items.map(x => `<li><h3>${esc(pick(x, 'title'))}</h3><p>${esc(pick(x, 'text'))}</p></li>`).join('')}</ul>`).join('')}</section>
+          ${r.planned.map(g => `<h3 class="group-head">${esc(pick(g, 'when'))}</h3><ul class="group">${g.items.map(x => row('planned', x)).join('')}</ul>`).join('')}
+          <p class="group-foot">${esc(t('Plans can change. Dates are not promised.'))} <a href="https://github.com/JoeMighty/BibleConnections/issues/new/choose" rel="noopener">${esc(t('Suggest an idea'))}</a></p></section>
         <section aria-labelledby="shipped"><h2 id="shipped">${esc(t('Shipped'))}</h2><p class="lede">${esc(t('Features you can use today.'))}</p>
-          <div class="shipped-list">${r.shipped.map(s => `<div class="release"><h3>${esc(pick(s, 'version'))}</h3><ul>${(pick(s, 'items') || []).map(i => `<li>${esc(i)}</li>`).join('')}</ul></div>`).join('')}</div></section>`;
+          <div class="shipped-list">${r.shipped.map(s2 => `<div class="release"><h3 class="group-head">${esc(pick(s2, 'version'))}</h3><ul class="group done">${(pick(s2, 'items') || []).map(i => `<li>${st('shipped')}<span>${esc(i)}</span></li>`).join('')}</ul></div>`).join('')}</div></section>`;
     }
   } catch {
     main.innerHTML = `<p class="loading">${esc(t('Sorry, this page could not load. Please try again.'))}</p>`;

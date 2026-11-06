@@ -40,11 +40,23 @@ test('every Try it link in the guide opens something on the site', async ({ page
 test('the roadmap shows shipped work grayed out, plus work in progress and planned', async ({ page }) => {
   await page.goto('/roadmap.html');
   await expect(page.locator('#progress')).toHaveText('In progress');
-  await expect(page.locator('.road.progress li').first()).toContainText('Prophecy and fulfilment explorer');
+  await expect(page.locator('section[aria-labelledby=progress] .group li').first()).toContainText('Prophecy and fulfilment explorer');
   await expect(page.locator('.release').first()).toContainText('Live now');
-  const shipped = await page.locator('.release li').first().evaluate(e => getComputedStyle(e).color);
-  const planned = await page.locator('.road li h3').first().evaluate(e => getComputedStyle(e).color);
+  // shipped rows are grayed out compared with planned ones, and each status is named for screen readers
+  const shipped = await page.locator('.group.done li').first().evaluate(e => getComputedStyle(e).color);
+  const planned = await page.locator('section[aria-labelledby=planned] .group h3').first().evaluate(e => getComputedStyle(e).color);
   expect(shipped).not.toBe(planned);
+  await expect(page.locator('.group.done li .sr-only').first()).toHaveText('Shipped:');
+});
+
+test('the pages follow the reader\'s text size, font and contrast settings', async ({ page }) => {
+  await page.goto('/roadmap.html');
+  await page.evaluate(() => { localStorage.setItem('bc.textsize', '"xlarge"'); localStorage.setItem('bc.readable', 'true'); localStorage.setItem('bc.contrast', 'true'); });
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-textsize', 'xlarge');
+  await expect(page.locator('html')).toHaveAttribute('data-readable', 'on');
+  await expect(page.locator('html')).toHaveAttribute('data-contrast', 'more');
+  expect(await page.evaluate(() => parseFloat(getComputedStyle(document.body).fontSize))).toBe(22);
 });
 
 test('the pages follow the site language', async ({ page }) => {

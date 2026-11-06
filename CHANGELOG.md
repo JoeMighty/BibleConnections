@@ -20,7 +20,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Seasonal connection of the day: during Advent it follows the Advent plan, and over the twelve days of Christmas it follows the Christmas journey.
 - How to use page: short guides to 18 features, each with a Try it button that opens it on the site.
 - Roadmap page: what is in progress, what is planned next and later, and everything shipped so far (grayed out, by release).
-- Both are linked from the welcome page footer and the About window, in English and Spanish.
+- Both are linked from the welcome page footer and the About window, in English and Spanish. They follow Apple's Human Interface Guidelines: a translucent top bar, inset grouped lists, sentence-case labels, status symbols, 44-point touch targets, and the reader's text size, font and contrast settings.
 - Keyboard shortcuts list: press ? (also linked from About). / goes to the search box.
 
 ## [0.9.2] - 2026-11-06 - Motion
