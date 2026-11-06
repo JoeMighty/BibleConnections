@@ -856,3 +856,7 @@ ol.timeline li { position: relative; padding: 8px 0 14px; }
 ol.timeline li::before { content: ''; position: absolute; left: -25px; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--link); box-shadow: 0 0 0 3px var(--bg); }
 .tl-when { margin: 0; font-size: var(--t-footnote); color: var(--muted); }
 .tl-title { margin: 2px 0 6px; font-weight: 600; font-size: var(--t-headline); }
+
+/* Footer links on the welcome page */
+.foot-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0 0 12px; }
+.foot-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: var(--t-subhead); }

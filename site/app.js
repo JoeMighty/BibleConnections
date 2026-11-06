@@ -3829,6 +3829,8 @@
       for (const sec of landing.querySelectorAll('.landing-inner > *')) { sec.classList.add('reveal'); sec.classList.remove('in'); revealObserver.observe(sec); }
     }
   }
+  // the guide and roadmap pages open in the same language as the site
+  if (LANG !== 'en') for (const a of document.querySelectorAll('#footGuide, #footRoadmap, a.lang-link')) a.setAttribute('href', a.getAttribute('href') + '?lang=' + LANG);
   function buildLanding() {
     const fmt = (n) => n.toLocaleString();
     $('landingStats').innerHTML = [

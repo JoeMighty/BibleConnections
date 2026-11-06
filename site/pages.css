@@ -1,0 +1,71 @@
+/* Shared styles for the How to use and Roadmap pages. Same colors and type as the main site. */
+:root {
+  --bg: #000000; --surface: #1c1c1e; --surface-2: #2c2c2e; --text: #ffffff; --muted: rgba(235, 235, 245, 0.68);
+  --separator: rgba(84, 84, 88, 0.6); --link: #5eb0ff; --accent: #0071e3; --accent-ink: #ffffff; --done: #8e8e93;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #ffffff; --surface: #f2f2f7; --surface-2: #ffffff; --text: #000000; --muted: rgba(60, 60, 67, 0.85);
+  --separator: rgba(60, 60, 67, 0.29); --link: #0058b0; --done: #6e6e73;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 17px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 8px; z-index: 10; background: var(--surface); padding: 8px 12px; border-radius: 8px; }
+.top {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px;
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+  border-bottom: 0.5px solid var(--separator); position: sticky; top: 0; background: var(--bg); z-index: 5;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; min-height: 44px; }
+.brand img { border-radius: 8px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px; }
+.top nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.top nav a[aria-current="page"] { background: var(--surface); color: var(--text); }
+main { max-width: 1040px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px)); }
+h1 { font: 700 clamp(32px, 4.6vw, 52px)/1.08 var(--font-display); letter-spacing: -0.03em; margin: 0 0 12px; text-wrap: balance; }
+.lede { color: var(--muted); font-size: clamp(17px, 1.6vw, 20px); max-width: 40em; margin: 0 0 8px; }
+h2 { font: 700 clamp(22px, 2.4vw, 28px)/1.2 var(--font-display); letter-spacing: -0.02em; margin: 48px 0 16px; }
+h3 { font: 600 19px/1.3 var(--font-display); margin: 0 0 6px; }
+.loading { color: var(--muted); }
+
+/* How to use */
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+.toc a { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 999px; background: var(--surface); color: var(--text); text-decoration: none; font-size: 15px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+.card { background: var(--surface); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card p { margin: 0; color: var(--muted); }
+.card ol { margin: 4px 0 0; padding-left: 1.3em; display: grid; gap: 4px; font-size: 15px; }
+.try { margin-top: auto; padding-top: 8px; }
+.try a {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 16px; border-radius: 12px;
+  background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; font-size: 15px;
+}
+
+/* Roadmap */
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px; }
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.pill { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; }
+.pill.progress { background: var(--accent); color: var(--accent-ink); }
+.pill.planned { background: var(--surface); color: var(--text); border: 0.5px solid var(--separator); }
+.pill.shipped { background: transparent; color: var(--done); border: 0.5px solid var(--separator); }
+.road { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.road li { background: var(--surface); border-radius: 14px; padding: 16px 18px; }
+.road li p { margin: 0; color: var(--muted); }
+.road.progress li { border-left: 4px solid var(--accent); }
+.when { font: 600 15px var(--font); color: var(--muted); margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+/* shipped features are grayed out */
+.shipped-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 12px; align-items: start; }
+.release { border: 1px dashed var(--separator); border-radius: 14px; padding: 16px 18px; }
+.release h3 { color: var(--done); }
+.release ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.release li { color: var(--done); padding-left: 24px; position: relative; }
+.release li::before { content: '✓'; position: absolute; left: 0; color: var(--done); }
+
+.foot { border-top: 0.5px solid var(--separator); padding: 20px 16px 32px; text-align: center; color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

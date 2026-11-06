@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- The welcome page footer no longer says no Bible text is stored: it now says no Bible translation is stored, since the original Hebrew and Greek are shown.
+
 ### Added
 - How are you feeling? on the welcome page: tap anxious, afraid, grieving, tired, guilty, thankful and more to open the matching topic.
 - Surprise me: opens a random connection that has an explanation (on the welcome page, in Explore, or press S).
@@ -15,6 +18,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Advent reading plan: 27 days from Advent Sunday (29 November 2026) to Christmas Day, one Old Testament promise and its New Testament fulfilment each day, through hope, peace, joy and love. During Advent it opens on today's reading, and calendar reminders fall on the right dates.
 - Three seasonal journeys: Advent: waiting for the King, Christmas: the Word became flesh, and The first Christmas for kids.
 - Seasonal connection of the day: during Advent it follows the Advent plan, and over the twelve days of Christmas it follows the Christmas journey.
+- How to use page: short guides to 18 features, each with a Try it button that opens it on the site.
+- Roadmap page: what is in progress, what is planned next and later, and everything shipped so far (grayed out, by release).
+- Both are linked from the welcome page footer and the About window, in English and Spanish.
 - Keyboard shortcuts list: press ? (also linked from About). / goes to the search box.
 
 ## [0.9.2] - 2026-11-06 - Motion

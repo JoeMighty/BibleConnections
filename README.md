@@ -91,6 +91,8 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ## More guides
 
+- [How to use Bible Connections](https://joemighty.github.io/BibleConnections/guide.html)
+- [Roadmap](https://joemighty.github.io/BibleConnections/roadmap.html)
 - [Usage stats (optional)](docs/ANALYTICS.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
 - [Growing the reach of the project](docs/PROMOTION.md)

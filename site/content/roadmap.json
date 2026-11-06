@@ -1,0 +1,39 @@
+{
+  "in_progress": [
+    { "title": "Prophecy and fulfilment explorer", "title_es": "Explorador de profecía y cumplimiento",
+      "text": "Old Testament promises and their New Testament fulfilments shown as connected stages on the map, with covenants and symbols. The first 12 chains are written and waiting for pastoral review.",
+      "text_es": "Promesas del Antiguo Testamento y su cumplimiento en el Nuevo, mostradas como etapas conectadas en el mapa, con pactos y símbolos. Las primeras 12 cadenas están escritas y esperan revisión pastoral." },
+    { "title": "Pastoral review of written content", "title_es": "Revisión pastoral del contenido escrito",
+      "text": "A pastor is reviewing the book introductions, reflection questions, Advent readings and timeline dates.",
+      "text_es": "Un pastor está revisando las introducciones a los libros, las preguntas de reflexión, las lecturas de Adviento y las fechas de la línea de tiempo." }
+  ],
+  "planned": [
+    { "when": "Next", "when_es": "Próximamente", "items": [
+      { "title": "Report a weak link", "title_es": "Reportar un vínculo débil", "text": "Flag a cross reference that seems loose, so poor ones can be hidden.", "text_es": "Marca una referencia cruzada que parezca débil, para poder ocultar las malas." },
+      { "title": "Collection to slides", "title_es": "De colección a diapositivas", "text": "Turn a collection into a simple slide deck for a sermon or small group.", "text_es": "Convierte una colección en una presentación sencilla para un sermón o un grupo pequeño." },
+      { "title": "Church page", "title_es": "Página para iglesias", "text": "A simple page for church websites with this week's sermon passages.", "text_es": "Una página sencilla para sitios de iglesias con los pasajes del sermón de la semana." },
+      { "title": "Leader guides", "title_es": "Guías para líderes", "text": "Printable guides for each journey with timings and leader notes.", "text_es": "Guías imprimibles para cada recorrido con tiempos y notas para el líder." }
+    ] },
+    { "when": "Later", "when_es": "Más adelante", "items": [
+      { "title": "Holy Week journey and reading plan", "title_es": "Recorrido y plan de lectura de Semana Santa", "text": "Palm Sunday to resurrection morning, with Old Testament connections for each day.", "text_es": "Del Domingo de Ramos a la mañana de la resurrección, con conexiones del Antiguo Testamento para cada día." },
+      { "title": "Smaller embeds", "title_es": "Insertos más pequeños", "text": "Embed a single verse or journey step on a church website, in light or dark.", "text_es": "Inserta un solo versículo o paso de un recorrido en el sitio de una iglesia, en claro u oscuro." },
+      { "title": "Faster on slow phones", "title_es": "Más rápido en teléfonos lentos", "text": "Smaller Hebrew and Greek files and a faster first load.", "text_es": "Archivos hebreos y griegos más pequeños y una primera carga más rápida." },
+      { "title": "Testing with real users", "title_es": "Pruebas con usuarios reales", "text": "Accessibility testing with people who use screen readers and other assistive technology.", "text_es": "Pruebas de accesibilidad con personas que usan lectores de pantalla y otras tecnologías de apoyo." },
+      { "title": "Google Play listing", "title_es": "Publicación en Google Play", "text": "The installable app, also available from the Play Store.", "text_es": "La app instalable, también disponible en Play Store." },
+      { "title": "More interface languages", "title_es": "Más idiomas de la interfaz", "text": "The site itself in more languages, starting with Portuguese.", "text_es": "El sitio en más idiomas, empezando por el portugués." }
+    ] }
+  ],
+  "shipped": [
+    { "version": "Live now", "version_es": "Ya disponible", "items": ["How are you feeling? and Surprise me", "Smarter search, and Hebrew and Greek search", "Keyboard shortcuts", "Grammar under the original words", "Timeline of 40 key events", "Advent reading plan and Advent and Christmas journeys", "Seasonal connection of the day"],
+      "items_es": ["¿Cómo te sientes? y Sorpréndeme", "Búsqueda más inteligente, y búsqueda en hebreo y griego", "Atajos de teclado", "Gramática bajo las palabras originales", "Línea de tiempo de 40 acontecimientos", "Plan de lectura de Adviento y recorridos de Adviento y Navidad", "Conexión del día según el tiempo litúrgico"] },
+    { "version": "0.9.2", "items": ["Gentle animations on desktop", "Updated About window"], "items_es": ["Animaciones suaves en computadoras", "Ventana Acerca de actualizada"] },
+    { "version": "0.9.1", "items": ["Arc color styles, including color-blind friendly", "Icon beside the site title"], "items_es": ["Estilos de color de los arcos, incluido uno apto para daltonismo", "Icono junto al título del sitio"] },
+    { "version": "0.9.0", "items": ["Choosing between close arcs on phones", "Text size and an easier-to-read font", "Words in common for every connection", "Chapter and book study with key words", "Back up everything and save for offline", "Share a verse study as an image"],
+      "items_es": ["Elegir entre arcos cercanos en teléfonos", "Tamaño del texto y una letra más fácil de leer", "Palabras en común para cada conexión", "Estudio de capítulos y libros con palabras clave", "Copia de todo y uso sin conexión", "Compartir un estudio como imagen"] },
+    { "version": "0.8.0", "items": ["Listen on Bible.com", "Printable passage handouts", "My notes", "Places on a map", "Shared connections"], "items_es": ["Escuchar en Bible.com", "Hojas imprimibles de pasajes", "Mis notas", "Lugares en un mapa", "Conexiones compartidas"] },
+    { "version": "0.7.0", "items": ["Passage explorer with the original Hebrew and Greek", "Expanded word study", "Book introductions and reflection questions", "Redesigned welcome page"], "items_es": ["Explorador de pasajes con el hebreo y el griego originales", "Estudio de palabras ampliado", "Introducciones a los libros y preguntas de reflexión", "Página de inicio rediseñada"] },
+    { "version": "0.6.0", "items": ["99 Bible.com translations in 31 languages", "Compare with a second translation", "Searchable translation picker"], "items_es": ["99 traducciones de Bible.com en 31 idiomas", "Comparar con una segunda traducción", "Selector de traducciones con búsqueda"] },
+    { "version": "0.5.0 and earlier", "version_es": "0.5.0 y anteriores", "items": ["The interactive map of 199,275 cross references", "Guided journeys, presenter mode and handouts", "Word study, people, places and topics", "Reading plans, collections and a group game", "Spanish, kids mode, offline use and sharing"],
+      "items_es": ["El mapa interactivo de 199.275 referencias cruzadas", "Recorridos guiados, modo presentación y hojas", "Estudio de palabras, personas, lugares y temas", "Planes de lectura, colecciones y un juego para grupos", "Español, modo niños, uso sin conexión y compartir"] }
+  ]
+}

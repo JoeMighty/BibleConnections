@@ -788,7 +788,11 @@
     "Key events of the Bible story in order, with their passages and places.": "Los acontecimientos clave de la historia bíblica en orden, con sus pasajes y lugares.",
     "Advent": "Adviento",
     "Christmas": "Navidad",
-    "Starts on Advent Sunday,": "Empieza el primer domingo de Adviento,"
+    "Starts on Advent Sunday,": "Empieza el primer domingo de Adviento,",
+    "How to use": "Cómo usarlo",
+    "Roadmap": "Hoja de ruta",
+    "More about Bible Connections": "Más sobre Bible Connections",
+    "Cross references from OpenBible.info. Passages open on Bible.com. No Bible translation is stored on this site.": "Referencias cruzadas de OpenBible.info. Los pasajes se abren en Bible.com. Este sitio no guarda ninguna traducción de la Biblia."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

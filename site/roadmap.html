@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap · Bible Connections</title>
+  <meta name="description" content="What has shipped, what we are working on, and what is planned for Bible Connections.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="pages.css">
+  <script>
+    // light or dark before the page draws, matching the main site
+    (function () {
+      var a = 'system';
+      try { a = JSON.parse(localStorage.getItem('bc.appearance')) || 'system'; } catch (e) { /* storage unavailable */ }
+      var light = a === 'light' || (a === 'system' && !matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = light ? 'light' : 'dark';
+    })();
+  </script>
+</head>
+<body data-page="roadmap">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./" id="homeLink"><img src="icons/icon.svg" alt="" width="34" height="34"><span>Bible Connections</span></a>
+    <nav aria-label="Pages">
+      <a href="./" id="navHome">Open the map</a>
+      <a href="guide.html" id="navGuide">How to use</a>
+      <a href="roadmap.html" id="navRoadmap" aria-current="page">Roadmap</a>
+    </nav>
+  </header>
+  <main id="main"><p class="loading">Loading…</p></main>
+  <footer class="foot"><p>Created by <a href="https://github.com/JoeMighty" rel="noopener author">JoeMighty</a> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md" rel="noopener" id="changelogLink">Changelog</a></p></footer>
+  <script src="pages.js"></script>
+</body>
+</html>
