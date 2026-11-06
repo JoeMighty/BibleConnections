@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-06 - Advent
+
 ### Fixed
 - The welcome page footer no longer says no Bible text is stored: it now says no Bible translation is stored, since the original Hebrew and Greek are shown.
 
@@ -229,7 +231,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search by verse, chapter or book, testament, category and book filters, 12 themes and a strength slider.
 - Keyboard and screen reader support and a responsive layout.
 
-[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/33ec141...HEAD
+[Unreleased]: https://github.com/JoeMighty/BibleConnections/compare/dd77b09...HEAD
+[0.10.0]: https://github.com/JoeMighty/BibleConnections/compare/33ec141...dd77b09
 [0.9.2]: https://github.com/JoeMighty/BibleConnections/compare/40bc154...33ec141
 [0.9.1]: https://github.com/JoeMighty/BibleConnections/compare/634e316...40bc154
 [0.9.0]: https://github.com/JoeMighty/BibleConnections/compare/5834d40...634e316
