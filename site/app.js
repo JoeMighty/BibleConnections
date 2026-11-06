@@ -44,6 +44,12 @@
   const PAGE = 60;            // list items per "show more"
   const DEFAULT_VOTES = 7;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Animations run on larger screens with a mouse or trackpad, unless the person asked for less motion.
+  // Automated browsers get them only when asked (?motion=on), so tests see the page at rest.
+  const desktopQuery = matchMedia('(pointer: fine) and (min-width: 1000px)');
+  const motionForced = new URLSearchParams(location.search).get('motion');
+  const motionOn = () => (motionForced === 'on' ? true : motionForced === 'off' ? false
+    : settings.motion && !reducedMotion && desktopQuery.matches && !navigator.webdriver);
 
   const $ = (id) => document.getElementById(id);
   const el = {
@@ -75,6 +81,7 @@
     textsize: store.get('textsize', 'standard'),
     readable: store.get('readable', false),
     arcStyle: store.get('arcStyle', 'rainbow'),
+    motion: store.get('motion', true),
     version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
     version2: store.get('version2', ''),
   };
@@ -146,12 +153,14 @@
     document.documentElement.dataset.kids = settings.kids ? 'on' : 'off';
     document.documentElement.dataset.textsize = settings.textsize;
     document.documentElement.dataset.readable = settings.readable ? 'on' : 'off';
+    document.documentElement.dataset.motion = motionOn() ? 'on' : 'off';
     document.querySelector('meta[name=theme-color]').content = pal.bg;
     buildColors();
     renderArcStyles();
     if (N) { renderLegend(); drawBase(); renderPanel(); }
   }
   darkQuery.addEventListener?.('change', applyAppearance);
+  desktopQuery.addEventListener?.('change', applyAppearance);
   contrastQuery.addEventListener?.('change', applyAppearance);
 
   // ---------- Data ----------
@@ -829,7 +838,7 @@
     }
     if (state.mode === 'journey') { const s = currentStep(); if (s) highlightPair(ctx, s.ia, s.ib); }
     if (state.hover >= 0 && state.hover !== state.selected) strokePair(ctx, F[state.hover], T[state.hover], pal.sel, 1.6, 0.75);
-    if (state.selected >= 0) highlightPair(ctx, F[state.selected], T[state.selected]);
+    if (state.selected >= 0) { highlightPair(ctx, F[state.selected], T[state.selected]); if (trace) paintTrace(ctx); }
     if (state.mode === 'plan' && state.plan) {
       const plan = PLANS.find(x => x.id === state.plan.id);
       for (const it of planDays(plan)[state.plan.day].items) highlightPair(ctx, it.a, it.b);
@@ -1075,9 +1084,34 @@
   // ---------- Selection ----------
   function announce(msg) { el.announcer.textContent = ''; setTimeout(() => { el.announcer.textContent = msg; }, 30); }
 
+  // a light that travels along the chosen arc, from the first passage to the second
+  let trace = null;
+  function startTrace(i) {
+    if (document.documentElement.dataset.motion !== 'on') { trace = null; return; }
+    trace = { i, t0: performance.now() };
+    drawOverlay();
+  }
+  function paintTrace(ctx) {
+    if (!trace || trace.i !== state.selected) { trace = null; return; }
+    const p = Math.min(1, (performance.now() - trace.t0) / 950), e = 1 - Math.pow(1 - p, 3);
+    const a = POS[F[trace.i]] + 0.5, b = POS[T[trace.i]] + 0.5;
+    const r = Math.abs(b - a) / 2 * view.k, cx = view.tx + (a + b) / 2 * view.k;
+    if (r > 1) {
+      // angle runs from the first passage's end of the arc to the second's
+      const th0 = a < b ? Math.PI : 0, th = th0 + ((a < b ? 0 : Math.PI) - th0) * e;
+      const x = cx + r * Math.cos(th), y = view.ty - r * Math.sin(th);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 16);
+      g.addColorStop(0, 'rgba(255,255,255,0.95)'); g.addColorStop(0.35, pal.marker); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.globalAlpha = p < 0.85 ? 1 : (1 - p) / 0.15;
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    if (p < 1) requestAnimationFrame(drawOverlay); else trace = null;
+  }
   function selectRef(i, opts = {}) {
     state.mode = 'explore'; state.journey = null; updateNav();
     state.selected = i;
+    startTrace(i);
     drawBase(); renderPanel(); syncURL(true);
     announce(`${refLabel(F[i])} connects to ${refLabel(T[i], E[i])}, ${V[i]} votes.${hasNote[i] ? ' Has a note.' : ''}`);
     if (opts.zoom) zoomToRef(i);
@@ -1180,6 +1214,7 @@
       <button type="button" class="btn ghost small" data-action="embed">Embed</button>`;
   };
 
+  let lastPanelSel = -2;
   function renderPanel() {
     let title = 'Explore', html = '';
     const theme = THEMES.find(t => t.id === state.theme);
@@ -1283,8 +1318,13 @@
       html += savedRecentHTML();
       html += `<h3>Strongest connections</h3>` + listHTML(topList(), false);
     }
+    const changed = title !== el.panelTitle.textContent || state.selected !== lastPanelSel;
+    lastPanelSel = state.selected;
     el.panelTitle.textContent = title;
     el.panelBody.innerHTML = html;
+    if (changed && document.documentElement.dataset.motion === 'on') {
+      el.panelBody.classList.remove('panel-enter'); void el.panelBody.offsetWidth; el.panelBody.classList.add('panel-enter');
+    }
     renderContext();
     fillStudy();
   }
@@ -3412,6 +3452,7 @@
     $('contrastToggle').checked = settings.contrast;
     $('kidsToggle').checked = settings.kids;
     $('readableToggle').checked = settings.readable;
+    $('motionToggle').checked = settings.motion;
     renderArcStyles();
     (f.querySelector(`input[name=textsize][value="${settings.textsize}"]`) || f.querySelector('input[name=textsize]')).checked = true;
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
@@ -3421,6 +3462,7 @@
       if (e.target.id === 'contrastToggle') settings.contrast = e.target.checked;
       if (e.target.name === 'textsize') { settings.textsize = e.target.value; store.set('textsize', settings.textsize); track('textsize/' + settings.textsize); }
       if (e.target.name === 'arcStyle') { settings.arcStyle = ARC_STYLES[e.target.value] ? e.target.value : 'rainbow'; store.set('arcStyle', settings.arcStyle); track('arcs/' + settings.arcStyle); }
+      if (e.target.id === 'motionToggle') { settings.motion = e.target.checked; store.set('motion', settings.motion); track('motion/' + (settings.motion ? 'on' : 'off')); }
       if (e.target.id === 'readableToggle') { settings.readable = e.target.checked; store.set('readable', settings.readable); track('readable/' + (settings.readable ? 'on' : 'off')); }
       if (e.target.id === 'kidsToggle') { settings.kids = e.target.checked; store.set('kids', settings.kids); track('kids/' + (settings.kids ? 'on' : 'off')); }
       if (e.target.id === 'versionSel' || e.target.id === 'version2Sel') { setVersions($('versionSel').value, $('version2Sel').value); return; }
@@ -3465,6 +3507,7 @@
     window.scrollTo(0, 0);
     resetView(false);
     paintHero();
+    playLanding();
     renderLandingRecent();
   }
   function hideLanding() {
@@ -3499,11 +3542,33 @@
     }
     ctx.drawImage(el.base, sx0 * dpr, sy0 * dpr, sw * dpr, sh * dpr, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
   }
+  // Welcome page animations: the picture is drawn from Genesis to Revelation, the numbers count up,
+  // and sections ease in as they scroll into view. Everything ends in its normal resting state.
+  let revealObserver = null;
+  function playLanding() {
+    if (document.documentElement.dataset.motion !== 'on' || landing.hidden) return;
+    landing.classList.remove('play'); void landing.offsetWidth; landing.classList.add('play');
+    const nums = [...$('landingStats').querySelectorAll('strong[data-n]')];
+    const t0 = performance.now(), D = 1300;
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - p, 3);
+      for (const el2 of nums) el2.textContent = Math.round(+el2.dataset.n * e).toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    if ('IntersectionObserver' in window) {
+      if (!revealObserver) revealObserver = new IntersectionObserver((entries) => {
+        for (const en of entries) if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); }
+      }, { rootMargin: '0px 0px -8% 0px' });
+      for (const sec of landing.querySelectorAll('.landing-inner > *')) { sec.classList.add('reveal'); sec.classList.remove('in'); revealObserver.observe(sec); }
+    }
+  }
   function buildLanding() {
     const fmt = (n) => n.toLocaleString();
     $('landingStats').innerHTML = [
       [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
-    ].map(([n, l]) => `<li><strong>${n}</strong> <span>${l}</span></li>`).join('');
+    ].map(([n, l]) => `<li><strong data-n="${n.replace(/\D/g, '')}">${n}</strong> <span>${l}</span></li>`).join('');
+    playLanding();
     const S = window.SERIES || {};
     $('landingSeries').hidden = !S.enabled;
     if (S.enabled) $('landingSeries').innerHTML = `<p class="eyebrow">Current series</p><h3 class="series-name">${esc(S.title)}</h3><p>${esc(S.description || '')}</p><button type="button" class="btn" data-start="series">See the passages</button>`;
@@ -3730,7 +3795,7 @@
     if (POS) setOrder('bible');
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
-      if (![...p.keys()].filter(k => k !== 'embed').length && !EMBED) { showLanding(); return; }
+      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'motion').length && !EMBED) { showLanding(); return; }
       hideLanding();
       const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic', 'word'].some(k => p.has(k));
       if (!hasDetail) resetView(false);

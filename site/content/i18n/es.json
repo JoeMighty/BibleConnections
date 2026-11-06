@@ -727,7 +727,8 @@
     "Sunset": "Atardecer",
     "Color-blind friendly": "Apto para daltonismo",
     "Single color": "Un solo color",
-    "Colors show how far apart the two passages are. To color arcs by type of book instead, use “Color arcs by” in the filters.": "Los colores muestran qué tan lejos están los dos pasajes. Para colorear los arcos por tipo de libro, usa “Color de los arcos según” en los filtros."
+    "Colors show how far apart the two passages are. To color arcs by type of book instead, use “Color arcs by” in the filters.": "Los colores muestran qué tan lejos están los dos pasajes. Para colorear los arcos por tipo de libro, usa “Color de los arcos según” en los filtros.",
+    "Animations (on larger screens with a mouse or trackpad)": "Animaciones (en pantallas grandes con ratón o panel táctil)"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

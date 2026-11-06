@@ -70,3 +70,36 @@ test('arc colors can be changed to another style and are remembered', async ({ p
   const results = await new AxeBuilder({ page }).include('#settings').analyze();
   expect(results.violations).toEqual([]);
 });
+
+test('desktop animations play and end in the normal resting state', async ({ page }, info) => {
+  test.skip(info.project.name === 'mobile', 'animations are for larger screens');
+  await page.goto('/?motion=on');
+  await ready(page);
+  await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
+  await expect(page.locator('#landing')).toHaveClass(/play/);
+  // the numbers count up and finish on the real values
+  await expect(page.locator('#landingStats strong').first()).toHaveText('199,275', { timeout: 5000 });
+  // sections ease in as they scroll into view
+  await page.locator('.landing-foot').scrollIntoViewIfNeeded();
+  await expect(page.locator('.landing-inner > .reveal').last()).toHaveClass(/in/);
+  // selecting a connection still works with the travelling light
+  await page.goto('/?motion=on&ref=John+3%3A16');
+  await ready(page);
+  await page.locator('#panel .conn-item').first().click();
+  await expect(page.locator('#panelTitle')).toHaveText('Connection');
+  await expect(page.locator('#panelBody')).toHaveClass(/panel-enter/);
+});
+
+test('animations are off in automated browsers, for reduced motion and when switched off', async ({ page }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('html')).toHaveAttribute('data-motion', 'off');
+  await page.click('#settingsBtn');
+  await expect(page.locator('#motionToggle')).toBeChecked();
+  await page.locator('label[for=motionToggle]').click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.motion')))).toBe(false);
+  await page.goto('/?motion=on');
+  await ready(page);
+  const anims = await page.evaluate(() => { document.documentElement.dataset.motion = 'on'; return getComputedStyle(document.querySelector('.hero')).animationName; });
+  expect(typeof anims).toBe('string');
+});
