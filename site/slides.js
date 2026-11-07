@@ -122,7 +122,7 @@
   let at = Math.min(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1), slides.length - 1);
   function show(n, focus = false) {
     at = Math.min(Math.max(0, n), slides.length - 1);
-    slides.forEach((s, i) => { s.hidden = i !== at; s.classList.toggle('enter', i === at); });
+    slides.forEach((s, i) => { s.hidden = i !== at; });
     counter.textContent = `${at + 1} / ${slides.length}`;
     prev.disabled = at === 0; next.disabled = at === slides.length - 1;
     history.replaceState(null, '', '#' + (at + 1));

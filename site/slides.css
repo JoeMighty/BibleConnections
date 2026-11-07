@@ -1,12 +1,12 @@
 /* Collection slides: one idea per slide, large type, readable from the back of a room. */
 :root {
-  --bg: #000000; --text: #ffffff; --muted: rgba(235, 235, 245, 0.7); --link: #5eb0ff; --accent: #0a84ff;
+  --bg: #000000; --text: #ffffff; --muted: rgba(235, 235, 245, 0.86); --link: #7cc0ff; --accent: #0a84ff;
   --surface: #1c1c1e; --separator: rgba(84, 84, 88, 0.6); --bar: rgba(22, 22, 24, 0.82);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
-  --bg: #ffffff; --text: #000000; --muted: rgba(60, 60, 67, 0.85); --link: #0058b0; --accent: #0071e3;
+  --bg: #ffffff; --text: #000000; --muted: rgba(60, 60, 67, 0.92); --link: #004a99; --accent: #0071e3;
   --surface: #f2f2f7; --separator: rgba(60, 60, 67, 0.29); --bar: rgba(249, 249, 251, 0.85);
   color-scheme: light;
 }
@@ -27,20 +27,20 @@ a { color: var(--link); text-underline-offset: 0.15em; }
   padding: 6vh max(24px, 8vw); overflow-y: auto;
 }
 .slide[hidden] { display: none; }
-.kicker { margin: 0; font-size: clamp(14px, 1.8vw, 22px); font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
+.kicker { margin: 0; font-size: clamp(17px, 2.2vw, 28px); font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
 .slide h1 { margin: 0; font-size: clamp(34px, 6.4vw, 92px); line-height: 1.04; font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
 .slide h2 { margin: 0; font-size: clamp(28px, 4.6vw, 68px); line-height: 1.08; font-weight: 700; letter-spacing: -0.025em; text-wrap: balance; }
-.slide .sub { margin: 0; font-size: clamp(18px, 2.4vw, 34px); color: var(--muted); max-width: 32em; text-wrap: pretty; }
-.slide .q { margin: 0; font-size: clamp(18px, 2.4vw, 32px); font-style: italic; max-width: 32em; }
+.slide .sub { margin: 0; font-size: clamp(20px, 2.8vw, 40px); color: var(--muted); max-width: 32em; text-wrap: pretty; }
+.slide .q { margin: 0; font-size: clamp(20px, 2.8vw, 38px); font-weight: 500; max-width: 32em; }
 .refs { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: baseline; }
-.refs li { font-size: clamp(22px, 3.2vw, 46px); font-weight: 600; }
+.refs li { font-size: clamp(24px, 3.6vw, 52px); font-weight: 700; }
 .refs .arrow { color: var(--muted); font-weight: 400; }
 .refs a { text-decoration: none; }
 .refs a:hover { text-decoration: underline; }
-.stages { margin: 0; padding: 0 0 0 1.4em; display: grid; gap: 1.4vh; font-size: clamp(18px, 2.4vw, 34px); }
+.stages { margin: 0; padding: 0 0 0 1.4em; display: grid; gap: 2vh; font-size: clamp(20px, 2.8vw, 38px); line-height: 1.25; }
 .stages strong { font-weight: 600; }
-.stages a { margin-left: 0.4em; text-decoration: none; font-weight: 400; }
-.meta { margin: 0; font-size: clamp(13px, 1.4vw, 18px); color: var(--muted); }
+.stages a { display: block; text-decoration: none; font-weight: 700; }
+.meta { margin: 0; font-size: clamp(15px, 1.6vw, 20px); color: var(--muted); }
 .meta a { color: var(--muted); }
 
 .bar {
@@ -62,14 +62,11 @@ a { color: var(--link); text-underline-offset: 0.15em; }
   #themeBtn, #printBtn { display: none; }
   .bar a, .bar button { padding: 0 8px; }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .slide.enter { animation: fade 0.24s ease-out; }
-  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-}
 
 @media print {
   @page { size: landscape; margin: 0; }
-  :root { --bg: #fff; --text: #000; --muted: #3c3c43; --link: #0058b0; color-scheme: light; }
+  :root { --bg: #fff; --text: #000; --muted: #1c1c1e; --link: #003d80; color-scheme: light; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   html, body { height: auto; overflow: visible; }
   .bar { display: none; }
   #deck { position: static; }

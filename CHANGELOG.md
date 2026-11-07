@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- Slides are easier to read: text no longer fades in (on some devices the fade never finished and left the text dim), secondary text and links have more contrast, and references sit on their own line in bolder, larger type.
+
 ## [0.11.0] - 2026-11-07 - Promise and Fulfilment
 
 ### Added
