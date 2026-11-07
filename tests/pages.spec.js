@@ -41,7 +41,9 @@ test('the roadmap shows shipped work grayed out, plus work in progress and plann
   await page.goto('/roadmap.html');
   await expect(page.locator('#progress')).toHaveText('In progress');
   await expect(page.locator('section[aria-labelledby=progress] .group li').first()).toContainText('Prophecy and fulfilment explorer');
-  await expect(page.locator('.release').first()).toContainText('Live now');
+  // the newest shipped group is either work not yet released or the latest release in the changelog
+  const latest = require('fs').readFileSync('CHANGELOG.md', 'utf8').match(/^## \[(\d+\.\d+\.\d+)\]/m)[1];
+  await expect(page.locator('.release h3').first()).toHaveText(new RegExp(`^(Live now|${latest.replace(/\./g, '\\.')})$`));
   // shipped rows are grayed out compared with planned ones, and each status is named for screen readers
   const shipped = await page.locator('.group.done li').first().evaluate(e => getComputedStyle(e).color);
   const planned = await page.locator('section[aria-labelledby=planned] .group h3').first().evaluate(e => getComputedStyle(e).color);
