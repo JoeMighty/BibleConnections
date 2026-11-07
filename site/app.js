@@ -744,7 +744,7 @@
     else { ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H); }
     if (!N) return;
 
-    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || state.mode === 'plan' || (state.mode === 'game' && state.game?.answered != null) || (state.mode === 'path' && !!state.path?.edges);
+    const dim = !!state.focus || state.selected >= 0 || state.mode === 'journey' || state.mode === 'plan' || (state.mode === 'game' && state.game?.answered != null) || (state.mode === 'path' && !!state.path?.edges) || (state.mode === 'chain' && !!state.chain);
     const nb = state.colorMode === 'category' ? catKeys.length : BUCKETS;
     const zoom = view.k / view.fitK;
     let alpha = Math.min(0.9, Math.max(0.05, 22 / Math.sqrt(Math.max(1, filtered.length)) * Math.sqrt(zoom)));
@@ -901,6 +901,16 @@
       ctx.font = '700 12px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       const nodes = [state.path.edges[0]?.a, ...edges.map(e => e.b)].filter(v => v !== undefined);
       nodes.forEach((v, n) => {
+        const x = sx(POS[v] + 0.5), y = view.ty - 16;
+        ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fillStyle = pal.marker; ctx.fill();
+        ctx.fillStyle = '#000'; ctx.fillText(String(n + 1), x, y + 0.5);
+      });
+    }
+    if (state.mode === 'chain' && state.chain) {
+      const vs = state.chain.verses, shown = state.chain.shown;
+      for (let n = 0; n < shown; n++) highlightPair(ctx, vs[n], vs[n + 1]);
+      ctx.font = '700 12px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      vs.slice(0, shown + 1).forEach((v, n) => {
         const x = sx(POS[v] + 0.5), y = view.ty - 16;
         ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fillStyle = pal.marker; ctx.fill();
         ctx.fillStyle = '#000'; ctx.fillText(String(n + 1), x, y + 0.5);
@@ -1292,6 +1302,8 @@
     else if (state.mode === 'places') [title, html] = placesHTML();
     else if (state.mode === 'shared') [title, html] = sharedHTML();
     else if (state.mode === 'timeline') [title, html] = timelineHTML();
+    else if (state.mode === 'prophecy') [title, html] = prophecyHTML();
+    else if (state.mode === 'chain' && state.chain) [title, html] = chainHTML();
     else if (state.mode === 'collections') [title, html] = collectionsHTML();
     else if (state.mode === 'collection' && state.collection) [title, html] = collectionHTML();
     else if (i >= 0) {
@@ -1628,6 +1640,7 @@
     let label = '';
     if (state.mode === 'journey' && state.journey) label = `${JOURNEYS[state.journey.j].name}, step ${state.journey.step + 1}`;
     else if (state.mode === 'path' && state.path && state.path.edges) label = `${state.path.fromLabel} to ${state.path.toLabel}`;
+    else if (state.mode === 'chain' && state.chain && PROPHECY) label = tl(findChain(state.chain.id), 'title');
     else if (state.mode === 'explore' && state.selected >= 0) label = `${refLabel(F[state.selected])} ↔ ${refLabel(T[state.selected], E[state.selected])}`;
     else if (state.mode === 'explore' && state.focus) label = rangeLabel(state.focus);
     else if (state.mode === 'explore' && state.theme) label = `Theme: ${THEMES.find(t => t.id === state.theme).name}`;
@@ -1712,7 +1725,7 @@
   }
 
   // ---------- Study hub ----------
-  const STUDY_MODES = ['study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
+  const STUDY_MODES = ['prophecy', 'chain', 'timeline', 'study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
   const nameOf = (x) => (LANG === 'es' && x.name_es) || x.name;
   const descOf = (x) => (LANG === 'es' && x.description_es) || x.description;
   function studyHTML() {
@@ -1724,6 +1737,7 @@
       ['notes', 'My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
       ['places', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
       ['shared', 'Shared connections', 'Pick two passages and find the passages they both link to.'],
+      ['prophecy', 'Prophecy and fulfilment', 'Old Testament promises, covenants and pictures, followed to the New Testament.'],
       ['timeline', 'Timeline', 'Key events of the Bible story in order, with their passages and places.'],
       ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
       ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
@@ -3105,6 +3119,70 @@
       entity: { type: 'era', id, name: tl(era, 'name'), description: `Passages for the events in this period: ${d.events.filter(x => x.era === id).map(x => tl(x, 'title')).join(', ')}.` } }, { zoom: true });
   }
 
+  // ---------- Prophecy and fulfilment (original writing; content/prophecy.json) ----------
+  let prophecyPromise = null, PROPHECY = null;
+  const loadProphecy = () => (prophecyPromise ||= fetchJSON('content/prophecy.json').then(d => { PROPHECY = d; return d; }).catch(e => { prophecyPromise = null; throw e; }));
+  const findChain = (id) => PROPHECY && PROPHECY.groups.flatMap(g => g.chains).find(c => c.id === id);
+  const chainStages = (c) => c.stages.map(s => { const a = osisToIndex(s.ref), z = s.end ? osisToIndex(s.end) : a; return { ...s, a, z: z < 0 ? a : z }; }).filter(s => s.a >= 0);
+  function prophecyHTML() {
+    if (!PROPHECY) {
+      loadProphecy().then(() => { if (state.mode === 'prophecy') renderPanel(); }, () => {});
+      return ['Prophecy and fulfilment', '<p class="muted">Loading…</p>'];
+    }
+    let html = '<p>Follow Old Testament promises, covenants and pictures to the New Testament passages that take them up. Choose one to see its stages on the map.</p>';
+    html += `<dl class="pr-types">${Object.entries(PROPHECY.types).map(([k, t]) => `<div><dt><span class="pr-badge pr-${k}">${esc(tl(t, 'name'))}</span></dt><dd>${esc(tl(t, 'text'))}</dd></div>`).join('')}</dl>`;
+    for (const g of PROPHECY.groups) {
+      html += `<h3>${esc(tl(g, 'name'))}</h3><ul class="pr-list">`;
+      for (const c of g.chains) {
+        const st = chainStages(c);
+        html += `<li><button type="button" class="study-card" data-action="openChain" data-id="${esc(c.id)}"><strong>${esc(tl(c, 'title'))}</strong><span><span class="pr-badge pr-${c.type}">${esc(tl(PROPHECY.types[c.type], 'name'))}</span> ${esc(st.map(x => refLabel(x.a)).join(', '))}</span></button></li>`;
+      }
+      html += '</ul>';
+    }
+    html += '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>';
+    return ['Prophecy and fulfilment', html];
+  }
+  function chainHTML() {
+    const c = findChain(state.chain.id);
+    if (!c) return ['Prophecy and fulfilment', '<p>Sorry, this could not be found.</p>'];
+    const st = chainStages(c), type = PROPHECY.types[c.type];
+    let html = `<p><span class="pr-badge pr-${c.type}">${esc(tl(type, 'name'))}</span> <span class="muted">${esc(tl(type, 'text'))}</span></p><p>${esc(tl(c, 'summary'))}</p><ol class="chain">`;
+    st.forEach((x, n) => {
+      html += `<li><span class="chain-num" aria-hidden="true">${n + 1}</span><div><p class="ref">${esc(tl(x, 'label'))}</p>
+        <div class="actions tight"><button type="button" class="chip" data-action="focusRange" data-s="${x.a}" data-e="${x.z}">${esc(refLabel(x.a, x.z))}</button>${ext(bibleUrl(x.a, x.z), `Read<span class="sr-only"> ${esc(refLabel(x.a, x.z))} in ${esc(vLabel(settings.version))}</span>`, 'mini-link')}</div></div></li>`;
+    });
+    html += `</ol><p class="hint">Arcs on the map join each stage to the next. Choose a reference to study it.</p>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="replayChain">Play again</button>${shareButtons()}</div>
+      <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="prophecy">All prophecies</button></div>`;
+    return [tl(c, 'title'), html];
+  }
+  let chainTimer = 0;
+  function animateChain() {
+    clearInterval(chainTimer);
+    const C = state.chain;
+    if (!C) return;
+    if (reducedMotion) { C.shown = C.n; drawOverlay(); return; }
+    C.shown = 0; drawOverlay();
+    chainTimer = setInterval(() => {
+      if (state.mode !== 'chain' || state.chain !== C) { clearInterval(chainTimer); return; }
+      C.shown++; drawOverlay();
+      if (C.shown >= C.n) clearInterval(chainTimer);
+    }, 650);
+  }
+  async function openChain(id, { push = true } = {}) {
+    await loadProphecy();
+    const c = findChain(id);
+    if (!c) return;
+    const st = chainStages(c);
+    if (colPlay) { colPlay = null; renderColBar(); }
+    state.selected = -1; state.journey = null;
+    state.mode = 'chain'; state.chain = { id, n: Math.max(0, st.length - 1), shown: 0, verses: st.map(x => x.a) };
+    track('prophecy/' + id);
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+    if (st.length > 1) { spanOfPairs(st.slice(1).map((x, n) => [st[n].a, x.a])); animateChain(); }
+    announce(`${tl(c, 'title')}: ${st.length} stages.`);
+  }
+
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
   const saveCollections = (c) => store.set('collections', c);
@@ -3456,6 +3534,8 @@
       announce(on ? 'Grammar shown under each word.' : 'Grammar hidden.');
     }
     else if (a === 'openEra') openEra(btn.dataset.era).then(focusPanelHeading);
+    else if (a === 'openChain') openChain(btn.dataset.id).then(focusPanelHeading);
+    else if (a === 'replayChain') animateChain();
     else if (a === 'focusRange') { const st = +btn.dataset.s, en = +btn.dataset.e; setFocus({ kind: 'verse', book: verseBook[st], start: st, end: en + 1 }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'openGeoName') openGeo(btn.dataset.name).then(focusPanelHeading);
     else if (a === 'studyImage') studyImage(+btn.dataset.v);
@@ -3977,6 +4057,8 @@
     if (state.mode === 'collections') items.push(['mode', 'Collections']);
     if (state.mode === 'collection' && state.collection) items.push(['mode', `Collection: ${state.collection.name}`]);
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
+    if (state.mode === 'prophecy') items.push(['mode', 'Prophecy and fulfilment']);
+    if (state.mode === 'chain' && state.chain && PROPHECY) items.push(['mode', `Prophecy: ${tl(findChain(state.chain.id), 'title')}`]);
     if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
     if (state.from !== 'all' || state.to !== 'all') items.push(['between', `Between ${state.from === 'all' ? 'Whole Bible' : selName(state.from)} and ${state.to === 'all' ? 'Whole Bible' : selName(state.to)}`]);
@@ -4043,7 +4125,8 @@
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
       else if (state.mode === 'shared' && state.shared && state.shared.aLabel) p.set('shared', `${state.shared.aLabel}~${state.shared.bLabel}`);
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline'].includes(state.mode)) p.set('view', state.mode);
+      else if (state.mode === 'chain' && state.chain) p.set('prophecy', state.chain.id);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -4098,8 +4181,9 @@
     if (p.get('word')) { await openWord(p.get('word')); return; }
     if (p.get('geo')) { await openGeo(p.get('geo')); return; }
     if (p.get('era')) { await openEra(p.get('era')); return; }
+    if (p.get('prophecy')) { await openChain(p.get('prophecy'), { push: false }); return; }
     if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {

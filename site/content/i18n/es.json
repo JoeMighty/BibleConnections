@@ -792,7 +792,14 @@
     "How to use": "Cómo usarlo",
     "Roadmap": "Hoja de ruta",
     "More about Bible Connections": "Más sobre Bible Connections",
-    "Cross references from OpenBible.info. Passages open on Bible.com. No Bible translation is stored on this site.": "Referencias cruzadas de OpenBible.info. Los pasajes se abren en Bible.com. Este sitio no guarda ninguna traducción de la Biblia."
+    "Cross references from OpenBible.info. Passages open on Bible.com. No Bible translation is stored on this site.": "Referencias cruzadas de OpenBible.info. Los pasajes se abren en Bible.com. Este sitio no guarda ninguna traducción de la Biblia.",
+    "Prophecy and fulfilment": "Profecía y cumplimiento",
+    "Old Testament promises, covenants and pictures, followed to the New Testament.": "Promesas, pactos e imágenes del Antiguo Testamento, seguidos hasta el Nuevo.",
+    "Follow Old Testament promises, covenants and pictures to the New Testament passages that take them up. Choose one to see its stages on the map.": "Sigue promesas, pactos e imágenes del Antiguo Testamento hasta los pasajes del Nuevo que los retoman. Elige uno para ver sus etapas en el mapa.",
+    "Arcs on the map join each stage to the next. Choose a reference to study it.": "Los arcos del mapa unen cada etapa con la siguiente. Elige una referencia para estudiarla.",
+    "All prophecies": "Todas las profecías",
+    "Sorry, this could not be found.": "Lo sentimos, no se encontró.",
+    "Loading…": "Cargando…"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -907,6 +914,8 @@
     "Saved {a} of {b} files. Try again with a better connection to finish.": "Se guardaron {a} de {b} archivos. Vuelve a intentarlo con mejor conexión para terminar.",
     "No word found for {q}.": "No se encontró ninguna palabra para {q}.",
     "No Hebrew or Greek word found for {q}.": "No se encontró ninguna palabra hebrea o griega para {q}.",
-    "Passages for the events in this period: {x}.": "Pasajes de los acontecimientos de este período: {x}."
+    "Passages for the events in this period: {x}.": "Pasajes de los acontecimientos de este período: {x}.",
+    "Prophecy: {a}": "Profecía: {a}",
+    "{a}: {n} stages.": "{a}: {n} etapas."
   }
 }

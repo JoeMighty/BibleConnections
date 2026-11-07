@@ -860,3 +860,12 @@ ol.timeline li::before { content: ''; position: absolute; left: -25px; top: 14px
 /* Footer links on the welcome page */
 .foot-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0 0 12px; }
 .foot-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: var(--t-subhead); }
+
+/* Prophecy and fulfilment */
+.pr-types { margin: 0 0 8px; display: grid; gap: 6px; }
+.pr-types div { display: flex; gap: 10px; align-items: baseline; }
+.pr-types dt { flex: none; min-width: 6.5em; }
+.pr-types dd { margin: 0; font-size: var(--t-subhead); color: var(--muted); }
+.pr-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.pr-badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: var(--t-footnote, 13px); font-weight: 600; background: var(--surface-3); color: var(--text); }
+.study-card .pr-badge { color: var(--text); }
