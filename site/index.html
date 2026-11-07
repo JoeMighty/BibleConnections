@@ -290,7 +290,19 @@
     <div class="dialog-inner">
       <h2 id="embedTitleH">Embed on a website</h2>
       <p>Paste this code into your church website or blog to show this view. It links back to the full site.</p>
+      <fieldset class="field">
+        <legend>Style</legend>
+        <div class="segmented">
+          <label><input type="radio" name="embedKind" value="map" checked> Map</label>
+          <label><input type="radio" name="embedKind" value="card" id="embedKindCard"> Small card</label>
+        </div>
+      </fieldset>
+      <p class="hint" id="embedCardHint" hidden>A small card works for a verse, a connection, a journey step or a prophecy.</p>
       <div class="field">
+        <label for="embedTheme">Colors</label>
+        <select id="embedTheme"><option value="">Match the visitor's device</option><option value="light">Light</option><option value="dark">Dark</option></select>
+      </div>
+      <div class="field" id="embedHeightField">
         <label for="embedHeight">Height</label>
         <select id="embedHeight"><option value="420">Small (420 pixels)</option><option value="560" selected>Medium (560 pixels)</option><option value="720">Large (720 pixels)</option></select>
       </div>

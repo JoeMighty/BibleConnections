@@ -801,7 +801,13 @@
     "Sorry, this could not be found.": "Lo sentimos, no se encontró.",
     "Loading…": "Cargando…",
     "Show as slides": "Mostrar como diapositivas",
-    "Leader guide": "Guía para el líder"
+    "Leader guide": "Guía para el líder",
+    "Style": "Estilo",
+    "Map": "Mapa",
+    "Small card": "Tarjeta pequeña",
+    "Colors": "Colores",
+    "Match the visitor's device": "Según el dispositivo del visitante",
+    "A small card works for a verse, a connection, a journey step or a prophecy.": "La tarjeta pequeña sirve para un versículo, una conexión, un paso de recorrido o una profecía."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

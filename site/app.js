@@ -75,7 +75,8 @@
     : store.get('lang', (navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en');
   document.documentElement.lang = LANG;
   const settings = {
-    appearance: store.get('appearance', 'system'),
+    // an embed can fix its colors with ?colors=light or dark, without changing the visitor's own setting
+    appearance: (EMBED && ['light', 'dark'].includes(new URLSearchParams(location.search).get('colors'))) ? new URLSearchParams(location.search).get('colors') : store.get('appearance', 'system'),
     contrast: store.get('contrast', false),
     kids: store.get('kids', false),
     textsize: store.get('textsize', 'standard'),
@@ -2060,15 +2061,42 @@
   }
 
   // ---------- Embed ----------
+  // the small card needs one verse, connection, journey step or prophecy
+  function cardParams() {
+    const q = new URLSearchParams();
+    if (state.mode === 'journey' && state.journey) { q.set('journey', JOURNEYS[state.journey.j].id); q.set('step', state.journey.step + 1); }
+    else if (state.mode === 'chain' && state.chain) q.set('prophecy', state.chain.id);
+    else if (state.mode === 'explore' && state.selected >= 0) q.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
+    else if (state.mode === 'explore' && state.focus && state.focus.kind === 'verse' && !state.focus.entity) q.set('verse', toOsis(state.focus.start));
+    else return null;
+    return q;
+  }
   function openEmbed() {
-    const u = new URL(cleanUrl()); u.searchParams.set('embed', '1');
     const label = contextItems().map(x => x[1]).join(', ') || 'The whole Bible';
-    const h = $('embedHeight').value;
-    $('embedCode').value = `<iframe src="${u}" title="Bible Connections: ${label.replace(/"/g, '&quot;')}" width="100%" height="${h}" style="border:0;border-radius:12px" loading="lazy" allow="fullscreen"></iframe>`;
-    $('embedDialog').showModal();
-    track('share/embed');
+    const cq = cardParams(), theme = $('embedTheme').value;
+    $('embedKindCard').disabled = !cq; $('embedCardHint').hidden = !!cq;
+    if (!cq) document.querySelector('[name=embedKind][value=map]').checked = true;
+    const card = document.querySelector('[name=embedKind]:checked').value === 'card';
+    $('embedHeightField').hidden = card;
+    let code;
+    if (card) {
+      if (LANG !== 'en') cq.set('lang', LANG);
+      if (theme) cq.set('theme', theme);
+      if (settings.version !== (LANG === 'es' ? 'NVI' : 'NIV')) cq.set('version', settings.version);
+      const u = new URL('card.html?' + cq, location.href);
+      const h = cq.get('prophecy') ? 140 + 26 * chainStages(findChain(state.chain.id)).length : cq.get('journey') ? 240 : 190;
+      code = `<iframe src="${u}" title="Bible Connections: ${label.replace(/"/g, '&quot;')}" width="100%" height="${h}" style="border:0;border-radius:12px;max-width:560px" loading="lazy"></iframe>`;
+    } else {
+      const u = new URL(cleanUrl()); u.searchParams.set('embed', '1');
+      if (theme) u.searchParams.set('colors', theme); else u.searchParams.delete('colors');
+      code = `<iframe src="${u}" title="Bible Connections: ${label.replace(/"/g, '&quot;')}" width="100%" height="${$('embedHeight').value}" style="border:0;border-radius:12px" loading="lazy" allow="fullscreen"></iframe>`;
+    }
+    $('embedCode').value = code;
+    if (!$('embedDialog').open) { $('embedDialog').showModal(); track('share/embed'); }
   }
   $('embedHeight').addEventListener('change', openEmbed);
+  $('embedTheme').addEventListener('change', openEmbed);
+  document.querySelectorAll('[name=embedKind]').forEach(r => r.addEventListener('change', openEmbed));
   $('embedCopy').addEventListener('click', () => copyText($('embedCode').value));
 
   // ---------- Poster ----------
@@ -4122,7 +4150,7 @@
       if (state.colorMode !== 'distance') p.set('color', state.colorMode);
       if (state.order !== 'bible') p.set('order', state.order);
       if (LANG !== 'en') p.set('lang', LANG);
-      if (EMBED) p.set('embed', '1');
+      if (EMBED) { p.set('embed', '1'); const cl = new URLSearchParams(location.search).get('colors'); if (cl) p.set('colors', cl); }
       if (state.mode === 'journey' && state.journey) { p.set('journey', JOURNEYS[state.journey.j].id); p.set('step', state.journey.step + 1); }
       else if (state.mode === 'plan' && state.plan) { p.set('plan', state.plan.id); p.set('day', state.plan.day + 1); }
       else if (state.mode === 'path' && state.path && state.path.fromLabel) p.set('path', `${state.path.fromLabel}~${state.path.toLabel}`);
@@ -4137,7 +4165,7 @@
         }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
       }
-      if (![...p.keys()].filter(k => k !== 'lang' && k !== 'embed').length) p.set('view', 'map');
+      if (![...p.keys()].filter(k => k !== 'lang' && k !== 'embed' && k !== 'colors').length) p.set('view', 'map');
       url = `?${p}`;
     }
     renderContext();
@@ -4210,7 +4238,7 @@
     if (POS) setOrder('bible');
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
-      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'motion' && k !== 'today').length && !EMBED) { showLanding(); return; }
+      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'colors' && k !== 'motion' && k !== 'today').length && !EMBED) { showLanding(); return; }
       hideLanding();
       const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic', 'word'].some(k => p.has(k));
       if (!hasDetail) resetView(false);
