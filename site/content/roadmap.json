@@ -59,6 +59,15 @@
   ],
   "shipped": [
     {
+      "version": "0.11.1",
+      "items": [
+        "Easier-to-read slides"
+      ],
+      "items_es": [
+        "Diapositivas más fáciles de leer"
+      ]
+    },
+    {
       "version": "0.11.0",
       "items": [
         "Prophecy and fulfilment explorer",
