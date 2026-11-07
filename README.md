@@ -59,6 +59,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Word study:** about 14,000 Hebrew, Aramaic and Greek words (from STEP Bible) with pronunciation, Strong's numbers, meanings by context, where they are used, grammatical forms, related words and the full dictionary entry. A grammar toggle shows each word's grammar in plain words under the original text.
 - **Words in common:** every connection shows the Hebrew and Greek words both passages share, across the two Testaments too.
 - **Chapter and book study:** key original words, places on a map, the book's introduction and reflection questions for any chapter or book.
+- **Prophecy and fulfilment:** 12 prophecies, 5 covenants and 6 symbols (lamb, shepherd, vine, temple, water, light), each followed from the Old Testament to the New as numbered stages on the map, with a short explanation of the kind of link (quotation, fulfilment, pattern or promise).
 - **Timeline:** 40 key events in order, from creation to Patmos, linked to their passages, places and the map.
 - **Places on a map:** 1,277 places from OpenBible.info on an offline map of the Bible lands and of Israel, with every verse that mentions each place.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
@@ -72,11 +73,13 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### Teach and share
 - **Guided journeys:** 15 step-by-step tours (4 written for children), including Advent and Christmas journeys, with discussion questions, presenter mode for sermons and classes (works with clickers).
+- **Leader guides:** a printable guide for every journey with timings, what to prepare, an opening, who reads what, leader notes, questions and a closing.
 - **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
-- **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites, and link previews in messaging apps.
+- **Collection slides:** show a collection as simple full-screen slides (title, one slide per item with its references, and a closing slide), moved with arrow keys, a clicker or a swipe, and printable as a PDF. References link to Bible.com; no translation text is shown.
+- **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites (the full map, or a small card for one verse, connection, journey step or prophecy, in light or dark), and link previews in messaging apps.
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
 
 ### For everyone
@@ -86,6 +89,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Gentle animations on desktop:** the welcome page eases in, and a light travels along each connection you select. Off for reduced motion, and switchable in Settings.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
+- **Fast first load:** the welcome page loads about half as much as before, with the cross references packed into a smaller file and study text fetched only when needed.
 - **Installable and offline:** works as an app and without a connection after the first visit. Studied passages are saved as you go, and **Save for offline** downloads all the original language text, word studies and places at once (Bible.com links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 

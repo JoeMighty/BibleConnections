@@ -1,162 +1,380 @@
 [
   {
-    "group": "Getting started", "group_es": "Para empezar",
+    "group": "Getting started",
+    "group_es": "Para empezar",
     "items": [
       {
-        "title": "Explore the map", "title_es": "Explorar el mapa",
+        "title": "Explore the map",
+        "title_es": "Explorar el mapa",
         "what": "Every arc joins two passages that point to each other, from Genesis on the left to Revelation on the right.",
         "what_es": "Cada arco une dos pasajes que se señalan entre sí, de Génesis a la izquierda a Apocalipsis a la derecha.",
-        "steps": ["Scroll, pinch or use the + and − buttons to zoom in on any book.", "Drag to move around. Press 0 or the reset button to see the whole Bible again.", "Tap an arc to see the two passages it joins."],
-        "steps_es": ["Desplázate, pellizca o usa los botones + y − para acercarte a cualquier libro.", "Arrastra para moverte. Pulsa 0 o el botón de reinicio para ver de nuevo toda la Biblia.", "Toca un arco para ver los dos pasajes que une."],
-        "try": "?view=map", "try_label": "Open the map", "try_label_es": "Abrir el mapa"
+        "steps": [
+          "Scroll, pinch or use the + and − buttons to zoom in on any book.",
+          "Drag to move around. Press 0 or the reset button to see the whole Bible again.",
+          "Tap an arc to see the two passages it joins."
+        ],
+        "steps_es": [
+          "Desplázate, pellizca o usa los botones + y − para acercarte a cualquier libro.",
+          "Arrastra para moverte. Pulsa 0 o el botón de reinicio para ver de nuevo toda la Biblia.",
+          "Toca un arco para ver los dos pasajes que une."
+        ],
+        "try": "?view=map",
+        "try_label": "Open the map",
+        "try_label_es": "Abrir el mapa"
       },
       {
-        "title": "Search", "title_es": "Buscar",
+        "title": "Search",
+        "title_es": "Buscar",
         "what": "Find a verse, chapter, book or word. Misspelled book names are understood, and you can search in Hebrew or Greek too.",
         "what_es": "Encuentra un versículo, capítulo, libro o palabra. Se entienden los nombres de libros mal escritos, y también puedes buscar en hebreo o griego.",
-        "steps": ["Type John 3:16, Psalm 23, shepherd, ἀγάπη or G26 into the search box.", "Pick a suggestion as you type, or press Enter.", "Press / on a keyboard to jump to the search box."],
-        "steps_es": ["Escribe Juan 3:16, Salmo 23, pastor, ἀγάπη o G26 en el cuadro de búsqueda.", "Elige una sugerencia mientras escribes, o pulsa Enter.", "Pulsa / en un teclado para ir al cuadro de búsqueda."],
-        "try": "?q=shepherd", "try_label": "Search for shepherd", "try_label_es": "Buscar pastor"
+        "steps": [
+          "Type John 3:16, Psalm 23, shepherd, ἀγάπη or G26 into the search box.",
+          "Pick a suggestion as you type, or press Enter.",
+          "Press / on a keyboard to jump to the search box."
+        ],
+        "steps_es": [
+          "Escribe Juan 3:16, Salmo 23, pastor, ἀγάπη o G26 en el cuadro de búsqueda.",
+          "Elige una sugerencia mientras escribes, o pulsa Enter.",
+          "Pulsa / en un teclado para ir al cuadro de búsqueda."
+        ],
+        "try": "?q=shepherd",
+        "try_label": "Search for shepherd",
+        "try_label_es": "Buscar pastor"
       },
       {
-        "title": "How are you feeling?", "title_es": "¿Cómo te sientes?",
+        "title": "How are you feeling?",
+        "title_es": "¿Cómo te sientes?",
         "what": "Start from how you feel today and see what Scripture says about it.",
         "what_es": "Empieza por cómo te sientes hoy y mira lo que dice la Escritura al respecto.",
-        "steps": ["On the welcome page, tap a feeling such as Anxious, Grieving or Thankful.", "Browse the verses on that topic and the connections between them.", "Or tap Surprise me for a random explained connection."],
-        "steps_es": ["En la página de inicio, toca un sentimiento como Ansioso, De duelo o Agradecido.", "Recorre los versículos de ese tema y las conexiones entre ellos.", "O toca Sorpréndeme para ver una conexión explicada al azar."],
-        "try": "?topic=anxiety", "try_label": "Open anxiety and worry", "try_label_es": "Abrir ansiedad y preocupación"
+        "steps": [
+          "On the welcome page, tap a feeling such as Anxious, Grieving or Thankful.",
+          "Browse the verses on that topic and the connections between them.",
+          "Or tap Surprise me for a random explained connection."
+        ],
+        "steps_es": [
+          "En la página de inicio, toca un sentimiento como Ansioso, De duelo o Agradecido.",
+          "Recorre los versículos de ese tema y las conexiones entre ellos.",
+          "O toca Sorpréndeme para ver una conexión explicada al azar."
+        ],
+        "try": "?topic=anxiety",
+        "try_label": "Open anxiety and worry",
+        "try_label_es": "Abrir ansiedad y preocupación"
       }
     ]
   },
   {
-    "group": "Study a passage", "group_es": "Estudiar un pasaje",
+    "group": "Study a passage",
+    "group_es": "Estudiar un pasaje",
     "items": [
       {
-        "title": "Passage explorer", "title_es": "Explorador de pasajes",
+        "title": "Passage explorer",
+        "title_es": "Explorador de pasajes",
         "what": "Open any verse to see its original Hebrew or Greek words, its place in the chapter, an introduction to the book, its connections, people, places and reflection questions.",
         "what_es": "Abre cualquier versículo para ver sus palabras originales en hebreo o griego, su lugar en el capítulo, una introducción al libro, sus conexiones, personas, lugares y preguntas de reflexión.",
-        "steps": ["Search for a verse, or choose one from any list.", "Tap an original word to study it, or turn on Show grammar.", "Use Previous verse and Next verse to read on."],
-        "steps_es": ["Busca un versículo o elige uno de cualquier lista.", "Toca una palabra original para estudiarla, o activa Mostrar gramática.", "Usa Versículo anterior y Versículo siguiente para seguir leyendo."],
-        "try": "?ref=John+3%3A16", "try_label": "Study John 3:16", "try_label_es": "Estudiar Juan 3:16"
+        "steps": [
+          "Search for a verse, or choose one from any list.",
+          "Tap an original word to study it, or turn on Show grammar.",
+          "Use Previous verse and Next verse to read on."
+        ],
+        "steps_es": [
+          "Busca un versículo o elige uno de cualquier lista.",
+          "Toca una palabra original para estudiarla, o activa Mostrar gramática.",
+          "Usa Versículo anterior y Versículo siguiente para seguir leyendo."
+        ],
+        "try": "?ref=John+3%3A16",
+        "try_label": "Study John 3:16",
+        "try_label_es": "Estudiar Juan 3:16"
       },
       {
-        "title": "Words in common", "title_es": "Palabras en común",
+        "title": "Words in common",
+        "title_es": "Palabras en común",
         "what": "Each connection shows the Hebrew and Greek words both passages use, even across the two Testaments.",
         "what_es": "Cada conexión muestra las palabras hebreas y griegas que usan ambos pasajes, incluso entre los dos Testamentos.",
-        "steps": ["Tap an arc, or choose a connection from a list.", "Look for Words in common under the two passages.", "Tap a word to follow it through the Bible."],
-        "steps_es": ["Toca un arco o elige una conexión de una lista.", "Busca Palabras en común debajo de los dos pasajes.", "Toca una palabra para seguirla por toda la Biblia."],
-        "try": "?c=Gen.1.1_John.1.1", "try_label": "Genesis 1:1 and John 1:1", "try_label_es": "Génesis 1:1 y Juan 1:1"
+        "steps": [
+          "Tap an arc, or choose a connection from a list.",
+          "Look for Words in common under the two passages.",
+          "Tap a word to follow it through the Bible."
+        ],
+        "steps_es": [
+          "Toca un arco o elige una conexión de una lista.",
+          "Busca Palabras en común debajo de los dos pasajes.",
+          "Toca una palabra para seguirla por toda la Biblia."
+        ],
+        "try": "?c=Gen.1.1_John.1.1",
+        "try_label": "Genesis 1:1 and John 1:1",
+        "try_label_es": "Génesis 1:1 y Juan 1:1"
       },
       {
-        "title": "Word study", "title_es": "Estudio de palabras",
+        "title": "Word study",
+        "title_es": "Estudio de palabras",
         "what": "Follow about 14,000 Hebrew and Greek words: pronunciation, meanings in context, where they are used, their forms and related words.",
         "what_es": "Sigue unas 14.000 palabras hebreas y griegas: pronunciación, significados según el contexto, dónde se usan, sus formas y palabras relacionadas.",
-        "steps": ["Open Study, then Word study, or search for a Hebrew or Greek word.", "Choose a meaning to see only those verses.", "Open the dictionary entry for more detail."],
-        "steps_es": ["Abre Estudio y luego Estudio de palabras, o busca una palabra hebrea o griega.", "Elige un significado para ver solo esos versículos.", "Abre la entrada del diccionario para más detalle."],
-        "try": "?word=G0026", "try_label": "Study agape (love)", "try_label_es": "Estudiar ágape (amor)"
+        "steps": [
+          "Open Study, then Word study, or search for a Hebrew or Greek word.",
+          "Choose a meaning to see only those verses.",
+          "Open the dictionary entry for more detail."
+        ],
+        "steps_es": [
+          "Abre Estudio y luego Estudio de palabras, o busca una palabra hebrea o griega.",
+          "Elige un significado para ver solo esos versículos.",
+          "Abre la entrada del diccionario para más detalle."
+        ],
+        "try": "?word=G0026",
+        "try_label": "Study agape (love)",
+        "try_label_es": "Estudiar ágape (amor)"
       },
       {
-        "title": "Chapter and book study", "title_es": "Estudio de capítulos y libros",
+        "title": "Chapter and book study",
+        "title_es": "Estudio de capítulos y libros",
         "what": "Any chapter or book shows its key original words, the places it names and an introduction to the book.",
         "what_es": "Cualquier capítulo o libro muestra sus palabras originales clave, los lugares que nombra y una introducción al libro.",
-        "steps": ["Tap a bar along the bottom of the map, or search for a chapter such as John 3.", "Choose a key word or a place to explore further."],
-        "steps_es": ["Toca una barra en la parte inferior del mapa, o busca un capítulo como Juan 3.", "Elige una palabra clave o un lugar para seguir explorando."],
-        "try": "?ref=Isaiah", "try_label": "Key words of Isaiah", "try_label_es": "Palabras clave de Isaías"
+        "steps": [
+          "Tap a bar along the bottom of the map, or search for a chapter such as John 3.",
+          "Choose a key word or a place to explore further."
+        ],
+        "steps_es": [
+          "Toca una barra en la parte inferior del mapa, o busca un capítulo como Juan 3.",
+          "Elige una palabra clave o un lugar para seguir explorando."
+        ],
+        "try": "?ref=Isaiah",
+        "try_label": "Key words of Isaiah",
+        "try_label_es": "Palabras clave de Isaías"
       },
       {
-        "title": "My notes", "title_es": "Mis notas",
+        "title": "My notes",
+        "title_es": "Mis notas",
         "what": "Write your own notes on any verse. They stay on your device, and you can back them up.",
         "what_es": "Escribe tus propias notas en cualquier versículo. Se quedan en tu dispositivo, y puedes hacer una copia.",
-        "steps": ["Open a verse and write in the My notes box. It saves as you type.", "See all your notes in Study, then My notes.", "Use Settings, then Back up everything, to keep a copy."],
-        "steps_es": ["Abre un versículo y escribe en el cuadro Mis notas. Se guarda mientras escribes.", "Mira todas tus notas en Estudio y luego Mis notas.", "Usa Ajustes y luego Hacer una copia de todo para conservarlas."],
-        "try": "?view=notes", "try_label": "Open my notes", "try_label_es": "Abrir mis notas"
+        "steps": [
+          "Open a verse and write in the My notes box. It saves as you type.",
+          "See all your notes in Study, then My notes.",
+          "Use Settings, then Back up everything, to keep a copy."
+        ],
+        "steps_es": [
+          "Abre un versículo y escribe en el cuadro Mis notas. Se guarda mientras escribes.",
+          "Mira todas tus notas en Estudio y luego Mis notas.",
+          "Usa Ajustes y luego Hacer una copia de todo para conservarlas."
+        ],
+        "try": "?view=notes",
+        "try_label": "Open my notes",
+        "try_label_es": "Abrir mis notas"
       }
     ]
   },
   {
-    "group": "Explore further", "group_es": "Explorar más",
+    "group": "Explore further",
+    "group_es": "Explorar más",
     "items": [
       {
-        "title": "Guided journeys", "title_es": "Recorridos guiados",
+        "title": "Guided journeys",
+        "title_es": "Recorridos guiados",
         "what": "Step by step tours through the story of Scripture, with discussion questions. Some are written for children.",
         "what_es": "Recorridos paso a paso por la historia de la Escritura, con preguntas para conversar. Algunos están escritos para niños.",
-        "steps": ["Open Journeys and choose one.", "Use Next step and Previous, or the N and P keys.", "Use Present for a group, or Handout to print it."],
-        "steps_es": ["Abre Recorridos y elige uno.", "Usa Paso siguiente y Anterior, o las teclas N y P.", "Usa Presentar para un grupo, u Hoja para imprimirlo."],
-        "try": "?view=journeys", "try_label": "See the journeys", "try_label_es": "Ver los recorridos"
+        "steps": [
+          "Open Journeys and choose one.",
+          "Use Next step and Previous, or the N and P keys.",
+          "Use Present for a group, or Handout to print it."
+        ],
+        "steps_es": [
+          "Abre Recorridos y elige uno.",
+          "Usa Paso siguiente y Anterior, o las teclas N y P.",
+          "Usa Presentar para un grupo, u Hoja para imprimirlo."
+        ],
+        "try": "?view=journeys",
+        "try_label": "See the journeys",
+        "try_label_es": "Ver los recorridos"
       },
       {
-        "title": "Reading plans", "title_es": "Planes de lectura",
+        "title": "Reading plans",
+        "title_es": "Planes de lectura",
         "what": "Short daily readings that follow the connections, including a 27-day Advent plan. Your progress is saved on your device.",
         "what_es": "Lecturas diarias breves que siguen las conexiones, incluido un plan de Adviento de 27 días. Tu progreso se guarda en tu dispositivo.",
-        "steps": ["Open Study, then Reading plans.", "Mark each day complete as you go.", "Add reminders to your calendar."],
-        "steps_es": ["Abre Estudio y luego Planes de lectura.", "Marca cada día como completado.", "Agrega recordatorios a tu calendario."],
-        "try": "?view=plans", "try_label": "See the plans", "try_label_es": "Ver los planes"
+        "steps": [
+          "Open Study, then Reading plans.",
+          "Mark each day complete as you go.",
+          "Add reminders to your calendar."
+        ],
+        "steps_es": [
+          "Abre Estudio y luego Planes de lectura.",
+          "Marca cada día como completado.",
+          "Agrega recordatorios a tu calendario."
+        ],
+        "try": "?view=plans",
+        "try_label": "See the plans",
+        "try_label_es": "Ver los planes"
       },
       {
-        "title": "Places and timeline", "title_es": "Lugares y línea de tiempo",
+        "title": "Places and timeline",
+        "title_es": "Lugares y línea de tiempo",
         "what": "See where 1,277 places named in the Bible were, and 40 key events in order.",
         "what_es": "Mira dónde estaban 1.277 lugares que menciona la Biblia, y 40 acontecimientos clave en orden.",
-        "steps": ["Open Study, then Places on a map or Timeline.", "Choose a place or event to see its verses.", "Show a whole period of the timeline on the map."],
-        "steps_es": ["Abre Estudio y luego Lugares en un mapa o Línea de tiempo.", "Elige un lugar o acontecimiento para ver sus versículos.", "Muestra todo un período de la línea de tiempo en el mapa."],
-        "try": "?view=timeline", "try_label": "Open the timeline", "try_label_es": "Abrir la línea de tiempo"
+        "steps": [
+          "Open Study, then Places on a map or Timeline.",
+          "Choose a place or event to see its verses.",
+          "Show a whole period of the timeline on the map."
+        ],
+        "steps_es": [
+          "Abre Estudio y luego Lugares en un mapa o Línea de tiempo.",
+          "Elige un lugar o acontecimiento para ver sus versículos.",
+          "Muestra todo un período de la línea de tiempo en el mapa."
+        ],
+        "try": "?view=timeline",
+        "try_label": "Open the timeline",
+        "try_label_es": "Abrir la línea de tiempo"
       },
       {
-        "title": "How are these connected?", "title_es": "¿Cómo se conectan?",
+        "title": "Prophecy and fulfilment",
+        "title_es": "Profecía y cumplimiento",
+        "what": "Follow Old Testament promises, covenants and pictures to the New Testament passages that take them up.",
+        "what_es": "Sigue promesas, pactos e imágenes del Antiguo Testamento hasta los pasajes del Nuevo que los retoman.",
+        "steps": [
+          "Open Study, then Prophecy and fulfilment.",
+          "Choose a prophecy, covenant or symbol to see its stages joined on the map.",
+          "Use Play again to watch the stages in order, or Read to open each passage on Bible.com."
+        ],
+        "steps_es": [
+          "Abre Estudio y luego Profecía y cumplimiento.",
+          "Elige una profecía, un pacto o un símbolo para ver sus etapas unidas en el mapa.",
+          "Usa Ver otra vez para ver las etapas en orden, o Leer para abrir cada pasaje en Bible.com."
+        ],
+        "try": "?prophecy=bethlehem",
+        "try_label": "Born in Bethlehem",
+        "try_label_es": "Nacido en Belén"
+      },
+      {
+        "title": "How are these connected?",
+        "title_es": "¿Cómo se conectan?",
         "what": "Find the shortest chain of cross references between any two passages, or the passages two passages both link to.",
         "what_es": "Encuentra la cadena más corta de referencias cruzadas entre dos pasajes, o los pasajes con los que ambos se conectan.",
-        "steps": ["Open Connect and type two passages.", "Watch the chain light up on the map.", "Try Shared connections for the links they have in common."],
-        "steps_es": ["Abre Conectar y escribe dos pasajes.", "Mira cómo la cadena se ilumina en el mapa.", "Prueba Conexiones compartidas para ver los vínculos que tienen en común."],
-        "try": "?path=Genesis+3%3A15~Revelation+12%3A9", "try_label": "Genesis 3:15 to Revelation 12:9", "try_label_es": "Génesis 3:15 a Apocalipsis 12:9"
+        "steps": [
+          "Open Connect and type two passages.",
+          "Watch the chain light up on the map.",
+          "Try Shared connections for the links they have in common."
+        ],
+        "steps_es": [
+          "Abre Conectar y escribe dos pasajes.",
+          "Mira cómo la cadena se ilumina en el mapa.",
+          "Prueba Conexiones compartidas para ver los vínculos que tienen en común."
+        ],
+        "try": "?path=Genesis+3%3A15~Revelation+12%3A9",
+        "try_label": "Genesis 3:15 to Revelation 12:9",
+        "try_label_es": "Génesis 3:15 a Apocalipsis 12:9"
       }
     ]
   },
   {
-    "group": "Read, listen and share", "group_es": "Leer, escuchar y compartir",
+    "group": "Read, listen and share",
+    "group_es": "Leer, escuchar y compartir",
     "items": [
       {
-        "title": "Two translations and audio", "title_es": "Dos traducciones y audio",
+        "title": "Two translations and audio",
+        "title_es": "Dos traducciones y audio",
         "what": "Read on Bible.com in any of 99 translations in 31 languages, compare with a second one, and listen where audio is available.",
         "what_es": "Lee en Bible.com en cualquiera de 99 traducciones en 31 idiomas, compara con una segunda, y escucha cuando hay audio.",
-        "steps": ["Choose Read in and Compare with in the sidebar. You can type to search the list.", "Use the headphones button to listen to a chapter."],
-        "steps_es": ["Elige Leer en y Comparar con en la barra lateral. Puedes escribir para buscar en la lista.", "Usa el botón de auriculares para escuchar un capítulo."],
-        "try": "?ref=Psalm+23%3A1", "try_label": "Read Psalm 23:1", "try_label_es": "Leer Salmo 23:1"
+        "steps": [
+          "Choose Read in and Compare with in the sidebar. You can type to search the list.",
+          "Use the headphones button to listen to a chapter."
+        ],
+        "steps_es": [
+          "Elige Leer en y Comparar con en la barra lateral. Puedes escribir para buscar en la lista.",
+          "Usa el botón de auriculares para escuchar un capítulo."
+        ],
+        "try": "?ref=Psalm+23%3A1",
+        "try_label": "Read Psalm 23:1",
+        "try_label_es": "Leer Salmo 23:1"
       },
       {
-        "title": "Share and teach", "title_es": "Compartir y enseñar",
+        "title": "Share and teach",
+        "title_es": "Compartir y enseñar",
         "what": "Every view has its own link. Share it, save an image, print a handout, make a QR code, or group passages into a collection.",
         "what_es": "Cada vista tiene su propio enlace. Compártelo, guarda una imagen, imprime una hoja, crea un código QR o agrupa pasajes en una colección.",
-        "steps": ["Use the Share, Save image, QR code and Add to collection buttons in the side panel.", "On a verse, use Share as image or Printable handout."],
-        "steps_es": ["Usa los botones Compartir, Guardar imagen, Código QR y Agregar a una colección en el panel lateral.", "En un versículo, usa Compartir como imagen u Hoja imprimible."],
-        "try": "?view=collections", "try_label": "See collections", "try_label_es": "Ver colecciones"
+        "steps": [
+          "Use the Share, Save image, QR code and Add to collection buttons in the side panel.",
+          "On a verse, use Share as image or Printable handout."
+        ],
+        "steps_es": [
+          "Usa los botones Compartir, Guardar imagen, Código QR y Agregar a una colección en el panel lateral.",
+          "En un versículo, usa Compartir como imagen u Hoja imprimible."
+        ],
+        "try": "?view=collections",
+        "try_label": "See collections",
+        "try_label_es": "Ver colecciones"
+      },
+      {
+        "title": "Lead a group",
+        "title_es": "Dirigir un grupo",
+        "what": "Turn a collection into slides, print a leader guide for a journey, or put a small card on your church website.",
+        "what_es": "Convierte una colección en diapositivas, imprime una guía para el líder de un recorrido o pon una tarjeta pequeña en el sitio de tu iglesia.",
+        "steps": [
+          "In a collection, choose Show as slides. Use the arrow keys or a clicker to move.",
+          "On any journey, choose Leader guide for timings, notes and questions.",
+          "Choose Embed, then Small card, to show one verse, connection, journey step or prophecy."
+        ],
+        "steps_es": [
+          "En una colección, elige Mostrar como diapositivas. Usa las flechas o un control remoto para avanzar.",
+          "En cualquier recorrido, elige Guía para el líder para ver tiempos, notas y preguntas.",
+          "Elige Insertar y luego Tarjeta pequeña para mostrar un versículo, una conexión, un paso de recorrido o una profecía."
+        ],
+        "try": "handout.html?journey=lamb&guide=leader",
+        "try_label": "See a leader guide",
+        "try_label_es": "Ver una guía para el líder"
       }
     ]
   },
   {
-    "group": "Make it yours", "group_es": "A tu manera",
+    "group": "Make it yours",
+    "group_es": "A tu manera",
     "items": [
       {
-        "title": "Settings", "title_es": "Ajustes",
+        "title": "Settings",
+        "title_es": "Ajustes",
         "what": "Choose light or dark, arc colors (including a color-blind friendly style), text size, an easier-to-read font, kids mode and animations.",
         "what_es": "Elige claro u oscuro, los colores de los arcos (incluido un estilo apto para daltonismo), el tamaño del texto, una letra más fácil de leer, el modo niños y las animaciones.",
-        "steps": ["Open Settings from the gear button (or the Settings tab on a phone).", "Changes are saved on your device."],
-        "steps_es": ["Abre Ajustes con el botón del engranaje (o la pestaña Ajustes en un teléfono).", "Los cambios se guardan en tu dispositivo."],
-        "try": "", "try_label": "", "try_label_es": ""
+        "steps": [
+          "Open Settings from the gear button (or the Settings tab on a phone).",
+          "Changes are saved on your device."
+        ],
+        "steps_es": [
+          "Abre Ajustes con el botón del engranaje (o la pestaña Ajustes en un teléfono).",
+          "Los cambios se guardan en tu dispositivo."
+        ],
+        "try": "",
+        "try_label": "",
+        "try_label_es": ""
       },
       {
-        "title": "Offline and backup", "title_es": "Sin conexión y copias",
+        "title": "Offline and backup",
+        "title_es": "Sin conexión y copias",
         "what": "Install the site as an app, save everything for offline use, and back up your notes and progress to one file.",
         "what_es": "Instala el sitio como app, guarda todo para usarlo sin conexión, y haz una copia de tus notas y tu progreso en un archivo.",
-        "steps": ["In Settings, choose Save everything for offline.", "Choose Back up everything, and later Restore a backup on any device."],
-        "steps_es": ["En Ajustes, elige Guardar todo para usar sin conexión.", "Elige Hacer una copia de todo, y luego Restaurar una copia en cualquier dispositivo."],
-        "try": "", "try_label": "", "try_label_es": ""
+        "steps": [
+          "In Settings, choose Save everything for offline.",
+          "Choose Back up everything, and later Restore a backup on any device."
+        ],
+        "steps_es": [
+          "En Ajustes, elige Guardar todo para usar sin conexión.",
+          "Elige Hacer una copia de todo, y luego Restaurar una copia en cualquier dispositivo."
+        ],
+        "try": "",
+        "try_label": "",
+        "try_label_es": ""
       },
       {
-        "title": "Keyboard shortcuts", "title_es": "Atajos de teclado",
+        "title": "Keyboard shortcuts",
+        "title_es": "Atajos de teclado",
         "what": "Move around the map and the site without a mouse.",
         "what_es": "Muévete por el mapa y el sitio sin ratón.",
-        "steps": ["Press ? to see every shortcut.", "Arrow keys move the map, + and − zoom, N and P step through connections, S surprises you."],
-        "steps_es": ["Pulsa ? para ver todos los atajos.", "Las flechas mueven el mapa, + y − acercan y alejan, N y P recorren las conexiones, S te sorprende."],
-        "try": "", "try_label": "", "try_label_es": ""
+        "steps": [
+          "Press ? to see every shortcut.",
+          "Arrow keys move the map, + and − zoom, N and P step through connections, S surprises you."
+        ],
+        "steps_es": [
+          "Pulsa ? para ver todos los atajos.",
+          "Las flechas mueven el mapa, + y − acercan y alejan, N y P recorren las conexiones, S te sorprende."
+        ],
+        "try": "",
+        "try_label": "",
+        "try_label_es": ""
       }
     ]
   }

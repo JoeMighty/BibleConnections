@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.10.0';
+  const VERSION = '0.11.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
@@ -2903,7 +2903,7 @@
     try {
       if (navigator.storage && navigator.storage.persist) await navigator.storage.persist().catch(() => false);
       const S = await loadStrongs();
-      const files = ['data/strongs.json', 'data/strongs-lite.json', 'data/entities.json', 'data/places.json', 'data/equiv.json', 'data/words.json', 'content/book-intros.json', 'content/reflect.json', 'content/timeline.json', 'vendor/qrcode.js'];
+      const files = ['data/strongs.json', 'data/strongs-lite.json', 'data/entities.json', 'data/places.json', 'data/equiv.json', 'data/words.json', 'content/book-intros.json', 'content/reflect.json', 'content/timeline.json', 'content/prophecy.json', 'vendor/qrcode.js'];
       for (let b = 0; b < BOOKS.length; b++) files.push(`data/text/${b}.json`);
       for (const sh of new Set(Object.keys(S).map(c => c.slice(0, 3)))) files.push(`data/lex/${sh}.json`);
       let done = 0, failed = 0;

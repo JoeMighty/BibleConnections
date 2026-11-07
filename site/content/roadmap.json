@@ -1,16 +1,10 @@
 {
   "in_progress": [
     {
-      "title": "Prophecy and fulfilment explorer",
-      "title_es": "Explorador de profecía y cumplimiento",
-      "text": "Old Testament promises and their New Testament fulfilments shown as connected stages on the map, with covenants and symbols. The first 12 chains are written and waiting for pastoral review.",
-      "text_es": "Promesas del Antiguo Testamento y su cumplimiento en el Nuevo, mostradas como etapas conectadas en el mapa, con pactos y símbolos. Las primeras 12 cadenas están escritas y esperan revisión pastoral."
-    },
-    {
       "title": "Pastoral review of written content",
       "title_es": "Revisión pastoral del contenido escrito",
-      "text": "A pastor is reviewing the book introductions, reflection questions, Advent readings and timeline dates.",
-      "text_es": "Un pastor está revisando las introducciones a los libros, las preguntas de reflexión, las lecturas de Adviento y las fechas de la línea de tiempo."
+      "text": "A pastor is reviewing the book introductions, reflection questions, Advent readings, timeline dates and the prophecy chains.",
+      "text_es": "Un pastor está revisando las introducciones a los libros, las preguntas de reflexión, las lecturas de Adviento, las fechas de la línea de tiempo y las cadenas de profecía."
     }
   ],
   "planned": [
@@ -19,28 +13,28 @@
       "when_es": "Próximamente",
       "items": [
         {
+          "title": "Holy Week journey and reading plan",
+          "title_es": "Recorrido y plan de lectura de Semana Santa",
+          "text": "Palm Sunday to resurrection morning, with Old Testament connections for each day.",
+          "text_es": "Del Domingo de Ramos a la mañana de la resurrección, con conexiones del Antiguo Testamento para cada día."
+        },
+        {
+          "title": "More interface languages",
+          "title_es": "Más idiomas de la interfaz",
+          "text": "The site itself in Portuguese, then French, Korean and Chinese, with translations checked by native speakers.",
+          "text_es": "El sitio en portugués, y luego en francés, coreano y chino, con traducciones revisadas por hablantes nativos."
+        },
+        {
           "title": "Report a weak link",
           "title_es": "Reportar un vínculo débil",
           "text": "Flag a cross reference that seems loose, so poor ones can be hidden.",
           "text_es": "Marca una referencia cruzada que parezca débil, para poder ocultar las malas."
         },
         {
-          "title": "Collection to slides",
-          "title_es": "De colección a diapositivas",
-          "text": "Turn a collection into a simple slide deck for a sermon or small group.",
-          "text_es": "Convierte una colección en una presentación sencilla para un sermón o un grupo pequeño."
-        },
-        {
           "title": "Church page",
           "title_es": "Página para iglesias",
           "text": "A simple page for church websites with this week's sermon passages.",
           "text_es": "Una página sencilla para sitios de iglesias con los pasajes del sermón de la semana."
-        },
-        {
-          "title": "Leader guides",
-          "title_es": "Guías para líderes",
-          "text": "Printable guides for each journey with timings and leader notes.",
-          "text_es": "Guías imprimibles para cada recorrido con tiempos y notas para el líder."
         }
       ]
     },
@@ -48,24 +42,6 @@
       "when": "Later",
       "when_es": "Más adelante",
       "items": [
-        {
-          "title": "Holy Week journey and reading plan",
-          "title_es": "Recorrido y plan de lectura de Semana Santa",
-          "text": "Palm Sunday to resurrection morning, with Old Testament connections for each day.",
-          "text_es": "Del Domingo de Ramos a la mañana de la resurrección, con conexiones del Antiguo Testamento para cada día."
-        },
-        {
-          "title": "Smaller embeds",
-          "title_es": "Insertos más pequeños",
-          "text": "Embed a single verse or journey step on a church website, in light or dark.",
-          "text_es": "Inserta un solo versículo o paso de un recorrido en el sitio de una iglesia, en claro u oscuro."
-        },
-        {
-          "title": "Faster on slow phones",
-          "title_es": "Más rápido en teléfonos lentos",
-          "text": "Smaller Hebrew and Greek files and a faster first load.",
-          "text_es": "Archivos hebreos y griegos más pequeños y una primera carga más rápida."
-        },
         {
           "title": "Testing with real users",
           "title_es": "Pruebas con usuarios reales",
@@ -77,17 +53,28 @@
           "title_es": "Publicación en Google Play",
           "text": "The installable app, also available from the Play Store.",
           "text_es": "La app instalable, también disponible en Play Store."
-        },
-        {
-          "title": "More interface languages",
-          "title_es": "Más idiomas de la interfaz",
-          "text": "The site itself in more languages, starting with Portuguese.",
-          "text_es": "El sitio en más idiomas, empezando por el portugués."
         }
       ]
     }
   ],
   "shipped": [
+    {
+      "version": "0.11.0",
+      "items": [
+        "Prophecy and fulfilment explorer",
+        "Collection slides",
+        "Leader guides for every journey",
+        "Small embed cards in light or dark",
+        "Faster first load"
+      ],
+      "items_es": [
+        "Explorador de profecía y cumplimiento",
+        "Colecciones como diapositivas",
+        "Guías para líderes de cada recorrido",
+        "Tarjetas pequeñas para insertar, en claro u oscuro",
+        "Primera carga más rápida"
+      ]
+    },
     {
       "version": "0.10.0",
       "items": [

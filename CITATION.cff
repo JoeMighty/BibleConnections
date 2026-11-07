@@ -9,8 +9,8 @@ authors:
 repository-code: "https://github.com/JoeMighty/BibleConnections"
 url: "https://joemighty.github.io/BibleConnections/"
 license: Apache-2.0
-version: 0.10.0
-date-released: 2026-11-06
+version: 0.11.0
+date-released: 2026-11-07
 keywords:
   - bible
   - cross references

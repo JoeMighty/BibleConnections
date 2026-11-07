@@ -732,7 +732,6 @@
     "Tap an arc to see the two passages, the words they share and why they connect, then read them on Bible.com.": "Toca un arco para ver los dos pasajes, las palabras que comparten y por qué se conectan, y luego léelos en Bible.com.",
     "Open any verse to study it: its original Hebrew or Greek words, its context, connections, places and questions. Add your own notes, print a handout or share it as an image.": "Abre cualquier versículo para estudiarlo: sus palabras originales en hebreo o griego, su contexto, conexiones, lugares y preguntas. Agrega tus notas, imprime una hoja o compártelo como imagen.",
     "Tap the bars along the bottom to see a chapter, with its key words and places.": "Toca las barras de abajo para ver un capítulo, con sus palabras clave y lugares.",
-    "Search for a reference or a word, pick a theme, take a guided journey, or explore word studies and places in Study.": "Busca una referencia o una palabra, elige un tema, haz un recorrido guiado o explora estudios de palabras y lugares en Estudio.",
     "Use the headphones button to listen on Bible.com, where the translation has audio.": "Usa el botón de auriculares para escuchar en Bible.com, cuando la traducción tiene audio.",
     "In Settings, choose your translations, arc colors, text size, an easier-to-read font, animations, and back up or save everything for offline.": "En Ajustes, elige tus traducciones, los colores de los arcos, el tamaño del texto, una letra más fácil de leer y las animaciones, y haz una copia o guarda todo para usar sin conexión.",
     "No Bible translation is published on this site. Reading and listening links open": "Este sitio no publica ninguna traducción de la Biblia. Los enlaces para leer y escuchar abren",
@@ -743,7 +742,6 @@
     ". Coastline from": ". Costas de",
     "(public domain).": "(dominio público).",
     "The easier-to-read font is Atkinson Hyperlegible by the Braille Institute, under the SIL Open Font License.": "La letra más fácil de leer es Atkinson Hyperlegible, del Braille Institute, con la licencia SIL Open Font License.",
-    "Notes, journeys, themes, book introductions and questions are original writing for this site.": "Las notas, los recorridos, los temas, las introducciones a los libros y las preguntas son textos originales de este sitio.",
     "and the written content under": "y el contenido escrito, la licencia",
     "How are you feeling?": "¿Cómo te sientes?",
     "Surprise me": "Sorpréndeme",
@@ -807,7 +805,10 @@
     "Small card": "Tarjeta pequeña",
     "Colors": "Colores",
     "Match the visitor's device": "Según el dispositivo del visitante",
-    "A small card works for a verse, a connection, a journey step or a prophecy.": "La tarjeta pequeña sirve para un versículo, una conexión, un paso de recorrido o una profecía."
+    "A small card works for a verse, a connection, a journey step or a prophecy.": "La tarjeta pequeña sirve para un versículo, una conexión, un paso de recorrido o una profecía.",
+    "Search for a reference or a word, pick a theme, take a guided journey, or explore word studies, places, the timeline and prophecy and fulfilment in Study.": "Busca una referencia o una palabra, elige un tema, haz un recorrido guiado o explora estudios de palabras, lugares, la línea de tiempo y profecía y cumplimiento en Estudio.",
+    "For groups: show a collection as slides, print a leader guide for any journey, or embed a small card on your church website.": "Para grupos: muestra una colección como diapositivas, imprime una guía para el líder de cualquier recorrido o inserta una tarjeta pequeña en el sitio de tu iglesia.",
+    "Notes, journeys, themes, book introductions, questions, the timeline and the prophecy chains are original writing for this site.": "Las notas, los recorridos, los temas, las introducciones a los libros, las preguntas, la línea de tiempo y las cadenas de profecía son textos originales de este sitio."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

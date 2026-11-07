@@ -14,7 +14,7 @@ Some parts of the site are written by the project, not taken from a source. Thes
 
 1. Read the content principles in section 3 and tell us if anything should change.
 2. Check the content that is already on the site (sections 4 and 5).
-3. Check the draft prophecy and fulfilment chains (section 6). These are not on the site yet.
+3. Check the prophecy and fulfilment chains (section 6). These are now live on the site (Study, Prophecy and fulfilment), so corrections can be made straight away.
 4. Tell us how to handle the areas where Christians disagree (section 7).
 
 For each item, mark **Approve**, **Change** (with your suggested wording) or **Remove**. Short notes in the margin are perfect. Expect about 60 to 90 minutes in total. You can review it in parts.
@@ -189,9 +189,9 @@ Each verse page shows a short introduction to its book. Where authorship is deba
 - **Revelation:** A vision given to John, full of symbols, showing the risen Christ, the struggle between God's kingdom and evil, and the hope of a new heaven and new earth. Christians read its details in different ways, but agree on its message that Jesus wins.
 
 
-## 6. Draft prophecy and fulfilment chains (not on the site yet)
+## 6. Prophecy and fulfilment chains (live since version 0.11.0)
 
-Each chain will appear as connected stages, light up its arcs on the map, and link to Bible.com for every passage. The **type** tells readers how strong the link is:
+Each chain appears as connected stages, lights up its arcs on the map, and links to Bible.com for every passage. The wording on the site is in `site/content/prophecy.json` (English and Spanish), together with five covenant chains and the six symbols below. The **type** tells readers how strong the link is:
 
 - **Quotation:** the New Testament quotes the Old Testament passage.
 - **Fulfilment:** the New Testament says the event happened "to fulfil" the passage.

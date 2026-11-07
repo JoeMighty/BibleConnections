@@ -5,6 +5,18 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-07 - Promise and Fulfilment
+
+### Added
+- Prophecy and fulfilment explorer (Study, Prophecy and fulfilment): 12 prophecies, 5 covenants (Noah, Abraham, Sinai, David and the new covenant) and 6 symbols (lamb, shepherd, vine, temple, water and light). Each one shows its passages as numbered stages joined by arcs on the map, plays in order, and is labeled as a quotation, fulfilment, pattern or promise. Links look like ?prophecy=servant. Written for this site and in Spanish too.
+- Collection slides: Show as slides on any collection opens simple full-screen slides, one per item, with references linked to Bible.com. Move with the arrow keys, a presentation clicker or a swipe, switch light or dark, go full screen, or print or save as a PDF.
+- Leader guides: every journey has a printable guide for the person leading, with a total time, what to prepare, an opening, who reads which passage, leader notes, discussion questions, a closing, and extra ideas for children's journeys.
+- Smaller embeds: the Embed window now offers a small card for a single verse, connection, journey step or prophecy, and a choice of light, dark or the visitor's own colors (for the full map too).
+
+### Changed
+- Faster first load: the cross references are packed into a file about a third of the size, the welcome page no longer loads the word index, the dictionary loads in a slim form until a word study is opened, book introductions load after the map is showing, and the QR code tool loads only when used. The welcome page now loads about 1.2 MB instead of 2.3 MB, and a verse page about 2.7 MB instead of 7.1 MB.
+- Passage handouts load the smaller files too.
+
 ## [0.10.0] - 2026-11-06 - Advent
 
 ### Fixed

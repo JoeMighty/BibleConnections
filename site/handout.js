@@ -77,6 +77,23 @@
     main.innerHTML = `<p class="error">${t('Sorry, the handout could not be loaded. Please try again.')}</p>`;
   }
 
+  // the packed cross references (see scripts/pack-data.mjs), with the plain file as a fallback
+  async function loadRefs() {
+    const plain = () => fetch('data/refs.bin').then(r => r.arrayBuffer());
+    if (typeof DecompressionStream !== 'function') return plain();
+    try {
+      const r = await fetch('data/refs.v2.gz');
+      if (!r.ok) throw new Error(r.status);
+      const bytes = new Uint8Array(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
+      const quads = [];
+      let p = 0, from = 0;
+      const next = () => { let x = 0, sh = 0, b; do { b = bytes[p++]; x += (b & 127) * 2 ** sh; sh += 7; } while (b & 128); return x; };
+      const unzig = (x) => (x & 1 ? -(x + 1) / 2 : x / 2);
+      while (p < bytes.length) { from += unzig(next()); const to = from + unzig(next()), end = to + next(), votes = next(); quads.push(from, to, end, votes); }
+      return Uint16Array.from(quads).buffer;
+    } catch { return plain(); }
+  }
+
   // ---------- Leader guide: timings, preparation and notes for the person leading a journey ----------
   function leader(meta, j) {
     if (!j) { main.innerHTML = `<p class="error">${t('Journey not found.')} <a href="./?view=journeys">${t('Choose a journey')}</a>.</p>`; return; }
@@ -127,12 +144,12 @@
     const lab = (x, y = x) => { const [k1, c1, v1] = where(x); if (y === x) return `${B[k1].name} ${c1}:${v1}`; const [k2, c2, v2] = where(y); return k1 === k2 && c1 === c2 ? `${B[k1].name} ${c1}:${v1}-${v2}` : `${B[k1].name} ${c1}:${v1} to ${B[k2].name} ${c2}:${v2}`; };
     const ref = lab(v);
     const [bin, intros, reflect, notes, text, strongs] = await Promise.all([
-      fetch('data/refs.bin').then(r => r.arrayBuffer()),
+      loadRefs(),
       fetch('content/book-intros.json').then(r => r.json()).catch(() => []),
       fetch('content/reflect.json').then(r => r.json()).catch(() => ({})),
       fetch('content/notes.json').then(r => r.json()).catch(() => []),
       fetch(`data/text/${bi}.json`).then(r => r.json()).catch(() => null),
-      fetch('data/strongs.json').then(r => r.json()).catch(() => ({})),
+      fetch('data/strongs-lite.json').then(r => r.json()).catch(() => ({})),
     ]);
     const raw = new Uint16Array(bin), conns = [];
     for (let i = 0; i < raw.length; i += 4) {
@@ -159,7 +176,7 @@
       ${intro ? `<section><h2>${esc(t('About {b}', { b: b.name }))}</h2><p>${esc(lang === 'es' && intro.about_es ? intro.about_es : intro.about)}</p></section>` : ''}
       ${words.length ? `<section><h2>${esc(t('Original {l} words', { l: langName }))}</h2>
         <ol class="orig" lang="${greek ? 'el' : 'he'}"${greek ? '' : ' dir="rtl"'}>${words.map(([w, tr, code]) => {
-          const g = (strongs[code.replace(/[A-Z]$/, '')] || {}).g || '';
+          const g = (strongs[code.replace(/[A-Z]$/, '')] || [])[2] || '';
           return `<li><span class="w">${esc(w)}</span><span class="tr" lang="en" dir="ltr">${esc(tr.replace(/\./g, ''))}</span><span class="gl" lang="en" dir="ltr">${esc(g)}</span></li>`;
         }).join('')}</ol><p class="hint">${t('Each word shows its pronunciation and dictionary meaning, not a translation of the verse.')}</p></section>` : ''}
       ${uniq.length ? `<section><h2>${t('Strongest connections')}</h2><p class="hint">${t('Read these passages in your own Bible or at bible.com.')}</p>
