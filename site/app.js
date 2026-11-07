@@ -185,11 +185,45 @@
   let hasNote = new Uint8Array(0);
   let wordIndex = null, INTROS = {}, REFLECT = {};
 
+  // Cross references come packed (variable-length numbers, gzip) where the browser can unpack them,
+  // which is under half the size of refs.bin. Older browsers get refs.bin as before.
+  async function loadRefs() {
+    const plainBin = () => fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); });
+    if (typeof DecompressionStream !== 'function') return plainBin();
+    try {
+      const r = await fetch('data/refs.v2.gz');
+      if (!r.ok) throw new Error(r.status);
+      const bytes = new Uint8Array(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
+      const quads = [];
+      let p = 0, from = 0;
+      const next = () => { let x = 0, sh = 0, b; do { b = bytes[p++]; x += (b & 127) * 2 ** sh; sh += 7; } while (b & 128); return x; };
+      const unzig = (x) => (x & 1 ? -(x + 1) / 2 : x / 2);
+      while (p < bytes.length) {
+        from += unzig(next());
+        const to = from + unzig(next()), end = to + next(), votes = next();
+        quads.push(from, to, end, votes);
+      }
+      return Uint16Array.from(quads).buffer;
+    } catch { return plainBin(); }
+  }
+  // book introductions and reflection questions are fetched once the map is showing
+  let studyTextPromise = null;
+  function loadStudyText() {
+    if (studyTextReady) return Promise.resolve();
+    if (!studyTextPromise) {
+      const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+      studyTextPromise = Promise.all([
+        getJSON('content/book-intros.json').then(x => { INTROS = Object.fromEntries(x.map(b => [b.osis, b])); }),
+        getJSON('content/reflect.json').then(x => { REFLECT = x; }),
+      ]).then(() => { studyTextReady = true; }).catch(() => { studyTextPromise = null; });
+    }
+    return studyTextPromise;
+  }
   async function loadData() {
     const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
     const [meta, bin, themes, notes, journeys, series] = await Promise.all([
       getJSON('data/books.json'),
-      fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); }),
+      loadRefs(),
       getJSON('content/themes.json'), getJSON('content/notes.json'), getJSON('content/journeys.json'),
       getJSON('content/series.json').catch(() => ({ enabled: false })),
       getJSON('content/versions.json').then(list => { VERSIONS = Object.fromEntries(list.map(v => [v.key || v.code, v])); }).catch(() => {}),
@@ -198,8 +232,6 @@
       getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
       getJSON('content/plans.json').then(x => { PLANS = x; }).catch(() => {}),
       getJSON('content/words.json').then(x => { FEATURED_WORDS = x.map(w => w.id); }).catch(() => {}),
-      getJSON('content/book-intros.json').then(x => { INTROS = Object.fromEntries(x.map(b => [b.osis, b])); }).catch(() => {}),
-      getJSON('content/reflect.json').then(x => { REFLECT = x; }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -245,7 +277,8 @@
   // Spanish book names are always loaded so Spanish references work in any language.
   async function applyLanguageData() {
     const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
-    const es = await getJSON('content/i18n/es.json').catch(() => null);
+    // English pages only need the Spanish book names (so "Juan 3:16" works); the full strings are for Spanish
+    const es = await getJSON(LANG === 'es' ? 'content/i18n/es.json' : 'content/i18n/books-es.json').catch(() => null);
     BOOKS.forEach((b, i) => {
       b.nameEn = b.name; b.nameEs = es ? es.books[i] : b.name;
       b.abbr = LANG === 'es' && es ? es.abbr[i] : b.osis;
@@ -269,6 +302,8 @@
     }
   }
 
+  let entitiesPromise = null;
+  const loadEntities = () => (entitiesPromise ||= fetch('data/entities.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(e => { entitiesPromise = null; throw e; }));
   function loadWords() {
     if (!wordIndex) wordIndex = fetch('data/words.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
     wordIndex.catch(() => { wordIndex = null; });
@@ -1230,8 +1265,13 @@
       <button type="button" class="btn ghost small" data-action="embed">Embed</button>`;
   };
 
-  let lastPanelSel = -2;
+  let lastPanelSel = -2, studyTextReady = false, studyWaiting = false;
   function renderPanel() {
+    // a verse, chapter or book uses the book introductions: fetch them, then show the panel again
+    if (!studyTextReady && !studyWaiting && state.focus && ['verse', 'chapter', 'book'].includes(state.focus.kind)) {
+      studyWaiting = true;
+      loadStudyText().then(() => { studyWaiting = false; if (studyTextReady && state.focus) renderPanel(); });
+    }
     let title = 'Explore', html = '';
     const theme = THEMES.find(t => t.id === state.theme);
     const i = state.selected;
@@ -1971,8 +2011,14 @@
 
   // ---------- QR code ----------
   function cleanUrl() { const u = new URL(location.href); u.searchParams.delete('embed'); return u.toString(); }
-  function openQR() {
-    if (typeof qrcode !== 'function') return;
+  let qrLib = null;
+  const loadQR = () => (qrLib ||= new Promise((res, rej) => {
+    if (typeof qrcode === 'function') { res(); return; }
+    const sc = document.createElement('script'); sc.src = 'vendor/qrcode.js'; sc.onload = res; sc.onerror = () => { qrLib = null; rej(new Error('qr')); };
+    document.head.append(sc);
+  }));
+  async function openQR() {
+    try { await loadQR(); } catch { announce('The QR code could not load. Check your connection.'); return; }
     const url = cleanUrl(), qr = qrcode(0, 'M');
     qr.addData(url); qr.make();
     $('qrImage').innerHTML = qr.createSvgTag({ cellSize: 6, margin: 4, scalable: true, alt: `QR code for ${url}` });
@@ -2076,11 +2122,19 @@
   }
 
   // ---------- Word study: original Hebrew and Greek words (STEP Bible data, CC BY 4.0) ----------
-  let strongsPromise = null, STRONGS = null;
+  // The slim dictionary (lemma, transliteration, gloss, count) serves glosses, chips and search.
+  // The full file, with every word's verse list, loads only when a word study needs those verses.
+  let strongsPromise = null, STRONGS = null, fullPromise = null;
   function loadStrongs() {
-    if (!strongsPromise) strongsPromise = fetch('data/strongs.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
-    strongsPromise.then(d => { STRONGS = d; }, () => { strongsPromise = null; });
+    if (!strongsPromise) strongsPromise = fetch('data/strongs-lite.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(d => { const o = {}; for (const c in d) { const [l, t, g, n] = d[c]; o[c] = { l, t, g, n }; } return o; });
+    strongsPromise.then(d => { STRONGS = STRONGS || d; }, () => { strongsPromise = null; });
     return strongsPromise;
+  }
+  function loadStrongsFull() {
+    if (!fullPromise) fullPromise = fetch('data/strongs.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    fullPromise.then(d => { STRONGS = d; }, () => { fullPromise = null; });
+    return fullPromise;
   }
   const plain = (x) => String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[.'’ʼ]/g, '').toLowerCase();
   const wordLabel = (code, w) => `${w.t} (${w.g})`;
@@ -2133,7 +2187,7 @@
   });
   async function openWord(code, opts = {}) {
     let d;
-    try { d = await loadStrongs(); } catch { announce('Word study could not load. Check your connection.'); return; }
+    try { d = await loadStrongsFull(); } catch { announce('Word study could not load. Check your connection.'); return; }
     const w = d[code];
     if (!w) return;
     const verses = w.v ? Int32Array.from(decodePostings(w.v)) : new Int32Array(0);
@@ -2260,7 +2314,7 @@
     return [...counts].sort((a, b) => b[1] - a[1]);
   }
   async function wordDetailHTML(code) {
-    const [d, w] = await Promise.all([loadLex(code), loadStrongs().then(x => x[code])]);
+    const [d, w] = await Promise.all([loadLex(code), loadStrongsFull().then(x => x[code])]);
     if (!d || !w) return '<p class="muted">No further details for this word.</p>';
     const verses = w.v ? decodePostings(w.v) : [];
     const lang = d.lang;
@@ -2298,7 +2352,7 @@
     return map[k] || map[k.split('-')[0]] || k;
   }
   async function openSense(code, sense) {
-    const [d, all] = await Promise.all([loadLex(code), loadStrongs()]);
+    const [d, all] = await Promise.all([loadLex(code), loadStrongsFull()]);
     const s = d && d.senses && d.senses.find(x => x[0] === sense), w = all[code];
     if (!s || !s[3]) return;
     const verses = Int32Array.from(decodePostings(s[3]));
@@ -2395,10 +2449,10 @@
     const ve = $('verseEntities');
     if (ve) {
       const v = +ve.dataset.v;
-      loadWords().then(idx => {
+      loadEntities().then(ent => {
         if (!ve.isConnected) return;
-        const has = (words) => words.some(wd => { const s = idx[wd]; return s && decodePostings(s).includes(v); });
-        const ppl = (PEOPLE || []).filter(p => has(p.words)), tps = (TOPICS || []).filter(t => has(t.words));
+        const has = (key) => { const s2 = ent[key]; return !!s2 && decodePostings(s2).includes(v); };
+        const ppl = (PEOPLE || []).filter(p => has(`${p.type === 'place' ? 'place' : 'person'}:${p.id}`)), tps = (TOPICS || []).filter(t => has(`topic:${t.id}`));
         const nm = (x) => (LANG === 'es' && x.name_es) || x.name;
         ve.innerHTML = ppl.length || tps.length
           ? `<ul class="chip-list">${ppl.map(p => `<li><button type="button" class="chip" data-action="entity" data-type="${p.type === 'place' ? 'place' : 'person'}" data-id="${esc(p.id)}">${esc(nm(p))} <span class="muted">${p.type === 'place' ? 'place' : 'person'}</span></button></li>`).join('')}${tps.map(t => `<li><button type="button" class="chip" data-action="entity" data-type="topic" data-id="${esc(t.id)}">${esc(nm(t))} <span class="muted">topic</span></button></li>`).join('')}</ul>`
@@ -2715,6 +2769,7 @@
     } catch { if (box.isConnected) box.innerHTML = ''; }
   }
   async function fillRangeStudy(box) {
+    await loadStudyText();
     const start = +box.dataset.start, end = +box.dataset.end, kind = box.dataset.kind, b = BOOKS[verseBook[start]];
     const intro = INTROS[b.osis];
     let html = intro ? `<section class="study-sec"><h3>About ${esc(b.name)}</h3><p>${esc(LANG === 'es' && intro.about_es ? intro.about_es : intro.about)}</p></section>` : '';
@@ -2804,7 +2859,7 @@
     try {
       if (navigator.storage && navigator.storage.persist) await navigator.storage.persist().catch(() => false);
       const S = await loadStrongs();
-      const files = ['data/strongs.json', 'data/places.json', 'data/equiv.json', 'data/words.json', 'content/book-intros.json', 'content/reflect.json'];
+      const files = ['data/strongs.json', 'data/strongs-lite.json', 'data/entities.json', 'data/places.json', 'data/equiv.json', 'data/words.json', 'content/book-intros.json', 'content/reflect.json', 'content/timeline.json', 'vendor/qrcode.js'];
       for (let b = 0; b < BOOKS.length; b++) files.push(`data/text/${b}.json`);
       for (const sh of new Set(Object.keys(S).map(c => c.slice(0, 3)))) files.push(`data/lex/${sh}.json`);
       let done = 0, failed = 0;
@@ -2831,6 +2886,7 @@
 
   // ---------- Shareable image for a verse study ----------
   async function studyImage(v) {
+    await loadStudyText();
     const W = 1080, H = 1350, c = document.createElement('canvas');
     c.width = W; c.height = H;
     const ctx = c.getContext('2d');
@@ -4113,6 +4169,8 @@
     resize();
     el.loading.remove();
     buildLanding();
+    // fetch the book introductions quietly once the page is up
+    (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(() => loadStudyText());
     await applyLocation();
     if (!isLanding() && location.search !== '?view=map' && !matchMedia('(max-width: 860px)').matches) requestAnimationFrame(scrollPanel);
     document.body.dataset.ready = 'true';

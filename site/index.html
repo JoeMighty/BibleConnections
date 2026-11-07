@@ -42,6 +42,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="data/books.json" as="fetch" crossorigin>
+  <link rel="preload" href="data/refs.v2.gz" as="fetch" crossorigin>
 </head>
 <body>
   <a class="skip-link" href="#panel">Skip to connection details</a>
@@ -456,7 +458,6 @@
     </div>
   </dialog>
 
-  <script src="vendor/qrcode.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

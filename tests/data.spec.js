@@ -57,3 +57,23 @@ test('the version shown in About matches the latest release in the changelog', a
   await page.click('#aboutBtn');
   await expect(page.locator('#aboutVersion')).toHaveText(latest);
 });
+
+test('packed data files match the full ones (run scripts/pack-data.mjs after rebuilding data)', async () => {
+  const fs = require('fs'), zlib = require('zlib');
+  const raw = new Uint16Array(fs.readFileSync('site/data/refs.bin').buffer.slice(0));
+  const bytes = zlib.gunzipSync(fs.readFileSync('site/data/refs.v2.gz'));
+  let p = 0, from = 0;
+  const next = () => { let x = 0, sh = 0, b; do { b = bytes[p++]; x += (b & 127) * 2 ** sh; sh += 7; } while (b & 128); return x; };
+  const unzig = (x) => (x & 1 ? -(x + 1) / 2 : x / 2);
+  const out = [];
+  while (p < bytes.length) { from += unzig(next()); const to = from + unzig(next()), end = to + next(); out.push(from, to, end, next()); }
+  expect(out.length).toBe(raw.length);
+  expect(out.every((x, i) => x === raw[i])).toBe(true);
+  const full = JSON.parse(fs.readFileSync('site/data/strongs.json', 'utf8')), lite = JSON.parse(fs.readFileSync('site/data/strongs-lite.json', 'utf8'));
+  expect(Object.keys(lite).length).toBe(Object.keys(full).length);
+  for (const c of ['G0026', 'H7965', 'H0430']) expect(lite[c]).toEqual([full[c].l, full[c].t, full[c].g, full[c].n]);
+  const es = JSON.parse(fs.readFileSync('site/content/i18n/es.json', 'utf8')), small = JSON.parse(fs.readFileSync('site/content/i18n/books-es.json', 'utf8'));
+  expect(small.books).toEqual(es.books);
+  const ent = JSON.parse(fs.readFileSync('site/data/entities.json', 'utf8'));
+  expect(Object.keys(ent).length).toBeGreaterThan(80);
+});
