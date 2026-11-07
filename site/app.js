@@ -1411,6 +1411,7 @@
           <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button>
           <button type="button" class="btn ghost small" data-action="presentJourney" data-j="${n}">Present<span class="sr-only"> ${esc(j.name)}</span></button>
           <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
+          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}&guide=leader${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Leader guide<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
         </div></li>`;
     const all = JOURNEYS.map((j, n) => [j, n]);
     const kids = all.filter(([j]) => j.kids), grown = all.filter(([j]) => !j.kids);
@@ -1434,6 +1435,7 @@
     </div><div class="actions">
       <button type="button" class="btn ghost small" data-action="present">Present</button>
       <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}&guide=leader${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Leader guide<span class="sr-only"> (opens in a new tab)</span></a>
       ${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="journeys">All journeys</button></div>`;
     return [J.name, html];
   }
@@ -3244,6 +3246,7 @@
     if (!col.items.length) html += '<p class="muted">This collection is empty.</p>';
     html += `<div class="actions">${col.items.length ? '<button type="button" class="btn" data-action="playCollection" data-idx="0">Step through</button>' : ''}
       <button type="button" class="btn ghost small" data-action="shareCollection">Share collection</button>
+      ${col.items.length ? `<a class="btn ghost small" href="slides.html?c=${encodeCollection(col)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Show as slides<span class="sr-only"> (opens in a new tab)</span></a>` : ''}
       ${col.shared ? '<button type="button" class="btn ghost small" data-action="keepCollection">Save to my collections</button>' : ''}
       <button type="button" class="btn ghost small" data-action="mode" data-mode="collections">All collections</button></div>`;
     return [col.name, html];

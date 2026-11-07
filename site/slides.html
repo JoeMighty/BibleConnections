@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Slides · Bible Connections</title>
+  <meta name="description" content="A collection from Bible Connections as simple slides for a sermon or small group.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="slides.css">
+  <script>
+    (function () {
+      var get = function (k, d) { try { var v = JSON.parse(localStorage.getItem('bc.' + k)); return v === null ? d : v; } catch (e) { return d; } };
+      var p = new URLSearchParams(location.search), root = document.documentElement;
+      var a = p.get('theme') || get('slidesTheme', 'dark');
+      root.dataset.theme = a === 'light' ? 'light' : 'dark';
+      root.dataset.readable = get('readable', false) ? 'on' : 'off';
+      root.dataset.contrast = get('contrast', false) || matchMedia('(prefers-contrast: more)').matches ? 'more' : 'normal';
+    })();
+  </script>
+</head>
+<body>
+  <main id="deck" aria-roledescription="slide deck" aria-label="Slides"><p class="loading">Loading…</p></main>
+  <nav class="bar" aria-label="Slide controls">
+    <a id="backLink" href="./?view=collections">Back</a>
+    <span class="spacer"></span>
+    <button type="button" id="prevBtn" aria-label="Previous slide"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span id="counter" aria-live="polite">1 / 1</span>
+    <button type="button" id="nextBtn" aria-label="Next slide"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span class="spacer"></span>
+    <button type="button" id="themeBtn">Light</button>
+    <button type="button" id="fullBtn">Full screen</button>
+    <button type="button" id="printBtn">Print or save as PDF</button>
+  </nav>
+  <script src="slides.js"></script>
+</body>
+</html>

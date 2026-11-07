@@ -18,6 +18,23 @@
     'Strongest connections': 'Conexiones más fuertes', 'Read these passages in your own Bible or at bible.com.': 'Lee estos pasajes en tu propia Biblia o en bible.com.',
     'Reflect': 'Reflexiona', 'My notes': 'Mis notas', 'Verse not found.': 'Versículo no encontrado.', 'Open the map': 'Abrir el mapa',
     'Read {r} in your own Bible or at bible.com before you begin.': 'Lee {r} en tu propia Biblia o en bible.com antes de empezar.',
+    'Leader guide': 'Guía para el líder', 'About {m} minutes': 'Unos {m} minutos', '{m} min': '{m} min',
+    'Before you meet': 'Antes de reunirse', 'Welcome and opening': 'Bienvenida e inicio', 'Close': 'Cierre',
+    'Read the passages in each step yourself, in the translation your group will use.': 'Lee tú mismo los pasajes de cada paso, en la traducción que usará el grupo.',
+    'Open the journey on a screen, or print a handout for each person.': 'Abre el recorrido en una pantalla o imprime una hoja para cada persona.',
+    'Decide who will read each passage aloud, and ask them ahead of time.': 'Decide quién leerá cada pasaje en voz alta y pídeselo con tiempo.',
+    'Welcome everyone and pray briefly.': 'Da la bienvenida a todos y oren brevemente.',
+    'Say in a sentence where this journey goes: {s}': 'Explica en una frase hacia dónde va este recorrido: {s}',
+    'Ask: What do you already know about this theme?': 'Pregunta: ¿Qué sabes ya de este tema?',
+    'Ask someone to read {a}, then someone else to read {b}.': 'Pide a alguien que lea {a} y a otra persona que lea {b}.',
+    'Leader note': 'Nota para el líder', 'Discuss': 'Conversen', 'Follow up: What does this show us about God? What might it change this week?': 'Para seguir: ¿Qué nos muestra esto de Dios? ¿Qué podría cambiar esta semana?',
+    'Keep it short. One good answer is enough before moving on.': 'Sé breve. Una buena respuesta basta antes de seguir.',
+    'Ask each person to name one connection that stood out.': 'Pide a cada persona que diga una conexión que le llamó la atención.',
+    'Pray together about what you have read.': 'Oren juntos sobre lo que han leído.',
+    'Share the link so people can explore more at home.': 'Comparte el enlace para que puedan explorar más en casa.',
+    'Ideas for leading with children': 'Ideas para dirigir con niños',
+    'Let children find each passage in a children\'s Bible, and act out or draw the story.': 'Deja que los niños busquen cada pasaje en una Biblia para niños, y que representen o dibujen la historia.',
+    'Group handout': 'Hoja para el grupo',
     'Original language text and word meanings from STEP Bible (CC BY 4.0). Cross references from OpenBible.info (CC BY 4.0).': 'Texto en el idioma original y significados de palabras de STEP Bible (CC BY 4.0). Referencias cruzadas de OpenBible.info (CC BY 4.0).', 'Handout': 'Hoja', 'Sorry, the handout could not be loaded. Please try again.': 'Lo sentimos, no se pudo cargar la hoja. Inténtalo de nuevo.',
   };
   const t = (k, v = {}) => (lang === 'es' && ES[k] ? ES[k] : k).replace(/\{(\w+)\}/g, (_, x) => v[x]);
@@ -39,6 +56,7 @@
       (x.steps || []).forEach((st, n) => Object.assign(j.steps[n], st));
     }
     if (params.get('verse')) { await passage(meta, params.get('verse'), es); return; }
+    if (params.get('guide') === 'leader') { leader(meta, journeys.find(x => x.id === params.get('journey'))); return; }
     const id = params.get('journey');
     const j = journeys.find(x => x.id === id);
     if (!j) { main.innerHTML = `<p class="error">${t('Journey not found.')} <a href="./?view=journeys">${t('Choose a journey')}</a>.</p>`; return; }
@@ -57,6 +75,43 @@
       ${t('Made with Bible Connections,')} ${esc(location.origin + location.pathname.replace(/handout\.html$/, ''))}</footer>`;
   } catch {
     main.innerHTML = `<p class="error">${t('Sorry, the handout could not be loaded. Please try again.')}</p>`;
+  }
+
+  // ---------- Leader guide: timings, preparation and notes for the person leading a journey ----------
+  function leader(meta, j) {
+    if (!j) { main.innerHTML = `<p class="error">${t('Journey not found.')} <a href="./?view=journeys">${t('Choose a journey')}</a>.</p>`; return; }
+    const books = new Map(meta.books.map(b => [b.osis, b.name]));
+    const label = (osis) => { const [b, c, v] = osis.split('.'); return `${books.get(b) || b} ${c}:${v}`; };
+    const kids = j.id.startsWith('kids-');
+    const per = kids ? 5 : 6, open = 5, close = 5, total = open + close + per * j.steps.length;
+    const q = lang !== 'en' ? '&lang=' + lang : '';
+    document.title = `${j.name} · ${t('Leader guide')} · Bible Connections`;
+    document.getElementById('backLink').href = `./?journey=${encodeURIComponent(j.id)}&step=1${q}`;
+    const site = location.origin + location.pathname.replace(/handout\.html$/, '');
+    main.innerHTML = `<p class="kicker">${t('Leader guide')}</p><h1>${esc(j.name)}</h1>
+      <p class="summary">${esc(j.summary)} <strong>${esc(t('About {m} minutes', { m: total }))}</strong></p>
+      <section><h2>${t('Before you meet')}</h2><ul class="check">
+        <li>${t('Read the passages in each step yourself, in the translation your group will use.')}</li>
+        <li>${t('Open the journey on a screen, or print a handout for each person.')} <a href="handout.html?journey=${encodeURIComponent(j.id)}${q}">${t('Group handout')}</a></li>
+        <li>${t('Decide who will read each passage aloud, and ask them ahead of time.')}</li></ul>
+        <p class="hint">${t('Follow up: What does this show us about God? What might it change this week?')} ${t('Keep it short. One good answer is enough before moving on.')}</p></section>
+      <section><h2><span class="time">${t('{m} min', { m: open })}</span>${t('Welcome and opening')}</h2><ul>
+        <li>${t('Welcome everyone and pray briefly.')}</li>
+        <li>${esc(t('Say in a sentence where this journey goes: {s}', { s: j.summary }))}</li>
+        <li>${t('Ask: What do you already know about this theme?')}</li></ul></section>
+      <ol class="steps">${j.steps.map(s => `<li>
+        <h2><span class="time">${t('{m} min', { m: per })}</span>${esc(s.title)}</h2>
+        <p class="refs">${esc(t('Ask someone to read {a}, then someone else to read {b}.', { a: label(s.a), b: label(s.b) }))}</p>
+        <p><strong>${t('Leader note')}:</strong> ${esc(s.note)}</p>
+        ${s.question ? `<p><strong>${t('Discuss')}:</strong> ${esc(s.question)}</p>` : ''}
+      </li>`).join('')}</ol>
+      <section><h2><span class="time">${t('{m} min', { m: close })}</span>${t('Close')}</h2><ul>
+        <li>${t('Ask each person to name one connection that stood out.')}</li>
+        <li>${t('Pray together about what you have read.')}</li>
+        <li>${t('Share the link so people can explore more at home.')} ${esc(site)}?journey=${esc(j.id)}</li></ul></section>
+      ${kids ? `<section><h2>${t('Ideas for leading with children')}</h2><p>${t('Let children find each passage in a children\'s Bible, and act out or draw the story.')}</p></section>` : ''}
+      <footer>${t('Read each passage in your own Bible or at bible.com. Cross references from OpenBible.info (CC BY 4.0).')}
+      ${t('Made with Bible Connections,')} ${esc(site)}</footer>`;
   }
 
   // ---------- Passage handout ----------

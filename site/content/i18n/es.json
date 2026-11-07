@@ -799,7 +799,9 @@
     "Arcs on the map join each stage to the next. Choose a reference to study it.": "Los arcos del mapa unen cada etapa con la siguiente. Elige una referencia para estudiarla.",
     "All prophecies": "Todas las profecías",
     "Sorry, this could not be found.": "Lo sentimos, no se encontró.",
-    "Loading…": "Cargando…"
+    "Loading…": "Cargando…",
+    "Show as slides": "Mostrar como diapositivas",
+    "Leader guide": "Guía para el líder"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
