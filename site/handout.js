@@ -5,50 +5,19 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   document.getElementById('printBtn').addEventListener('click', () => window.print());
   const params = new URLSearchParams(location.search);
-  let lang = params.get('lang');
-  if (!['en', 'es'].includes(lang)) { try { lang = JSON.parse(localStorage.getItem('bc.lang')) || 'en'; } catch { lang = 'en'; } }
-  const ES = {
-    'Print or save as PDF': 'Imprimir o guardar como PDF', 'Back to Bible Connections': 'Volver a Bible Connections',
-    'Read {a} and {b}': 'Lee {a} y {b}', 'Journey not found.': 'Recorrido no encontrado.', 'Choose a journey': 'Elige un recorrido',
-    'Read each passage in your own Bible or at bible.com. Cross references from OpenBible.info (CC BY 4.0).': 'Lee cada pasaje en tu propia Biblia o en bible.com. Referencias cruzadas de OpenBible.info (CC BY 4.0).',
-    'Made with Bible Connections,': 'Hecho con Bible Connections,',
-    'Passage study': 'Estudio del pasaje', 'About {b}': 'Acerca de {b}', 'Original {l} words': 'Palabras originales en {l}',
-    'Hebrew': 'hebreo', 'Greek': 'griego', 'Aramaic': 'arameo', 'Hebrew and Aramaic': 'hebreo y arameo',
-    'Each word shows its pronunciation and dictionary meaning, not a translation of the verse.': 'Cada palabra muestra su pronunciación y su significado de diccionario, no una traducción del versículo.',
-    'Strongest connections': 'Conexiones más fuertes', 'Read these passages in your own Bible or at bible.com.': 'Lee estos pasajes en tu propia Biblia o en bible.com.',
-    'Reflect': 'Reflexiona', 'My notes': 'Mis notas', 'Verse not found.': 'Versículo no encontrado.', 'Open the map': 'Abrir el mapa',
-    'Read {r} in your own Bible or at bible.com before you begin.': 'Lee {r} en tu propia Biblia o en bible.com antes de empezar.',
-    'Leader guide': 'Guía para el líder', 'About {m} minutes': 'Unos {m} minutos', '{m} min': '{m} min',
-    'Before you meet': 'Antes de reunirse', 'Welcome and opening': 'Bienvenida e inicio', 'Close': 'Cierre',
-    'Read the passages in each step yourself, in the translation your group will use.': 'Lee tú mismo los pasajes de cada paso, en la traducción que usará el grupo.',
-    'Open the journey on a screen, or print a handout for each person.': 'Abre el recorrido en una pantalla o imprime una hoja para cada persona.',
-    'Decide who will read each passage aloud, and ask them ahead of time.': 'Decide quién leerá cada pasaje en voz alta y pídeselo con tiempo.',
-    'Welcome everyone and pray briefly.': 'Da la bienvenida a todos y oren brevemente.',
-    'Say in a sentence where this journey goes: {s}': 'Explica en una frase hacia dónde va este recorrido: {s}',
-    'Ask: What do you already know about this theme?': 'Pregunta: ¿Qué sabes ya de este tema?',
-    'Ask someone to read {a}, then someone else to read {b}.': 'Pide a alguien que lea {a} y a otra persona que lea {b}.',
-    'Leader note': 'Nota para el líder', 'Discuss': 'Conversen', 'Follow up: What does this show us about God? What might it change this week?': 'Para seguir: ¿Qué nos muestra esto de Dios? ¿Qué podría cambiar esta semana?',
-    'Keep it short. One good answer is enough before moving on.': 'Sé breve. Una buena respuesta basta antes de seguir.',
-    'Ask each person to name one connection that stood out.': 'Pide a cada persona que diga una conexión que le llamó la atención.',
-    'Pray together about what you have read.': 'Oren juntos sobre lo que han leído.',
-    'Share the link so people can explore more at home.': 'Comparte el enlace para que puedan explorar más en casa.',
-    'Ideas for leading with children': 'Ideas para dirigir con niños',
-    'Let children find each passage in a children\'s Bible, and act out or draw the story.': 'Deja que los niños busquen cada pasaje en una Biblia para niños, y que representen o dibujen la historia.',
-    'Group handout': 'Hoja para el grupo',
-    'Original language text and word meanings from STEP Bible (CC BY 4.0). Cross references from OpenBible.info (CC BY 4.0).': 'Texto en el idioma original y significados de palabras de STEP Bible (CC BY 4.0). Referencias cruzadas de OpenBible.info (CC BY 4.0).', 'Handout': 'Hoja', 'Sorry, the handout could not be loaded. Please try again.': 'Lo sentimos, no se pudo cargar la hoja. Inténtalo de nuevo.',
-  };
-  const t = (k, v = {}) => (lang === 'es' && ES[k] ? ES[k] : k).replace(/\{(\w+)\}/g, (_, x) => v[x]);
-  document.documentElement.lang = lang;
+  const L = window.bcLang, lang = L.lang;
+  await L.ready;
+  const t = (k, v = {}) => L.t('handout', k, v);
   document.getElementById('printBtn').textContent = t('Print or save as PDF');
   document.getElementById('backLink').textContent = t('Back to Bible Connections');
   try {
     const [meta, journeys, es, jes] = await Promise.all([
       fetch('data/books.json').then(r => r.json()),
       fetch('content/journeys.json').then(r => r.json()),
-      lang === 'es' ? fetch('content/i18n/es.json').then(r => r.json()) : null,
-      lang === 'es' ? fetch('content/journeys.es.json').then(r => r.json()).catch(() => []) : [],
+      L.books(),
+      L.has('journeys') ? fetch(`content/journeys.${lang}.json`).then(r => r.json()).catch(() => []) : [],
     ]);
-    if (es) meta.books.forEach((b, i) => { b.name = es.books[i]; });
+    if (es) meta.books.forEach((b, i) => { b.name = es[i] || b.name; });
     for (const j of journeys) {
       const x = jes.find(y => y.id === j.id);
       if (!x) continue;
@@ -173,7 +142,7 @@
     document.getElementById('backLink').href = `./?ref=${encodeURIComponent(ref)}${lang !== 'en' ? '&lang=' + lang : ''}`;
     main.innerHTML = `<p class="kicker">${t('Passage study')}</p><h1>${esc(ref)}</h1>
       <p class="summary">${esc(t('Read {r} in your own Bible or at bible.com before you begin.', { r: ref }))}</p>
-      ${intro ? `<section><h2>${esc(t('About {b}', { b: b.name }))}</h2><p>${esc(lang === 'es' && intro.about_es ? intro.about_es : intro.about)}</p></section>` : ''}
+      ${intro ? `<section><h2>${esc(t('About {b}', { b: b.name }))}</h2><p>${esc(L.pick(intro, 'about'))}</p></section>` : ''}
       ${words.length ? `<section><h2>${esc(t('Original {l} words', { l: langName }))}</h2>
         <ol class="orig" lang="${greek ? 'el' : 'he'}"${greek ? '' : ' dir="rtl"'}>${words.map(([w, tr, code]) => {
           const g = (strongs[code.replace(/[A-Z]$/, '')] || [])[2] || '';

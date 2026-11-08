@@ -49,6 +49,8 @@ fs.writeFileSync(site('data/entities.json'), JSON.stringify(entities));
 for (const lang of ['es', 'pt']) {
   const t = JSON.parse(fs.readFileSync(site(`content/i18n/${lang}.json`), 'utf8'));
   fs.writeFileSync(site(`content/i18n/books-${lang}.json`), JSON.stringify({ books: t.books, abbr: t.abbr }));
+  // the standalone pages (handout, guide, roadmap, slides, card) need only their own strings and the book names
+  fs.writeFileSync(site(`content/i18n/pages-${lang}.json`), JSON.stringify({ books: t.books, abbr: t.abbr, content: t.content || [], pages: t.pages || {} }));
 }
 
 const size = (p) => (fs.statSync(site(p)).size / 1024).toFixed(0) + ' KB';

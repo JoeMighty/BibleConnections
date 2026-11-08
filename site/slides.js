@@ -5,24 +5,9 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   const get = (k, d) => { try { const v = JSON.parse(localStorage.getItem('bc.' + k)); return v === null ? d : v; } catch { return d; } };
   const params = new URLSearchParams(location.search);
-  let lang = params.get('lang');
-  if (!['en', 'es'].includes(lang)) lang = get('lang', 'en');
-  if (!['en', 'es'].includes(lang)) lang = 'en';
-  document.documentElement.lang = lang;
-  const ES = {
-    'Slides': 'Diapositivas', 'Back': 'Volver', 'Light': 'Claro', 'Dark': 'Oscuro', 'Full screen': 'Pantalla completa', 'Exit full screen': 'Salir de pantalla completa',
-    'Print or save as PDF': 'Imprimir o guardar como PDF', 'Previous slide': 'Diapositiva anterior', 'Next slide': 'Diapositiva siguiente', 'Slide controls': 'Controles',
-    'Loading…': 'Cargando…', '{n} items': '{n} elementos', '1 item': '1 elemento', 'A collection from Bible Connections': 'Una colección de Bible Connections',
-    'Read': 'Leer', 'Open on the map': 'Abrir en el mapa', 'connects to': 'se conecta con', 'Step {n}': 'Paso {n}',
-    'Read each passage in your own Bible or at bible.com.': 'Lee cada pasaje en tu propia Biblia o en bible.com.',
-    'Cross references from OpenBible.info (CC BY 4.0).': 'Referencias cruzadas de OpenBible.info (CC BY 4.0).',
-    'Made with Bible Connections': 'Hecho con Bible Connections', 'Thank you': 'Gracias',
-    'This collection could not be opened. Ask for the link again.': 'No se pudo abrir esta colección. Pide el enlace de nuevo.',
-    'Slide {n} of {t}': 'Diapositiva {n} de {t}', 'Use the arrow keys, a clicker or swipe to move between slides.': 'Usa las flechas, un control remoto o desliza para pasar de diapositiva.',
-  };
-  const t = (k, v = {}) => (lang === 'es' && ES[k] ? ES[k] : k).replace(/\{(\w+)\}/g, (_, x) => v[x]);
-  const pick = (o, k) => (lang === 'es' && o[k + '_es']) || o[k];
-  const withLang = (u) => (lang === 'en' ? u : u + (u.includes('?') ? '&' : '?') + 'lang=' + lang);
+  const L = window.bcLang, lang = L.lang;
+  await L.ready;
+  const t = (k, v = {}) => L.t('slides', k, v), pick = L.pick, withLang = L.withLang;
   for (const [id, k] of [['backLink', 'Back'], ['fullBtn', 'Full screen'], ['printBtn', 'Print or save as PDF']]) document.getElementById(id).textContent = t(k);
   document.getElementById('prevBtn').setAttribute('aria-label', t('Previous slide'));
   document.getElementById('nextBtn').setAttribute('aria-label', t('Next slide'));
@@ -44,20 +29,20 @@
   const [meta, versions, es, prophecy, journeys, jes] = await Promise.all([
     fetch('data/books.json').then(r => r.json()),
     fetch('content/versions.json').then(r => r.json()).catch(() => []),
-    lang === 'es' ? fetch('content/i18n/books-es.json').then(r => r.json()).catch(() => null) : null,
+    L.books(),
     col.items.some(x => x.url.includes('prophecy=')) ? fetch('content/prophecy.json').then(r => r.json()).catch(() => null) : null,
     col.items.some(x => x.url.includes('journey=')) ? fetch('content/journeys.json').then(r => r.json()).catch(() => []) : [],
-    lang === 'es' && col.items.some(x => x.url.includes('journey=')) ? fetch('content/journeys.es.json').then(r => r.json()).catch(() => []) : [],
+    L.has('journeys') && col.items.some(x => x.url.includes('journey=')) ? fetch(`content/journeys.${lang}.json`).then(r => r.json()).catch(() => []) : [],
   ]);
   const B = meta.books;
   const enNames = B.map(b => b.name);
-  if (es) B.forEach((b, i) => { b.name = es.books[i] || b.name; });
+  if (es) B.forEach((b, i) => { b.name = es[i] || b.name; });
   const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, '');
   const byName = new Map();
   B.forEach((b, i) => { byName.set(norm(b.name), i); byName.set(norm(enNames[i]), i); byName.set(norm(b.osis), i); });
 
   // Bible.com links in the reader's chosen translation
-  let ver = versions.find(v => v.code === get('version', lang === 'es' ? 'NVI' : 'NIV')) || versions.find(v => v.code === 'NIV') || { id: 111, code: 'NIV' };
+  let ver = versions.find(v => v.code === get('version', L.bible)) || versions.find(v => v.code === 'NIV') || { id: 111, code: 'NIV' };
   const link = (bi, c, v) => {
     const use = ver.nt && bi < 39 ? (versions.find(x => x.code === 'NIV') || ver) : ver;
     return `https://www.bible.com/bible/${use.id}/${B[bi].usfm}.${c}${v ? '.' + v : ''}.${use.code}`;

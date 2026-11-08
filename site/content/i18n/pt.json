@@ -136,6 +136,7 @@
     "Jd",
     "Ap"
   ],
+  "content": [],
   "categories": {
     "law": "Lei",
     "history": "Históricos",
@@ -149,5 +150,11 @@
     "revelation": "Apocalipse"
   },
   "strings": {},
-  "patterns": {}
+  "patterns": {},
+  "pages": {
+    "handout": {},
+    "pages": {},
+    "slides": {},
+    "card": {}
+  }
 }

@@ -69,10 +69,20 @@
     get(k, d) { try { const v = localStorage.getItem('bc.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('bc.' + k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
   };
-  // Language: a ?lang= link wins, then the saved choice, then the browser language.
+  // Interface languages. A language is "listed" (in Settings and picked from the device) once it is complete
+  // and reviewed; until then it can be previewed with ?lang=xx. Each has its own default Bible.com translation.
+  const LANGS = {
+    en: { name: 'English', locale: 'en-US', bible: 'NIV', listed: true },
+    es: { name: 'Español', locale: 'es', bible: 'NVI', listed: true },
+    pt: { name: 'Português', locale: 'pt-BR', bible: 'NVI-PT', listed: false },
+  };
+  // Language: a ?lang= link wins, then the saved choice, then the device language.
   const urlLang = new URLSearchParams(location.search).get('lang');
-  const LANG = ['en', 'es'].includes(urlLang) ? urlLang
-    : store.get('lang', (navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en');
+  const deviceLang = (navigator.language || 'en').toLowerCase().slice(0, 2);
+  const savedLang = store.get('lang', LANGS[deviceLang] && LANGS[deviceLang].listed ? deviceLang : 'en');
+  const LANG = LANGS[urlLang] ? urlLang : LANGS[savedLang] && LANGS[savedLang].listed ? savedLang : 'en';
+  // a field in the reader's language when it has been written, else the English: loc(day, 'title') reads title_es in Spanish
+  const loc = (o, k) => (o && LANG !== 'en' && o[k + '_' + LANG]) || (o && o[k]);
   document.documentElement.lang = LANG;
   const settings = {
     // an embed can fix its colors with ?colors=light or dark, without changing the visitor's own setting
@@ -83,7 +93,7 @@
     readable: store.get('readable', false),
     arcStyle: store.get('arcStyle', 'rainbow'),
     motion: store.get('motion', true),
-    version: store.get('version', LANG === 'es' ? 'NVI' : 'NIV'),
+    version: store.get('version', LANGS[LANG].bible),
     version2: store.get('version2', ''),
   };
 
@@ -275,26 +285,32 @@
     N = n;
   }
 
-  // Spanish book names are always loaded so Spanish references work in any language.
+  // Book names in every language are loaded so references work in any language ("Juan 3:16", "João 3:16");
+  // the interface strings, themes and journeys only for the reader's language.
   async function applyLanguageData() {
     const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
-    // English pages only need the Spanish book names (so "Juan 3:16" works); the full strings are for Spanish
-    const [es, pt] = await Promise.all([
-      getJSON(LANG === 'es' ? 'content/i18n/es.json' : 'content/i18n/books-es.json').catch(() => null),
-      getJSON('content/i18n/books-pt.json').catch(() => null),
+    const [T, es, pt] = await Promise.all([
+      LANG === 'en' ? null : getJSON(`content/i18n/${LANG}.json`).catch(() => null),
+      LANG === 'es' ? null : getJSON('content/i18n/books-es.json').catch(() => null),
+      LANG === 'pt' ? null : getJSON('content/i18n/books-pt.json').catch(() => null),
     ]);
+    const names = { es: LANG === 'es' ? T : es, pt: LANG === 'pt' ? T : pt };
     BOOKS.forEach((b, i) => {
-      b.nameEn = b.name; b.nameEs = es ? es.books[i] : b.name; b.namePt = pt ? pt.books[i] : b.name;
-      b.abbr = LANG === 'es' && es ? es.abbr[i] : b.osis;
-      if (LANG === 'es' && es) b.name = es.books[i];
+      b.nameEn = b.name;
+      b.nameEs = (names.es && names.es.books[i]) || b.name; b.namePt = (names.pt && names.pt.books[i]) || b.name;
+      b.abbr = T && T.abbr ? T.abbr[i] : b.osis;
+      if (T && T.books) b.name = T.books[i];
     });
-    if (LANG !== 'es' || !es) return;
-    I18N.strings = es.strings || {};
-    I18N.patterns = Object.entries(es.patterns || {}).map(([k, v]) =>
+    if (!T) return;
+    I18N.strings = T.strings || {};
+    I18N.patterns = Object.entries(T.patterns || {}).map(([k, v]) =>
       [new RegExp('^' + escRe(k).replace(/\\\{(\w+)\\\}/g, '(?<$1>[\\s\\S]+?)') + '$'), v]);
-    for (const k of Object.keys(CATEGORIES)) CATEGORIES[k].name = es.categories[k] || CATEGORIES[k].name;
+    for (const k of Object.keys(CATEGORIES)) CATEGORIES[k].name = (T.categories || {})[k] || CATEGORIES[k].name;
+    // themes and journeys have a file per language once they are translated
+    const has = T.content || [];
     const [themesEs, journeysEs] = await Promise.all([
-      getJSON('content/themes.es.json').catch(() => []), getJSON('content/journeys.es.json').catch(() => []),
+      has.includes('themes') ? getJSON(`content/themes.${LANG}.json`).catch(() => []) : [],
+      has.includes('journeys') ? getJSON(`content/journeys.${LANG}.json`).catch(() => []) : [],
     ]);
     for (const t of THEMES) Object.assign(t, themesEs.find(x => x.id === t.id) || {});
     for (const j of JOURNEYS) {
@@ -381,7 +397,7 @@
     const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr, norm(b.namePt).length > 2 ? b.namePt : ''].map(norm).filter(Boolean);
     let bi = BOOKS.findIndex(b => names(b).includes(n));
     if (bi < 0 && allowPrefix && n.length >= 2) {
-      bi = BOOKS.findIndex(b => norm(LANG === 'es' ? b.nameEs : b.nameEn).startsWith(n));
+      bi = BOOKS.findIndex(b => norm(b.name).startsWith(n));
       if (bi < 0) bi = BOOKS.findIndex(b => names(b).some(x => x.startsWith(n)));
     }
     // a near miss on a full book name: one change for short names, two for longer ones
@@ -1733,8 +1749,8 @@
 
   // ---------- Study hub ----------
   const STUDY_MODES = ['prophecy', 'chain', 'timeline', 'study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
-  const nameOf = (x) => (LANG === 'es' && x.name_es) || x.name;
-  const descOf = (x) => (LANG === 'es' && x.description_es) || x.description;
+  const nameOf = (x) => loc(x, 'name');
+  const descOf = (x) => loc(x, 'description');
   function studyHTML() {
     const cards = [
       ['plans', 'Reading plans', 'Follow the connections a few at a time, with your progress saved on this device.'],
@@ -1827,14 +1843,14 @@
       const plan = PLANS.find(p => p.season === 'advent');
       const day = plan && plan.days[Math.min(s.day, plan.days.length - 1)];
       if (!day) return null;
-      a = day.a; b = day.b; title = (LANG === 'es' && day.title_es) || day.title; text = (LANG === 'es' && day.note_es) || day.note;
+      a = day.a; b = day.b; title = loc(day, 'title'); text = loc(day, 'note');
       type = s.day >= plan.days.length - 1 ? 'Christmas' : 'Advent';
     } else {
       // the twelve days of Christmas plan starts on Christmas Day, so 26 December is its second day
       const plan = PLANS.find(p => p.season === s.season);
       const day = plan && plan.days[Math.min(s.season === 'christmas' ? s.day + 1 : s.day, plan.days.length - 1)];
       if (!day) return null;
-      a = day.a; b = day.b; title = (LANG === 'es' && day.title_es) || day.title; text = (LANG === 'es' && day.note_es) || day.note;
+      a = day.a; b = day.b; title = loc(day, 'title'); text = loc(day, 'note');
       type = s.season === 'christmas' ? 'Christmas' : s.day === 7 ? 'Easter' : 'Holy Week';
     }
     const va = osisToIndex(a), vb = osisToIndex(b);
@@ -1885,7 +1901,7 @@
     } else if (plan.source === 'days') {
       for (const d of plan.days) {
         const a = osisToIndex(d.a), b = osisToIndex(d.b);
-        if (a >= 0 && b >= 0) items.push({ a, b, title: (LANG === 'es' && d.title_es) || d.title, note: (LANG === 'es' && d.note_es) || d.note, group: (LANG === 'es' && d.title_es) || d.title });
+        if (a >= 0 && b >= 0) items.push({ a, b, title: loc(d, 'title'), note: loc(d, 'note'), group: loc(d, 'title') });
       }
     } else if (plan.source === 'theme') {
       const t = THEMES.find(x => x.id === plan.theme);
@@ -1921,7 +1937,7 @@
       const next = sd >= 0 ? sd : Math.min(days.length - 1, firstUndone(plan));
       const start = planStart(plan);
       const startText = { advent: 'Starts on Advent Sunday,', christmas: 'Starts on Christmas Day,', holyweek: 'Starts on Palm Sunday,' }[plan.season];
-      const advNote = start ? `<p class="hint">${esc(tr(startText))} ${esc(start.toLocaleDateString(LANG === 'es' ? 'es' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
+      const advNote = start ? `<p class="hint">${esc(tr(startText))} ${esc(start.toLocaleDateString(LANGS[LANG].locale, { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
       html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>${advNote}
         <div class="progress" role="img" aria-label="${done} of ${days.length} days done"><span style="width:${(done / days.length) * 100}%"></span></div>
         <p class="step-count">${done} of ${days.length} days done</p>
@@ -2115,7 +2131,7 @@
     if (card) {
       if (LANG !== 'en') cq.set('lang', LANG);
       if (theme) cq.set('theme', theme);
-      if (settings.version !== (LANG === 'es' ? 'NVI' : 'NIV')) cq.set('version', settings.version);
+      if (settings.version !== LANGS[LANG].bible) cq.set('version', settings.version);
       const u = new URL('card.html?' + cq, location.href);
       const h = cq.get('prophecy') ? 140 + 26 * chainStages(findChain(state.chain.id)).length : cq.get('journey') ? 240 : 190;
       code = `<iframe src="${u}" title="Bible Connections: ${label.replace(/"/g, '&quot;')}" width="100%" height="${h}" style="border:0;border-radius:12px;max-width:560px" loading="lazy"></iframe>`;
@@ -2452,7 +2468,7 @@
           ${v > b.start ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v - 1}">Previous verse<span class="sr-only">: ${esc(refLabel(v - 1))}</span></button>` : ''}
           ${v < b.end - 1 ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v + 1}">Next verse<span class="sr-only">: ${esc(refLabel(v + 1))}</span></button>` : ''}
         </div>
-        ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(LANG === 'es' && intro.about_es ? intro.about_es : intro.about)}</p>` : ''}
+        ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(loc(intro, 'about'))}</p>` : ''}
       </section>
       <section class="study-sec" aria-labelledby="secOrig"><h3 id="secOrig">Original text</h3>
         <div id="origText" data-v="${v}"><p class="muted">Loading the original text…</p></div>
@@ -2530,7 +2546,7 @@
         if (!ve.isConnected) return;
         const has = (key) => { const s2 = ent[key]; return !!s2 && decodePostings(s2).includes(v); };
         const ppl = (PEOPLE || []).filter(p => has(`${p.type === 'place' ? 'place' : 'person'}:${p.id}`)), tps = (TOPICS || []).filter(t => has(`topic:${t.id}`));
-        const nm = (x) => (LANG === 'es' && x.name_es) || x.name;
+        const nm = (x) => loc(x, 'name');
         ve.innerHTML = ppl.length || tps.length
           ? `<ul class="chip-list">${ppl.map(p => `<li><button type="button" class="chip" data-action="entity" data-type="${p.type === 'place' ? 'place' : 'person'}" data-id="${esc(p.id)}">${esc(nm(p))} <span class="muted">${p.type === 'place' ? 'place' : 'person'}</span></button></li>`).join('')}${tps.map(t => `<li><button type="button" class="chip" data-action="entity" data-type="topic" data-id="${esc(t.id)}">${esc(nm(t))} <span class="muted">topic</span></button></li>`).join('')}</ul>`
           : '<p class="muted">None of the site’s people, places or topics are named in this verse.</p>';
@@ -2849,7 +2865,7 @@
     await loadStudyText();
     const start = +box.dataset.start, end = +box.dataset.end, kind = box.dataset.kind, b = BOOKS[verseBook[start]];
     const intro = INTROS[b.osis];
-    let html = intro ? `<section class="study-sec"><h3>About ${esc(b.name)}</h3><p>${esc(LANG === 'es' && intro.about_es ? intro.about_es : intro.about)}</p></section>` : '';
+    let html = intro ? `<section class="study-sec"><h3>About ${esc(b.name)}</h3><p>${esc(loc(intro, 'about'))}</p></section>` : '';
     box.innerHTML = html + '<p class="muted">Finding key words and places…</p>';
     try {
       const [kw, S, d] = await Promise.all([keyWords(start, end), loadStrongs(), loadPlaces().catch(() => null)]);
@@ -2903,7 +2919,7 @@
       store.set('plans', cur);
     }
     if (data.game && typeof data.game === 'object') store.set('game', data.game);
-    const ok = { appearance: ['system', 'light', 'dark'], textsize: ['standard', 'large', 'xlarge'], lang: ['en', 'es'] };
+    const ok = { appearance: ['system', 'light', 'dark'], textsize: ['standard', 'large', 'xlarge'], lang: Object.keys(LANGS).filter(k => LANGS[k].listed) };
     for (const k of ['appearance', 'textsize', 'lang']) if (ok[k].includes(data[k])) store.set(k, data[k]);
     for (const k of ['contrast', 'kids', 'readable']) if (typeof data[k] === 'boolean') store.set(k, data[k]);
     for (const k of ['version', 'version2']) if (data[k] === '' || VERSIONS[data[k]]) store.set(k, data[k]);
@@ -2982,7 +2998,7 @@
     if (intro) {
       ctx.fillStyle = 'rgba(235,235,245,.75)'; ctx.font = font(400, 32);
       // whole sentences only, up to three lines
-      const sentences = (LANG === 'es' && intro.about_es ? intro.about_es : intro.about).match(/[^.!?]+[.!?]+/g) || [];
+      const sentences = (loc(intro, 'about')).match(/[^.!?]+[.!?]+/g) || [];
       let text = sentences[0] || '';
       for (const sen of sentences.slice(1)) { if (wrapText(ctx, text + sen, W - 2 * L).length > 3) break; text += sen; }
       for (const line of wrapText(ctx, text.trim(), W - 2 * L).slice(0, 3)) { ctx.fillText(line, L, y); y += 44; }
@@ -3073,7 +3089,7 @@
         }
         for (const r of store.get('searches', [])) if (norm(r).includes(n) && n.length >= 2) add(r, r, 'Recent');
         if (n.length >= 3) {
-          const nm = (x) => (LANG === 'es' && x.name_es) || x.name;
+          const nm = (x) => loc(x, 'name');
           for (const t of TOPICS || []) if (norm(nm(t)).includes(n) || (t.words || []).some(w => w.startsWith(n))) add(t.words[0], nm(t), 'Topic');
           for (const p of PEOPLE || []) if (norm(nm(p)).startsWith(n)) add((p.words || [p.name])[0], nm(p), p.type === 'place' ? 'Place' : 'Person');
         }
@@ -3140,7 +3156,7 @@
   // ---------- Timeline of events (original writing; dates are approximate) ----------
   let timelinePromise = null, TIMELINE = null;
   const loadTimeline = () => (timelinePromise ||= fetchJSON('content/timeline.json').then(d => { TIMELINE = d; return d; }).catch(e => { timelinePromise = null; throw e; }));
-  const tl = (o, k) => (LANG === 'es' && o[k + '_es']) || o[k];
+  const tl = loc;
   function timelineHTML() {
     if (!TIMELINE) {
       loadTimeline().then(() => { if (state.mode === 'timeline') renderPanel(); }, () => {});
@@ -3921,6 +3937,11 @@
     $('motionToggle').checked = settings.motion;
     renderArcStyles();
     (f.querySelector(`input[name=textsize][value="${settings.textsize}"]`) || f.querySelector('input[name=textsize]')).checked = true;
+    // a language being previewed with ?lang= gets its own option, so the setting still shows what is in use
+    if (!f.querySelector(`input[name=language][value="${LANG}"]`)) {
+      const seg = f.querySelector('input[name=language]').closest('.segmented');
+      seg.insertAdjacentHTML('beforeend', `<label lang="${LANG}"><input type="radio" name="language" value="${LANG}"> ${esc(LANGS[LANG].name)}</label>`);
+    }
     f.querySelector(`input[name=language][value="${LANG}"]`).checked = true;
     syncVersionSelects();
     f.addEventListener('change', (e) => {
@@ -3934,7 +3955,7 @@
       if (e.target.id === 'versionSel' || e.target.id === 'version2Sel') { setVersions($('versionSel').value, $('version2Sel').value); return; }
       if (e.target.name === 'language' && e.target.value !== LANG) {
         store.set('lang', e.target.value);
-        if (!store.get('version', null)) settings.version = e.target.value === 'es' ? 'NVI' : 'NIV';
+        if (!store.get('version', null)) settings.version = LANGS[e.target.value].bible;
         const u = new URL(location.href); u.searchParams.delete('lang');
         if (e.target.value !== 'en') u.searchParams.set('lang', e.target.value);
         location.replace(u.toString());

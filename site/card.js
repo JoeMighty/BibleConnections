@@ -1,25 +1,19 @@
 // Embeddable card: card.html?verse=John.3.16, ?c=Gen.3.15_Rom.16.20, ?journey=lamb&step=2 or ?prophecy=servant.
-// Optional &theme=light|dark and &lang=es. References and links to Bible.com only; no translation text.
+// Optional &theme=light|dark and &lang=es (or another interface language). References and links to Bible.com only; no translation text.
 (async () => {
   const card = document.getElementById('card');
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   const p = new URLSearchParams(location.search);
-  const lang = p.get('lang') === 'es' ? 'es' : 'en';
-  document.documentElement.lang = lang;
-  const ES = {
-    'connects to': 'se conecta con', 'Read': 'Leer', 'Explore on Bible Connections': 'Explorar en Bible Connections', 'Step {n} of {t}': 'Paso {n} de {t}',
-    'Connection': 'Conexión', 'Verse': 'Versículo', 'See how this verse connects across the Bible.': 'Mira cómo se conecta este versículo en toda la Biblia.',
-    'Sorry, this card could not be shown.': 'Lo sentimos, no se pudo mostrar esta tarjeta.', '(opens in a new tab)': '(se abre en una pestaña nueva)',
-  };
-  const t = (k, v = {}) => (lang === 'es' && ES[k] ? ES[k] : k).replace(/\{(\w+)\}/g, (_, x) => v[x]);
-  const pick = (o, k) => (lang === 'es' && o[k + '_es']) || o[k];
+  const L = window.bcLang, lang = L.lang;
+  await L.ready;
+  const t = (k, v = {}) => L.t('card', k, v), pick = L.pick;
   const json = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
   const site = location.origin + location.pathname.replace(/card\.html$/, '');
   try {
-    const [meta, versions, es] = await Promise.all([json('data/books.json'), json('content/versions.json').catch(() => []), lang === 'es' ? json('content/i18n/books-es.json').catch(() => null) : null]);
+    const [meta, versions, es] = await Promise.all([json('data/books.json'), json('content/versions.json').catch(() => []), L.books()]);
     const B = meta.books, en = B.map(b => b.name);
-    if (es) B.forEach((b, i) => { b.name = es.books[i] || b.name; });
-    const ver = versions.find(v => v.code === (p.get('version') || (lang === 'es' ? 'NVI' : 'NIV'))) || { id: 111, code: 'NIV' };
+    if (es) B.forEach((b, i) => { b.name = es[i] || b.name; });
+    const ver = versions.find(v => v.code === (p.get('version') || L.bible)) || { id: 111, code: 'NIV' };
     const niv = versions.find(v => v.code === 'NIV') || ver;
     const parse = (o) => { const [bk, c, v] = String(o || '').split('.'); const bi = B.findIndex(b => b.osis === bk); return bi >= 0 && B[bi].chapters[c - 1] && +v >= 1 && +v <= B[bi].chapters[c - 1] ? { bi, c: +c, v: +v, osis: o } : null; };
     const label = (r, z) => `${B[r.bi].name} ${r.c}:${r.v}${z && z.bi === r.bi && z.c === r.c && z.v !== r.v ? '-' + z.v : ''}`;
@@ -46,7 +40,7 @@
       const step = Math.max(1, +p.get('step') || 1), s = j && j.steps[step - 1];
       if (!s) throw new Error('bad');
       let x = {}, name = j.name;
-      if (lang === 'es') { const e = (await json('content/journeys.es.json').catch(() => [])).find(y => y.id === j.id) || {}; name = e.name || name; x = (e.steps || [])[step - 1] || {}; }
+      if (L.has('journeys')) { const e = (await json(`content/journeys.${lang}.json`).catch(() => [])).find(y => y.id === j.id) || {}; name = e.name || name; x = (e.steps || [])[step - 1] || {}; }
       const a = parse(s.a), b = parse(s.b);
       kicker = `${name} · ${t('Step {n} of {t}', { n: step, t: j.steps.length })}`; title = x.title || s.title;
       body = `${a && b ? `<ul class="refs"><li>${read(a)}</li><li class="to" aria-hidden="true">${esc(t('connects to'))}</li><li>${read(b)}</li></ul>` : ''}${(x.question || s.question) ? `<p class="q">${esc(x.question || s.question)}</p>` : ''}`;

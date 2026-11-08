@@ -15,11 +15,19 @@ The goal: someone whose phone is set to Portuguese opens the site, sees it in Po
 | Phase | What | Status |
 |---|---|---|
 | 1. Groundwork | Book names and abbreviations (`site/content/i18n/pt.json`), Portuguese names in search in every language, category names | Done |
-| 2. Language plumbing | Move each page's dictionary (app, handout, pages, slides, card) to one file per language; a check that lists missing strings; `?lang=pt` preview; default Bible version per language | Next |
-| 3. Interface | About 700 interface strings and patterns, the welcome page, Settings, dialogs | To do |
+| 2. Language plumbing | One file per language (`site/content/i18n/<lang>.json`) for the map and every page, shared by `site/i18n.js`; `node scripts/i18n-check.mjs pt` shows what is missing; `?lang=pt` preview; default Bible version per language | Done |
+| 3. Interface | About 780 interface strings and patterns, plus the handout, guide, roadmap, slides and card pages | In progress |
 | 4. Content | 16 journeys, 6 plans, 66 book introductions, reflection questions, 23 prophecy chains, timeline, topics, How to use and Roadmap pages | To do |
 | 5. Review | A native speaker reads every screen on a phone; fix wording and layout (Portuguese runs about 20% longer than English) | To do |
 | 6. Launch | Add Português to the language menu, pick it automatically for Portuguese devices, link previews and sitemap in Portuguese | To do |
+
+## Adding a language
+
+1. Add it to `LANGS` in `site/app.js` and `site/i18n.js` (locale, default Bible.com version, `listed: false`).
+2. Copy `site/content/i18n/pt.json` to `<lang>.json` and fill in the book names, abbreviations and categories.
+3. Run `node scripts/i18n-check.mjs <lang> --json` for every missing string, translate them, then run `node scripts/pack-data.mjs`.
+4. Translated journeys and themes go in `content/journeys.<lang>.json` and `content/themes.<lang>.json` (list them under `content` in the language file); other written content uses `_<lang>` fields next to the English.
+5. Preview with `?lang=<lang>`. When it is complete and reviewed, set `listed: true` and add it to the Settings language choice.
 
 ## How to help
 
