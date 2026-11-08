@@ -30,6 +30,14 @@
           "text": "The whole site in French, using the same language files as Spanish and Portuguese.",
           "text_es": "Todo el sitio en francés, con los mismos archivos de idioma que el español y el portugués.",
           "text_pt": "Todo o site em francês, com os mesmos arquivos de idioma do espanhol e do português."
+        },
+        {
+          "title": "Places on phones",
+          "title_es": "Lugares en el teléfono",
+          "title_pt": "Lugares no celular",
+          "text": "On phones, the list of places slides up over the Places map, like the Maps app.",
+          "text_es": "En el teléfono, la lista de lugares se desliza sobre el mapa de lugares, como en la app Mapas.",
+          "text_pt": "No celular, a lista de lugares desliza sobre o mapa de lugares, como no app Mapas."
         }
       ]
     },
@@ -58,6 +66,24 @@
     }
   ],
   "shipped": [
+    {
+      "version": "0.16.0",
+      "items": [
+        "Lent reading plan",
+        "Season banner on the welcome page",
+        "Approved weak link reports become pull requests"
+      ],
+      "items_es": [
+        "Plan de lectura de Cuaresma",
+        "Aviso del tiempo litúrgico en la página de inicio",
+        "Los reportes de vínculos débiles aprobados se convierten en solicitudes de cambio"
+      ],
+      "items_pt": [
+        "Plano de leitura da Quaresma",
+        "Aviso do tempo litúrgico na página inicial",
+        "Relatos aprovados de ligações fracas viram pedidos de alteração"
+      ]
+    },
     {
       "version": "0.15.1",
       "items": [

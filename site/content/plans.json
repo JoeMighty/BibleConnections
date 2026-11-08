@@ -418,6 +418,410 @@
     ]
   },
   {
+    "id": "lent",
+    "name": "Lent: the road to the cross",
+    "name_es": "Cuaresma: el camino a la cruz",
+    "name_pt": "Quaresma: o caminho da cruz",
+    "description": "A promise and its fulfilment each day from Ash Wednesday to the eve of Palm Sunday, through dust, the wilderness, mercy, the heart and the road to Jerusalem. Holy Week follows.",
+    "description_es": "Una promesa y su cumplimiento cada día, del Miércoles de Ceniza a la víspera del Domingo de Ramos, pasando por el polvo, el desierto, la misericordia, el corazón y el camino a Jerusalén. Le sigue la Semana Santa.",
+    "description_pt": "Uma promessa e seu cumprimento a cada dia, da Quarta-feira de Cinzas à véspera do Domingo de Ramos, passando pelo pó, pelo deserto, pela misericórdia, pelo coração e pelo caminho a Jerusalém. Depois vem a Semana Santa.",
+    "source": "days",
+    "perDay": 1,
+    "season": "lent",
+    "days": [
+      {
+        "a": "Gen.3.19",
+        "b": "Rom.5.12",
+        "title": "Ash Wednesday: dust",
+        "title_es": "Miércoles de Ceniza: polvo",
+        "title_pt": "Quarta-feira de Cinzas: pó",
+        "note": "God tells Adam that he came from dust and will return to it. Paul says death came into the world through one man's sin. Lent begins honestly, with our need of God.",
+        "note_es": "Dios le dice a Adán que vino del polvo y volverá a él. Pablo dice que la muerte entró en el mundo por el pecado de un hombre. La Cuaresma empieza con honestidad, reconociendo que necesitamos a Dios.",
+        "note_pt": "Deus diz a Adão que ele veio do pó e ao pó voltará. Paulo diz que a morte entrou no mundo pelo pecado de um só homem. A Quaresma começa com honestidade, reconhecendo que precisamos de Deus."
+      },
+      {
+        "a": "Ps.51.10",
+        "b": "2Cor.5.17",
+        "title": "A clean heart",
+        "title_es": "Un corazón limpio",
+        "title_pt": "Um coração puro",
+        "note": "David asks God to create a clean heart in him. Paul says that anyone in Christ is a new creation. What David prayed for, God gives.",
+        "note_es": "David le pide a Dios que cree en él un corazón limpio. Pablo dice que quien está en Cristo es una nueva creación. Lo que David pidió, Dios lo da.",
+        "note_pt": "Davi pede a Deus que crie nele um coração puro. Paulo diz que quem está em Cristo é nova criação. O que Davi pediu, Deus dá."
+      },
+      {
+        "a": "Isa.61.1",
+        "b": "Matt.5.3",
+        "title": "Good news for the poor",
+        "title_es": "Buenas noticias para los pobres",
+        "title_pt": "Boas notícias para os pobres",
+        "note": "Isaiah's servant brings good news to the poor and the brokenhearted. Jesus begins his great sermon by calling the poor in spirit blessed.",
+        "note_es": "El siervo de Isaías trae buenas noticias a los pobres y a los quebrantados. Jesús comienza su gran sermón llamando dichosos a los pobres en espíritu.",
+        "note_pt": "O servo de Isaías traz boas notícias aos pobres e aos de coração quebrantado. Jesus começa seu grande sermão chamando bem-aventurados os pobres de espírito."
+      },
+      {
+        "a": "Prov.3.34",
+        "b": "Jas.4.6",
+        "title": "Grace for the humble",
+        "title_es": "Gracia para los humildes",
+        "title_pt": "Graça para os humildes",
+        "note": "Proverbs says God opposes the proud but gives grace to the humble. James quotes it and calls us to come near to God.",
+        "note_es": "Proverbios dice que Dios se opone a los orgullosos pero da gracia a los humildes. Santiago lo cita y nos llama a acercarnos a Dios.",
+        "note_pt": "Provérbios diz que Deus se opõe aos orgulhosos, mas dá graça aos humildes. Tiago cita isso e nos chama a nos aproximarmos de Deus."
+      },
+      {
+        "a": "Exod.34.28",
+        "b": "Matt.4.2",
+        "title": "Wilderness: forty days",
+        "title_es": "Desierto: cuarenta días",
+        "title_pt": "Deserto: quarenta dias",
+        "note": "Moses spends forty days and nights with God on the mountain without food. Jesus fasts forty days and nights in the wilderness before his ministry begins.",
+        "note_es": "Moisés pasa cuarenta días y cuarenta noches con Dios en el monte sin comer. Jesús ayuna cuarenta días y cuarenta noches en el desierto antes de comenzar su ministerio.",
+        "note_pt": "Moisés passa quarenta dias e quarenta noites com Deus no monte, sem comer. Jesus jejua quarenta dias e quarenta noites no deserto antes de começar seu ministério."
+      },
+      {
+        "a": "Deut.8.3",
+        "b": "Matt.4.4",
+        "title": "Wilderness: bread",
+        "title_es": "Desierto: pan",
+        "title_pt": "Deserto: pão",
+        "note": "Moses reminds Israel that people do not live by bread alone but by every word from God. Jesus answers the first temptation with these words.",
+        "note_es": "Moisés recuerda a Israel que no solo de pan vive el hombre, sino de toda palabra de Dios. Jesús responde a la primera tentación con estas palabras.",
+        "note_pt": "Moisés lembra a Israel que nem só de pão viverá o homem, mas de toda palavra de Deus. Jesus responde à primeira tentação com essas palavras."
+      },
+      {
+        "a": "Deut.6.16",
+        "b": "Matt.4.7",
+        "title": "Wilderness: testing God",
+        "title_es": "Desierto: tentar a Dios",
+        "title_pt": "Deserto: pôr Deus à prova",
+        "note": "Israel is told not to put the Lord to the test as they did at Massah. Jesus refuses to throw himself from the temple to force God's hand.",
+        "note_es": "A Israel se le manda no poner a prueba al Señor como en Masá. Jesús se niega a lanzarse del templo para forzar la mano de Dios.",
+        "note_pt": "Israel é ordenado a não pôr o Senhor à prova como em Massá. Jesus se recusa a se jogar do templo para forçar a mão de Deus."
+      },
+      {
+        "a": "Ps.91.11",
+        "b": "Matt.4.6",
+        "title": "Wilderness: twisted words",
+        "title_es": "Desierto: palabras torcidas",
+        "title_pt": "Deserto: palavras distorcidas",
+        "note": "The psalm promises God's angels will guard his people. The tempter quotes it to Jesus, but twists it. Scripture is a gift to trust, not a lever to pull.",
+        "note_es": "El salmo promete que los ángeles de Dios guardarán a su pueblo. El tentador se lo cita a Jesús, pero lo tuerce. La Escritura es un regalo para confiar, no una palanca para manipular.",
+        "note_pt": "O salmo promete que os anjos de Deus guardarão o seu povo. O tentador o cita a Jesus, mas o distorce. A Escritura é um presente para confiar, não uma alavanca para manipular."
+      },
+      {
+        "a": "Deut.6.13",
+        "b": "Matt.4.10",
+        "title": "Wilderness: worship God alone",
+        "title_es": "Desierto: adorar solo a Dios",
+        "title_pt": "Deserto: adorar só a Deus",
+        "note": "Israel is called to fear the Lord and serve him only. Jesus refuses the kingdoms of the world and quotes these words.",
+        "note_es": "A Israel se le llama a temer al Señor y servirle solo a él. Jesús rechaza los reinos del mundo y cita estas palabras.",
+        "note_pt": "Israel é chamado a temer o Senhor e servir somente a ele. Jesus recusa os reinos do mundo e cita essas palavras."
+      },
+      {
+        "a": "Exod.16.4",
+        "b": "John.6.31",
+        "title": "Bread from heaven",
+        "title_es": "Pan del cielo",
+        "title_pt": "Pão do céu",
+        "note": "God rains bread from heaven on the hungry people in the desert. The crowd reminds Jesus of the manna, and he says he is the true bread from heaven.",
+        "note_es": "Dios hace llover pan del cielo sobre el pueblo hambriento en el desierto. La multitud le recuerda a Jesús el maná, y él dice que es el verdadero pan del cielo.",
+        "note_pt": "Deus faz chover pão do céu sobre o povo faminto no deserto. A multidão lembra a Jesus o maná, e ele diz que é o verdadeiro pão do céu."
+      },
+      {
+        "a": "Num.21.9",
+        "b": "John.3.14",
+        "title": "Lifted up",
+        "title_es": "Levantado",
+        "title_pt": "Levantado",
+        "note": "Moses lifts up a bronze serpent, and those who look at it live. Jesus says the Son of Man must be lifted up in the same way, so that all who believe may have life.",
+        "note_es": "Moisés levanta una serpiente de bronce, y quienes la miran viven. Jesús dice que el Hijo del Hombre tiene que ser levantado de la misma manera, para que todo el que cree tenga vida.",
+        "note_pt": "Moisés levanta uma serpente de bronze, e quem olha para ela vive. Jesus diz que o Filho do Homem precisa ser levantado da mesma forma, para que todo o que crê tenha vida."
+      },
+      {
+        "a": "Ps.130.3",
+        "b": "Rom.3.23",
+        "title": "Mercy: who could stand?",
+        "title_es": "Misericordia: ¿quién podría estar en pie?",
+        "title_pt": "Misericórdia: quem poderia subsistir?",
+        "note": "The psalmist asks who could stand if God kept a record of sins. Paul answers that all have sinned and fall short, and all are made right freely by his grace.",
+        "note_es": "El salmista pregunta quién podría estar en pie si Dios llevara cuenta de los pecados. Pablo responde que todos han pecado y no alcanzan la gloria de Dios, y todos son justificados gratuitamente por su gracia.",
+        "note_pt": "O salmista pergunta quem poderia subsistir se Deus levasse em conta os pecados. Paulo responde que todos pecaram e carecem da glória de Deus, e todos são justificados gratuitamente pela sua graça."
+      },
+      {
+        "a": "Ezek.18.32",
+        "b": "2Pet.3.9",
+        "title": "Mercy: God takes no pleasure in death",
+        "title_es": "Misericordia: Dios no quiere la muerte",
+        "title_pt": "Misericórdia: Deus não tem prazer na morte",
+        "note": "Through Ezekiel God says he takes no pleasure in anyone's death, so turn and live. Peter says God is patient, not wanting anyone to perish.",
+        "note_es": "Por medio de Ezequiel Dios dice que no le agrada la muerte de nadie, así que conviértanse y vivan. Pedro dice que Dios es paciente y no quiere que nadie perezca.",
+        "note_pt": "Por meio de Ezequiel, Deus diz que não tem prazer na morte de ninguém: convertam-se e vivam. Pedro diz que Deus é paciente e não quer que ninguém pereça."
+      },
+      {
+        "a": "Ps.32.5",
+        "b": "1John.1.9",
+        "title": "Mercy: confession",
+        "title_es": "Misericordia: confesión",
+        "title_pt": "Misericórdia: confissão",
+        "note": "David stops hiding his sin and confesses it, and God forgives. John promises that if we confess our sins, God is faithful to forgive.",
+        "note_es": "David deja de ocultar su pecado y lo confiesa, y Dios perdona. Juan promete que si confesamos nuestros pecados, Dios es fiel para perdonarnos.",
+        "note_pt": "Davi para de esconder seu pecado e o confessa, e Deus perdoa. João promete que, se confessarmos os nossos pecados, Deus é fiel para nos perdoar."
+      },
+      {
+        "a": "Hos.6.6",
+        "b": "Matt.9.13",
+        "title": "Mercy, not sacrifice",
+        "title_es": "Misericordia y no sacrificio",
+        "title_pt": "Misericórdia, e não sacrifício",
+        "note": "God says through Hosea that he wants mercy more than sacrifice. Jesus quotes it when he is criticized for eating with sinners.",
+        "note_es": "Dios dice por medio de Oseas que quiere misericordia más que sacrificio. Jesús lo cita cuando lo critican por comer con pecadores.",
+        "note_pt": "Deus diz por meio de Oseias que quer misericórdia mais do que sacrifício. Jesus cita isso quando é criticado por comer com pecadores."
+      },
+      {
+        "a": "Jonah.3.10",
+        "b": "Luke.11.32",
+        "title": "Mercy: Nineveh turns",
+        "title_es": "Misericordia: Nínive se vuelve a Dios",
+        "title_pt": "Misericórdia: Nínive se converte",
+        "note": "When Nineveh turns from its evil ways, God relents. Jesus says the people of Nineveh repented at Jonah's preaching, and someone greater than Jonah is here.",
+        "note_es": "Cuando Nínive deja sus malos caminos, Dios se compadece. Jesús dice que los ninivitas se arrepintieron con la predicación de Jonás, y aquí hay alguien más grande que Jonás.",
+        "note_pt": "Quando Nínive abandona seus maus caminhos, Deus se compadece. Jesus diz que os ninivitas se arrependeram com a pregação de Jonas, e aqui está alguém maior do que Jonas."
+      },
+      {
+        "a": "Isa.55.7",
+        "b": "Luke.15.20",
+        "title": "Mercy: the father runs",
+        "title_es": "Misericordia: el padre corre",
+        "title_pt": "Misericórdia: o pai corre",
+        "note": "Isaiah invites the wicked to return to the Lord, who will freely pardon. In Jesus' story, the father runs to meet his returning son.",
+        "note_es": "Isaías invita al malvado a volverse al Señor, que perdona con generosidad. En la historia de Jesús, el padre corre a recibir al hijo que regresa.",
+        "note_pt": "Isaías convida o ímpio a voltar para o Senhor, que perdoa com generosidade. Na história de Jesus, o pai corre para receber o filho que volta."
+      },
+      {
+        "a": "Isa.1.18",
+        "b": "Rev.7.14",
+        "title": "Mercy: white as snow",
+        "title_es": "Misericordia: blanco como la nieve",
+        "title_pt": "Misericórdia: branco como a neve",
+        "note": "God promises that sins like scarlet will become white as snow. In John's vision, a great crowd has washed their robes white in the blood of the Lamb.",
+        "note_es": "Dios promete que los pecados como la grana quedarán blancos como la nieve. En la visión de Juan, una gran multitud ha lavado sus ropas en la sangre del Cordero.",
+        "note_pt": "Deus promete que os pecados vermelhos como escarlate ficarão brancos como a neve. Na visão de João, uma grande multidão lavou suas vestes no sangue do Cordeiro."
+      },
+      {
+        "a": "1Sam.16.7",
+        "b": "John.7.24",
+        "title": "The heart: not by appearance",
+        "title_es": "El corazón: no por las apariencias",
+        "title_pt": "O coração: não pela aparência",
+        "note": "When Samuel looks for a king, God says people look at appearance but he looks at the heart. Jesus tells the crowd to stop judging by appearances.",
+        "note_es": "Cuando Samuel busca un rey, Dios dice que la gente mira la apariencia, pero él mira el corazón. Jesús le dice a la multitud que deje de juzgar por las apariencias.",
+        "note_pt": "Quando Samuel procura um rei, Deus diz que as pessoas olham a aparência, mas ele olha o coração. Jesus diz à multidão que pare de julgar pelas aparências."
+      },
+      {
+        "a": "Jer.17.10",
+        "b": "Rev.2.23",
+        "title": "The heart: God searches it",
+        "title_es": "El corazón: Dios lo examina",
+        "title_pt": "O coração: Deus o sonda",
+        "note": "Jeremiah says the Lord searches the heart and tests the mind. In Revelation the risen Jesus says the same of himself.",
+        "note_es": "Jeremías dice que el Señor examina el corazón y prueba la mente. En Apocalipsis Jesús resucitado dice lo mismo de sí mismo.",
+        "note_pt": "Jeremias diz que o Senhor sonda o coração e examina a mente. Em Apocalipse, Jesus ressuscitado diz o mesmo de si."
+      },
+      {
+        "a": "Isa.29.13",
+        "b": "Mark.7.6",
+        "title": "The heart: near or far",
+        "title_es": "El corazón: cerca o lejos",
+        "title_pt": "O coração: perto ou longe",
+        "note": "Isaiah describes people who honor God with their lips while their hearts are far away. Jesus says these words fit the religious leaders of his day.",
+        "note_es": "Isaías describe a un pueblo que honra a Dios con los labios mientras su corazón está lejos. Jesús dice que estas palabras describen a los líderes religiosos de su tiempo.",
+        "note_pt": "Isaías descreve um povo que honra a Deus com os lábios, enquanto o coração está longe. Jesus diz que essas palavras descrevem os líderes religiosos do seu tempo."
+      },
+      {
+        "a": "Deut.6.5",
+        "b": "Mark.12.30",
+        "title": "The heart: love God",
+        "title_es": "El corazón: amar a Dios",
+        "title_pt": "O coração: amar a Deus",
+        "note": "Moses calls Israel to love the Lord with all their heart, soul and strength. Jesus names it the first and greatest commandment.",
+        "note_es": "Moisés llama a Israel a amar al Señor con todo el corazón, el alma y las fuerzas. Jesús lo llama el primer y más grande mandamiento.",
+        "note_pt": "Moisés chama Israel a amar o Senhor de todo o coração, alma e força. Jesus o chama de o primeiro e maior mandamento."
+      },
+      {
+        "a": "Lev.19.18",
+        "b": "Matt.22.39",
+        "title": "The heart: love your neighbor",
+        "title_es": "El corazón: amar al prójimo",
+        "title_pt": "O coração: amar o próximo",
+        "note": "The law says to love your neighbor as yourself. Jesus puts it beside the love of God as the second great commandment.",
+        "note_es": "La ley dice que ames a tu prójimo como a ti mismo. Jesús lo pone junto al amor a Dios como el segundo gran mandamiento.",
+        "note_pt": "A lei diz para amar o próximo como a si mesmo. Jesus coloca isso ao lado do amor a Deus como o segundo grande mandamento."
+      },
+      {
+        "a": "Mic.6.8",
+        "b": "Matt.23.23",
+        "title": "The heart: justice and mercy",
+        "title_es": "El corazón: justicia y misericordia",
+        "title_pt": "O coração: justiça e misericórdia",
+        "note": "Micah sums up what God asks: act justly, love mercy, walk humbly. Jesus says justice, mercy and faithfulness are the weightier matters of the law.",
+        "note_es": "Miqueas resume lo que Dios pide: practicar la justicia, amar la misericordia y caminar humildemente. Jesús dice que la justicia, la misericordia y la fidelidad son lo más importante de la ley.",
+        "note_pt": "Miqueias resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente. Jesus diz que a justiça, a misericórdia e a fidelidade são o mais importante da lei."
+      },
+      {
+        "a": "Isa.42.3",
+        "b": "Matt.12.20",
+        "title": "The gentle servant",
+        "title_es": "El siervo manso",
+        "title_pt": "O servo manso",
+        "note": "God's servant will not break a bruised reed or snuff out a smoldering wick. Matthew sees this gentleness in the way Jesus heals.",
+        "note_es": "El siervo de Dios no quebrará la caña cascada ni apagará la mecha que humea. Mateo ve esta mansedumbre en la forma en que Jesús sana.",
+        "note_pt": "O servo de Deus não quebrará a cana rachada nem apagará o pavio que fumega. Mateus vê essa mansidão na forma como Jesus cura."
+      },
+      {
+        "a": "Ps.118.17",
+        "b": "John.11.4",
+        "title": "Life: I will not die",
+        "title_es": "Vida: no moriré",
+        "title_pt": "Vida: não morrerei",
+        "note": "The psalmist trusts that he will not die but live and declare God's works. Jesus says Lazarus' sickness will not end in death but bring God glory.",
+        "note_es": "El salmista confía en que no morirá sino que vivirá para contar las obras de Dios. Jesús dice que la enfermedad de Lázaro no terminará en muerte, sino que dará gloria a Dios.",
+        "note_pt": "O salmista confia que não morrerá, mas viverá para anunciar as obras de Deus. Jesus diz que a doença de Lázaro não terminará em morte, mas trará glória a Deus."
+      },
+      {
+        "a": "Isa.25.8",
+        "b": "1Cor.15.54",
+        "title": "Life: death swallowed up",
+        "title_es": "Vida: la muerte devorada",
+        "title_pt": "Vida: a morte tragada",
+        "note": "Isaiah promises that God will swallow up death for ever. Paul says this will come true when the dead are raised.",
+        "note_es": "Isaías promete que Dios devorará la muerte para siempre. Pablo dice que esto se cumplirá cuando los muertos resuciten.",
+        "note_pt": "Isaías promete que Deus tragará a morte para sempre. Paulo diz que isso se cumprirá quando os mortos ressuscitarem."
+      },
+      {
+        "a": "Isa.6.9",
+        "b": "Mark.4.12",
+        "title": "Ears to hear",
+        "title_es": "Oídos para oír",
+        "title_pt": "Ouvidos para ouvir",
+        "note": "Isaiah is sent to a people who hear but do not understand. Jesus says the same as he teaches in parables, and calls those with ears to listen.",
+        "note_es": "Isaías es enviado a un pueblo que oye pero no entiende. Jesús dice lo mismo al enseñar en parábolas, y llama a escuchar a quien tenga oídos.",
+        "note_pt": "Isaías é enviado a um povo que ouve, mas não entende. Jesus diz o mesmo ao ensinar por parábolas e chama quem tem ouvidos a ouvir."
+      },
+      {
+        "a": "Ps.69.9",
+        "b": "John.2.17",
+        "title": "Zeal for God's house",
+        "title_es": "El celo por la casa de Dios",
+        "title_pt": "O zelo pela casa de Deus",
+        "note": "The psalmist says zeal for God's house consumes him. When Jesus clears the temple, his disciples remember these words.",
+        "note_es": "El salmista dice que el celo por la casa de Dios lo consume. Cuando Jesús purifica el templo, sus discípulos recuerdan estas palabras.",
+        "note_pt": "O salmista diz que o zelo pela casa de Deus o consome. Quando Jesus purifica o templo, seus discípulos se lembram dessas palavras."
+      },
+      {
+        "a": "Gen.22.2",
+        "b": "Rom.8.32",
+        "title": "Your only son",
+        "title_es": "Tu único hijo",
+        "title_pt": "O seu único filho",
+        "note": "God asks Abraham to offer his only son, then provides a ram instead. Paul says God did not spare his own Son but gave him up for us all.",
+        "note_es": "Dios le pide a Abraham que ofrezca a su único hijo, y luego provee un carnero en su lugar. Pablo dice que Dios no perdonó ni a su propio Hijo, sino que lo entregó por todos nosotros.",
+        "note_pt": "Deus pede a Abraão que ofereça seu único filho e depois provê um carneiro no lugar dele. Paulo diz que Deus não poupou o próprio Filho, mas o entregou por todos nós."
+      },
+      {
+        "a": "Gen.4.10",
+        "b": "Heb.12.24",
+        "title": "Blood that speaks",
+        "title_es": "Sangre que habla",
+        "title_pt": "Sangue que fala",
+        "note": "Abel's blood cries out from the ground for justice. Hebrews says Jesus' blood speaks a better word than Abel's.",
+        "note_es": "La sangre de Abel clama desde la tierra pidiendo justicia. Hebreos dice que la sangre de Jesús habla mejor que la de Abel.",
+        "note_pt": "O sangue de Abel clama da terra por justiça. Hebreus diz que o sangue de Jesus fala melhor do que o de Abel."
+      },
+      {
+        "a": "Ps.22.27",
+        "b": "Matt.28.19",
+        "title": "All nations will turn",
+        "title_es": "Todas las naciones se volverán",
+        "title_pt": "Todas as nações se voltarão",
+        "note": "The psalm that begins in abandonment ends with all the nations turning to the Lord. The risen Jesus sends his followers to make disciples of all nations.",
+        "note_es": "El salmo que empieza con el abandono termina con todas las naciones volviéndose al Señor. Jesús resucitado envía a sus seguidores a hacer discípulos de todas las naciones.",
+        "note_pt": "O salmo que começa com abandono termina com todas as nações se voltando para o Senhor. Jesus ressuscitado envia seus seguidores a fazer discípulos de todas as nações."
+      },
+      {
+        "a": "Isa.50.7",
+        "b": "Luke.9.51",
+        "title": "To Jerusalem: a face like flint",
+        "title_es": "A Jerusalén: el rostro como pedernal",
+        "title_pt": "A Jerusalém: o rosto como pedra",
+        "note": "The servant sets his face like flint, knowing he will not be put to shame. Jesus resolutely sets out for Jerusalem.",
+        "note_es": "El siervo pone su rostro como pedernal, sabiendo que no será avergonzado. Jesús se dirige con determinación a Jerusalén.",
+        "note_pt": "O servo firma o rosto como pedra, sabendo que não será envergonhado. Jesus parte decidido para Jerusalém."
+      },
+      {
+        "a": "Ps.110.1",
+        "b": "Mark.12.36",
+        "title": "To Jerusalem: David's Lord",
+        "title_es": "A Jerusalén: el Señor de David",
+        "title_pt": "A Jerusalém: o Senhor de Davi",
+        "note": "David hears God say to his Lord, sit at my right hand. Teaching in the temple, Jesus asks how the Messiah can be David's son and David's Lord.",
+        "note_es": "David oye a Dios decirle a su Señor: siéntate a mi derecha. Enseñando en el templo, Jesús pregunta cómo el Mesías puede ser hijo de David y Señor de David.",
+        "note_pt": "Davi ouve Deus dizer ao seu Senhor: sente-se à minha direita. Ensinando no templo, Jesus pergunta como o Messias pode ser filho de Davi e Senhor de Davi."
+      },
+      {
+        "a": "Ps.8.2",
+        "b": "Matt.21.16",
+        "title": "To Jerusalem: children's praise",
+        "title_es": "A Jerusalén: la alabanza de los niños",
+        "title_pt": "A Jerusalém: o louvor das crianças",
+        "note": "The psalm says God has ordained praise from the lips of children. When children shout Hosanna in the temple, Jesus quotes it.",
+        "note_es": "El salmo dice que Dios ha dispuesto la alabanza de los labios de los niños. Cuando los niños gritan Hosanna en el templo, Jesús lo cita.",
+        "note_pt": "O salmo diz que Deus tirou louvor da boca das crianças. Quando as crianças gritam Hosana no templo, Jesus o cita."
+      },
+      {
+        "a": "Ps.41.9",
+        "b": "John.13.18",
+        "title": "To Jerusalem: a friend's betrayal",
+        "title_es": "A Jerusalén: la traición de un amigo",
+        "title_pt": "A Jerusalém: a traição de um amigo",
+        "note": "David grieves that a close friend who shared his bread has turned against him. Jesus says these words will come true at his own table.",
+        "note_es": "David sufre porque un amigo íntimo que comía su pan se volvió contra él. Jesús dice que estas palabras se cumplirán en su propia mesa.",
+        "note_pt": "Davi sofre porque um amigo íntimo que comia do seu pão se voltou contra ele. Jesus diz que essas palavras se cumprirão à sua própria mesa."
+      },
+      {
+        "a": "Zech.13.7",
+        "b": "Matt.26.31",
+        "title": "To Jerusalem: the shepherd struck",
+        "title_es": "A Jerusalén: el pastor herido",
+        "title_pt": "A Jerusalém: o pastor ferido",
+        "note": "Zechariah says strike the shepherd, and the sheep will scatter. Jesus quotes it on the night his disciples will run away.",
+        "note_es": "Zacarías dice: hiere al pastor y las ovejas se dispersarán. Jesús lo cita la noche en que sus discípulos huirán.",
+        "note_pt": "Zacarias diz: fira o pastor, e as ovelhas se dispersarão. Jesus o cita na noite em que seus discípulos fugirão."
+      },
+      {
+        "a": "Isa.50.6",
+        "b": "Matt.26.67",
+        "title": "To Jerusalem: the servant does not turn away",
+        "title_es": "A Jerusalén: el siervo no se aparta",
+        "title_pt": "A Jerusalém: o servo não se afasta",
+        "note": "The servant offers his back to those who beat him and does not hide his face. At his trial Jesus is struck and spat upon.",
+        "note_es": "El siervo ofrece la espalda a los que lo golpean y no esconde el rostro. En su juicio Jesús es golpeado y escupido.",
+        "note_pt": "O servo oferece as costas aos que o ferem e não esconde o rosto. No seu julgamento, Jesus é esbofeteado e cuspido."
+      },
+      {
+        "a": "Isa.53.12",
+        "b": "Luke.22.37",
+        "title": "To Jerusalem: counted with sinners",
+        "title_es": "A Jerusalén: contado entre los pecadores",
+        "title_pt": "A Jerusalém: contado com os pecadores",
+        "note": "The servant is numbered with the transgressors and bears the sin of many. Jesus says this must be fulfilled in him.",
+        "note_es": "El siervo es contado entre los transgresores y carga con el pecado de muchos. Jesús dice que esto tiene que cumplirse en él.",
+        "note_pt": "O servo é contado com os transgressores e carrega o pecado de muitos. Jesus diz que isso precisa se cumprir nele."
+      }
+    ]
+  },
+  {
     "id": "holyweek",
     "name": "Holy Week",
     "name_es": "Semana Santa",

@@ -64,8 +64,8 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Places map:** a full view of its own, beside the connections map (switch with the Places tab, the Connections and Places control, or the M key). 1,277 places from OpenBible.info on an offline map you can drag, pinch and zoom, with dots sized by how often each place is named. It follows whatever is open: a chapter, verse, connection, journey step, person or topic lights up its places. Six journeys are drawn as routes with numbered stops: Abraham, the exodus, Paul's three journeys and his voyage to Rome.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
 - **Back up everything:** notes, saved items, collections, plan progress and settings in one file, restored on any device.
-- **Study hub:** 6 reading plans (including Advent, the twelve days of Christmas and Holy Week, each dated to the church calendar) with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
-- **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed. It follows Advent, the twelve days of Christmas and Holy Week in season.
+- **Study hub:** 7 reading plans (including Advent, the twelve days of Christmas, Lent and Holy Week, each dated to the church calendar) with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed. It follows Advent, the twelve days of Christmas, Lent and Holy Week in season, and the welcome page shows the current season's reading, or the next season when it is three weeks away.
 
 ### Read and listen
 - **Bible.com links:** 99 translations in 31 languages, with a searchable picker. Choose a reading translation and an optional second one to compare, right in the sidebar.
@@ -82,7 +82,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Collection slides:** show a collection as simple full-screen slides (title, one slide per item with its references, and a closing slide), moved with arrow keys, a clicker or a swipe, and printable as a PDF. References link to Bible.com; no translation text is shown.
 - **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites (the full map, or a small card for one verse, connection, journey step or prophecy, in light or dark), and link previews in messaging apps.
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
-- **Report a weak link:** flag a connection that seems loose with a ready-made GitHub form, or hide it on your own device. Reviewed reports are hidden for everyone (`site/content/weak-links.json`).
+- **Report a weak link:** flag a connection that seems loose with a ready-made GitHub form, or hide it on your own device. Label a report `approved` on GitHub and a workflow opens a pull request that adds it to `site/content/weak-links.json`, which hides it for everyone once merged.
 
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.

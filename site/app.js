@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.15.1';
+  const VERSION = '0.16.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
@@ -1738,6 +1738,44 @@
     }
     return html;
   }
+  // ---------- Season banner on the welcome page: the plan for the church season, or the next one coming up ----------
+  const SEASON_INFO = {
+    advent: { name: 'Advent', journey: 'advent', soon: 'Advent starts on {d}.' },
+    christmas: { name: 'Christmas', journey: 'christmas', soon: 'The twelve days of Christmas start on {d}.' },
+    lent: { name: 'Lent', journey: null, soon: 'Lent starts on {d}.' },
+    holyweek: { name: 'Holy Week', journey: 'holy-week', soon: 'Holy Week starts on {d}.' },
+  };
+  function renderSeasonBanner() {
+    const box = $('seasonBanner');
+    if (!box || !PLANS.length) return;
+    const fmtDate = (d) => d.toLocaleDateString(LANGS[LANG].locale, { weekday: 'long', day: 'numeric', month: 'long' });
+    const s = season();
+    let html = '';
+    if (s) {
+      const plan = PLANS.find(p => p.season === s.season), info = SEASON_INFO[s.season];
+      const day = s.season === 'christmas' ? s.day + 1 : s.day;
+      const d = plan && plan.days[Math.min(day, plan.days.length - 1)];
+      if (d) {
+        const jn = info.journey ? JOURNEYS.findIndex(j => j.id === info.journey) : -1;
+        html = `<p class="eyebrow">${esc(tr(info.name))} · ${esc(tr(`Day ${day + 1} of ${plan.days.length}`))}</p>
+          <h3 class="series-name" id="seasonTitle">${esc(loc(d, 'title'))}</h3><p>${esc(loc(d, 'note'))}</p>
+          <div class="actions"><button type="button" class="btn" data-season-plan="${esc(plan.id)}" data-day="${day}">Open today's reading</button>
+          ${jn >= 0 ? `<button type="button" class="btn ghost" data-season-journey="${jn}">Take the ${esc(tr(info.name))} journey</button>` : ''}</div>`;
+      }
+    } else {
+      // nothing in season today: mention the next season if it starts within three weeks
+      const next = PLANS.filter(p => p.season && SEASON_INFO[p.season]).map(p => ({ p, start: planStart(p) }))
+        .filter(x => x.start && dayDiff(today(), x.start) > 0 && dayDiff(today(), x.start) <= 21).sort((a, b) => a.start - b.start)[0];
+      if (next) {
+        const info = SEASON_INFO[next.p.season];
+        html = `<p class="eyebrow">${esc(tr('Coming soon'))}</p><h3 class="series-name" id="seasonTitle">${esc(nameOf(next.p))}</h3>
+          <p>${esc(tr(info.soon).replace('{d}', fmtDate(next.start)))} ${esc(descOf(next.p))}</p>
+          <div class="actions"><button type="button" class="btn" data-season-plan="${esc(next.p.id)}" data-day="0">See the plan</button></div>`;
+      }
+    }
+    box.hidden = !html;
+    box.innerHTML = html;
+  }
   function renderLandingRecent() {
     const recent = store.get('recent', []).slice(0, 3), box = $('landingRecent');
     box.hidden = !recent.length;
@@ -1846,12 +1884,14 @@
     return new Date(year, month - 1, day, 12);
   }
   const palmSunday = (year) => { const d = easter(year); d.setDate(d.getDate() - 7); return d; };
+  const ashWednesday = (year) => { const d = easter(year); d.setDate(d.getDate() - 46); return d; };
   // the first day of a seasonal reading plan: this season's, or the next one if it is over
   function planStart(plan) {
     const t = today(), y = t.getMonth() === 0 ? t.getFullYear() - 1 : t.getFullYear();
     if (plan.season === 'advent') return adventStart(y);
     if (plan.season === 'christmas') return new Date(y, 11, 25, 12);
     if (plan.season === 'holyweek') return t > easter(t.getFullYear()) ? palmSunday(t.getFullYear() + 1) : palmSunday(t.getFullYear());
+    if (plan.season === 'lent') return t >= palmSunday(t.getFullYear()) ? ashWednesday(t.getFullYear() + 1) : ashWednesday(t.getFullYear());
     return null;
   }
   // today's day in a seasonal plan, or -1 outside its dates
@@ -1868,7 +1908,8 @@
     if (d >= start && d <= xmas) return { season: 'advent', day: dayDiff(start, d), start };
     const twelfth = new Date(y + 1, 0, 5, 12);
     if (d > xmas && d <= twelfth) return { season: 'christmas', day: dayDiff(xmas, d) - 1, start };
-    const palm = palmSunday(d.getFullYear()), east = easter(d.getFullYear());
+    const palm = palmSunday(d.getFullYear()), east = easter(d.getFullYear()), ash = ashWednesday(d.getFullYear());
+    if (d >= ash && d < palm) return { season: 'lent', day: dayDiff(ash, d), start: ash };
     if (d >= palm && d <= east) return { season: 'holyweek', day: dayDiff(palm, d), start: palm };
     return null;
   }
@@ -1889,7 +1930,7 @@
       const day = plan && plan.days[Math.min(s.season === 'christmas' ? s.day + 1 : s.day, plan.days.length - 1)];
       if (!day) return null;
       a = day.a; b = day.b; title = loc(day, 'title'); text = loc(day, 'note');
-      type = s.season === 'christmas' ? 'Christmas' : s.day === 7 ? 'Easter' : 'Holy Week';
+      type = s.season === 'christmas' ? 'Christmas' : s.season === 'lent' ? 'Lent' : s.day === 7 ? 'Easter' : 'Holy Week';
     }
     const va = osisToIndex(a), vb = osisToIndex(b);
     let i = -1;
@@ -1974,7 +2015,7 @@
       const sd = seasonDay(plan);
       const next = sd >= 0 ? sd : Math.min(days.length - 1, firstUndone(plan));
       const start = planStart(plan);
-      const startText = { advent: 'Starts on Advent Sunday,', christmas: 'Starts on Christmas Day,', holyweek: 'Starts on Palm Sunday,' }[plan.season];
+      const startText = { advent: 'Starts on Advent Sunday,', christmas: 'Starts on Christmas Day,', lent: 'Starts on Ash Wednesday,', holyweek: 'Starts on Palm Sunday,' }[plan.season];
       const advNote = start ? `<p class="hint">${esc(tr(startText))} ${esc(start.toLocaleDateString(LANGS[LANG].locale, { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
       html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>${advNote}
         <div class="progress" role="img" aria-label="${done} of ${days.length} days done"><span style="width:${(done / days.length) * 100}%"></span></div>
@@ -4445,6 +4486,7 @@
     $('landingCotd').hidden = cotd < 0;
     if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     renderLandingRecent();
+    renderSeasonBanner();
     // the timeline under the picture: Old and New Testament widths match their share of verses
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     renderFeelings();
@@ -4456,6 +4498,8 @@
     if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
+    if (btn.dataset.seasonPlan) { hideLanding(); track('season/' + btn.dataset.seasonPlan); openPlan(btn.dataset.seasonPlan, +btn.dataset.day); focusPanelHeading(); return; }
+    if (btn.dataset.seasonJourney) { hideLanding(); startJourney(+btn.dataset.seasonJourney, 0); focusPanelHeading(); return; }
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString(LANGS[LANG].locale)} connections. Use the details panel or arrow keys to explore.`);

@@ -5,6 +5,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-11-08 - Lent
+
+### Added
+- Lent: the road to the cross, a reading plan from Ash Wednesday to the eve of Palm Sunday (39 days, starting 10 February 2027), through dust, the wilderness, mercy, the heart and the road to Jerusalem, leading straight into Holy Week. Dates follow Easter each year. In English, Spanish and Portuguese.
+- The connection of the day follows Lent too.
+- Season banner on the welcome page: during Advent, Christmas, Lent and Holy Week it shows today's reading with a button to open it (and the season's journey where there is one). When a season is three weeks away it says when it starts.
+- Approved weak link reports become pull requests: label a "Report a weak link" issue `approved` and a workflow adds it to site/content/weak-links.json in a pull request. Merging it hides the link for everyone. Duplicates are closed with a note, and incomplete reports get a comment.
+
 ## [0.15.1] - 2026-11-08 - Welcome First
 
 ### Fixed

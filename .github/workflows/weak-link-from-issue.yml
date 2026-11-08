@@ -1,0 +1,49 @@
+name: Weak link report to pull request
+
+# When a "Report a weak link" issue is labeled "approved", add the link to weak-links.json (which hides it
+# from the map for everyone) and open a pull request. Merging the pull request publishes the change.
+# Requires Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  weak-link:
+    if: github.event.label.name == 'approved' && (contains(github.event.issue.labels.*.name, 'weak-link') || startsWith(github.event.issue.title, 'Weak link:'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: link
+        run: node scripts/issue-to-weak-link.mjs
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+      - if: steps.link.outputs.ok == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: weak-link-issue-${{ github.event.issue.number }}
+          add-paths: site/content/weak-links.json
+          commit-message: "Hide weak link: ${{ steps.link.outputs.label }}"
+          title: "Hide weak link: ${{ steps.link.outputs.label }}"
+          body: |
+            Hides the cross reference reported in #${{ github.event.issue.number }} from the map for everyone.
+
+            Closes #${{ github.event.issue.number }}
+          delete-branch: true
+      - if: steps.link.outputs.ok == 'already'
+        run: gh issue close ${{ github.event.issue.number }} --comment "This link is already hidden from the map. Thank you for the report."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+      - if: steps.link.outputs.ok == 'false'
+        run: gh issue comment ${{ github.event.issue.number }} --body "This report could not be processed automatically. It needs a first and second passage written like Gen.1.1 and John.1.1."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}

@@ -30,9 +30,9 @@ const pick = (day) => noted[(Math.imul(day, 2654435761) >>> 0) % noted.length];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = Math.floor(Date.now() / 86400000);
-// Advent, the twelve days of Christmas and Holy Week follow the same seasonal readings as the website
+// Advent, the twelve days of Christmas, Lent and Holy Week follow the same seasonal readings as the website
 const plans = JSON.parse(read('content/plans.json'));
-const advent = plans.find(p => p.season === 'advent'), christmas = plans.find(p => p.season === 'christmas'), holyweek = plans.find(p => p.season === 'holyweek');
+const advent = plans.find(p => p.season === 'advent'), christmas = plans.find(p => p.season === 'christmas'), holyweek = plans.find(p => p.season === 'holyweek'), lent = plans.find(p => p.season === 'lent');
 function adventStart(year) { const d = new Date(Date.UTC(year, 11, 24)); d.setUTCDate(d.getUTCDate() - d.getUTCDay() - 21); return d; }
 function easter(year) {
   const a = year % 19, b = Math.floor(year / 100), c = year % 100, d = Math.floor(b / 4), e = b % 4;
@@ -43,11 +43,12 @@ function easter(year) {
 function seasonal(day) {
   const d = new Date(day * 86400000), y = d.getUTCMonth() === 0 ? d.getUTCFullYear() - 1 : d.getUTCFullYear();
   const start = Math.round(adventStart(y) / 86400000), xmas = Math.round(Date.UTC(y, 11, 25) / 86400000), twelfth = Math.round(Date.UTC(y + 1, 0, 5) / 86400000);
-  const east = Math.round(easter(d.getUTCFullYear()) / 86400000), palm = east - 7;
+  const east = Math.round(easter(d.getUTCFullYear()) / 86400000), palm = east - 7, ash = east - 46;
   let pair = null, type = '';
   const take = (p, n) => { const x = p.days[Math.min(n, p.days.length - 1)]; return { a: x.a, b: x.b, note: x.note }; };
   if (advent && day >= start && day <= xmas) { pair = take(advent, day - start); type = day === xmas ? 'Christmas' : 'Advent'; }
   else if (christmas && day > xmas && day <= twelfth) { pair = take(christmas, day - xmas); type = 'Christmas'; }
+  else if (lent && day >= ash && day < palm) { pair = take(lent, day - ash); type = 'Lent'; }
   else if (holyweek && day >= palm && day <= east) { pair = take(holyweek, day - palm); type = day === east ? 'Easter' : 'Holy Week'; }
   if (!pair) return null;
   const va = osisToIndex(pair.a), vb = osisToIndex(pair.b);

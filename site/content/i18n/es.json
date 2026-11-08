@@ -873,7 +873,16 @@
     "See it on the Places map": "Verlo en el mapa de lugares",
     "See them on the Places map": "Verlos en el mapa de lugares",
     "See where the places named in the Bible were. Choose a place on the map or in the list to see every verse that mentions it.": "Mira dónde estaban los lugares mencionados en la Biblia. Elige un lugar en el mapa o en la lista para ver todos los versículos que lo mencionan.",
-    "Switch between the Connections and Places maps": "Cambiar entre el mapa de conexiones y el de lugares"
+    "Switch between the Connections and Places maps": "Cambiar entre el mapa de conexiones y el de lugares",
+    "Coming soon": "Muy pronto",
+    "Lent": "Cuaresma",
+    "Advent starts on {d}.": "El Adviento empieza el {d}.",
+    "The twelve days of Christmas start on {d}.": "Los doce días de Navidad empiezan el {d}.",
+    "Lent starts on {d}.": "La Cuaresma empieza el {d}.",
+    "Holy Week starts on {d}.": "La Semana Santa empieza el {d}.",
+    "Open today's reading": "Abrir la lectura de hoy",
+    "See the plan": "Ver el plan",
+    "Starts on Ash Wednesday,": "Empieza el Miércoles de Ceniza,"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -995,7 +1004,9 @@
     "You have hidden {n} links on this device.": "Ocultaste {n} vínculos en este dispositivo.",
     "Week {n}": "Semana {n}",
     "week {n}": "semana {n}",
-    "Route: {x}": "Ruta: {x}"
+    "Route: {x}": "Ruta: {x}",
+    "Day {d} of {n}": "Día {d} de {n}",
+    "Take the {x} journey": "Hacer el recorrido de {x}"
   },
   "pages": {
     "handout": {
