@@ -1,68 +1,398 @@
 [
-  {"osis":"Gen","about":"The book of beginnings: creation, the fall, the flood and God's promise to Abraham's family. Traditionally linked to Moses, it sets up the whole story of God's plan to bless all nations.","about_es":"El libro de los comienzos: la creación, la caída, el diluvio y la promesa de Dios a la familia de Abraham. Tradicionalmente vinculado a Moisés, presenta todo el plan de Dios para bendecir a todas las naciones."},
-  {"osis":"Exod","about":"God rescues Israel from slavery in Egypt, gives the law at Mount Sinai and comes to live among his people in the tabernacle. The Passover and the exodus shape the rest of Scripture's picture of salvation.","about_es":"Dios rescata a Israel de la esclavitud en Egipto, da la ley en el monte Sinaí y viene a habitar entre su pueblo en el tabernáculo. La Pascua y el éxodo dan forma a la imagen de la salvación en el resto de la Escritura."},
-  {"osis":"Lev","about":"Instructions for worship, sacrifice and holy living given at Sinai. It shows how a holy God can live among an imperfect people, and its sacrifices form the background to the New Testament's teaching on Jesus.","about_es":"Instrucciones para la adoración, los sacrificios y la vida santa dadas en el Sinaí. Muestra cómo un Dios santo puede vivir entre un pueblo imperfecto, y sus sacrificios son el trasfondo de la enseñanza del Nuevo Testamento sobre Jesús."},
-  {"osis":"Num","about":"Israel's forty years in the wilderness between Sinai and the promised land. A story of complaint and unbelief, and of God's patience and faithfulness to a new generation.","about_es":"Los cuarenta años de Israel en el desierto entre el Sinaí y la tierra prometida. Una historia de queja e incredulidad, y de la paciencia y fidelidad de Dios con una nueva generación."},
-  {"osis":"Deut","about":"Moses' farewell speeches on the edge of the promised land, calling Israel to love the Lord with all their heart and to remember his faithfulness. Jesus quotes it more than almost any other book.","about_es":"Los discursos de despedida de Moisés a las puertas de la tierra prometida, que llaman a Israel a amar al Señor con todo el corazón y a recordar su fidelidad. Jesús lo cita más que casi cualquier otro libro."},
-  {"osis":"Josh","about":"Israel enters and settles the promised land under Joshua. It celebrates God keeping his promises and ends with a call to choose whom the people will serve.","about_es":"Israel entra y se establece en la tierra prometida bajo Josué. Celebra que Dios cumple sus promesas y termina con un llamado a escoger a quién servirá el pueblo."},
-  {"osis":"Judg","about":"A repeating cycle of turning away, oppression, crying out and rescue through leaders called judges. It shows how quickly a people drift when everyone does what is right in their own eyes.","about_es":"Un ciclo que se repite: alejamiento, opresión, clamor y rescate por medio de líderes llamados jueces. Muestra con qué rapidez se desvía un pueblo cuando cada uno hace lo que bien le parece."},
-  {"osis":"Ruth","about":"A short story of loyalty and kindness set in the time of the judges. A Moabite widow becomes part of Israel and an ancestor of King David, and later of Jesus.","about_es":"Una breve historia de lealtad y bondad en la época de los jueces. Una viuda moabita llega a ser parte de Israel y antepasada del rey David, y después de Jesús."},
-  {"osis":"1Sam","about":"Israel moves from judges to kings: Samuel the prophet, Saul the first king, and the rise of David. It contrasts outward appearance with a heart that trusts God.","about_es":"Israel pasa de los jueces a los reyes: el profeta Samuel, Saúl el primer rey y el ascenso de David. Contrasta la apariencia exterior con un corazón que confía en Dios."},
-  {"osis":"2Sam","about":"The reign of King David, including God's covenant promise of a lasting throne and the painful results of David's sin. The promise to David becomes central to the hope for the Messiah.","about_es":"El reinado del rey David, incluida la promesa del pacto de Dios de un trono duradero y las dolorosas consecuencias del pecado de David. La promesa a David llega a ser central en la esperanza del Mesías."},
-  {"osis":"1Kgs","about":"Solomon's wisdom and temple, then the kingdom splits in two. Prophets like Elijah call kings and people back to the Lord.","about_es":"La sabiduría y el templo de Salomón, y luego el reino se divide en dos. Profetas como Elías llaman a reyes y pueblo a volver al Señor."},
-  {"osis":"2Kgs","about":"The decline of Israel and Judah, ending with exile to Assyria and Babylon. It explains the exile while keeping hope alive through God's promise to David.","about_es":"La decadencia de Israel y Judá, que termina con el exilio a Asiria y Babilonia. Explica el exilio sin apagar la esperanza en la promesa de Dios a David."},
-  {"osis":"1Chr","about":"A retelling of Israel's history for those returning from exile, beginning with family lists and focusing on David and preparations for worship in the temple.","about_es":"Un nuevo relato de la historia de Israel para quienes regresaban del exilio. Comienza con listas familiares y se centra en David y en la preparación de la adoración en el templo."},
-  {"osis":"2Chr","about":"The story of the kings of Judah from Solomon to the exile, highlighting times of renewal when people humbled themselves and sought God. It ends with a decree allowing the return home.","about_es":"La historia de los reyes de Judá desde Salomón hasta el exilio, destacando los tiempos de renovación cuando el pueblo se humilló y buscó a Dios. Termina con un decreto que permite el regreso."},
-  {"osis":"Ezra","about":"Exiles return to Jerusalem, rebuild the temple and recommit themselves to God's law under Ezra the scribe.","about_es":"Los exiliados regresan a Jerusalén, reconstruyen el templo y se comprometen de nuevo con la ley de Dios bajo el escriba Esdras."},
-  {"osis":"Neh","about":"Nehemiah leads the rebuilding of Jerusalem's walls despite opposition, and the people renew their covenant with God. A model of prayer joined with practical action.","about_es":"Nehemías dirige la reconstrucción de los muros de Jerusalén a pesar de la oposición, y el pueblo renueva su pacto con Dios. Un ejemplo de oración unida a la acción práctica."},
-  {"osis":"Esth","about":"A Jewish woman in the Persian court risks her life to save her people. God is never named, yet his care is seen in every turn of the story.","about_es":"Una mujer judía en la corte persa arriesga su vida para salvar a su pueblo. Dios nunca es nombrado, pero su cuidado se ve en cada giro de la historia."},
-  {"osis":"Job","about":"A righteous man suffers terrible loss, and he and his friends wrestle with why. It refuses simple answers and ends with God speaking from the whirlwind.","about_es":"Un hombre justo sufre pérdidas terribles, y él y sus amigos luchan con el porqué. Rechaza las respuestas simples y termina con Dios hablando desde el torbellino."},
-  {"osis":"Ps","about":"Israel's songbook of 150 prayers and songs: praise, lament, thanksgiving, confession and trust. Many are linked to David, and the New Testament often reads them as pointing to Jesus.","about_es":"El cancionero de Israel: 150 oraciones y cantos de alabanza, lamento, gratitud, confesión y confianza. Muchos están vinculados a David, y el Nuevo Testamento a menudo los lee como señales de Jesús."},
-  {"osis":"Prov","about":"Short sayings on living wisely in everyday life: work, words, money, friendship and family. It begins with the fear of the Lord as the start of knowledge.","about_es":"Dichos breves sobre cómo vivir sabiamente en la vida diaria: el trabajo, las palabras, el dinero, la amistad y la familia. Comienza con el temor del Señor como principio del conocimiento."},
-  {"osis":"Eccl","about":"An honest look at life's frustrations under the sun. The Teacher finds meaning not in achievement or pleasure but in enjoying God's gifts and fearing him.","about_es":"Una mirada honesta a las frustraciones de la vida bajo el sol. El Predicador encuentra sentido no en los logros ni el placer, sino en disfrutar los dones de Dios y temerle."},
-  {"osis":"Song","about":"A poem celebrating love between a bride and groom. It honours married love as a good gift, and many readers have also seen in it a picture of God's love for his people.","about_es":"Un poema que celebra el amor entre una novia y un novio. Honra el amor matrimonial como un buen regalo, y muchos lectores también han visto en él una imagen del amor de Dios por su pueblo."},
-  {"osis":"Isa","about":"Isaiah calls Judah to trust God and warns of judgement, yet speaks some of Scripture's richest promises: a child called Immanuel, a suffering servant and a new creation. The New Testament quotes it often.","about_es":"Isaías llama a Judá a confiar en Dios y advierte del juicio, pero también ofrece algunas de las promesas más ricas de la Escritura: un niño llamado Emanuel, un siervo sufriente y una nueva creación. El Nuevo Testamento lo cita a menudo."},
-  {"osis":"Jer","about":"Jeremiah warns Jerusalem before its fall to Babylon and weeps over its people. In the darkness he announces a new covenant written on the heart.","about_es":"Jeremías advierte a Jerusalén antes de su caída ante Babilonia y llora por su pueblo. En medio de la oscuridad anuncia un nuevo pacto escrito en el corazón."},
-  {"osis":"Lam","about":"Five poems of grief after Jerusalem's destruction. At its centre is a confession that the Lord's mercies are new every morning.","about_es":"Cinco poemas de dolor tras la destrucción de Jerusalén. En su centro está la confesión de que las misericordias del Señor son nuevas cada mañana."},
-  {"osis":"Ezek","about":"A priest among the exiles in Babylon sees visions of God's glory leaving and one day returning. He promises a new heart, a new spirit and dry bones brought to life.","about_es":"Un sacerdote entre los exiliados en Babilonia ve visiones de la gloria de Dios que se va y que un día regresará. Promete un corazón nuevo, un espíritu nuevo y huesos secos que vuelven a la vida."},
-  {"osis":"Dan","about":"Stories of faithfulness in a foreign empire and visions of kingdoms rising and falling. Parts are written in Aramaic. It looks to an everlasting kingdom given to one like a son of man.","about_es":"Historias de fidelidad en un imperio extranjero y visiones de reinos que se levantan y caen. Algunas partes están escritas en arameo. Mira hacia un reino eterno dado a uno como un hijo de hombre."},
-  {"osis":"Hos","about":"Hosea's painful marriage becomes a picture of God's faithful love for unfaithful Israel, and of his longing to bring his people back.","about_es":"El doloroso matrimonio de Oseas se convierte en una imagen del amor fiel de Dios por un Israel infiel, y de su anhelo de hacer volver a su pueblo."},
-  {"osis":"Joel","about":"A locust plague becomes a call to return to God. Joel promises that God will pour out his Spirit on all people, a promise Peter quotes at Pentecost.","about_es":"Una plaga de langostas se convierte en un llamado a volver a Dios. Joel promete que Dios derramará su Espíritu sobre todas las personas, promesa que Pedro cita en Pentecostés."},
-  {"osis":"Amos","about":"A shepherd sent to the prosperous northern kingdom confronts injustice and empty religion, calling for justice to roll on like a river.","about_es":"Un pastor enviado al próspero reino del norte confronta la injusticia y la religión vacía, y pide que la justicia corra como un río."},
-  {"osis":"Obad","about":"The shortest book of the Old Testament announces judgement on Edom for turning on its brother Israel, and looks to the day when the kingdom will be the Lord's.","about_es":"El libro más corto del Antiguo Testamento anuncia el juicio sobre Edom por volverse contra su hermano Israel, y mira hacia el día en que el reino será del Señor."},
-  {"osis":"Jonah","about":"A reluctant prophet runs from God, is swallowed by a great fish and sees an enemy city repent. It shows God's compassion reaching beyond Israel.","about_es":"Un profeta reacio huye de Dios, es tragado por un gran pez y ve arrepentirse a una ciudad enemiga. Muestra que la compasión de Dios va más allá de Israel."},
-  {"osis":"Mic","about":"Micah condemns corrupt leaders, foretells a ruler born in Bethlehem and sums up what God asks: to act justly, love mercy and walk humbly with him.","about_es":"Miqueas condena a los líderes corruptos, anuncia un gobernante nacido en Belén y resume lo que Dios pide: hacer justicia, amar la misericordia y caminar humildemente con él."},
-  {"osis":"Nah","about":"A poem announcing the fall of Nineveh, the capital of cruel Assyria. It comforts the oppressed with the truth that God is good and a refuge.","about_es":"Un poema que anuncia la caída de Nínive, la capital de la cruel Asiria. Consuela a los oprimidos con la verdad de que Dios es bueno y un refugio."},
-  {"osis":"Hab","about":"A prophet questions God about injustice and learns to wait in faith. It gives the line the righteous shall live by faith, which Paul takes up.","about_es":"Un profeta cuestiona a Dios sobre la injusticia y aprende a esperar con fe. Contiene la frase el justo vivirá por la fe, que Pablo retoma."},
-  {"osis":"Zeph","about":"A warning of the coming day of the Lord, followed by a tender promise that God will rejoice over his people with singing.","about_es":"Una advertencia sobre el día del Señor que viene, seguida de una tierna promesa de que Dios se regocijará sobre su pueblo con cánticos."},
-  {"osis":"Hag","about":"After the exile, Haggai urges the returned people to stop neglecting God's house and rebuild the temple, promising a greater glory to come.","about_es":"Después del exilio, Hageo anima al pueblo que regresó a dejar de descuidar la casa de Dios y reconstruir el templo, prometiendo una gloria mayor por venir."},
-  {"osis":"Zech","about":"Visions encouraging the rebuilding of Jerusalem and pointing ahead to a humble king riding on a donkey and a pierced one who is mourned. The Gospels draw on it at Jesus' final week.","about_es":"Visiones que animan la reconstrucción de Jerusalén y señalan a un rey humilde montado en un asno y a uno traspasado por quien se hace duelo. Los Evangelios lo usan en la última semana de Jesús."},
-  {"osis":"Mal","about":"The last Old Testament prophet challenges careless worship and promises a messenger who will prepare the way for the Lord, linked in the Gospels to John the Baptist.","about_es":"El último profeta del Antiguo Testamento desafía la adoración descuidada y promete un mensajero que preparará el camino del Señor, vinculado en los Evangelios a Juan el Bautista."},
-  {"osis":"Matt","about":"The Gospel written with Jewish readers in mind, showing Jesus as the promised King who fulfils the Scriptures. It includes the Sermon on the Mount and ends with the Great Commission.","about_es":"El Evangelio escrito pensando en lectores judíos, que muestra a Jesús como el Rey prometido que cumple las Escrituras. Incluye el Sermón del Monte y termina con la Gran Comisión."},
-  {"osis":"Mark","about":"The shortest and fastest moving Gospel, often linked to Peter's preaching. It shows Jesus as the Son of God who came to serve and give his life as a ransom.","about_es":"El Evangelio más breve y ágil, a menudo vinculado a la predicación de Pedro. Muestra a Jesús como el Hijo de Dios que vino a servir y a dar su vida en rescate."},
-  {"osis":"Luke","about":"A careful account written for Theophilus, with special attention to outsiders, the poor, women and prayer. Luke continues the story in Acts.","about_es":"Un relato cuidadoso escrito para Teófilo, con especial atención a los marginados, los pobres, las mujeres y la oración. Lucas continúa la historia en Hechos."},
-  {"osis":"John","about":"Written so that readers may believe Jesus is the Messiah, the Son of God, and have life in his name. It is built around signs and the I am sayings.","about_es":"Escrito para que los lectores crean que Jesús es el Mesías, el Hijo de Dios, y tengan vida en su nombre. Está organizado en torno a señales y a los dichos yo soy."},
-  {"osis":"Acts","about":"The risen Jesus sends his Spirit, and the good news spreads from Jerusalem to Rome through Peter, Paul and many others.","about_es":"Jesús resucitado envía su Espíritu, y las buenas noticias se extienden de Jerusalén a Roma por medio de Pedro, Pablo y muchos otros."},
-  {"osis":"Rom","about":"Paul's fullest explanation of the gospel: all have sinned, and God puts people right with himself through faith in Jesus. It then shows how grace shapes everyday life.","about_es":"La explicación más completa de Pablo sobre el evangelio: todos han pecado, y Dios hace justas a las personas por medio de la fe en Jesús. Luego muestra cómo la gracia da forma a la vida diaria."},
-  {"osis":"1Cor","about":"Paul writes to a gifted but divided church about unity, the cross, spiritual gifts and the resurrection. It includes the well known chapter on love.","about_es":"Pablo escribe a una iglesia con muchos dones pero dividida, sobre la unidad, la cruz, los dones espirituales y la resurrección. Incluye el conocido capítulo sobre el amor."},
-  {"osis":"2Cor","about":"A personal letter in which Paul defends his ministry and shows that God's power is made perfect in weakness.","about_es":"Una carta personal en la que Pablo defiende su ministerio y muestra que el poder de Dios se perfecciona en la debilidad."},
-  {"osis":"Gal","about":"A passionate defence of the gospel of grace: people are made right with God through faith in Christ, not by keeping the law, and are free to walk by the Spirit.","about_es":"Una defensa apasionada del evangelio de la gracia: las personas son justificadas por la fe en Cristo, no por cumplir la ley, y son libres para andar en el Espíritu."},
-  {"osis":"Eph","about":"Paul celebrates every spiritual blessing in Christ and the one new people God has made from Jews and Gentiles, then describes life together in the church and the home.","about_es":"Pablo celebra toda bendición espiritual en Cristo y el nuevo pueblo que Dios formó de judíos y gentiles, y luego describe la vida juntos en la iglesia y el hogar."},
-  {"osis":"Phil","about":"A warm letter written from prison, full of joy. It includes a hymn about Christ humbling himself and being exalted.","about_es":"Una carta cálida escrita desde la prisión y llena de gozo. Incluye un himno sobre Cristo que se humilló y fue exaltado."},
-  {"osis":"Col","about":"Paul shows the supremacy of Christ over all creation and urges believers not to be drawn away from him.","about_es":"Pablo muestra la supremacía de Cristo sobre toda la creación y anima a los creyentes a no apartarse de él."},
-  {"osis":"1Thess","about":"One of Paul's earliest letters, encouraging a young church facing opposition and giving hope about Jesus' return.","about_es":"Una de las primeras cartas de Pablo, que anima a una iglesia joven que enfrenta oposición y da esperanza sobre el regreso de Jesús."},
-  {"osis":"2Thess","about":"Paul corrects confusion about the day of the Lord and encourages steady faith and honest work while waiting.","about_es":"Pablo corrige la confusión sobre el día del Señor y anima a una fe firme y al trabajo honrado mientras se espera."},
-  {"osis":"1Tim","about":"Guidance for Timothy on leading the church in Ephesus: sound teaching, prayer, leadership and godly living.","about_es":"Orientación para Timoteo sobre cómo guiar a la iglesia en Éfeso: sana enseñanza, oración, liderazgo y vida piadosa."},
-  {"osis":"2Tim","about":"Paul's last letter, written near the end of his life, urging Timothy to stay faithful, guard the gospel and keep preaching the word.","about_es":"La última carta de Pablo, escrita cerca del final de su vida, que anima a Timoteo a mantenerse fiel, guardar el evangelio y seguir predicando la palabra."},
-  {"osis":"Titus","about":"Instructions for Titus as he organises churches on Crete, showing how God's grace trains people for good works.","about_es":"Instrucciones para Tito mientras organiza las iglesias en Creta, que muestran cómo la gracia de Dios enseña a hacer buenas obras."},
-  {"osis":"Phlm","about":"A short personal letter asking Philemon to welcome back Onesimus, a runaway slave, as a brother in Christ.","about_es":"Una breve carta personal que pide a Filemón recibir de nuevo a Onésimo, un esclavo que había huido, como hermano en Cristo."},
-  {"osis":"Heb","about":"Written to believers tempted to turn back, it shows Jesus as greater than angels, Moses and the priesthood, and calls readers to persevere in faith.","about_es":"Escrita a creyentes tentados a volver atrás, muestra a Jesús como superior a los ángeles, a Moisés y al sacerdocio, y llama a perseverar en la fe."},
-  {"osis":"Jas","about":"Practical wisdom from James, the brother of Jesus: true faith shows itself in action, careful speech and care for the poor.","about_es":"Sabiduría práctica de Santiago, el hermano de Jesús: la fe verdadera se muestra en acciones, en palabras cuidadosas y en el cuidado de los pobres."},
-  {"osis":"1Pet","about":"Peter encourages Christians facing suffering, reminding them of their living hope and their calling as God's people.","about_es":"Pedro anima a los cristianos que enfrentan sufrimiento, recordándoles su esperanza viva y su llamado como pueblo de Dios."},
-  {"osis":"2Pet","about":"A final reminder from Peter to grow in grace, hold to the truth against false teachers and look forward to the Lord's return.","about_es":"Un último recordatorio de Pedro para crecer en la gracia, aferrarse a la verdad frente a falsos maestros y esperar el regreso del Señor."},
-  {"osis":"1John","about":"A letter of assurance: God is light and God is love, and those who know him walk in the light and love one another.","about_es":"Una carta de seguridad: Dios es luz y Dios es amor, y quienes lo conocen andan en la luz y se aman unos a otros."},
-  {"osis":"2John","about":"A brief letter urging believers to keep loving one another and to hold to the truth about Jesus.","about_es":"Una breve carta que anima a los creyentes a seguir amándose y a mantenerse en la verdad acerca de Jesús."},
-  {"osis":"3John","about":"A short personal note praising Gaius for his hospitality to travelling teachers.","about_es":"Una breve nota personal que elogia a Gayo por su hospitalidad con los maestros que viajaban."},
-  {"osis":"Jude","about":"A brief, urgent call to contend for the faith against those who twist grace, ending with a well known blessing.","about_es":"Un llamado breve y urgente a contender por la fe frente a quienes distorsionan la gracia, que termina con una conocida bendición."},
-  {"osis":"Rev","about":"A vision given to John, full of symbols, showing the risen Christ, the struggle between God's kingdom and evil, and the hope of a new heaven and new earth. Christians read its details in different ways, but agree on its message that Jesus wins.","about_es":"Una visión dada a Juan, llena de símbolos, que muestra al Cristo resucitado, la lucha entre el reino de Dios y el mal, y la esperanza de un cielo nuevo y una tierra nueva. Los cristianos interpretan sus detalles de distintas maneras, pero coinciden en su mensaje: Jesús vence."}
+  {
+    "osis": "Gen",
+    "about": "The book of beginnings: creation, the fall, the flood and God's promise to Abraham's family. Traditionally linked to Moses, it sets up the whole story of God's plan to bless all nations.",
+    "about_es": "El libro de los comienzos: la creación, la caída, el diluvio y la promesa de Dios a la familia de Abraham. Tradicionalmente vinculado a Moisés, presenta todo el plan de Dios para bendecir a todas las naciones.",
+    "about_pt": "O livro dos começos: a criação, a queda, o dilúvio e a promessa de Deus à família de Abraão. Tradicionalmente ligado a Moisés, ele prepara toda a história do plano de Deus de abençoar todas as nações."
+  },
+  {
+    "osis": "Exod",
+    "about": "God rescues Israel from slavery in Egypt, gives the law at Mount Sinai and comes to live among his people in the tabernacle. The Passover and the exodus shape the rest of Scripture's picture of salvation.",
+    "about_es": "Dios rescata a Israel de la esclavitud en Egipto, da la ley en el monte Sinaí y viene a habitar entre su pueblo en el tabernáculo. La Pascua y el éxodo dan forma a la imagen de la salvación en el resto de la Escritura.",
+    "about_pt": "Deus resgata Israel da escravidão no Egito, dá a lei no monte Sinai e vem habitar no meio do seu povo no tabernáculo. A Páscoa e o êxodo moldam a imagem da salvação no restante das Escrituras."
+  },
+  {
+    "osis": "Lev",
+    "about": "Instructions for worship, sacrifice and holy living given at Sinai. It shows how a holy God can live among an imperfect people, and its sacrifices form the background to the New Testament's teaching on Jesus.",
+    "about_es": "Instrucciones para la adoración, los sacrificios y la vida santa dadas en el Sinaí. Muestra cómo un Dios santo puede vivir entre un pueblo imperfecto, y sus sacrificios son el trasfondo de la enseñanza del Nuevo Testamento sobre Jesús.",
+    "about_pt": "Instruções sobre adoração, sacrifícios e vida santa dadas no Sinai. Mostra como um Deus santo pode habitar no meio de um povo imperfeito, e seus sacrifícios são o pano de fundo do ensino do Novo Testamento sobre Jesus."
+  },
+  {
+    "osis": "Num",
+    "about": "Israel's forty years in the wilderness between Sinai and the promised land. A story of complaint and unbelief, and of God's patience and faithfulness to a new generation.",
+    "about_es": "Los cuarenta años de Israel en el desierto entre el Sinaí y la tierra prometida. Una historia de queja e incredulidad, y de la paciencia y fidelidad de Dios con una nueva generación.",
+    "about_pt": "Os quarenta anos de Israel no deserto, entre o Sinai e a terra prometida. Uma história de murmuração e incredulidade, e da paciência e fidelidade de Deus para com uma nova geração."
+  },
+  {
+    "osis": "Deut",
+    "about": "Moses' farewell speeches on the edge of the promised land, calling Israel to love the Lord with all their heart and to remember his faithfulness. Jesus quotes it more than almost any other book.",
+    "about_es": "Los discursos de despedida de Moisés a las puertas de la tierra prometida, que llaman a Israel a amar al Señor con todo el corazón y a recordar su fidelidad. Jesús lo cita más que casi cualquier otro libro.",
+    "about_pt": "Os discursos de despedida de Moisés às portas da terra prometida, chamando Israel a amar o Senhor de todo o coração e a lembrar a sua fidelidade. Jesus o cita mais do que quase qualquer outro livro."
+  },
+  {
+    "osis": "Josh",
+    "about": "Israel enters and settles the promised land under Joshua. It celebrates God keeping his promises and ends with a call to choose whom the people will serve.",
+    "about_es": "Israel entra y se establece en la tierra prometida bajo Josué. Celebra que Dios cumple sus promesas y termina con un llamado a escoger a quién servirá el pueblo.",
+    "about_pt": "Israel entra na terra prometida e se estabelece nela sob a liderança de Josué. O livro celebra Deus cumprindo suas promessas e termina com o desafio de escolher a quem o povo vai servir."
+  },
+  {
+    "osis": "Judg",
+    "about": "A repeating cycle of turning away, oppression, crying out and rescue through leaders called judges. It shows how quickly a people drift when everyone does what is right in their own eyes.",
+    "about_es": "Un ciclo que se repite: alejamiento, opresión, clamor y rescate por medio de líderes llamados jueces. Muestra con qué rapidez se desvía un pueblo cuando cada uno hace lo que bien le parece.",
+    "about_pt": "Um ciclo que se repete: afastamento, opressão, clamor e livramento por meio de líderes chamados juízes. Mostra como um povo se desvia depressa quando cada um faz o que acha certo."
+  },
+  {
+    "osis": "Ruth",
+    "about": "A short story of loyalty and kindness set in the time of the judges. A Moabite widow becomes part of Israel and an ancestor of King David, and later of Jesus.",
+    "about_es": "Una breve historia de lealtad y bondad en la época de los jueces. Una viuda moabita llega a ser parte de Israel y antepasada del rey David, y después de Jesús.",
+    "about_pt": "Uma história curta de lealdade e bondade no tempo dos juízes. Uma viúva moabita passa a fazer parte de Israel e se torna antepassada do rei Davi e, mais tarde, de Jesus."
+  },
+  {
+    "osis": "1Sam",
+    "about": "Israel moves from judges to kings: Samuel the prophet, Saul the first king, and the rise of David. It contrasts outward appearance with a heart that trusts God.",
+    "about_es": "Israel pasa de los jueces a los reyes: el profeta Samuel, Saúl el primer rey y el ascenso de David. Contrasta la apariencia exterior con un corazón que confía en Dios.",
+    "about_pt": "Israel passa dos juízes aos reis: o profeta Samuel, Saul, o primeiro rei, e a ascensão de Davi. Contrasta a aparência exterior com um coração que confia em Deus."
+  },
+  {
+    "osis": "2Sam",
+    "about": "The reign of King David, including God's covenant promise of a lasting throne and the painful results of David's sin. The promise to David becomes central to the hope for the Messiah.",
+    "about_es": "El reinado del rey David, incluida la promesa del pacto de Dios de un trono duradero y las dolorosas consecuencias del pecado de David. La promesa a David llega a ser central en la esperanza del Mesías.",
+    "about_pt": "O reinado do rei Davi, incluindo a aliança de Deus com a promessa de um trono duradouro e as dolorosas consequências do pecado de Davi. A promessa a Davi se torna central na esperança do Messias."
+  },
+  {
+    "osis": "1Kgs",
+    "about": "Solomon's wisdom and temple, then the kingdom splits in two. Prophets like Elijah call kings and people back to the Lord.",
+    "about_es": "La sabiduría y el templo de Salomón, y luego el reino se divide en dos. Profetas como Elías llaman a reyes y pueblo a volver al Señor.",
+    "about_pt": "A sabedoria e o templo de Salomão, e depois o reino dividido em dois. Profetas como Elias chamam reis e povo de volta ao Senhor."
+  },
+  {
+    "osis": "2Kgs",
+    "about": "The decline of Israel and Judah, ending with exile to Assyria and Babylon. It explains the exile while keeping hope alive through God's promise to David.",
+    "about_es": "La decadencia de Israel y Judá, que termina con el exilio a Asiria y Babilonia. Explica el exilio sin apagar la esperanza en la promesa de Dios a David.",
+    "about_pt": "A decadência de Israel e de Judá, que termina com o exílio na Assíria e na Babilônia. Explica o exílio e, ao mesmo tempo, mantém viva a esperança por meio da promessa de Deus a Davi."
+  },
+  {
+    "osis": "1Chr",
+    "about": "A retelling of Israel's history for those returning from exile, beginning with family lists and focusing on David and preparations for worship in the temple.",
+    "about_es": "Un nuevo relato de la historia de Israel para quienes regresaban del exilio. Comienza con listas familiares y se centra en David y en la preparación de la adoración en el templo.",
+    "about_pt": "Uma releitura da história de Israel para os que voltavam do exílio, começando com genealogias e focando em Davi e nos preparativos para a adoração no templo."
+  },
+  {
+    "osis": "2Chr",
+    "about": "The story of the kings of Judah from Solomon to the exile, highlighting times of renewal when people humbled themselves and sought God. It ends with a decree allowing the return home.",
+    "about_es": "La historia de los reyes de Judá desde Salomón hasta el exilio, destacando los tiempos de renovación cuando el pueblo se humilló y buscó a Dios. Termina con un decreto que permite el regreso.",
+    "about_pt": "A história dos reis de Judá, de Salomão ao exílio, destacando tempos de renovação em que o povo se humilhou e buscou a Deus. Termina com um decreto que permite a volta para casa."
+  },
+  {
+    "osis": "Ezra",
+    "about": "Exiles return to Jerusalem, rebuild the temple and recommit themselves to God's law under Ezra the scribe.",
+    "about_es": "Los exiliados regresan a Jerusalén, reconstruyen el templo y se comprometen de nuevo con la ley de Dios bajo el escriba Esdras.",
+    "about_pt": "Os exilados voltam a Jerusalém, reconstroem o templo e renovam seu compromisso com a lei de Deus sob a liderança do escriba Esdras."
+  },
+  {
+    "osis": "Neh",
+    "about": "Nehemiah leads the rebuilding of Jerusalem's walls despite opposition, and the people renew their covenant with God. A model of prayer joined with practical action.",
+    "about_es": "Nehemías dirige la reconstrucción de los muros de Jerusalén a pesar de la oposición, y el pueblo renueva su pacto con Dios. Un ejemplo de oración unida a la acción práctica.",
+    "about_pt": "Neemias lidera a reconstrução dos muros de Jerusalém apesar da oposição, e o povo renova sua aliança com Deus. Um modelo de oração unida à ação prática."
+  },
+  {
+    "osis": "Esth",
+    "about": "A Jewish woman in the Persian court risks her life to save her people. God is never named, yet his care is seen in every turn of the story.",
+    "about_es": "Una mujer judía en la corte persa arriesga su vida para salvar a su pueblo. Dios nunca es nombrado, pero su cuidado se ve en cada giro de la historia.",
+    "about_pt": "Uma mulher judia na corte persa arrisca a vida para salvar o seu povo. Deus nunca é mencionado, mas o seu cuidado aparece em cada reviravolta da história."
+  },
+  {
+    "osis": "Job",
+    "about": "A righteous man suffers terrible loss, and he and his friends wrestle with why. It refuses simple answers and ends with God speaking from the whirlwind.",
+    "about_es": "Un hombre justo sufre pérdidas terribles, y él y sus amigos luchan con el porqué. Rechaza las respuestas simples y termina con Dios hablando desde el torbellino.",
+    "about_pt": "Um homem justo sofre perdas terríveis, e ele e seus amigos lutam com o porquê. O livro recusa respostas simples e termina com Deus falando do meio da tempestade."
+  },
+  {
+    "osis": "Ps",
+    "about": "Israel's songbook of 150 prayers and songs: praise, lament, thanksgiving, confession and trust. Many are linked to David, and the New Testament often reads them as pointing to Jesus.",
+    "about_es": "El cancionero de Israel: 150 oraciones y cantos de alabanza, lamento, gratitud, confesión y confianza. Muchos están vinculados a David, y el Nuevo Testamento a menudo los lee como señales de Jesús.",
+    "about_pt": "O hinário de Israel, com 150 orações e cânticos: louvor, lamento, gratidão, confissão e confiança. Muitos estão ligados a Davi, e o Novo Testamento muitas vezes os lê como apontando para Jesus."
+  },
+  {
+    "osis": "Prov",
+    "about": "Short sayings on living wisely in everyday life: work, words, money, friendship and family. It begins with the fear of the Lord as the start of knowledge.",
+    "about_es": "Dichos breves sobre cómo vivir sabiamente en la vida diaria: el trabajo, las palabras, el dinero, la amistad y la familia. Comienza con el temor del Señor como principio del conocimiento.",
+    "about_pt": "Ditos curtos sobre viver com sabedoria no dia a dia: trabalho, palavras, dinheiro, amizade e família. Começa com o temor do Senhor como o princípio do conhecimento."
+  },
+  {
+    "osis": "Eccl",
+    "about": "An honest look at life's frustrations under the sun. The Teacher finds meaning not in achievement or pleasure but in enjoying God's gifts and fearing him.",
+    "about_es": "Una mirada honesta a las frustraciones de la vida bajo el sol. El Predicador encuentra sentido no en los logros ni el placer, sino en disfrutar los dones de Dios y temerle.",
+    "about_pt": "Um olhar honesto sobre as frustrações da vida debaixo do sol. O Pregador encontra sentido não nas conquistas ou no prazer, mas em desfrutar os presentes de Deus e temê-lo."
+  },
+  {
+    "osis": "Song",
+    "about": "A poem celebrating love between a bride and groom. It honours married love as a good gift, and many readers have also seen in it a picture of God's love for his people.",
+    "about_es": "Un poema que celebra el amor entre una novia y un novio. Honra el amor matrimonial como un buen regalo, y muchos lectores también han visto en él una imagen del amor de Dios por su pueblo.",
+    "about_pt": "Um poema que celebra o amor entre a noiva e o noivo. Honra o amor no casamento como um bom presente, e muitos leitores também viram nele uma imagem do amor de Deus pelo seu povo."
+  },
+  {
+    "osis": "Isa",
+    "about": "Isaiah calls Judah to trust God and warns of judgement, yet speaks some of Scripture's richest promises: a child called Immanuel, a suffering servant and a new creation. The New Testament quotes it often.",
+    "about_es": "Isaías llama a Judá a confiar en Dios y advierte del juicio, pero también ofrece algunas de las promesas más ricas de la Escritura: un niño llamado Emanuel, un siervo sufriente y una nueva creación. El Nuevo Testamento lo cita a menudo.",
+    "about_pt": "Isaías chama Judá a confiar em Deus e adverte sobre o juízo, mas também traz algumas das promessas mais ricas das Escrituras: uma criança chamada Emanuel, um servo sofredor e uma nova criação. O Novo Testamento o cita com frequência."
+  },
+  {
+    "osis": "Jer",
+    "about": "Jeremiah warns Jerusalem before its fall to Babylon and weeps over its people. In the darkness he announces a new covenant written on the heart.",
+    "about_es": "Jeremías advierte a Jerusalén antes de su caída ante Babilonia y llora por su pueblo. En medio de la oscuridad anuncia un nuevo pacto escrito en el corazón.",
+    "about_pt": "Jeremias adverte Jerusalém antes da sua queda diante da Babilônia e chora pelo seu povo. Em meio às trevas, ele anuncia uma nova aliança escrita no coração."
+  },
+  {
+    "osis": "Lam",
+    "about": "Five poems of grief after Jerusalem's destruction. At its centre is a confession that the Lord's mercies are new every morning.",
+    "about_es": "Cinco poemas de dolor tras la destrucción de Jerusalén. En su centro está la confesión de que las misericordias del Señor son nuevas cada mañana.",
+    "about_pt": "Cinco poemas de luto depois da destruição de Jerusalém. No centro está a confissão de que as misericórdias do Senhor se renovam a cada manhã."
+  },
+  {
+    "osis": "Ezek",
+    "about": "A priest among the exiles in Babylon sees visions of God's glory leaving and one day returning. He promises a new heart, a new spirit and dry bones brought to life.",
+    "about_es": "Un sacerdote entre los exiliados en Babilonia ve visiones de la gloria de Dios que se va y que un día regresará. Promete un corazón nuevo, un espíritu nuevo y huesos secos que vuelven a la vida.",
+    "about_pt": "Um sacerdote entre os exilados na Babilônia tem visões da glória de Deus saindo e, um dia, voltando. Ele promete um coração novo, um espírito novo e ossos secos que voltam à vida."
+  },
+  {
+    "osis": "Dan",
+    "about": "Stories of faithfulness in a foreign empire and visions of kingdoms rising and falling. Parts are written in Aramaic. It looks to an everlasting kingdom given to one like a son of man.",
+    "about_es": "Historias de fidelidad en un imperio extranjero y visiones de reinos que se levantan y caen. Algunas partes están escritas en arameo. Mira hacia un reino eterno dado a uno como un hijo de hombre.",
+    "about_pt": "Histórias de fidelidade em um império estrangeiro e visões de reinos que se levantam e caem. Partes foram escritas em aramaico. O livro aponta para um reino eterno dado a alguém como um filho de homem."
+  },
+  {
+    "osis": "Hos",
+    "about": "Hosea's painful marriage becomes a picture of God's faithful love for unfaithful Israel, and of his longing to bring his people back.",
+    "about_es": "El doloroso matrimonio de Oseas se convierte en una imagen del amor fiel de Dios por un Israel infiel, y de su anhelo de hacer volver a su pueblo.",
+    "about_pt": "O casamento doloroso de Oseias se torna uma imagem do amor fiel de Deus por um Israel infiel, e do seu desejo de trazer o seu povo de volta."
+  },
+  {
+    "osis": "Joel",
+    "about": "A locust plague becomes a call to return to God. Joel promises that God will pour out his Spirit on all people, a promise Peter quotes at Pentecost.",
+    "about_es": "Una plaga de langostas se convierte en un llamado a volver a Dios. Joel promete que Dios derramará su Espíritu sobre todas las personas, promesa que Pedro cita en Pentecostés.",
+    "about_pt": "Uma praga de gafanhotos se torna um chamado para voltar a Deus. Joel promete que Deus derramará o seu Espírito sobre todas as pessoas, promessa que Pedro cita no Pentecostes."
+  },
+  {
+    "osis": "Amos",
+    "about": "A shepherd sent to the prosperous northern kingdom confronts injustice and empty religion, calling for justice to roll on like a river.",
+    "about_es": "Un pastor enviado al próspero reino del norte confronta la injusticia y la religión vacía, y pide que la justicia corra como un río.",
+    "about_pt": "Um pastor enviado ao próspero reino do norte confronta a injustiça e a religião vazia, pedindo que a justiça corra como um rio."
+  },
+  {
+    "osis": "Obad",
+    "about": "The shortest book of the Old Testament announces judgement on Edom for turning on its brother Israel, and looks to the day when the kingdom will be the Lord's.",
+    "about_es": "El libro más corto del Antiguo Testamento anuncia el juicio sobre Edom por volverse contra su hermano Israel, y mira hacia el día en que el reino será del Señor.",
+    "about_pt": "O livro mais curto do Antigo Testamento anuncia o juízo sobre Edom por ter se voltado contra seu irmão Israel, e aponta para o dia em que o reino será do Senhor."
+  },
+  {
+    "osis": "Jonah",
+    "about": "A reluctant prophet runs from God, is swallowed by a great fish and sees an enemy city repent. It shows God's compassion reaching beyond Israel.",
+    "about_es": "Un profeta reacio huye de Dios, es tragado por un gran pez y ve arrepentirse a una ciudad enemiga. Muestra que la compasión de Dios va más allá de Israel.",
+    "about_pt": "Um profeta relutante foge de Deus, é engolido por um grande peixe e vê uma cidade inimiga se arrepender. Mostra a compaixão de Deus chegando além de Israel."
+  },
+  {
+    "osis": "Mic",
+    "about": "Micah condemns corrupt leaders, foretells a ruler born in Bethlehem and sums up what God asks: to act justly, love mercy and walk humbly with him.",
+    "about_es": "Miqueas condena a los líderes corruptos, anuncia un gobernante nacido en Belén y resume lo que Dios pide: hacer justicia, amar la misericordia y caminar humildemente con él.",
+    "about_pt": "Miqueias condena líderes corruptos, anuncia um governante nascido em Belém e resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente com ele."
+  },
+  {
+    "osis": "Nah",
+    "about": "A poem announcing the fall of Nineveh, the capital of cruel Assyria. It comforts the oppressed with the truth that God is good and a refuge.",
+    "about_es": "Un poema que anuncia la caída de Nínive, la capital de la cruel Asiria. Consuela a los oprimidos con la verdad de que Dios es bueno y un refugio.",
+    "about_pt": "Um poema que anuncia a queda de Nínive, a capital da cruel Assíria. Consola os oprimidos com a verdade de que Deus é bom e é refúgio."
+  },
+  {
+    "osis": "Hab",
+    "about": "A prophet questions God about injustice and learns to wait in faith. It gives the line the righteous shall live by faith, which Paul takes up.",
+    "about_es": "Un profeta cuestiona a Dios sobre la injusticia y aprende a esperar con fe. Contiene la frase el justo vivirá por la fe, que Pablo retoma.",
+    "about_pt": "Um profeta questiona Deus sobre a injustiça e aprende a esperar com fé. Dele vem a frase o justo viverá pela fé, que Paulo retoma."
+  },
+  {
+    "osis": "Zeph",
+    "about": "A warning of the coming day of the Lord, followed by a tender promise that God will rejoice over his people with singing.",
+    "about_es": "Una advertencia sobre el día del Señor que viene, seguida de una tierna promesa de que Dios se regocijará sobre su pueblo con cánticos.",
+    "about_pt": "Uma advertência sobre o dia do Senhor que vem, seguida de uma promessa terna de que Deus se alegrará com o seu povo com cânticos."
+  },
+  {
+    "osis": "Hag",
+    "about": "After the exile, Haggai urges the returned people to stop neglecting God's house and rebuild the temple, promising a greater glory to come.",
+    "about_es": "Después del exilio, Hageo anima al pueblo que regresó a dejar de descuidar la casa de Dios y reconstruir el templo, prometiendo una gloria mayor por venir.",
+    "about_pt": "Depois do exílio, Ageu insiste com o povo que voltou para que pare de negligenciar a casa de Deus e reconstrua o templo, prometendo uma glória ainda maior."
+  },
+  {
+    "osis": "Zech",
+    "about": "Visions encouraging the rebuilding of Jerusalem and pointing ahead to a humble king riding on a donkey and a pierced one who is mourned. The Gospels draw on it at Jesus' final week.",
+    "about_es": "Visiones que animan la reconstrucción de Jerusalén y señalan a un rey humilde montado en un asno y a uno traspasado por quien se hace duelo. Los Evangelios lo usan en la última semana de Jesús.",
+    "about_pt": "Visões que encorajam a reconstrução de Jerusalém e apontam para um rei humilde montado em um jumento e para alguém traspassado por quem se chora. Os Evangelhos recorrem a ele na última semana de Jesus."
+  },
+  {
+    "osis": "Mal",
+    "about": "The last Old Testament prophet challenges careless worship and promises a messenger who will prepare the way for the Lord, linked in the Gospels to John the Baptist.",
+    "about_es": "El último profeta del Antiguo Testamento desafía la adoración descuidada y promete un mensajero que preparará el camino del Señor, vinculado en los Evangelios a Juan el Bautista.",
+    "about_pt": "O último profeta do Antigo Testamento confronta a adoração descuidada e promete um mensageiro que preparará o caminho para o Senhor, ligado nos Evangelhos a João Batista."
+  },
+  {
+    "osis": "Matt",
+    "about": "The Gospel written with Jewish readers in mind, showing Jesus as the promised King who fulfils the Scriptures. It includes the Sermon on the Mount and ends with the Great Commission.",
+    "about_es": "El Evangelio escrito pensando en lectores judíos, que muestra a Jesús como el Rey prometido que cumple las Escrituras. Incluye el Sermón del Monte y termina con la Gran Comisión.",
+    "about_pt": "O Evangelho escrito pensando em leitores judeus, que mostra Jesus como o Rei prometido que cumpre as Escrituras. Inclui o Sermão do Monte e termina com a Grande Comissão."
+  },
+  {
+    "osis": "Mark",
+    "about": "The shortest and fastest moving Gospel, often linked to Peter's preaching. It shows Jesus as the Son of God who came to serve and give his life as a ransom.",
+    "about_es": "El Evangelio más breve y ágil, a menudo vinculado a la predicación de Pedro. Muestra a Jesús como el Hijo de Dios que vino a servir y a dar su vida en rescate.",
+    "about_pt": "O Evangelho mais curto e mais dinâmico, muitas vezes ligado à pregação de Pedro. Mostra Jesus como o Filho de Deus que veio para servir e dar a sua vida em resgate."
+  },
+  {
+    "osis": "Luke",
+    "about": "A careful account written for Theophilus, with special attention to outsiders, the poor, women and prayer. Luke continues the story in Acts.",
+    "about_es": "Un relato cuidadoso escrito para Teófilo, con especial atención a los marginados, los pobres, las mujeres y la oración. Lucas continúa la historia en Hechos.",
+    "about_pt": "Um relato cuidadoso escrito para Teófilo, com atenção especial aos de fora, aos pobres, às mulheres e à oração. Lucas continua a história em Atos."
+  },
+  {
+    "osis": "John",
+    "about": "Written so that readers may believe Jesus is the Messiah, the Son of God, and have life in his name. It is built around signs and the I am sayings.",
+    "about_es": "Escrito para que los lectores crean que Jesús es el Mesías, el Hijo de Dios, y tengan vida en su nombre. Está organizado en torno a señales y a los dichos yo soy.",
+    "about_pt": "Escrito para que os leitores creiam que Jesus é o Messias, o Filho de Deus, e tenham vida em seu nome. É construído em torno de sinais e das frases “Eu sou”."
+  },
+  {
+    "osis": "Acts",
+    "about": "The risen Jesus sends his Spirit, and the good news spreads from Jerusalem to Rome through Peter, Paul and many others.",
+    "about_es": "Jesús resucitado envía su Espíritu, y las buenas noticias se extienden de Jerusalén a Roma por medio de Pedro, Pablo y muchos otros.",
+    "about_pt": "Jesus ressuscitado envia o seu Espírito, e a boa notícia se espalha de Jerusalém a Roma por meio de Pedro, Paulo e muitos outros."
+  },
+  {
+    "osis": "Rom",
+    "about": "Paul's fullest explanation of the gospel: all have sinned, and God puts people right with himself through faith in Jesus. It then shows how grace shapes everyday life.",
+    "about_es": "La explicación más completa de Pablo sobre el evangelio: todos han pecado, y Dios hace justas a las personas por medio de la fe en Jesús. Luego muestra cómo la gracia da forma a la vida diaria.",
+    "about_pt": "A explicação mais completa de Paulo sobre o evangelho: todos pecaram, e Deus justifica as pessoas pela fé em Jesus. Depois mostra como a graça molda a vida diária."
+  },
+  {
+    "osis": "1Cor",
+    "about": "Paul writes to a gifted but divided church about unity, the cross, spiritual gifts and the resurrection. It includes the well known chapter on love.",
+    "about_es": "Pablo escribe a una iglesia con muchos dones pero dividida, sobre la unidad, la cruz, los dones espirituales y la resurrección. Incluye el conocido capítulo sobre el amor.",
+    "about_pt": "Paulo escreve a uma igreja cheia de dons, mas dividida, sobre unidade, a cruz, os dons espirituais e a ressurreição. Inclui o conhecido capítulo sobre o amor."
+  },
+  {
+    "osis": "2Cor",
+    "about": "A personal letter in which Paul defends his ministry and shows that God's power is made perfect in weakness.",
+    "about_es": "Una carta personal en la que Pablo defiende su ministerio y muestra que el poder de Dios se perfecciona en la debilidad.",
+    "about_pt": "Uma carta pessoal em que Paulo defende o seu ministério e mostra que o poder de Deus se aperfeiçoa na fraqueza."
+  },
+  {
+    "osis": "Gal",
+    "about": "A passionate defence of the gospel of grace: people are made right with God through faith in Christ, not by keeping the law, and are free to walk by the Spirit.",
+    "about_es": "Una defensa apasionada del evangelio de la gracia: las personas son justificadas por la fe en Cristo, no por cumplir la ley, y son libres para andar en el Espíritu.",
+    "about_pt": "Uma defesa apaixonada do evangelho da graça: as pessoas são justificadas diante de Deus pela fé em Cristo, e não pela obediência à lei, e são livres para andar no Espírito."
+  },
+  {
+    "osis": "Eph",
+    "about": "Paul celebrates every spiritual blessing in Christ and the one new people God has made from Jews and Gentiles, then describes life together in the church and the home.",
+    "about_es": "Pablo celebra toda bendición espiritual en Cristo y el nuevo pueblo que Dios formó de judíos y gentiles, y luego describe la vida juntos en la iglesia y el hogar.",
+    "about_pt": "Paulo celebra todas as bênçãos espirituais em Cristo e o único povo novo que Deus formou de judeus e gentios, e depois descreve a vida em comunidade na igreja e no lar."
+  },
+  {
+    "osis": "Phil",
+    "about": "A warm letter written from prison, full of joy. It includes a hymn about Christ humbling himself and being exalted.",
+    "about_es": "Una carta cálida escrita desde la prisión y llena de gozo. Incluye un himno sobre Cristo que se humilló y fue exaltado.",
+    "about_pt": "Uma carta calorosa escrita da prisão, cheia de alegria. Inclui um hino sobre Cristo que se humilhou e foi exaltado."
+  },
+  {
+    "osis": "Col",
+    "about": "Paul shows the supremacy of Christ over all creation and urges believers not to be drawn away from him.",
+    "about_es": "Pablo muestra la supremacía de Cristo sobre toda la creación y anima a los creyentes a no apartarse de él.",
+    "about_pt": "Paulo mostra a supremacia de Cristo sobre toda a criação e pede aos que creem que não se deixem afastar dele."
+  },
+  {
+    "osis": "1Thess",
+    "about": "One of Paul's earliest letters, encouraging a young church facing opposition and giving hope about Jesus' return.",
+    "about_es": "Una de las primeras cartas de Pablo, que anima a una iglesia joven que enfrenta oposición y da esperanza sobre el regreso de Jesús.",
+    "about_pt": "Uma das primeiras cartas de Paulo, que encoraja uma igreja jovem diante da oposição e dá esperança sobre a volta de Jesus."
+  },
+  {
+    "osis": "2Thess",
+    "about": "Paul corrects confusion about the day of the Lord and encourages steady faith and honest work while waiting.",
+    "about_es": "Pablo corrige la confusión sobre el día del Señor y anima a una fe firme y al trabajo honrado mientras se espera.",
+    "about_pt": "Paulo corrige confusões sobre o dia do Senhor e incentiva uma fé firme e um trabalho honesto enquanto se espera."
+  },
+  {
+    "osis": "1Tim",
+    "about": "Guidance for Timothy on leading the church in Ephesus: sound teaching, prayer, leadership and godly living.",
+    "about_es": "Orientación para Timoteo sobre cómo guiar a la iglesia en Éfeso: sana enseñanza, oración, liderazgo y vida piadosa.",
+    "about_pt": "Orientações a Timóteo para liderar a igreja em Éfeso: ensino sadio, oração, liderança e vida piedosa."
+  },
+  {
+    "osis": "2Tim",
+    "about": "Paul's last letter, written near the end of his life, urging Timothy to stay faithful, guard the gospel and keep preaching the word.",
+    "about_es": "La última carta de Pablo, escrita cerca del final de su vida, que anima a Timoteo a mantenerse fiel, guardar el evangelio y seguir predicando la palabra.",
+    "about_pt": "A última carta de Paulo, escrita perto do fim da sua vida, pedindo a Timóteo que permaneça fiel, guarde o evangelho e continue pregando a palavra."
+  },
+  {
+    "osis": "Titus",
+    "about": "Instructions for Titus as he organises churches on Crete, showing how God's grace trains people for good works.",
+    "about_es": "Instrucciones para Tito mientras organiza las iglesias en Creta, que muestran cómo la gracia de Dios enseña a hacer buenas obras.",
+    "about_pt": "Instruções a Tito enquanto ele organiza as igrejas em Creta, mostrando como a graça de Deus ensina as pessoas a praticar boas obras."
+  },
+  {
+    "osis": "Phlm",
+    "about": "A short personal letter asking Philemon to welcome back Onesimus, a runaway slave, as a brother in Christ.",
+    "about_es": "Una breve carta personal que pide a Filemón recibir de nuevo a Onésimo, un esclavo que había huido, como hermano en Cristo.",
+    "about_pt": "Uma breve carta pessoal pedindo a Filemom que receba de volta Onésimo, um escravo fugitivo, como irmão em Cristo."
+  },
+  {
+    "osis": "Heb",
+    "about": "Written to believers tempted to turn back, it shows Jesus as greater than angels, Moses and the priesthood, and calls readers to persevere in faith.",
+    "about_es": "Escrita a creyentes tentados a volver atrás, muestra a Jesús como superior a los ángeles, a Moisés y al sacerdocio, y llama a perseverar en la fe.",
+    "about_pt": "Escrita a crentes tentados a voltar atrás, mostra Jesus como superior aos anjos, a Moisés e ao sacerdócio, e chama os leitores a perseverar na fé."
+  },
+  {
+    "osis": "Jas",
+    "about": "Practical wisdom from James, the brother of Jesus: true faith shows itself in action, careful speech and care for the poor.",
+    "about_es": "Sabiduría práctica de Santiago, el hermano de Jesús: la fe verdadera se muestra en acciones, en palabras cuidadosas y en el cuidado de los pobres.",
+    "about_pt": "Sabedoria prática de Tiago, irmão de Jesus: a fé verdadeira se mostra em ações, em palavras cuidadosas e no cuidado com os pobres."
+  },
+  {
+    "osis": "1Pet",
+    "about": "Peter encourages Christians facing suffering, reminding them of their living hope and their calling as God's people.",
+    "about_es": "Pedro anima a los cristianos que enfrentan sufrimiento, recordándoles su esperanza viva y su llamado como pueblo de Dios.",
+    "about_pt": "Pedro encoraja cristãos que enfrentam sofrimento, lembrando-lhes sua esperança viva e seu chamado como povo de Deus."
+  },
+  {
+    "osis": "2Pet",
+    "about": "A final reminder from Peter to grow in grace, hold to the truth against false teachers and look forward to the Lord's return.",
+    "about_es": "Un último recordatorio de Pedro para crecer en la gracia, aferrarse a la verdad frente a falsos maestros y esperar el regreso del Señor.",
+    "about_pt": "Um último lembrete de Pedro para crescer na graça, permanecer na verdade contra os falsos mestres e esperar a volta do Senhor."
+  },
+  {
+    "osis": "1John",
+    "about": "A letter of assurance: God is light and God is love, and those who know him walk in the light and love one another.",
+    "about_es": "Una carta de seguridad: Dios es luz y Dios es amor, y quienes lo conocen andan en la luz y se aman unos a otros.",
+    "about_pt": "Uma carta de segurança: Deus é luz e Deus é amor, e quem o conhece anda na luz e ama os irmãos."
+  },
+  {
+    "osis": "2John",
+    "about": "A brief letter urging believers to keep loving one another and to hold to the truth about Jesus.",
+    "about_es": "Una breve carta que anima a los creyentes a seguir amándose y a mantenerse en la verdad acerca de Jesús.",
+    "about_pt": "Uma breve carta pedindo aos que creem que continuem se amando e permaneçam na verdade sobre Jesus."
+  },
+  {
+    "osis": "3John",
+    "about": "A short personal note praising Gaius for his hospitality to travelling teachers.",
+    "about_es": "Una breve nota personal que elogia a Gayo por su hospitalidad con los maestros que viajaban.",
+    "about_pt": "Um curto bilhete pessoal elogiando Gaio pela hospitalidade com os mestres itinerantes."
+  },
+  {
+    "osis": "Jude",
+    "about": "A brief, urgent call to contend for the faith against those who twist grace, ending with a well known blessing.",
+    "about_es": "Un llamado breve y urgente a contender por la fe frente a quienes distorsionan la gracia, que termina con una conocida bendición.",
+    "about_pt": "Um chamado breve e urgente a batalhar pela fé contra os que distorcem a graça, terminando com uma bênção conhecida."
+  },
+  {
+    "osis": "Rev",
+    "about": "A vision given to John, full of symbols, showing the risen Christ, the struggle between God's kingdom and evil, and the hope of a new heaven and new earth. Christians read its details in different ways, but agree on its message that Jesus wins.",
+    "about_es": "Una visión dada a Juan, llena de símbolos, que muestra al Cristo resucitado, la lucha entre el reino de Dios y el mal, y la esperanza de un cielo nuevo y una tierra nueva. Los cristianos interpretan sus detalles de distintas maneras, pero coinciden en su mensaje: Jesús vence.",
+    "about_pt": "Uma visão dada a João, cheia de símbolos, que mostra Cristo ressuscitado, a luta entre o Reino de Deus e o mal e a esperança de um novo céu e uma nova terra. Os cristãos interpretam seus detalhes de formas diferentes, mas concordam na mensagem de que Jesus vence."
+  }
 ]

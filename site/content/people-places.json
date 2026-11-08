@@ -8,7 +8,9 @@
     ],
     "description": "The first man, made from the dust and given life by God’s breath.",
     "name_es": "Adán",
-    "description_es": "El primer hombre, formado del polvo y vivificado por el aliento de Dios."
+    "name_pt": "Adão",
+    "description_es": "El primer hombre, formado del polvo y vivificado por el aliento de Dios.",
+    "description_pt": "O primeiro homem, feito do pó e que recebeu vida pelo sopro de Deus."
   },
   {
     "id": "noah",
@@ -19,7 +21,9 @@
     ],
     "description": "Built the ark and was carried safely through the flood.",
     "name_es": "Noé",
-    "description_es": "Construyó el arca y fue llevado a salvo a través del diluvio."
+    "name_pt": "Noé",
+    "description_es": "Construyó el arca y fue llevado a salvo a través del diluvio.",
+    "description_pt": "Construiu a arca e foi levado em segurança pelo dilúvio."
   },
   {
     "id": "abraham",
@@ -31,7 +35,9 @@
     ],
     "description": "Called by God to a new land and promised a family that would bless all nations.",
     "name_es": "Abraham",
-    "description_es": "Llamado por Dios a una tierra nueva, con la promesa de una familia que bendeciría a todas las naciones."
+    "name_pt": "Abraão",
+    "description_es": "Llamado por Dios a una tierra nueva, con la promesa de una familia que bendeciría a todas las naciones.",
+    "description_pt": "Chamado por Deus para uma nova terra e com a promessa de uma família que abençoaria todas as nações."
   },
   {
     "id": "sarah",
@@ -43,7 +49,9 @@
     ],
     "description": "Abraham’s wife, who had a son in old age as God promised.",
     "name_es": "Sara",
-    "description_es": "Esposa de Abraham, que tuvo un hijo en su vejez como Dios prometió."
+    "name_pt": "Sara",
+    "description_es": "Esposa de Abraham, que tuvo un hijo en su vejez como Dios prometió.",
+    "description_pt": "Esposa de Abraão, que teve um filho na velhice, como Deus prometeu."
   },
   {
     "id": "isaac",
@@ -54,7 +62,9 @@
     ],
     "description": "The promised son of Abraham and Sarah.",
     "name_es": "Isaac",
-    "description_es": "El hijo prometido de Abraham y Sara."
+    "name_pt": "Isaque",
+    "description_es": "El hijo prometido de Abraham y Sara.",
+    "description_pt": "O filho prometido de Abraão e Sara."
   },
   {
     "id": "jacob",
@@ -65,7 +75,9 @@
     ],
     "description": "Abraham’s grandson, renamed Israel, father of the twelve tribes.",
     "name_es": "Jacob",
-    "description_es": "Nieto de Abraham, llamado Israel, padre de las doce tribus."
+    "name_pt": "Jacó",
+    "description_es": "Nieto de Abraham, llamado Israel, padre de las doce tribus.",
+    "description_pt": "Neto de Abraão, que recebeu o nome de Israel, pai das doze tribos."
   },
   {
     "id": "joseph",
@@ -76,7 +88,9 @@
     ],
     "description": "Includes Jacob’s son who was sold into Egypt, and Mary’s husband.",
     "name_es": "José",
-    "description_es": "Incluye al hijo de Jacob vendido a Egipto y al esposo de María."
+    "name_pt": "José",
+    "description_es": "Incluye al hijo de Jacob vendido a Egipto y al esposo de María.",
+    "description_pt": "Inclui o filho de Jacó vendido para o Egito e o marido de Maria."
   },
   {
     "id": "moses",
@@ -87,7 +101,9 @@
     ],
     "description": "Led Israel out of Egypt and received the law at Sinai.",
     "name_es": "Moisés",
-    "description_es": "Sacó a Israel de Egipto y recibió la ley en el Sinaí."
+    "name_pt": "Moisés",
+    "description_es": "Sacó a Israel de Egipto y recibió la ley en el Sinaí.",
+    "description_pt": "Tirou Israel do Egito e recebeu a lei no Sinai."
   },
   {
     "id": "aaron",
@@ -98,7 +114,9 @@
     ],
     "description": "Moses’ brother and Israel’s first high priest.",
     "name_es": "Aarón",
-    "description_es": "Hermano de Moisés y primer sumo sacerdote de Israel."
+    "name_pt": "Arão",
+    "description_es": "Hermano de Moisés y primer sumo sacerdote de Israel.",
+    "description_pt": "Irmão de Moisés e primeiro sumo sacerdote de Israel."
   },
   {
     "id": "joshua",
@@ -109,7 +127,9 @@
     ],
     "description": "Led Israel into the promised land after Moses.",
     "name_es": "Josué",
-    "description_es": "Guio a Israel a la tierra prometida después de Moisés."
+    "name_pt": "Josué",
+    "description_es": "Guio a Israel a la tierra prometida después de Moisés.",
+    "description_pt": "Levou Israel para a terra prometida depois de Moisés."
   },
   {
     "id": "rahab",
@@ -120,7 +140,9 @@
     ],
     "description": "Hid Israel’s spies in Jericho and is honored for her faith.",
     "name_es": "Rahab",
-    "description_es": "Escondió a los espías de Israel en Jericó y es honrada por su fe."
+    "name_pt": "Raabe",
+    "description_es": "Escondió a los espías de Israel en Jericó y es honrada por su fe.",
+    "description_pt": "Escondeu os espiões de Israel em Jericó e é honrada por sua fé."
   },
   {
     "id": "deborah",
@@ -131,7 +153,9 @@
     ],
     "description": "A prophet and judge who led Israel to victory.",
     "name_es": "Débora",
-    "description_es": "Profetisa y jueza que guio a Israel a la victoria."
+    "name_pt": "Débora",
+    "description_es": "Profetisa y jueza que guio a Israel a la victoria.",
+    "description_pt": "Profetisa e juíza que levou Israel à vitória."
   },
   {
     "id": "gideon",
@@ -142,7 +166,9 @@
     ],
     "description": "A fearful farmer God used to rescue Israel with a small army.",
     "name_es": "Gedeón",
-    "description_es": "Un agricultor temeroso a quien Dios usó para rescatar a Israel con un ejército pequeño."
+    "name_pt": "Gideão",
+    "description_es": "Un agricultor temeroso a quien Dios usó para rescatar a Israel con un ejército pequeño.",
+    "description_pt": "Um agricultor medroso que Deus usou para libertar Israel com um pequeno exército."
   },
   {
     "id": "ruth",
@@ -153,7 +179,9 @@
     ],
     "description": "A Moabite widow whose loyalty placed her in the family line of David and Jesus.",
     "name_es": "Rut",
-    "description_es": "Viuda moabita cuya lealtad la puso en el linaje de David y de Jesús."
+    "name_pt": "Rute",
+    "description_es": "Viuda moabita cuya lealtad la puso en el linaje de David y de Jesús.",
+    "description_pt": "Uma viúva moabita cuja lealdade a colocou na linhagem de Davi e de Jesus."
   },
   {
     "id": "samuel",
@@ -164,7 +192,9 @@
     ],
     "description": "Prophet who anointed Israel’s first kings.",
     "name_es": "Samuel",
-    "description_es": "Profeta que ungió a los primeros reyes de Israel."
+    "name_pt": "Samuel",
+    "description_es": "Profeta que ungió a los primeros reyes de Israel.",
+    "description_pt": "Profeta que ungiu os primeiros reis de Israel."
   },
   {
     "id": "david",
@@ -175,7 +205,9 @@
     ],
     "description": "Shepherd, psalm writer and king, to whom God promised an everlasting throne.",
     "name_es": "David",
-    "description_es": "Pastor, salmista y rey, a quien Dios prometió un trono eterno."
+    "name_pt": "Davi",
+    "description_es": "Pastor, salmista y rey, a quien Dios prometió un trono eterno.",
+    "description_pt": "Pastor, autor de salmos e rei, a quem Deus prometeu um trono eterno."
   },
   {
     "id": "solomon",
@@ -186,7 +218,9 @@
     ],
     "description": "David’s son, known for wisdom and for building the temple.",
     "name_es": "Salomón",
-    "description_es": "Hijo de David, conocido por su sabiduría y por construir el templo."
+    "name_pt": "Salomão",
+    "description_es": "Hijo de David, conocido por su sabiduría y por construir el templo.",
+    "description_pt": "Filho de Davi, conhecido pela sabedoria e por construir o templo."
   },
   {
     "id": "elijah",
@@ -197,7 +231,9 @@
     ],
     "description": "A bold prophet who confronted idolatry and was taken up to heaven.",
     "name_es": "Elías",
-    "description_es": "Profeta valiente que enfrentó la idolatría y fue llevado al cielo."
+    "name_pt": "Elias",
+    "description_es": "Profeta valiente que enfrentó la idolatría y fue llevado al cielo.",
+    "description_pt": "Um profeta corajoso que enfrentou a idolatria e foi levado ao céu."
   },
   {
     "id": "elisha",
@@ -208,7 +244,9 @@
     ],
     "description": "Elijah’s successor, known for many miracles.",
     "name_es": "Eliseo",
-    "description_es": "Sucesor de Elías, conocido por muchos milagros."
+    "name_pt": "Eliseu",
+    "description_es": "Sucesor de Elías, conocido por muchos milagros.",
+    "description_pt": "Sucessor de Elias, conhecido por muitos milagres."
   },
   {
     "id": "isaiah",
@@ -219,7 +257,9 @@
     ],
     "description": "Prophet who foretold the coming Messiah and the suffering servant.",
     "name_es": "Isaías",
-    "description_es": "Profeta que anunció al Mesías y al siervo sufriente."
+    "name_pt": "Isaías",
+    "description_es": "Profeta que anunció al Mesías y al siervo sufriente.",
+    "description_pt": "Profeta que anunciou o Messias que viria e o servo sofredor."
   },
   {
     "id": "jeremiah",
@@ -230,7 +270,9 @@
     ],
     "description": "The weeping prophet who promised a new covenant.",
     "name_es": "Jeremías",
-    "description_es": "El profeta que lloraba y que anunció un nuevo pacto."
+    "name_pt": "Jeremias",
+    "description_es": "El profeta que lloraba y que anunció un nuevo pacto.",
+    "description_pt": "O profeta chorão que prometeu uma nova aliança."
   },
   {
     "id": "daniel",
@@ -241,7 +283,9 @@
     ],
     "description": "Stayed faithful in Babylon and saw visions of God’s everlasting kingdom.",
     "name_es": "Daniel",
-    "description_es": "Se mantuvo fiel en Babilonia y tuvo visiones del reino eterno de Dios."
+    "name_pt": "Daniel",
+    "description_es": "Se mantuvo fiel en Babilonia y tuvo visiones del reino eterno de Dios.",
+    "description_pt": "Permaneceu fiel na Babilônia e teve visões do reino eterno de Deus."
   },
   {
     "id": "esther",
@@ -252,7 +296,9 @@
     ],
     "description": "A Jewish queen who risked her life to save her people.",
     "name_es": "Ester",
-    "description_es": "Reina judía que arriesgó su vida para salvar a su pueblo."
+    "name_pt": "Ester",
+    "description_es": "Reina judía que arriesgó su vida para salvar a su pueblo.",
+    "description_pt": "Uma rainha judia que arriscou a vida para salvar o seu povo."
   },
   {
     "id": "jonah",
@@ -263,7 +309,9 @@
     ],
     "description": "A reluctant prophet sent to Nineveh. Jesus compared His resurrection to Jonah’s three days.",
     "name_es": "Jonás",
-    "description_es": "Profeta reacio enviado a Nínive. Jesús comparó su resurrección con los tres días de Jonás."
+    "name_pt": "Jonas",
+    "description_es": "Profeta reacio enviado a Nínive. Jesús comparó su resurrección con los tres días de Jonás.",
+    "description_pt": "Um profeta relutante enviado a Nínive. Jesus comparou sua ressurreição aos três dias de Jonas."
   },
   {
     "id": "jesus",
@@ -274,7 +322,9 @@
     ],
     "description": "The Messiah, the center of the whole story.",
     "name_es": "Jesús",
-    "description_es": "El Mesías, el centro de toda la historia."
+    "name_pt": "Jesus",
+    "description_es": "El Mesías, el centro de toda la historia.",
+    "description_pt": "O Messias, o centro de toda a história."
   },
   {
     "id": "mary",
@@ -285,7 +335,9 @@
     ],
     "description": "Includes Jesus’ mother, Mary Magdalene and Mary of Bethany.",
     "name_es": "María",
-    "description_es": "Incluye a la madre de Jesús, a María Magdalena y a María de Betania."
+    "name_pt": "Maria",
+    "description_es": "Incluye a la madre de Jesús, a María Magdalena y a María de Betania.",
+    "description_pt": "Inclui a mãe de Jesus, Maria Madalena e Maria de Betânia."
   },
   {
     "id": "john",
@@ -296,7 +348,9 @@
     ],
     "description": "Includes John the Baptist and the apostle John.",
     "name_es": "Juan",
-    "description_es": "Incluye a Juan el Bautista y al apóstol Juan."
+    "name_pt": "João",
+    "description_es": "Incluye a Juan el Bautista y al apóstol Juan.",
+    "description_pt": "Inclui João Batista e o apóstolo João."
   },
   {
     "id": "peter",
@@ -309,7 +363,9 @@
     ],
     "description": "Fisherman, disciple and leader of the early church. Simon also matches other people with that name.",
     "name_es": "Pedro",
-    "description_es": "Pescador, discípulo y líder de la iglesia primitiva. Simón también incluye a otras personas con ese nombre."
+    "name_pt": "Pedro",
+    "description_es": "Pescador, discípulo y líder de la iglesia primitiva. Simón también incluye a otras personas con ese nombre.",
+    "description_pt": "Pescador, discípulo e líder da igreja primitiva. Simão também corresponde a outras pessoas com esse nome."
   },
   {
     "id": "paul",
@@ -320,7 +376,9 @@
     ],
     "description": "Persecutor turned apostle, who carried the gospel across the Roman world.",
     "name_es": "Pablo",
-    "description_es": "Perseguidor convertido en apóstol, que llevó el evangelio por el mundo romano."
+    "name_pt": "Paulo",
+    "description_es": "Perseguidor convertido en apóstol, que llevó el evangelio por el mundo romano.",
+    "description_pt": "De perseguidor a apóstolo, levou o evangelho por todo o mundo romano."
   },
   {
     "id": "stephen",
@@ -331,7 +389,9 @@
     ],
     "description": "The first Christian martyr.",
     "name_es": "Esteban",
-    "description_es": "El primer mártir cristiano."
+    "name_pt": "Estêvão",
+    "description_es": "El primer mártir cristiano.",
+    "description_pt": "O primeiro mártir cristão."
   },
   {
     "id": "barnabas",
@@ -342,7 +402,9 @@
     ],
     "description": "The encourager who traveled with Paul.",
     "name_es": "Bernabé",
-    "description_es": "El que animaba, compañero de viaje de Pablo."
+    "name_pt": "Barnabé",
+    "description_es": "El que animaba, compañero de viaje de Pablo.",
+    "description_pt": "O encorajador que viajou com Paulo."
   },
   {
     "id": "timothy",
@@ -353,7 +415,9 @@
     ],
     "description": "Paul’s young coworker, who received two of his letters.",
     "name_es": "Timoteo",
-    "description_es": "Joven colaborador de Pablo, que recibió dos de sus cartas."
+    "name_pt": "Timóteo",
+    "description_es": "Joven colaborador de Pablo, que recibió dos de sus cartas.",
+    "description_pt": "O jovem colaborador de Paulo, que recebeu duas de suas cartas."
   },
   {
     "id": "lazarus",
@@ -364,7 +428,9 @@
     ],
     "description": "The friend Jesus raised from the dead.",
     "name_es": "Lázaro",
-    "description_es": "El amigo a quien Jesús resucitó."
+    "name_pt": "Lázaro",
+    "description_es": "El amigo a quien Jesús resucitó.",
+    "description_pt": "O amigo que Jesus ressuscitou dos mortos."
   },
   {
     "id": "nicodemus",
@@ -375,7 +441,9 @@
     ],
     "description": "The Pharisee who came to Jesus at night.",
     "name_es": "Nicodemo",
-    "description_es": "El fariseo que fue a ver a Jesús de noche."
+    "name_pt": "Nicodemos",
+    "description_es": "El fariseo que fue a ver a Jesús de noche.",
+    "description_pt": "O fariseu que foi falar com Jesus à noite."
   },
   {
     "id": "melchizedek",
@@ -386,7 +454,9 @@
     ],
     "description": "A priest king who blessed Abraham, a picture of Jesus’ priesthood.",
     "name_es": "Melquisedec",
-    "description_es": "Rey y sacerdote que bendijo a Abraham, una imagen del sacerdocio de Jesús."
+    "name_pt": "Melquisedeque",
+    "description_es": "Rey y sacerdote que bendijo a Abraham, una imagen del sacerdocio de Jesús.",
+    "description_pt": "Um rei e sacerdote que abençoou Abraão, imagem do sacerdócio de Jesus."
   },
   {
     "id": "eden",
@@ -397,7 +467,9 @@
     ],
     "description": "The garden where the story begins.",
     "name_es": "Edén",
-    "description_es": "El jardín donde comienza la historia."
+    "name_pt": "Éden",
+    "description_es": "El jardín donde comienza la historia.",
+    "description_pt": "O jardim onde a história começa."
   },
   {
     "id": "egypt",
@@ -408,7 +480,9 @@
     ],
     "description": "Place of refuge, then slavery, then rescue.",
     "name_es": "Egipto",
-    "description_es": "Lugar de refugio, luego de esclavitud y luego de rescate."
+    "name_pt": "Egito",
+    "description_es": "Lugar de refugio, luego de esclavitud y luego de rescate.",
+    "description_pt": "Lugar de refúgio, depois de escravidão e depois de resgate."
   },
   {
     "id": "sinai",
@@ -419,7 +493,9 @@
     ],
     "description": "The mountain where God gave the law.",
     "name_es": "Sinaí",
-    "description_es": "El monte donde Dios dio la ley."
+    "name_pt": "Sinai",
+    "description_es": "El monte donde Dios dio la ley.",
+    "description_pt": "O monte onde Deus deu a lei."
   },
   {
     "id": "canaan",
@@ -430,7 +506,9 @@
     ],
     "description": "The promised land.",
     "name_es": "Canaán",
-    "description_es": "La tierra prometida."
+    "name_pt": "Canaã",
+    "description_es": "La tierra prometida.",
+    "description_pt": "A terra prometida."
   },
   {
     "id": "jordan",
@@ -441,7 +519,9 @@
     ],
     "description": "Crossed into the promised land, and the place of Jesus’ baptism.",
     "name_es": "Río Jordán",
-    "description_es": "Cruzado para entrar a la tierra prometida y lugar del bautismo de Jesús."
+    "name_pt": "Rio Jordão",
+    "description_es": "Cruzado para entrar a la tierra prometida y lugar del bautismo de Jesús.",
+    "description_pt": "Atravessado para entrar na terra prometida, e lugar do batismo de Jesus."
   },
   {
     "id": "jericho",
@@ -452,7 +532,9 @@
     ],
     "description": "The first city taken in the promised land.",
     "name_es": "Jericó",
-    "description_es": "La primera ciudad tomada en la tierra prometida."
+    "name_pt": "Jericó",
+    "description_es": "La primera ciudad tomada en la tierra prometida.",
+    "description_pt": "A primeira cidade conquistada na terra prometida."
   },
   {
     "id": "jerusalem",
@@ -463,7 +545,9 @@
     ],
     "description": "David’s city and site of the temple, the cross and the empty tomb.",
     "name_es": "Jerusalén",
-    "description_es": "La ciudad de David y lugar del templo, la cruz y la tumba vacía."
+    "name_pt": "Jerusalém",
+    "description_es": "La ciudad de David y lugar del templo, la cruz y la tumba vacía.",
+    "description_pt": "A cidade de Davi e lugar do templo, da cruz e do túmulo vazio."
   },
   {
     "id": "zion",
@@ -474,7 +558,9 @@
     ],
     "description": "Another name for Jerusalem and God’s dwelling place.",
     "name_es": "Sion",
-    "description_es": "Otro nombre de Jerusalén y del lugar donde Dios habita."
+    "name_pt": "Sião",
+    "description_es": "Otro nombre de Jerusalén y del lugar donde Dios habita.",
+    "description_pt": "Outro nome para Jerusalém e para o lugar onde Deus habita."
   },
   {
     "id": "bethlehem",
@@ -485,7 +571,9 @@
     ],
     "description": "David’s hometown and the birthplace of Jesus.",
     "name_es": "Belén",
-    "description_es": "Pueblo de David y lugar de nacimiento de Jesús."
+    "name_pt": "Belém",
+    "description_es": "Pueblo de David y lugar de nacimiento de Jesús.",
+    "description_pt": "A cidade natal de Davi e o lugar onde Jesus nasceu."
   },
   {
     "id": "babylon",
@@ -496,7 +584,9 @@
     ],
     "description": "The empire of the exile, and a picture of pride opposed to God.",
     "name_es": "Babilonia",
-    "description_es": "El imperio del exilio y una imagen del orgullo opuesto a Dios."
+    "name_pt": "Babilônia",
+    "description_es": "El imperio del exilio y una imagen del orgullo opuesto a Dios.",
+    "description_pt": "O império do exílio e uma imagem do orgulho que se opõe a Deus."
   },
   {
     "id": "nineveh",
@@ -507,7 +597,9 @@
     ],
     "description": "The city Jonah was sent to warn.",
     "name_es": "Nínive",
-    "description_es": "La ciudad a la que Jonás fue enviado a advertir."
+    "name_pt": "Nínive",
+    "description_es": "La ciudad a la que Jonás fue enviado a advertir.",
+    "description_pt": "A cidade que Jonas foi enviado para advertir."
   },
   {
     "id": "samaria",
@@ -518,7 +610,9 @@
     ],
     "description": "Capital of the northern kingdom, and home of the woman at the well’s people.",
     "name_es": "Samaria",
-    "description_es": "Capital del reino del norte y tierra de la mujer junto al pozo."
+    "name_pt": "Samaria",
+    "description_es": "Capital del reino del norte y tierra de la mujer junto al pozo.",
+    "description_pt": "Capital do reino do norte e terra do povo da mulher junto ao poço."
   },
   {
     "id": "nazareth",
@@ -529,7 +623,9 @@
     ],
     "description": "The town where Jesus grew up.",
     "name_es": "Nazaret",
-    "description_es": "El pueblo donde creció Jesús."
+    "name_pt": "Nazaré",
+    "description_es": "El pueblo donde creció Jesús.",
+    "description_pt": "A cidade onde Jesus cresceu."
   },
   {
     "id": "galilee",
@@ -540,7 +636,9 @@
     ],
     "description": "The region of much of Jesus’ ministry.",
     "name_es": "Galilea",
-    "description_es": "La región de gran parte del ministerio de Jesús."
+    "name_pt": "Galileia",
+    "description_es": "La región de gran parte del ministerio de Jesús.",
+    "description_pt": "A região de grande parte do ministério de Jesus."
   },
   {
     "id": "capernaum",
@@ -551,7 +649,9 @@
     ],
     "description": "Jesus’ home base by the Sea of Galilee.",
     "name_es": "Capernaúm",
-    "description_es": "La base de Jesús junto al mar de Galilea."
+    "name_pt": "Cafarnaum",
+    "description_es": "La base de Jesús junto al mar de Galilea.",
+    "description_pt": "A base de Jesus junto ao mar da Galileia."
   },
   {
     "id": "bethany",
@@ -562,7 +662,9 @@
     ],
     "description": "Home of Mary, Martha and Lazarus.",
     "name_es": "Betania",
-    "description_es": "Hogar de María, Marta y Lázaro."
+    "name_pt": "Betânia",
+    "description_es": "Hogar de María, Marta y Lázaro.",
+    "description_pt": "A casa de Maria, Marta e Lázaro."
   },
   {
     "id": "damascus",
@@ -573,7 +675,9 @@
     ],
     "description": "Where Saul met the risen Jesus on the road.",
     "name_es": "Damasco",
-    "description_es": "Donde Saulo se encontró con Jesús resucitado en el camino."
+    "name_pt": "Damasco",
+    "description_es": "Donde Saulo se encontró con Jesús resucitado en el camino.",
+    "description_pt": "Onde Saulo encontrou Jesus ressuscitado no caminho."
   },
   {
     "id": "antioch",
@@ -584,7 +688,9 @@
     ],
     "description": "Where followers of Jesus were first called Christians.",
     "name_es": "Antioquía",
-    "description_es": "Donde a los seguidores de Jesús se les llamó cristianos por primera vez."
+    "name_pt": "Antioquia",
+    "description_es": "Donde a los seguidores de Jesús se les llamó cristianos por primera vez.",
+    "description_pt": "Onde os seguidores de Jesus foram chamados de cristãos pela primeira vez."
   },
   {
     "id": "corinth",
@@ -595,7 +701,9 @@
     ],
     "description": "A busy port city and home of a church Paul wrote to.",
     "name_es": "Corinto",
-    "description_es": "Ciudad portuaria y hogar de una iglesia a la que Pablo escribió."
+    "name_pt": "Corinto",
+    "description_es": "Ciudad portuaria y hogar de una iglesia a la que Pablo escribió.",
+    "description_pt": "Uma movimentada cidade portuária e lar de uma igreja a quem Paulo escreveu."
   },
   {
     "id": "ephesus",
@@ -606,7 +714,9 @@
     ],
     "description": "A major city where Paul taught for years.",
     "name_es": "Éfeso",
-    "description_es": "Gran ciudad donde Pablo enseñó por años."
+    "name_pt": "Éfeso",
+    "description_es": "Gran ciudad donde Pablo enseñó por años.",
+    "description_pt": "Uma cidade importante onde Paulo ensinou durante anos."
   },
   {
     "id": "rome",
@@ -617,6 +727,8 @@
     ],
     "description": "Capital of the empire, where Paul preached in chains.",
     "name_es": "Roma",
-    "description_es": "Capital del imperio, donde Pablo predicó encadenado."
+    "name_pt": "Roma",
+    "description_es": "Capital del imperio, donde Pablo predicó encadenado.",
+    "description_pt": "Capital do império, onde Paulo pregou acorrentado."
   }
 ]

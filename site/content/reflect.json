@@ -1,42 +1,172 @@
 {
   "law": {
-    "en": ["What does this passage show about who God is and what he values?", "How does this instruction or story fit the bigger story of God rescuing his people?", "Where does this point ahead to Jesus, and what does that mean for how you live this week?"],
-    "es": ["¿Qué muestra este pasaje sobre quién es Dios y lo que valora?", "¿Cómo encaja esta instrucción o historia en la gran historia de Dios rescatando a su pueblo?", "¿En qué apunta esto a Jesús, y qué significa para tu vida esta semana?"]
+    "en": [
+      "What does this passage show about who God is and what he values?",
+      "How does this instruction or story fit the bigger story of God rescuing his people?",
+      "Where does this point ahead to Jesus, and what does that mean for how you live this week?"
+    ],
+    "es": [
+      "¿Qué muestra este pasaje sobre quién es Dios y lo que valora?",
+      "¿Cómo encaja esta instrucción o historia en la gran historia de Dios rescatando a su pueblo?",
+      "¿En qué apunta esto a Jesús, y qué significa para tu vida esta semana?"
+    ],
+    "pt": [
+      "O que esta passagem mostra sobre quem Deus é e o que ele valoriza?",
+      "Como esta instrução ou história se encaixa na grande história de Deus resgatando o seu povo?",
+      "Onde isto aponta para Jesus, e o que isso significa para a forma como você vive nesta semana?"
+    ]
   },
   "history": {
-    "en": ["Who are the people in this passage, and what choices do they make?", "Where do you see God at work, even quietly, in what happens?", "What does this story teach you about trusting God in your own circumstances?"],
-    "es": ["¿Quiénes son las personas de este pasaje y qué decisiones toman?", "¿Dónde ves a Dios obrando, aunque sea en silencio, en lo que sucede?", "¿Qué te enseña esta historia sobre confiar en Dios en tus propias circunstancias?"]
+    "en": [
+      "Who are the people in this passage, and what choices do they make?",
+      "Where do you see God at work, even quietly, in what happens?",
+      "What does this story teach you about trusting God in your own circumstances?"
+    ],
+    "es": [
+      "¿Quiénes son las personas de este pasaje y qué decisiones toman?",
+      "¿Dónde ves a Dios obrando, aunque sea en silencio, en lo que sucede?",
+      "¿Qué te enseña esta historia sobre confiar en Dios en tus propias circunstancias?"
+    ],
+    "pt": [
+      "Quem são as pessoas desta passagem, e que escolhas elas fazem?",
+      "Onde você vê Deus agindo, mesmo em silêncio, no que acontece?",
+      "O que esta história ensina sobre confiar em Deus nas suas próprias circunstâncias?"
+    ]
   },
   "wisdom": {
-    "en": ["What feelings or experiences are expressed here, and do any feel familiar?", "What does this passage say about God's character or his ways?", "How could you pray these words, or live out this wisdom, today?"],
-    "es": ["¿Qué sentimientos o experiencias se expresan aquí, y te resulta familiar alguno?", "¿Qué dice este pasaje sobre el carácter de Dios o sus caminos?", "¿Cómo podrías orar con estas palabras, o vivir esta sabiduría, hoy?"]
+    "en": [
+      "What feelings or experiences are expressed here, and do any feel familiar?",
+      "What does this passage say about God's character or his ways?",
+      "How could you pray these words, or live out this wisdom, today?"
+    ],
+    "es": [
+      "¿Qué sentimientos o experiencias se expresan aquí, y te resulta familiar alguno?",
+      "¿Qué dice este pasaje sobre el carácter de Dios o sus caminos?",
+      "¿Cómo podrías orar con estas palabras, o vivir esta sabiduría, hoy?"
+    ],
+    "pt": [
+      "Que sentimentos ou experiências aparecem aqui, e algum deles parece familiar?",
+      "O que esta passagem diz sobre o caráter de Deus ou os seus caminhos?",
+      "Como você poderia orar estas palavras, ou viver esta sabedoria, hoje?"
+    ]
   },
   "major": {
-    "en": ["What was happening to God's people when this message was first given?", "What warning or promise does God give here, and how does the New Testament take it up?", "Where do you need to hear this warning or hold on to this promise?"],
-    "es": ["¿Qué le estaba pasando al pueblo de Dios cuando se dio este mensaje por primera vez?", "¿Qué advertencia o promesa da Dios aquí, y cómo la retoma el Nuevo Testamento?", "¿Dónde necesitas escuchar esta advertencia o aferrarte a esta promesa?"]
+    "en": [
+      "What was happening to God's people when this message was first given?",
+      "What warning or promise does God give here, and how does the New Testament take it up?",
+      "Where do you need to hear this warning or hold on to this promise?"
+    ],
+    "es": [
+      "¿Qué le estaba pasando al pueblo de Dios cuando se dio este mensaje por primera vez?",
+      "¿Qué advertencia o promesa da Dios aquí, y cómo la retoma el Nuevo Testamento?",
+      "¿Dónde necesitas escuchar esta advertencia o aferrarte a esta promesa?"
+    ],
+    "pt": [
+      "O que estava acontecendo com o povo de Deus quando esta mensagem foi dada pela primeira vez?",
+      "Que advertência ou promessa Deus dá aqui, e como o Novo Testamento a retoma?",
+      "Onde você precisa ouvir esta advertência ou se apegar a esta promessa?"
+    ]
   },
   "minor": {
-    "en": ["What problem among God's people is the prophet speaking to?", "What does this passage reveal about God's justice and his mercy?", "What would it look like to respond to this message in your life and community?"],
-    "es": ["¿A qué problema del pueblo de Dios se dirige el profeta?", "¿Qué revela este pasaje sobre la justicia y la misericordia de Dios?", "¿Cómo sería responder a este mensaje en tu vida y tu comunidad?"]
+    "en": [
+      "What problem among God's people is the prophet speaking to?",
+      "What does this passage reveal about God's justice and his mercy?",
+      "What would it look like to respond to this message in your life and community?"
+    ],
+    "es": [
+      "¿A qué problema del pueblo de Dios se dirige el profeta?",
+      "¿Qué revela este pasaje sobre la justicia y la misericordia de Dios?",
+      "¿Cómo sería responder a este mensaje en tu vida y tu comunidad?"
+    ],
+    "pt": [
+      "Que problema do povo de Deus o profeta está enfrentando?",
+      "O que esta passagem revela sobre a justiça e a misericórdia de Deus?",
+      "Como seria responder a esta mensagem na sua vida e na sua comunidade?"
+    ]
   },
   "gospels": {
-    "en": ["What does Jesus say or do here, and how do the people around him respond?", "What does this show you about who Jesus is?", "If you had been there, how would you have responded, and how will you respond now?"],
-    "es": ["¿Qué dice o hace Jesús aquí, y cómo responden las personas a su alrededor?", "¿Qué te muestra esto sobre quién es Jesús?", "Si hubieras estado allí, ¿cómo habrías respondido, y cómo responderás ahora?"]
+    "en": [
+      "What does Jesus say or do here, and how do the people around him respond?",
+      "What does this show you about who Jesus is?",
+      "If you had been there, how would you have responded, and how will you respond now?"
+    ],
+    "es": [
+      "¿Qué dice o hace Jesús aquí, y cómo responden las personas a su alrededor?",
+      "¿Qué te muestra esto sobre quién es Jesús?",
+      "Si hubieras estado allí, ¿cómo habrías respondido, y cómo responderás ahora?"
+    ],
+    "pt": [
+      "O que Jesus diz ou faz aqui, e como as pessoas ao redor reagem?",
+      "O que isto mostra sobre quem Jesus é?",
+      "Se você estivesse lá, como teria reagido, e como vai reagir agora?"
+    ]
   },
   "acts": {
-    "en": ["How is the Holy Spirit at work in this passage?", "What helps or hinders the good news as it spreads here?", "Where might God be sending you to share or live out the good news?"],
-    "es": ["¿Cómo obra el Espíritu Santo en este pasaje?", "¿Qué ayuda o estorba a las buenas noticias mientras se extienden aquí?", "¿A dónde podría estar enviándote Dios para compartir o vivir las buenas noticias?"]
+    "en": [
+      "How is the Holy Spirit at work in this passage?",
+      "What helps or hinders the good news as it spreads here?",
+      "Where might God be sending you to share or live out the good news?"
+    ],
+    "es": [
+      "¿Cómo obra el Espíritu Santo en este pasaje?",
+      "¿Qué ayuda o estorba a las buenas noticias mientras se extienden aquí?",
+      "¿A dónde podría estar enviándote Dios para compartir o vivir las buenas noticias?"
+    ],
+    "pt": [
+      "Como o Espírito Santo está agindo nesta passagem?",
+      "O que ajuda ou atrapalha a boa notícia enquanto ela se espalha aqui?",
+      "Para onde Deus pode estar enviando você para compartilhar ou viver a boa notícia?"
+    ]
   },
   "paul": {
-    "en": ["What is Paul's main point here, and why did this church need to hear it?", "What does this passage say God has done for us in Christ?", "What is one way this truth should change how you think, speak or act?"],
-    "es": ["¿Cuál es el punto principal de Pablo aquí, y por qué esta iglesia necesitaba oírlo?", "¿Qué dice este pasaje que Dios ha hecho por nosotros en Cristo?", "¿De qué manera esta verdad debería cambiar cómo piensas, hablas o actúas?"]
+    "en": [
+      "What is Paul's main point here, and why did this church need to hear it?",
+      "What does this passage say God has done for us in Christ?",
+      "What is one way this truth should change how you think, speak or act?"
+    ],
+    "es": [
+      "¿Cuál es el punto principal de Pablo aquí, y por qué esta iglesia necesitaba oírlo?",
+      "¿Qué dice este pasaje que Dios ha hecho por nosotros en Cristo?",
+      "¿De qué manera esta verdad debería cambiar cómo piensas, hablas o actúas?"
+    ],
+    "pt": [
+      "Qual é o ponto principal de Paulo aqui, e por que essa igreja precisava ouvir isso?",
+      "O que esta passagem diz que Deus fez por nós em Cristo?",
+      "De que forma esta verdade deveria mudar o que você pensa, diz ou faz?"
+    ]
   },
   "general": {
-    "en": ["What challenge or encouragement is the writer giving his readers?", "How does this passage connect faith with everyday life?", "What is one practical step you could take in response?"],
-    "es": ["¿Qué desafío o ánimo da el autor a sus lectores?", "¿Cómo conecta este pasaje la fe con la vida diaria?", "¿Qué paso práctico podrías dar en respuesta?"]
+    "en": [
+      "What challenge or encouragement is the writer giving his readers?",
+      "How does this passage connect faith with everyday life?",
+      "What is one practical step you could take in response?"
+    ],
+    "es": [
+      "¿Qué desafío o ánimo da el autor a sus lectores?",
+      "¿Cómo conecta este pasaje la fe con la vida diaria?",
+      "¿Qué paso práctico podrías dar en respuesta?"
+    ],
+    "pt": [
+      "Que desafio ou encorajamento o autor está dando aos seus leitores?",
+      "Como esta passagem liga a fé à vida diária?",
+      "Que passo prático você poderia dar como resposta?"
+    ]
   },
   "revelation": {
-    "en": ["What images stand out to you here, and what might they have meant to the first readers?", "What does this passage show about Jesus and his victory?", "How does this hope help you stay faithful today?"],
-    "es": ["¿Qué imágenes te llaman la atención aquí, y qué podrían haber significado para los primeros lectores?", "¿Qué muestra este pasaje sobre Jesús y su victoria?", "¿Cómo te ayuda esta esperanza a mantenerte fiel hoy?"]
+    "en": [
+      "What images stand out to you here, and what might they have meant to the first readers?",
+      "What does this passage show about Jesus and his victory?",
+      "How does this hope help you stay faithful today?"
+    ],
+    "es": [
+      "¿Qué imágenes te llaman la atención aquí, y qué podrían haber significado para los primeros lectores?",
+      "¿Qué muestra este pasaje sobre Jesús y su victoria?",
+      "¿Cómo te ayuda esta esperanza a mantenerte fiel hoy?"
+    ],
+    "pt": [
+      "Que imagens chamam sua atenção aqui, e o que elas podem ter significado para os primeiros leitores?",
+      "O que esta passagem mostra sobre Jesus e a sua vitória?",
+      "Como esta esperança ajuda você a permanecer fiel hoje?"
+    ]
   }
 }
