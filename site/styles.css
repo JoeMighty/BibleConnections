@@ -869,3 +869,12 @@ ol.timeline li::before { content: ''; position: absolute; left: -25px; top: 14px
 .pr-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
 .pr-badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: var(--t-footnote, 13px); font-weight: 600; background: var(--surface-3); color: var(--text); }
 .study-card .pr-badge { color: var(--text); }
+.weak-row { margin: 14px 0 0; font-size: var(--t-footnote); color: var(--muted); }
+
+/* Church page builder */
+.church-weeks { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 10px; }
+.church-weeks fieldset { border: 0; margin: 0; padding: 12px; background: var(--surface-2, rgba(127,127,127,.08)); border-radius: 12px; }
+.church-weeks legend { font-weight: 600; font-size: var(--t-subhead); padding: 0; }
+.church-row { display: grid; grid-template-columns: 1fr; gap: 0 10px; }
+.church-result { margin-top: 16px; }
+.church-result textarea, .church-result input { width: 100%; }

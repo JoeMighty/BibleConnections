@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.13.0';
+  const VERSION = '0.14.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
@@ -194,6 +194,8 @@
   let BOOKS, TOTAL, N = 0, F, T, E, V, verseBook, verseChap, verseNum, chapters, NT_START;
   const noteMap = new Map();
   let hasNote = new Uint8Array(0);
+  // links hidden from the map: reviewed reports for everyone (content/weak-links.json) and the reader's own choice on this device
+  let hiddenLink = new Uint8Array(0), WEAK = [];
   let wordIndex = null, INTROS = {}, REFLECT = {};
 
   // Cross references come packed (variable-length numbers, gzip) where the browser can unpack them,
@@ -243,6 +245,7 @@
       getJSON('content/topics.json').then(x => { TOPICS = x; }).catch(() => {}),
       getJSON('content/plans.json').then(x => { PLANS = x; }).catch(() => {}),
       getJSON('content/words.json').then(x => { FEATURED_WORDS = x.map(w => w.id); }).catch(() => {}),
+      getJSON('content/weak-links.json').then(x => { WEAK = x.hidden || []; }).catch(() => {}),
     ]);
     window.THEMES = themes; window.NOTES = notes; window.JOURNEYS = journeys; window.SERIES = series;
     BOOKS = meta.books; TOTAL = meta.totalVerses;
@@ -283,6 +286,30 @@
       if (note) { hasNote[i] = 1; noteMap.set(i, note); }
     }
     N = n;
+    markHidden();
+  }
+  const myHidden = () => store.get('hiddenLinks', []);
+  function markHidden() {
+    const key = (a, b) => Math.min(a, b) * 65536 + Math.max(a, b);
+    const all = new Map([...WEAK.map(x => [x[0], x[1], 'reviewed']), ...myHidden().map(x => [x[0], x[1], 'mine'])]
+      .map(([a, b, why]) => [key(osisToIndex(a), osisToIndex(b)), why]));
+    hiddenLink = new Uint8Array(N);
+    for (let i = 0; i < N; i++) { const w = all.get(key(F[i], T[i])); if (w) hiddenLink[i] = w === 'mine' ? 2 : 1; }
+  }
+  // the report form on GitHub, filled in with this connection
+  function weakUrl(i) {
+    const q = new URLSearchParams({ template: 'weak_link.yml', labels: 'weak-link', title: `Weak link: ${refLabel(F[i])} and ${refLabel(T[i], E[i])}`, from: toOsis(F[i]), to: toOsis(T[i]), details: `Link: ${cleanUrl()}` });
+    return `https://github.com/JoeMighty/BibleConnections/issues/new?${q}`;
+  }
+  function setHidden(i, hide) {
+    const pair = [toOsis(F[i]), toOsis(T[i])];
+    const list = myHidden().filter(x => !(x[0] === pair[0] && x[1] === pair[1]));
+    if (hide) list.push(pair);
+    store.set('hiddenLinks', list);
+    // keep the connection open so it can be shown again straight away
+    markHidden(); applyFilters({ panel: false }); state.selected = i; drawBase(); renderPanel();
+    announce(hide ? 'Hidden on this device. You can show it again here or in Settings.' : 'Shown again.');
+    renderHiddenCount();
   }
 
   // Book names in every language are loaded so references work in any language ("Juan 3:16", "João 3:16");
@@ -464,6 +491,7 @@
     }
     const out = [];
     for (let i = 0; i < N; i++) {
+      if (hiddenLink[i]) continue;
       if (state.notesOnly) { if (!hasNote[i]) continue; }   // notes are shown whatever their strength
       else if (V[i] < state.minVotes) continue;
       const f = F[i], t = T[i];
@@ -1325,6 +1353,7 @@
     else if (state.mode === 'shared') [title, html] = sharedHTML();
     else if (state.mode === 'timeline') [title, html] = timelineHTML();
     else if (state.mode === 'prophecy') [title, html] = prophecyHTML();
+    else if (state.mode === 'church') [title, html] = churchHTML();
     else if (state.mode === 'chain' && state.chain) [title, html] = chainHTML();
     else if (state.mode === 'collections') [title, html] = collectionsHTML();
     else if (state.mode === 'collection' && state.collection) [title, html] = collectionHTML();
@@ -1336,13 +1365,16 @@
       if (n) html += noteHTML(n);
       else html += `<p class="hint">No note yet for this connection. <a href="${esc(suggestUrl(i))}" target="_blank" rel="noopener" data-track="suggest">Suggest a note<span class="sr-only"> (opens GitHub in a new tab)</span></a></p>`;
       html += `<div id="commonWords" data-a="${F[i]}" data-b="${T[i]}" data-e="${E[i]}"></div>`;
+      html += hiddenLink[i] ? `<p class="hint">${hiddenLink[i] === 2 ? 'You hid this link on this device.' : 'This link is hidden from the map after readers reported it as weak.'}</p>` : '';
       html += `<p class="muted">Strength: ${V[i]} votes on OpenBible.info</p>
         <div class="actions"><button type="button" class="btn small" data-action="zoomRef">Zoom to this arc</button>${shareButtons()}</div>
         <div class="actions">
           <button type="button" class="btn ghost small" data-action="focusVerse" data-v="${F[i]}">All links for ${esc(refLabel(F[i]))}</button>
           <button type="button" class="btn ghost small" data-action="focusVerse" data-v="${T[i]}">All links for ${esc(refLabel(T[i]))}</button>
         </div>
-        <div class="actions"><button type="button" class="btn ghost small" data-action="deselect">${state.focus ? 'Back to ' + esc(rangeLabel(state.focus)) : 'Close'}</button></div>`;
+        <div class="actions"><button type="button" class="btn ghost small" data-action="deselect">${state.focus ? 'Back to ' + esc(rangeLabel(state.focus)) : 'Close'}</button></div>
+        <p class="weak-row">${hiddenLink[i] === 2 ? '<button type="button" class="link-btn" data-action="unhideLink">Show this link again</button>'
+          : hiddenLink[i] ? '' : `Does this link seem weak? <a href="${esc(weakUrl(i))}" target="_blank" rel="noopener" data-track="weak">Report it<span class="sr-only"> (opens GitHub in a new tab)</span></a> · <button type="button" class="link-btn" data-action="hideLink">Hide it on this device</button>`}</p>`;
     } else if (state.focus) {
       const f = state.focus;
       title = rangeLabel(f);
@@ -1749,7 +1781,7 @@
   }
 
   // ---------- Study hub ----------
-  const STUDY_MODES = ['prophecy', 'chain', 'timeline', 'study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
+  const STUDY_MODES = ['church', 'prophecy', 'chain', 'timeline', 'study', 'plans', 'plan', 'people', 'topics', 'game', 'insights', 'wordstudy', 'collections', 'collection'];
   const nameOf = (x) => loc(x, 'name');
   const descOf = (x) => loc(x, 'description');
   function studyHTML() {
@@ -1764,6 +1796,7 @@
       ['prophecy', 'Prophecy and fulfilment', 'Old Testament promises, covenants and pictures, followed to the New Testament.'],
       ['timeline', 'Timeline', 'Key events of the Bible story in order, with their passages and places.'],
       ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
+      ['church', 'Church page', 'Put your sermon series on your church website, with this week\'s passage first.'],
       ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
       ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
     ];
@@ -2886,7 +2919,7 @@
 
 
   // ---------- Back up and restore everything kept on this device ----------
-  const BACKUP_KEYS = ['notes', 'saved', 'recent', 'collections', 'plans', 'game', 'appearance', 'contrast', 'kids', 'textsize', 'readable', 'version', 'version2', 'lang'];
+  const BACKUP_KEYS = ['notes', 'saved', 'recent', 'collections', 'plans', 'game', 'appearance', 'contrast', 'kids', 'textsize', 'readable', 'version', 'version2', 'lang', 'hiddenLinks'];
   $('backupBtn').addEventListener('click', () => {
     const data = {};
     for (const k of BACKUP_KEYS) { const v = store.get(k, undefined); if (v !== undefined) data[k] = v; }
@@ -2920,12 +2953,26 @@
       store.set('plans', cur);
     }
     if (data.game && typeof data.game === 'object') store.set('game', data.game);
+    if (Array.isArray(data.hiddenLinks)) {
+      const cur = myHidden(), seen = new Set(cur.map(x => x.join('_')));
+      for (const x of data.hiddenLinks) if (Array.isArray(x) && x.length === 2 && osisToIndex(String(x[0])) >= 0 && osisToIndex(String(x[1])) >= 0 && !seen.has(x.join('_'))) { cur.push([String(x[0]), String(x[1])]); seen.add(x.join('_')); n++; }
+      store.set('hiddenLinks', cur);
+    }
     const ok = { appearance: ['system', 'light', 'dark'], textsize: ['standard', 'large', 'xlarge'], lang: Object.keys(LANGS).filter(k => LANGS[k].listed) };
     for (const k of ['appearance', 'textsize', 'lang']) if (ok[k].includes(data[k])) store.set(k, data[k]);
     for (const k of ['contrast', 'kids', 'readable']) if (typeof data[k] === 'boolean') store.set(k, data[k]);
     for (const k of ['version', 'version2']) if (data[k] === '' || VERSIONS[data[k]]) store.set(k, data[k]);
     return n;
   }
+  function renderHiddenCount() {
+    const n = myHidden().length;
+    $('hiddenStatus').textContent = n ? tr(n === 1 ? 'You have hidden 1 link on this device.' : `You have hidden ${n} links on this device.`) : tr('You have not hidden any links.');
+    $('unhideAll').hidden = !n;
+  }
+  $('unhideAll').addEventListener('click', () => {
+    store.set('hiddenLinks', []); markHidden(); applyFilters({ panel: false }); drawBase(); renderPanel(); renderHiddenCount();
+    announce('All hidden links are shown again.');
+  });
   $('restoreFile').addEventListener('change', async (e) => {
     const f = e.target.files[0];
     if (!f) return;
@@ -3262,6 +3309,93 @@
     if (st.length > 1) { spanOfPairs(st.slice(1).map((x, n) => [st[n].a, x.a])); animateChain(); }
     announce(`${tl(c, 'title')}: ${st.length} stages.`);
   }
+
+  // ---------- Church page: a sermon series as one link (church.html?d=...) ----------
+  const nextSundays = (k) => { const d = today(); d.setDate(d.getDate() + ((7 - d.getDay()) % 7)); return Array.from({ length: k }, (_, n) => { const x = new Date(d); x.setDate(d.getDate() + 7 * n); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; }); };
+  let churchDraft = null;
+  const getChurch = () => (churchDraft ||= store.get('church', null) || { n: '', s: '', rows: nextSundays(4).map(d => ({ d, ref: '', title: '' })), link: '' });
+  const saveChurch = () => store.set('church', churchDraft);
+  function churchHTML() {
+    const C = getChurch();
+    let html = `<p>Make a page with your sermon series for your church website, newsletter or slides. It shows this week's passage first, with links to read it on Bible.com and to see its connections. Everything is kept in the link, so there is nothing to sign up for.</p>
+      <form id="churchForm" class="church-form" novalidate>
+        <div class="field"><label for="chName">Church name</label><input id="chName" type="text" value="${esc(C.n)}" placeholder="e.g. Grace Community Church" autocomplete="organization" maxlength="80"></div>
+        <div class="field"><label for="chSeries">Series title</label><input id="chSeries" type="text" value="${esc(C.s)}" placeholder="e.g. The Story of Rescue" maxlength="100"></div>
+        <ol class="church-weeks">${C.rows.map((r, n) => `<li><fieldset><legend>Week ${n + 1}</legend>
+          <div class="church-row">
+            <div class="field"><label for="chD${n}">Date</label><input id="chD${n}" type="date" data-k="d" data-n="${n}" value="${esc(r.d)}"></div>
+            <div class="field"><label for="chR${n}">Passage</label><input id="chR${n}" type="text" data-k="ref" data-n="${n}" value="${esc(r.ref)}" placeholder="e.g. John 3:1-16" autocomplete="off"${r.err ? ` aria-invalid="true" aria-describedby="chE${n}"` : ''}></div>
+            <div class="field"><label for="chT${n}">Sermon title (optional)</label><input id="chT${n}" type="text" data-k="title" data-n="${n}" value="${esc(r.title)}" maxlength="100"></div>
+          </div>
+          ${r.err ? `<p class="field-error" id="chE${n}">${esc(r.err)}</p>` : ''}
+          <button type="button" class="btn ghost small" data-action="churchRemove" data-n="${n}">Remove<span class="sr-only"> week ${n + 1}</span></button></fieldset></li>`).join('')}</ol>
+        <div class="actions"><button type="button" class="btn ghost small" data-action="churchAdd">Add a week</button><button type="submit" class="btn">Make the page</button></div>
+      </form>`;
+    if (C.link) {
+      const embed = `<iframe src="${C.link}&embed=1" title="${esc(C.s || 'Sermon series')}" width="100%" height="520" style="border:0;border-radius:12px;max-width:720px" loading="lazy"></iframe>`;
+      html += `<section class="church-result" aria-labelledby="chDone"><h3 id="chDone">Your page is ready</h3>
+        <div class="field"><label for="chLink">Link</label><input id="chLink" type="text" readonly value="${esc(C.link)}"></div>
+        <div class="actions"><button type="button" class="btn small" data-action="churchCopy" data-what="link">Copy link</button>
+          <a class="btn ghost small" href="${esc(C.link)}" target="_blank" rel="noopener">Open the page<span class="sr-only"> (opens in a new tab)</span></a></div>
+        <div class="field"><label for="chEmbed">Embed code for your website</label><textarea id="chEmbed" rows="4" readonly>${esc(embed)}</textarea></div>
+        <div class="actions"><button type="button" class="btn ghost small" data-action="churchCopy" data-what="embed">Copy embed code</button></div>
+        <p class="hint">Change anything above and choose Make the page again for a new link. Your draft is kept on this device.</p></section>`;
+    }
+    html += '<div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>';
+    return ['Church page', html];
+  }
+  function makeChurchPage() {
+    const C = getChurch(), w = [];
+    let bad = 0;
+    for (const r of C.rows) {
+      r.err = '';
+      if (!r.ref.trim()) continue;
+      const x = parseReference(r.ref);
+      if (!x || x.error || x.kind === 'book') { r.err = (x && x.error) || 'Enter a passage such as John 3:1-16 or Psalm 23.'; bad++; continue; }
+      w.push([r.d, toOsis(x.start), toOsis(x.end - 1), r.title.trim()]);
+    }
+    if (bad || !w.length) {
+      C.link = '';
+      if (!w.length && !bad) C.rows[0].err = 'Add at least one passage.';
+      saveChurch(); renderPanel();
+      announce(tr('Please check the highlighted passages.'));
+      requestAnimationFrame(() => { const e = el.panelBody.querySelector('[aria-invalid="true"]') || $('chR0'); if (e) e.focus(); });
+      return;
+    }
+    const data = btoa(unescape(encodeURIComponent(JSON.stringify({ n: C.n.trim(), s: C.s.trim(), w })))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const u = new URL('church.html', location.href);
+    u.search = `?d=${data}${LANG !== 'en' ? '&lang=' + LANG : ''}${settings.version !== LANGS[LANG].bible ? '&version=' + encodeURIComponent(settings.version) : ''}`;
+    C.link = u.toString();
+    saveChurch(); track('church/make'); renderPanel();
+    announce(tr('Your page is ready.'));
+    requestAnimationFrame(() => { const e = $('chLink'); if (e) e.focus(); });
+  }
+  el.panelBody.addEventListener('input', (e) => {
+    const f = e.target.closest('#churchForm');
+    if (!f) return;
+    const C = getChurch();
+    if (e.target.id === 'chName') C.n = e.target.value;
+    else if (e.target.id === 'chSeries') C.s = e.target.value;
+    else if (e.target.dataset.k) C.rows[+e.target.dataset.n][e.target.dataset.k] = e.target.value;
+    saveChurch();
+  });
+  el.panelBody.addEventListener('submit', (e) => { if (e.target.id === 'churchForm') { e.preventDefault(); makeChurchPage(); } });
+  el.panelBody.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-action^=church]');
+    if (!b) return;
+    const C = getChurch(), a = b.dataset.action;
+    if (a === 'churchAdd') {
+      const last = C.rows[C.rows.length - 1];
+      let d = '';
+      if (last && last.d) { const x = new Date(last.d + 'T12:00:00'); x.setDate(x.getDate() + 7); d = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; }
+      C.rows.push({ d, ref: '', title: '' }); saveChurch(); renderPanel();
+      requestAnimationFrame(() => { const i = $('chR' + (C.rows.length - 1)); if (i) i.focus(); });
+    } else if (a === 'churchRemove') {
+      C.rows.splice(+b.dataset.n, 1);
+      if (!C.rows.length) C.rows.push({ d: nextSundays(1)[0], ref: '', title: '' });
+      saveChurch(); renderPanel(); announce(tr('Week removed.'));
+    } else if (a === 'churchCopy') copyText(b.dataset.what === 'link' ? C.link : $('chEmbed').value);
+  });
 
   // ---------- Collections ----------
   const getCollections = () => store.get('collections', []);
@@ -3617,6 +3751,8 @@
     else if (a === 'openEra') openEra(btn.dataset.era).then(focusPanelHeading);
     else if (a === 'openChain') openChain(btn.dataset.id).then(focusPanelHeading);
     else if (a === 'replayChain') animateChain();
+    else if (a === 'hideLink' && state.selected >= 0) setHidden(state.selected, true);
+    else if (a === 'unhideLink' && state.selected >= 0) setHidden(state.selected, false);
     else if (a === 'focusRange') { const st = +btn.dataset.s, en = +btn.dataset.e; setFocus({ kind: 'verse', book: verseBook[st], start: st, end: en + 1 }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'openGeoName') openGeo(btn.dataset.name).then(focusPanelHeading);
     else if (a === 'studyImage') studyImage(+btn.dataset.v);
@@ -3936,7 +4072,7 @@
     $('kidsToggle').checked = settings.kids;
     $('readableToggle').checked = settings.readable;
     $('motionToggle').checked = settings.motion;
-    renderArcStyles();
+    renderArcStyles(); renderHiddenCount();
     (f.querySelector(`input[name=textsize][value="${settings.textsize}"]`) || f.querySelector('input[name=textsize]')).checked = true;
     // a language being previewed with ?lang= gets its own option, so the setting still shows what is in use
     if (!f.querySelector(`input[name=language][value="${LANG}"]`)) {
@@ -4144,6 +4280,7 @@
     if (state.mode === 'collection' && state.collection) items.push(['mode', `Collection: ${state.collection.name}`]);
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
     if (state.mode === 'prophecy') items.push(['mode', 'Prophecy and fulfilment']);
+    if (state.mode === 'church') items.push(['mode', 'Church page']);
     if (state.mode === 'chain' && state.chain && PROPHECY) items.push(['mode', `Prophecy: ${tl(findChain(state.chain.id), 'title')}`]);
     if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
@@ -4212,7 +4349,7 @@
       else if (state.mode === 'shared' && state.shared && state.shared.aLabel) p.set('shared', `${state.shared.aLabel}~${state.shared.bLabel}`);
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
       else if (state.mode === 'chain' && state.chain) p.set('prophecy', state.chain.id);
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy'].includes(state.mode)) p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -4269,7 +4406,7 @@
     if (p.get('era')) { await openEra(p.get('era')); return; }
     if (p.get('prophecy')) { await openChain(p.get('prophecy'), { push: false }); return; }
     if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {

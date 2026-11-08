@@ -819,7 +819,44 @@
     "Easter": "Pascua",
     "e.g. Sunday: The Good Shepherd": "p. ej. Domingo: El buen pastor",
     "Locations from": "Ubicaciones de",
-    "(CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.": "(CC BY 4.0). Costa de Natural Earth. Los puntos más claros son lugares cuya ubicación es menos segura."
+    "(CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.": "(CC BY 4.0). Costa de Natural Earth. Los puntos más claros son lugares cuya ubicación es menos segura.",
+    "Does this link seem weak?": "¿Te parece débil este vínculo?",
+    "Report it": "Repórtalo",
+    "Hide it on this device": "Ocúltalo en este dispositivo",
+    "Show this link again": "Volver a mostrar este vínculo",
+    "You hid this link on this device.": "Ocultaste este vínculo en este dispositivo.",
+    "This link is hidden from the map after readers reported it as weak.": "Este vínculo está oculto en el mapa porque los lectores lo reportaron como débil.",
+    "Hidden on this device. You can show it again here or in Settings.": "Oculto en este dispositivo. Puedes volver a mostrarlo aquí o en Configuración.",
+    "Shown again.": "Se muestra de nuevo.",
+    "You have hidden 1 link on this device.": "Ocultaste 1 vínculo en este dispositivo.",
+    "You have not hidden any links.": "No has ocultado ningún vínculo.",
+    "Show all hidden links again": "Volver a mostrar todos los vínculos ocultos",
+    "All hidden links are shown again.": "Todos los vínculos ocultos se muestran de nuevo.",
+    "Hidden links": "Vínculos ocultos",
+    "Church page": "Página para la iglesia",
+    "Put your sermon series on your church website, with this week's passage first.": "Pon tu serie de sermones en el sitio de tu iglesia, con el pasaje de esta semana primero.",
+    "Make a page with your sermon series for your church website, newsletter or slides. It shows this week's passage first, with links to read it on Bible.com and to see its connections. Everything is kept in the link, so there is nothing to sign up for.": "Crea una página con tu serie de sermones para el sitio de tu iglesia, un boletín o diapositivas. Muestra primero el pasaje de esta semana, con enlaces para leerlo en Bible.com y ver sus conexiones. Todo queda guardado en el enlace, así que no hace falta registrarse.",
+    "Church name": "Nombre de la iglesia",
+    "e.g. Grace Community Church": "p. ej. Iglesia Comunidad de Gracia",
+    "Series title": "Título de la serie",
+    "e.g. The Story of Rescue": "p. ej. La historia del rescate",
+    "Date": "Fecha",
+    "Passage": "Pasaje",
+    "Sermon title (optional)": "Título del sermón (opcional)",
+    "e.g. John 3:1-16": "p. ej. Juan 3:1-16",
+    "Add a week": "Agregar una semana",
+    "Make the page": "Crear la página",
+    "Your page is ready": "Tu página está lista",
+    "Link": "Enlace",
+    "Open the page": "Abrir la página",
+    "Embed code for your website": "Código para insertar en tu sitio web",
+    "Copy embed code": "Copiar el código",
+    "Change anything above and choose Make the page again for a new link. Your draft is kept on this device.": "Cambia lo que quieras arriba y elige Crear la página otra vez para obtener un enlace nuevo. Tu borrador se guarda en este dispositivo.",
+    "Enter a passage such as John 3:1-16 or Psalm 23.": "Escribe un pasaje como Juan 3:1-16 o Salmos 23.",
+    "Add at least one passage.": "Agrega al menos un pasaje.",
+    "Please check the highlighted passages.": "Revisa los pasajes marcados.",
+    "Your page is ready.": "Tu página está lista.",
+    "Week removed.": "Semana eliminada."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -937,7 +974,10 @@
     "Passages for the events in this period: {x}.": "Pasajes de los acontecimientos de este período: {x}.",
     "Prophecy: {a}": "Profecía: {a}",
     "{a}: {n} stages.": "{a}: {n} etapas.",
-    "Map of {n} places named in the Bible. Use the list below to choose a place.": "Mapa de {n} lugares mencionados en la Biblia. Usa la lista de abajo para elegir un lugar."
+    "Map of {n} places named in the Bible. Use the list below to choose a place.": "Mapa de {n} lugares mencionados en la Biblia. Usa la lista de abajo para elegir un lugar.",
+    "You have hidden {n} links on this device.": "Ocultaste {n} vínculos en este dispositivo.",
+    "Week {n}": "Semana {n}",
+    "week {n}": "semana {n}"
   },
   "pages": {
     "handout": {
@@ -1047,6 +1087,20 @@
       "See how this verse connects across the Bible.": "Mira cómo se conecta este versículo en toda la Biblia.",
       "Sorry, this card could not be shown.": "Lo sentimos, no se pudo mostrar esta tarjeta.",
       "(opens in a new tab)": "(se abre en una pestaña nueva)"
+    },
+    "church": {
+      "This page could not be opened. Ask your church for the link again.": "No se pudo abrir esta página. Pide el enlace a tu iglesia otra vez.",
+      "Sermon series": "Serie de sermones",
+      "Coming up": "Próximamente",
+      "This week": "Esta semana",
+      "Read it": "Leerlo",
+      "See its connections": "Ver sus conexiones",
+      "All weeks": "Todas las semanas",
+      "Connections": "Conexiones",
+      "Passages open on Bible.com. Cross references from OpenBible.info (CC BY 4.0).": "Los pasajes se abren en Bible.com. Referencias cruzadas de OpenBible.info (CC BY 4.0).",
+      "Made with Bible Connections": "Hecho con Bible Connections",
+      "(opens in a new tab)": "(se abre en una pestaña nueva)",
+      "Sorry, this page could not be shown.": "Lo sentimos, no se pudo mostrar esta página."
     }
   }
 }

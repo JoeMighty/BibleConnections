@@ -5,6 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-11-08 - For Churches
+
+### Added
+- Church page (Study, Church page): enter your church name, series title and each week's date, passage and sermon title to get a page with this week's passage first, every week listed, links to read each passage on Bible.com and to see its connections, and embed code for your website. The series is kept in the link, so there is no sign-up, and your draft stays on your device. Works in English, Spanish and Portuguese, in light or dark.
+- Report a weak link: every connection has a "Does this link seem weak?" line. Report it opens a ready-made GitHub form, and Hide it on this device takes it off your map straight away. Settings shows how many links you have hidden and can show them all again, and backups include them.
+- Reviewed reports go in site/content/weak-links.json, which hides those links from the map for everyone.
+
 ## [0.13.0] - 2026-11-08 - Português
 
 ### Added

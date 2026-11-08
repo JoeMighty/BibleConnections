@@ -24,20 +24,12 @@
       "when_pt": "Em breve",
       "items": [
         {
-          "title": "Report a weak link",
-          "title_es": "Reportar un vínculo débil",
-          "title_pt": "Informar uma ligação fraca",
-          "text": "Flag a cross reference that seems loose, so poor ones can be hidden.",
-          "text_es": "Marca una referencia cruzada que parezca débil, para poder ocultar las malas.",
-          "text_pt": "Marque uma referência cruzada que pareça fraca, para que as ruins possam ser ocultadas."
-        },
-        {
-          "title": "Church page",
-          "title_es": "Página para iglesias",
-          "title_pt": "Página para igrejas",
-          "text": "A simple page for church websites with this week's sermon passages.",
-          "text_es": "Una página sencilla para sitios de iglesias con los pasajes del sermón de la semana.",
-          "text_pt": "Uma página simples para sites de igrejas com as passagens do sermão da semana."
+          "title": "French",
+          "title_es": "Francés",
+          "title_pt": "Francês",
+          "text": "The whole site in French, using the same language files as Spanish and Portuguese.",
+          "text_es": "Todo el sitio en francés, con los mismos archivos de idioma que el español y el portugués.",
+          "text_pt": "Todo o site em francês, com os mesmos arquivos de idioma do espanhol e do português."
         }
       ]
     },
@@ -66,6 +58,21 @@
     }
   ],
   "shipped": [
+    {
+      "version": "0.14.0",
+      "items": [
+        "Church page for sermon series",
+        "Report a weak link, or hide it on your device"
+      ],
+      "items_es": [
+        "Página para la iglesia con la serie de sermones",
+        "Reportar un vínculo débil u ocultarlo en tu dispositivo"
+      ],
+      "items_pt": [
+        "Página da igreja para a série de sermões",
+        "Informar uma ligação fraca ou ocultá-la no seu dispositivo"
+      ]
+    },
     {
       "version": "0.13.0",
       "items": [

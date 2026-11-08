@@ -14,7 +14,7 @@ test('Study tab opens the study hub', async ({ page }) => {
   await ready(page);
   await page.click('[data-nav=study]');
   await expect(page.locator('#panelTitle')).toHaveText('Study');
-  await expect(page.locator('.study-card')).toHaveCount(13);
+  await expect(page.locator('.study-card')).toHaveCount(14);
   await expect(page.locator('#panel .cotd')).toBeVisible();
 });
 

@@ -1,0 +1,4 @@
+{
+  "about": "Cross references hidden from the map after a reader reported them as weak and the report was reviewed. Each entry is [from, to, reason], using OSIS references such as Gen.1.1. Reports come in through the Report a weak link form on GitHub.",
+  "hidden": []
+}

@@ -1,0 +1,34 @@
+name: Report a weak link
+description: A cross reference on the map that seems loose or unrelated
+title: "Weak link: "
+labels: [weak-link]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping keep the map useful. Reviewed reports are hidden for everyone in the next update.
+  - type: input
+    id: from
+    attributes:
+      label: First passage
+      description: Book.Chapter.Verse, for example Gen.1.1
+    validations:
+      required: true
+  - type: input
+    id: to
+    attributes:
+      label: Second passage
+      description: Book.Chapter.Verse, for example John.1.1
+    validations:
+      required: true
+  - type: dropdown
+    id: reason
+    attributes:
+      label: What is wrong with it?
+      options: ["The passages are not really related", "It only matches a common word", "It is a duplicate of another link", "Other"]
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Optional. Please do not paste text from copyrighted Bible translations.

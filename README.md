@@ -77,10 +77,12 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
+- **Church page:** any church can make a page for its sermon series in Study, with this week's passage first, links to read each passage on Bible.com and see its connections, and embed code for its website. Everything is kept in the link, with no sign-up.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
 - **Collection slides:** show a collection as simple full-screen slides (title, one slide per item with its references, and a closing slide), moved with arrow keys, a clicker or a swipe, and printable as a PDF. References link to Bible.com; no translation text is shown.
 - **Sharing:** every view has its own link, back button support, Share, Copy, Save image, story-sized images, QR codes for slides and bulletins, embed code for church websites (the full map, or a small card for one verse, connection, journey step or prophecy, in light or dark), and link previews in messaging apps.
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
+- **Report a weak link:** flag a connection that seems loose with a ready-made GitHub form, or hide it on your own device. Reviewed reports are hidden for everyone (`site/content/weak-links.json`).
 
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.

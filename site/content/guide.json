@@ -14,17 +14,20 @@
         "steps": [
           "Scroll, pinch or use the + and − buttons to zoom in on any book.",
           "Drag to move around. Press 0 or the reset button to see the whole Bible again.",
-          "Tap an arc to see the two passages it joins."
+          "Tap an arc to see the two passages it joins.",
+          "Does a link seem weak? Report it, or hide it on your device."
         ],
         "steps_es": [
           "Desplázate, pellizca o usa los botones + y − para acercarte a cualquier libro.",
           "Arrastra para moverte. Pulsa 0 o el botón de reinicio para ver de nuevo toda la Biblia.",
-          "Toca un arco para ver los dos pasajes que une."
+          "Toca un arco para ver los dos pasajes que une.",
+          "¿Un vínculo te parece débil? Repórtalo u ocúltalo en tu dispositivo."
         ],
         "steps_pt": [
           "Role, faça pinça ou use os botões + e − para se aproximar de qualquer livro.",
           "Arraste para se mover. Pressione 0 ou o botão de redefinir para ver de novo a Bíblia inteira.",
-          "Toque em um arco para ver as duas passagens que ele une."
+          "Toque em um arco para ver as duas passagens que ele une.",
+          "Uma ligação parece fraca? Informe ou oculte no seu dispositivo."
         ],
         "try": "?view=map",
         "try_label": "Open the map",
@@ -447,6 +450,33 @@
         "try_label": "See a leader guide",
         "try_label_es": "Ver una guía para el líder",
         "try_label_pt": "Ver um guia do líder"
+      },
+      {
+        "title": "Church page",
+        "title_es": "Página para la iglesia",
+        "title_pt": "Página da igreja",
+        "what": "Put your sermon series on your church website, with this week's passage first and links to read and explore each one.",
+        "what_es": "Pon tu serie de sermones en el sitio de tu iglesia, con el pasaje de esta semana primero y enlaces para leer y explorar cada uno.",
+        "what_pt": "Coloque sua série de sermões no site da sua igreja, com a passagem desta semana primeiro e links para ler e explorar cada uma.",
+        "steps": [
+          "Open Study, then Church page.",
+          "Enter your church name, the series title and each week's date and passage.",
+          "Choose Make the page, then copy the link or the embed code."
+        ],
+        "steps_es": [
+          "Abre Estudio y luego Página para la iglesia.",
+          "Escribe el nombre de tu iglesia, el título de la serie y la fecha y el pasaje de cada semana.",
+          "Elige Crear la página y copia el enlace o el código para insertar."
+        ],
+        "steps_pt": [
+          "Abra Estudo e depois Página da igreja.",
+          "Digite o nome da sua igreja, o título da série e a data e a passagem de cada semana.",
+          "Escolha Criar a página e copie o link ou o código para incorporar."
+        ],
+        "try": "?view=church",
+        "try_label": "Make a church page",
+        "try_label_es": "Crear una página",
+        "try_label_pt": "Criar uma página"
       }
     ]
   },
