@@ -136,7 +136,10 @@
     "Jd",
     "Ap"
   ],
-  "content": [],
+  "content": [
+    "themes",
+    "journeys"
+  ],
   "categories": {
     "law": "Lei",
     "history": "Históricos",

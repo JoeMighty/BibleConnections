@@ -1,0 +1,594 @@
+[
+  {
+    "id": "advent",
+    "name": "Advento: esperando o Rei",
+    "summary": "Sete promessas do Rei que viria e como se cumpriram em Jesus.",
+    "steps": [
+      {
+        "title": "O primeiro anúncio",
+        "note": "Logo no começo da história, Deus promete uma criança que vai derrotar o mal. Paulo diz que Jesus veio na hora exata, nascido de mulher.",
+        "question": "Por que você acha que Deus fez essa promessa tão logo depois que tudo deu errado?"
+      },
+      {
+        "title": "Um rei da família de Davi",
+        "note": "Deus promete a Davi um filho cujo reino vai durar. Gabriel diz a Maria que o filho dela receberá o trono de Davi.",
+        "question": "Que tipo de rei as pessoas esperavam, e que tipo de rei Jesus mostrou ser?"
+      },
+      {
+        "title": "Deus conosco",
+        "note": "Isaías dá o sinal de uma criança chamada Emanuel. Mateus vê o pleno sentido disso em Jesus, Deus conosco.",
+        "question": "Que diferença faz Deus ter vindo para estar conosco, e não só para ajudar de longe?"
+      },
+      {
+        "title": "Um menino nos nasceu",
+        "note": "Isaías anuncia uma criança com nomes como Maravilhoso Conselheiro e Príncipe da Paz. Os anjos anunciam o Salvador nascido em Belém.",
+        "question": "Qual dos nomes que Isaías dá a essa criança significa mais para você agora?"
+      },
+      {
+        "title": "Preparem o caminho",
+        "note": "Uma voz pede que se prepare um caminho para Deus. João Batista é essa voz, preparando as pessoas para Jesus.",
+        "question": "Como seria preparar o caminho para Jesus na sua vida neste Advento?"
+      },
+      {
+        "title": "A pequena Belém",
+        "note": "Deus escolhe uma cidade pequena para o nascimento de um grande governante. Os mestres indicam a Herodes as palavras de Miqueias.",
+        "question": "Por que Deus escolheria lugares pequenos e humildes para fazer grandes coisas?"
+      },
+      {
+        "title": "O sol que nasce",
+        "note": "O último profeta do Antigo Testamento descreve o sol da justiça nascendo com cura. Zacarias canta que esse sol já nasceu.",
+        "question": "Onde você precisa da luz e da cura de Deus enquanto espera o Natal?"
+      }
+    ]
+  },
+  {
+    "id": "christmas",
+    "name": "Natal: o Verbo se fez carne",
+    "summary": "Por que o nascimento de Jesus importa, da criação aos magos.",
+    "steps": [
+      {
+        "title": "No princípio",
+        "note": "João começa seu Evangelho com as mesmas palavras de Gênesis. Aquele que nasceu no Natal estava presente na criação.",
+        "question": "Como muda sua visão do Natal saber que o bebê na manjedoura é o Verbo que fez o mundo?"
+      },
+      {
+        "title": "O Verbo se fez carne",
+        "note": "Paulo descreve Cristo escolhendo tornar-se servo e nascer como homem. João diz que o Verbo fez sua morada entre nós.",
+        "question": "O que diz sobre Deus o fato de ele ter vindo de forma tão humilde?"
+      },
+      {
+        "title": "Uma grande luz",
+        "note": "O povo que vivia nas trevas vê uma grande luz. Jesus leva essa luz à Galileia.",
+        "question": "Quem você conhece que está andando nas trevas neste Natal?"
+      },
+      {
+        "title": "Uma luz para todas as nações",
+        "note": "O servo de Deus levará a salvação até os confins da terra. O velho Simeão segura o bebê e louva a Deus por essa luz.",
+        "question": "Por que é uma boa notícia que Jesus veio para todas as nações, e não só para uma?"
+      },
+      {
+        "title": "Presentes para o rei",
+        "note": "O salmo descreve reis de terras distantes honrando o rei de Israel. Os magos adoram o menino e entregam seus presentes.",
+        "question": "O que você poderia dar a Jesus neste Natal?"
+      },
+      {
+        "title": "Do Egito",
+        "note": "Oseias lembra Deus chamando seu filho Israel para fora do Egito. Mateus vê Jesus refazendo a história de Israel quando a família volta do Egito.",
+        "question": "Como Jesus viver a história de Israel nos ajuda a entender quem ele é?"
+      }
+    ]
+  },
+  {
+    "id": "holy-week",
+    "name": "Semana Santa: o caminho da cruz",
+    "summary": "Do Domingo de Ramos à manhã de Páscoa, as passagens do Antigo Testamento que apontam para cada dia.",
+    "steps": [
+      {
+        "title": "Domingo de Ramos: o rei humilde",
+        "note": "Zacarias descreve o rei de Jerusalém chegando com mansidão, montado em um jumento. Jesus entra assim na cidade enquanto a multidão agita ramos e grita: Hosana!",
+        "question": "Que tipo de rei a multidão queria, e que tipo de rei chegou?"
+      },
+      {
+        "title": "Segunda-feira: casa de oração",
+        "note": "Deus prometeu que sua casa seria casa de oração para todos os povos. Jesus expulsa os comerciantes que tinham tomado os pátios do templo e cita as palavras de Isaías.",
+        "question": "O que ocupa o lugar da oração na nossa vida ou nas nossas igrejas?"
+      },
+      {
+        "title": "Terça-feira: a pedra rejeitada",
+        "note": "O salmo canta sobre uma pedra que os construtores rejeitaram e que se tornou a pedra angular. Ensinando no templo, Jesus diz aos líderes que isso fala dele.",
+        "question": "Por que você acha que Deus tantas vezes age por meio daquilo que as pessoas rejeitam?"
+      },
+      {
+        "title": "Quarta-feira: trinta moedas de prata",
+        "note": "Em Zacarias, o pastor do povo de Deus é avaliado em trinta moedas de prata. Judas aceita trair Jesus pelo mesmo preço.",
+        "question": "O que esse preço diz sobre o valor que deram a Jesus, e que valor nós damos a ele?"
+      },
+      {
+        "title": "Quinta-feira: o sangue da aliança",
+        "note": "No Sinai, Moisés sela a aliança com sangue. Na Última Ceia, Jesus pega o cálice e o chama de seu sangue da aliança, derramado por muitos.",
+        "question": "O que significa para você que Jesus escolheu uma refeição para explicar sua morte?"
+      },
+      {
+        "title": "Sexta-feira Santa: por que me abandonaste?",
+        "note": "O salmo de Davi começa com um grito de abandono e termina em louvor. Na cruz, Jesus ora em voz alta seu primeiro verso.",
+        "question": "Por que Jesus teria escolhido orar um salmo na sua hora mais escura?"
+      },
+      {
+        "title": "Sábado de Aleluia: três dias",
+        "note": "Jonas passa três dias e três noites dentro do grande peixe. Jesus disse que o Filho do Homem também passaria três dias no coração da terra.",
+        "question": "Como você espera quando Deus parece estar em silêncio?"
+      },
+      {
+        "title": "Domingo de Páscoa: não abandonado na sepultura",
+        "note": "Davi confia que Deus não deixará seu santo na sepultura. No Pentecostes, Pedro diz que isso se cumpriu quando Deus ressuscitou Jesus dentre os mortos.",
+        "question": "Que diferença a ressurreição faz na sua semana?"
+      }
+    ]
+  },
+  {
+    "id": "lamb",
+    "name": "O Cordeiro de Deus",
+    "summary": "De um monte em Gênesis ao trono em Apocalipse, siga o Cordeiro que tira o pecado.",
+    "steps": [
+      {
+        "title": "Deus proverá o cordeiro",
+        "note": "Subindo o monte, Abraão garante a Isaque que Deus proverá o sacrifício. Séculos depois, João Batista aponta para Jesus e o chama de Cordeiro de Deus.",
+        "question": "Por que você acha que Deus pediu um substituto em vez de simplesmente ignorar o pecado?"
+      },
+      {
+        "title": "A Páscoa",
+        "note": "No Egito, as casas marcadas com o sangue de um cordeiro foram poupadas na noite do juízo. Paulo identifica Cristo como o cordeiro pascal, sacrificado por seu povo.",
+        "question": "O que significa para você, pessoalmente, que o juízo “passa por cima” por causa de Jesus?"
+      },
+      {
+        "title": "Sem defeito",
+        "note": "O cordeiro da Páscoa tinha de ser sem nenhum defeito. Pedro diz que os que creem foram resgatados pelo precioso sangue de Cristo, o Cordeiro sem mancha.",
+        "question": "Por que importa que Jesus não tivesse culpa?"
+      },
+      {
+        "title": "Levado como cordeiro",
+        "note": "Isaías descreve um servo sofredor que vai em silêncio para a morte como um cordeiro. Filipe encontra um oficial etíope lendo essa passagem e explica que ela fala de Jesus.",
+        "question": "Como Filipe usou uma única passagem para explicar toda a história de Jesus? Para quem você poderia fazer isso?"
+      },
+      {
+        "title": "O Cordeiro no trono",
+        "note": "Em sua visão do céu, João vê um Cordeiro com as marcas do sacrifício, de pé no centro do trono. O sacrifício se tornou o Rei.",
+        "question": "O que muda quando vemos aquele que foi sacrificado agora reinando?"
+      },
+      {
+        "title": "A luz da cidade",
+        "note": "O céu louva o Cordeiro por resgatar pessoas de todas as nações. Na nova criação, a cidade não precisa de sol, porque o Cordeiro é a sua luz.",
+        "question": "Como a esperança da luz do Cordeiro molda a forma como você enfrenta tempos difíceis?"
+      }
+    ]
+  },
+  {
+    "id": "temple",
+    "name": "Deus conosco",
+    "summary": "A história de Deus fazendo sua morada com as pessoas, do Éden à Nova Jerusalém.",
+    "steps": [
+      {
+        "title": "Andando com Deus",
+        "note": "No Éden, Deus estava presente com as pessoas no jardim. O pecado rompeu essa proximidade. A Bíblia termina com a mesma esperança restaurada, quando Deus faz sua morada com a humanidade.",
+        "question": "O que você acha que se perdeu quando as pessoas não puderam mais andar perto de Deus?"
+      },
+      {
+        "title": "O tabernáculo",
+        "note": "Deus manda Moisés construir um santuário para que ele possa habitar no meio do seu povo. Quando fica pronto, a glória de Deus o enche.",
+        "question": "Por que Deus escolheria viver no meio de um povo que sempre falhava com ele?"
+      },
+      {
+        "title": "O templo",
+        "note": "Quando Salomão consagra o templo, a nuvem da glória de Deus o enche, assim como tinha enchido o tabernáculo.",
+        "question": "O que a nuvem de glória enchendo o templo nos diz sobre o que Deus deseja?"
+      },
+      {
+        "title": "O Verbo se fez carne",
+        "note": "João diz que o Verbo assumiu a vida humana e habitou entre nós, usando uma palavra que lembra a tenda do tabernáculo, e que sua glória foi vista. Jesus é a presença de Deus em pessoa.",
+        "question": "Como ver Jesus como a presença de Deus em pessoa muda a forma como você lê os Evangelhos?"
+      },
+      {
+        "title": "O verdadeiro templo",
+        "note": "Jesus chama o próprio corpo de templo. Quando ele morre, o véu do templo se rasga de cima a baixo, abrindo o caminho até Deus.",
+        "question": "O que o véu rasgado significa para a forma como você se aproxima de Deus em oração?"
+      },
+      {
+        "title": "Vocês são o templo",
+        "note": "Agora o Espírito de Deus vive no seu povo. Juntos, e cada um, os que creem são o templo dele.",
+        "question": "Se o Espírito de Deus vive em você, como isso pode moldar uma segunda-feira comum?"
+      },
+      {
+        "title": "Nenhum templo é necessário",
+        "note": "Ezequiel prometeu que Deus viveria no meio do seu povo para sempre. João não vê nenhum templo na Nova Jerusalém, porque Deus e o Cordeiro ocupam esse lugar.",
+        "question": "O que você mais espera de viver na presença de Deus para sempre?"
+      }
+    ]
+  },
+  {
+    "id": "king",
+    "name": "O Rei prometido",
+    "summary": "Promessas de um Rei de Judá e da linhagem de Davi, cumpridas em Jesus.",
+    "steps": [
+      {
+        "title": "O Leão de Judá",
+        "note": "A bênção de Jacó promete à tribo de Judá um reinado duradouro. Em Apocalipse, Jesus é honrado como o Leão vitorioso de Judá.",
+        "question": "Que tipo de rei Israel esperava, e em que Jesus é parecido ou diferente?"
+      },
+      {
+        "title": "Um trono para sempre",
+        "note": "Deus promete a Davi um descendente cujo reino durará para sempre. Gabriel diz a Maria que o filho dela receberá o trono de seu pai Davi.",
+        "question": "Por que importa que Deus tenha cumprido sua promessa a Davi ao longo de mil anos?"
+      },
+      {
+        "title": "Um rebento de Jessé",
+        "note": "Isaías vê um broto novo nascendo do tronco cortado da família de Jessé, pai de Davi. Paulo cita isso para mostrar que o Messias governa as nações, que põem nele a sua esperança.",
+        "question": "Onde na sua vida parece haver um “tronco cortado”, e que esperança essa promessa oferece?"
+      },
+      {
+        "title": "Nascido em Belém",
+        "note": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante que viria para Israel. Quando os magos chegam procurando o Rei, os mestres citam Miqueias.",
+        "question": "Por que você acha que Deus escolheu uma cidade pequena para o nascimento do Rei?"
+      },
+      {
+        "title": "Montado em um jumento",
+        "note": "Zacarias descreve um Rei humilde montado em um jumento. Jesus entra em Jerusalém exatamente assim.",
+        "question": "O que um rei montado em um jumento nos ensina sobre como Jesus usa o seu poder?"
+      },
+      {
+        "title": "Assentado à direita",
+        "note": "Neste salmo, Davi ouve Deus convidar o próprio Senhor de Davi a ocupar o lugar de honra ao seu lado. No Pentecostes, Pedro diz que isso fala de Jesus ressuscitado e elevado ao céu.",
+        "question": "Como saber que Jesus reina agora afeta a forma como você lida com a ansiedade?"
+      },
+      {
+        "title": "Um reino sem fim",
+        "note": "Daniel vê alguém como um filho de homem receber um reino que nunca acaba. Apocalipse anuncia que o domínio do mundo agora pertence a Deus e ao seu Messias para sempre.",
+        "question": "Como seria viver hoje como cidadão de um reino que nunca acaba?"
+      }
+    ]
+  },
+  {
+    "id": "spirit",
+    "name": "O Espírito derramado",
+    "summary": "O sopro de Deus, da criação ao Pentecostes e além.",
+    "steps": [
+      {
+        "title": "O fôlego da vida",
+        "note": "Deus sopra vida no primeiro ser humano. Depois de ressuscitar, Jesus sopra sobre os discípulos e lhes dá o Espírito Santo. Começa uma nova criação.",
+        "question": "Qual é a ligação entre o sopro de Deus na criação e o Espírito que Jesus dá?"
+      },
+      {
+        "title": "Se todos tivessem o Espírito",
+        "note": "Moisés deseja que todo o povo de Deus tivesse o Espírito. Joel promete um dia em que Deus derramará o seu Espírito sobre todas as pessoas.",
+        "question": "Moisés queria que todo crente tivesse o Espírito. Que diferença isso faria na sua igreja?"
+      },
+      {
+        "title": "Um coração novo",
+        "note": "Deus promete trocar corações de pedra por corações de carne e pôr o seu Espírito dentro do seu povo. Paulo diz que agora o Espírito escreve em corações humanos, não em pedra.",
+        "question": "Onde você precisa que Deus troque algo duro por algo novo em você?"
+      },
+      {
+        "title": "Água para quem tem sede",
+        "note": "Deus promete água sobre a terra seca e o seu Espírito sobre o seu povo. Jesus diz que rios de água viva vão fluir de quem crê, falando do Espírito.",
+        "question": "Do que você tem sede, e como Jesus responde a essa sede?"
+      },
+      {
+        "title": "Pentecostes",
+        "note": "No Pentecostes, o Espírito vem sobre os discípulos, e Pedro explica que esse é o derramamento anunciado por Joel.",
+        "question": "O que surpreendeu a multidão no Pentecostes, e o que poderia surpreender as pessoas na sua igreja?"
+      },
+      {
+        "title": "Para todas as nações",
+        "note": "O Espírito vem sobre os gentios na casa de Cornélio. A promessa de Joel para todas as pessoas inclui de fato todo mundo.",
+        "question": "Quem você poderia estar deixando de lado que Deus quer incluir?"
+      },
+      {
+        "title": "Venha e beba",
+        "note": "Isaías convida quem tem sede a beber sem pagar. A Bíblia termina com o Espírito e a Igreja repetindo esse convite e oferecendo a água da vida como presente gratuito.",
+        "question": "Quem você poderia convidar nesta semana a “vir e beber”?"
+      }
+    ]
+  },
+  {
+    "id": "eden",
+    "name": "Do Éden à nova criação",
+    "summary": "Como as últimas páginas da Bíblia respondem às primeiras.",
+    "steps": [
+      {
+        "title": "Céus e terra",
+        "note": "A Bíblia começa com Deus criando os céus e a terra e termina com um novo céu e uma nova terra.",
+        "question": "O que a primeira e a última página da Bíblia nos dizem sobre o plano de Deus para o mundo?"
+      },
+      {
+        "title": "O primeiro anúncio",
+        "note": "Logo depois da queda, Deus promete que um descendente da mulher vai derrotar a serpente. Paulo garante à igreja que Deus logo trará a derrota final de Satanás.",
+        "question": "Por que é significativo que Deus tenha prometido resgate logo após o primeiro pecado?"
+      },
+      {
+        "title": "Bênção para todas as nações",
+        "note": "Deus promete a Abraão que todas as nações serão abençoadas por meio dele. Paulo chama isso de evangelho anunciado de antemão.",
+        "question": "Como a bênção prometida a Abraão está chegando às pessoas hoje?"
+      },
+      {
+        "title": "O caminho de volta",
+        "note": "Querubins guardam o caminho de volta à árvore da vida. Hebreus diz que Jesus abriu um novo caminho até a presença de Deus.",
+        "question": "O que significa que o caminho de volta a Deus agora está aberto?"
+      },
+      {
+        "title": "Não haverá mais maldição",
+        "note": "A terra fica sob maldição por causa do pecado. Na nova criação, a maldição desaparece para sempre.",
+        "question": "Que parte do quebrantamento do mundo você mais deseja ver curada?"
+      },
+      {
+        "title": "A árvore da vida",
+        "note": "A árvore da vida estava no Éden. Ela volta na Nova Jerusalém, com folhas para a cura das nações.",
+        "question": "O que as folhas “para a cura das nações” sugerem sobre o futuro?"
+      },
+      {
+        "title": "Face a face",
+        "note": "Depois de pecar, Adão e Eva se esconderam de Deus. No fim da história, o seu povo o vê face a face.",
+        "question": "Como a esperança de ver Deus face a face muda a forma como você vive agora?"
+      }
+    ]
+  },
+  {
+    "id": "covenant",
+    "name": "As promessas da aliança de Deus",
+    "summary": "Siga as promessas solenes que Deus faz, de Noé à nova aliança em Jesus.",
+    "steps": [
+      {
+        "title": "Uma promessa depois do dilúvio",
+        "note": "Depois do dilúvio, Deus se compromete a nunca mais destruir a terra com água. Isaías lembra essa promessa para garantir aos exilados que a bondade de Deus não será retirada.",
+        "question": "Por que você acha que Deus escolhe se comprometer com promessas?"
+      },
+      {
+        "title": "A família de Abraão",
+        "note": "Deus promete ser o Deus de Abraão e de seus descendentes para sempre. Paulo diz que todos os que pertencem a Cristo são contados como família de Abraão e participam dessa promessa.",
+        "question": "O que significa para você fazer parte de uma família de fé que atravessa milhares de anos?"
+      },
+      {
+        "title": "O sangue da aliança",
+        "note": "No Sinai, Moisés sela a aliança com o sangue do sacrifício. Na Última Ceia, Jesus fala do próprio sangue como o sangue da aliança, derramado para perdão.",
+        "question": "Como a Ceia ganha novo sentido à luz dessa ligação?"
+      },
+      {
+        "title": "Uma promessa a Davi",
+        "note": "Deus promete a Davi um trono que vai durar para sempre. O Salmo 89 se apega a essa aliança mesmo quando o reino parece estar ruindo.",
+        "question": "Como você se apega às promessas de Deus quando as circunstâncias parecem dizer o contrário?"
+      },
+      {
+        "title": "A nova aliança",
+        "note": "Jeremias anuncia uma nova aliança escrita nos corações. Jesus declara que a nova aliança começa com a sua morte.",
+        "question": "Qual é a diferença entre regras escritas em pedra e uma lei escrita no coração?"
+      },
+      {
+        "title": "Uma aliança eterna",
+        "note": "Ezequiel promete uma aliança de paz que dura para sempre. Hebreus termina chamando Jesus de pastor ressuscitado pelo sangue dessa aliança eterna.",
+        "question": "Onde você mais precisa da paz que essa aliança promete?"
+      }
+    ]
+  },
+  {
+    "id": "exodus",
+    "name": "Saída do Egito: o caminho da liberdade",
+    "summary": "O resgate da escravidão se torna o modelo da liberdade maior que Jesus traz.",
+    "steps": [
+      {
+        "title": "Deus vê e ouve",
+        "note": "Na sarça ardente, Deus diz a Moisés que viu o sofrimento do seu povo e veio resgatá-lo. Estêvão reconta esse momento para mostrar que Deus sempre agiu para salvar.",
+        "question": "O que significa para você que Deus vê e ouve o sofrimento?"
+      },
+      {
+        "title": "Pelo meio do mar",
+        "note": "Deus abre um caminho pelo mar para Israel escapar. Paulo olha para essa travessia como lição e figura para os que creem.",
+        "question": "Quando Deus abriu um caminho para você onde parecia não haver nenhum?"
+      },
+      {
+        "title": "Pão do céu",
+        "note": "Deus alimenta Israel com maná no deserto. Jesus diz que agora o Pai dá o verdadeiro pão do céu, que é o próprio Jesus.",
+        "question": "Em que você se apoia para se sustentar, e como Jesus oferece algo mais profundo?"
+      },
+      {
+        "title": "Água da rocha",
+        "note": "Sai água de uma rocha para salvar um povo com sede. Paulo diz que essa rocha apontava para Cristo.",
+        "question": "Como Jesus cuidou de você em uma fase de secura?"
+      },
+      {
+        "title": "Chamado do Egito",
+        "note": "Oseias lembra Deus chamando Israel, seu filho, para fora do Egito. Mateus vê o mesmo padrão quando o menino Jesus volta do Egito.",
+        "question": "Por que Mateus quer que os leitores vejam Jesus revivendo a história de Israel?"
+      },
+      {
+        "title": "Libertos para a liberdade",
+        "note": "Os mandamentos começam lembrando Israel que Deus o libertou da escravidão. Paulo pede aos que creem que permaneçam firmes na liberdade que Cristo conquistou e não voltem à escravidão.",
+        "question": "Que velhos hábitos tentam puxar você de volta, e o que ajuda você a permanecer livre?"
+      },
+      {
+        "title": "O cântico dos resgatados",
+        "note": "Depois de atravessar o mar, Moisés e Israel cantam a vitória de Deus. Em Apocalipse, os resgatados cantam o cântico de Moisés e do Cordeiro.",
+        "question": "Que resgate na sua vida merece um cântico?"
+      }
+    ]
+  },
+  {
+    "id": "priest",
+    "name": "Nosso grande Sumo Sacerdote",
+    "summary": "Os sacerdotes ficavam entre Deus e o povo. Hebreus mostra como Jesus cumpre esse papel de uma vez por todas.",
+    "steps": [
+      {
+        "title": "Um sacerdote misterioso",
+        "note": "Abraão encontra Melquisedeque, rei e sacerdote que o abençoa. Hebreus usa essa breve cena para explicar um sacerdócio mais antigo e maior que o de Arão.",
+        "question": "Por que Hebreus volta tão longe no tempo para explicar quem Jesus é?"
+      },
+      {
+        "title": "Sacerdote para sempre",
+        "note": "O Salmo 110 fala de um rei que também é sacerdote para sempre. Hebreus aplica isso diretamente a Jesus.",
+        "question": "Que diferença faz o sacerdócio de Jesus nunca terminar?"
+      },
+      {
+        "title": "Levando os nomes do povo",
+        "note": "Arão levava os nomes das tribos de Israel sobre o coração ao entrar na presença de Deus. Hebreus diz que Jesus vive sempre para interceder junto ao Pai pelo seu povo.",
+        "question": "Como é saber que Jesus está orando por você?"
+      },
+      {
+        "title": "O Dia da Expiação",
+        "note": "Uma vez por ano, o sumo sacerdote levava o sangue do sacrifício ao Lugar Santíssimo. Jesus entrou uma vez por todas com o próprio sangue e garantiu uma redenção eterna.",
+        "question": "O que “uma vez por todas” significa para a culpa que você ainda carrega?"
+      },
+      {
+        "title": "Confiança para se aproximar",
+        "note": "Nem o sumo sacerdote podia entrar no lugar santíssimo quando quisesse. Hebreus diz que agora os que creem podem se aproximar de Deus com confiança por causa de Jesus.",
+        "question": "O que impede você de se aproximar de Deus, e como isso responde a esse impedimento?"
+      },
+      {
+        "title": "Um reino de sacerdotes",
+        "note": "No Sinai, Deus chama Israel para ser um reino de sacerdotes. Pedro dá o mesmo chamado à igreja: anunciar a bondade de Deus ao mundo.",
+        "question": "Como você poderia servir de ponte entre Deus e as pessoas ao seu redor nesta semana?"
+      }
+    ]
+  },
+  {
+    "id": "water",
+    "name": "Água e vida nova",
+    "summary": "Da criação ao rio da vida, a água conta a história de purificação, resgate e renovação.",
+    "steps": [
+      {
+        "title": "Espírito e água",
+        "note": "Na criação, o Espírito se move sobre as águas. Jesus diz a Nicodemos que, para entrar no Reino de Deus, é preciso nascer da água e do Espírito.",
+        "question": "O que significa ser feito novo, e não apenas melhorado?"
+      },
+      {
+        "title": "Salvos pelo dilúvio",
+        "note": "A família de Noé é levada em segurança pelas águas do juízo. Pedro liga esse resgate ao batismo e à vida nova que ele representa.",
+        "question": "O que o seu batismo, ou a ideia de batismo, diz sobre onde está a sua segurança?"
+      },
+      {
+        "title": "Pelo meio do mar",
+        "note": "Israel atravessa o mar em terra seca. Paulo descreve a travessia como uma espécie de batismo em uma nova identidade.",
+        "question": "De onde Deus tirou você, e para onde ele levou você?"
+      },
+      {
+        "title": "A fonte de água viva",
+        "note": "Jeremias diz que o povo de Deus o abandonou, a fonte de água viva, por cisternas rachadas. Jesus oferece a uma mulher samaritana a água viva que só ele pode dar.",
+        "question": "Em que “cisternas rachadas” é tentador se apoiar hoje?"
+      },
+      {
+        "title": "Levados às fontes",
+        "note": "O Pastor do Salmo 23 conduz suas ovelhas a águas tranquilas. Em Apocalipse, o Cordeiro pastoreia o seu povo até fontes de água viva e enxuga suas lágrimas.",
+        "question": "Onde você precisa que o Pastor leve você ao descanso?"
+      },
+      {
+        "title": "O rio da vida",
+        "note": "Ezequiel vê um rio saindo do templo que traz vida por onde passa. João vê o rio da água da vida saindo do trono de Deus na nova criação.",
+        "question": "Como a sua vida poderia ser um canal para a vida de Deus chegar a outras pessoas?"
+      }
+    ]
+  },
+  {
+    "id": "kids-promises",
+    "name": "Deus cumpre suas promessas",
+    "summary": "Para crianças: Deus sempre faz o que diz.",
+    "steps": [
+      {
+        "title": "O arco-íris",
+        "note": "Depois do dilúvio, Deus colocou um arco-íris no céu como sinal da sua promessa. No céu, João vê um arco-íris ao redor do trono de Deus.",
+        "question": "O que um arco-íris faz você lembrar sobre Deus?"
+      },
+      {
+        "title": "Conte as estrelas",
+        "note": "Deus disse a Abraão para olhar as estrelas e prometeu a ele uma família desse tamanho. Hebreus diz que isso aconteceu de verdade!",
+        "question": "Você lembra de uma promessa que alguém cumpriu para você?"
+      },
+      {
+        "title": "Um bebê para Sara",
+        "note": "Sara era muito idosa, mas Deus deu a ela um menino, do jeitinho que tinha prometido.",
+        "question": "Existe alguma coisa difícil demais para Deus?"
+      },
+      {
+        "title": "Todas as promessas",
+        "note": "Josué disse que nenhuma das boas promessas de Deus falhou. Paulo diz que todas as promessas de Deus são “sim” em Jesus.",
+        "question": "Que promessa de Deus você gostaria de lembrar nesta semana?"
+      }
+    ]
+  },
+  {
+    "id": "kids-shepherd",
+    "name": "Jesus, o Bom Pastor",
+    "summary": "Para crianças: Jesus cuida das suas ovelhas.",
+    "steps": [
+      {
+        "title": "Meu pastor",
+        "note": "Davi disse que o Senhor é o seu pastor. Jesus disse: Eu sou o bom pastor.",
+        "question": "O que um pastor faz pelas ovelhas?"
+      },
+      {
+        "title": "A ovelha perdida",
+        "note": "Deus disse que iria procurar suas ovelhas perdidas. Jesus contou a história de um pastor que procurou até encontrar a ovelha que estava perdida.",
+        "question": "Como você acha que a ovelha perdida se sentiu quando foi encontrada?"
+      },
+      {
+        "title": "Bem pertinho",
+        "note": "Isaías diz que Deus leva os cordeirinhos junto ao coração. Jesus pegou as crianças no colo e as abençoou.",
+        "question": "Como é saber que Jesus ama as crianças?"
+      },
+      {
+        "title": "Seguindo o pastor",
+        "note": "As ovelhas de Jesus conhecem a voz dele e o seguem. Um dia ele vai levá-las a águas frescas e enxugar todas as lágrimas.",
+        "question": "Como podemos ouvir Jesus?"
+      }
+    ]
+  },
+  {
+    "id": "kids-rescue",
+    "name": "Os grandes resgates de Deus",
+    "summary": "Para crianças: histórias de Deus salvando o seu povo.",
+    "steps": [
+      {
+        "title": "A arca de Noé",
+        "note": "Deus mandou Noé construir um barco enorme, e ele protegeu a família de Noé no dilúvio.",
+        "question": "O que você levaria na arca de Noé?"
+      },
+      {
+        "title": "A cova dos leões",
+        "note": "Deus enviou um anjo para fechar a boca dos leões, e Daniel ficou seguro. Hebreus lembra pessoas que confiaram em Deus assim.",
+        "question": "Quando você precisa ser corajoso?"
+      },
+      {
+        "title": "Jonas e o grande peixe",
+        "note": "Jonas orou dentro do peixe, e Deus o salvou. Jesus disse que o seu próprio resgate seria como os três dias de Jonas.",
+        "question": "Onde você pode orar a Deus? (Em qualquer lugar!)"
+      },
+      {
+        "title": "O maior resgate",
+        "note": "Deus prometeu procurar os perdidos. Jesus disse que veio para encontrar e salvar as pessoas que estão perdidas.",
+        "question": "Para quem você poderia contar sobre Jesus?"
+      }
+    ]
+  },
+  {
+    "id": "kids-christmas",
+    "name": "O primeiro Natal",
+    "summary": "Para crianças: Deus cumpriu suas promessas quando Jesus nasceu.",
+    "steps": [
+      {
+        "title": "Nascido em Belém",
+        "note": "Muito antes de Jesus nascer, Deus disse que um rei especial viria da pequena Belém. E foi justamente lá que Jesus nasceu!",
+        "question": "Por que você acha que Deus escolheu uma cidade pequena?"
+      },
+      {
+        "title": "Deus conosco",
+        "note": "Deus prometeu um bebê chamado Emanuel, que quer dizer Deus conosco. Jesus é Deus que veio para estar com a gente.",
+        "question": "Como é saber que Deus está sempre com você?"
+      },
+      {
+        "title": "Sigam a estrela",
+        "note": "Deus disse que uma estrela viria da família de Jacó. Os magos viram uma estrela e a seguiram até chegar a Jesus.",
+        "question": "Se você pudesse levar um presente para o menino Jesus, qual seria?"
+      },
+      {
+        "title": "Um bebê que é Rei",
+        "note": "Deus prometeu uma criança que seria um rei de paz. Os anjos contaram aos pastores que esse Salvador tinha nascido!",
+        "question": "Para quem você pode contar a boa notícia neste Natal?"
+      }
+    ]
+  }
+]

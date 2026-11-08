@@ -1,0 +1,62 @@
+[
+  {
+    "id": "messiah",
+    "name": "Jesus anunciado",
+    "description": "Promessas do Antigo Testamento sobre o Messias que viria e onde elas se cumprem."
+  },
+  {
+    "id": "salvation",
+    "name": "Salvação e a cruz",
+    "description": "Como Deus resgata as pessoas pela morte e ressurreição de Jesus."
+  },
+  {
+    "id": "grace",
+    "name": "Graça e perdão",
+    "description": "Favor imerecido, misericórdia e o perdão dos pecados."
+  },
+  {
+    "id": "freedom",
+    "name": "Liberdade e identidade",
+    "description": "Quem somos em Cristo e a liberdade que ele traz."
+  },
+  {
+    "id": "love",
+    "name": "Amor",
+    "description": "O amor de Deus por nós, e amar a Deus e às pessoas."
+  },
+  {
+    "id": "faith",
+    "name": "Fé",
+    "description": "Confiar em Deus e viver pela fé."
+  },
+  {
+    "id": "spirit",
+    "name": "O Espírito Santo",
+    "description": "O Espírito de Deus em ação, da criação à igreja."
+  },
+  {
+    "id": "prayer",
+    "name": "Oração",
+    "description": "Conversar com Deus e o que ele promete quando oramos."
+  },
+  {
+    "id": "kingdom",
+    "name": "O Reino de Deus",
+    "description": "O reinado de Deus anunciado, chegando em Jesus e vindo em plenitude."
+  },
+  {
+    "id": "creation",
+    "name": "Criação",
+    "description": "Deus como Criador dos céus, da terra e da humanidade."
+  },
+  {
+    "id": "generosity",
+    "name": "Generosidade",
+    "description": "Dar, administrar bem e ter a mão aberta."
+  },
+  {
+    "id": "hope",
+    "name": "Esperança e ressurreição",
+    "description": "A esperança viva de uma nova vida que a morte não pode acabar."
+  }
+]

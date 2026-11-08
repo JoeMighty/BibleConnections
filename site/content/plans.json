@@ -3,8 +3,10 @@
     "id": "advent",
     "name": "Advent: promise and fulfilment",
     "name_es": "Adviento: promesa y cumplimiento",
+    "name_pt": "Advento: promessa e cumprimento",
     "description": "One promise and its fulfilment each day from Advent Sunday to Christmas Day, through the themes of hope, peace, joy and love.",
     "description_es": "Una promesa y su cumplimiento cada día, del primer domingo de Adviento a Navidad, con los temas de esperanza, paz, gozo y amor.",
+    "description_pt": "Uma promessa e seu cumprimento a cada dia, do primeiro domingo do Advento ao dia de Natal, com os temas esperança, paz, alegria e amor.",
     "source": "days",
     "perDay": 1,
     "season": "advent",
@@ -14,216 +16,270 @@
         "b": "Gal.4.4",
         "title": "Hope: the first promise",
         "title_es": "Esperanza: la primera promesa",
+        "title_pt": "Esperança: o primeiro anúncio",
         "note": "Right after the fall, God promises that a child of the woman will defeat the serpent. Paul says that when the time had fully come, God sent his Son, born of a woman.",
-        "note_es": "Justo después de la caída, Dios promete que un descendiente de la mujer vencerá a la serpiente. Pablo dice que, cuando llegó el tiempo, Dios envió a su Hijo, nacido de mujer."
+        "note_es": "Justo después de la caída, Dios promete que un descendiente de la mujer vencerá a la serpiente. Pablo dice que, cuando llegó el tiempo, Dios envió a su Hijo, nacido de mujer.",
+        "note_pt": "Logo depois da queda, Deus promete que um descendente da mulher vai derrotar a serpente. Paulo diz que, quando chegou a plenitude do tempo, Deus enviou seu Filho, nascido de mulher."
       },
       {
         "a": "Gen.12.3",
         "b": "Gal.3.8",
         "title": "Hope: a blessing for every nation",
         "title_es": "Esperanza: una bendición para todas las naciones",
+        "title_pt": "Esperança: bênção para todas as nações",
         "note": "God tells Abraham that all the families of the earth will be blessed through him. Paul calls this the gospel announced ahead of time.",
-        "note_es": "Dios le dice a Abraham que todas las familias de la tierra serán bendecidas por medio de él. Pablo lo llama el evangelio anunciado de antemano."
+        "note_es": "Dios le dice a Abraham que todas las familias de la tierra serán bendecidas por medio de él. Pablo lo llama el evangelio anunciado de antemano.",
+        "note_pt": "Deus diz a Abraão que todas as famílias da terra serão abençoadas por meio dele. Paulo chama isso de evangelho anunciado de antemão."
       },
       {
         "a": "Gen.49.10",
         "b": "Rev.5.5",
         "title": "Hope: the lion of Judah",
         "title_es": "Esperanza: el león de Judá",
+        "title_pt": "Esperança: o leão de Judá",
         "note": "Jacob blesses Judah with a ruler's staff that will not depart. In Revelation the Lion of the tribe of Judah has won the victory.",
-        "note_es": "Jacob bendice a Judá con un cetro de gobernante que no se apartará. En Apocalipsis, el León de la tribu de Judá ha vencido."
+        "note_es": "Jacob bendice a Judá con un cetro de gobernante que no se apartará. En Apocalipsis, el León de la tribu de Judá ha vencido.",
+        "note_pt": "Jacó abençoa Judá com um cetro de governante que não se afastará dele. Em Apocalipse, o Leão da tribo de Judá conquistou a vitória."
       },
       {
         "a": "Num.24.17",
         "b": "Matt.2.2",
         "title": "Hope: a star out of Jacob",
         "title_es": "Esperanza: una estrella de Jacob",
+        "title_pt": "Esperança: uma estrela de Jacó",
         "note": "Balaam sees a star rising from Jacob and a ruler from Israel. The wise men follow a star to find the newborn king.",
-        "note_es": "Balaam ve una estrella que sale de Jacob y un gobernante de Israel. Los sabios siguen una estrella para encontrar al rey recién nacido."
+        "note_es": "Balaam ve una estrella que sale de Jacob y un gobernante de Israel. Los sabios siguen una estrella para encontrar al rey recién nacido.",
+        "note_pt": "Balaão vê uma estrela surgindo de Jacó e um governante saindo de Israel. Os magos seguem uma estrela para encontrar o rei recém-nascido."
       },
       {
         "a": "Deut.18.15",
         "b": "Acts.3.22",
         "title": "Hope: a prophet like Moses",
         "title_es": "Esperanza: un profeta como Moisés",
+        "title_pt": "Esperança: um profeta como Moisés",
         "note": "Moses promises that God will raise up a prophet like him. Peter tells the crowd in Jerusalem that this prophet is Jesus.",
-        "note_es": "Moisés promete que Dios levantará un profeta como él. Pedro le dice a la multitud en Jerusalén que ese profeta es Jesús."
+        "note_es": "Moisés promete que Dios levantará un profeta como él. Pedro le dice a la multitud en Jerusalén que ese profeta es Jesús.",
+        "note_pt": "Moisés promete que Deus levantará um profeta como ele. Pedro diz à multidão em Jerusalém que esse profeta é Jesus."
       },
       {
         "a": "2Sam.7.12",
         "b": "Luke.1.32",
         "title": "Hope: a son of David",
         "title_es": "Esperanza: un hijo de David",
+        "title_pt": "Esperança: um filho de Davi",
         "note": "God promises David a descendant whose kingdom will last. The angel tells Mary that her son will be given the throne of his father David.",
-        "note_es": "Dios promete a David un descendiente cuyo reino durará. El ángel le dice a María que su hijo recibirá el trono de su padre David."
+        "note_es": "Dios promete a David un descendiente cuyo reino durará. El ángel le dice a María que su hijo recibirá el trono de su padre David.",
+        "note_pt": "Deus promete a Davi um descendente cujo reino vai durar. O anjo diz a Maria que o filho dela receberá o trono de seu pai Davi."
       },
       {
         "a": "Ps.2.7",
         "b": "Heb.1.5",
         "title": "Hope: you are my Son",
         "title_es": "Esperanza: tú eres mi Hijo",
+        "title_pt": "Esperança: tu és meu Filho",
         "note": "In the psalm, God declares his chosen king to be his Son. Hebrews uses these words to show that Jesus is greater than the angels.",
-        "note_es": "En el salmo, Dios declara que su rey escogido es su Hijo. Hebreos usa estas palabras para mostrar que Jesús es superior a los ángeles."
+        "note_es": "En el salmo, Dios declara que su rey escogido es su Hijo. Hebreos usa estas palabras para mostrar que Jesús es superior a los ángeles.",
+        "note_pt": "No salmo, Deus declara que o rei escolhido é seu Filho. Hebreus usa essas palavras para mostrar que Jesus é maior que os anjos."
       },
       {
         "a": "Isa.7.14",
         "b": "Matt.1.23",
         "title": "Peace: God with us",
         "title_es": "Paz: Dios con nosotros",
+        "title_pt": "Paz: Deus conosco",
         "note": "Isaiah gives a sign: a child called Immanuel, God with us. Matthew sees the full meaning of the sign in the birth of Jesus.",
-        "note_es": "Isaías da una señal: un niño llamado Emanuel, Dios con nosotros. Mateo ve el pleno sentido de la señal en el nacimiento de Jesús."
+        "note_es": "Isaías da una señal: un niño llamado Emanuel, Dios con nosotros. Mateo ve el pleno sentido de la señal en el nacimiento de Jesús.",
+        "note_pt": "Isaías dá um sinal: uma criança chamada Emanuel, Deus conosco. Mateus vê o pleno sentido desse sinal no nascimento de Jesus."
       },
       {
         "a": "Isa.9.6",
         "b": "Luke.2.11",
         "title": "Peace: a child is born",
         "title_es": "Paz: un niño nos ha nacido",
+        "title_pt": "Paz: um menino nos nasceu",
         "note": "Isaiah announces a child who will be called Prince of Peace. The angels tell the shepherds that a Savior has been born in the town of David.",
-        "note_es": "Isaías anuncia un niño que será llamado Príncipe de paz. Los ángeles les dicen a los pastores que ha nacido un Salvador en la ciudad de David."
+        "note_es": "Isaías anuncia un niño que será llamado Príncipe de paz. Los ángeles les dicen a los pastores que ha nacido un Salvador en la ciudad de David.",
+        "note_pt": "Isaías anuncia uma criança que será chamada Príncipe da Paz. Os anjos dizem aos pastores que um Salvador nasceu na cidade de Davi."
       },
       {
         "a": "Isa.9.7",
         "b": "Luke.1.33",
         "title": "Peace: a kingdom without end",
         "title_es": "Paz: un reino sin fin",
+        "title_pt": "Paz: um reino sem fim",
         "note": "Isaiah says the peace of this king's rule will never end. Gabriel tells Mary that her son's kingdom will have no end.",
-        "note_es": "Isaías dice que la paz del reinado de este rey no tendrá fin. Gabriel le dice a María que el reino de su hijo no tendrá fin."
+        "note_es": "Isaías dice que la paz del reinado de este rey no tendrá fin. Gabriel le dice a María que el reino de su hijo no tendrá fin.",
+        "note_pt": "Isaías diz que a paz do reinado desse rei nunca terá fim. Gabriel diz a Maria que o reino do seu filho não terá fim."
       },
       {
         "a": "Isa.11.1",
         "b": "Rom.15.12",
         "title": "Peace: a shoot from Jesse",
         "title_es": "Paz: un retoño de Isaí",
+        "title_pt": "Paz: um rebento de Jessé",
         "note": "From what looks like a dead stump, a new shoot grows from Jesse's family. Paul says the nations put their hope in this root of Jesse.",
-        "note_es": "De lo que parece un tronco muerto brota un retoño de la familia de Isaí. Pablo dice que las naciones ponen su esperanza en esta raíz de Isaí."
+        "note_es": "De lo que parece un tronco muerto brota un retoño de la familia de Isaí. Pablo dice que las naciones ponen su esperanza en esta raíz de Isaí.",
+        "note_pt": "Do que parece um tronco morto, nasce um broto novo da família de Jessé. Paulo diz que as nações põem sua esperança nessa raiz de Jessé."
       },
       {
         "a": "Isa.40.3",
         "b": "Mark.1.3",
         "title": "Peace: prepare the way",
         "title_es": "Paz: preparen el camino",
+        "title_pt": "Paz: preparem o caminho",
         "note": "A voice calls for a road to be prepared for the Lord. Mark begins his Gospel with John the Baptist as that voice in the wilderness.",
-        "note_es": "Una voz pide que se prepare un camino para el Señor. Marcos comienza su Evangelio con Juan el Bautista como esa voz en el desierto."
+        "note_es": "Una voz pide que se prepare un camino para el Señor. Marcos comienza su Evangelio con Juan el Bautista como esa voz en el desierto.",
+        "note_pt": "Uma voz pede que se prepare um caminho para o Senhor. Marcos começa seu Evangelho com João Batista como essa voz no deserto."
       },
       {
         "a": "Isa.40.11",
         "b": "John.10.11",
         "title": "Peace: the gentle shepherd",
         "title_es": "Paz: el pastor tierno",
+        "title_pt": "Paz: o pastor bondoso",
         "note": "Isaiah pictures God carrying his lambs close to his heart. Jesus calls himself the good shepherd who lays down his life for the sheep.",
-        "note_es": "Isaías describe a Dios llevando a sus corderos junto a su corazón. Jesús se llama a sí mismo el buen pastor que da su vida por las ovejas."
+        "note_es": "Isaías describe a Dios llevando a sus corderos junto a su corazón. Jesús se llama a sí mismo el buen pastor que da su vida por las ovejas.",
+        "note_pt": "Isaías descreve Deus levando seus cordeiros junto ao coração. Jesus se chama de bom pastor, que dá a vida pelas ovelhas."
       },
       {
         "a": "Isa.52.7",
         "b": "Rom.10.15",
         "title": "Peace: good news on the mountains",
         "title_es": "Paz: buenas noticias sobre los montes",
+        "title_pt": "Paz: boas notícias nos montes",
         "note": "Isaiah celebrates the messenger who brings news of peace and salvation. Paul applies it to those who carry the good news about Jesus.",
-        "note_es": "Isaías celebra al mensajero que trae noticias de paz y salvación. Pablo lo aplica a quienes llevan las buenas noticias de Jesús."
+        "note_es": "Isaías celebra al mensajero que trae noticias de paz y salvación. Pablo lo aplica a quienes llevan las buenas noticias de Jesús.",
+        "note_pt": "Isaías celebra o mensageiro que traz notícias de paz e salvação. Paulo aplica isso aos que levam a boa notícia de Jesus."
       },
       {
         "a": "Isa.35.5",
         "b": "Matt.11.5",
         "title": "Joy: eyes opened",
         "title_es": "Gozo: ojos abiertos",
+        "title_pt": "Alegria: olhos abertos",
         "note": "Isaiah promises that the blind will see and the lame will leap. When John's followers ask who Jesus is, he points to these very signs.",
-        "note_es": "Isaías promete que los ciegos verán y los cojos saltarán. Cuando los seguidores de Juan preguntan quién es Jesús, él señala estas mismas señales."
+        "note_es": "Isaías promete que los ciegos verán y los cojos saltarán. Cuando los seguidores de Juan preguntan quién es Jesús, él señala estas mismas señales.",
+        "note_pt": "Isaías promete que os cegos verão e os coxos saltarão. Quando os seguidores de João perguntam quem Jesus é, ele aponta para esses mesmos sinais."
       },
       {
         "a": "Isa.61.1",
         "b": "Luke.4.18",
         "title": "Joy: good news for the poor",
         "title_es": "Gozo: buenas noticias para los pobres",
+        "title_pt": "Alegria: boas notícias aos pobres",
         "note": "The servant is anointed to bring good news to the poor and freedom to captives. In Nazareth, Jesus reads this passage and says it is fulfilled today.",
-        "note_es": "El siervo es ungido para dar buenas noticias a los pobres y libertad a los cautivos. En Nazaret, Jesús lee este pasaje y dice que hoy se ha cumplido."
+        "note_es": "El siervo es ungido para dar buenas noticias a los pobres y libertad a los cautivos. En Nazaret, Jesús lee este pasaje y dice que hoy se ha cumplido.",
+        "note_pt": "O servo é ungido para levar boas notícias aos pobres e libertação aos cativos. Em Nazaré, Jesus lê essa passagem e diz que ela se cumpre hoje."
       },
       {
         "a": "Isa.42.1",
         "b": "Matt.12.18",
         "title": "Joy: my chosen servant",
         "title_es": "Gozo: mi siervo escogido",
+        "title_pt": "Alegria: meu servo escolhido",
         "note": "God introduces his servant, full of the Spirit and gentle with the weak. Matthew quotes this to explain the quiet, healing way of Jesus.",
-        "note_es": "Dios presenta a su siervo, lleno del Espíritu y tierno con los débiles. Mateo lo cita para explicar la manera humilde y sanadora de Jesús."
+        "note_es": "Dios presenta a su siervo, lleno del Espíritu y tierno con los débiles. Mateo lo cita para explicar la manera humilde y sanadora de Jesús.",
+        "note_pt": "Deus apresenta seu servo, cheio do Espírito e manso com os fracos. Mateus cita isso para explicar o jeito sereno e restaurador de Jesus."
       },
       {
         "a": "Isa.9.2",
         "b": "Matt.4.16",
         "title": "Joy: a great light",
         "title_es": "Gozo: una gran luz",
+        "title_pt": "Alegria: uma grande luz",
         "note": "People walking in darkness see a great light. Matthew says this happened when Jesus began his ministry in Galilee.",
-        "note_es": "El pueblo que andaba en oscuridad ve una gran luz. Mateo dice que esto ocurrió cuando Jesús comenzó su ministerio en Galilea."
+        "note_es": "El pueblo que andaba en oscuridad ve una gran luz. Mateo dice que esto ocurrió cuando Jesús comenzó su ministerio en Galilea.",
+        "note_pt": "O povo que andava nas trevas vê uma grande luz. Mateus diz que isso aconteceu quando Jesus começou seu ministério na Galileia."
       },
       {
         "a": "Jer.23.5",
         "b": "Luke.1.32",
         "title": "Joy: a righteous Branch",
         "title_es": "Gozo: un Renuevo justo",
+        "title_pt": "Alegria: um Renovo justo",
         "note": "Jeremiah promises a righteous Branch from David who will reign wisely. Luke announces Jesus as the son of David who will reign for ever.",
-        "note_es": "Jeremías promete un Renuevo justo de David que reinará con sabiduría. Lucas anuncia a Jesús como el hijo de David que reinará para siempre."
+        "note_es": "Jeremías promete un Renuevo justo de David que reinará con sabiduría. Lucas anuncia a Jesús como el hijo de David que reinará para siempre.",
+        "note_pt": "Jeremias promete um Renovo justo da casa de Davi que reinará com sabedoria. Lucas anuncia Jesus como o filho de Davi que reinará para sempre."
       },
       {
         "a": "Mal.4.2",
         "b": "Luke.1.78",
         "title": "Joy: the sunrise from on high",
         "title_es": "Gozo: la aurora de lo alto",
+        "title_pt": "Alegria: o sol nascente do alto",
         "note": "Malachi pictures the sun of righteousness rising with healing. Zechariah sings that the rising sun will visit us from heaven.",
-        "note_es": "Malaquías describe el sol de justicia que sale trayendo sanidad. Zacarías canta que la aurora nos visitará desde lo alto."
+        "note_es": "Malaquías describe el sol de justicia que sale trayendo sanidad. Zacarías canta que la aurora nos visitará desde lo alto.",
+        "note_pt": "Malaquias descreve o sol da justiça nascendo com cura. Zacarias canta que o sol nascente nos visitará do alto."
       },
       {
         "a": "Mal.3.1",
         "b": "Mark.1.2",
         "title": "Joy: my messenger",
         "title_es": "Gozo: mi mensajero",
+        "title_pt": "Alegria: meu mensageiro",
         "note": "God promises to send a messenger ahead of him. Mark opens with John the Baptist preparing the way for Jesus.",
-        "note_es": "Dios promete enviar un mensajero delante de él. Marcos comienza con Juan el Bautista preparando el camino para Jesús."
+        "note_es": "Dios promete enviar un mensajero delante de él. Marcos comienza con Juan el Bautista preparando el camino para Jesús.",
+        "note_pt": "Deus promete enviar um mensageiro à sua frente. Marcos começa com João Batista preparando o caminho para Jesus."
       },
       {
         "a": "Isa.53.5",
         "b": "1Pet.2.24",
         "title": "Love: by his wounds",
         "title_es": "Amor: por sus heridas",
+        "title_pt": "Amor: pelas suas feridas",
         "note": "The servant is wounded for the wrongs of others. Peter says Christ carried our sins in his body, so that we might be healed.",
-        "note_es": "El siervo es herido por las faltas de otros. Pedro dice que Cristo llevó nuestros pecados en su cuerpo para que fuéramos sanados."
+        "note_es": "El siervo es herido por las faltas de otros. Pedro dice que Cristo llevó nuestros pecados en su cuerpo para que fuéramos sanados.",
+        "note_pt": "O servo é ferido pelas faltas de outros. Pedro diz que Cristo levou nossos pecados em seu corpo, para que fôssemos curados."
       },
       {
         "a": "Jer.31.31",
         "b": "Luke.22.20",
         "title": "Love: a new covenant",
         "title_es": "Amor: un nuevo pacto",
+        "title_pt": "Amor: uma nova aliança",
         "note": "Jeremiah promises a new covenant written on the heart. At the Last Supper Jesus calls the cup the new covenant in his blood.",
-        "note_es": "Jeremías promete un nuevo pacto escrito en el corazón. En la última cena, Jesús llama a la copa el nuevo pacto en su sangre."
+        "note_es": "Jeremías promete un nuevo pacto escrito en el corazón. En la última cena, Jesús llama a la copa el nuevo pacto en su sangre.",
+        "note_pt": "Jeremias promete uma nova aliança escrita no coração. Na Última Ceia, Jesus chama o cálice de nova aliança no seu sangue."
       },
       {
         "a": "Mic.5.2",
         "b": "Matt.2.6",
         "title": "Love: little Bethlehem",
         "title_es": "Amor: la pequeña Belén",
+        "title_pt": "Amor: a pequena Belém",
         "note": "Micah names small Bethlehem as the birthplace of Israel's ruler. When Herod asks, the scholars answer from this passage.",
-        "note_es": "Miqueas nombra a la pequeña Belén como el lugar de nacimiento del gobernante de Israel. Cuando Herodes pregunta, los maestros responden con este pasaje."
+        "note_es": "Miqueas nombra a la pequeña Belén como el lugar de nacimiento del gobernante de Israel. Cuando Herodes pregunta, los maestros responden con este pasaje.",
+        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Quando Herodes pergunta, os mestres respondem com essa passagem."
       },
       {
         "a": "Isa.49.6",
         "b": "Luke.2.32",
         "title": "Love: a light for the nations",
         "title_es": "Amor: una luz para las naciones",
+        "title_pt": "Amor: luz para as nações",
         "note": "The servant will be a light for the nations, not only for Israel. Holding the baby Jesus, Simeon praises God for this light.",
-        "note_es": "El siervo será luz para las naciones, no solo para Israel. Con el niño Jesús en brazos, Simeón alaba a Dios por esta luz."
+        "note_es": "El siervo será luz para las naciones, no solo para Israel. Con el niño Jesús en brazos, Simeón alaba a Dios por esta luz.",
+        "note_pt": "O servo será luz para as nações, não só para Israel. Segurando o menino Jesus, Simeão louva a Deus por essa luz."
       },
       {
         "a": "Ps.72.10",
         "b": "Matt.2.11",
         "title": "Love: gifts for the king",
         "title_es": "Amor: regalos para el rey",
+        "title_pt": "Amor: presentes para o rei",
         "note": "The psalm pictures kings from far away bringing gifts to Israel's king. The wise men kneel before the child and open their treasures.",
-        "note_es": "El salmo describe reyes lejanos que traen regalos al rey de Israel. Los sabios se arrodillan ante el niño y abren sus tesoros."
+        "note_es": "El salmo describe reyes lejanos que traen regalos al rey de Israel. Los sabios se arrodillan ante el niño y abren sus tesoros.",
+        "note_pt": "O salmo descreve reis de terras distantes levando presentes ao rei de Israel. Os magos se ajoelham diante do menino e abrem seus tesouros."
       },
       {
         "a": "Phil.2.7",
         "b": "John.1.14",
         "title": "Christmas Day: the Word became flesh",
         "title_es": "Navidad: el Verbo se hizo carne",
+        "title_pt": "Dia de Natal: o Verbo se fez carne",
         "note": "Paul describes Christ taking the nature of a servant and being born as a man. John says the Word became flesh and lived among us, full of grace and truth.",
-        "note_es": "Pablo describe a Cristo tomando la forma de siervo y naciendo como hombre. Juan dice que el Verbo se hizo carne y habitó entre nosotros, lleno de gracia y de verdad."
+        "note_es": "Pablo describe a Cristo tomando la forma de siervo y naciendo como hombre. Juan dice que el Verbo se hizo carne y habitó entre nosotros, lleno de gracia y de verdad.",
+        "note_pt": "Paulo descreve Cristo assumindo a natureza de servo e nascendo como homem. João diz que o Verbo se fez carne e habitou entre nós, cheio de graça e de verdade."
       }
     ]
   },
@@ -231,8 +287,10 @@
     "id": "christmas",
     "name": "The twelve days of Christmas",
     "name_es": "Los doce días de Navidad",
+    "name_pt": "Os doze dias de Natal",
     "description": "One promise and its fulfilment for each of the twelve days, from Christmas Day to the eve of Epiphany.",
     "description_es": "Una promesa y su cumplimiento para cada uno de los doce días, de Navidad a la víspera de la Epifanía.",
+    "description_pt": "Uma promessa e seu cumprimento para cada um dos doze dias, do dia de Natal à véspera da Epifania.",
     "source": "days",
     "perDay": 1,
     "season": "christmas",
@@ -242,96 +300,120 @@
         "b": "Luke.2.10",
         "title": "Christmas Day: good news",
         "title_es": "Navidad: buenas noticias",
+        "title_pt": "Dia de Natal: boas notícias",
         "note": "Isaiah tells a messenger to climb a high mountain and shout good news. On the first Christmas night an angel brings the shepherds good news of great joy for all the people.",
-        "note_es": "Isaías le pide a un mensajero que suba a un monte alto y anuncie buenas noticias. La primera noche de Navidad un ángel trae a los pastores buenas noticias de gran gozo para todo el pueblo."
+        "note_es": "Isaías le pide a un mensajero que suba a un monte alto y anuncie buenas noticias. La primera noche de Navidad un ángel trae a los pastores buenas noticias de gran gozo para todo el pueblo.",
+        "note_pt": "Isaías manda um mensageiro subir a um monte alto e anunciar boas notícias. Na primeira noite de Natal, um anjo traz aos pastores boas notícias de grande alegria para todo o povo."
       },
       {
         "a": "Mic.5.2",
         "b": "Luke.2.4",
         "title": "David's town",
         "title_es": "La ciudad de David",
+        "title_pt": "A cidade de Davi",
         "note": "Micah names little Bethlehem as the birthplace of Israel's ruler. A census sends Joseph and Mary to Bethlehem, the town of David, just in time.",
-        "note_es": "Miqueas nombra a la pequeña Belén como lugar de nacimiento del gobernante de Israel. Un censo lleva a José y María a Belén, la ciudad de David, justo a tiempo."
+        "note_es": "Miqueas nombra a la pequeña Belén como lugar de nacimiento del gobernante de Israel. Un censo lleva a José y María a Belén, la ciudad de David, justo a tiempo.",
+        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Um recenseamento leva José e Maria a Belém, a cidade de Davi, bem a tempo."
       },
       {
         "a": "Isa.40.5",
         "b": "John.1.14",
         "title": "Glory revealed",
         "title_es": "La gloria revelada",
+        "title_pt": "A glória revelada",
         "note": "Isaiah promises that the glory of the Lord will be revealed and all people will see it. John says that in Jesus we have seen his glory, full of grace and truth.",
-        "note_es": "Isaías promete que la gloria del Señor se manifestará y todos la verán. Juan dice que en Jesús hemos visto su gloria, llena de gracia y de verdad."
+        "note_es": "Isaías promete que la gloria del Señor se manifestará y todos la verán. Juan dice que en Jesús hemos visto su gloria, llena de gracia y de verdad.",
+        "note_pt": "Isaías promete que a glória do Senhor será revelada e todos a verão. João diz que em Jesus vimos a sua glória, cheia de graça e de verdade."
       },
       {
         "a": "Jer.31.15",
         "b": "Matt.2.18",
         "title": "Rachel weeping",
         "title_es": "Raquel llora",
+        "title_pt": "Raquel chora",
         "note": "Jeremiah hears Rachel weeping for her children. Matthew remembers these words when Herod's soldiers kill the boys of Bethlehem. Christmas comes into a world that still knows grief.",
-        "note_es": "Jeremías oye a Raquel llorar por sus hijos. Mateo recuerda estas palabras cuando los soldados de Herodes matan a los niños de Belén. La Navidad llega a un mundo que todavía conoce el dolor."
+        "note_es": "Jeremías oye a Raquel llorar por sus hijos. Mateo recuerda estas palabras cuando los soldados de Herodes matan a los niños de Belén. La Navidad llega a un mundo que todavía conoce el dolor.",
+        "note_pt": "Jeremias ouve Raquel chorando por seus filhos. Mateus lembra essas palavras quando os soldados de Herodes matam os meninos de Belém. O Natal chega a um mundo que ainda conhece a dor."
       },
       {
         "a": "Isa.52.10",
         "b": "Luke.2.30",
         "title": "Salvation seen",
         "title_es": "La salvación vista",
+        "title_pt": "A salvação vista",
         "note": "Isaiah says all the ends of the earth will see the salvation of God. Old Simeon holds the baby Jesus in the temple and says, my eyes have seen your salvation.",
-        "note_es": "Isaías dice que todos los confines de la tierra verán la salvación de Dios. El anciano Simeón toma al niño Jesús en el templo y dice: mis ojos han visto tu salvación."
+        "note_es": "Isaías dice que todos los confines de la tierra verán la salvación de Dios. El anciano Simeón toma al niño Jesús en el templo y dice: mis ojos han visto tu salvación.",
+        "note_pt": "Isaías diz que todos os confins da terra verão a salvação de Deus. O velho Simeão segura o menino Jesus no templo e diz: meus olhos viram a tua salvação."
       },
       {
         "a": "Isa.42.6",
         "b": "Luke.2.32",
         "title": "A light for the nations",
         "title_es": "Luz para las naciones",
+        "title_pt": "Luz para as nações",
         "note": "God calls his servant to be a light for the nations. Simeon sees that the child he is holding is that light, for every people and not only for Israel.",
-        "note_es": "Dios llama a su siervo a ser luz para las naciones. Simeón ve que el niño que tiene en brazos es esa luz, para todos los pueblos y no solo para Israel."
+        "note_es": "Dios llama a su siervo a ser luz para las naciones. Simeón ve que el niño que tiene en brazos es esa luz, para todos los pueblos y no solo para Israel.",
+        "note_pt": "Deus chama seu servo para ser luz para as nações. Simeão vê que a criança que ele segura é essa luz, para todos os povos e não só para Israel."
       },
       {
         "a": "Ps.90.4",
         "b": "2Pet.3.8",
         "title": "A thousand years like a day",
         "title_es": "Mil años como un día",
+        "title_pt": "Mil anos como um dia",
         "note": "As the year ends, the psalm reminds us that a thousand years are like a day to God. Peter uses the same words to say God is patient and keeps every promise in his time.",
-        "note_es": "Al terminar el año, el salmo nos recuerda que mil años son como un día para Dios. Pedro usa las mismas palabras para decir que Dios es paciente y cumple cada promesa a su tiempo."
+        "note_es": "Al terminar el año, el salmo nos recuerda que mil años son como un día para Dios. Pedro usa las mismas palabras para decir que Dios es paciente y cumple cada promesa a su tiempo.",
+        "note_pt": "No fim do ano, o salmo nos lembra que mil anos são como um dia para Deus. Pedro usa as mesmas palavras para dizer que Deus é paciente e cumpre cada promessa no seu tempo."
       },
       {
         "a": "Ps.130.8",
         "b": "Matt.1.21",
         "title": "His name is Jesus",
         "title_es": "Su nombre es Jesús",
+        "title_pt": "O nome dele é Jesus",
         "note": "The psalm says the Lord himself will redeem Israel from all its sins. The angel tells Joseph to name the child Jesus, because he will save his people from their sins.",
-        "note_es": "El salmo dice que el Señor mismo redimirá a Israel de todos sus pecados. El ángel le dice a José que llame al niño Jesús, porque él salvará a su pueblo de sus pecados."
+        "note_es": "El salmo dice que el Señor mismo redimirá a Israel de todos sus pecados. El ángel le dice a José que llame al niño Jesús, porque él salvará a su pueblo de sus pecados.",
+        "note_pt": "O salmo diz que o próprio Senhor vai redimir Israel de todos os seus pecados. O anjo diz a José que dê ao menino o nome de Jesus, porque ele salvará o seu povo dos seus pecados."
       },
       {
         "a": "Exod.4.22",
         "b": "Matt.2.15",
         "title": "Out of Egypt",
         "title_es": "De Egipto",
+        "title_pt": "Do Egito",
         "note": "God calls Israel his firstborn son and brings them out of Egypt. Jesus, God's Son, also goes down to Egypt and is called out again, living Israel's story in his own life.",
-        "note_es": "Dios llama a Israel su hijo primogénito y lo saca de Egipto. Jesús, el Hijo de Dios, también baja a Egipto y es llamado a salir, viviendo en su propia vida la historia de Israel."
+        "note_es": "Dios llama a Israel su hijo primogénito y lo saca de Egipto. Jesús, el Hijo de Dios, también baja a Egipto y es llamado a salir, viviendo en su propia vida la historia de Israel.",
+        "note_pt": "Deus chama Israel de seu filho primogênito e o tira do Egito. Jesus, o Filho de Deus, também desce ao Egito e é chamado de volta, vivendo em sua própria vida a história de Israel."
       },
       {
         "a": "Isa.60.3",
         "b": "Matt.2.2",
         "title": "Nations come to the light",
         "title_es": "Las naciones vienen a la luz",
+        "title_pt": "As nações vêm para a luz",
         "note": "Isaiah sees nations and kings coming to the light rising over Jerusalem. Wise men from the east follow a star, looking for the newborn king.",
-        "note_es": "Isaías ve naciones y reyes que vienen a la luz que brilla sobre Jerusalén. Unos sabios de oriente siguen una estrella buscando al rey recién nacido."
+        "note_es": "Isaías ve naciones y reyes que vienen a la luz que brilla sobre Jerusalén. Unos sabios de oriente siguen una estrella buscando al rey recién nacido.",
+        "note_pt": "Isaías vê nações e reis vindo para a luz que brilha sobre Jerusalém. Magos do Oriente seguem uma estrela, procurando o rei recém-nascido."
       },
       {
         "a": "Isa.60.6",
         "b": "Matt.2.11",
         "title": "Gold and frankincense",
         "title_es": "Oro e incienso",
+        "title_pt": "Ouro e incenso",
         "note": "Isaiah pictures visitors bringing gold and frankincense and praising the Lord. The wise men kneel before the child and open their treasures.",
-        "note_es": "Isaías describe visitantes que traen oro e incienso y alaban al Señor. Los sabios se arrodillan ante el niño y abren sus tesoros."
+        "note_es": "Isaías describe visitantes que traen oro e incienso y alaban al Señor. Los sabios se arrodillan ante el niño y abren sus tesoros.",
+        "note_pt": "Isaías descreve visitantes que trazem ouro e incenso e louvam o Senhor. Os magos se ajoelham diante do menino e abrem seus tesouros."
       },
       {
         "a": "Gen.1.3",
         "b": "John.1.5",
         "title": "Light in the darkness",
         "title_es": "Luz en la oscuridad",
+        "title_pt": "Luz nas trevas",
         "note": "On the first day God says, let there be light. On the eve of Epiphany, John reminds us that the light has come into the world and the darkness has not overcome it.",
-        "note_es": "El primer día Dios dice: sea la luz. En la víspera de la Epifanía, Juan nos recuerda que la luz vino al mundo y la oscuridad no la ha vencido."
+        "note_es": "El primer día Dios dice: sea la luz. En la víspera de la Epifanía, Juan nos recuerda que la luz vino al mundo y la oscuridad no la ha vencido.",
+        "note_pt": "No primeiro dia, Deus diz: haja luz. Na véspera da Epifania, João nos lembra que a luz veio ao mundo e as trevas não a venceram."
       }
     ]
   },
@@ -339,8 +421,10 @@
     "id": "holyweek",
     "name": "Holy Week",
     "name_es": "Semana Santa",
+    "name_pt": "Semana Santa",
     "description": "Eight days from Palm Sunday to Easter morning, each with an Old Testament passage that points to that day.",
     "description_es": "Ocho días del Domingo de Ramos a la mañana de Pascua, cada uno con un pasaje del Antiguo Testamento que apunta a ese día.",
+    "description_pt": "Oito dias, do Domingo de Ramos à manhã de Páscoa, cada um com uma passagem do Antigo Testamento que aponta para aquele dia.",
     "source": "days",
     "perDay": 1,
     "season": "holyweek",
@@ -350,64 +434,80 @@
         "b": "Matt.21.5",
         "title": "Palm Sunday: the humble king",
         "title_es": "Domingo de Ramos: el rey humilde",
+        "title_pt": "Domingo de Ramos: o rei humilde",
         "note": "Zechariah pictures Jerusalem's king arriving gently on a donkey. Jesus rides into the city this way while the crowds wave branches and shout Hosanna.",
-        "note_es": "Zacarías describe al rey de Jerusalén llegando con humildad en un asno. Jesús entra así en la ciudad mientras la multitud agita ramas y grita: ¡Hosanna!"
+        "note_es": "Zacarías describe al rey de Jerusalén llegando con humildad en un asno. Jesús entra así en la ciudad mientras la multitud agita ramas y grita: ¡Hosanna!",
+        "note_pt": "Zacarias descreve o rei de Jerusalém chegando com mansidão, montado em um jumento. Jesus entra assim na cidade enquanto a multidão agita ramos e grita: Hosana!"
       },
       {
         "a": "Isa.56.7",
         "b": "Mark.11.17",
         "title": "Monday: a house of prayer",
         "title_es": "Lunes: casa de oración",
+        "title_pt": "Segunda-feira: casa de oração",
         "note": "God promised that his house would be a house of prayer for all nations. Jesus drives out the traders who have filled the temple courts and quotes Isaiah's words.",
-        "note_es": "Dios prometió que su casa sería casa de oración para todas las naciones. Jesús echa a los comerciantes que llenaban los atrios del templo y cita las palabras de Isaías."
+        "note_es": "Dios prometió que su casa sería casa de oración para todas las naciones. Jesús echa a los comerciantes que llenaban los atrios del templo y cita las palabras de Isaías.",
+        "note_pt": "Deus prometeu que sua casa seria casa de oração para todos os povos. Jesus expulsa os comerciantes que tinham tomado os pátios do templo e cita as palavras de Isaías."
       },
       {
         "a": "Ps.118.22",
         "b": "Matt.21.42",
         "title": "Tuesday: the rejected stone",
         "title_es": "Martes: la piedra rechazada",
+        "title_pt": "Terça-feira: a pedra rejeitada",
         "note": "The psalm sings of a stone the builders rejected that became the cornerstone. Teaching in the temple, Jesus tells the leaders that this is about him.",
-        "note_es": "El salmo canta de una piedra que desecharon los constructores y que llegó a ser la piedra angular. Enseñando en el templo, Jesús dice a los líderes que habla de él."
+        "note_es": "El salmo canta de una piedra que desecharon los constructores y que llegó a ser la piedra angular. Enseñando en el templo, Jesús dice a los líderes que habla de él.",
+        "note_pt": "O salmo canta sobre uma pedra que os construtores rejeitaram e que se tornou a pedra angular. Ensinando no templo, Jesus diz aos líderes que isso fala dele."
       },
       {
         "a": "Zech.11.12",
         "b": "Matt.26.15",
         "title": "Wednesday: thirty pieces of silver",
         "title_es": "Miércoles: treinta monedas de plata",
+        "title_pt": "Quarta-feira: trinta moedas de prata",
         "note": "In Zechariah the shepherd of God's people is valued at thirty pieces of silver. Judas agrees to betray Jesus for the same price.",
-        "note_es": "En Zacarías el pastor del pueblo de Dios es valorado en treinta monedas de plata. Judas acepta traicionar a Jesús por el mismo precio."
+        "note_es": "En Zacarías el pastor del pueblo de Dios es valorado en treinta monedas de plata. Judas acepta traicionar a Jesús por el mismo precio.",
+        "note_pt": "Em Zacarias, o pastor do povo de Deus é avaliado em trinta moedas de prata. Judas aceita trair Jesus pelo mesmo preço."
       },
       {
         "a": "Exod.24.8",
         "b": "Mark.14.24",
         "title": "Thursday: the blood of the covenant",
         "title_es": "Jueves: la sangre del pacto",
+        "title_pt": "Quinta-feira: o sangue da aliança",
         "note": "At Sinai Moses seals the covenant with blood. At the Last Supper Jesus takes the cup and calls it his blood of the covenant, poured out for many.",
-        "note_es": "En el Sinaí Moisés sella el pacto con sangre. En la última cena Jesús toma la copa y la llama su sangre del pacto, derramada por muchos."
+        "note_es": "En el Sinaí Moisés sella el pacto con sangre. En la última cena Jesús toma la copa y la llama su sangre del pacto, derramada por muchos.",
+        "note_pt": "No Sinai, Moisés sela a aliança com sangue. Na Última Ceia, Jesus pega o cálice e o chama de seu sangue da aliança, derramado por muitos."
       },
       {
         "a": "Ps.22.1",
         "b": "Mark.15.34",
         "title": "Good Friday: why have you forsaken me?",
         "title_es": "Viernes Santo: ¿por qué me has abandonado?",
+        "title_pt": "Sexta-feira Santa: por que me abandonaste?",
         "note": "David's psalm begins with a cry of abandonment and ends in praise. On the cross Jesus prays its first line aloud.",
-        "note_es": "El salmo de David empieza con un grito de abandono y termina en alabanza. En la cruz Jesús ora en voz alta su primera línea."
+        "note_es": "El salmo de David empieza con un grito de abandono y termina en alabanza. En la cruz Jesús ora en voz alta su primera línea.",
+        "note_pt": "O salmo de Davi começa com um grito de abandono e termina em louvor. Na cruz, Jesus ora em voz alta seu primeiro verso."
       },
       {
         "a": "Jonah.1.17",
         "b": "Matt.12.40",
         "title": "Holy Saturday: three days",
         "title_es": "Sábado Santo: tres días",
+        "title_pt": "Sábado de Aleluia: três dias",
         "note": "Jonah spends three days and nights inside the great fish. Jesus said the Son of Man would likewise spend three days in the heart of the earth.",
-        "note_es": "Jonás pasa tres días y tres noches dentro del gran pez. Jesús dijo que el Hijo del Hombre también estaría tres días en el corazón de la tierra."
+        "note_es": "Jonás pasa tres días y tres noches dentro del gran pez. Jesús dijo que el Hijo del Hombre también estaría tres días en el corazón de la tierra.",
+        "note_pt": "Jonas passa três dias e três noites dentro do grande peixe. Jesus disse que o Filho do Homem também passaria três dias no coração da terra."
       },
       {
         "a": "Ps.16.10",
         "b": "Acts.2.27",
         "title": "Easter Sunday: not abandoned to the grave",
         "title_es": "Domingo de Resurrección: no abandonado en la tumba",
+        "title_pt": "Domingo de Páscoa: não abandonado na sepultura",
         "note": "David trusts that God will not abandon his holy one to the grave. At Pentecost Peter says this was fulfilled when God raised Jesus from the dead.",
-        "note_es": "David confía en que Dios no abandonará a su santo en la tumba. En Pentecostés Pedro dice que esto se cumplió cuando Dios resucitó a Jesús."
+        "note_es": "David confía en que Dios no abandonará a su santo en la tumba. En Pentecostés Pedro dice que esto se cumplió cuando Dios resucitó a Jesús.",
+        "note_pt": "Davi confia que Deus não deixará seu santo na sepultura. No Pentecostes, Pedro diz que isso se cumpriu quando Deus ressuscitou Jesus dentre os mortos."
       }
     ]
   },
@@ -415,8 +515,10 @@
     "id": "story",
     "name": "The story of Scripture",
     "name_es": "La historia de la Biblia",
+    "name_pt": "A história das Escrituras",
     "description": "All the guided journeys, two steps a day.",
     "description_es": "Todos los recorridos guiados, dos pasos al día.",
+    "description_pt": "Todas as jornadas guiadas, dois passos por dia.",
     "source": "journeys",
     "perDay": 2
   },
@@ -424,8 +526,10 @@
     "id": "messiah",
     "name": "Jesus foretold",
     "name_es": "Jesús anunciado",
+    "name_pt": "Jesus anunciado",
     "description": "A promise about the Messiah and where it is fulfilled, two a day.",
     "description_es": "Una promesa sobre el Mesías y dónde se cumple, dos por día.",
+    "description_pt": "Uma promessa sobre o Messias e onde ela se cumpre, duas por dia.",
     "source": "theme",
     "theme": "messiah",
     "perDay": 2
@@ -434,8 +538,10 @@
     "id": "themes",
     "name": "Twelve themes",
     "name_es": "Doce temas",
+    "name_pt": "Doze temas",
     "description": "One theme a day for twelve days, with its key connections.",
     "description_es": "Un tema al día durante doce días, con sus conexiones clave.",
+    "description_pt": "Um tema por dia durante doze dias, com suas principais conexões.",
     "source": "themes",
     "perDay": 3
   }
