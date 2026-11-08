@@ -7,7 +7,7 @@ window.bcLang = (() => {
   const LANGS = {
     en: { locale: 'en-US', bible: 'NIV', listed: true },
     es: { locale: 'es', bible: 'NVI', listed: true },
-    pt: { locale: 'pt-BR', bible: 'NVI-PT', listed: false },
+    pt: { locale: 'pt-BR', bible: 'NVI-PT', listed: true },
   };
   const urlOnly = document.currentScript && document.currentScript.hasAttribute('data-url-only');
   const asked = new URLSearchParams(location.search).get('lang');

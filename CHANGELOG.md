@@ -5,6 +5,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Portuguese: the whole site in Brazilian Portuguese, from the interface to every journey, reading plan, book introduction, reflection question, prophecy chain, timeline event, person, place, topic, handout, leader guide, slide deck, embed card and the How to use and Roadmap pages. It is chosen automatically on phones set to Portuguese, can be picked in Settings, and opens Bible.com in the Nova Versão Internacional by default.
+- One language file per language for every page, a checker that shows what is missing in each language (`node scripts/i18n-check.mjs`), and a preview for unfinished languages (`?lang=xx`), so more languages can follow.
+
+### Changed
+- Numbers are written the way each language writes them (61.273 in Spanish and Portuguese).
+- A few phrases on the places map and the shared connections page are now translated in Spanish too.
+
 ## [0.12.0] - 2026-11-08 - Seasons
 
 ### Added

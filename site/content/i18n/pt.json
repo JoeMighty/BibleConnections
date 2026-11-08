@@ -158,7 +158,7 @@
     "Journeys": "Jornadas",
     "Connect": "Conectar",
     "Insights": "Análises",
-    "Settings": "Configurações",
+    "Settings": "Ajustes",
     "About": "Sobre",
     "Main": "Principal",
     "Skip to connection details": "Ir para os detalhes da conexão",
@@ -817,7 +817,10 @@
     "Starts on Christmas Day,": "Começa no dia de Natal,",
     "Starts on Palm Sunday,": "Começa no Domingo de Ramos,",
     "Holy Week": "Semana Santa",
-    "Easter": "Páscoa"
+    "Easter": "Páscoa",
+    "e.g. Sunday: The Good Shepherd": "ex.: Domingo: O bom pastor",
+    "Locations from": "Localizações do",
+    "(CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.": "(CC BY 4.0). Litoral do Natural Earth. Pontos mais claros são lugares cuja localização é menos certa."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -934,7 +937,8 @@
     "No Hebrew or Greek word found for {q}.": "Nenhuma palavra hebraica ou grega encontrada para {q}.",
     "Passages for the events in this period: {x}.": "Passagens dos acontecimentos deste período: {x}.",
     "Prophecy: {a}": "Profecia: {a}",
-    "{a}: {n} stages.": "{a}: {n} etapas."
+    "{a}: {n} stages.": "{a}: {n} etapas.",
+    "Map of {n} places named in the Bible. Use the list below to choose a place.": "Mapa de {n} lugares mencionados na Bíblia. Use a lista abaixo para escolher um lugar."
   },
   "pages": {
     "handout": {

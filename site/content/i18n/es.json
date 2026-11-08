@@ -816,7 +816,10 @@
     "Starts on Christmas Day,": "Empieza el día de Navidad,",
     "Starts on Palm Sunday,": "Empieza el Domingo de Ramos,",
     "Holy Week": "Semana Santa",
-    "Easter": "Pascua"
+    "Easter": "Pascua",
+    "e.g. Sunday: The Good Shepherd": "p. ej. Domingo: El buen pastor",
+    "Locations from": "Ubicaciones de",
+    "(CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.": "(CC BY 4.0). Costa de Natural Earth. Los puntos más claros son lugares cuya ubicación es menos segura."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -933,7 +936,8 @@
     "No Hebrew or Greek word found for {q}.": "No se encontró ninguna palabra hebrea o griega para {q}.",
     "Passages for the events in this period: {x}.": "Pasajes de los acontecimientos de este período: {x}.",
     "Prophecy: {a}": "Profecía: {a}",
-    "{a}: {n} stages.": "{a}: {n} etapas."
+    "{a}: {n} stages.": "{a}: {n} etapas.",
+    "Map of {n} places named in the Bible. Use the list below to choose a place.": "Mapa de {n} lugares mencionados en la Biblia. Usa la lista de abajo para elegir un lugar."
   },
   "pages": {
     "handout": {

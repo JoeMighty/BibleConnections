@@ -84,7 +84,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.
-- **Spanish:** full Spanish interface, journeys, book introductions, questions and handouts.
+- **Spanish and Portuguese:** the full interface, journeys, plans, book introductions, questions, prophecy, timeline, handouts and guides in both languages, chosen automatically from the device. Search understands book names in all three languages.
 - **Settings:** language, light, dark or system appearance, five arc color styles (including a color-blind friendly one), text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Gentle animations on desktop:** the welcome page eases in, and a light travels along each connection you select. Off for reduced motion, and switchable in Settings.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.

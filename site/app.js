@@ -74,7 +74,7 @@
   const LANGS = {
     en: { name: 'English', locale: 'en-US', bible: 'NIV', listed: true },
     es: { name: 'Español', locale: 'es', bible: 'NVI', listed: true },
-    pt: { name: 'Português', locale: 'pt-BR', bible: 'NVI-PT', listed: false },
+    pt: { name: 'Português', locale: 'pt-BR', bible: 'NVI-PT', listed: true },
   };
   // Language: a ?lang= link wins, then the saved choice, then the device language.
   const urlLang = new URLSearchParams(location.search).get('lang');
@@ -332,6 +332,7 @@
   function decodePostings(s) { let v = 0; return s.split(',').map(d => (v += parseInt(d, 36))); }
 
   // ---------- Reference helpers ----------
+  const bookNameOf = (osis) => (BOOKS.find(b => b.osis === osis) || { name: osis }).name;
   function refLabel(start, end = start) {
     const b = BOOKS[verseBook[start]].name, c = verseChap[start], v = verseNum[start];
     if (end === start) return `${b} ${c}:${v}`;
@@ -505,7 +506,7 @@
   }
 
   function updateCount() {
-    const fmt = (n) => n.toLocaleString();
+    const fmt = (n) => n.toLocaleString(LANGS[LANG].locale);
     const active = [state.theme, state.from !== 'all', state.to !== 'all', state.minVotes !== DEFAULT_VOTES, state.notesOnly, state.colorMode !== 'distance', state.order !== 'bible'].filter(Boolean).length;
     $('filtersCount').textContent = active ? `${active} active` : '';
     el.count.textContent = `Showing ${fmt(filtered.length)} of ${fmt(N)} connections`;
@@ -1204,7 +1205,7 @@
     state.selected = -1;
     computeFocus();
     drawBase(); renderPanel(); syncURL(true);
-    announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString()} connections.`);
+    announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.`);
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
       else zoomToRange(range.start, range.end, range.kind === 'verse' ? 40 : 0.6);
@@ -1281,7 +1282,7 @@
     let html = `<ul class="conn-list" aria-label="Connections, strongest first">`;
     for (let n = 0; n < shown; n++) html += connItem(list[n], otherSide);
     html += '</ul>';
-    if (shown < list.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="more">Show more (${(list.length - shown).toLocaleString()} left)</button></div>`;
+    if (shown < list.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="more">Show more (${(list.length - shown).toLocaleString(LANGS[LANG].locale)} left)</button></div>`;
     return html;
   }
   const shareButtons = () => {
@@ -1351,16 +1352,16 @@
           html += `<p class="lemma" lang="${heb ? 'he' : 'el'}"${heb ? ' dir="rtl"' : ''}>${esc(w.l)}</p>
             <p><strong>${esc(w.t)}</strong> · ${esc(w.g)} · <span class="muted">${heb ? 'Hebrew' : 'Greek'} ${esc(f.entity.id)}</span></p>
             ${w.d ? `<p class="hint" lang="en">${esc(w.d)}</p>` : ''}
-            ${w.v ? `<p>Used in ${w.n.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString()} verses, too many to show on the map.</p>`}
+            ${w.v ? `<p>Used in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, too many to show on the map.</p>`}
             <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted">Loading the full word study…</p></div>
             <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0. Dictionary entries are from Brown-Driver-Briggs and Abbott-Smith (public domain).</p>`;
         } else if (f.entity && f.entity.type === 'geo') {
           const P0 = f.entity.place;
           html += `<canvas class="places-map mini" id="geoMini" data-i="${P0.i}" role="img" aria-label="Map showing ${esc(P0.label)}"></canvas>
-            <p>${esc(P0.label)} <span class="muted">(${esc(P0.type)})</span> is mentioned in ${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? '' : 's'}, touching ${focusList.length.toLocaleString()} connections. ${confText(P0.conf)}</p>
+            <p>${esc(P0.label)} <span class="muted">(${esc(P0.type)})</span> is mentioned in ${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? '' : 's'}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections. ${confText(P0.conf)}</p>
             <p class="hint">Location from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0).</p>`;
-        } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString()} verses, touching ${focusList.length.toLocaleString()} connections.</p>`;
-        else html += `<p>${f.verses.length.toLocaleString()} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString()} connections.</p>`;
+        } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
+        else html += `<p>${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
         html += `
           ${f.entity && f.entity.type === 'word' ? '' : '<p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>'}
           <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
@@ -1371,7 +1372,7 @@
           html += `<li><button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button> ${miniRead(v)}</li>`;
         }
         html += '</ul>';
-        if (vs < f.verses.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="moreVerses">Show more verses (${(f.verses.length - vs).toLocaleString()} left)</button></div>`;
+        if (vs < f.verses.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="moreVerses">Show more verses (${(f.verses.length - vs).toLocaleString(LANGS[LANG].locale)} left)</button></div>`;
         html += `<h3>Connections</h3>` + listHTML(focusList, true);
       } else {
         const single = f.kind === 'verse' && f.end - f.start === 1;
@@ -1380,7 +1381,7 @@
           const label = f.kind === 'book' ? `${BOOKS[f.book].name} 1` : rangeLabel(f);
           html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${esc(vLabel(settings.version))}`, 'btn small')}${listenBtn(f.start)}${second() ? ext(bibleUrl(f.start, f.start, true, second()), `Read ${esc(label)} in ${esc(vLabel(second()))}`, 'btn ghost small') + listenBtn(f.start, second()) : ''}</div>`;
         }
-        html += `<p>${focusList.length.toLocaleString()} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
+        html += `<p>${focusList.length.toLocaleString(LANGS[LANG].locale)} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
           <p class="summary">${esc(describeView())}</p>
           <div class="actions"><button type="button" class="btn ghost small" data-action="zoomFocus">Zoom to ${esc(rangeLabel(f))}</button>`;
         if (f.kind !== 'book') html += `<button type="button" class="btn ghost small" data-action="focusBook" data-b="${f.book}">Whole book</button>`;
@@ -2182,7 +2183,7 @@
 <text x="${ntx - 16}" y="${by + 150}" font-size="28" fill="${sub}" text-anchor="end">${esc(tr('Old Testament'))}</text>
 <text x="${ntx + 16}" y="${by + 150}" font-size="28" fill="${sub}">${esc(tr('New Testament'))}</text>
 <text x="${W / 2}" y="${by + 300}" font-size="110" font-weight="700" fill="${fg}" text-anchor="middle">Bible Connections</text>
-<text x="${W / 2}" y="${by + 380}" font-size="40" fill="${sub}" text-anchor="middle">${esc(`${filtered.length.toLocaleString()} ${tr('cross references')}`)} · ${esc(tr('Cross references: OpenBible.info (CC BY 4.0)'))} · joemighty.github.io/BibleConnections</text>
+<text x="${W / 2}" y="${by + 380}" font-size="40" fill="${sub}" text-anchor="middle">${esc(`${filtered.length.toLocaleString(LANGS[LANG].locale)} ${tr('cross references')}`)} · ${esc(tr('Cross references: OpenBible.info (CC BY 4.0)'))} · joemighty.github.io/BibleConnections</text>
 </g></svg>`;
     return { svg: s, W, H };
   }
@@ -2271,9 +2272,9 @@
       }
       hits.sort((a, b) => b[0] - a[0]);
       box.innerHTML = hits.length
-        ? `<p class="muted">${hits.length.toLocaleString()} matching word${hits.length === 1 ? '' : 's'}</p><ul class="conn-list">${hits.slice(0, 25).map(([, c]) => {
+        ? `<p class="muted">${hits.length.toLocaleString(LANGS[LANG].locale)} matching word${hits.length === 1 ? '' : 's'}</p><ul class="conn-list">${hits.slice(0, 25).map(([, c]) => {
           const w = STRONGS[c];
-          return `<li><button type="button" class="conn-item" data-action="openWord" data-code="${c}"><span class="label"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(w.l)}</span> · ${esc(w.t)} · ${esc(w.g)}</span><span class="votes">${w.n.toLocaleString()} verses</span></button></li>`;
+          return `<li><button type="button" class="conn-item" data-action="openWord" data-code="${c}"><span class="label"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(w.l)}</span> · ${esc(w.t)} · ${esc(w.g)}</span><span class="votes">${w.n.toLocaleString(LANGS[LANG].locale)} verses</span></button></li>`;
         }).join('')}</ul>`
         : '<p class="muted">No words found. Try another English word.</p>';
     }, 150);
@@ -2419,13 +2420,13 @@
     </dl>`;
     if (d.senses) {
       html += `<h3>Meanings in context</h3><p class="hint">The same word can carry different shades of meaning. Choose one to see only those verses.</p><ul class="sense-list">`;
-      for (const [x, gloss, n, vs] of d.senses) html += `<li><button type="button" class="conn-item" ${vs ? `data-action="openSense" data-code="${esc(code)}" data-sense="${esc(x)}"` : 'disabled'}><span class="label">${esc(gloss)} <span class="muted">${esc(x)}</span></span><span class="votes">${n.toLocaleString()} verse${n === 1 ? '' : 's'}</span></button></li>`;
+      for (const [x, gloss, n, vs] of d.senses) html += `<li><button type="button" class="conn-item" ${vs ? `data-action="openSense" data-code="${esc(code)}" data-sense="${esc(x)}"` : 'disabled'}><span class="label">${esc(gloss)} <span class="muted">${esc(x)}</span></span><span class="votes">${n.toLocaleString(LANGS[LANG].locale)} verse${n === 1 ? '' : 's'}</span></button></li>`;
       html += '</ul>';
     }
     if (verses.length) {
       const ot = verses.filter(v => verseBook[v] < 39).length;
       const books = versesByBook(verses).slice(0, 8), max = books[0][1];
-      html += `<h3>Where it is used</h3><p>${ot ? `${ot.toLocaleString()} in the Old Testament` : ''}${ot && ot < verses.length ? ' and ' : ''}${ot < verses.length ? `${(verses.length - ot).toLocaleString()} in the New Testament` : ''}.</p>
+      html += `<h3>Where it is used</h3><p>${ot ? `${ot.toLocaleString(LANGS[LANG].locale)} in the Old Testament` : ''}${ot && ot < verses.length ? ' and ' : ''}${ot < verses.length ? `${(verses.length - ot).toLocaleString(LANGS[LANG].locale)} in the New Testament` : ''}.</p>
         <ul class="book-bars" aria-label="Books where this word is used most">${books.map(([b, n]) => `<li><button type="button" class="link-btn" data-action="focusBook" data-b="${b}">${esc(BOOKS[b].name)}</button><span class="bar" style="--w:${Math.max(4, (n / max) * 100)}%" aria-hidden="true"></span><span class="count">${n}</span></li>`).join('')}</ul>`;
     }
     if (d.forms && d.forms.length) {
@@ -2479,7 +2480,7 @@
       </section>
       ${noted.length ? `<section class="study-sec" aria-labelledby="secNotes"><h3 id="secNotes">Explained connections</h3><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></section>` : ''}
       <section class="study-sec" aria-labelledby="secRefs"><h3 id="secRefs">Connections</h3>
-        <p>${ot.length.toLocaleString()} to the Old Testament and ${nt.length.toLocaleString()} to the New Testament, strongest first.</p>
+        <p>${ot.length.toLocaleString(LANGS[LANG].locale)} to the Old Testament and ${nt.length.toLocaleString(LANGS[LANG].locale)} to the New Testament, strongest first.</p>
         <h4>Old Testament</h4>${ot.length ? listHTML(ot, true) : '<p class="muted">None with the current filters.</p>'}
         <h4>New Testament</h4>${nt.length ? listHTML(nt, true) : '<p class="muted">None with the current filters.</p>'}
       </section>
@@ -2681,7 +2682,7 @@
         <button type="button" class="btn ${view === 'lands' ? '' : 'ghost '}small" data-action="placesView" data-view="lands" aria-pressed="${view === 'lands'}">Bible lands</button>
         <button type="button" class="btn ${view === 'israel' ? '' : 'ghost '}small" data-action="placesView" data-view="israel" aria-pressed="${view === 'israel'}">Israel and nearby</button>
       </div>
-      <canvas class="places-map" id="placesMap" data-view="${view}" role="img" aria-label="Map of ${PLACES.places.length.toLocaleString()} places named in the Bible. Use the list below to choose a place."></canvas>
+      <canvas class="places-map" id="placesMap" data-view="${view}" role="img" aria-label="Map of ${PLACES.places.length.toLocaleString(LANGS[LANG].locale)} places named in the Bible. Use the list below to choose a place."></canvas>
       <div class="field"><label for="placeQ">Find a place</label><input id="placeQ" type="search" placeholder="e.g. Bethlehem" autocomplete="off" spellcheck="false"></div>
       <div id="placeResults" aria-live="polite"></div>
       <h3>Most mentioned</h3><ul class="chip-list">${top.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)} <span class="muted">${p.n}</span></button></li>`).join('')}</ul>
@@ -2755,15 +2756,15 @@
         <div class="field"><label for="sharedB">Second passage</label><input id="sharedB" type="search" list="bookList" value="${esc(S.bText || '')}" placeholder="e.g. John 10" autocomplete="off"></div>
         <button type="submit" class="btn">Find shared links</button>
       </form>
-      <p class="hint">Try <button type="button" class="chip" data-action="sharedExample" data-a="Psalm 23" data-b="John 10">Psalm 23 and John 10</button>
-      <button type="button" class="chip" data-action="sharedExample" data-a="Genesis 22" data-b="Hebrews 11">Genesis 22 and Hebrews 11</button></p>`;
+      <p class="hint">Try <button type="button" class="chip" data-action="sharedExample" data-a="Psalm 23" data-b="John 10">${esc(`${bookNameOf('Ps')} 23 ${tr('and')} ${bookNameOf('John')} 10`)}</button>
+      <button type="button" class="chip" data-action="sharedExample" data-a="Genesis 22" data-b="Hebrews 11">${esc(`${bookNameOf('Gen')} 22 ${tr('and')} ${bookNameOf('Heb')} 11`)}</button></p>`;
     if (S.error) html += `<p class="field-error" role="alert">${esc(S.error)}</p>`;
     else if (S.list) {
-      html += `<h3>${S.list.length.toLocaleString()} shared passage${S.list.length === 1 ? '' : 's'}</h3>
+      html += `<h3>${S.list.length.toLocaleString(LANGS[LANG].locale)} shared passage${S.list.length === 1 ? '' : 's'}</h3>
         <p>${S.direct ? `${esc(S.aLabel)} and ${esc(S.bLabel)} also link to each other directly.` : `${esc(S.aLabel)} and ${esc(S.bLabel)} do not link to each other directly.`}</p>`;
       if (S.list.length) {
         html += `<ol class="verse-list shared-list">${S.list.slice(0, 40).map(([v]) => `<li><button type="button" class="link-btn" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))}</button> ${miniRead(v)}</li>`).join('')}</ol>
-          ${S.list.length > 40 ? `<p class="hint">Showing the 40 strongest of ${S.list.length.toLocaleString()}.</p>` : ''}
+          ${S.list.length > 40 ? `<p class="hint">Showing the 40 strongest of ${S.list.length.toLocaleString(LANGS[LANG].locale)}.</p>` : ''}
           <div class="actions"><button type="button" class="btn small" data-action="sharedMap">Show on the map</button>${shareButtons()}</div>`;
       } else html += '<p class="muted">No passages link to both. Try whole chapters instead of single verses.</p>';
     }
@@ -3434,7 +3435,7 @@
 
   // ---------- Describe this view (plain-language summary) ----------
   function describeView() {
-    const fmt = (n) => n.toLocaleString();
+    const fmt = (n) => n.toLocaleString(LANGS[LANG].locale);
     const topBooks = (list, side) => {
       const count = new Map();
       for (const i of list) for (const v of side(i)) { const b = verseBook[v]; count.set(b, (count.get(b) || 0) + 1); }
@@ -3500,7 +3501,7 @@
   }
   function insightsHTML() {
     const s = computeStats();
-    const fmt = (n) => n.toLocaleString();
+    const fmt = (n) => n.toLocaleString(LANGS[LANG].locale);
     const total = Math.max(1, filtered.length);
     const pct = (n) => Math.round(n / total * 100) + '%';
     let html = `<p class="muted">Based on the ${fmt(filtered.length)} connections that match your current filters.</p>
@@ -3677,7 +3678,7 @@
       $('filtersBox').open = true;
       state.mode = 'explore'; state.focus = null; state.selected = -1; updateNav();
       applyFilters(); resetView(); syncURL(true); focusPanelHeading();
-      announce(`Showing ${filtered.length.toLocaleString()} connections between ${CATEGORIES[btn.dataset.a].name} and ${CATEGORIES[btn.dataset.b].name}.`);
+      announce(`Showing ${filtered.length.toLocaleString(LANGS[LANG].locale)} connections between ${CATEGORIES[btn.dataset.a].name} and ${CATEGORIES[btn.dataset.b].name}.`);
     }
   });
   function scrollPanel() {
@@ -4039,7 +4040,7 @@
     const t0 = performance.now(), D = 1300;
     const tick = (t) => {
       const p = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - p, 3);
-      for (const el2 of nums) el2.textContent = Math.round(+el2.dataset.n * e).toLocaleString();
+      for (const el2 of nums) el2.textContent = Math.round(+el2.dataset.n * e).toLocaleString(LANGS[LANG].locale);
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -4053,7 +4054,7 @@
   // the guide and roadmap pages open in the same language as the site
   if (LANG !== 'en') for (const a of document.querySelectorAll('#footGuide, #footRoadmap, a.lang-link')) a.setAttribute('href', a.getAttribute('href') + '?lang=' + LANG);
   function buildLanding() {
-    const fmt = (n) => n.toLocaleString();
+    const fmt = (n) => n.toLocaleString(LANGS[LANG].locale);
     $('landingStats').innerHTML = [
       [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
     ].map(([n, l]) => `<li><strong data-n="${n.replace(/\D/g, '')}">${n}</strong> <span>${l}</span></li>`).join('');
@@ -4079,7 +4080,7 @@
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
-      announce(`Map of ${filtered.length.toLocaleString()} connections. Use the details panel or arrow keys to explore.`);
+      announce(`Map of ${filtered.length.toLocaleString(LANGS[LANG].locale)} connections. Use the details panel or arrow keys to explore.`);
     }
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
     else if (btn.dataset.start === 'series') { hideLanding(); setMode('series'); }
