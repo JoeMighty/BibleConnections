@@ -60,7 +60,7 @@ test('the passage handout prints original words, connections and questions witho
 test('places map opens a place and shows places in a verse', async ({ page }) => {
   await page.goto('/?view=places');
   await ready(page);
-  await expect(page.locator('#placesMap')).toBeVisible();
+  await expect(page.locator('#geoCanvas')).toBeVisible();
   await page.fill('#placeQ', 'bethle');
   await page.locator('#placeResults [data-action=openGeo]').first().click();
   await expect(page.locator('#panelTitle')).toHaveText('Bethlehem');

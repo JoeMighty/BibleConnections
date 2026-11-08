@@ -59,6 +59,18 @@
   ],
   "shipped": [
     {
+      "version": "0.15.0",
+      "items": [
+        "Places map as a full view, with zoom and journeys drawn as routes"
+      ],
+      "items_es": [
+        "Mapa de lugares como vista completa, con zoom y viajes trazados como rutas"
+      ],
+      "items_pt": [
+        "Mapa de lugares como visualização completa, com zoom e viagens traçadas como rotas"
+      ]
+    },
+    {
       "version": "0.14.0",
       "items": [
         "Church page for sermon series",

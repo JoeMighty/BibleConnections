@@ -61,6 +61,7 @@
       <nav class="header-nav" aria-label="Main">
         <button type="button" class="btn ghost nav-btn" id="homeBtn" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11.5 12 5l8 6.5M6.5 9.8V19h11V9.8M10 19v-5h4v5"/></svg><span class="nav-label">Home</span></button>
         <button type="button" class="btn ghost nav-btn" data-nav="journeys" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5.5a3 3 0 0 0 0-6h-3a3 3 0 0 1 0-6H16"/></svg><span class="nav-label">Journeys</span></button>
+        <button type="button" class="btn ghost nav-btn desk-only" id="placesNav" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4.5 3.5 6.5v13l5.5-2 6 2 5.5-2v-13l-5.5 2-6-2zM9 4.5v13M15 6.5v13"/></svg><span class="nav-label">Places</span></button>
         <button type="button" class="btn ghost nav-btn" data-nav="path" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 18.5h19M4 18.5a5.5 5.5 0 0 1 11 0M10 18.5a5 5 0 0 1 10 0"/></svg><span class="nav-label">Connect</span></button>
         <button type="button" class="btn ghost nav-btn" data-nav="study" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2zM12 6.5v13"/></svg><span class="nav-label">Study</span></button>
         <button type="button" class="btn ghost nav-btn icon-nav" id="settingsBtn" aria-haspopup="dialog" title="Settings"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.2"/><circle cx="12" cy="12" r="2.4"/><path d="M19.20 12.00L21.60 12.00M17.09 17.09L18.79 18.79M12.00 19.20L12.00 21.60M6.91 17.09L5.21 18.79M4.80 12.00L2.40 12.00M6.91 6.91L5.21 5.21M12.00 4.80L12.00 2.40M17.09 6.91L18.79 5.21"/></svg><span class="nav-label">Settings</span></button>
@@ -151,6 +152,22 @@
       <button type="button" class="btn small ctx-reset" id="startOver">Start over</button>
     </nav>
     <main class="viz-wrap" id="main">
+      <div class="stage-switch segmented" role="group" aria-label="Map type">
+        <button type="button" data-stage="arcs" aria-pressed="true">Connections</button>
+        <button type="button" data-stage="places" aria-pressed="false">Places</button>
+      </div>
+      <div class="geo" id="geo" tabindex="0" role="group" aria-roledescription="interactive map" aria-label="Map of places named in the Bible" aria-describedby="geoHelp" hidden>
+        <canvas id="geoCanvas" aria-hidden="true"></canvas>
+        <div class="tooltip" id="geoTip" aria-hidden="true" hidden></div>
+        <div class="viz-tools geo-tools" role="toolbar" aria-label="Places map controls">
+          <button type="button" class="icon-btn" id="geoIn" aria-label="Zoom in" title="Zoom in"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button type="button" class="icon-btn" id="geoOut" aria-label="Zoom out" title="Zoom out"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/></svg></button>
+          <button type="button" class="icon-btn" id="geoLands" aria-label="Show all the Bible lands" title="Bible lands"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.6 5.4 3.6 8.5s-1.1 5.9-3.6 8.5c-2.5-2.6-3.6-5.4-3.6-8.5s1.1-5.9 3.6-8.5z"/></svg></button>
+          <button type="button" class="icon-btn" id="geoIsrael" aria-label="Show Israel and nearby" title="Israel and nearby"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></button>
+        </div>
+        <p class="geo-key">Bigger dots are named more often. Lighter dots are less certain.</p>
+      </div>
+      <p id="geoHelp" class="sr-only">Drag or use the arrow keys to move, and plus and minus to zoom. Choose a place to see every verse that names it. Every place is also listed in the details panel.</p>
       <div class="viz" id="viz" tabindex="0" role="group" aria-roledescription="interactive map"
            aria-label="Map of Bible cross references" aria-describedby="vizHelp">
         <canvas id="glCanvas" aria-hidden="true"></canvas>
@@ -439,6 +456,7 @@
           <tr><th scope="row"><kbd>N</kbd> <kbd>P</kbd></th><td>Next and previous connection, or journey step</td></tr>
           <tr><th scope="row"><kbd>D</kbd></th><td>Describe what the map is showing</td></tr>
           <tr><th scope="row"><kbd>S</kbd></th><td>Surprise me: open a random explained connection</td></tr>
+          <tr><th scope="row"><kbd>M</kbd></th><td>Switch between the Connections and Places maps</td></tr>
           <tr><th scope="row"><kbd>Esc</kbd></th><td>Clear the selection, or close a window</td></tr>
         </tbody>
       </table>

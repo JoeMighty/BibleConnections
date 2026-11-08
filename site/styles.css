@@ -878,3 +878,22 @@ ol.timeline li::before { content: ''; position: absolute; left: -25px; top: 14px
 .church-row { display: grid; grid-template-columns: 1fr; gap: 0 10px; }
 .church-result { margin-top: 16px; }
 .church-result textarea, .church-result input { width: 100%; }
+
+/* Places view: the geographic map in the main area */
+.stage-switch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 8; width: min(280px, calc(100% - 140px)); box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+.stage-switch button { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 36px; margin: 0; border: 0; border-radius: 7px; background: transparent; color: var(--text); font: 500 var(--t-subhead)/1 inherit; font-family: inherit; cursor: pointer; padding: 4px 10px; }
+.stage-switch button[aria-pressed="true"] { background: var(--surface-3); font-weight: 600; box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 3px 1px rgba(0,0,0,.04); }
+:root[data-theme="light"] .stage-switch button[aria-pressed="true"] { background: #fff; }
+.stage-switch button:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+.geo { position: absolute; inset: 0; z-index: 6; background: var(--map-water, #1b2a3a); touch-action: none; cursor: grab; outline-offset: -3px; }
+.geo[hidden] { display: none; }
+.geo.dragging { cursor: grabbing; }
+.geo canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.geo .geo-tools { z-index: 7; }
+.geo-key { position: absolute; left: 12px; bottom: 10px; margin: 0; padding: 4px 10px; border-radius: 8px; font-size: 12px; color: var(--muted); background: color-mix(in srgb, var(--surface) 86%, transparent); }
+body.stage-places .viz-tools:not(.geo-tools), body.stage-places .legend { visibility: hidden; }
+@media (max-width: 860px) { .desk-only { display: none !important; } .stage-switch { top: 8px; } .geo-key { display: none; } }
+.viz-wrap > .legend { top: 58px; }
+@media (max-width: 860px) { .viz-wrap > .legend { top: 52px; } }
+body.presenting .stage-switch, body.embed .stage-switch { display: none; }
+body.stage-places .tips { display: none !important; }

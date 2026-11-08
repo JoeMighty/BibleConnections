@@ -73,7 +73,7 @@ test('keyboard shortcuts: ? shows the list, / goes to search, S surprises', asyn
   await page.locator('#panelTitle').click();
   await page.keyboard.press('?');
   await expect(page.locator('#keysDialog')).toBeVisible();
-  await expect(page.locator('#keysDialog tbody tr')).toHaveCount(9);
+  await expect(page.locator('#keysDialog tbody tr')).toHaveCount(10);
   const results = await new AxeBuilder({ page }).include('#keysDialog').analyze();
   expect(results.violations).toEqual([]);
   await page.keyboard.press('Escape');

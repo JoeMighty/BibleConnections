@@ -856,7 +856,24 @@
     "Add at least one passage.": "Agrega al menos un pasaje.",
     "Please check the highlighted passages.": "Revisa los pasajes marcados.",
     "Your page is ready.": "Tu página está lista.",
-    "Week removed.": "Semana eliminada."
+    "Week removed.": "Semana eliminada.",
+    "Map type": "Tipo de mapa",
+    "Map of places named in the Bible": "Mapa de los lugares mencionados en la Biblia",
+    "Places map controls": "Controles del mapa de lugares",
+    "Show all the Bible lands": "Mostrar todas las tierras bíblicas",
+    "Show Israel and nearby": "Mostrar Israel y alrededores",
+    "Bigger dots are named more often. Lighter dots are less certain.": "Los puntos más grandes se mencionan más. Los más claros son menos seguros.",
+    "Drag or use the arrow keys to move, and plus and minus to zoom. Choose a place to see every verse that names it. Every place is also listed in the details panel.": "Arrastra o usa las flechas para moverte, y más y menos para acercar o alejar. Elige un lugar para ver todos los versículos que lo mencionan. Todos los lugares también aparecen en el panel de detalles.",
+    "Showing the places map.": "Mostrando el mapa de lugares.",
+    "Showing the connections map.": "Mostrando el mapa de conexiones.",
+    "1 verse": "1 versículo",
+    "Journeys on the map": "Viajes en el mapa",
+    "location less certain": "ubicación menos segura",
+    "All places": "Todos los lugares",
+    "See it on the Places map": "Verlo en el mapa de lugares",
+    "See them on the Places map": "Verlos en el mapa de lugares",
+    "See where the places named in the Bible were. Choose a place on the map or in the list to see every verse that mentions it.": "Mira dónde estaban los lugares mencionados en la Biblia. Elige un lugar en el mapa o en la lista para ver todos los versículos que lo mencionan.",
+    "Switch between the Connections and Places maps": "Cambiar entre el mapa de conexiones y el de lugares"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -977,7 +994,8 @@
     "Map of {n} places named in the Bible. Use the list below to choose a place.": "Mapa de {n} lugares mencionados en la Biblia. Usa la lista de abajo para elegir un lugar.",
     "You have hidden {n} links on this device.": "Ocultaste {n} vínculos en este dispositivo.",
     "Week {n}": "Semana {n}",
-    "week {n}": "semana {n}"
+    "week {n}": "semana {n}",
+    "Route: {x}": "Ruta: {x}"
   },
   "pages": {
     "handout": {

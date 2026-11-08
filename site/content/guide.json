@@ -292,28 +292,28 @@
         "title": "Places and timeline",
         "title_es": "Lugares y línea de tiempo",
         "title_pt": "Lugares e linha do tempo",
-        "what": "See where 1,277 places named in the Bible were, and 40 key events in order.",
-        "what_es": "Mira dónde estaban 1.277 lugares que menciona la Biblia, y 40 acontecimientos clave en orden.",
-        "what_pt": "Veja onde ficavam 1.277 lugares mencionados na Bíblia e 40 acontecimentos principais em ordem.",
+        "what": "A full map of 1,277 places named in the Bible, journeys drawn as routes, and 40 key events in order.",
+        "what_es": "Un mapa completo de 1.277 lugares mencionados en la Biblia, viajes trazados como rutas y 40 acontecimientos clave en orden.",
+        "what_pt": "Um mapa completo de 1.277 lugares mencionados na Bíblia, viagens traçadas como rotas e 40 acontecimentos principais em ordem.",
         "steps": [
-          "Open Study, then Places on a map or Timeline.",
-          "Choose a place or event to see its verses.",
-          "Show a whole period of the timeline on the map."
+          "Choose Places at the top of the map, or press M. Drag and zoom to explore.",
+          "Tap a place to see its verses, or open a verse or chapter to see its places.",
+          "Choose a journey such as Paul's second journey to follow it stop by stop, or open Study, then Timeline."
         ],
         "steps_es": [
-          "Abre Estudio y luego Lugares en un mapa o Línea de tiempo.",
-          "Elige un lugar o acontecimiento para ver sus versículos.",
-          "Muestra todo un período de la línea de tiempo en el mapa."
+          "Elige Lugares arriba del mapa, o pulsa M. Arrastra y acerca para explorar.",
+          "Toca un lugar para ver sus versículos, o abre un versículo o capítulo para ver sus lugares.",
+          "Elige un viaje como el segundo viaje de Pablo para seguirlo parada por parada, o abre Estudio y luego Línea de tiempo."
         ],
         "steps_pt": [
-          "Abra Estudo e depois Lugares no mapa ou Linha do tempo.",
-          "Escolha um lugar ou acontecimento para ver seus versículos.",
-          "Mostre um período inteiro da linha do tempo no mapa."
+          "Escolha Lugares no alto do mapa, ou pressione M. Arraste e aproxime para explorar.",
+          "Toque em um lugar para ver seus versículos, ou abra um versículo ou capítulo para ver seus lugares.",
+          "Escolha uma viagem como a segunda viagem de Paulo para segui-la parada por parada, ou abra Estudo e depois Linha do tempo."
         ],
-        "try": "?view=timeline",
-        "try_label": "Open the timeline",
-        "try_label_es": "Abrir la línea de tiempo",
-        "try_label_pt": "Abrir a linha do tempo"
+        "try": "?route=paul2",
+        "try_label": "Paul's second journey",
+        "try_label_es": "Segundo viaje de Pablo",
+        "try_label_pt": "Segunda viagem de Paulo"
       },
       {
         "title": "Prophecy and fulfilment",

@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.14.0';
+  const VERSION = '0.15.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
@@ -457,6 +457,7 @@
   // ---------- State ----------
   const state = {
     minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', colorMode: 'distance', notesOnly: false, order: 'bible',
+    stage: 'arcs',     // which map fills the main area: 'arcs' (connections) or 'places'
     focus: null,       // {kind: book|chapter|verse|words, start, end, mask?, verses?, query?}
     selected: -1,      // index into refs
     hover: -1, hoverChapter: -1,
@@ -663,7 +664,7 @@
 
   // ---------- Drawing ----------
   let baseQueued = false, overlayQueued = false;
-  function drawBase() { if (!baseQueued) { baseQueued = true; requestAnimationFrame(() => { baseQueued = false; paintBase(); paintOverlay(); }); } }
+  function drawBase() { if (state.stage === 'places') queueGeo(); if (!baseQueued) { baseQueued = true; requestAnimationFrame(() => { baseQueued = false; paintBase(); paintOverlay(); }); } }
   function drawOverlay() { if (!overlayQueued) { overlayQueued = true; requestAnimationFrame(() => { overlayQueued = false; paintOverlay(); }); } }
 
   function arcBetween(path, a, b) {
@@ -1350,6 +1351,7 @@
     else if (state.mode === 'wordstudy') [title, html] = wordStudyHTML();
     else if (state.mode === 'notes') [title, html] = notesHTML();
     else if (state.mode === 'places') [title, html] = placesHTML();
+    else if (state.mode === 'route' && state.route) [title, html] = routeHTML();
     else if (state.mode === 'shared') [title, html] = sharedHTML();
     else if (state.mode === 'timeline') [title, html] = timelineHTML();
     else if (state.mode === 'prophecy') [title, html] = prophecyHTML();
@@ -1391,6 +1393,7 @@
           const P0 = f.entity.place;
           html += `<canvas class="places-map mini" id="geoMini" data-i="${P0.i}" role="img" aria-label="Map showing ${esc(P0.label)}"></canvas>
             <p>${esc(P0.label)} <span class="muted">(${esc(P0.type)})</span> is mentioned in ${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? '' : 's'}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections. ${confText(P0.conf)}</p>
+            <div class="actions tight"><button type="button" class="btn ghost small" data-action="toPlaces">See it on the Places map</button></div>
             <p class="hint">Location from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0).</p>`;
         } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
         else html += `<p>${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
@@ -1451,6 +1454,7 @@
     }
     renderContext();
     fillStudy();
+    queueGeo();
   }
 
   // ---------- Journeys ----------
@@ -2544,7 +2548,8 @@
         const here = d.places.filter(p => decodePostings(p.vs).includes(v));
         if (!here.length) return;
         vp.innerHTML = `<p class="muted">Places in this verse</p><ul class="chip-list">${here.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)} <span class="muted">place</span></button></li>`).join('')}</ul>
-          <canvas class="places-map mini" id="versePlacesMap" role="img" aria-label="Map of the places in this verse"></canvas>`;
+          <canvas class="places-map mini" id="versePlacesMap" role="img" aria-label="Map of the places in this verse"></canvas>
+          <div class="actions tight"><button type="button" class="btn ghost small" data-action="toPlaces">See them on the Places map</button></div>`;
         const all = here.every(p => p.lon > 33.7 && p.lon < 36.9 && p.lat > 29.4 && p.lat < 33.6);
         drawPlaces($('versePlacesMap'), { view: all ? 'israel' : 'lands', highlight: here.map(p => p.i), labels: false });
       }, () => {});
@@ -2710,15 +2715,11 @@
     }
     const view = state.placesView || 'lands';
     const top = PLACES.places.filter(p => p.conf >= 1).slice(0, 40);
-    return ['Places', `<p>See where the places named in the Bible were. Choose a place to see every verse that mentions it.</p>
-      <div class="actions tight" role="group" aria-label="Map area">
-        <button type="button" class="btn ${view === 'lands' ? '' : 'ghost '}small" data-action="placesView" data-view="lands" aria-pressed="${view === 'lands'}">Bible lands</button>
-        <button type="button" class="btn ${view === 'israel' ? '' : 'ghost '}small" data-action="placesView" data-view="israel" aria-pressed="${view === 'israel'}">Israel and nearby</button>
-      </div>
-      <canvas class="places-map" id="placesMap" data-view="${view}" role="img" aria-label="Map of ${PLACES.places.length.toLocaleString(LANGS[LANG].locale)} places named in the Bible. Use the list below to choose a place."></canvas>
+    return ['Places', `<p>See where the places named in the Bible were. Choose a place on the map or in the list to see every verse that mentions it.</p>
       <div class="field"><label for="placeQ">Find a place</label><input id="placeQ" type="search" placeholder="e.g. Bethlehem" autocomplete="off" spellcheck="false"></div>
       <div id="placeResults" aria-live="polite"></div>
       <h3>Most mentioned</h3><ul class="chip-list">${top.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)} <span class="muted">${p.n}</span></button></li>`).join('')}</ul>
+      ${routesListHTML()}
       <p class="hint">Locations from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0). Coastline from Natural Earth. Lighter dots are places whose location is less certain.</p>
       <div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="study">Back to study</button></div>`];
   }
@@ -2749,6 +2750,241 @@
     const hits = PLACES.places.filter(p => plain(p.label).includes(q)).sort((a, b) => (plain(b.label).startsWith(q) - plain(a.label).startsWith(q)) || b.n - a.n).slice(0, 20);
     box.innerHTML = hits.length ? `<ul class="conn-list">${hits.map(p => `<li><button type="button" class="conn-item" data-action="openGeo" data-i="${p.i}"><span class="label">${esc(p.label)} <span class="muted">${esc(p.type)}${p.conf < 2 ? ', location less certain' : ''}</span></span><span class="votes">${p.n} verse${p.n === 1 ? '' : 's'}</span></button></li>`).join('')}</ul>` : '<p class="muted">No places found.</p>';
   });
+
+  // ---------- Places view: the geographic map as a full view in the main area ----------
+  // state.stage is 'arcs' (the cross reference map) or 'places'. The places map follows whatever is open:
+  // a place, a route, a connection, a journey step, a prophecy chain, a passage, a person or a topic.
+  const geo = { cx: 26, cy: 29, k: 0, key: '', queued: false, drag: null, pinch: null, ptrs: new Map() };
+  const GEO_COS = Math.cos(33 * Math.PI / 180);
+  let ROUTES = null, routesPromise = null;
+  const loadRoutes = () => (routesPromise ||= fetchJSON('content/routes.json').then(d => (ROUTES = d)).catch(e => { routesPromise = null; throw e; }));
+  const placeIdx = (name) => (PLACES ? PLACES.places.findIndex(p => p.name === name) : -1);
+  const placeVerses = (p) => p._v || (p._v = Int32Array.from(decodePostings(p.vs)));
+  function geoFocus() {
+    if (!PLACES) return { places: [], route: null };
+    if (state.mode === 'route' && state.route && ROUTES) {
+      const r = ROUTES.find(x => x.id === state.route);
+      if (r) return { places: [], route: r.stops.map(st => placeIdx(st.place)).filter(i => i >= 0) };
+    }
+    const f = state.focus;
+    if (f && f.entity && f.entity.type === 'geo') return { places: [f.entity.place.i], route: null };
+    let test = null;
+    if (state.selected >= 0) { const i = state.selected; test = (v) => v === F[i] || (v >= T[i] && v <= E[i]); }
+    else if (state.mode === 'journey') { const st = currentStep(); if (st) test = (v) => v === st.ia || v === st.ib; }
+    else if (state.mode === 'chain' && state.chain) { const set = new Set(state.chain.verses); test = (v) => set.has(v); }
+    else if (f && f.mask) test = (v) => f.mask[v] === 1;
+    else if (f && f.start >= 0) test = (v) => v >= f.start && v < f.end;
+    if (!test) return { places: [], route: null };
+    const out = [];
+    for (const p of PLACES.places) { const vs = placeVerses(p); for (let k = 0; k < vs.length; k++) if (test(vs[k])) { out.push(p.i); break; } }
+    out.sort((a, b) => PLACES.places[b].n - PLACES.places[a].n);
+    return { places: out.slice(0, 80), route: null };
+  }
+  const geoBox = () => { const c = $('geoCanvas'); return [c.clientWidth, c.clientHeight]; };
+  function geoFit(w, s0, e, n, pad = 0.08) {
+    const [W, H] = geoBox();
+    if (!W || !H) return;
+    const dw = Math.max(e - w, 0.5), dh = Math.max(n - s0, 0.4);
+    geo.k = Math.min(W / (dw * GEO_COS), H / dh) * (1 - pad * 2);
+    geo.cx = (w + e) / 2; geo.cy = (s0 + n) / 2;
+  }
+  function fitGeoTo(list) {
+    const ps = list.map(i => PLACES.places[i]).filter(Boolean);
+    if (!ps.length) return false;
+    let w = Infinity, e = -Infinity, s0 = Infinity, n = -Infinity;
+    for (const p of ps) { w = Math.min(w, p.lon); e = Math.max(e, p.lon); s0 = Math.min(s0, p.lat); n = Math.max(n, p.lat); }
+    if (ps.length === 1 || Math.max(e - w, n - s0) < 0.8) { const x = (w + e) / 2, y = (s0 + n) / 2; geoFit(x - 1.4, y - 1.1, x + 1.4, y + 1.1, 0); }
+    else geoFit(w, s0, e, n, 0.1);
+    return true;
+  }
+  function queueGeo() { if (state.stage !== 'places' || geo.queued) return; geo.queued = true; requestAnimationFrame(drawGeo); }
+  function drawGeo() {
+    geo.queued = false;
+    const c = $('geoCanvas');
+    if (state.stage !== 'places' || !PLACES || !c) return;
+    const W = c.clientWidth, H = c.clientHeight;
+    if (!W || !H) return;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    if (c.width !== Math.round(W * dpr) || c.height !== Math.round(H * dpr)) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
+    const G = geoFocus(), key = (G.route ? 'route:' + state.route : '') + G.places.join(',');
+    if (key !== geo.key) { geo.key = key; if (key) fitGeoTo(G.route || G.places); }
+    if (!geo.k) geoFit(...PLACE_VIEWS.lands, 0.02);
+    const css = getComputedStyle(document.documentElement);
+    const ctx = c.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const X = (lon) => (lon - geo.cx) * geo.k * GEO_COS + W / 2, Y = (lat) => (geo.cy - lat) * geo.k + H / 2;
+    ctx.fillStyle = css.getPropertyValue('--map-water').trim() || '#1b2a3a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = css.getPropertyValue('--map-land').trim() || '#2c2c2e';
+    for (const r of PLACES.land) { ctx.beginPath(); for (let j = 0; j < r.length; j += 2) (j ? ctx.lineTo : ctx.moveTo).call(ctx, X(r[j]), Y(r[j + 1])); ctx.closePath(); ctx.fill(); }
+    const dot = css.getPropertyValue('--link').trim(), hl = pal.marker, ink = css.getPropertyValue('--text').trim(), halo = css.getPropertyValue('--map-land').trim(), font = css.getPropertyValue('--font');
+    const inView = (p) => { const x = X(p.lon), y = Y(p.lat); return x > -20 && x < W + 20 && y > -20 && y < H + 20; };
+    const zoomF = 0.7 + Math.min(1, geo.k / 160) * 0.7;
+    c._hit = [];
+    const byN = PLACES.byN || (PLACES.byN = [...PLACES.places].sort((a, b) => b.n - a.n));
+    for (let q = byN.length - 1; q >= 0; q--) {
+      const p = byN[q];
+      if (!inView(p)) continue;
+      const r = Math.max(1.8, Math.min(9, Math.log2(p.n + 1) * zoomF));
+      ctx.globalAlpha = p.conf === 2 ? 0.85 : p.conf === 1 ? 0.55 : 0.28;
+      ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(X(p.lon), Y(p.lat), r, 0, 7); ctx.fill();
+      c._hit.push([X(p.lon), Y(p.lat), p.i, r]);
+    }
+    ctx.globalAlpha = 1;
+    const boxes = [];
+    const label = (p, weight, size, text = p.label, force = false) => {
+      const x = X(p.lon), y = Y(p.lat);
+      ctx.font = `${weight} ${size}px ${font}`;
+      const tw = ctx.measureText(text).width, bx = [x + 8, y - size, x + 12 + tw, y + size * 0.6];
+      if (!force && (bx[2] > W - 4 || bx[1] < 4 || boxes.some(b => !(bx[2] < b[0] || bx[0] > b[2] || bx[3] < b[1] || bx[1] > b[3])))) return;
+      boxes.push(bx);
+      ctx.lineWidth = 3.5; ctx.strokeStyle = halo; ctx.lineJoin = 'round'; ctx.strokeText(text, x + 9, y + size * 0.35);
+      ctx.fillStyle = ink; ctx.fillText(text, x + 9, y + size * 0.35);
+    };
+    const ring = (p, r = 7) => { ctx.fillStyle = hl; ctx.strokeStyle = halo; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(X(p.lon), Y(p.lat), r, 0, 7); ctx.fill(); ctx.stroke(); };
+    if (G.route) {
+      const pts = G.route.map(i => PLACES.places[i]);
+      ctx.strokeStyle = hl; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.setLineDash([8, 6]);
+      ctx.beginPath(); pts.forEach((p, n) => (n ? ctx.lineTo : ctx.moveTo).call(ctx, X(p.lon), Y(p.lat))); ctx.stroke(); ctx.setLineDash([]);
+      const seen = new Map();
+      pts.forEach((p, n) => { const prev = seen.get(p.i); seen.set(p.i, prev ? prev + ', ' + (n + 1) : String(n + 1)); });
+      for (const [i, nums] of seen) {
+        const p = PLACES.places[i];
+        ring(p, 10);
+        ctx.fillStyle = '#000'; ctx.font = `700 11px ${font}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(nums.split(', ')[0], X(p.lon), Y(p.lat) + 0.5); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      }
+      for (const [i, nums] of seen) { const p = PLACES.places[i]; label(p, 600, 13, `${nums}. ${p.label}`); }
+    }
+    for (const i of G.places) ring(PLACES.places[i]);
+    for (const i of G.places.slice(0, 30)) label(PLACES.places[i], 600, 13);
+    const room = Math.max(10, Math.round((W * H) / 14000));
+    let shown = 0;
+    for (const p of byN) { if (shown >= room) break; if (p.conf < 2 || !inView(p)) continue; const before = boxes.length; label(p, 500, 11.5); if (boxes.length > before) shown++; }
+  }
+  function geoZoom(f, px, py) {
+    const [W, H] = geoBox();
+    if (px === undefined) { px = W / 2; py = H / 2; }
+    const lon = geo.cx + (px - W / 2) / (geo.k * GEO_COS), lat = geo.cy - (py - H / 2) / geo.k;
+    geo.k = Math.min(2400, Math.max(4, geo.k * f));
+    geo.cx = lon - (px - W / 2) / (geo.k * GEO_COS); geo.cy = lat + (py - H / 2) / geo.k;
+    queueGeo();
+  }
+  function geoHit(x, y, tol = 12) {
+    const c = $('geoCanvas');
+    let best = null, bd = Infinity;
+    for (const [hx, hy, i, r] of c._hit || []) { const d = Math.hypot(hx - x, hy - y); if (d < Math.max(tol, r + 4) && d < bd) { bd = d; best = i; } }
+    return best;
+  }
+  function applyStage() {
+    const pl = state.stage === 'places';
+    $('geo').hidden = !pl;
+    document.body.classList.toggle('stage-places', pl);
+    el.viz.inert = pl; el.viz.setAttribute('aria-hidden', String(pl));
+    document.querySelectorAll('[data-stage]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.stage === state.stage)));
+    $('placesNav').setAttribute('aria-pressed', String(pl));
+    if (pl) { loadPlaces().then(() => { queueGeo(); }, () => {}); loadRoutes().catch(() => {}); }
+    else drawBase();
+  }
+  function setStage(stage, { push = true } = {}) {
+    if (stage === state.stage) return;
+    state.stage = stage;
+    applyStage();
+    if (stage === 'places' && state.mode === 'explore' && !state.focus && state.selected < 0) { setMode('places'); return; }
+    if (stage === 'arcs' && (state.mode === 'places' || state.mode === 'route')) { setMode('explore'); return; }
+    syncURL(push);
+    announce(tr(stage === 'places' ? 'Showing the places map.' : 'Showing the connections map.'));
+    track('stage/' + stage);
+  }
+  document.querySelectorAll('[data-stage]').forEach(b => b.addEventListener('click', () => { hideLanding(); setStage(b.dataset.stage); }));
+  $('placesNav').addEventListener('click', () => { hideLanding(); setStage(state.stage === 'places' ? 'arcs' : 'places'); });
+  {
+    const g = $('geo'), local = (e) => { const r = g.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    const tip = $('geoTip');
+    g.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.geo-tools')) return;
+      try { g.setPointerCapture(e.pointerId); } catch { /* synthetic pointer */ }
+      const [x, y] = local(e);
+      geo.ptrs.set(e.pointerId, { x, y });
+      if (geo.ptrs.size === 1) geo.drag = { x, y, cx: geo.cx, cy: geo.cy, moved: false };
+      else if (geo.ptrs.size === 2) { const [a, b] = [...geo.ptrs.values()]; geo.pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), k: geo.k }; geo.drag = null; }
+    });
+    g.addEventListener('pointermove', (e) => {
+      const [x, y] = local(e);
+      if (geo.ptrs.has(e.pointerId)) geo.ptrs.set(e.pointerId, { x, y });
+      if (geo.pinch && geo.ptrs.size === 2) {
+        const [a, b] = [...geo.ptrs.values()], d = Math.hypot(a.x - b.x, a.y - b.y);
+        geoZoom((geo.pinch.k * d / geo.pinch.d) / geo.k, (a.x + b.x) / 2, (a.y + b.y) / 2);
+        return;
+      }
+      if (geo.drag) {
+        const dx = x - geo.drag.x, dy = y - geo.drag.y;
+        if (Math.hypot(dx, dy) > 4) { geo.drag.moved = true; g.classList.add('dragging'); tip.hidden = true; }
+        if (geo.drag.moved) { geo.cx = geo.drag.cx - dx / (geo.k * GEO_COS); geo.cy = geo.drag.cy + dy / geo.k; queueGeo(); }
+        return;
+      }
+      if (e.pointerType !== 'mouse') return;
+      const i = geoHit(x, y);
+      g.style.cursor = i === null ? '' : 'pointer';
+      if (i === null) { tip.hidden = true; return; }
+      const p = PLACES.places[i];
+      tip.textContent = `${p.label} · ${tr(p.n === 1 ? '1 verse' : `${p.n} verses`)}`;
+      tip.hidden = false; tip.style.left = Math.min(x + 14, g.clientWidth - tip.offsetWidth - 8) + 'px'; tip.style.top = Math.max(8, y - 34) + 'px';
+    });
+    const end = (e) => {
+      const was = geo.drag;
+      geo.ptrs.delete(e.pointerId);
+      if (geo.ptrs.size < 2) geo.pinch = null;
+      g.classList.remove('dragging');
+      if (was && !was.moved && e.type === 'pointerup') {
+        const [x, y] = local(e), i = geoHit(x, y, e.pointerType === 'mouse' ? 12 : 22);
+        if (i !== null) openGeo(i).then(focusPanelHeading);
+      }
+      geo.drag = null;
+    };
+    g.addEventListener('pointerup', end); g.addEventListener('pointercancel', end);
+    g.addEventListener('pointerleave', () => { tip.hidden = true; });
+    g.addEventListener('wheel', (e) => { e.preventDefault(); const [x, y] = local(e); geoZoom(Math.exp(-e.deltaY * 0.0015), x, y); }, { passive: false });
+    g.addEventListener('keydown', (e) => {
+      if (e.target !== g) return;
+      const step = 60, m = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+      if (m) { e.preventDefault(); geo.cx += m[0] / (geo.k * GEO_COS); geo.cy -= m[1] / geo.k; queueGeo(); }
+      else if (e.key === '+' || e.key === '=') { e.preventDefault(); geoZoom(1.4); }
+      else if (e.key === '-' || e.key === '_') { e.preventDefault(); geoZoom(1 / 1.4); }
+      else if (e.key === '0') { e.preventDefault(); geoFit(...PLACE_VIEWS.lands, 0.02); queueGeo(); }
+    });
+    $('geoIn').addEventListener('click', () => geoZoom(1.5));
+    $('geoOut').addEventListener('click', () => geoZoom(1 / 1.5));
+    $('geoLands').addEventListener('click', () => { geoFit(...PLACE_VIEWS.lands, 0.02); queueGeo(); });
+    $('geoIsrael').addEventListener('click', () => { geoFit(...PLACE_VIEWS.israel, 0.02); queueGeo(); });
+    window.addEventListener('resize', queueGeo);
+  }
+  // routes: journeys drawn on the places map
+  function routesListHTML() {
+    if (!ROUTES) { loadRoutes().then(() => { if (state.mode === 'places') renderPanel(); }, () => {}); return ''; }
+    return `<h3>Journeys on the map</h3><ul class="study-list">${ROUTES.map(r => `<li><button type="button" class="study-card" data-action="openRoute" data-id="${esc(r.id)}"><strong>${esc(loc(r, 'name'))}</strong><span>${esc(loc(r, 'summary'))}</span></button></li>`).join('')}</ul>`;
+  }
+  function routeHTML() {
+    const r = ROUTES && ROUTES.find(x => x.id === state.route);
+    if (!r || !PLACES) return ['Places', '<p class="muted">Loading…</p>'];
+    let html = `<p>${esc(loc(r, 'summary'))}</p><ol class="chain">`;
+    r.stops.forEach((st, n) => {
+      const i = placeIdx(st.place), p = PLACES.places[i], v = osisToIndex(st.ref);
+      html += `<li><span class="chain-num" aria-hidden="true">${n + 1}</span><div><p class="ref"><button type="button" class="link-btn" data-action="openGeo" data-i="${i}">${esc(p.label)}</button>${p.conf < 2 ? ` <span class="muted">${esc(tr('location less certain'))}</span>` : ''}</p>
+        <div class="actions tight">${v >= 0 ? `<button type="button" class="chip" data-action="focusRange" data-s="${v}" data-e="${v}">${esc(refLabel(v))}</button>${miniRead(v)}` : ''}</div></div></li>`;
+    });
+    html += `</ol><div class="actions">${shareButtons()}</div><div class="actions"><button type="button" class="btn ghost small" data-action="mode" data-mode="places">All places</button></div>`;
+    return [loc(r, 'name'), html];
+  }
+  async function openRoute(id, { push = true } = {}) {
+    await Promise.all([loadPlaces(), loadRoutes()]);
+    if (!ROUTES.some(r => r.id === id)) return;
+    if (colPlay) { colPlay = null; renderColBar(); }
+    state.mode = 'route'; state.route = id; state.selected = -1; state.focus = null; state.journey = null;
+    state.stage = 'places'; applyStage();
+    track('route/' + id);
+    updateNav(); drawBase(); renderPanel(); syncURL(push);
+    announce(loc(ROUTES.find(r => r.id === id), 'name'));
+  }
 
   // ---------- Shared connections: passages that two verses both link to ----------
   function neighbours(r) {
@@ -2908,7 +3144,8 @@
         <ul class="chip-list">${kw.map(([, c, n]) => `<li><button type="button" class="chip" data-action="openWord" data-code="${c}"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(S[c].l)}</span> ${esc(S[c].g)} <span class="muted">${n}</span></button></li>`).join('')}</ul></section>`;
       const here = d ? d.places.filter(p => decodePostings(p.vs).some(v => v >= start && v < end)).slice(0, 24) : [];
       if (here.length) html += `<section class="study-sec"><h3>Places</h3><ul class="chip-list">${here.map(p => `<li><button type="button" class="chip" data-action="openGeo" data-i="${p.i}">${esc(p.label)}</button></li>`).join('')}</ul>
-        <canvas class="places-map mini" id="rangePlacesMap" role="img" aria-label="Map of the places named here"></canvas></section>`;
+        <canvas class="places-map mini" id="rangePlacesMap" role="img" aria-label="Map of the places named here"></canvas>
+        <div class="actions tight"><button type="button" class="btn ghost small" data-action="toPlaces">See them on the Places map</button></div></section>`;
       const q = kind === 'chapter' ? ((REFLECT[b.cat] || {})[LANG] || (REFLECT[b.cat] || {}).en || []) : [];
       if (q.length) html += `<section class="study-sec"><h3>Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol></section>`;
       box.innerHTML = html;
@@ -3198,6 +3435,7 @@
     if (e.key === '?') { e.preventDefault(); openKeys(); }
     else if (e.key === '/') { e.preventDefault(); const box = landing.hidden ? el.search : $('landingQ'); box.focus(); box.select(); }
     else if ((e.key === 's' || e.key === 'S') && !t.closest('button, a')) { e.preventDefault(); if (!landing.hidden) hideLanding(); surprise(); }
+    else if ((e.key === 'm' || e.key === 'M') && !t.closest('button, a')) { e.preventDefault(); if (!landing.hidden) hideLanding(); setStage(state.stage === 'places' ? 'arcs' : 'places'); }
   });
 
 
@@ -3759,6 +3997,8 @@
     else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
     else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
     else if (a === 'openGeo') { openGeo(+btn.dataset.i).then(focusPanelHeading); }
+    else if (a === 'openRoute') openRoute(btn.dataset.id).then(focusPanelHeading);
+    else if (a === 'toPlaces') { setStage('places'); requestAnimationFrame(() => $('geo').focus({ preventScroll: true })); }
     else if (a === 'sharedExample') { findShared(btn.dataset.a, btn.dataset.b); focusPanelHeading(); }
     else if (a === 'sharedMap') { sharedOnMap(); focusPanelHeading(); }
     else if (a === 'openSense') { openSense(btn.dataset.code, btn.dataset.sense).then(focusPanelHeading); }
@@ -3830,6 +4070,8 @@
     if (mode !== 'explore') state.selected = -1;
     state.mode = mode;
     if (mode !== 'journey') state.journey = null;
+    if (mode === 'places' && state.stage !== 'places') { state.stage = 'places'; applyStage(); }
+    if (mode === 'places') { state.focus = null; state.route = null; }
     updateNav(); drawBase(); renderPanel(); syncURL(true); focusPanelHeading();
   }
   function updateNav() {
@@ -4281,6 +4523,8 @@
     if (state.mode === 'series') items.push(['mode', (window.SERIES || {}).title || 'Series']);
     if (state.mode === 'prophecy') items.push(['mode', 'Prophecy and fulfilment']);
     if (state.mode === 'church') items.push(['mode', 'Church page']);
+    if (state.mode === 'places') items.push(['mode', 'Places']);
+    if (state.mode === 'route' && state.route && ROUTES) items.push(['mode', `Route: ${loc(ROUTES.find(r => r.id === state.route), 'name')}`]);
     if (state.mode === 'chain' && state.chain && PROPHECY) items.push(['mode', `Prophecy: ${tl(findChain(state.chain.id), 'title')}`]);
     if (state.mode === 'path') items.push(['mode', state.path && state.path.edges ? `Link: ${state.path.fromLabel} to ${state.path.toLabel}` : 'How are these connected?']);
     if (state.theme) items.push(['theme', `Theme: ${THEMES.find(t => t.id === state.theme).name}`]);
@@ -4349,6 +4593,7 @@
       else if (state.mode === 'shared' && state.shared && state.shared.aLabel) p.set('shared', `${state.shared.aLabel}~${state.shared.bLabel}`);
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
       else if (state.mode === 'chain' && state.chain) p.set('prophecy', state.chain.id);
+      else if (state.mode === 'route' && state.route) p.set('route', state.route);
       else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
@@ -4357,6 +4602,7 @@
         }
         if (state.selected >= 0) p.set('c', `${toOsis(F[state.selected])}_${toOsis(T[state.selected])}`);
       }
+      if (state.stage === 'places' && !['places', 'route'].includes(state.mode)) p.set('stage', 'places');
       if (![...p.keys()].filter(k => k !== 'lang' && k !== 'embed' && k !== 'colors').length) p.set('view', 'map');
       url = `?${p}`;
     }
@@ -4395,6 +4641,9 @@
     return best;
   }
   async function restoreFromURL(p) {
+    const wantPlaces = p.get('stage') === 'places' || p.get('view') === 'places' || !!p.get('route');
+    if ((state.stage === 'places') !== wantPlaces) { state.stage = wantPlaces ? 'places' : 'arcs'; applyStage(); }
+    if (p.get('route')) { await openRoute(p.get('route'), { push: false }); return; }
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }
     if (p.get('plan')) { openPlan(p.get('plan'), (+p.get('day') || 1) - 1, { push: false }); return; }

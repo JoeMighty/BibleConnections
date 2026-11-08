@@ -5,6 +5,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-11-08 - Places
+
+### Added
+- Places view: the places map now fills the main area, as a full view beside the connections map. Switch with the Connections and Places control at the top of the map, the Places tab on larger screens, or the M key.
+- Drag, pinch, scroll or use the buttons and arrow keys to move and zoom. Bigger dots are named more often and lighter dots are less certain. Hover for a place's name and verse count, and tap a dot to see every verse that names it.
+- The places map follows what is open: a chapter, verse, connection, journey step, prophecy, person or topic lights up its places and zooms to them. Verse, chapter and place panels have a "See it on the Places map" button.
+- Journeys on the map: Abraham's journey, the exodus, Paul's three missionary journeys and his voyage to Rome, drawn as routes with numbered stops, each linked to its passage. Links look like ?route=paul2. In English, Spanish and Portuguese.
+
+### Changed
+- The color legend sits below the new map switch, and Study, Places on a map now opens the Places view.
+
 ## [0.14.0] - 2026-11-08 - For Churches
 
 ### Added

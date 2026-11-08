@@ -1,0 +1,332 @@
+[
+  {
+    "id": "abraham",
+    "name": "Abraham's journey",
+    "name_es": "El viaje de Abraham",
+    "name_pt": "A viagem de Abraão",
+    "summary": "From Ur to the promised land, following God's call.",
+    "summary_es": "De Ur a la tierra prometida, siguiendo el llamado de Dios.",
+    "summary_pt": "De Ur à terra prometida, seguindo o chamado de Deus.",
+    "stops": [
+      {
+        "place": "Ur 1",
+        "ref": "Gen.11.31"
+      },
+      {
+        "place": "Haran",
+        "ref": "Gen.11.31"
+      },
+      {
+        "place": "Shechem",
+        "ref": "Gen.12.6"
+      },
+      {
+        "place": "Bethel 1",
+        "ref": "Gen.12.8"
+      },
+      {
+        "place": "Egypt",
+        "ref": "Gen.12.10"
+      },
+      {
+        "place": "Hebron",
+        "ref": "Gen.13.18"
+      },
+      {
+        "place": "Beersheba 1",
+        "ref": "Gen.21.31"
+      }
+    ]
+  },
+  {
+    "id": "exodus",
+    "name": "The exodus",
+    "name_es": "El éxodo",
+    "name_pt": "O êxodo",
+    "summary": "From slavery in Egypt, through the wilderness, to the edge of the promised land. Many of these locations are uncertain.",
+    "summary_es": "De la esclavitud en Egipto, por el desierto, hasta la entrada de la tierra prometida. Muchas de estas ubicaciones son inciertas.",
+    "summary_pt": "Da escravidão no Egito, pelo deserto, até a entrada da terra prometida. Muitas dessas localizações são incertas.",
+    "stops": [
+      {
+        "place": "Rameses",
+        "ref": "Exod.12.37"
+      },
+      {
+        "place": "Succoth 2",
+        "ref": "Exod.12.37"
+      },
+      {
+        "place": "Etham",
+        "ref": "Exod.13.20"
+      },
+      {
+        "place": "Marah",
+        "ref": "Exod.15.23"
+      },
+      {
+        "place": "Elim",
+        "ref": "Exod.15.27"
+      },
+      {
+        "place": "Rephidim",
+        "ref": "Exod.17.1"
+      },
+      {
+        "place": "Mount Sinai",
+        "ref": "Exod.19.1"
+      },
+      {
+        "place": "Kadesh-barnea",
+        "ref": "Num.32.8"
+      },
+      {
+        "place": "Mount Hor 1",
+        "ref": "Num.20.22"
+      },
+      {
+        "place": "Mount Nebo",
+        "ref": "Deut.34.1"
+      },
+      {
+        "place": "Gilgal 1",
+        "ref": "Josh.4.19"
+      },
+      {
+        "place": "Jericho 1",
+        "ref": "Josh.6.1"
+      }
+    ]
+  },
+  {
+    "id": "paul1",
+    "name": "Paul's first journey",
+    "name_es": "Primer viaje de Pablo",
+    "name_pt": "Primeira viagem de Paulo",
+    "summary": "With Barnabas, from Antioch to Cyprus and the cities of Galatia, then back again.",
+    "summary_es": "Con Bernabé, de Antioquía a Chipre y las ciudades de Galacia, y de regreso.",
+    "summary_pt": "Com Barnabé, de Antioquia a Chipre e às cidades da Galácia, e de volta.",
+    "stops": [
+      {
+        "place": "Antioch 1",
+        "ref": "Acts.13.1"
+      },
+      {
+        "place": "Seleucia",
+        "ref": "Acts.13.4"
+      },
+      {
+        "place": "Salamis",
+        "ref": "Acts.13.5"
+      },
+      {
+        "place": "Paphos",
+        "ref": "Acts.13.6"
+      },
+      {
+        "place": "Perga",
+        "ref": "Acts.13.13"
+      },
+      {
+        "place": "Antioch 2",
+        "ref": "Acts.13.14"
+      },
+      {
+        "place": "Iconium",
+        "ref": "Acts.14.1"
+      },
+      {
+        "place": "Lystra",
+        "ref": "Acts.14.8"
+      },
+      {
+        "place": "Derbe",
+        "ref": "Acts.14.20"
+      },
+      {
+        "place": "Attalia",
+        "ref": "Acts.14.25"
+      },
+      {
+        "place": "Antioch 1",
+        "ref": "Acts.14.26"
+      }
+    ]
+  },
+  {
+    "id": "paul2",
+    "name": "Paul's second journey",
+    "name_es": "Segundo viaje de Pablo",
+    "name_pt": "Segunda viagem de Paulo",
+    "summary": "With Silas, through Galatia and across the sea into Europe, to Philippi, Athens and Corinth.",
+    "summary_es": "Con Silas, por Galacia y cruzando el mar hacia Europa, a Filipos, Atenas y Corinto.",
+    "summary_pt": "Com Silas, pela Galácia e atravessando o mar até a Europa, a Filipos, Atenas e Corinto.",
+    "stops": [
+      {
+        "place": "Antioch 1",
+        "ref": "Acts.15.35"
+      },
+      {
+        "place": "Derbe",
+        "ref": "Acts.16.1"
+      },
+      {
+        "place": "Lystra",
+        "ref": "Acts.16.1"
+      },
+      {
+        "place": "Troas",
+        "ref": "Acts.16.8"
+      },
+      {
+        "place": "Neapolis",
+        "ref": "Acts.16.11"
+      },
+      {
+        "place": "Philippi",
+        "ref": "Acts.16.12"
+      },
+      {
+        "place": "Thessalonica",
+        "ref": "Acts.17.1"
+      },
+      {
+        "place": "Berea",
+        "ref": "Acts.17.10"
+      },
+      {
+        "place": "Athens",
+        "ref": "Acts.17.15"
+      },
+      {
+        "place": "Corinth",
+        "ref": "Acts.18.1"
+      },
+      {
+        "place": "Cenchreae",
+        "ref": "Acts.18.18"
+      },
+      {
+        "place": "Ephesus",
+        "ref": "Acts.18.19"
+      },
+      {
+        "place": "Caesarea",
+        "ref": "Acts.18.22"
+      },
+      {
+        "place": "Antioch 1",
+        "ref": "Acts.18.22"
+      }
+    ]
+  },
+  {
+    "id": "paul3",
+    "name": "Paul's third journey",
+    "name_es": "Tercer viaje de Pablo",
+    "name_pt": "Terceira viagem de Paulo",
+    "summary": "Years in Ephesus, then a last visit to the churches and the voyage to Jerusalem.",
+    "summary_es": "Años en Éfeso, luego una última visita a las iglesias y el viaje a Jerusalén.",
+    "summary_pt": "Anos em Éfeso, depois uma última visita às igrejas e a viagem a Jerusalém.",
+    "stops": [
+      {
+        "place": "Antioch 1",
+        "ref": "Acts.18.23"
+      },
+      {
+        "place": "Ephesus",
+        "ref": "Acts.19.1"
+      },
+      {
+        "place": "Troas",
+        "ref": "Acts.20.6"
+      },
+      {
+        "place": "Assos",
+        "ref": "Acts.20.13"
+      },
+      {
+        "place": "Mitylene",
+        "ref": "Acts.20.14"
+      },
+      {
+        "place": "Miletus",
+        "ref": "Acts.20.15"
+      },
+      {
+        "place": "Cos",
+        "ref": "Acts.21.1"
+      },
+      {
+        "place": "Rhodes 2",
+        "ref": "Acts.21.1"
+      },
+      {
+        "place": "Patara",
+        "ref": "Acts.21.1"
+      },
+      {
+        "place": "Tyre",
+        "ref": "Acts.21.3"
+      },
+      {
+        "place": "Ptolemais",
+        "ref": "Acts.21.7"
+      },
+      {
+        "place": "Caesarea",
+        "ref": "Acts.21.8"
+      },
+      {
+        "place": "Jerusalem",
+        "ref": "Acts.21.17"
+      }
+    ]
+  },
+  {
+    "id": "rome",
+    "name": "Paul's voyage to Rome",
+    "name_es": "El viaje de Pablo a Roma",
+    "name_pt": "A viagem de Paulo a Roma",
+    "summary": "As a prisoner, through a storm and a shipwreck on Malta, to Rome.",
+    "summary_es": "Como prisionero, a través de una tormenta y un naufragio en Malta, hasta Roma.",
+    "summary_pt": "Como prisioneiro, passando por uma tempestade e um naufrágio em Malta, até Roma.",
+    "stops": [
+      {
+        "place": "Caesarea",
+        "ref": "Acts.27.1"
+      },
+      {
+        "place": "Sidon",
+        "ref": "Acts.27.3"
+      },
+      {
+        "place": "Myra",
+        "ref": "Acts.27.5"
+      },
+      {
+        "place": "Fair Havens",
+        "ref": "Acts.27.8"
+      },
+      {
+        "place": "Malta",
+        "ref": "Acts.28.1"
+      },
+      {
+        "place": "Syracuse",
+        "ref": "Acts.28.12"
+      },
+      {
+        "place": "Rhegium",
+        "ref": "Acts.28.13"
+      },
+      {
+        "place": "Puteoli",
+        "ref": "Acts.28.13"
+      },
+      {
+        "place": "Rome",
+        "ref": "Acts.28.16"
+      }
+    ]
+  }
+]
