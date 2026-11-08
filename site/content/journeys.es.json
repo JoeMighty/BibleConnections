@@ -543,5 +543,52 @@
         "question": "¿A quién le puedes contar la buena noticia esta Navidad?"
       }
     ]
+  },
+  {
+    "id": "holy-week",
+    "name": "Semana Santa: el camino a la cruz",
+    "summary": "Del Domingo de Ramos a la mañana de Pascua, los pasajes del Antiguo Testamento que apuntan a cada día.",
+    "steps": [
+      {
+        "title": "Domingo de Ramos: el rey humilde",
+        "note": "Zacarías describe al rey de Jerusalén llegando con humildad en un asno. Jesús entra así en la ciudad mientras la multitud agita ramas y grita: ¡Hosanna!",
+        "question": "¿Qué clase de rey quería la multitud, y qué clase de rey llegó?"
+      },
+      {
+        "title": "Lunes: casa de oración",
+        "note": "Dios prometió que su casa sería casa de oración para todas las naciones. Jesús echa a los comerciantes que llenaban los atrios del templo y cita las palabras de Isaías.",
+        "question": "¿Qué desplaza la oración en nuestra vida o en nuestras iglesias?"
+      },
+      {
+        "title": "Martes: la piedra rechazada",
+        "note": "El salmo canta de una piedra que desecharon los constructores y que llegó a ser la piedra angular. Enseñando en el templo, Jesús dice a los líderes que habla de él.",
+        "question": "¿Por qué crees que Dios obra tantas veces por medio de lo que la gente rechaza?"
+      },
+      {
+        "title": "Miércoles: treinta monedas de plata",
+        "note": "En Zacarías el pastor del pueblo de Dios es valorado en treinta monedas de plata. Judas acepta traicionar a Jesús por el mismo precio.",
+        "question": "¿Qué dice este precio sobre el valor que le dieron a Jesús, y qué valor le damos nosotros?"
+      },
+      {
+        "title": "Jueves: la sangre del pacto",
+        "note": "En el Sinaí Moisés sella el pacto con sangre. En la última cena Jesús toma la copa y la llama su sangre del pacto, derramada por muchos.",
+        "question": "¿Qué significa para ti que Jesús eligiera una comida para explicar su muerte?"
+      },
+      {
+        "title": "Viernes Santo: ¿por qué me has abandonado?",
+        "note": "El salmo de David empieza con un grito de abandono y termina en alabanza. En la cruz Jesús ora en voz alta su primera línea.",
+        "question": "¿Por qué crees que Jesús eligió orar un salmo en su hora más oscura?"
+      },
+      {
+        "title": "Sábado Santo: tres días",
+        "note": "Jonás pasa tres días y tres noches dentro del gran pez. Jesús dijo que el Hijo del Hombre también estaría tres días en el corazón de la tierra.",
+        "question": "¿Cómo esperas cuando Dios parece guardar silencio?"
+      },
+      {
+        "title": "Domingo de Resurrección: no abandonado en la tumba",
+        "note": "David confía en que Dios no abandonará a su santo en la tumba. En Pentecostés Pedro dice que esto se cumplió cuando Dios resucitó a Jesús.",
+        "question": "¿Qué diferencia hace la resurrección en tu semana?"
+      }
+    ]
   }
 ]

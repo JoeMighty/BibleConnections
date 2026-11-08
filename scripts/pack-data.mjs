@@ -4,7 +4,7 @@
 //   site/data/refs.v2.gz        cross references as variable-length numbers, gzip compressed (refs.bin stays as a fallback)
 //   site/data/strongs-lite.json each Hebrew and Greek word without its verse list: [lemma, transliteration, gloss, verse count]
 //   site/data/entities.json     the verses that name each person, place and topic on the site
-//   site/content/i18n/books-es.json  Spanish book names and abbreviations, so English pages can search "Juan 3:16"
+//   site/content/i18n/books-es.json, books-pt.json  book names, so any page can search "Juan 3:16" or "João 3:16"
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
@@ -45,9 +45,11 @@ for (const p of JSON.parse(fs.readFileSync(site('content/people-places.json'), '
 for (const t of JSON.parse(fs.readFileSync(site('content/topics.json'), 'utf8'))) add(`topic:${t.id}`, t.words || []);
 fs.writeFileSync(site('data/entities.json'), JSON.stringify(entities));
 
-// 4. Spanish book names
-const es = JSON.parse(fs.readFileSync(site('content/i18n/es.json'), 'utf8'));
-fs.writeFileSync(site('content/i18n/books-es.json'), JSON.stringify({ books: es.books, abbr: es.abbr }));
+// 4. book names in each interface language, so any page can search "Juan 3:16" or "João 3:16"
+for (const lang of ['es', 'pt']) {
+  const t = JSON.parse(fs.readFileSync(site(`content/i18n/${lang}.json`), 'utf8'));
+  fs.writeFileSync(site(`content/i18n/books-${lang}.json`), JSON.stringify({ books: t.books, abbr: t.abbr }));
+}
 
 const size = (p) => (fs.statSync(site(p)).size / 1024).toFixed(0) + ' KB';
 console.log(`refs.v2.gz ${size('data/refs.v2.gz')}, strongs-lite.json ${size('data/strongs-lite.json')}, entities.json ${size('data/entities.json')}, books-es.json ${size('content/i18n/books-es.json')}`);

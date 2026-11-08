@@ -228,6 +228,190 @@
     ]
   },
   {
+    "id": "christmas",
+    "name": "The twelve days of Christmas",
+    "name_es": "Los doce días de Navidad",
+    "description": "One promise and its fulfilment for each of the twelve days, from Christmas Day to the eve of Epiphany.",
+    "description_es": "Una promesa y su cumplimiento para cada uno de los doce días, de Navidad a la víspera de la Epifanía.",
+    "source": "days",
+    "perDay": 1,
+    "season": "christmas",
+    "days": [
+      {
+        "a": "Isa.40.9",
+        "b": "Luke.2.10",
+        "title": "Christmas Day: good news",
+        "title_es": "Navidad: buenas noticias",
+        "note": "Isaiah tells a messenger to climb a high mountain and shout good news. On the first Christmas night an angel brings the shepherds good news of great joy for all the people.",
+        "note_es": "Isaías le pide a un mensajero que suba a un monte alto y anuncie buenas noticias. La primera noche de Navidad un ángel trae a los pastores buenas noticias de gran gozo para todo el pueblo."
+      },
+      {
+        "a": "Mic.5.2",
+        "b": "Luke.2.4",
+        "title": "David's town",
+        "title_es": "La ciudad de David",
+        "note": "Micah names little Bethlehem as the birthplace of Israel's ruler. A census sends Joseph and Mary to Bethlehem, the town of David, just in time.",
+        "note_es": "Miqueas nombra a la pequeña Belén como lugar de nacimiento del gobernante de Israel. Un censo lleva a José y María a Belén, la ciudad de David, justo a tiempo."
+      },
+      {
+        "a": "Isa.40.5",
+        "b": "John.1.14",
+        "title": "Glory revealed",
+        "title_es": "La gloria revelada",
+        "note": "Isaiah promises that the glory of the Lord will be revealed and all people will see it. John says that in Jesus we have seen his glory, full of grace and truth.",
+        "note_es": "Isaías promete que la gloria del Señor se manifestará y todos la verán. Juan dice que en Jesús hemos visto su gloria, llena de gracia y de verdad."
+      },
+      {
+        "a": "Jer.31.15",
+        "b": "Matt.2.18",
+        "title": "Rachel weeping",
+        "title_es": "Raquel llora",
+        "note": "Jeremiah hears Rachel weeping for her children. Matthew remembers these words when Herod's soldiers kill the boys of Bethlehem. Christmas comes into a world that still knows grief.",
+        "note_es": "Jeremías oye a Raquel llorar por sus hijos. Mateo recuerda estas palabras cuando los soldados de Herodes matan a los niños de Belén. La Navidad llega a un mundo que todavía conoce el dolor."
+      },
+      {
+        "a": "Isa.52.10",
+        "b": "Luke.2.30",
+        "title": "Salvation seen",
+        "title_es": "La salvación vista",
+        "note": "Isaiah says all the ends of the earth will see the salvation of God. Old Simeon holds the baby Jesus in the temple and says, my eyes have seen your salvation.",
+        "note_es": "Isaías dice que todos los confines de la tierra verán la salvación de Dios. El anciano Simeón toma al niño Jesús en el templo y dice: mis ojos han visto tu salvación."
+      },
+      {
+        "a": "Isa.42.6",
+        "b": "Luke.2.32",
+        "title": "A light for the nations",
+        "title_es": "Luz para las naciones",
+        "note": "God calls his servant to be a light for the nations. Simeon sees that the child he is holding is that light, for every people and not only for Israel.",
+        "note_es": "Dios llama a su siervo a ser luz para las naciones. Simeón ve que el niño que tiene en brazos es esa luz, para todos los pueblos y no solo para Israel."
+      },
+      {
+        "a": "Ps.90.4",
+        "b": "2Pet.3.8",
+        "title": "A thousand years like a day",
+        "title_es": "Mil años como un día",
+        "note": "As the year ends, the psalm reminds us that a thousand years are like a day to God. Peter uses the same words to say God is patient and keeps every promise in his time.",
+        "note_es": "Al terminar el año, el salmo nos recuerda que mil años son como un día para Dios. Pedro usa las mismas palabras para decir que Dios es paciente y cumple cada promesa a su tiempo."
+      },
+      {
+        "a": "Ps.130.8",
+        "b": "Matt.1.21",
+        "title": "His name is Jesus",
+        "title_es": "Su nombre es Jesús",
+        "note": "The psalm says the Lord himself will redeem Israel from all its sins. The angel tells Joseph to name the child Jesus, because he will save his people from their sins.",
+        "note_es": "El salmo dice que el Señor mismo redimirá a Israel de todos sus pecados. El ángel le dice a José que llame al niño Jesús, porque él salvará a su pueblo de sus pecados."
+      },
+      {
+        "a": "Exod.4.22",
+        "b": "Matt.2.15",
+        "title": "Out of Egypt",
+        "title_es": "De Egipto",
+        "note": "God calls Israel his firstborn son and brings them out of Egypt. Jesus, God's Son, also goes down to Egypt and is called out again, living Israel's story in his own life.",
+        "note_es": "Dios llama a Israel su hijo primogénito y lo saca de Egipto. Jesús, el Hijo de Dios, también baja a Egipto y es llamado a salir, viviendo en su propia vida la historia de Israel."
+      },
+      {
+        "a": "Isa.60.3",
+        "b": "Matt.2.2",
+        "title": "Nations come to the light",
+        "title_es": "Las naciones vienen a la luz",
+        "note": "Isaiah sees nations and kings coming to the light rising over Jerusalem. Wise men from the east follow a star, looking for the newborn king.",
+        "note_es": "Isaías ve naciones y reyes que vienen a la luz que brilla sobre Jerusalén. Unos sabios de oriente siguen una estrella buscando al rey recién nacido."
+      },
+      {
+        "a": "Isa.60.6",
+        "b": "Matt.2.11",
+        "title": "Gold and frankincense",
+        "title_es": "Oro e incienso",
+        "note": "Isaiah pictures visitors bringing gold and frankincense and praising the Lord. The wise men kneel before the child and open their treasures.",
+        "note_es": "Isaías describe visitantes que traen oro e incienso y alaban al Señor. Los sabios se arrodillan ante el niño y abren sus tesoros."
+      },
+      {
+        "a": "Gen.1.3",
+        "b": "John.1.5",
+        "title": "Light in the darkness",
+        "title_es": "Luz en la oscuridad",
+        "note": "On the first day God says, let there be light. On the eve of Epiphany, John reminds us that the light has come into the world and the darkness has not overcome it.",
+        "note_es": "El primer día Dios dice: sea la luz. En la víspera de la Epifanía, Juan nos recuerda que la luz vino al mundo y la oscuridad no la ha vencido."
+      }
+    ]
+  },
+  {
+    "id": "holyweek",
+    "name": "Holy Week",
+    "name_es": "Semana Santa",
+    "description": "Eight days from Palm Sunday to Easter morning, each with an Old Testament passage that points to that day.",
+    "description_es": "Ocho días del Domingo de Ramos a la mañana de Pascua, cada uno con un pasaje del Antiguo Testamento que apunta a ese día.",
+    "source": "days",
+    "perDay": 1,
+    "season": "holyweek",
+    "days": [
+      {
+        "a": "Zech.9.9",
+        "b": "Matt.21.5",
+        "title": "Palm Sunday: the humble king",
+        "title_es": "Domingo de Ramos: el rey humilde",
+        "note": "Zechariah pictures Jerusalem's king arriving gently on a donkey. Jesus rides into the city this way while the crowds wave branches and shout Hosanna.",
+        "note_es": "Zacarías describe al rey de Jerusalén llegando con humildad en un asno. Jesús entra así en la ciudad mientras la multitud agita ramas y grita: ¡Hosanna!"
+      },
+      {
+        "a": "Isa.56.7",
+        "b": "Mark.11.17",
+        "title": "Monday: a house of prayer",
+        "title_es": "Lunes: casa de oración",
+        "note": "God promised that his house would be a house of prayer for all nations. Jesus drives out the traders who have filled the temple courts and quotes Isaiah's words.",
+        "note_es": "Dios prometió que su casa sería casa de oración para todas las naciones. Jesús echa a los comerciantes que llenaban los atrios del templo y cita las palabras de Isaías."
+      },
+      {
+        "a": "Ps.118.22",
+        "b": "Matt.21.42",
+        "title": "Tuesday: the rejected stone",
+        "title_es": "Martes: la piedra rechazada",
+        "note": "The psalm sings of a stone the builders rejected that became the cornerstone. Teaching in the temple, Jesus tells the leaders that this is about him.",
+        "note_es": "El salmo canta de una piedra que desecharon los constructores y que llegó a ser la piedra angular. Enseñando en el templo, Jesús dice a los líderes que habla de él."
+      },
+      {
+        "a": "Zech.11.12",
+        "b": "Matt.26.15",
+        "title": "Wednesday: thirty pieces of silver",
+        "title_es": "Miércoles: treinta monedas de plata",
+        "note": "In Zechariah the shepherd of God's people is valued at thirty pieces of silver. Judas agrees to betray Jesus for the same price.",
+        "note_es": "En Zacarías el pastor del pueblo de Dios es valorado en treinta monedas de plata. Judas acepta traicionar a Jesús por el mismo precio."
+      },
+      {
+        "a": "Exod.24.8",
+        "b": "Mark.14.24",
+        "title": "Thursday: the blood of the covenant",
+        "title_es": "Jueves: la sangre del pacto",
+        "note": "At Sinai Moses seals the covenant with blood. At the Last Supper Jesus takes the cup and calls it his blood of the covenant, poured out for many.",
+        "note_es": "En el Sinaí Moisés sella el pacto con sangre. En la última cena Jesús toma la copa y la llama su sangre del pacto, derramada por muchos."
+      },
+      {
+        "a": "Ps.22.1",
+        "b": "Mark.15.34",
+        "title": "Good Friday: why have you forsaken me?",
+        "title_es": "Viernes Santo: ¿por qué me has abandonado?",
+        "note": "David's psalm begins with a cry of abandonment and ends in praise. On the cross Jesus prays its first line aloud.",
+        "note_es": "El salmo de David empieza con un grito de abandono y termina en alabanza. En la cruz Jesús ora en voz alta su primera línea."
+      },
+      {
+        "a": "Jonah.1.17",
+        "b": "Matt.12.40",
+        "title": "Holy Saturday: three days",
+        "title_es": "Sábado Santo: tres días",
+        "note": "Jonah spends three days and nights inside the great fish. Jesus said the Son of Man would likewise spend three days in the heart of the earth.",
+        "note_es": "Jonás pasa tres días y tres noches dentro del gran pez. Jesús dijo que el Hijo del Hombre también estaría tres días en el corazón de la tierra."
+      },
+      {
+        "a": "Ps.16.10",
+        "b": "Acts.2.27",
+        "title": "Easter Sunday: not abandoned to the grave",
+        "title_es": "Domingo de Resurrección: no abandonado en la tumba",
+        "note": "David trusts that God will not abandon his holy one to the grave. At Pentecost Peter says this was fulfilled when God raised Jesus from the dead.",
+        "note_es": "David confía en que Dios no abandonará a su santo en la tumba. En Pentecostés Pedro dice que esto se cumplió cuando Dios resucitó a Jesús."
+      }
+    ]
+  },
+  {
     "id": "story",
     "name": "The story of Scripture",
     "name_es": "La historia de la Biblia",

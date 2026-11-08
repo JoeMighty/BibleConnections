@@ -279,9 +279,12 @@
   async function applyLanguageData() {
     const getJSON = (u) => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
     // English pages only need the Spanish book names (so "Juan 3:16" works); the full strings are for Spanish
-    const es = await getJSON(LANG === 'es' ? 'content/i18n/es.json' : 'content/i18n/books-es.json').catch(() => null);
+    const [es, pt] = await Promise.all([
+      getJSON(LANG === 'es' ? 'content/i18n/es.json' : 'content/i18n/books-es.json').catch(() => null),
+      getJSON('content/i18n/books-pt.json').catch(() => null),
+    ]);
     BOOKS.forEach((b, i) => {
-      b.nameEn = b.name; b.nameEs = es ? es.books[i] : b.name;
+      b.nameEn = b.name; b.nameEs = es ? es.books[i] : b.name; b.namePt = pt ? pt.books[i] : b.name;
       b.abbr = LANG === 'es' && es ? es.abbr[i] : b.osis;
       if (LANG === 'es' && es) b.name = es.books[i];
     });
@@ -374,7 +377,8 @@
     const n = norm(q);
     if (!n) return -1;
     if (ALIASES[n]) return BOOKS.findIndex(b => b.nameEn === ALIASES[n]);
-    const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr].map(norm);
+    // Portuguese names count too ("João 3:16"), except two-letter ones like Jó that would clash with English searches
+    const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr, norm(b.namePt).length > 2 ? b.namePt : ''].map(norm).filter(Boolean);
     let bi = BOOKS.findIndex(b => names(b).includes(n));
     if (bi < 0 && allowPrefix && n.length >= 2) {
       bi = BOOKS.findIndex(b => norm(LANG === 'es' ? b.nameEs : b.nameEn).startsWith(n));
@@ -383,7 +387,7 @@
     // a near miss on a full book name: one change for short names, two for longer ones
     if (bi < 0 && n.length >= 4 && (allowPrefix || n.length >= 7)) {
       let best = -1, bestD = n.length >= 7 ? 3 : 2;
-      BOOKS.forEach((b, i) => { for (const x of [norm(b.nameEn), norm(b.nameEs)]) { const dd = editDistance(n, x); if (dd < bestD) { bestD = dd; best = i; } } });
+      BOOKS.forEach((b, i) => { for (const x of [norm(b.nameEn), norm(b.nameEs), norm(b.namePt)]) { const dd = editDistance(n, x); if (dd < bestD) { bestD = dd; best = i; } } });
       bi = best;
     }
     return bi;
@@ -1779,6 +1783,30 @@
     return eve;
   }
   const dayDiff = (a, b) => Math.round((b - a) / 86400000);
+  // Easter Sunday in the Western calendar (the anonymous Gregorian method)
+  function easter(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100, d = Math.floor(b / 4), e = b % 4;
+    const f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31), day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(year, month - 1, day, 12);
+  }
+  const palmSunday = (year) => { const d = easter(year); d.setDate(d.getDate() - 7); return d; };
+  // the first day of a seasonal reading plan: this season's, or the next one if it is over
+  function planStart(plan) {
+    const t = today(), y = t.getMonth() === 0 ? t.getFullYear() - 1 : t.getFullYear();
+    if (plan.season === 'advent') return adventStart(y);
+    if (plan.season === 'christmas') return new Date(y, 11, 25, 12);
+    if (plan.season === 'holyweek') return t > easter(t.getFullYear()) ? palmSunday(t.getFullYear() + 1) : palmSunday(t.getFullYear());
+    return null;
+  }
+  // today's day in a seasonal plan, or -1 outside its dates
+  function seasonDay(plan) {
+    const start = planStart(plan);
+    if (!start) return -1;
+    const k = dayDiff(start, today());
+    return k >= 0 && k < planDays(plan).length ? k : -1;
+  }
   // { season, day } for Advent (to Christmas Day) and the twelve days of Christmas (to 5 January)
   function season(d = today()) {
     const y = d.getMonth() === 0 ? d.getFullYear() - 1 : d.getFullYear();
@@ -1786,6 +1814,8 @@
     if (d >= start && d <= xmas) return { season: 'advent', day: dayDiff(start, d), start };
     const twelfth = new Date(y + 1, 0, 5, 12);
     if (d > xmas && d <= twelfth) return { season: 'christmas', day: dayDiff(xmas, d) - 1, start };
+    const palm = palmSunday(d.getFullYear()), east = easter(d.getFullYear());
+    if (d >= palm && d <= east) return { season: 'holyweek', day: dayDiff(palm, d), start: palm };
     return null;
   }
   // the seasonal pair for today, with its own note, or null outside the seasons
@@ -1800,10 +1830,12 @@
       a = day.a; b = day.b; title = (LANG === 'es' && day.title_es) || day.title; text = (LANG === 'es' && day.note_es) || day.note;
       type = s.day >= plan.days.length - 1 ? 'Christmas' : 'Advent';
     } else {
-      const jn = JOURNEYS.findIndex(j => j.id === 'christmas');
-      if (jn < 0) return null;
-      const st = JOURNEYS[jn].steps[s.day % JOURNEYS[jn].steps.length];
-      a = st.a; b = st.b; title = st.title; text = st.note; type = 'Christmas';
+      // the twelve days of Christmas plan starts on Christmas Day, so 26 December is its second day
+      const plan = PLANS.find(p => p.season === s.season);
+      const day = plan && plan.days[Math.min(s.season === 'christmas' ? s.day + 1 : s.day, plan.days.length - 1)];
+      if (!day) return null;
+      a = day.a; b = day.b; title = (LANG === 'es' && day.title_es) || day.title; text = (LANG === 'es' && day.note_es) || day.note;
+      type = s.season === 'christmas' ? 'Christmas' : s.day === 7 ? 'Easter' : 'Holy Week';
     }
     const va = osisToIndex(a), vb = osisToIndex(b);
     let i = -1;
@@ -1885,10 +1917,11 @@
     let html = '<p>Short daily readings that follow the connections. Your progress is saved on this device.</p><ul class="journey-list">';
     for (const plan of PLANS) {
       const days = planDays(plan), done = planProgress(plan.id).done.length;
-      const sn = season();
-      const next = plan.season === 'advent' && sn && sn.season === 'advent' ? Math.min(days.length - 1, sn.day) : Math.min(days.length - 1, firstUndone(plan));
-      const adv = plan.season === 'advent' ? adventStart(today().getMonth() === 0 ? today().getFullYear() - 1 : today().getFullYear()) : null;
-      const advNote = adv ? `<p class="hint">${esc(tr('Starts on Advent Sunday,'))} ${esc(adv.toLocaleDateString(LANG === 'es' ? 'es' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
+      const sd = seasonDay(plan);
+      const next = sd >= 0 ? sd : Math.min(days.length - 1, firstUndone(plan));
+      const start = planStart(plan);
+      const startText = { advent: 'Starts on Advent Sunday,', christmas: 'Starts on Christmas Day,', holyweek: 'Starts on Palm Sunday,' }[plan.season];
+      const advNote = start ? `<p class="hint">${esc(tr(startText))} ${esc(start.toLocaleDateString(LANG === 'es' ? 'es' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }))}.</p>` : '';
       html += `<li class="journey-card"><h3>${esc(nameOf(plan))}</h3><p>${esc(descOf(plan))}</p>${advNote}
         <div class="progress" role="img" aria-label="${done} of ${days.length} days done"><span style="width:${(done / days.length) * 100}%"></span></div>
         <p class="step-count">${done} of ${days.length} days done</p>
@@ -3310,8 +3343,8 @@
     const fmt = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
     const esc2 = (x) => String(x).replace(/[\\,;]/g, (m) => '\\' + m).replace(/\n/g, '\\n');
     const start = new Date(); start.setDate(start.getDate() + 1); start.setHours(12, 0, 0, 0);
-    // the Advent plan has one reading for each date of Advent, from Advent Sunday to Christmas Day
-    const adv = plan.season === 'advent' ? adventStart(today().getMonth() === 0 ? today().getFullYear() - 1 : today().getFullYear()) : null;
+    // seasonal plans have one reading for each date of the season (Advent, the twelve days of Christmas, Holy Week)
+    const adv = planStart(plan);
     const base = location.origin + location.pathname;
     let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Bible Connections//Reading plan//EN\r\nCALSCALE:GREGORIAN\r\n';
     const done = new Set(planProgress(plan.id).done);

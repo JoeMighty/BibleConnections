@@ -1,6 +1,12 @@
 {
   "in_progress": [
     {
+      "title": "Portuguese",
+      "title_es": "Portugués",
+      "text": "The whole site in Portuguese. Book names already work in search (João 3:16). Next come the interface, journeys and plans, then a check by native speakers before Portuguese appears in the language menu. French, Korean and Chinese will follow.",
+      "text_es": "Todo el sitio en portugués. Los nombres de los libros ya funcionan en la búsqueda (João 3:16). Después vienen la interfaz, los recorridos y los planes, y luego una revisión por hablantes nativos antes de que el portugués aparezca en el menú de idiomas. Seguirán el francés, el coreano y el chino."
+    },
+    {
       "title": "Pastoral review of written content",
       "title_es": "Revisión pastoral del contenido escrito",
       "text": "A pastor is reviewing the book introductions, reflection questions, Advent readings, timeline dates and the prophecy chains.",
@@ -12,18 +18,6 @@
       "when": "Next",
       "when_es": "Próximamente",
       "items": [
-        {
-          "title": "Holy Week journey and reading plan",
-          "title_es": "Recorrido y plan de lectura de Semana Santa",
-          "text": "Palm Sunday to resurrection morning, with Old Testament connections for each day.",
-          "text_es": "Del Domingo de Ramos a la mañana de la resurrección, con conexiones del Antiguo Testamento para cada día."
-        },
-        {
-          "title": "More interface languages",
-          "title_es": "Más idiomas de la interfaz",
-          "text": "The site itself in Portuguese, then French, Korean and Chinese, with translations checked by native speakers.",
-          "text_es": "El sitio en portugués, y luego en francés, coreano y chino, con traducciones revisadas por hablantes nativos."
-        },
         {
           "title": "Report a weak link",
           "title_es": "Reportar un vínculo débil",
@@ -58,6 +52,20 @@
     }
   ],
   "shipped": [
+    {
+      "version": "Live now",
+      "version_es": "Ya disponible",
+      "items": [
+        "Holy Week journey and reading plan",
+        "The twelve days of Christmas reading plan",
+        "Search in Portuguese book names"
+      ],
+      "items_es": [
+        "Recorrido y plan de lectura de Semana Santa",
+        "Plan de lectura de los doce días de Navidad",
+        "Búsqueda con nombres de libros en portugués"
+      ]
+    },
     {
       "version": "0.11.1",
       "items": [

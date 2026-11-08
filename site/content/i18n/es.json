@@ -808,7 +808,11 @@
     "A small card works for a verse, a connection, a journey step or a prophecy.": "La tarjeta pequeña sirve para un versículo, una conexión, un paso de recorrido o una profecía.",
     "Search for a reference or a word, pick a theme, take a guided journey, or explore word studies, places, the timeline and prophecy and fulfilment in Study.": "Busca una referencia o una palabra, elige un tema, haz un recorrido guiado o explora estudios de palabras, lugares, la línea de tiempo y profecía y cumplimiento en Estudio.",
     "For groups: show a collection as slides, print a leader guide for any journey, or embed a small card on your church website.": "Para grupos: muestra una colección como diapositivas, imprime una guía para el líder de cualquier recorrido o inserta una tarjeta pequeña en el sitio de tu iglesia.",
-    "Notes, journeys, themes, book introductions, questions, the timeline and the prophecy chains are original writing for this site.": "Las notas, los recorridos, los temas, las introducciones a los libros, las preguntas, la línea de tiempo y las cadenas de profecía son textos originales de este sitio."
+    "Notes, journeys, themes, book introductions, questions, the timeline and the prophecy chains are original writing for this site.": "Las notas, los recorridos, los temas, las introducciones a los libros, las preguntas, la línea de tiempo y las cadenas de profecía son textos originales de este sitio.",
+    "Starts on Christmas Day,": "Empieza el día de Navidad,",
+    "Starts on Palm Sunday,": "Empieza el Domingo de Ramos,",
+    "Holy Week": "Semana Santa",
+    "Easter": "Pascua"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

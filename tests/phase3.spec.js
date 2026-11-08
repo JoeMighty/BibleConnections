@@ -14,11 +14,11 @@ test('during Advent the connection of the day follows the Advent plan', async ({
   await expect(cotd.locator('.cotd-refs')).toContainText('John 1:14');
 });
 
-test('over the twelve days of Christmas it follows the Christmas journey, then returns to normal', async ({ page }) => {
+test('over the twelve days of Christmas it follows the Christmas plan, then returns to normal', async ({ page }) => {
   await page.goto('/?today=2026-12-26');
   await ready(page);
   await expect(page.locator('#landingCotd .tag')).toHaveText('Christmas');
-  await expect(page.locator('#landingCotd .cotd-refs')).toContainText('John 1:1');
+  await expect(page.locator('#landingCotd .cotd-refs')).toContainText('Micah 5:2');
   await page.goto('/?today=2027-01-07');
   await ready(page);
   await expect(page.locator('#landingCotd .tag')).not.toHaveText(/Advent|Christmas/);
@@ -46,7 +46,7 @@ test('the seasonal journeys are listed and translated', async ({ page }) => {
   await expect(page.locator('.journey-card h3').first()).toHaveText('Adviento: esperando al Rey');
 });
 
-test('every Advent reading lights up a real connection', async ({ page }) => {
+test('every seasonal reading (Advent, Christmas, Holy Week) lights up a real connection', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
   const missing = await page.evaluate(async () => {
@@ -56,7 +56,7 @@ test('every Advent reading lights up a real connection', async ({ page }) => {
     const idx = new Map();
     meta.books.forEach(b => { let s = b.start; b.chapters.forEach((n, ci) => { for (let v = 1; v <= n; v++) idx.set(`${b.osis}.${ci + 1}.${v}`, s + v - 1); s += n; }); });
     const has = (a, b) => { for (let i = 0; i < raw.length; i += 4) { const f = raw[i], t = raw[i + 1], e = raw[i + 2]; if ((f === a && t <= b && b <= e) || (f === b && t <= a && a <= e)) return true; } return false; };
-    return plans.find(p => p.id === 'advent').days.filter(d => !has(idx.get(d.a), idx.get(d.b))).map(d => `${d.a} ${d.b}`);
+    return plans.filter(p => p.season).flatMap(p => p.days.filter(d => !has(idx.get(d.a), idx.get(d.b))).map(d => `${p.id} ${d.a} ${d.b}`));
   });
   expect(missing).toEqual([]);
 });

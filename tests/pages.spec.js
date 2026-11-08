@@ -41,7 +41,7 @@ test('every Try it link in the guide opens something on the site', async ({ page
 test('the roadmap shows shipped work grayed out, plus work in progress and planned', async ({ page }) => {
   await page.goto('/roadmap.html');
   await expect(page.locator('#progress')).toHaveText('In progress');
-  await expect(page.locator('section[aria-labelledby=progress] .group li').first()).toContainText('Pastoral review');
+  await expect(page.locator('section[aria-labelledby=progress] .group li').first()).toContainText(/Portuguese|Pastoral review/);
   // the newest shipped group is either work not yet released or the latest release in the changelog
   const latest = require('fs').readFileSync('CHANGELOG.md', 'utf8').match(/^## \[(\d+\.\d+\.\d+)\]/m)[1];
   await expect(page.locator('.release h3').first()).toHaveText(new RegExp(`^(Live now|${latest.replace(/\./g, '\\.')})$`));

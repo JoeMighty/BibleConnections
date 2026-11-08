@@ -30,16 +30,25 @@ const pick = (day) => noted[(Math.imul(day, 2654435761) >>> 0) % noted.length];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = Math.floor(Date.now() / 86400000);
-// Advent and Christmas follow the same seasonal readings as the website
-const plans = JSON.parse(read('content/plans.json')), journeys = JSON.parse(read('content/journeys.json'));
-const advent = plans.find(p => p.season === 'advent'), christmas = journeys.find(j => j.id === 'christmas');
+// Advent, the twelve days of Christmas and Holy Week follow the same seasonal readings as the website
+const plans = JSON.parse(read('content/plans.json'));
+const advent = plans.find(p => p.season === 'advent'), christmas = plans.find(p => p.season === 'christmas'), holyweek = plans.find(p => p.season === 'holyweek');
 function adventStart(year) { const d = new Date(Date.UTC(year, 11, 24)); d.setUTCDate(d.getUTCDate() - d.getUTCDay() - 21); return d; }
+function easter(year) {
+  const a = year % 19, b = Math.floor(year / 100), c = year % 100, d = Math.floor(b / 4), e = b % 4;
+  const f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+  return Date.UTC(year, Math.floor((h + l - 7 * m + 114) / 31) - 1, ((h + l - 7 * m + 114) % 31) + 1);
+}
 function seasonal(day) {
   const d = new Date(day * 86400000), y = d.getUTCMonth() === 0 ? d.getUTCFullYear() - 1 : d.getUTCFullYear();
   const start = Math.round(adventStart(y) / 86400000), xmas = Math.round(Date.UTC(y, 11, 25) / 86400000), twelfth = Math.round(Date.UTC(y + 1, 0, 5) / 86400000);
+  const east = Math.round(easter(d.getUTCFullYear()) / 86400000), palm = east - 7;
   let pair = null, type = '';
-  if (advent && day >= start && day <= xmas) { pair = advent.days[Math.min(day - start, advent.days.length - 1)]; pair = { a: pair.a, b: pair.b, note: pair.note }; type = day === xmas ? 'Christmas' : 'Advent'; }
-  else if (christmas && day > xmas && day <= twelfth) { const st = christmas.steps[(day - xmas - 1) % christmas.steps.length]; pair = { a: st.a, b: st.b, note: st.note }; type = 'Christmas'; }
+  const take = (p, n) => { const x = p.days[Math.min(n, p.days.length - 1)]; return { a: x.a, b: x.b, note: x.note }; };
+  if (advent && day >= start && day <= xmas) { pair = take(advent, day - start); type = day === xmas ? 'Christmas' : 'Advent'; }
+  else if (christmas && day > xmas && day <= twelfth) { pair = take(christmas, day - xmas); type = 'Christmas'; }
+  else if (holyweek && day >= palm && day <= east) { pair = take(holyweek, day - palm); type = day === east ? 'Easter' : 'Holy Week'; }
   if (!pair) return null;
   const va = osisToIndex(pair.a), vb = osisToIndex(pair.b);
   for (let i = 0; i < raw.length / 4; i++) {

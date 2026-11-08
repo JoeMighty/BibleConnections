@@ -105,6 +105,69 @@
     ]
   },
   {
+    "id": "holy-week",
+    "name": "Holy Week: the road to the cross",
+    "summary": "From Palm Sunday to Easter morning, the Old Testament passages that point to each day.",
+    "steps": [
+      {
+        "a": "Zech.9.9",
+        "b": "Matt.21.5",
+        "title": "Palm Sunday: the humble king",
+        "note": "Zechariah pictures Jerusalem's king arriving gently on a donkey. Jesus rides into the city this way while the crowds wave branches and shout Hosanna.",
+        "question": "What kind of king did the crowds want, and what kind of king came?"
+      },
+      {
+        "a": "Isa.56.7",
+        "b": "Mark.11.17",
+        "title": "Monday: a house of prayer",
+        "note": "God promised that his house would be a house of prayer for all nations. Jesus drives out the traders who have filled the temple courts and quotes Isaiah's words.",
+        "question": "What crowds out prayer in our lives or our churches?"
+      },
+      {
+        "a": "Ps.118.22",
+        "b": "Matt.21.42",
+        "title": "Tuesday: the rejected stone",
+        "note": "The psalm sings of a stone the builders rejected that became the cornerstone. Teaching in the temple, Jesus tells the leaders that this is about him.",
+        "question": "Why do you think God so often works through what people reject?"
+      },
+      {
+        "a": "Zech.11.12",
+        "b": "Matt.26.15",
+        "title": "Wednesday: thirty pieces of silver",
+        "note": "In Zechariah the shepherd of God's people is valued at thirty pieces of silver. Judas agrees to betray Jesus for the same price.",
+        "question": "What does this price say about how Jesus was valued, and how do we value him?"
+      },
+      {
+        "a": "Exod.24.8",
+        "b": "Mark.14.24",
+        "title": "Thursday: the blood of the covenant",
+        "note": "At Sinai Moses seals the covenant with blood. At the Last Supper Jesus takes the cup and calls it his blood of the covenant, poured out for many.",
+        "question": "What does it mean to you that Jesus chose a meal to explain his death?"
+      },
+      {
+        "a": "Ps.22.1",
+        "b": "Mark.15.34",
+        "title": "Good Friday: why have you forsaken me?",
+        "note": "David's psalm begins with a cry of abandonment and ends in praise. On the cross Jesus prays its first line aloud.",
+        "question": "Why might Jesus have chosen to pray a psalm in his darkest hour?"
+      },
+      {
+        "a": "Jonah.1.17",
+        "b": "Matt.12.40",
+        "title": "Holy Saturday: three days",
+        "note": "Jonah spends three days and nights inside the great fish. Jesus said the Son of Man would likewise spend three days in the heart of the earth.",
+        "question": "How do you wait when God seems silent?"
+      },
+      {
+        "a": "Ps.16.10",
+        "b": "Acts.2.27",
+        "title": "Easter Sunday: not abandoned to the grave",
+        "note": "David trusts that God will not abandon his holy one to the grave. At Pentecost Peter says this was fulfilled when God raised Jesus from the dead.",
+        "question": "What difference does the resurrection make to your week?"
+      }
+    ]
+  },
+  {
     "id": "lamb",
     "name": "The Lamb of God",
     "summary": "From a mountain in Genesis to the throne in Revelation, follow the Lamb who takes away sin.",
