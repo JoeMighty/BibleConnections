@@ -69,3 +69,38 @@ test('verse sections open and close, and the choice is remembered', async ({ pag
   await expect(page.locator('[data-sec=secOrig]')).not.toHaveAttribute('open', '');
   await expect(page.locator('[data-sec=secOrig] > summary')).toHaveText('Original text');
 });
+
+test('deleting a note can be undone', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.notes', JSON.stringify({ 'John.3.16': { text: 'God so loved', t: 1 } })));
+  await page.goto('/?view=notes');
+  await ready(page);
+  await page.locator('[data-action=deleteNote]').click();
+  await expect(page.locator('#undoToast')).toBeVisible();
+  await expect(page.locator('#undoText')).toHaveText('Note deleted.');
+  await page.locator('#undoBtn').click();
+  await expect(page.locator('#undoToast')).toBeHidden();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.notes'))['John.3.16'].text)).toBe('God so loved');
+});
+
+test('the welcome page explains cross references on a first visit, and offers the plan in progress', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.plans', JSON.stringify({ story: { done: [0, 1] } })));
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#firstVisit')).toBeVisible();
+  await expect(page.locator('#landingPlan')).toContainText('Day 3 of');
+  await page.locator('#landingPlan [data-season-plan]').click();
+  await expect(page.locator('#panel .step-count')).toContainText('Day 3 of');
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#firstVisit')).toBeHidden();
+});
+
+test('an offline note appears when the connection drops', async ({ page, context }) => {
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('#offlineNote')).toBeHidden();
+  await context.setOffline(true);
+  await expect(page.locator('#offlineNote')).toBeVisible();
+  await context.setOffline(false);
+  await expect(page.locator('#offlineNote')).toBeHidden();
+});

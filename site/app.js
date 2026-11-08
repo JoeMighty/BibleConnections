@@ -1390,7 +1390,7 @@
             <p><strong>${esc(w.t)}</strong> · ${esc(w.g)} · <span class="muted">${heb ? 'Hebrew' : 'Greek'} ${esc(f.entity.id)}</span></p>
             ${w.d ? `<p class="hint" lang="en">${esc(w.d)}</p>` : ''}
             ${w.v ? `<p>Used in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, too many to show on the map.</p>`}
-            <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted">Loading the full word study…</p></div>
+            <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted loading-msg">Loading the full word study…</p></div>
             <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0. Dictionary entries are from Brown-Driver-Briggs and Abbott-Smith (public domain).</p>`;
         } else if (f.entity && f.entity.type === 'geo') {
           const P0 = f.entity.place;
@@ -1764,6 +1764,21 @@
     lent: { name: 'Lent', journey: null, soon: 'Lent starts on {d}.' },
     holyweek: { name: 'Holy Week', journey: 'holy-week', soon: 'Holy Week starts on {d}.' },
   };
+  // the reading plan someone is part way through, ready to continue
+  function renderYourPlan() {
+    const box = $('landingPlan');
+    if (!box) return;
+    const prog = store.get('plans', {});
+    const going = PLANS.map(p => ({ p, done: (prog[p.id] || { done: [] }).done.length, total: planDays(p).length }))
+      // the plan for the season in progress already has its own card, so it is not shown twice
+      .filter(x => x.done > 0 && x.done < x.total && !(season() && x.p.season === season().season)).sort((a, b) => b.done - a.done)[0];
+    box.hidden = !going;
+    if (!going) return;
+    const d = firstUndone(going.p), day = planDays(going.p)[d];
+    box.innerHTML = `<p class="eyebrow">${esc(tr('Your plan'))} · ${esc(tr(`Day ${d + 1} of ${going.total}`))}</p>
+      <h3 class="series-name" id="yourPlanTitle">${esc(nameOf(going.p))}</h3>${day && day.title ? `<p>${esc(day.title)}</p>` : ''}
+      <div class="actions"><button type="button" class="btn" data-season-plan="${esc(going.p.id)}" data-day="${d}">Continue</button></div>`;
+  }
   function renderSeasonBanner() {
     const box = $('seasonBanner');
     if (!box || !PLANS.length) return;
@@ -2569,10 +2584,10 @@
         ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(loc(intro, 'about'))}</p>` : ''}
       </details>
       <details class="study-sec" data-sec="secOrig"${secOpen('secOrig')}><summary><h3 id="secOrig">Original text</h3></summary>
-        <div id="origText" data-v="${v}"><p class="muted">Loading the original text…</p></div>
+        <div id="origText" data-v="${v}"><p class="muted loading-msg">Loading the original text…</p></div>
       </details>
       <details class="study-sec" data-sec="secPeople"${secOpen('secPeople')}><summary><h3 id="secPeople">People, places and topics</h3></summary>
-        <div id="verseEntities" data-v="${v}"><p class="muted">Looking for people, places and topics…</p></div>
+        <div id="verseEntities" data-v="${v}"><p class="muted loading-msg">Looking for people, places and topics…</p></div>
         <div id="versePlaces" data-v="${v}"></div>
       </details>
       ${noted.length ? `<details class="study-sec" data-sec="secNotes"${secOpen('secNotes')}><summary><h3 id="secNotes">Explained connections</h3></summary><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></details>` : ''}
@@ -2820,7 +2835,7 @@
   function placesHTML() {
     if (!PLACES) {
       loadPlaces().then(() => { if (state.mode === 'places') renderPanel(); }, () => {});
-      return ['Places', '<p class="muted">Loading the map…</p>'];
+      return ['Places', '<p class="muted loading-msg">Loading the map…</p>'];
     }
     const view = state.placesView || 'lands';
     const top = PLACES.places.filter(p => p.conf >= 1).slice(0, 40);
@@ -3555,7 +3570,7 @@
   function timelineHTML() {
     if (!TIMELINE) {
       loadTimeline().then(() => { if (state.mode === 'timeline') renderPanel(); }, () => {});
-      return ['Timeline', '<p class="muted">Loading the timeline…</p>'];
+      return ['Timeline', '<p class="muted loading-msg">Loading the timeline…</p>'];
     }
     let html = `<p>Key events of the Bible story in order. Choose an event to see its passage and connections, or show a whole period on the map.</p><p class="hint">${esc(tl(TIMELINE, 'note'))}</p>`;
     for (const era of TIMELINE.eras) {
@@ -4060,6 +4075,26 @@
     clearTimeout(flashT); flashT = setTimeout(() => t.classList.remove('show'), 1600);
   }
 
+  // ---------- Offline note ----------
+  const showOffline = () => { $('offlineNote').hidden = navigator.onLine; };
+  window.addEventListener('offline', () => { showOffline(); announce(tr('You are offline.')); });
+  window.addEventListener('online', () => { showOffline(); flash(tr('Back online')); });
+  showOffline();
+
+  // ---------- Undo: a change can be taken back for a few seconds instead of asking "Are you sure?" ----------
+  let undoFn = null, undoT = 0;
+  function offerUndo(msg, fn) {
+    undoFn = fn;
+    $('undoText').textContent = tr(msg);
+    $('undoToast').hidden = false;
+    announce(tr(msg) + ' ' + tr('Undo is available for a few seconds.'));
+    clearTimeout(undoT); undoT = setTimeout(() => { $('undoToast').hidden = true; undoFn = null; }, 7000);
+  }
+  $('undoBtn').addEventListener('click', () => {
+    const fn = undoFn; undoFn = null; $('undoToast').hidden = true; clearTimeout(undoT);
+    if (fn) { fn(); announce(tr('Undone.')); }
+  });
+
   // ---------- Panel events ----------
   el.panelBody.addEventListener('click', (e) => {
     const tracked = e.target.closest('a[data-track]');
@@ -4104,7 +4139,11 @@
     else if (a === 'focusRange') { const st = +btn.dataset.s, en = +btn.dataset.e; setFocus({ kind: 'verse', book: verseBook[st], start: st, end: en + 1 }, { zoom: true }); focusPanelHeading(); }
     else if (a === 'openGeoName') openGeo(btn.dataset.name).then(focusPanelHeading);
     else if (a === 'studyImage') studyImage(+btn.dataset.v);
-    else if (a === 'deleteNote') { const all = getNotes(); delete all[btn.dataset.key]; store.set('notes', all); renderPanel(); announce('Note deleted.'); }
+    else if (a === 'deleteNote') {
+      const all = getNotes(), key = btn.dataset.key, kept = all[key];
+      delete all[key]; store.set('notes', all); renderPanel();
+      offerUndo('Note deleted.', () => { const n = getNotes(); n[key] = kept; store.set('notes', n); renderPanel(); });
+    }
     else if (a === 'placesView') { state.placesView = btn.dataset.view; renderPanel(); }
     else if (a === 'openGeo') { openGeo(+btn.dataset.i).then(focusPanelHeading); }
     else if (a === 'openRoute') openRoute(btn.dataset.id).then(focusPanelHeading);
@@ -4116,13 +4155,21 @@
     else if (a === 'openCollection') { openCollection(getCollections()[+btn.dataset.n]); focusPanelHeading(); }
     else if (a === 'deleteCollection') {
       const cols = getCollections(), c = cols[+btn.dataset.n];
-      if (confirm(tr(`Delete the collection “${c.name}”?`))) { cols.splice(+btn.dataset.n, 1); saveCollections(cols); renderPanel(); announce('Collection deleted.'); }
+      const at = +btn.dataset.n;
+      cols.splice(at, 1); saveCollections(cols); renderPanel();
+      offerUndo('Collection deleted.', () => { const now = getCollections(); now.splice(at, 0, c); saveCollections(now); renderPanel(); });
     }
     else if (a === 'removeItem') {
       const cols = getCollections(), c = cols.find(x => x.name === state.collection.name && x.items.length === state.collection.items.length);
-      state.collection.items.splice(+btn.dataset.idx, 1);
+      const at = +btn.dataset.idx, [gone] = state.collection.items.splice(at, 1);
       if (c) { c.items = state.collection.items; saveCollections(cols); }
-      renderPanel(); syncURL(); announce('Removed from collection.');
+      renderPanel(); syncURL();
+      offerUndo('Removed from collection.', () => {
+        state.collection.items.splice(at, 0, gone);
+        const all = getCollections(), cc = all.find(x => x.name === state.collection.name);
+        if (cc) { cc.items = state.collection.items; saveCollections(all); }
+        renderPanel(); syncURL();
+      });
     }
     else if (a === 'playCollection') playCollection(+btn.dataset.idx);
     else if (a === 'shareCollection') { copyText(location.href); track('collection/share'); }
@@ -4546,6 +4593,7 @@
   }
   function hideLanding() {
     if (landing.hidden) return false;
+    store.set('visited', true);
     landing.hidden = true;
     layout.inert = false;
     updateNav();
@@ -4557,6 +4605,7 @@
   function paintHero() {
     const hero = $('heroCanvas');
     if (!hero || landing.hidden || !N || !view.W) return;
+    hero.parentElement.classList.remove('is-loading');
     const w = hero.clientWidth, h = hero.clientHeight;
     if (!w || !h) return;
     const dpr = view.dpr;
@@ -4614,6 +4663,8 @@
     if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     renderLandingRecent();
     renderSeasonBanner();
+    renderYourPlan();
+    $('firstVisit').hidden = !!store.get('visited', false);
     // the timeline under the picture: Old and New Testament widths match their share of verses
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     renderFeelings();

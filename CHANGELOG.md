@@ -11,6 +11,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - One search, all results: a word search still shows every verse with that word, and now also lists the people, places, topics, themes, Hebrew and Greek words, journeys, prophecies and routes that match, each one tap away.
 - Verse sections (In context, Original text, People, places and topics, Connections, My notes, Reflect) open and close, and your choice is remembered. People, places and topics, and Reflect, start closed to keep the page short.
 
+- Undo instead of "Are you sure?": deleting a note or a collection, or removing an item from a collection, shows "Undo" for a few seconds.
+- Your plan on the welcome page: a reading plan you are part way through is offered with a Continue button (unless it is the season's plan, which already has its own card).
+- A one-line explanation of cross references on the welcome page for first-time visitors.
+- An offline note when the connection drops, saying what still works.
+- Loading placeholders: soft gray shapes for the welcome page picture, its numbers and loading sections, instead of empty space.
+
 ### Changed
 - First-visit tips show one at a time (with Next and Skip), and wait until the map has room for them.
 - On phones the "You're viewing" bar is a single row, and the tab bar is solid.

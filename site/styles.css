@@ -957,3 +957,20 @@ details.study-sec[open] > summary::after { transform: rotate(45deg); }
 details.study-sec > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 details.study-sec:not([open]) { padding-bottom: 0; }
 @media (prefers-reduced-motion: reduce) { details.study-sec > summary::after { transition: none; } }
+
+/* loading placeholders: soft gray shapes while things load */
+@keyframes skel { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+.hero-figure.is-loading .hero, .stat-row:empty, .loading-msg::after {
+  background: linear-gradient(90deg, var(--fill) 0%, color-mix(in srgb, var(--fill) 40%, transparent) 50%, var(--fill) 100%);
+  background-size: 200% 100%; animation: skel 1.4s ease-in-out infinite; border-radius: var(--radius);
+}
+.stat-row:empty { min-height: 56px; }
+.loading-msg::after { content: ''; display: block; height: 44px; margin-top: 8px; }
+@media (prefers-reduced-motion: reduce) { .hero-figure.is-loading .hero, .stat-row:empty, .loading-msg::after { animation: none; } }
+/* first visit, offline and undo */
+.first-visit { margin: 12px 0 0; padding: 10px 14px; border-radius: var(--radius); background: var(--surface); color: var(--text); font-size: var(--t-subhead); }
+.offline-note { position: fixed; left: 50%; transform: translateX(-50%); top: calc(var(--header-real, var(--header-h)) + 8px); z-index: 45; max-width: min(560px, calc(100% - 24px)); padding: 8px 14px; border-radius: 12px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); font-size: var(--t-footnote); text-align: center; }
+.offline-note[hidden], .undo-toast[hidden] { display: none; }
+.undo-toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 24px; z-index: 52; display: flex; align-items: center; gap: 14px; padding: 8px 8px 8px 18px; border-radius: 999px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); font-weight: 600; max-width: calc(100% - 24px); }
+@media (max-width: 860px) { .undo-toast { bottom: calc(var(--tabbar-h) + 16px); } }
+.undo-toast span { white-space: nowrap; }

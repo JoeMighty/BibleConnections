@@ -30,14 +30,6 @@
           "text": "The whole site in French, using the same language files as Spanish and Portuguese.",
           "text_es": "Todo el sitio en francés, con los mismos archivos de idioma que el español y el portugués.",
           "text_pt": "Todo o site em francês, com os mesmos arquivos de idioma do espanhol e do português."
-        },
-        {
-          "title": "Places on phones",
-          "title_es": "Lugares en el teléfono",
-          "title_pt": "Lugares no celular",
-          "text": "On phones, the list of places slides up over the Places map, like the Maps app.",
-          "text_es": "En el teléfono, la lista de lugares se desliza sobre el mapa de lugares, como en la app Mapas.",
-          "text_pt": "No celular, a lista de lugares desliza sobre o mapa de lugares, como no app Mapas."
         }
       ]
     },
@@ -66,6 +58,26 @@
     }
   ],
   "shipped": [
+    {
+      "version": "Live now",
+      "version_es": "Ya disponible",
+      "version_pt": "Já disponível",
+      "items": [
+        "Details slide up as a sheet on phones",
+        "Back button, search that lists everything, sections that open and close",
+        "Undo, your plan today, offline note and loading placeholders"
+      ],
+      "items_es": [
+        "En el teléfono, los detalles se deslizan como una hoja",
+        "Botón Atrás, búsqueda que lo muestra todo y secciones que se abren y cierran",
+        "Deshacer, tu plan de hoy, aviso sin conexión y marcadores de carga"
+      ],
+      "items_pt": [
+        "No celular, os detalhes deslizam como uma folha",
+        "Botão Voltar, busca que mostra tudo e seções que abrem e fecham",
+        "Desfazer, seu plano de hoje, aviso sem internet e marcadores de carregamento"
+      ]
+    },
     {
       "version": "0.16.0",
       "items": [

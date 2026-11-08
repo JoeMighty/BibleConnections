@@ -85,13 +85,14 @@
         <div class="hero-side">
           <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Tap one to find out how they connect!</p>
           <p class="lede adult-only">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
+          <p class="first-visit" id="firstVisit" hidden>New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.</p>
           <div class="landing-actions">
             <button type="button" class="btn big" data-start="map">Explore the map</button>
             <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
           </div>
         </div>
       </div>
-      <figure class="hero-figure">
+      <figure class="hero-figure is-loading">
         <canvas class="hero" id="heroCanvas" role="img" aria-label="Arc diagram showing tens of thousands of cross references spanning the Bible from Genesis to Revelation"></canvas>
         <div class="axis" id="landingAxis" aria-hidden="true">
           <span class="axis-ot"><b>Old Testament</b><i>Genesis</i></span>
@@ -110,6 +111,7 @@
       </form>
     </div>
     <div class="landing-inner">
+      <section class="landing-series your-plan" id="landingPlan" aria-labelledby="yourPlanTitle" hidden></section>
       <section class="landing-series season-banner" id="seasonBanner" aria-labelledby="seasonTitle" hidden></section>
       <div class="landing-series" id="landingSeries" hidden></div>
       <div class="landing-recent" id="landingRecent" hidden></div>
@@ -295,6 +297,8 @@
   </div>
 
   <div class="sr-only" id="announcer" aria-live="polite"></div>
+  <div class="offline-note" id="offlineNote" role="status" hidden>You’re offline. The map and passages you have opened still work; Bible.com links need the internet.</div>
+  <div class="undo-toast" id="undoToast" role="status" hidden><span id="undoText"></span><button type="button" class="btn small" id="undoBtn">Undo</button></div>
 
   <div class="embed-bar" id="embedBar" hidden>
     <span class="embed-title" id="embedTitle">The whole Bible</span>

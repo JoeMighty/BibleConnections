@@ -89,6 +89,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Spanish and Portuguese:** the full interface, journeys, plans, book introductions, questions, prophecy, timeline, handouts and guides in both languages, chosen automatically from the device. Search understands book names in all three languages.
 - **Settings:** language, light, dark or system appearance, five arc color styles (including a color-blind friendly one), text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Gentle animations on desktop:** the welcome page eases in, and a light travels along each connection you select. Off for reduced motion, and switchable in Settings.
+- **Made for phones:** the details slide up from the bottom as a sheet you can drag, like the Maps app, with the map filling the space above. A Back button steps back through what you opened, search also lists matching people, places, topics, words and journeys, verse sections open and close, and deleting something can be undone.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
 - **Fast first load:** the welcome page loads about half as much as before, with the cross references packed into a smaller file and study text fetched only when needed.

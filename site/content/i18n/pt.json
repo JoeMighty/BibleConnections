@@ -890,7 +890,15 @@
     "Skip": "Pular",
     "Also found": "Também encontrado",
     "On the Places map": "No mapa de lugares",
-    "Themes": "Temas"
+    "Themes": "Temas",
+    "You’re offline. The map and passages you have opened still work; Bible.com links need the internet.": "Você está sem internet. O mapa e as passagens que você já abriu continuam funcionando; os links do Bible.com precisam de internet.",
+    "Undo": "Desfazer",
+    "Undo is available for a few seconds.": "Você pode desfazer por alguns segundos.",
+    "Undone.": "Desfeito.",
+    "You are offline.": "Você está sem internet.",
+    "Back online": "Conexão restabelecida",
+    "Your plan": "Seu plano",
+    "New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.": "Primeira vez aqui? Uma referência cruzada é um lugar em que uma passagem da Bíblia aponta para outra, como uma nota de “veja também”. Cada arco do mapa é uma delas."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
