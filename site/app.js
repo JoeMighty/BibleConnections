@@ -584,9 +584,9 @@
   // ---------- View ----------
   function resize() {
     const r = el.viz.getBoundingClientRect();
-    if (!r.width || !r.height) return;
+    if (!r.width || !r.height || !TOTAL) return;   // nothing to fit until the Bible has loaded
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const prevW = view.W, prevFit = view.fitK;
+    const prevW = view.W, prevH = view.H, prevFit = view.fitK;
     view.W = r.width; view.H = r.height; view.dpr = dpr;
     for (const c of [el.base, el.overlay]) { c.width = Math.round(r.width * dpr); c.height = Math.round(r.height * dpr); }
     // the GL canvas renders at up to 1.5x: its 1 device pixel lines then match the 2D renderer's weight
@@ -599,7 +599,8 @@
       const cx = (prevW / 2 - view.tx) / view.k;
       view.k = view.fitK * rel;
       view.tx = view.W / 2 - cx * view.k;
-      view.ty = Math.min(view.ty, view.H - AXIS_H);
+      // keep the base line the same distance from the bottom, so the arcs follow the map when it grows or shrinks
+      view.ty = Math.min(view.H - (prevH - view.ty), view.H - AXIS_H);
       clampView();
     }
     drawBase();
@@ -632,6 +633,8 @@
     cancelAnimationFrame(anim);
     if (!animate || reducedMotion) { Object.assign(view, target); clampView(); drawBase(); return; }
     const from = { k: view.k, tx: view.tx, ty: view.ty };
+    // the base line is kept as a distance from the bottom, so the animation follows the map if it is resized meanwhile
+    const fromB = view.H - from.ty, toB = view.H - target.ty;
     const t0 = performance.now(), dur = 450;
     const step = (now) => {
       const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
@@ -639,7 +642,7 @@
       const cxFrom = (view.W / 2 - from.tx) / from.k, cxTo = (view.W / 2 - target.tx) / target.k;
       const cx = cxFrom + (cxTo - cxFrom) * e;
       view.k = k; view.tx = view.W / 2 - cx * k;
-      view.ty = from.ty + (target.ty - from.ty) * e;
+      view.ty = view.H - (fromB + (toB - fromB) * e);
       clampView(); drawBase();
       if (p < 1) anim = requestAnimationFrame(step);
     };
@@ -1580,9 +1583,24 @@
   // ---------- First-time tips ----------
   function maybeShowTips() {
     if (EMBED || store.get('tipsSeen', false) || isLanding() || document.body.classList.contains('presenting')) return;
+    if (el.viz.getBoundingClientRect().height < 300) return;   // a small map (phones with the details open): show the tips another time
+    tipsStep(0);
     $('tips').hidden = false;
   }
-  $('tipsClose').addEventListener('click', () => { $('tips').hidden = true; store.set('tipsSeen', true); el.viz.focus(); });
+  // one tip at a time, so the card stays small on phones
+  let tipAt = 0;
+  function tipsStep(n) {
+    const items = [...$('tips').querySelectorAll('.tips-steps li')];
+    tipAt = n;
+    items.forEach((li, i) => { li.hidden = i !== n; });
+    $('tipsCount').textContent = tr(`${n + 1} of ${items.length}`);
+    const last = n === items.length - 1;
+    $('tipsNext').textContent = tr(last ? 'Got it' : 'Next');
+    $('tipsClose').hidden = last;
+  }
+  const closeTips = () => { $('tips').hidden = true; store.set('tipsSeen', true); el.viz.focus(); };
+  $('tipsClose').addEventListener('click', closeTips);
+  $('tipsNext').addEventListener('click', () => { if (tipAt >= $('tips').querySelectorAll('.tips-steps li').length - 1) closeTips(); else tipsStep(tipAt + 1); });
 
   // ---------- How are these connected? (shortest chain of cross references) ----------
   let graph = null;
@@ -1782,7 +1800,7 @@
     box.innerHTML = recent.length ? `<h3>Pick up where you left off</h3><ul class="chip-list">${recent.map(x => `<li><button type="button" class="chip" data-goto="${esc(x.url)}">${esc(x.label)}</button></li>`).join('')}</ul>` : '';
   }
   function goTo(url) {
-    history.pushState(null, '', url || '?view=map');
+    history.pushState(null, '', url || '?view=map'); navDepth++;
     applyLocation();
     focusPanelHeading();
   }
@@ -3757,7 +3775,7 @@
   async function playCollection(idx) {
     const col = state.collection || colPlay?.col;
     colPlay = { col, name: col.name, items: col.items, idx };
-    history.pushState(null, '', col.items[idx].url);
+    history.pushState(null, '', col.items[idx].url); navDepth++;
     await applyLocation();
     renderColBar();
     focusPanelHeading();
@@ -4100,9 +4118,67 @@
   });
   function scrollPanel() {
     const mobile = matchMedia('(max-width: 860px)').matches;
-    if (mobile) el.panel.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' });
+    if (mobile) {
+      // phones: raise the sheet if it is low, then bring the panel to the top of it
+      if (sheet.state === 'peek') setSheet('half');
+      const box = el.panel.parentElement;
+      box.scrollTo({ top: el.panel.offsetTop - $('sheetHandle').offsetHeight, behavior: reducedMotion ? 'auto' : 'smooth' });
+    }
     else el.panel.parentElement.scrollTop = el.panel.getBoundingClientRect().top - el.panel.parentElement.getBoundingClientRect().top + el.panel.parentElement.scrollTop - 8;
   }
+  // ---------- Details sheet on phones: peek, half or full height, dragged by its handle ----------
+  const sheet = { state: 'half', drag: null };
+  const SHEET_AT = { peek: 0.26, half: 0.52, full: 0.9 };
+  const isPhone = () => matchMedia('(max-width: 860px)').matches;
+  function setSheet(state, { animate = true } = {}) {
+    const side = el.panel.parentElement, layoutH = side.parentElement.getBoundingClientRect().height;
+    sheet.state = state;
+    side.classList.toggle('sheet-anim', animate);
+    side.style.setProperty('--sheet-h', Math.round(layoutH * SHEET_AT[state]) + 'px');
+    const h = $('sheetHandle');
+    h.setAttribute('aria-expanded', String(state !== 'peek'));
+    h.setAttribute('aria-label', tr(state === 'full' ? 'Show less of the details' : 'Show more details'));
+  }
+  {
+    const h = $('sheetHandle'), side = el.panel.parentElement;
+    h.addEventListener('pointerdown', (e) => {
+      if (!isPhone()) return;
+      try { h.setPointerCapture(e.pointerId); } catch { /* synthetic pointer */ }
+      sheet.drag = { y: e.clientY, h: side.getBoundingClientRect().height, moved: false };
+      side.classList.remove('sheet-anim');
+    });
+    h.addEventListener('pointermove', (e) => {
+      if (!sheet.drag) return;
+      const dy = e.clientY - sheet.drag.y;
+      if (Math.abs(dy) > 6) sheet.drag.moved = true;
+      if (!sheet.drag.moved) return;
+      const layoutH = side.parentElement.getBoundingClientRect().height;
+      side.style.setProperty('--sheet-h', Math.round(Math.min(layoutH * 0.92, Math.max(layoutH * 0.18, sheet.drag.h - dy))) + 'px');
+    });
+    const end = () => {
+      if (!sheet.drag) return;
+      const moved = sheet.drag.moved;
+      sheet.drag = null;
+      if (!moved) return;   // a tap is handled as a click
+      const layoutH = side.parentElement.getBoundingClientRect().height, f = side.getBoundingClientRect().height / layoutH;
+      const best = Object.entries(SHEET_AT).sort((a, b) => Math.abs(a[1] - f) - Math.abs(b[1] - f))[0][0];
+      setSheet(best);
+      h.dataset.dragged = '1';
+    };
+    h.addEventListener('pointerup', end); h.addEventListener('pointercancel', end);
+    h.addEventListener('click', () => {
+      if (h.dataset.dragged) { delete h.dataset.dragged; return; }
+      setSheet(sheet.state === 'full' ? 'half' : sheet.state === 'half' ? 'full' : 'half');
+    });
+    window.addEventListener('resize', () => { if (isPhone()) setSheet(sheet.state, { animate: false }); });
+    if (isPhone()) setSheet('half', { animate: false });
+    // the map follows the space left above the sheet
+    if (window.ResizeObserver) new ResizeObserver(() => { clearTimeout(resize.t); resize.t = setTimeout(() => { resize(); queueGeo(); }, 40); }).observe(el.viz);
+  }
+  // ---------- Back button at the top of the panel: steps back through what was opened in this visit ----------
+  let navDepth = 0;
+  const updateBack = () => { $('panelBack').hidden = navDepth <= 0 || isLanding(); };
+  $('panelBack').addEventListener('click', () => history.back());
   function focusPanelHeading() {
     requestAnimationFrame(() => { el.panel.focus({ preventScroll: true }); scrollPanel(); });
   }
@@ -4654,8 +4730,9 @@
     renderContext();
     const current = location.search || location.pathname;
     if (url === current || (url === location.pathname && !location.search)) return;
-    if (push && !restoring) history.pushState(null, '', url);
+    if (push && !restoring) { history.pushState(null, '', url); navDepth++; }
     else history.replaceState(null, '', url);
+    updateBack();
     if (push && !restoring && !EMBED) recordRecent();
     const sb = el.panelBody.querySelector('[data-action=save]');
     if (sb) { const on = isSaved(); sb.setAttribute('aria-pressed', on); sb.textContent = on ? '★ Saved' : '☆ Save'; }
@@ -4735,7 +4812,7 @@
       syncURL();
     }
   }
-  window.addEventListener('popstate', () => { if (N) applyLocation(); });
+  window.addEventListener('popstate', () => { navDepth = Math.max(0, navDepth - 1); updateBack(); if (N) applyLocation(); });
 
   // ---------- Optional privacy-friendly usage stats (off unless set in content/config.json) ----------
   function loadAnalytics() {
@@ -4774,6 +4851,8 @@
     (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(() => loadStudyText());
     await applyLocation();
     if (!isLanding() && location.search !== '?view=map' && !matchMedia('(max-width: 860px)').matches) requestAnimationFrame(scrollPanel);
+    // phones: a link to something specific opens the details sheet half way; the plain map keeps it low
+    if (isPhone()) setSheet(state.focus || state.selected >= 0 || state.mode !== 'explore' ? 'half' : 'peek', { animate: false });
     document.body.dataset.ready = 'true';
   }
   init();

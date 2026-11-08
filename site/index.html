@@ -186,12 +186,16 @@
         <div class="loading" id="loading" role="status">Loading the Bible…</div>
         <section class="tips" id="tips" aria-labelledby="tipsTitle" hidden>
           <h2 id="tipsTitle">Quick tips</h2>
-          <ul>
+          <ul class="tips-steps" aria-live="polite">
             <li><strong>Zoom:</strong> scroll, pinch or use the + button.</li>
             <li><strong>Tap an arc</strong> to see the two passages it joins.</li>
             <li><strong>Tap a bar</strong> along the bottom to see a chapter’s links.</li>
           </ul>
-          <button type="button" class="btn small" id="tipsClose">Got it</button>
+          <div class="tips-foot">
+            <span class="tips-count" id="tipsCount"></span>
+            <button type="button" class="btn ghost small" id="tipsClose">Skip</button>
+            <button type="button" class="btn small" id="tipsNext">Next</button>
+          </div>
         </section>
       </div>
       <p id="vizHelp" class="sr-only">
@@ -210,6 +214,7 @@
     </main>
 
     <aside class="sidebar" aria-label="Filters and details">
+      <button type="button" class="sheet-handle" id="sheetHandle" aria-label="Show more details" aria-controls="panel"><span aria-hidden="true"></span></button>
       <form class="controls" id="controls" role="search" aria-label="Find and filter connections">
         <div class="field search-field">
           <label for="search">Find a verse, chapter, book or word</label>
@@ -282,6 +287,7 @@
         </div>
       </div>
       <section class="panel" id="panel" tabindex="-1" aria-labelledby="panelTitle">
+        <button type="button" class="panel-back" id="panelBack" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>Back</button>
         <h2 id="panelTitle">Explore</h2>
         <div id="panelBody"></div>
       </section>

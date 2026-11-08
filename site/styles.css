@@ -629,9 +629,39 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) { :root { --sidebar: 344px; } }
 @media (max-width: 860px) {
-  .layout { display: block; height: auto; }
-  .viz-wrap { height: clamp(320px, 62vw + 130px, 60svh); border-bottom: 0.5px solid var(--separator); }
-  .sidebar { border-left: 0; overflow: visible; }
+  /* phones: the map fills the screen and the details slide up from the bottom as a sheet, like the Maps app.
+     The map shrinks to the space above the sheet, so the base line of the arcs is never covered. */
+  .layout { display: flex; flex-direction: column; height: calc(100vh - var(--header-real, var(--header-h)) - var(--tabbar-h)); height: calc(100dvh - var(--header-real, var(--header-h)) - var(--tabbar-h)); }
+  .context-bar { flex: none; }
+  .viz-wrap { flex: 1 1 auto; height: auto; min-height: 96px; }
+  .sidebar {
+    flex: none; height: var(--sheet-h, 45%); border-left: 0; overflow-y: auto; overscroll-behavior: contain; position: relative;
+    border-radius: 14px 14px 0 0; box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.14); border-top: 0.5px solid var(--separator); margin-top: -10px; z-index: 9;
+  }
+  .sidebar.sheet-anim { transition: height 0.26s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .sheet-handle {
+    display: flex; position: sticky; top: 0; z-index: 4; width: 100%; min-height: 28px; align-items: center; justify-content: center;
+    border: 0; padding: 0; background: var(--surface); cursor: grab; touch-action: none;
+  }
+  .sheet-handle span { width: 38px; height: 5px; border-radius: 3px; background: var(--muted); opacity: 0.55; }
+  /* in the sheet: search first, then the details, then translations and filters */
+  .controls { display: contents; }
+  .sidebar > .controls > *, .sidebar > .col-bar { margin-left: 16px; margin-right: 16px; }
+  .sidebar > .controls > .search-field { order: -4; margin-top: 2px; }
+  .sidebar > .col-bar { order: -3; }
+  .sidebar > .panel { order: -2; flex: none; border-bottom: 0.5px solid var(--separator); padding-bottom: 24px; }
+  .sidebar > .controls > .translations { margin-top: 16px; }
+  .sheet-handle { order: -5; }
+  /* phones: the "You're viewing" bar is one compact row, so the map keeps its room */
+  .context-bar { flex-wrap: nowrap; padding: 6px 12px; gap: 8px; }
+  .ctx-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ctx-list { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .ctx-list::-webkit-scrollbar { display: none; }
+  .ctx-chip { flex: none; max-width: 70vw; }
+  .ctx-reset { flex: none; }
+  .tips { left: 8px; right: 8px; top: 52px; bottom: auto; max-width: none; padding: 12px 14px; }
+  .tips h2 { font-size: var(--t-headline); margin-bottom: 4px; }
+  .sheet-handle:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
   .legend { font-size: 11px; }
   .legend .grad { width: 80px; }
   /* a blurred header would become the containing block for the fixed tab bar, so use a solid one here */
@@ -641,7 +671,7 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
   body { padding-bottom: var(--tabbar-h); }
   .header-nav {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; gap: 0; flex-wrap: nowrap; justify-content: space-around;
-    padding: 0 4px env(safe-area-inset-bottom); background: color-mix(in srgb, var(--surface) 96%, transparent); border-top: 0.5px solid var(--separator);
+    padding: 0 4px env(safe-area-inset-bottom); background: var(--surface); border-top: 0.5px solid var(--separator);
     -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
   }
   .site-header .nav-btn.btn {
@@ -897,3 +927,19 @@ body.stage-places .viz-tools:not(.geo-tools), body.stage-places .legend { visibi
 @media (max-width: 860px) { .viz-wrap > .legend { top: 52px; } }
 body.presenting .stage-switch, body.embed .stage-switch { display: none; }
 body.stage-places .tips { display: none !important; }
+
+/* desktop: the sheet handle is not needed */
+.sheet-handle { display: none; }
+@media (max-width: 860px) { .sheet-handle { display: flex; } }
+@media (prefers-reduced-motion: reduce) { .sidebar.sheet-anim { transition: none; } }
+/* back button at the top of the details panel */
+.panel-back { display: inline-flex; align-items: center; gap: 2px; min-height: 44px; margin: -8px 0 2px -8px; padding: 0 10px 0 4px; border: 0; border-radius: 10px; background: transparent; color: var(--link); font: 500 var(--t-body)/1 var(--font); cursor: pointer; }
+.panel-back[hidden] { display: none; }
+.panel-back .icon { width: 22px; height: 22px; stroke-width: 2.2; }
+.panel-back:hover { background: var(--fill); }
+.panel-back:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+
+.tips-steps { list-style: none; padding: 0; margin: 0 0 12px; }
+.tips-steps li { margin: 0; }
+.tips-foot { display: flex; align-items: center; gap: 8px; }
+.tips-count { margin-right: auto; font-size: var(--t-footnote); color: var(--muted); font-variant-numeric: tabular-nums; }

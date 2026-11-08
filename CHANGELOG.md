@@ -5,6 +5,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Phones: the details slide up from the bottom as a sheet, like the Maps app. Drag or tap its handle to show more or less; the map always fills the space above it. A link to a verse or connection opens it half way, with the details straight under the search box, and translations and filters sit below the details.
+- A Back button at the top of the details panel steps back through what you opened.
+
+### Changed
+- First-visit tips show one at a time (with Next and Skip), and wait until the map has room for them.
+- On phones the "You're viewing" bar is a single row, and the tab bar is solid.
+
+### Fixed
+- The map keeps its base line in place when it is resized, so arcs no longer drift out of view.
+
 ## [0.16.0] - 2026-11-08 - Lent
 
 ### Added

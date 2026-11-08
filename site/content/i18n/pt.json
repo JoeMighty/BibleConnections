@@ -883,7 +883,11 @@
     "Holy Week starts on {d}.": "Início da Semana Santa: {d}.",
     "Open today's reading": "Abrir a leitura de hoje",
     "See the plan": "Ver o plano",
-    "Starts on Ash Wednesday,": "Começa na Quarta-feira de Cinzas,"
+    "Starts on Ash Wednesday,": "Começa na Quarta-feira de Cinzas,",
+    "Back": "Voltar",
+    "Show more details": "Mostrar mais detalhes",
+    "Show less of the details": "Mostrar menos detalhes",
+    "Skip": "Pular"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1007,7 +1011,8 @@
     "week {n}": "semana {n}",
     "Route: {x}": "Rota: {x}",
     "Day {d} of {n}": "Dia {d} de {n}",
-    "Take the {x} journey": "Fazer a jornada de {x}"
+    "Take the {x} journey": "Fazer a jornada de {x}",
+    "{n} of {m}": "{n} de {m}"
   },
   "pages": {
     "handout": {
