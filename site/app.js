@@ -4575,7 +4575,8 @@
   let restoring = false;
   function syncURL(push = false) {
     let url;
-    if (isLanding()) url = location.pathname;
+    // the welcome page keeps a language that came from the link, so ?lang=pt stays in Portuguese
+    if (isLanding()) url = location.pathname + (urlLang && LANGS[urlLang] && urlLang !== 'en' ? '?lang=' + urlLang : '');
     else {
       const p = new URLSearchParams();
       if (state.minVotes !== DEFAULT_VOTES) p.set('min', state.minVotes);
@@ -4679,7 +4680,7 @@
     if (POS) setOrder('bible');
       const p = readURL();
       renderLegend(); updateNav(); applyFilters();
-      if (![...p.keys()].filter(k => k !== 'embed' && k !== 'colors' && k !== 'motion' && k !== 'today').length && !EMBED) { showLanding(); return; }
+      if (![...p.keys()].filter(k => !['embed', 'colors', 'motion', 'today', 'lang'].includes(k)).length && !EMBED) { showLanding(); return; }
       hideLanding();
       const hasDetail = ['journey', 'ref', 'q', 'c', 'path', 'plan', 'person', 'place', 'topic', 'word'].some(k => p.has(k));
       if (!hasDetail) resetView(false);

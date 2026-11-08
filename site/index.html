@@ -71,6 +71,14 @@
   </header>
 
   <section class="landing" id="landing" aria-labelledby="landingTitle" hidden>
+    <script>
+      // show the welcome page straight away for a plain link, before the map data loads, so the map never flashes first
+      (function () {
+        var p = new URLSearchParams(location.search), extra = 0;
+        p.forEach(function (v, k) { if (['colors', 'motion', 'today', 'lang'].indexOf(k) < 0) extra++; });
+        if (!extra) { document.getElementById('landing').hidden = false; document.body.classList.add('landing-open'); }
+      })();
+    </script>
     <div class="landing-hero">
       <div class="hero-head">
         <h2 id="landingTitle">See how the whole Bible fits together</h2>

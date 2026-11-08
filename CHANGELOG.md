@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- The welcome page shows straight away when the site opens, instead of the map flashing first while the data loads. A link with only a language (such as ?lang=pt) now opens the welcome page in that language too.
+
 ## [0.15.0] - 2026-11-08 - Places
 
 ### Added
