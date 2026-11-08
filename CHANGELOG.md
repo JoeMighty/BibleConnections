@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-11-08 - Seasons
+
 ### Added
 - The twelve days of Christmas: a reading plan from Christmas Day to the eve of Epiphany, one promise and its fulfilment each day, dated to the calendar (Rachel weeping on 28 December, the name of Jesus on 1 January, the wise men's gifts on 4 January). The connection of the day follows it over Christmas.
 - Holy Week: a journey (Holy Week: the road to the cross) and an eight-day reading plan from Palm Sunday to Easter morning, with an Old Testament passage for each day. Dates follow Easter each year (Palm Sunday 21 March 2027), and the connection of the day follows Holy Week too. Leader guides and handouts work for it like any journey.
