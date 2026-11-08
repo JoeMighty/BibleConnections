@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.15.1] - 2026-11-08 - Welcome First
+
 ### Fixed
 - The welcome page shows straight away when the site opens, instead of the map flashing first while the data loads. A link with only a language (such as ?lang=pt) now opens the welcome page in that language too.
 

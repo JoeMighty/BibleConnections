@@ -59,6 +59,18 @@
   ],
   "shipped": [
     {
+      "version": "0.15.1",
+      "items": [
+        "The welcome page shows straight away"
+      ],
+      "items_es": [
+        "La página de inicio aparece al instante"
+      ],
+      "items_pt": [
+        "A página inicial aparece na hora"
+      ]
+    },
+    {
       "version": "0.15.0",
       "items": [
         "Places map as a full view, with zoom and journeys drawn as routes"
