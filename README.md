@@ -104,6 +104,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Growing the reach of the project](docs/PROMOTION.md)
 - [Content review packet for pastors](docs/THEOLOGY-REVIEW.md)
 - [Portuguese: plan and progress](docs/PORTUGUESE.md)
+- [Google Play: plan](docs/PLAY-STORE.md)
 
 ## Contributing
 
