@@ -1399,7 +1399,8 @@
             <div class="actions tight"><button type="button" class="btn ghost small" data-action="toPlaces">See it on the Places map</button></div>
             <p class="hint">Location from <a href="https://www.openbible.info/geo/" rel="noopener">OpenBible.info</a> (CC BY 4.0).</p>`;
         } else if (f.entity) html += `${f.entity.description ? `<p>${esc(f.entity.description)}</p>` : ''}<p>Found in ${f.verses.length.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
-        else html += `<p>${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>`;
+        else html += `<p>${f.verses.length.toLocaleString(LANGS[LANG].locale)} verse${f.verses.length === 1 ? ' contains' : 's contain'} ${esc(rangeLabel(f))}, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>
+          <div id="alsoFound" data-q="${esc(f.query || '')}"></div>`;
         html += `
           ${f.entity && f.entity.type === 'word' ? '' : '<p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>'}
           <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
@@ -2559,38 +2560,87 @@
     for (const i of focusList) { const other = F[i] === v ? T[i] : F[i]; (verseBook[other] < 39 ? ot : nt).push(i); }
     const q = (REFLECT[cat] || {})[LANG] || (REFLECT[cat] || {}).en || [];
     const noted = [...focusList].filter(i => hasNote[i]).slice(0, 6);
-    return `<section class="study-sec" aria-labelledby="secContext"><h3 id="secContext">In context</h3>
+    return `<details class="study-sec" data-sec="secContext"${secOpen('secContext')}><summary><h3 id="secContext">In context</h3></summary>
         <p>Verse ${n} of ${inChap} in ${esc(b.name)} ${c} · <span class="muted">${esc(CATEGORIES[cat].name)}</span></p>
         <div class="actions tight">
           ${v > b.start ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v - 1}">Previous verse<span class="sr-only">: ${esc(refLabel(v - 1))}</span></button>` : ''}
           ${v < b.end - 1 ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v + 1}">Next verse<span class="sr-only">: ${esc(refLabel(v + 1))}</span></button>` : ''}
         </div>
         ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(loc(intro, 'about'))}</p>` : ''}
-      </section>
-      <section class="study-sec" aria-labelledby="secOrig"><h3 id="secOrig">Original text</h3>
+      </details>
+      <details class="study-sec" data-sec="secOrig"${secOpen('secOrig')}><summary><h3 id="secOrig">Original text</h3></summary>
         <div id="origText" data-v="${v}"><p class="muted">Loading the original text…</p></div>
-      </section>
-      <section class="study-sec" aria-labelledby="secPeople"><h3 id="secPeople">People, places and topics</h3>
+      </details>
+      <details class="study-sec" data-sec="secPeople"${secOpen('secPeople')}><summary><h3 id="secPeople">People, places and topics</h3></summary>
         <div id="verseEntities" data-v="${v}"><p class="muted">Looking for people, places and topics…</p></div>
         <div id="versePlaces" data-v="${v}"></div>
-      </section>
-      ${noted.length ? `<section class="study-sec" aria-labelledby="secNotes"><h3 id="secNotes">Explained connections</h3><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></section>` : ''}
-      <section class="study-sec" aria-labelledby="secRefs"><h3 id="secRefs">Connections</h3>
+      </details>
+      ${noted.length ? `<details class="study-sec" data-sec="secNotes"${secOpen('secNotes')}><summary><h3 id="secNotes">Explained connections</h3></summary><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></details>` : ''}
+      <details class="study-sec" data-sec="secRefs"${secOpen('secRefs')}><summary><h3 id="secRefs">Connections</h3></summary>
         <p>${ot.length.toLocaleString(LANGS[LANG].locale)} to the Old Testament and ${nt.length.toLocaleString(LANGS[LANG].locale)} to the New Testament, strongest first.</p>
         <h4>Old Testament</h4>${ot.length ? listHTML(ot, true) : '<p class="muted">None with the current filters.</p>'}
         <h4>New Testament</h4>${nt.length ? listHTML(nt, true) : '<p class="muted">None with the current filters.</p>'}
-      </section>
-      <section class="study-sec" aria-labelledby="secNote"><h3 id="secNote">My notes</h3>
+      </details>
+      <details class="study-sec" data-sec="secNote"${secOpen('secNote')}><summary><h3 id="secNote">My notes</h3></summary>
         <label for="verseNote" class="sr-only">My notes on ${esc(refLabel(v))}</label>
         <textarea id="verseNote" data-key="${esc(noteKey(v))}" rows="4" placeholder="Write what you notice, questions or a prayer…">${esc((getNotes()[noteKey(v)] || {}).text || '')}</textarea>
         <p class="hint"><span id="noteStatus" role="status">Kept on this device only.</span> <button type="button" class="link-btn" data-action="mode" data-mode="notes">All my notes</button></p>
-      </section>
-      ${q.length ? `<section class="study-sec" aria-labelledby="secReflect"><h3 id="secReflect">Reflect</h3><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
-        <p class="hint">General questions for personal or group study.</p></section>` : ''}
+      </details>
+      ${q.length ? `<details class="study-sec" data-sec="secReflect"${secOpen('secReflect')}><summary><h3 id="secReflect">Reflect</h3></summary><ol class="reflect">${q.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+        <p class="hint">General questions for personal or group study.</p></details>` : ''}
       <div class="actions"><button type="button" class="btn ghost small" data-action="studyImage" data-v="${v}">Share as image</button><a class="btn ghost small" href="handout.html?verse=${esc(toOsis(v))}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> for ${esc(refLabel(v))} (opens in a new tab)</span></a></div>`;
   }
 
+  // ---------- Verse sections open and close, and the choice is remembered on this device ----------
+  const SEC_DEFAULT = { secContext: true, secOrig: true, secPeople: false, secNotes: true, secRefs: true, secNote: true, secReflect: false };
+  const secOpen = (id) => ((store.get('secOpen', {})[id] ?? SEC_DEFAULT[id] ?? true) ? ' open' : '');
+  el.panelBody.addEventListener('toggle', (e) => {
+    const d = e.target;
+    if (!d.matches || !d.matches('details.study-sec[data-sec]')) return;
+    const all = store.get('secOpen', {});
+    all[d.dataset.sec] = d.open; store.set('secOpen', all);
+    if (d.open) fillStudy();   // maps and lists inside are drawn once they can be seen
+  }, true);
+
+  // ---------- One search, all results: what else matches a word search ----------
+  async function fillAlsoFound(box) {
+    const q = plain(box.dataset.q).trim();
+    if (q.length < 3) return;
+    const has = (x) => plain(x).split(/[^a-z0-9]+/).some(w => w === q || (q.length >= 4 && w.startsWith(q)));
+    const groups = [];
+    const chip = (attrs, label, extra = '') => `<li><button type="button" class="chip" ${attrs}>${esc(label)}${extra ? ` <span class="muted">${esc(extra)}</span>` : ''}</button></li>`;
+    const ents = PEOPLE.filter(e => has(nameOf(e)) || has(e.name) || (e.words || []).some(w => plain(w) === q));
+    if (ents.length) groups.push(['People and places', ents.slice(0, 8).map(e => chip(`data-action="entity" data-type="${e.type}" data-id="${esc(e.id)}"`, nameOf(e), tr(e.type))).join('')]);
+    const tops = TOPICS.filter(t => has(nameOf(t)) || has(t.name) || (t.words || []).some(w => plain(w) === q));
+    if (tops.length) groups.push(['Topics', tops.slice(0, 8).map(t => chip(`data-action="entity" data-type="topic" data-id="${esc(t.id)}"`, nameOf(t))).join('')]);
+    const th = THEMES.filter(t => has(t.name) || has(t.description));
+    if (th.length) groups.push(['Themes', th.slice(0, 4).map(t => chip(`data-action="setTheme" data-theme-id="${esc(t.id)}"`, t.name)).join('')]);
+    const js = JOURNEYS.map((j, n) => [j, n]).filter(([j]) => has(j.name) || has(j.summary));
+    if (js.length) groups.push(['Guided journeys', js.slice(0, 6).map(([j, n]) => chip(`data-action="startJourney" data-j="${n}"`, j.name)).join('')]);
+    const [S, P, R, PR] = await Promise.all([loadStrongs().catch(() => null), loadPlaces().catch(() => null), loadRoutes().catch(() => null), loadProphecy().catch(() => null)]);
+    if (!box.isConnected) return;
+    if (P) {
+      const ps = P.places.filter(x => has(x.label) && !ents.some(e => plain(nameOf(e)) === plain(x.label))).sort((a, b) => b.n - a.n);
+      if (ps.length) groups.push(['On the Places map', ps.slice(0, 6).map(x => chip(`data-action="openGeo" data-i="${x.i}"`, x.label, tr(x.n === 1 ? '1 verse' : `${x.n} verses`))).join('')]);
+    }
+    if (S) {
+      const ws = Object.entries(S).filter(([, w]) => w.g && plain(w.g).split(/[^a-z]+/).includes(q)).sort((a, b) => b[1].n - a[1].n);
+      if (ws.length) groups.push(['Hebrew and Greek words', ws.slice(0, 6).map(([c, w]) => `<li><button type="button" class="chip" data-action="openWord" data-code="${c}"><span lang="${c[0] === 'H' ? 'he' : 'el'}">${esc(w.l)}</span> ${esc(w.g)}</button></li>`).join('')]);
+    }
+    if (PR) {
+      const ch = PR.groups.flatMap(g => g.chains).filter(c => has(loc(c, 'title')) || has(c.title));
+      if (ch.length) groups.push(['Prophecy and fulfilment', ch.slice(0, 6).map(c => chip(`data-action="openChain" data-id="${esc(c.id)}"`, loc(c, 'title'))).join('')]);
+    }
+    if (R) {
+      const rs = R.filter(r => has(loc(r, 'name')) || has(r.name) || r.stops.some(st => plain(st.place.replace(/ \d+$/, '')) === q));
+      if (rs.length) groups.push(['Journeys on the map', rs.map(r => chip(`data-action="openRoute" data-id="${esc(r.id)}"`, loc(r, 'name'))).join('')]);
+    }
+    box.innerHTML = groups.length ? `<section class="also-found" aria-labelledby="alsoTitle"><h3 id="alsoTitle">Also found</h3>${groups.map(([t, items]) => `<p class="also-label">${esc(t)}</p><ul class="chip-list">${items}</ul>`).join('')}</section>` : '';
+  }
+
   function fillStudy() {
+    const af = $('alsoFound');
+    if (af && !af.dataset.done) { af.dataset.done = '1'; fillAlsoFound(af); }
     const cw = $('commonWords');
     if (cw) fillCommonWords(cw);
     const rs = $('rangeStudy');
@@ -4047,6 +4097,7 @@
     }
     else if (a === 'openEra') openEra(btn.dataset.era).then(focusPanelHeading);
     else if (a === 'openChain') openChain(btn.dataset.id).then(focusPanelHeading);
+    else if (a === 'setTheme') { el.theme.value = btn.dataset.themeId; el.theme.dispatchEvent(new Event('change')); focusPanelHeading(); }
     else if (a === 'replayChain') animateChain();
     else if (a === 'hideLink' && state.selected >= 0) setHidden(state.selected, true);
     else if (a === 'unhideLink' && state.selected >= 0) setHidden(state.selected, false);

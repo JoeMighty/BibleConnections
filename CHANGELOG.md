@@ -8,6 +8,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ### Added
 - Phones: the details slide up from the bottom as a sheet, like the Maps app. Drag or tap its handle to show more or less; the map always fills the space above it. A link to a verse or connection opens it half way, with the details straight under the search box, and translations and filters sit below the details.
 - A Back button at the top of the details panel steps back through what you opened.
+- One search, all results: a word search still shows every verse with that word, and now also lists the people, places, topics, themes, Hebrew and Greek words, journeys, prophecies and routes that match, each one tap away.
+- Verse sections (In context, Original text, People, places and topics, Connections, My notes, Reflect) open and close, and your choice is remembered. People, places and topics, and Reflect, start closed to keep the page short.
 
 ### Changed
 - First-visit tips show one at a time (with Next and Skip), and wait until the map has room for them.

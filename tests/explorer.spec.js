@@ -15,9 +15,13 @@ test('a single verse opens the passage explorer with original text, context and 
   await expect(panel.locator('#origText ol')).toHaveAttribute('lang', 'el');
   await expect(panel.locator('#origText button[data-code="G0025"]')).toHaveCount(1);
   // connections split by testament
-  await expect(panel.locator('#secRefs + p, #secRefs ~ p').first()).toContainText('to the Old Testament');
+  await expect(panel.locator('[data-sec=secRefs] > p').first()).toContainText('to the Old Testament');
   await expect(panel.locator('.reflect li')).toHaveCount(3);
+  // people, places and topics, and reflection questions start closed and open when chosen
+  await expect(panel.locator('#verseEntities')).toBeHidden();
+  await panel.locator('[data-sec=secPeople] > summary').click();
   await expect(panel.locator('#verseEntities .chip').first()).toBeVisible();
+  await expect(page.locator('[data-sec=secPeople]')).toHaveAttribute('open', '');
   // next verse
   await panel.getByRole('button', { name: /^Next verse/ }).click();
   await expect(page.locator('#panelTitle')).toHaveText('John 3:17');

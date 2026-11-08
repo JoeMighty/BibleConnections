@@ -943,3 +943,17 @@ body.stage-places .tips { display: none !important; }
 .tips-steps li { margin: 0; }
 .tips-foot { display: flex; align-items: center; gap: 8px; }
 .tips-count { margin-right: auto; font-size: var(--t-footnote); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.also-found { margin: 16px 0 8px; padding: 12px 14px; background: var(--surface-2, var(--bg)); border-radius: var(--radius); }
+.also-found h3 { margin: 0 0 4px; font-size: var(--t-headline); }
+.also-label { margin: 10px 0 6px; font-size: var(--t-footnote); color: var(--muted); }
+
+/* verse sections that open and close */
+details.study-sec > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; cursor: pointer; border-radius: 8px; }
+details.study-sec > summary::-webkit-details-marker { display: none; }
+details.study-sec > summary h3 { margin: 0; }
+details.study-sec > summary::after { content: ''; flex: none; width: 9px; height: 9px; margin-right: 6px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform 0.2s; }
+details.study-sec[open] > summary::after { transform: rotate(45deg); }
+details.study-sec > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+details.study-sec:not([open]) { padding-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { details.study-sec > summary::after { transition: none; } }

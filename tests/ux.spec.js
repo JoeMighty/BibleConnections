@@ -43,3 +43,29 @@ test.describe('phones', () => {
     expect(Math.round((await page.locator('.sidebar').boundingBox()).height)).toBe(Math.round(half.height));
   });
 });
+
+test('a word search also lists matching people, topics, words, journeys and prophecies', async ({ page }) => {
+  await page.goto('/?q=shepherd');
+  await ready(page);
+  await expect(page.locator('#panelTitle')).toHaveText('“shepherd”');
+  const also = page.locator('#alsoFound');
+  await expect(also).toContainText('Also found');
+  await expect(also).toContainText('Shepherd and sheep');
+  await expect(also).toContainText('Jesus, the Good Shepherd');
+  await expect(also.locator('[data-action=openWord]').first()).toBeVisible();
+  await also.locator('[data-action=openChain]').first().click();
+  await expect(page.locator('#panelTitle')).toHaveText('The shepherd');
+});
+
+test('verse sections open and close, and the choice is remembered', async ({ page }) => {
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  const orig = page.locator('[data-sec=secOrig]');
+  await expect(orig).toHaveAttribute('open', '');
+  await orig.locator('> summary').click();
+  await expect(orig).not.toHaveAttribute('open', '');
+  await page.goto('/?ref=Romans+8%3A28');
+  await ready(page);
+  await expect(page.locator('[data-sec=secOrig]')).not.toHaveAttribute('open', '');
+  await expect(page.locator('[data-sec=secOrig] > summary')).toHaveText('Original text');
+});

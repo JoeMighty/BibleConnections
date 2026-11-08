@@ -67,6 +67,7 @@ test('places map opens a place and shows places in a verse', async ({ page }) =>
   await expect(page.locator('#geoMini')).toBeVisible();
   await page.goto('/?ref=Matthew+2%3A1');
   await ready(page);
+  await page.locator('[data-sec=secPeople] > summary').click();
   await expect(page.locator('#versePlaces')).toContainText('Bethlehem');
   await expect(page.locator('#versePlacesMap')).toBeVisible();
 });

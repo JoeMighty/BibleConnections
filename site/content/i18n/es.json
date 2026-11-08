@@ -886,7 +886,10 @@
     "Back": "Atrás",
     "Show more details": "Mostrar más detalles",
     "Show less of the details": "Mostrar menos detalles",
-    "Skip": "Omitir"
+    "Skip": "Omitir",
+    "Also found": "También encontrado",
+    "On the Places map": "En el mapa de lugares",
+    "Themes": "Temas"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
