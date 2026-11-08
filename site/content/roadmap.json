@@ -67,9 +67,7 @@
   ],
   "shipped": [
     {
-      "version": "Live now",
-      "version_es": "Ya disponible",
-      "version_pt": "Já disponível",
+      "version": "0.13.0",
       "items": [
         "Portuguese: the whole site in Portuguese"
       ],
