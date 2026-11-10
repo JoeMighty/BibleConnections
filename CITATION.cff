@@ -7,7 +7,7 @@ authors:
   - alias: JoeMighty
     website: "https://github.com/JoeMighty"
 repository-code: "https://github.com/JoeMighty/BibleConnections"
-url: "https://joemighty.github.io/BibleConnections/"
+url: "https://bibleconnections.app/"
 license: Apache-2.0
 version: 0.16.0
 date-released: 2026-11-08

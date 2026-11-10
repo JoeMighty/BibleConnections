@@ -2295,7 +2295,7 @@
 <text x="${ntx - 16}" y="${by + 150}" font-size="28" fill="${sub}" text-anchor="end">${esc(tr('Old Testament'))}</text>
 <text x="${ntx + 16}" y="${by + 150}" font-size="28" fill="${sub}">${esc(tr('New Testament'))}</text>
 <text x="${W / 2}" y="${by + 300}" font-size="110" font-weight="700" fill="${fg}" text-anchor="middle">Bible Connections</text>
-<text x="${W / 2}" y="${by + 380}" font-size="40" fill="${sub}" text-anchor="middle">${esc(`${filtered.length.toLocaleString(LANGS[LANG].locale)} ${tr('cross references')}`)} · ${esc(tr('Cross references: OpenBible.info (CC BY 4.0)'))} · joemighty.github.io/BibleConnections</text>
+<text x="${W / 2}" y="${by + 380}" font-size="40" fill="${sub}" text-anchor="middle">${esc(`${filtered.length.toLocaleString(LANGS[LANG].locale)} ${tr('cross references')}`)} · ${esc(tr('Cross references: OpenBible.info (CC BY 4.0)'))} · bibleconnections.app</text>
 </g></svg>`;
     return { svg: s, W, H };
   }

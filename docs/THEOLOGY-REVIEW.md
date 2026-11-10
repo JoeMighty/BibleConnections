@@ -4,7 +4,7 @@ Prepared for pastoral and theological review. Thank you for giving your time to 
 
 ## 1. What Bible Connections is
 
-[Bible Connections](https://joemighty.github.io/BibleConnections/) is a free website that maps about 200,000 cross references in the Bible as arcs from Genesis to Revelation. People can tap any arc to see two passages that point to each other, then read them on Bible.com in the translation they choose.
+[Bible Connections](https://bibleconnections.app/) is a free website that maps about 200,000 cross references in the Bible as arcs from Genesis to Revelation. People can tap any arc to see two passages that point to each other, then read them on Bible.com in the translation they choose.
 
 The site does not publish any Bible translation. Every passage opens on Bible.com. The only Scripture text shown on the site is the original Hebrew, Aramaic and Greek, from STEP Bible (Tyndale House, CC BY 4.0).
 

@@ -7,7 +7,7 @@ A checklist for getting the site and the repository in front of more people.
 In the repository on GitHub, click the gear next to **About** (top right of the code page):
 
 - **Description:** `Interactive map of 200,000 Bible cross references with guided journeys, themes and a path finder. English and Spanish.`
-- **Website:** `https://joemighty.github.io/BibleConnections/`
+- **Website:** `https://bibleconnections.app/`
 - **Topics:** `bible`, `bible-study`, `cross-references`, `data-visualization`, `webgl`, `accessibility`, `church`, `christianity`, `scripture`, `open-data`, `pwa`, `spanish`
 
 Then go to **Settings > General > Social preview** and upload `docs/social-preview.png`. This is the image people see when the repository link is shared.
@@ -21,7 +21,7 @@ Also worth doing:
 
 ## 2. Make the site easy to find
 
-- Add the site to [Google Search Console](https://search.google.com/search-console) and submit `https://joemighty.github.io/BibleConnections/sitemap.xml`.
+- Add the site to [Google Search Console](https://search.google.com/search-console) and submit `https://bibleconnections.app/sitemap.xml`.
 - Do the same in [Bing Webmaster Tools](https://www.bing.com/webmasters).
 - A custom domain such as `connections.yourchurch.org` is easier to remember and share (see [CUSTOM-DOMAIN.md](CUSTOM-DOMAIN.md)).
 

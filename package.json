@@ -3,7 +3,7 @@
   "private": true,
   "license": "Apache-2.0",
   "author": "JoeMighty (https://github.com/JoeMighty)",
-  "homepage": "https://joemighty.github.io/BibleConnections/",
+  "homepage": "https://bibleconnections.app/",
   "repository": "github:JoeMighty/BibleConnections",
   "description": "Interactive map of Bible cross references",
   "scripts": {

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://joemighty.github.io/BibleConnections/sitemap.xml
+Sitemap: https://bibleconnections.app/sitemap.xml

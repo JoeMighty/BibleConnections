@@ -17,7 +17,7 @@ Stats are **off** by default. When switched on, the site loads one small script 
 2. Edit `site/content/config.json`:
 
 ```json
-{ "analytics": { "provider": "plausible", "goatcounterCode": "", "plausibleDomain": "joemighty.github.io" } }
+{ "analytics": { "provider": "plausible", "goatcounterCode": "", "plausibleDomain": "bibleconnections.app" } }
 ```
 
 To switch stats off again, set `"provider": ""`.

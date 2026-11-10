@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-const SITE = 'https://joemighty.github.io/BibleConnections/';
+const SITE = 'https://bibleconnections.app/';
 const read = (p) => fs.readFileSync(path.join(ROOT, 'site', p));
 const meta = JSON.parse(read('data/books.json'));
 const raw = new Uint16Array(read('data/refs.bin').buffer.slice(0));

@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://joemighty.github.io/BibleConnections/"><img src="docs/social-preview.png" alt="Bible Connections: a rainbow of arcs linking passages from Genesis to Revelation" width="720"></a>
+<a href="https://bibleconnections.app/"><img src="docs/social-preview.png" alt="Bible Connections: a rainbow of arcs linking passages from Genesis to Revelation" width="720"></a>
 
 <h1>Bible Connections</h1>
 
@@ -10,7 +10,7 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>Created by <a href="https://github.com/JoeMighty">JoeMighty</a></p>
 
 <p>
-  <a href="https://joemighty.github.io/BibleConnections/"><img alt="Live site" src="https://img.shields.io/badge/live%20site-open-38d9a9?style=plastic&logo=githubpages&logoColor=white"></a>
+  <a href="https://bibleconnections.app/"><img alt="Live site" src="https://img.shields.io/badge/live%20site-open-38d9a9?style=plastic&logo=githubpages&logoColor=white"></a>
   <a href="https://github.com/JoeMighty/BibleConnections/actions/workflows/ci.yml"><img alt="Test and deploy" src="https://img.shields.io/github/actions/workflow/status/JoeMighty/BibleConnections/ci.yml?branch=main&style=plastic&label=tests%20%26%20deploy&logo=githubactions&logoColor=white"></a>
   <a href="https://github.com/JoeMighty/BibleConnections/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/JoeMighty/BibleConnections?style=plastic&label=release"></a>
   <a href="https://github.com/JoeMighty/BibleConnections/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/JoeMighty/BibleConnections?style=plastic"></a>
@@ -33,7 +33,7 @@ Every arc joins two passages that point to each other, from Genesis on the left 
   <img alt="99 translations in 31 languages" src="https://img.shields.io/badge/translations-99%20in%2031%20languages-e8590c?style=plastic">
 </p>
 
-<p><a href="https://joemighty.github.io/BibleConnections/"><strong>Open the live site</strong></a></p>
+<p><a href="https://bibleconnections.app/"><strong>Open the live site</strong></a></p>
 
 </div>
 
@@ -98,8 +98,8 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ## More guides
 
-- [How to use Bible Connections](https://joemighty.github.io/BibleConnections/guide.html)
-- [Roadmap](https://joemighty.github.io/BibleConnections/roadmap.html)
+- [How to use Bible Connections](https://bibleconnections.app/guide.html)
+- [Roadmap](https://bibleconnections.app/roadmap.html)
 - [Usage stats (optional)](docs/ANALYTICS.md)
 - [Accessibility testing with real users](docs/ACCESSIBILITY-TESTING.md)
 - [Growing the reach of the project](docs/PROMOTION.md)

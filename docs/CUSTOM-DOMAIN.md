@@ -1,10 +1,17 @@
-# Using your own web address
+# The web address
 
-You can serve the site from an address such as `connections.yourchurch.org`.
+The site lives at **https://bibleconnections.app**, hosted by GitHub Pages from this repository. Old `joemighty.github.io/BibleConnections/` links redirect there automatically.
 
-1. **DNS:** at your domain provider, add a `CNAME` record for `connections` pointing to `joemighty.github.io`.
-2. **GitHub:** in the repository go to **Settings > Pages > Custom domain**, enter `connections.yourchurch.org` and save. Tick **Enforce HTTPS** once it becomes available (this can take up to an hour).
-3. **Link previews:** in `site/index.html` replace `https://joemighty.github.io/BibleConnections/` in the `og:url` and `og:image` tags with your new address, for example `https://connections.yourchurch.org/`.
-4. **Stats (if used):** update `plausibleDomain` in `site/content/config.json`.
+## How it is set up
 
-Old `github.io` links keep working because GitHub redirects them to the custom domain.
+- **Domain:** registered at Namecheap, using Namecheap BasicDNS.
+- **DNS records** (Namecheap, Advanced DNS):
+  - Four `A` records for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+  - Four `AAAA` records for `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+  - A `CNAME` record for `www` pointing to `joemighty.github.io.`
+- **GitHub:** Settings > Pages > Custom domain is `bibleconnections.app`, with **Enforce HTTPS** on. Every `.app` address only works over HTTPS.
+- **Email:** optional forwarding (for example `hello@bibleconnections.app`) is set in Namecheap under Mail Settings, and does not affect the website records.
+
+## If the address changes again
+
+Replace `https://bibleconnections.app/` in `site/index.html` (link previews, canonical and language links), `site/robots.txt`, `scripts/sitemap.mjs`, `scripts/feeds.mjs`, `package.json`, `CITATION.cff` and the README, then run `node scripts/sitemap.mjs`. The calendar feed keeps its event IDs (`@joemighty.github.io`) on purpose, so calendars that already subscribed do not get duplicate events.

@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- The site has its own address: https://bibleconnections.app. Old links redirect automatically, and link previews, the sitemap, feeds and search engine language links use the new address.
+
 ### Added
 - Phones: the details slide up from the bottom as a sheet, like the Maps app. Drag or tap its handle to show more or less; the map always fills the space above it. A link to a verse or connection opens it half way, with the details straight under the search box, and translations and filters sit below the details.
 - A Back button at the top of the details panel steps back through what you opened.
