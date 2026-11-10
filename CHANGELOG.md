@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-11-10 - Home Screen
+
 ### Changed
 - The site has its own address: https://bibleconnections.app. Old links redirect automatically, and link previews, the sitemap, feeds and search engine language links use the new address.
 

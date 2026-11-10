@@ -59,9 +59,7 @@
   ],
   "shipped": [
     {
-      "version": "Live now",
-      "version_es": "Ya disponible",
-      "version_pt": "Já disponível",
+      "version": "0.17.0",
       "items": [
         "Details slide up as a sheet on phones",
         "Back button, search that lists everything, sections that open and close",
