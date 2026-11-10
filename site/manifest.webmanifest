@@ -1,16 +1,146 @@
 {
+  "id": "/",
   "name": "Bible Connections",
   "short_name": "Connections",
-  "description": "Explore the cross references across the whole Bible.",
+  "description": "See how the whole Bible fits together: every cross reference on one map, with journeys, places, reading plans and word study.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
   "background_color": "#000000",
   "theme_color": "#000000",
+  "categories": [
+    "books",
+    "education",
+    "reference"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
-  ]
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reading plans",
+      "short_name": "Plans",
+      "description": "Pick up your reading plan",
+      "url": "./?view=plans",
+      "icons": [
+        {
+          "src": "icons/shortcut-plans.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Journeys",
+      "short_name": "Journeys",
+      "description": "Guided journeys through the Bible",
+      "url": "./?view=journeys",
+      "icons": [
+        {
+          "src": "icons/shortcut-journeys.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Places",
+      "short_name": "Places",
+      "description": "The map of Bible places",
+      "url": "./?view=places",
+      "icons": [
+        {
+          "src": "icons/shortcut-places.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Study",
+      "short_name": "Study",
+      "description": "Find a verse, word or topic",
+      "url": "./?view=study",
+      "icons": [
+        {
+          "src": "icons/shortcut-study.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/phone-map.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Every cross reference on one map"
+    },
+    {
+      "src": "screenshots/phone-verse.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "A verse and where it connects"
+    },
+    {
+      "src": "screenshots/phone-journey.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Guided journeys"
+    },
+    {
+      "src": "screenshots/phone-places.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Places and routes on a map"
+    },
+    {
+      "src": "screenshots/wide-map.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "The map of connections with verse details"
+    }
+  ],
+  "share_target": {
+    "action": "./",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }

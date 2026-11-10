@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 const base = 'https://bibleconnections.app/';
 const read = (f) => JSON.parse(fs.readFileSync(new URL(`../site/content/${f}`, import.meta.url)));
-const urls = [base, `${base}?view=map`, `${base}?view=journeys`, `${base}?view=path`, `${base}?view=insights`, `${base}?view=study`, `${base}?view=plans`, `${base}?view=people`, `${base}?view=topics`, `${base}?view=game`, `${base}?lang=es`, `${base}?lang=pt`, `${base}guide.html?lang=pt`, `${base}roadmap.html?lang=pt`, `${base}guide.html`, `${base}roadmap.html`, `${base}?view=timeline`, `${base}?view=places`, `${base}?view=prophecy`];
+const urls = [base, `${base}?view=map`, `${base}?view=journeys`, `${base}?view=path`, `${base}?view=insights`, `${base}?view=study`, `${base}?view=plans`, `${base}?view=people`, `${base}?view=topics`, `${base}?view=game`, `${base}?lang=es`, `${base}?lang=pt`, `${base}guide.html?lang=pt`, `${base}roadmap.html?lang=pt`, `${base}guide.html`, `${base}roadmap.html`, `${base}privacy.html`, `${base}?view=timeline`, `${base}?view=places`, `${base}?view=prophecy`];
 for (const j of read('journeys.json')) urls.push(`${base}?journey=${j.id}&amp;step=1`, `${base}handout.html?journey=${j.id}`);
 for (const g of read('prophecy.json').groups) for (const c of g.chains) urls.push(`${base}?prophecy=${c.id}`);
 for (const j of read('journeys.json')) urls.push(`${base}handout.html?journey=${j.id}&amp;guide=leader`);

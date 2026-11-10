@@ -898,7 +898,8 @@
     "You are offline.": "Você está sem internet.",
     "Back online": "Conexão restabelecida",
     "Your plan": "Seu plano",
-    "New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.": "Primeira vez aqui? Uma referência cruzada é um lugar em que uma passagem da Bíblia aponta para outra, como uma nota de “veja também”. Cada arco do mapa é uma delas."
+    "New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.": "Primeira vez aqui? Uma referência cruzada é um lugar em que uma passagem da Bíblia aponta para outra, como uma nota de “veja também”. Cada arco do mapa é uma delas.",
+    "Privacy": "Privacidade"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1094,7 +1095,9 @@
       "Features you can use today.": "Recursos que você já pode usar.",
       "Plans can change. Dates are not promised.": "Os planos podem mudar. Não há datas prometidas.",
       "Suggest an idea": "Sugerir uma ideia",
-      "Sorry, this page could not load. Please try again.": "Desculpe, não foi possível carregar esta página. Tente de novo."
+      "Sorry, this page could not load. Please try again.": "Desculpe, não foi possível carregar esta página. Tente de novo.",
+      "Privacy": "Privacidade",
+      "Last updated {d}": "Última atualização: {d}"
     },
     "slides": {
       "Slides": "Slides",

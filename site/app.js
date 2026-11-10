@@ -4880,6 +4880,18 @@
     if (p.get('prophecy')) { await openChain(p.get('prophecy'), { push: false }); return; }
     if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
     if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (p.get('text') || p.get('title') || p.get('url')) {
+      // shared into the installed app from another app: open the first Bible reference in the text, or search for it
+      const txt = [p.get('text'), p.get('title')].filter(Boolean).join(' ').replace(/https?:\/\/\S+/g, ' ').trim().slice(0, 300);
+      // a Bible.com link (bible.com/bible/111/JHN.3.16.NIV) names the book by its USFM code
+      const u = (p.get('url') || p.get('text') || '').match(/bible\.com\/(?:[a-z-]+\/)*\d+\/([1-3]?[A-Z]{2,3})\.(\d+)(?:\.(\d+))?/);
+      const ub = u && BOOKS.find(b => b.usfm === u[1]);
+      if (ub) { const r = parseReference(`${ub.name} ${u[2]}${u[3] ? ':' + u[3] : ''}`); if (r && !r.error) { setFocus(r, { zoom: true }); return; } }
+      const m = txt.match(/(?:[1-3]\s?)?[\p{L}]+\.?\s+\d{1,3}(?:[:.]\d{1,3}(?:-\d{1,3})?)?/gu) || [];
+      for (const c of m) { const r = parseReference(c); if (r && !r.error) { setFocus(r, { zoom: true }); return; } }
+      if (txt) { el.search.value = txt.slice(0, 80); const w = await wordSearch(txt.slice(0, 80)); if (w) setFocus(w, { zoom: true }); }
+      return;
+    }
     if (p.get('ref')) { const r = parseReference(p.get('ref')); if (r && !r.error) setFocus(r, { zoom: !p.get('c') }); }
     else if (p.get('q')) { el.search.value = p.get('q'); const w = await wordSearch(p.get('q')); if (w) setFocus(w, { zoom: true }); }
     if (p.get('c')) {

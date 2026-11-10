@@ -5,8 +5,8 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   const L = window.bcLang;
   await L.ready;
-  const t = (k) => L.t('pages', k), pick = L.pick, withLang = L.withLang;
-  for (const [id, key] of [['navHome', 'Open the map'], ['navGuide', 'How to use'], ['navRoadmap', 'Roadmap'], ['changelogLink', 'Changelog']]) {
+  const t = (k, v) => L.t('pages', k, v), pick = L.pick, withLang = L.withLang;
+  for (const [id, key] of [['navHome', 'Open the map'], ['navGuide', 'How to use'], ['navRoadmap', 'Roadmap'], ['changelogLink', 'Changelog'], ['privacyLink', 'Privacy']]) {
     const a = document.getElementById(id);
     if (a) { a.textContent = t(key); if (a.getAttribute('href') && !a.href.includes('github')) a.setAttribute('href', withLang(a.getAttribute('href'))); }
   }
@@ -25,6 +25,14 @@
           <ul class="cards">${g.items.map(it => `<li class="card"><h3>${esc(pick(it, 'title'))}</h3><p>${esc(pick(it, 'what'))}</p>
             <ol>${(pick(it, 'steps') || []).map(s => `<li>${esc(s)}</li>`).join('')}</ol>
             ${it.try ? `<p class="try"><a href="${esc(withLang('./' + it.try))}">${esc(t('Try it'))}: ${esc(pick(it, 'try_label'))}</a></p>` : ''}</li>`).join('')}</ul></section>`).join('')}`;
+    } else if (page === 'privacy') {
+      const P = await (await fetch('content/privacy.json')).json();
+      document.title = `${t('Privacy')} · Bible Connections`;
+      const date = new Date(P.updated + 'T12:00:00').toLocaleDateString(L.locale, { day: 'numeric', month: 'long', year: 'numeric' });
+      const mail = (x) => esc(x).replace(/hello@bibleconnections\.app/g, '<a href="mailto:hello@bibleconnections.app">hello@bibleconnections.app</a>');
+      main.innerHTML = `<h1>${esc(t('Privacy'))}</h1>
+        <p class="lede">${esc(pick(P, 'intro'))}</p><p class="muted">${esc(t('Last updated {d}', { d: date }))}</p>
+        ${P.sections.map(x => `<section aria-labelledby="${slug(x.title)}"><h2 id="${slug(x.title)}">${esc(pick(x, 'title'))}</h2>${(pick(x, 'text') || []).map(p2 => `<p>${mail(p2)}</p>`).join('')}</section>`).join('')}`;
     } else {
       const r = await (await fetch('content/roadmap.json')).json();
       document.title = `${t('Roadmap')} · Bible Connections`;

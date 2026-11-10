@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy · Bible Connections</title>
+  <meta name="description" content="How Bible Connections handles your data: no accounts, no cookies, everything saved stays on your device.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="pages.css">
+  <script>
+    // light or dark before the page draws, matching the main site
+    (function () {
+      var get = function (k, d) { try { var v = JSON.parse(localStorage.getItem('bc.' + k)); return v === null ? d : v; } catch (e) { return d; } };
+      var a = get('appearance', 'system'), root = document.documentElement;
+      var light = a === 'light' || (a === 'system' && !matchMedia('(prefers-color-scheme: dark)').matches);
+      root.dataset.theme = light ? 'light' : 'dark';
+      root.dataset.textsize = get('textsize', 'standard');
+      root.dataset.readable = get('readable', false) ? 'on' : 'off';
+      root.dataset.contrast = get('contrast', false) || matchMedia('(prefers-contrast: more)').matches ? 'more' : 'normal';
+    })();
+  </script>
+</head>
+<body data-page="privacy">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./" id="homeLink"><img src="icons/icon.svg" alt="" width="34" height="34"><span>Bible Connections</span></a>
+    <nav aria-label="Pages">
+      <a href="./" id="navHome">Open the map</a>
+      <a href="guide.html" id="navGuide">How to use</a>
+      <a href="roadmap.html" id="navRoadmap">Roadmap</a>
+    </nav>
+  </header>
+  <main id="main"><p class="loading">Loading…</p></main>
+  <footer class="foot"><p>Created by <a href="https://github.com/JoeMighty" rel="noopener author">JoeMighty</a> · <a href="https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md" rel="noopener" id="changelogLink">Changelog</a> · <a href="privacy.html" id="privacyLink">Privacy</a></p></footer>
+  <script src="i18n.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>

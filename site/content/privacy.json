@@ -1,0 +1,48 @@
+{
+  "updated": "2026-11-10",
+  "intro": "Bible Connections has no accounts, no adverts and no cookies. Everything you save stays on your own device.",
+  "intro_es": "Bible Connections no tiene cuentas, ni anuncios, ni cookies. Todo lo que guardas se queda en tu propio dispositivo.",
+  "intro_pt": "O Bible Connections não tem contas, anúncios nem cookies. Tudo o que você salva fica no seu próprio aparelho.",
+  "sections": [
+    {
+      "title": "What stays on your device",
+      "title_es": "Lo que se queda en tu dispositivo",
+      "title_pt": "O que fica no seu aparelho",
+      "text": ["Your notes, saved verses, collections, reading plan progress, recent verses, game scores, hidden links and settings are stored in your browser's local storage. They are never sent to us or to anyone else.", "You can export them to a backup file from Settings, and clearing the site's data in your browser or app settings deletes them."],
+      "text_es": ["Tus notas, versículos guardados, colecciones, progreso en los planes de lectura, versículos recientes, puntuaciones del juego, conexiones ocultas y ajustes se guardan en el almacenamiento local de tu navegador. Nunca se envían a nosotros ni a nadie más.", "Puedes exportarlos a un archivo de copia de seguridad desde Ajustes, y al borrar los datos del sitio en tu navegador o en los ajustes de la aplicación se eliminan."],
+      "text_pt": ["Suas anotações, versículos salvos, coleções, progresso nos planos de leitura, versículos recentes, pontuações do jogo, ligações ocultas e ajustes ficam guardados no armazenamento local do seu navegador. Eles nunca são enviados para nós nem para mais ninguém.", "Você pode exportá-los para um arquivo de backup em Ajustes, e ao apagar os dados do site no navegador ou nos ajustes do aplicativo eles são excluídos."]
+    },
+    {
+      "title": "Counting visits",
+      "title_es": "Recuento de visitas",
+      "title_pt": "Contagem de visitas",
+      "text": ["To see which features are used, the site counts page views and a few button taps with GoatCounter, a privacy-friendly service. It uses no cookies, stores no personal data and cannot identify you. Counts are anonymous totals.", "If your browser sends Do Not Track or Global Privacy Control, nothing is counted at all."],
+      "text_es": ["Para saber qué funciones se usan, el sitio cuenta las páginas vistas y algunos toques en botones con GoatCounter, un servicio que respeta la privacidad. No usa cookies, no guarda datos personales y no puede identificarte. Los recuentos son totales anónimos.", "Si tu navegador envía Do Not Track o Global Privacy Control, no se cuenta nada."],
+      "text_pt": ["Para saber quais recursos são usados, o site conta as páginas vistas e alguns toques em botões com o GoatCounter, um serviço que respeita a privacidade. Ele não usa cookies, não guarda dados pessoais e não consegue identificar você. As contagens são totais anônimos.", "Se o seu navegador envia Do Not Track ou Global Privacy Control, nada é contado."]
+    },
+    {
+      "title": "Links to other sites",
+      "title_es": "Enlaces a otros sitios",
+      "title_pt": "Links para outros sites",
+      "text": ["Reading and listening open Bible.com, and feedback forms open GitHub. Those sites have their own privacy policies, which apply once you are there. We do not share anything with them."],
+      "text_es": ["Leer y escuchar abre Bible.com, y los formularios de comentarios abren GitHub. Esos sitios tienen sus propias políticas de privacidad, que se aplican una vez que estás allí. No compartimos nada con ellos."],
+      "text_pt": ["Ler e ouvir abre o Bible.com, e os formulários de sugestões abrem o GitHub. Esses sites têm suas próprias políticas de privacidade, que valem quando você está neles. Não compartilhamos nada com eles."]
+    },
+    {
+      "title": "Children",
+      "title_es": "Niños",
+      "title_pt": "Crianças",
+      "text": ["The site collects no personal information from anyone, including children. Kids mode only changes what is shown."],
+      "text_es": ["El sitio no recoge información personal de nadie, tampoco de niños. El modo para niños solo cambia lo que se muestra."],
+      "text_pt": ["O site não coleta informações pessoais de ninguém, inclusive de crianças. O modo infantil só muda o que é mostrado."]
+    },
+    {
+      "title": "Changes and contact",
+      "title_es": "Cambios y contacto",
+      "title_pt": "Mudanças e contato",
+      "text": ["If this policy changes, the new version will be posted here with a new date. Questions are welcome at hello@bibleconnections.app."],
+      "text_es": ["Si esta política cambia, la nueva versión se publicará aquí con una fecha nueva. Puedes escribir con tus preguntas a hello@bibleconnections.app."],
+      "text_pt": ["Se esta política mudar, a nova versão será publicada aqui com uma nova data. Dúvidas são bem-vindas em hello@bibleconnections.app."]
+    }
+  ]
+}

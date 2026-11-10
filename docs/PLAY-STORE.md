@@ -11,11 +11,11 @@ Android only hides the browser bar if the site proves it belongs to the app, wit
 | Phase | What | Who |
 |---|---|---|
 | 1. Account | Create a Google Play developer account ($25 one time, with identity verification). New personal accounts must run a **closed test with at least 12 testers for 14 days** before going public, so line up testers early (church members are ideal). Check Google's current rules when signing up, as they change. | You |
-| 2. Web app ready for stores | Manifest: app `id`, `categories`, shortcuts (Journeys, Places, Study), `screenshots`, `display_override`. A privacy policy page (the store requires one). Check the install prompt, offline start and back button inside the app. | Code |
+| 2. Web app ready for stores | Done: manifest with app `id`, `categories`, icon shortcuts (Plans, Journeys, Places, Study), install screenshots, `display_override` and a share target; the privacy page at /privacy.html in three languages; offline start and the in-app back button checked by tests. | Done |
 | 3. Domain | Done: bibleconnections.app. Then `assetlinks.json` with the app's signing fingerprint. | Done, code adds the file later |
 | 4. Build the app | Generate the Android project with Bubblewrap (Google's tool for this), package name such as `app.bibleconnections`, using Play App Signing. A GitHub Actions workflow builds the signed bundle so releases are repeatable. The upload key is kept as a GitHub secret, never in the repository. | Code, plus you to hold the key |
-| 5. Store listing | Name, short description (80 characters), full description, 512 px icon, 1024 x 500 feature graphic, 4 to 8 phone screenshots, plus tablet screenshots. In English first, then Spanish and Portuguese, which the site already supports. | Code drafts, you approve |
-| 6. Policy forms | Content rating questionnaire, Data safety form (the site collects no personal data and uses no cookies; visit counting is anonymous), target audience. Choosing a general audience rather than "designed for children" avoids extra Families policy requirements, even though there is a kids mode. | You submit, using drafted answers |
+| 5. Store listing | Drafted in `docs/store`: listing text in English, Spanish and Portuguese, 512 px icon, 1024 x 500 feature graphics and 7 phone screenshots per language (`node scripts/store-images.mjs` remakes them). Tablet screenshots are optional. | Drafted, you approve |
+| 6. Policy forms | Drafted answers in `docs/store/policy-answers.md`: Data safety, content rating, target audience (13 and over, so the Families program does not apply). | You submit, using drafted answers |
 | 7. Closed test, then launch | 12 or more testers for 14 days, fix anything they find, then apply for production. | You and testers |
 
 ## What stays the same
@@ -26,3 +26,4 @@ Android only hides the browser bar if the site proves it belongs to the app, wit
 ## Decisions needed
 
 1. Whether you are ready to create the Google Play developer account, and who will be the testers.
+2. Set up email forwarding for hello@bibleconnections.app (Namecheap, Domain, Redirect Email). The privacy page and the listing use it.

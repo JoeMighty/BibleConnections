@@ -81,3 +81,5 @@ h3 { font: 600 19px/1.3 var(--font-display); margin: 0 0 6px; }
 :root[data-readable="on"] { --font: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; --font-display: var(--font); }
 :root[data-contrast="more"] { --muted: var(--text); --done: var(--text); --separator: #8e8e93; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.muted { color: var(--muted); font-size: 15px; }
+main section p { max-width: 40em; }

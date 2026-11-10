@@ -19,6 +19,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - A one-line explanation of cross references on the welcome page for first-time visitors.
 - An offline note when the connection drops, saying what still works.
 - Loading placeholders: soft gray shapes for the welcome page picture, its numbers and loading sections, instead of empty space.
+- A privacy page (in English, Spanish and Portuguese), linked from the welcome page, the About window and every page footer: no accounts, no cookies, saved things stay on your device, and visit counting is anonymous.
+- Installed app: long-press the icon for Reading plans, Journeys, Places and Study. Share a verse into the app from another app (for example "John 3:16" in a message, or a Bible.com link) and it opens there. The install dialog shows screenshots.
+- Store listing drafts, images and form answers for Google Play in docs/store, made by `scripts/store-images.mjs`.
 
 ### Changed
 - First-visit tips show one at a time (with Next and Skip), and wait until the map has room for them.

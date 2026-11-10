@@ -1,8 +1,8 @@
 // Offline support: the app and its data are cached so the map works without a connection.
 // Reading links still need the internet because they open Bible.com.
-const CACHE = 'bible-connections-v44';
+const CACHE = 'bible-connections-v45';
 const CORE = [
-  './', 'index.html', 'styles.css', 'app.js', 'handout.html', 'handout.js', 'guide.html', 'roadmap.html', 'pages.css', 'pages.js', 'content/guide.json', 'content/roadmap.json',
+  './', 'index.html', 'styles.css', 'app.js', 'handout.html', 'handout.js', 'guide.html', 'roadmap.html', 'privacy.html', 'content/privacy.json', 'pages.css', 'pages.js', 'content/guide.json', 'content/roadmap.json',
   'content/themes.json', 'content/notes.json', 'content/journeys.json', 'content/series.json',
   'content/versions.json', 'content/config.json', 'content/people-places.json', 'content/topics.json', 'content/plans.json', 'vendor/qrcode.js', 'content/words.json', 'content/i18n/es.json', 'content/themes.es.json', 'content/journeys.es.json', 'content/i18n/pt.json', 'content/themes.pt.json', 'content/journeys.pt.json', 'content/i18n/pages-pt.json', 'content/book-intros.json', 'content/reflect.json', 'content/timeline.json', 'content/prophecy.json',
   'slides.html', 'slides.js', 'slides.css', 'card.html', 'card.js', 'church.html', 'church.js', 'content/weak-links.json', 'content/routes.json', 'i18n.js', 'content/i18n/pages-es.json',
