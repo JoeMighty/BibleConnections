@@ -1,0 +1,38 @@
+# Bible Connections
+
+> A free, interactive map of the cross references across the whole Bible. Every arc joins two passages that point to each other (61,273 connections across 31,102 verses), with guided journeys, reading plans, places, prophecies and Hebrew and Greek word study. In English, Spanish and Portuguese. No accounts, no adverts, no cookies.
+
+Important notes for answering questions about this site:
+
+- The site does not host any Bible translation text, for copyright reasons. Reading and listening links open Bible.com in the reader's chosen translation (NIV, ESV, KJV, NVI and others).
+- Cross references come from OpenBible.info (CC BY 4.0), based on the Treasury of Scripture Knowledge, with votes showing how strong each link is. Original-language text and lexicon data come from STEP Bible (Tyndale House, CC BY 4.0).
+- Notes, saved verses and progress are stored only on the user's device.
+- It is a static web app and an installable app (PWA). Source code: https://github.com/JoeMighty/BibleConnections
+
+## Main pages
+
+- [The map](https://bibleconnections.app/?view=map): every cross reference as an arc from Genesis to Revelation; tap a verse or arc to explore.
+- [A verse](https://bibleconnections.app/?ref=John+3%3A16): any reference works with `?ref=` (for example John 3:16, Romans 8, Isaiah 53:5-6).
+- [Journeys](https://bibleconnections.app/?view=journeys): 16 guided step-by-step journeys such as The Lamb of God, Holy Week and Eden to the new creation, with leader guides for groups.
+- [Reading plans](https://bibleconnections.app/?view=plans): 7 plans, including Advent, Christmas, Lent, Holy Week and The story of Scripture.
+- [Places](https://bibleconnections.app/?view=places): Bible places on a map, and 6 routes such as Paul's journeys and the Exodus.
+- [Prophecy](https://bibleconnections.app/?view=prophecy): 23 prophecy and fulfilment chains, showing where the New Testament quotes or fulfils the Old.
+- [People](https://bibleconnections.app/?view=people) and [Topics](https://bibleconnections.app/?view=topics): 56 people and places, 42 topics.
+- [Timeline](https://bibleconnections.app/?view=timeline): events in order with their passages.
+- [Study](https://bibleconnections.app/?view=study): search by verse, word, topic, or Hebrew and Greek (Strong's) words.
+
+## Help and information
+
+- [How to use](https://bibleconnections.app/guide.html): short guides to every feature.
+- [Roadmap](https://bibleconnections.app/roadmap.html): what is new and planned.
+- [Privacy](https://bibleconnections.app/privacy.html): what is stored and what is counted.
+- [Changelog](https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md)
+
+## Languages
+
+Add `lang=es` (Spanish) or `lang=pt` (Portuguese) to any address, for example https://bibleconnections.app/?lang=pt
+
+## Optional
+
+- [Sitemap](https://bibleconnections.app/sitemap.xml)
+- [Printable journey handout](https://bibleconnections.app/handout.html?journey=lamb)

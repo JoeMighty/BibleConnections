@@ -25,6 +25,11 @@
           <ul class="cards">${g.items.map(it => `<li class="card"><h3>${esc(pick(it, 'title'))}</h3><p>${esc(pick(it, 'what'))}</p>
             <ol>${(pick(it, 'steps') || []).map(s => `<li>${esc(s)}</li>`).join('')}</ol>
             ${it.try ? `<p class="try"><a href="${esc(withLang('./' + it.try))}">${esc(t('Try it'))}: ${esc(pick(it, 'try_label'))}</a></p>` : ''}</li>`).join('')}</ul></section>`).join('')}`;
+    } else if (page === 'notfound') {
+      document.title = `${t('Page not found')} · Bible Connections`;
+      main.innerHTML = `<h1>${esc(t('Page not found'))}</h1>
+        <p class="lede">${esc(t('This page does not exist. It may have moved, or the address may have a typo.'))}</p>
+        <p><a href="${esc(withLang('/'))}">${esc(t('Open the map'))}</a> · <a href="${esc(withLang('/guide.html'))}">${esc(t('How to use'))}</a></p>`;
     } else if (page === 'privacy') {
       const P = await (await fetch('content/privacy.json')).json();
       document.title = `${t('Privacy')} · Bible Connections`;

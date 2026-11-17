@@ -1096,7 +1096,9 @@
       "Suggest an idea": "Sugerir una idea",
       "Sorry, this page could not load. Please try again.": "Lo sentimos, no se pudo cargar esta página. Inténtalo de nuevo.",
       "Privacy": "Privacidad",
-      "Last updated {d}": "Última actualización: {d}"
+      "Last updated {d}": "Última actualización: {d}",
+      "Page not found": "Página no encontrada",
+      "This page does not exist. It may have moved, or the address may have a typo.": "Esta página no existe. Puede que se haya movido o que la dirección tenga un error."
     },
     "slides": {
       "Slides": "Diapositivas",

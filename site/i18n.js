@@ -9,6 +9,8 @@ window.bcLang = (() => {
     es: { locale: 'es', bible: 'NVI', listed: true },
     pt: { locale: 'pt-BR', bible: 'NVI-PT', listed: true },
   };
+  // relative to this script, so pages at any depth (such as the 404 page) find the strings
+  const base = (document.currentScript && document.currentScript.src) || location.href;
   const urlOnly = document.currentScript && document.currentScript.hasAttribute('data-url-only');
   const asked = new URLSearchParams(location.search).get('lang');
   let saved = 'en';
@@ -17,7 +19,7 @@ window.bcLang = (() => {
   document.documentElement.lang = lang;
   let data = null;
   const ready = lang === 'en' ? Promise.resolve(null)
-    : fetch(`content/i18n/pages-${lang}.json`).then(r => (r.ok ? r.json() : null)).catch(() => null).then(d => (data = d));
+    : fetch(new URL(`content/i18n/pages-${lang}.json`, base)).then(r => (r.ok ? r.json() : null)).catch(() => null).then(d => (data = d));
   return {
     lang, ready, ...LANGS[lang],
     // t('handout', 'Read {a} and {b}', { a, b }): the page's string in this language, or the English

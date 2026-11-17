@@ -5,6 +5,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- `llms.txt`: a plain summary of the site for AI assistants, including that no Bible translation text is hosted.
+- A "Page not found" page in each language that links back to the map.
+- Search engines: the How to use, Roadmap and Privacy pages have canonical addresses, language links and link previews; the sitemap lists every page in English, Spanish and Portuguese with its language versions and the last release date.
+
 ## [0.17.0] - 2026-11-10 - Home Screen
 
 ### Changed
