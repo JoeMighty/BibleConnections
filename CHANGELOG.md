@@ -8,6 +8,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ### Changed
 - Faster on mobile data: opening a verse link downloads about 1.4 MB instead of 3.4 MB. The Hebrew and Greek text and dictionary load when you scroll to them, and the places data only when it is needed. The map data is no longer downloaded twice on a first visit.
 - A picture of the whole map shows straight away on a link to the map (dark mode), until the real one is drawn. The page also no longer flashes dark before switching to light mode.
+- Phones: opening a verse keeps the whole Bible in view and fans out that verse's arcs, with the rest faded, instead of zooming into a wall of lines.
+- Phones: slide a finger along the book strip under the arcs to pick a chapter; its name follows your finger. Swipe the details sideways for the next or previous journey step, plan day or connection.
+- Section titles and labels are in sentence case, as in Apple's current apps, and every button and chip on a touch screen is at least 44 points tall.
 - Phones: the map gets much more room. The header is one slim row, what you are viewing floats on the map with its ✕ (Start over appears only when more than one thing is open), the Connections/Places switch and color key are gone from the map, and only Reset and More (Describe, Save image) sit on it, since pinching zooms.
 - Phones: search sits in the sheet only on the map and in Study. A search button at the top opens it from anywhere.
 - Phones: the tabs are Home, Journeys, Places, Study and Me. Me holds your notes, collections, reading plans, saved and recent items, Settings and About. Connect two verses is in Study. Settings also has a button at the top.

@@ -73,3 +73,41 @@ test.describe('phones', () => {
     await expect(page).toHaveURL(/view=path/);
   });
 });
+
+test.describe('phones: the map with a thumb', () => {
+  test.skip(({ isMobile }) => !isMobile, 'touch');
+  test.beforeEach(async ({ page }) => { await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true')); });
+
+  test('sliding a finger along the book strip picks a chapter', async ({ page }) => {
+    await page.goto('/?view=map');
+    await ready(page);
+    const box = await page.locator('#viz').boundingBox();
+    const y = box.height - 70, xs = [box.width * 0.3, box.width * 0.4, box.width * 0.5];
+    await page.evaluate(({ y, xs }) => {
+      const v = document.getElementById('viz'), r = v.getBoundingClientRect();
+      const ev = (type, x) => v.dispatchEvent(new PointerEvent(type, { pointerId: 7, pointerType: 'touch', clientX: r.left + x, clientY: r.top + y, bubbles: true, isPrimary: true }));
+      ev('pointerdown', xs[0]); ev('pointermove', xs[1]); ev('pointermove', xs[2]);
+    }, { y, xs });
+    await expect(page.locator('#tooltip')).toBeVisible();
+    await page.evaluate(({ y, x }) => {
+      const v = document.getElementById('viz'), r = v.getBoundingClientRect();
+      v.dispatchEvent(new PointerEvent('pointerup', { pointerId: 7, pointerType: 'touch', clientX: r.left + x, clientY: r.top + y, bubbles: true, isPrimary: true }));
+    }, { y, x: xs[2] });
+    await expect(page.locator('#panelTitle')).toHaveText(/^[1-3]?\s?[A-Z][a-z]+( of [A-Z][a-z]+)? \d+$/);
+  });
+
+  test('swiping the details sideways moves to the next journey step', async ({ page }) => {
+    await page.goto('/?journey=lamb&step=2');
+    await ready(page);
+    const swipe = (dx) => page.evaluate((dx) => {
+      const p = document.getElementById('panel'), r = p.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + 120;
+      const t = (cx) => new Touch({ identifier: 1, target: p, clientX: cx, clientY: y });
+      p.dispatchEvent(new TouchEvent('touchstart', { touches: [t(x)], changedTouches: [t(x)], bubbles: true }));
+      p.dispatchEvent(new TouchEvent('touchend', { touches: [], changedTouches: [t(x + dx)], bubbles: true }));
+    }, dx);
+    await swipe(-120);
+    await expect(page).toHaveURL(/step=3/);
+    await swipe(120);
+    await expect(page).toHaveURL(/step=2/);
+  });
+});

@@ -1016,3 +1016,14 @@ details.study-sec:not([open]) { padding-bottom: 0; }
 
 /* the picture of the map shown while the data loads */
 .viz-ph { position: absolute; bottom: 84px; height: auto; aspect-ratio: 2 / 1; opacity: 0.55; pointer-events: none; z-index: 0; }
+
+/* Apple's current style: sentence-case section titles, not small capitals */
+.field > label, .field legend, .label-like { text-transform: none; letter-spacing: -0.01em; }
+.panel h3 { text-transform: none; letter-spacing: -0.01em; font-size: var(--t-headline); font-weight: 600; color: var(--text); margin: 28px 0 10px; }
+details.study-sec > summary h3 { margin: 0; }
+/* touch screens: every tap target at least 44 points */
+@media (pointer: coarse) {
+  .chip, .btn.small { min-height: 44px; }
+  .ctx-x { width: 44px; height: 44px; }
+  .mini-list .ctx-x { width: 44px; height: 44px; }
+}

@@ -826,7 +826,7 @@
     let alpha = Math.min(0.9, Math.max(0.05, 22 / Math.sqrt(Math.max(1, filtered.length)) * Math.sqrt(zoom)));
     if (highContrast) alpha = Math.min(1, alpha * 1.8);
     if (isLight) alpha = Math.min(1, alpha * 1.3);
-    if (dim) alpha *= highContrast ? 0.15 : 0.3;
+    if (dim) alpha *= highContrast ? 0.15 : isPhone() ? 0.12 : 0.3;   // phones: fade the rest more so the chosen arcs stand out
     if (useGL) {
       glr.draw(filtered, bucketOf, state.colorMode === 'category' ? catColors : distColors, Math.min(1, alpha * (highContrast ? 1.3 : 1.15)), pal.bg);
     } else {
@@ -1035,7 +1035,8 @@
     try { el.viz.setPointerCapture(e.pointerId); } catch { /* pointer already released */ }
     const [x, y] = localPoint(e);
     pointers.set(e.pointerId, { x, y });
-    if (pointers.size === 1) drag = { x, y, tx: view.tx, ty: view.ty, moved: false, type: e.pointerType };
+    // a finger on the book strip under the arcs slides along the books instead of moving the map
+    if (pointers.size === 1) drag = { x, y, tx: view.tx, ty: view.ty, moved: false, type: e.pointerType, scrub: e.pointerType !== 'mouse' && N > 0 && y > view.ty, ch: -1 };
     else if (pointers.size === 2) {
       const [p1, p2] = [...pointers.values()];
       pinch = { d: Math.hypot(p1.x - p2.x, p1.y - p2.y), k: view.k, tx: view.tx, ty: view.ty, mx: (p1.x + p2.x) / 2, my: (p1.y + p2.y) / 2 };
@@ -1057,6 +1058,15 @@
       clampView(); drawBase();
       return;
     }
+    if (drag && drag.scrub) {
+      if (!drag.moved && Math.abs(x - drag.x) > 6) drag.moved = true;
+      if (drag.moved) {
+        const ch = chapterAt(x, view.ty + 5);
+        if (ch !== drag.ch) { drag.ch = ch; if (ch >= 0 && navigator.vibrate) navigator.vibrate(4); }
+        hover(x, view.ty + 5);
+      }
+      return;
+    }
     if (drag) {
       const dx = x - drag.x, dy = y - drag.y;
       if (!drag.moved && Math.hypot(dx, dy) > 5) { drag.moved = true; el.viz.classList.add('dragging'); hideTooltip(); }
@@ -1070,7 +1080,8 @@
     const [x, y] = localPoint(e);
     pointers.delete(e.pointerId);
     if (pinch) { if (pointers.size < 2) pinch = null; drag = null; return; }
-    if (drag && !drag.moved && e.type === 'pointerup') click(x, y, drag.type === 'mouse' ? 6 : 14);
+    if (drag && drag.scrub && drag.moved) { hideTooltip(); if (e.type === 'pointerup') click(x, view.ty + 5, 14); }
+    else if (drag && !drag.moved && e.type === 'pointerup') click(x, y, drag.type === 'mouse' ? 6 : 14);
     drag = null;
     el.viz.classList.remove('dragging');
   }
@@ -1205,6 +1216,21 @@
     return topCache;
   }
   const currentList = () => (state.focus ? focusList : topList());
+  // phones: swipe the details sideways for the next or previous journey step, plan day or connection
+  {
+    let sx = 0, sy = 0, st = 0;
+    const panelEl = $('panel');
+    panelEl.addEventListener('touchstart', (e) => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; st = e.touches.length === 1 && !e.target.closest('input, textarea, select, .chip-list, .orig, canvas, .ctx-list') ? Date.now() : 0; }, { passive: true });
+    panelEl.addEventListener('touchend', (e) => {
+      if (!st || Date.now() - st > 600) return;
+      const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < 70 || Math.abs(dy) > 40) return;
+      const dir = dx < 0 ? 1 : -1;
+      if (state.mode === 'journey') goStep(dir);
+      else if (state.mode === 'plan' && state.plan) { const n = (state.plan.day || 0) + dir; if (n >= 0) { openPlan(state.plan.id, n); } }
+      else if (state.selected >= 0) stepSelection(dir);
+    }, { passive: true });
+  }
   function stepSelection(dir) {
     const list = currentList();
     if (!list.length) return;
@@ -1262,6 +1288,8 @@
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.`);
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
+      // phones: a verse's arcs fan out across the whole Bible, which reads better on a small screen than a deep zoom
+      else if (range.kind === 'verse' && isPhone()) resetView();
       else zoomToRange(range.start, range.end, range.kind === 'verse' ? 40 : 0.6);
     }
   }

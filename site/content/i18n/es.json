@@ -912,7 +912,8 @@
     "connections in all": "conexiones en total",
     "Most connected books": "Libros más conectados",
     "All the numbers for this book": "Todos los datos de este libro",
-    "(English)": "(en inglés)"
+    "(English)": "(en inglés)",
+    "along the bottom, or slide along them, to pick a chapter.": "en la parte inferior, o desliza el dedo por ellas, para elegir un capítulo."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
