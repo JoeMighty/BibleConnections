@@ -5,9 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-11-17 - Book by Book
+
 ### Added
 - A page for every book (`/books/john/`): how many connections it has, the books and verses it connects to most, and a chapter grid that opens each chapter on the map. An index of all 66 books at `/books/`.
 - Pages for the 1,000 most connected verses (`/verse/john-3-16/`): the strongest connections with their strength, the books they reach, and the Hebrew or Greek text. References only: passages still open on Bible.com.
+- Show links: All, Old, New or Across, a quick filter above the other filters. Across shows only the links between the Old and New Testaments.
+- Book at a glance: open a book to see the books and verses it connects to most, each one tap away, with a link to its book page.
 - "How many cross references are in the Bible?" (`/cross-references/`): 344,799 in the full OpenBible.info dataset, the split between the testaments, the most connected verses and book pairs, and why other sources give different numbers.
 - `llms.txt`: a plain summary of the site for AI assistants, including that no Bible translation text is hosted.
 - A "Page not found" page in each language that links back to the map.

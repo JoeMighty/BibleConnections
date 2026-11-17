@@ -59,6 +59,27 @@
   ],
   "shipped": [
     {
+      "version": "0.18.0",
+      "items": [
+        "A page for every book and the 1,000 most connected verses",
+        "How many cross references are in the Bible?",
+        "Show links: All, Old, New or Across",
+        "Book at a glance"
+      ],
+      "items_es": [
+        "Una página para cada libro y los 1.000 versículos más conectados",
+        "¿Cuántas referencias cruzadas hay en la Biblia?",
+        "Mostrar conexiones: todas, AT, NT o entre ambos",
+        "El libro de un vistazo"
+      ],
+      "items_pt": [
+        "Uma página para cada livro e os 1.000 versículos mais conectados",
+        "Quantas referências cruzadas existem na Bíblia?",
+        "Mostrar ligações: todas, AT, NT ou entre os dois",
+        "O livro num relance"
+      ]
+    },
+    {
       "version": "0.17.0",
       "items": [
         "Details slide up as a sheet on phones",

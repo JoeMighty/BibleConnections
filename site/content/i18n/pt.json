@@ -900,7 +900,20 @@
     "Your plan": "Seu plano",
     "New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.": "Primeira vez aqui? Uma referência cruzada é um lugar em que uma passagem da Bíblia aponta para outra, como uma nota de “veja também”. Cada arco do mapa é uma delas.",
     "Privacy": "Privacidade",
-    "How many cross references?": "Quantas referências cruzadas existem?"
+    "How many cross references?": "Quantas referências cruzadas existem?",
+    "Show links": "Mostrar ligações",
+    "All": "Todas",
+    "Old": "AT",
+    "New": "NT",
+    "Across": "Entre os dois",
+    "Across shows the links between the Old and New Testaments.": "Entre os dois mostra as ligações entre o Antigo e o Novo Testamento.",
+    "Testament only": "Só um testamento",
+    "the testaments": "entre os testamentos",
+    "Book at a glance": "O livro num relance",
+    "connections in all": "conexões no total",
+    "Most connected books": "Livros mais conectados",
+    "All the numbers for this book": "Todos os dados deste livro",
+    "(English)": "(em inglês)"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",

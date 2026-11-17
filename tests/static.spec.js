@@ -48,3 +48,33 @@ for (const theme of ['dark', 'light']) {
     }
   });
 }
+
+test('the testament filter shows only links within or across the testaments', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=map');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#testamentSeg input[value=all]')).toBeChecked();
+  await page.locator('#testamentSeg label', { hasText: 'Across' }).click();
+  await expect(page).toHaveURL(/from=ot&to=nt/);
+  await expect(page.locator('#fromSel')).toHaveValue('ot');
+  await page.locator('#testamentSeg label', { hasText: 'New' }).click();
+  await expect(page.locator('#toSel')).toHaveValue('nt');
+  await expect(page.locator('#fromSel')).toHaveValue('nt');
+  await page.goto('/?from=ot&to=ot');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#testamentSeg input[value=ot]')).toBeChecked();
+});
+
+test('a book shows its most connected books and verses, matching its book page', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?ref=John');
+  await page.waitForSelector('body[data-ready=true]');
+  const glance = page.locator('.book-glance');
+  await expect(glance.locator('.chip').first()).toContainText('Matthew');
+  const total = (await glance.locator('.num').textContent()).trim();
+  await expect(glance.locator('a[href="books/john/"]')).toBeVisible();
+  await glance.locator('.chip', { hasText: 'John 1:14' }).click();
+  await expect(page.locator('#panelTitle')).toHaveText('John 1:14');
+  await page.goto('/books/john/');
+  await expect(page.locator('.stat-n').first()).toHaveText(total);
+});

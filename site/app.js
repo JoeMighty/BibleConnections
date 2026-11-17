@@ -34,7 +34,7 @@
     ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
-  const VERSION = '0.17.0';
+  const VERSION = '0.18.0';
   let CONFIG = {}, PEOPLE = [], TOPICS = [], PLANS = [], FEATURED_WORDS = [];
   const EMBED = new URLSearchParams(location.search).get('embed') === '1';
   const BUCKETS = 32;
@@ -481,6 +481,28 @@
     return [bs[0].start, bs[bs.length - 1].end];
   }
 
+  // a book at a glance: the books and verses it connects to most (all links on the map, whatever the filters),
+  // the same numbers as its book page (/books/<name>/)
+  function bookGlanceHTML(bi) {
+    const other = new Uint32Array(BOOKS.length), deg = new Map();
+    let total = 0;
+    for (let i = 0; i < N; i++) {
+      const a = verseBook[F[i]], z = verseBook[T[i]];
+      if (a !== bi && z !== bi) continue;
+      total++;
+      if (a !== z) other[a === bi ? z : a]++;
+      if (a === bi) deg.set(F[i], (deg.get(F[i]) || 0) + 1);
+      if (z === bi && T[i] !== F[i]) deg.set(T[i], (deg.get(T[i]) || 0) + 1);
+    }
+    const loc = LANGS[LANG].locale, books = [...other].map((n, j) => [j, n]).filter(x => x[1]).sort((x, y) => y[1] - x[1]).slice(0, 6);
+    const verses = [...deg].sort((x, y) => y[1] - x[1] || x[0] - y[0]).slice(0, 6);
+    const slug = (BOOKS[bi].nameEn || BOOKS[bi].name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `<section class="study-sec book-glance" aria-labelledby="glanceTitle"><h3 id="glanceTitle">Book at a glance</h3>
+      <p class="hint"><span class="num">${total.toLocaleString(loc)}</span> <span>connections in all</span></p>
+      <h4>Most connected books</h4><ul class="chip-list">${books.map(([j, n]) => `<li><button type="button" class="chip" data-action="focusBook" data-b="${j}">${esc(BOOKS[j].name)} <span class="chip-n">${n.toLocaleString(loc)}</span></button></li>`).join('')}</ul>
+      <h4>Most connected verses</h4><ul class="chip-list">${verses.map(([v, n]) => `<li><button type="button" class="chip" data-action="focusVerse" data-v="${v}">${esc(refLabel(v))} <span class="chip-n">${n.toLocaleString(loc)}</span></button></li>`).join('')}</ul>
+      <p><a href="books/${slug}/">All the numbers for this book</a>${LANG !== 'en' ? ' <span>(English)</span>' : ''}</p></section>`;
+  }
   function applyFilters({ panel = true } = {}) {
     const [a0, a1] = selInterval(state.from), [b0, b1] = selInterval(state.to);
     const between = !(state.from === 'all' && state.to === 'all');
@@ -1427,6 +1449,7 @@
         html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>`;
         if (single) html += passageStudyHTML(f.start);
         else {
+          if (f.kind === 'book') html += bookGlanceHTML(f.book);
           if ((f.kind === 'chapter' || f.kind === 'book') && verseBook[f.start] === verseBook[f.end - 1]) html += `<div id="rangeStudy" data-start="${f.start}" data-end="${f.end}" data-kind="${f.kind}"></div>`;
           html += `<h3>Connections</h3>` + listHTML(focusList, true);
         }
@@ -4208,6 +4231,7 @@
     else if (a === 'heat') {
       state.from = 'cat:' + btn.dataset.a; state.to = 'cat:' + btn.dataset.b;
       el.fromSel.value = state.from; el.toSel.value = state.to;
+      syncTestament();
       $('filtersBox').open = true;
       state.mode = 'explore'; state.focus = null; state.selected = -1; updateNav();
       applyFilters(); resetView(); syncURL(true); focusPanelHeading();
@@ -4327,8 +4351,15 @@
     syncVersionSelects();
   }
 
-  el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; applyFilters(); syncURL(true); });
-  el.toSel.addEventListener('change', () => { state.to = el.toSel.value; applyFilters(); syncURL(true); });
+  // quick testament filter: the same as choosing Old/New Testament in the Between and and fields
+  const TESTAMENT = { all: ['all', 'all'], ot: ['ot', 'ot'], nt: ['nt', 'nt'], cross: ['ot', 'nt'] };
+  $('testamentSeg').addEventListener('change', (e) => {
+    const t = TESTAMENT[e.target.value]; if (!t) return;
+    [state.from, state.to] = t; track('testament/' + e.target.value);
+    syncControls(); applyFilters(); syncURL(true);
+  });
+  el.fromSel.addEventListener('change', () => { state.from = el.fromSel.value; syncTestament(); applyFilters(); syncURL(true); });
+  el.toSel.addEventListener('change', () => { state.to = el.toSel.value; syncTestament(); applyFilters(); syncURL(true); });
   el.theme.addEventListener('change', () => {
     if (el.theme.value) track('theme/' + el.theme.value); state.theme = el.theme.value; state.focus = null; state.selected = -1; state.mode = 'explore'; state.journey = null; updateNav(); applyFilters(); syncURL(true); });
   el.notesOnly.addEventListener('change', () => { state.notesOnly = el.notesOnly.checked; applyFilters(); syncURL(true); });
@@ -4853,9 +4884,15 @@
     syncControls();
     return p;
   }
+  const TESTAMENT_OF = { all: 'all|all', ot: 'ot|ot', nt: 'nt|nt', cross: 'ot|nt' };
+  function syncTestament() {
+    const tk = Object.keys(TESTAMENT_OF).find(k => TESTAMENT_OF[k] === `${state.from}|${state.to}` || TESTAMENT_OF[k] === `${state.to}|${state.from}`);
+    for (const r of document.querySelectorAll('#testamentSeg input')) r.checked = r.value === tk;
+  }
   function syncControls() {
     el.votes.value = state.minVotes; el.votesOut.textContent = state.minVotes;
     el.fromSel.value = state.from; el.toSel.value = state.to; el.theme.value = state.theme; el.notesOnly.checked = state.notesOnly;
+    syncTestament();
     el.controls.querySelector(`input[value="${state.colorMode}"]`).checked = true;
     el.controls.querySelector(`input[name=order][value="${state.order}"]`).checked = true;
   }
