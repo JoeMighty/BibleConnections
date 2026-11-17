@@ -6,6 +6,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- A page for every book (`/books/john/`): how many connections it has, the books and verses it connects to most, and a chapter grid that opens each chapter on the map. An index of all 66 books at `/books/`.
+- Pages for the 1,000 most connected verses (`/verse/john-3-16/`): the strongest connections with their strength, the books they reach, and the Hebrew or Greek text. References only: passages still open on Bible.com.
+- "How many cross references are in the Bible?" (`/cross-references/`): 344,799 in the full OpenBible.info dataset, the split between the testaments, the most connected verses and book pairs, and why other sources give different numbers.
 - `llms.txt`: a plain summary of the site for AI assistants, including that no Bible translation text is hosted.
 - A "Page not found" page in each language that links back to the map.
 - Search engines: the How to use, Roadmap and Privacy pages have canonical addresses, language links and link previews; the sitemap lists every page in English, Spanish and Portuguese with its language versions and the last release date.

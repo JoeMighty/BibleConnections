@@ -23,6 +23,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: node scripts/feeds.mjs
+      - run: node scripts/static-pages.mjs
       - run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -70,6 +71,8 @@ jobs:
           node-version: 22
       - name: Build the daily feeds
         run: node scripts/feeds.mjs
+      - name: Build the book and verse pages
+        run: node scripts/static-pages.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

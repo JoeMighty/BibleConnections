@@ -6,3 +6,6 @@ test-results/
 playwright-report/
 .lighthouseci/
 site/feeds/
+site/books/
+site/verse/
+site/cross-references/

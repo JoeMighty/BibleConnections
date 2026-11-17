@@ -13,8 +13,10 @@ test('the sitemap lists every page in each language with its language versions',
   expect(x).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"');
   expect(x).toContain('<loc>https://bibleconnections.app/privacy.html?lang=pt</loc>');
   expect(x).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
-  const locs = x.match(/<loc>/g).length;
-  expect(x.match(/hreflang="x-default"/g).length).toBe(locs);
+  // every translated page lists its language versions; the book and verse pages are English only
+  const urls = x.split('<url>').slice(1);
+  for (const u of urls.filter(u => !/\/(books|verse|cross-references)\//.test(u))) expect(u).toContain('hreflang="x-default"');
+  expect(x).toContain('<loc>https://bibleconnections.app/verse/john-3-16/</loc>');
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).toContain('Sitemap: https://bibleconnections.app/sitemap.xml');
 });

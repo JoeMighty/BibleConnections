@@ -899,7 +899,8 @@
     "Back online": "Conexão restabelecida",
     "Your plan": "Seu plano",
     "New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.": "Primeira vez aqui? Uma referência cruzada é um lugar em que uma passagem da Bíblia aponta para outra, como uma nota de “veja também”. Cada arco do mapa é uma delas.",
-    "Privacy": "Privacidade"
+    "Privacy": "Privacidade",
+    "How many cross references?": "Quantas referências cruzadas existem?"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",

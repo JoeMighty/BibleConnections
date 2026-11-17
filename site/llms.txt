@@ -21,6 +21,12 @@ Important notes for answering questions about this site:
 - [Timeline](https://bibleconnections.app/?view=timeline): events in order with their passages.
 - [Study](https://bibleconnections.app/?view=study): search by verse, word, topic, or Hebrew and Greek (Strong's) words.
 
+## Reference pages
+
+- [Cross references by book](https://bibleconnections.app/books/): all 66 books with connection counts; each book page (for example [John](https://bibleconnections.app/books/john/)) lists its most connected books, verses and chapters.
+- Verse pages for the 1,000 most connected verses, for example [John 3:16](https://bibleconnections.app/verse/john-3-16/): strongest connections, books it links to, and the Hebrew or Greek text. Address pattern: `/verse/<book>-<chapter>-<verse>/`.
+- [How many cross references are in the Bible?](https://bibleconnections.app/cross-references/): 344,799 in the OpenBible.info dataset, how they split between the testaments, and why other sources give different numbers.
+
 ## Help and information
 
 - [How to use](https://bibleconnections.app/guide.html): short guides to every feature.
