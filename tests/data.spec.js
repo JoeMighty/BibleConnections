@@ -1,3 +1,4 @@
+const { openAbout } = require('./helpers');
 // Checks the hand-written content (notes, journeys, themes) points at real verses and real connections.
 const { test, expect } = require('@playwright/test');
 
@@ -54,7 +55,7 @@ test('the version shown in About matches the latest release in the changelog', a
   expect(fs.readFileSync('CITATION.cff', 'utf8')).toMatch(new RegExp(`^version: ${latest.replace(/\./g, '\\.')}$`, 'm'));
   await page.goto('/?view=map');
   await page.waitForSelector('body[data-ready=true]');
-  await page.click('#aboutBtn');
+  await openAbout(page);
   await expect(page.locator('#aboutVersion')).toHaveText(latest);
 });
 

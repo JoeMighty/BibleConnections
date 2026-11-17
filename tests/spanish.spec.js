@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -10,6 +11,7 @@ test('Spanish interface with Spanish book names and NVI links', async ({ page })
   await ready(page);
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
   await expect(page.locator('[data-nav=journeys]')).toHaveText('Recorridos');
+  await showSearch(page);
   await page.fill('#search', 'Juan 3:16');
   await page.press('#search', 'Enter');
   await expect(page.locator('#panelTitle')).toHaveText('Juan 3:16');
@@ -22,6 +24,7 @@ test('Spanish references work with or without accents, and in English mode too',
   await page.goto('/?view=map&lang=es');
   await ready(page);
   for (const [q, title] of [['Genesis 1:1', 'Génesis 1:1'], ['Éxodo 12', 'Éxodo 12'], ['Apocalipsis 21', 'Apocalipsis 21'], ['1 Corintios 13', '1 Corintios 13'], ['Salmo 23', 'Salmos 23']]) {
+    await showSearch(page);
     await page.fill('#search', q); await page.press('#search', 'Enter');
     await expect(page.locator('#panelTitle')).toHaveText(title);
   }
@@ -44,14 +47,14 @@ test('journeys are translated and notes are marked as English', async ({ page })
 test('switching language in Settings reloads in that language', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await Promise.all([page.waitForURL(/lang=es/), page.click('label:has(input[name=language][value=es])')]);
   await ready(page);
-  await expect(page.locator('[data-nav=path]')).toHaveText('Conectar');
-  await page.click('#settingsBtn');
+  await expect(page.locator('[data-nav=study] .nav-label')).toHaveText('Estudio');
+  await openSettings(page);
   await Promise.all([page.waitForURL((u) => !u.search.includes('lang=es')), page.click('label:has(input[name=language][value=en])')]);
   await ready(page);
-  await expect(page.locator('[data-nav=path]')).toHaveText('Connect');
+  await expect(page.locator('[data-nav=study] .nav-label')).toHaveText('Study');
 });
 
 test('Spanish handout', async ({ page }) => {

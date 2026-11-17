@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -6,7 +7,7 @@ test('text size and easier-to-read font can be changed and are remembered', asyn
   await page.goto('/?view=map');
   await ready(page);
   const before = await page.evaluate(() => parseFloat(getComputedStyle(document.body).fontSize));
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await page.locator('#settings label', { hasText: 'Extra large' }).click();
   await page.locator('label[for=readableToggle]').click();
   await expect(page.locator('html')).toHaveAttribute('data-textsize', 'xlarge');
@@ -18,7 +19,7 @@ test('text size and easier-to-read font can be changed and are remembered', asyn
   await ready(page);
   await expect(page.locator('html')).toHaveAttribute('data-textsize', 'xlarge');
   await expect(page.locator('html')).toHaveAttribute('data-readable', 'on');
-  await page.click('#settingsBtn');
+  await openSettings(page);
   const results = await new AxeBuilder({ page }).include('#settings').analyze();
   expect(results.violations).toEqual([]);
 });
@@ -57,7 +58,7 @@ test('arc colors can be changed to another style and are remembered', async ({ p
   await ready(page);
   const legend = () => page.locator('#legend .grad').getAttribute('style');
   const rainbow = await legend();
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await expect(page.locator('#arcStyles input')).toHaveCount(5);
   await expect(page.locator('#arcStyles input[value=rainbow]')).toBeChecked();
   await page.locator('#arcStyles label', { hasText: 'Color-blind friendly' }).click();
@@ -65,7 +66,7 @@ test('arc colors can be changed to another style and are remembered', async ({ p
   expect(await legend()).toMatch(/#a68a00|#fde725/);
   await page.reload();
   await ready(page);
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await expect(page.locator('#arcStyles input[value=clear]')).toBeChecked();
   const results = await new AxeBuilder({ page }).include('#settings').analyze();
   expect(results.violations).toEqual([]);
@@ -94,7 +95,7 @@ test('animations are off in automated browsers, for reduced motion and when swit
   await page.goto('/?view=map');
   await ready(page);
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'off');
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await expect(page.locator('#motionToggle')).toBeChecked();
   await page.locator('label[for=motionToggle]').click();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.motion')))).toBe(false);

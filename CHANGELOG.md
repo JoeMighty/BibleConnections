@@ -5,6 +5,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- Phones: the map gets much more room. The header is one slim row, what you are viewing floats on the map with its ✕ (Start over appears only when more than one thing is open), the Connections/Places switch and color key are gone from the map, and only Reset and More (Describe, Save image) sit on it, since pinching zooms.
+- Phones: search sits in the sheet only on the map and in Study. A search button at the top opens it from anywhere.
+- Phones: the tabs are Home, Journeys, Places, Study and Me. Me holds your notes, collections, reading plans, saved and recent items, Settings and About. Connect two verses is in Study. Settings also has a button at the top.
+
 ## [0.18.0] - 2026-11-17 - Book by Book
 
 ### Added

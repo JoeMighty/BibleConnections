@@ -1,3 +1,4 @@
+const { openSettings, openAbout } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
@@ -40,7 +41,7 @@ test('settings and about dialogs are accessible', async ({ page }) => {
   await page.goto('/?view=map');
   await page.waitForSelector('body[data-ready=true]');
   for (const id of ['settingsBtn', 'aboutBtn']) {
-    await page.click('#' + id);
+    if (id === 'settingsBtn') await openSettings(page); else await openAbout(page);
     const results = await new AxeBuilder({ page }).include('dialog[open]').withTags(['wcag2a', 'wcag2aa']).analyze();
     expect(results.violations.map(v => v.id)).toEqual([]);
     await page.keyboard.press('Escape');

@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -16,7 +17,7 @@ test('a weak link can be reported on GitHub, or hidden and shown again on this d
   await expect(page.locator('.weak-row a')).toBeVisible();
   // Settings lists hidden links and can show them all again
   await page.locator('[data-action=hideLink]').click();
-  await page.locator('#settingsBtn').click();
+  await openSettings(page);
   await expect(page.locator('#hiddenStatus')).toHaveText('You have hidden 1 link on this device.');
   await page.locator('#unhideAll').click();
   await expect(page.locator('#hiddenStatus')).toHaveText('You have not hidden any links.');

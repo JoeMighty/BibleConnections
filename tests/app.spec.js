@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore, startOver, openAbout } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -72,10 +73,12 @@ test('search finds verses, chapters and books', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
   for (const [q, title] of [['John 3:16', 'John 3:16'], ['1 Cor 13', '1 Corinthians 13'], ['Psalm 23', 'Psalms 23'], ['II Kings 2', '2 Kings 2'], ['Genesis', 'Genesis']]) {
+    await showSearch(page);
     await page.fill('#search', q);
     await page.press('#search', 'Enter');
     await expect(page.locator('#panelTitle')).toHaveText(title);
   }
+  await showSearch(page);
   await page.fill('#search', 'John 30');
   await page.press('#search', 'Enter');
   await expect(page.locator('#searchError')).toContainText('21 chapters');
@@ -84,6 +87,7 @@ test('search finds verses, chapters and books', async ({ page }) => {
 test('word search lists verses and connections', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
+  await showSearch(page);
   await page.fill('#search', 'shepherd');
   await page.press('#search', 'Enter');
   await expect(page.locator('#panelTitle')).toHaveText('“shepherd”');
@@ -97,7 +101,7 @@ test('verses link to Bible.com in the chosen translation', async ({ page }) => {
   const link = page.locator('.verse-card a').first();
   await expect(link).toHaveAttribute('href', 'https://www.bible.com/bible/111/JHN.3.16.NIV');
   await expect(link).toHaveAttribute('target', '_blank');
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await pickVersion(page, 'versionSel', 'ESV');
   await page.click('#settingsForm button.btn:not(#installBtn)');
   await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.16.ESV');
@@ -165,7 +169,7 @@ test('notes-only filter shows explained connections', async ({ page }) => {
 test('light mode and high contrast settings apply and persist', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await page.check('input[name=appearance][value=light]');
   await page.check('#contrastToggle');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
@@ -221,7 +225,7 @@ test('you are viewing bar removes items one at a time and start over clears ever
   await bar.locator('[data-clear=votes]').click();
   await expect(bar.locator('.ctx-chip')).toHaveCount(2);
   await expect(page.locator('#votes')).toHaveValue('7');
-  await page.click('#startOver');
+  await startOver(page);
   await expect(bar).toBeHidden();
   await expect(page.locator('#theme')).toHaveValue('');
   await expect(page.locator('#panelTitle')).toHaveText('Explore');
@@ -231,6 +235,7 @@ test('you are viewing bar removes items one at a time and start over clears ever
 test('browser back steps back through what you looked at', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
+  await showSearch(page);
   await page.fill('#search', 'John 3:16');
   await page.press('#search', 'Enter');
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
@@ -288,14 +293,14 @@ test('welcome page cards open word study and the passage explorer', async ({ pag
 test('clicking outside a pop-up closes it', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await page.click('#aboutBtn');
+  await openAbout(page);
   await expect(page.locator('#about')).toBeVisible();
   // a click inside the box keeps it open
   await page.locator('#aboutTitle').click();
   await expect(page.locator('#about')).toBeVisible();
   await page.mouse.click(5, 5);
   await expect(page.locator('#about')).toBeHidden();
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await expect(page.locator('#settings')).toBeVisible();
   await page.mouse.click(5, 5);
   await expect(page.locator('#settings')).toBeHidden();
@@ -304,7 +309,7 @@ test('clicking outside a pop-up closes it', async ({ page }) => {
 test('the About window opens at the top', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await page.click('#aboutBtn');
+  await openAbout(page);
   await expect(page.locator('#about')).toBeVisible();
   await expect(page.locator('#aboutTitle')).toBeFocused();
   await expect(page.locator('#aboutTitle')).toBeInViewport();

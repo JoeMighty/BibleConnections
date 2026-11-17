@@ -1,3 +1,4 @@
+const { openAbout } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
 
@@ -61,7 +62,7 @@ test('first-time tips show once', async ({ page }) => {
 test('about shows the version and a link to what is new', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  await page.click('#aboutBtn');
+  await openAbout(page);
   await expect(page.locator('#aboutVersion')).toHaveText(/^\d+\.\d+\.\d+$/);
   await expect(page.locator('#about a', { hasText: 'What’s new' })).toHaveAttribute('href', /CHANGELOG/);
 });

@@ -1353,6 +1353,7 @@
 
   let lastPanelSel = -2, studyTextReady = false, studyWaiting = false;
   function renderPanel() {
+    document.body.dataset.search = (state.mode === 'explore' && !state.focus && state.selected < 0) || state.mode === 'study' ? 'show' : 'hide';
     // a verse, chapter or book uses the book introductions: fetch them, then show the panel again
     if (!studyTextReady && !studyWaiting && state.focus && ['verse', 'chapter', 'book'].includes(state.focus.kind)) {
       studyWaiting = true;
@@ -1368,6 +1369,7 @@
     else if (state.mode === 'series') [title, html] = seriesHTML();
     else if (state.mode === 'path') [title, html] = pathHTML();
     else if (state.mode === 'study') [title, html] = studyHTML();
+    else if (state.mode === 'me') [title, html] = meHTML();
     else if (state.mode === 'plans') [title, html] = plansHTML();
     else if (state.mode === 'plan' && state.plan) [title, html] = planHTML();
     else if (state.mode === 'people') [title, html] = peopleHTML();
@@ -1891,6 +1893,7 @@
       ['wordstudy', 'Word study', 'Follow a Hebrew or Greek word, such as hesed or agape, through the Bible.'],
       ['notes', 'My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
       ['places', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
+      ['path', 'Connect two verses', 'Find the chain of connections that links any two passages.'],
       ['shared', 'Shared connections', 'Pick two passages and find the passages they both link to.'],
       ['prophecy', 'Prophecy and fulfilment', 'Old Testament promises, covenants and pictures, followed to the New Testament.'],
       ['timeline', 'Timeline', 'Key events of the Bible story in order, with their passages and places.'],
@@ -1910,6 +1913,21 @@
     return ['Study', html];
   }
 
+  // phones: Me gathers what you keep on this device, and Settings
+  function meHTML() {
+    const n = (k) => store.get(k, []).length, notes = Object.keys(store.get('notes', {}) || {}).length;
+    const rows = [
+      ['mode', 'notes', 'My notes', notes ? `${notes}` : ''],
+      ['mode', 'collections', 'Collections', n('collections') ? `${n('collections')}` : ''],
+      ['mode', 'plans', 'Reading plans', ''],
+      ['openSettings', '', 'Settings', ''],
+      ['openAbout', '', 'About Bible Connections', ''],
+    ];
+    let html = `<ul class="me-list">${rows.map(([a, m, t, c]) => `<li><button type="button" class="me-row" data-action="${a}"${m ? ` data-mode="${m}"` : ''}><span>${t}</span>${c ? `<span class="me-count">${c}</span>` : ''}<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>`).join('')}</ul>`;
+    const sr = savedRecentHTML();
+    html += sr || '<p class="hint">Tap ☆ Save on any verse, connection or journey to keep it here. Everything stays on this device.</p>';
+    return ['Me', html];
+  }
   function feedsHTML() {
     const base = location.origin + location.pathname;
     return `<h3>Get it every day</h3><p>Subscribe once and the connection of the day comes to you.</p>
@@ -3043,7 +3061,12 @@
     track('stage/' + stage);
   }
   document.querySelectorAll('[data-stage]').forEach(b => b.addEventListener('click', () => { hideLanding(); setStage(b.dataset.stage); }));
-  $('placesNav').addEventListener('click', () => { hideLanding(); setStage(state.stage === 'places' ? 'arcs' : 'places'); });
+  $('placesNav').addEventListener('click', () => {
+    hideLanding();
+    // phones have no Connections/Places switch, so the Places tab always opens the places map and its list
+    if (isPhone()) { setMode(state.mode === 'places' ? 'explore' : 'places'); if (state.mode === 'explore') setStage('arcs'); return; }
+    setStage(state.stage === 'places' ? 'arcs' : 'places');
+  });
   {
     const g = $('geo'), local = (e) => { const r = g.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
     const tip = $('geoTip');
@@ -4204,6 +4227,8 @@
     else if (a === 'story') storyImage(btn.dataset.ref !== undefined ? +btn.dataset.ref : state.selected);
     else if (a === 'embed') openEmbed();
     else if (a === 'poster') { $('posterDialog').showModal(); }
+    else if (a === 'openSettings') { el.settings.showModal(); }
+    else if (a === 'openAbout') { $('aboutBtn').dispatchEvent(new MouseEvent('click')); }
     else if (a === 'openPlan') { openPlan(btn.dataset.plan, +btn.dataset.day); track('plan/' + btn.dataset.plan); focusPanelHeading(); }
     else if (a === 'planDay') { openPlan(state.plan.id, +btn.dataset.day); focusPanelHeading(); }
     else if (a === 'planDone') {
@@ -4310,6 +4335,7 @@
     state.mode = mode;
     if (mode !== 'journey') state.journey = null;
     if (mode === 'places' && state.stage !== 'places') { state.stage = 'places'; applyStage(); }
+    else if (mode !== 'places' && mode !== 'route' && state.stage === 'places' && isPhone()) { state.stage = 'arcs'; applyStage(); }
     if (mode === 'places') { state.focus = null; state.route = null; }
     updateNav(); drawBase(); renderPanel(); syncURL(true); focusPanelHeading();
   }
@@ -4380,7 +4406,22 @@
     }
     if (e.target.name === 'colorMode') { state.colorMode = e.target.value; renderLegend(); updateCount(); drawBase(); renderPanel(); syncURL(); }
   });
-  el.controls.addEventListener('submit', (e) => { e.preventDefault(); runSearch(); });
+  el.controls.addEventListener('submit', (e) => { e.preventDefault(); document.body.classList.remove('search-open'); runSearch(); });
+  // phones: the search button opens the search box from anywhere, at the top of a full sheet
+  $('searchBtn').addEventListener('click', () => {
+    if (!landing.hidden) { const q = $('landingQ'); q.scrollIntoView({ block: 'center' }); q.focus(); return; }
+    document.body.classList.add('search-open');
+    setSheet('full');
+    document.querySelector('.sidebar').scrollTop = 0;
+    el.search.focus();
+  });
+  el.search.addEventListener('blur', () => { setTimeout(() => { if (!el.search.value.trim() && document.activeElement !== el.search) document.body.classList.remove('search-open'); }, 200); });
+  // phones: More shows Describe and Save image under the Reset button
+  $('moreTools').addEventListener('click', () => {
+    const box = $('moreTools').closest('.viz-tools'), open = !box.classList.contains('more-open');
+    box.classList.toggle('more-open', open); $('moreTools').setAttribute('aria-expanded', String(open));
+  });
+  for (const id of ['describeBtn', 'saveImage']) $(id).addEventListener('click', () => { $('moreTools').closest('.viz-tools').classList.remove('more-open'); $('moreTools').setAttribute('aria-expanded', 'false'); });
 
   // Hebrew or Greek typed in the search box, or a Strong's number such as G26 or H7965
   const stripMarks = (x) => x.normalize('NFD').replace(/[\u0300-\u036f\u0591-\u05C7]/g, '').toLowerCase();
@@ -4538,6 +4579,7 @@
     $('aboutTitle').focus({ preventScroll: true });
   });
   $('settingsBtn').addEventListener('click', () => el.settings.showModal());
+  $('settingsTop').addEventListener('click', () => el.settings.showModal());
   document.querySelectorAll('[data-nav]').forEach(b => b.addEventListener('click', () => {
     if (hideLanding()) { setMode(b.dataset.nav); return; }
     const on = b.getAttribute('aria-pressed') === 'true';
@@ -4848,7 +4890,7 @@
       else if (state.mode === 'collection' && state.collection) p.set('collection', encodeCollection(state.collection));
       else if (state.mode === 'chain' && state.chain) p.set('prophecy', state.chain.id);
       else if (state.mode === 'route' && state.route) p.set('route', state.route);
-      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(state.mode)) p.set('view', state.mode);
+      else if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church', 'me'].includes(state.mode)) p.set('view', state.mode);
       else {
         if (state.focus) {
           if (state.focus.entity) p.set(state.focus.entity.type, state.focus.entity.id);
@@ -4916,7 +4958,7 @@
     if (p.get('era')) { await openEra(p.get('era')); return; }
     if (p.get('prophecy')) { await openChain(p.get('prophecy'), { push: false }); return; }
     if (p.get('shared')) { const [a, b] = p.get('shared').split('~'); findShared(a, b || '', { push: false }); return; }
-    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
+    if (['journeys', 'insights', 'series', 'path', 'study', 'plans', 'people', 'topics', 'game', 'wordstudy', 'collections', 'notes', 'places', 'shared', 'timeline', 'prophecy', 'church', 'me'].includes(p.get('view'))) { state.mode = p.get('view'); updateNav(); drawBase(); renderPanel(); return; }
     if (p.get('text') || p.get('title') || p.get('url')) {
       // shared into the installed app from another app: open the first Bible reference in the text, or search for it
       const txt = [p.get('text'), p.get('title')].filter(Boolean).join(' ').replace(/https?:\/\/\S+/g, ' ').trim().slice(0, 300);

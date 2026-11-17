@@ -3,7 +3,8 @@ const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
 const placesShown = (page) => page.evaluate(() => document.body.classList.contains('stage-places') && !document.getElementById('geo').hidden);
 
-test('the Connections and Places switch changes the main map and the link', async ({ page }) => {
+test('the Connections and Places switch changes the main map and the link', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'phones use the Places tab instead (tests/mobile.spec.js)');
   await page.goto('/?view=map');
   await ready(page);
   await expect(page.locator('[data-stage=arcs]')).toHaveAttribute('aria-pressed', 'true');

@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const { execFileSync } = require('child_process');
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -13,7 +14,7 @@ test('Portuguese is a full interface language with its own default Bible', async
   // numbers are written the Portuguese way
   await expect(page.locator('header')).toContainText(/\d\.\d{3}/);
   // it is offered in Settings
-  await page.locator('#settingsBtn').click();
+  await openSettings(page);
   await expect(page.locator('input[name=language][value=pt]')).toBeChecked();
 });
 

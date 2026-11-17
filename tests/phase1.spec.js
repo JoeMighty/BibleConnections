@@ -1,7 +1,8 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
-const search = async (page, q) => { await page.fill('#search', q); await page.press('#search', 'Enter'); };
+const search = async (page, q) => { await showSearch(page); await page.fill('#search', q); await page.press('#search', 'Enter'); };
 
 test('how are you feeling opens the matching topic', async ({ page }) => {
   await page.goto('/');
@@ -49,12 +50,14 @@ test('suggestions offer books and recent searches, and can be chosen with the ke
   await page.goto('/?view=map');
   await ready(page);
   await search(page, 'John 3:16');
+  await showSearch(page);
   await page.fill('#search', '');
   await page.locator('#search').blur();
   await page.locator('#search').focus();
   const list = page.locator('#searchSuggest');
   await expect(list).toBeVisible();
   await expect(list).toContainText('John 3:16');
+  await showSearch(page);
   await page.fill('#search', 'roma 8');
   await expect(list.locator('[role=option]').first()).toContainText('Romans 8');
   await page.keyboard.press('ArrowDown');
@@ -62,6 +65,7 @@ test('suggestions offer books and recent searches, and can be chosen with the ke
   await page.keyboard.press('Enter');
   await expect(page.locator('#panelTitle')).toHaveText('Romans 8');
   await page.locator('#search').focus();
+  await showSearch(page);
   await page.fill('#search', 'roma 8');
   const results = await new AxeBuilder({ page }).include('.search-field').analyze();
   expect(results.violations).toEqual([]);

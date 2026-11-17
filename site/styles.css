@@ -979,3 +979,37 @@ details.study-sec:not([open]) { padding-bottom: 0; }
 .testament-field .segmented label { flex: 1; justify-content: center; }
 .book-glance h4 { margin: 14px 0 6px; font-size: var(--t-footnote, 13px); font-weight: 600; color: var(--muted); text-transform: none; }
 .chip-n { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 4px; font-weight: 400; }
+
+/* ---------- Phones: give the map the room (0.19) ---------- */
+@media (min-width: 861px) { .phone-only { display: none !important; } }
+@media (max-width: 860px) {
+  .tagline { display: none; }
+  .site-header { min-height: 0; padding-top: 6px; padding-bottom: 6px; }
+  /* "You're viewing" floats over the top of the map instead of taking a row */
+  .layout { position: relative; }
+  .context-bar { position: absolute; top: 8px; left: 8px; right: 64px; z-index: 12; padding: 0; border: 0; background: transparent; box-shadow: none; pointer-events: none;
+    -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .context-bar > * { pointer-events: auto; }
+  .context-bar .ctx-list { flex-basis: auto; order: 0; }
+  .ctx-chip { max-width: calc(100vw - 150px); background: var(--overlay); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18); }
+  /* one item: its ✕ clears it; "Start over" only when there is more than one */
+  .context-bar:not(:has(.ctx-list > li + li)) .ctx-reset { display: none; }
+  .ctx-reset { background: var(--overlay); color: var(--link); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+  /* Places has its own tab, and the colors are explained in Settings */
+  .stage-switch, .viz-wrap > .legend { display: none !important; }
+  /* map buttons: pinch zooms, so only Reset and More show; More opens Describe and Save image */
+  #zoomIn, #zoomOut { display: none; }
+  .viz-tools:not(.more-open) #describeBtn, .viz-tools:not(.more-open) #saveImage { display: none; }
+  .viz-tools { top: 8px; }
+  /* search sits in the sheet only where it is the next step (the map and Study); the search button opens it anywhere */
+  body[data-search="hide"]:not(.search-open) .sidebar > .controls > .search-field { display: none; }
+}
+@media (max-width: 860px) and (pointer: fine) { #zoomIn, #zoomOut { display: flex; } }
+/* Me: an inset grouped list, like iOS Settings */
+.me-list { list-style: none; margin: 4px 0 20px; padding: 0; background: var(--surface-2); border-radius: 12px; overflow: hidden; }
+.me-list li + li { border-top: 0.5px solid var(--separator); }
+.me-row { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 10px 14px 10px 16px; border: 0; background: transparent; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.me-row > span:first-child { flex: 1; }
+.me-row:active { background: var(--separator); }
+.me-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+.me-row .chev { width: 8px; height: 14px; color: var(--muted); opacity: 0.6; flex: none; }

@@ -1,3 +1,4 @@
+const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const { execFileSync } = require('child_process');
@@ -78,7 +79,7 @@ test('collections can be built, stepped through and shared', async ({ page }) =>
 test('kids mode shows kids journeys first with bigger text', async ({ page }) => {
   await page.goto('/?view=journeys');
   await ready(page);
-  await page.click('#settingsBtn');
+  await openSettings(page);
   await page.locator('label[for=kidsToggle]').click();
   await page.keyboard.press('Escape');
   await expect(page.locator('html')).toHaveAttribute('data-kids', 'on');
@@ -111,6 +112,7 @@ test('describe this view summarizes the map for screen readers', async ({ page }
   await page.goto('/?ref=John+3%3A16');
   await ready(page);
   await expect(page.locator('.summary')).toContainText('John 3:16 has');
+  await openMore(page);
   await page.click('#describeBtn');
   await expect(page.locator('#announcer')).toContainText('connections');
 });
