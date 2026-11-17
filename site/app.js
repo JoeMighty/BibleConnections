@@ -2694,6 +2694,12 @@
     box.innerHTML = groups.length ? `<section class="also-found" aria-labelledby="alsoTitle"><h3 id="alsoTitle">Also found</h3>${groups.map(([t, items]) => `<p class="also-label">${esc(t)}</p><ul class="chip-list">${items}</ul>`).join('')}</section>` : '';
   }
 
+  // run fn once the element is on screen (or about to be): in a closed section it waits until the section opens
+  function whenVisible(node, fn) {
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    const io = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)) { io.disconnect(); if (node.isConnected) fn(); } }, { rootMargin: '400px 0px' });
+    io.observe(node);
+  }
   function fillStudy() {
     const af = $('alsoFound');
     if (af && !af.dataset.done) { af.dataset.done = '1'; fillAlsoFound(af); }
@@ -2706,7 +2712,7 @@
     const pm = $('placesMap');
     if (pm) drawPlaces(pm, { view: pm.dataset.view });
     const vp = $('versePlaces');
-    if (vp) {
+    if (vp) whenVisible(vp, () => {
       const v = +vp.dataset.v;
       loadPlaces().then(d => {
         if (!vp.isConnected) return;
@@ -2718,11 +2724,12 @@
         const all = here.every(p => p.lon > 33.7 && p.lon < 36.9 && p.lat > 29.4 && p.lat < 33.6);
         drawPlaces($('versePlacesMap'), { view: all ? 'israel' : 'lands', highlight: here.map(p => p.i), labels: false });
       }, () => {});
-    }
+    });
     const wd = $('wordDetail');
     if (wd) wordDetailHTML(wd.dataset.code).then(h => { if (wd.isConnected) wd.innerHTML = h; }, () => { if (wd.isConnected) wd.innerHTML = '<p class="muted">The full word study could not load. Check your connection.</p>'; });
     const ot = $('origText');
-    if (ot) {
+    // the Hebrew or Greek of a whole book and the dictionary are large, so they load when the section comes into view
+    if (ot) whenVisible(ot, () => {
       const v = +ot.dataset.v;
       Promise.all([loadBookText(verseBook[v]), loadStrongs()]).then(([t]) => {
         if (!ot.isConnected) return;
@@ -2742,7 +2749,7 @@
           }).join('')}</ol>
           <p class="hint">Each word shows its pronunciation and dictionary meaning, not a translation of the verse. Choose a word to study it. Text from STEP Bible (CC BY 4.0).</p>`;
       }, () => { if (ot.isConnected) ot.innerHTML = '<p class="muted">The original text could not load. Check your connection.</p>'; });
-    }
+    });
     const ve = $('verseEntities');
     if (ve) {
       const v = +ve.dataset.v;
@@ -4642,7 +4649,11 @@
     installEvent = null; el.installBtn.hidden = true;
   });
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { /* offline support unavailable */ }));
+    // registered once the map is ready and the browser is idle, so the offline copy reuses the files the page just
+    // downloaded instead of fetching the large map data a second time
+    const reg = () => navigator.serviceWorker.register('sw.js').catch(() => { /* offline support unavailable */ });
+    const whenReady = () => (document.body.dataset.ready === 'true' ? Promise.resolve() : new Promise(r => new MutationObserver((m, o) => { if (document.body.dataset.ready === 'true') { o.disconnect(); r(); } }).observe(document.body, { attributes: true, attributeFilter: ['data-ready'] })));
+    window.addEventListener('load', () => { Promise.race([whenReady(), new Promise(r => setTimeout(r, 15000))]).then(() => (window.requestIdleCallback ? requestIdleCallback(reg, { timeout: 4000 }) : setTimeout(reg, 1000))); });
   }
 
   // ---------- Landing page ----------
@@ -5039,6 +5050,7 @@
     initSettingsForm();
     resize();
     el.loading.remove();
+    const ph = $('vizPh'); if (ph) ph.remove();
     buildLanding();
     // fetch the book introductions quietly once the page is up
     (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(() => loadStudyText());

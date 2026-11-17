@@ -46,6 +46,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // light or dark before the page draws, so the page does not flash dark while the app loads (app.js applies it again)
+    (function () {
+      var get = function (k, d) { try { var v = JSON.parse(localStorage.getItem('bc.' + k)); return v === null ? d : v; } catch (e) { return d; } };
+      var a = get('appearance', 'system'), root = document.documentElement;
+      root.dataset.theme = a === 'light' || (a === 'system' && !matchMedia('(prefers-color-scheme: dark)').matches) ? 'light' : 'dark';
+      root.dataset.textsize = get('textsize', 'standard');
+    })();
+  </script>
   <link rel="preload" href="data/books.json" as="fetch" crossorigin>
   <link rel="preload" href="data/refs.v2.gz" as="fetch" crossorigin>
 </head>
@@ -191,6 +200,21 @@
         <canvas id="baseCanvas" aria-hidden="true"></canvas>
         <canvas id="overlayCanvas" aria-hidden="true"></canvas>
         <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
+        <img class="viz-ph" id="vizPh" alt="" aria-hidden="true" decoding="async" hidden>
+        <script>
+          // a picture of the whole map shows straight away on a link to the map, until the real one is drawn
+          (function () {
+            var ph = document.getElementById('vizPh'), v = document.getElementById('viz');
+            if (document.body.classList.contains('landing-open')) return;
+            try { var st = JSON.parse(localStorage.getItem('bc.arcStyle')); if (st && st !== 'rainbow') return; if (JSON.parse(localStorage.getItem('bc.kids'))) return; } catch (e) {}
+            var r = v.getBoundingClientRect(), w = Math.min(r.width - 28, (r.height - 104) * 2);
+            if (w < 120) return;
+            ph.style.width = w + 'px'; ph.style.left = ((r.width - w) / 2) + 'px';
+            if (document.documentElement.dataset.theme === 'light') return;
+            ph.src = 'img/map-dark.webp';
+            ph.hidden = false;
+          })();
+        </script>
         <div class="loading" id="loading" role="status">Loading the Bible…</div>
         <section class="tips" id="tips" aria-labelledby="tipsTitle" hidden>
           <h2 id="tipsTitle">Quick tips</h2>

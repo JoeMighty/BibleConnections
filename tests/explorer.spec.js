@@ -5,6 +5,8 @@ const ready = (page) => page.waitForSelector('body[data-ready=true]');
 test('a single verse opens the passage explorer with original text, context and reflection', async ({ page }) => {
   await page.goto('/?ref=John+3%3A16');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   const panel = page.locator('#panel');
   await expect(panel.locator('#secContext')).toHaveText('In context');
   await expect(panel).toContainText('Verse 16 of 36 in John 3');
@@ -30,11 +32,15 @@ test('a single verse opens the passage explorer with original text, context and 
 test('Hebrew text reads right to left and Aramaic is labelled', async ({ page }) => {
   await page.goto('/?ref=Daniel+2%3A5');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   const ol = page.locator('#origText ol');
   await expect(ol).toHaveAttribute('dir', 'rtl');
   await expect(page.locator('#origText')).toContainText('Language: Aramaic');
   await page.goto('/?ref=Genesis+1%3A1');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   await expect(page.locator('#origText')).toContainText('Language: Hebrew');
   await expect(page.locator('#origText .orig-word').first()).toHaveAttribute('data-code', 'H7225');
 });
@@ -42,6 +48,8 @@ test('Hebrew text reads right to left and Aramaic is labelled', async ({ page })
 test('choosing an original word opens the full word study', async ({ page }) => {
   await page.goto('/?ref=John+3%3A16');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   await page.locator('#origText button[data-code="G0025"]').click();
   await expect(page.locator('#panelTitle')).toContainText('agapaō');
   const d = page.locator('#wordDetail');
@@ -58,6 +66,8 @@ test('choosing an original word opens the full word study', async ({ page }) => 
 test('words with several senses can be narrowed to one meaning', async ({ page }) => {
   await page.goto('/?word=H7965');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   const senses = page.locator('#wordDetail .sense-list button');
   await expect(senses.first()).toContainText('peace');
   await page.locator('#wordDetail .sense-list button', { hasText: 'greeting' }).click();
@@ -67,6 +77,8 @@ test('words with several senses can be narrowed to one meaning', async ({ page }
 test('the passage explorer is translated into Spanish', async ({ page }) => {
   await page.goto('/?ref=John+3%3A16&lang=es');
   await ready(page);
+  // the original text loads when its section comes into view
+  await page.evaluate(() => document.getElementById('origText')?.scrollIntoView());
   await expect(page.locator('#secContext')).toHaveText('En contexto');
   await expect(page.locator('#secReflect')).toHaveText('Reflexiona');
   await expect(page.locator('.book-intro')).toContainText('Escrito para que');

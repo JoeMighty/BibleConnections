@@ -1013,3 +1013,6 @@ details.study-sec:not([open]) { padding-bottom: 0; }
 .me-row:active { background: var(--separator); }
 .me-count { color: var(--muted); font-variant-numeric: tabular-nums; }
 .me-row .chev { width: 8px; height: 14px; color: var(--muted); opacity: 0.6; flex: none; }
+
+/* the picture of the map shown while the data loads */
+.viz-ph { position: absolute; bottom: 84px; height: auto; aspect-ratio: 2 / 1; opacity: 0.55; pointer-events: none; z-index: 0; }
