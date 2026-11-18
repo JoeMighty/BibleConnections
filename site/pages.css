@@ -128,3 +128,5 @@ main section p { max-width: 40em; }
 @media (max-width: 480px) { .meter { width: 44px; } .stat-n { font-size: 24px; } }
 .church-note { margin-top: 28px; max-width: 40em; }
 .card .card-title { font: 600 19px/1.3 var(--font-display); letter-spacing: 0; margin: 0 0 6px; }
+/* jumping to a section leaves room for the sticky header (its height is measured in pages.js) */
+html { scroll-padding-top: calc(var(--top-h, 64px) + 16px); }

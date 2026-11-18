@@ -69,3 +69,23 @@ test('the pages follow the site language', async ({ page }) => {
   await page.goto('/roadmap.html?lang=es');
   await expect(page.locator('h1')).toHaveText('Hoja de ruta');
 });
+
+test('jumping to a section keeps its title below the sticky header', async ({ page }) => {
+  for (const w of [1280, 390]) {
+    await page.setViewportSize({ width: w, height: 800 });
+    await page.goto('/guide.html');
+    await page.locator('.toc a').nth(1).click();
+    await page.waitForTimeout(600);
+    const header = await page.locator('.top').boundingBox();
+    const id = (await page.locator('.toc a').nth(1).getAttribute('href')).slice(1);
+    const title = await page.locator(`h2[id="${id}"]`).boundingBox();
+    expect(title.y).toBeGreaterThanOrEqual(header.y + header.height);
+  }
+  // opening a link straight to a section works too
+  await page.goto('/guide.html#study-a-passage');
+  await page.waitForTimeout(600);
+  const header = await page.locator('.top').boundingBox();
+  const title = await page.locator('h2#study-a-passage').boundingBox();
+  expect(title.y).toBeGreaterThanOrEqual(header.y + header.height);
+  expect(title.y).toBeLessThan(400);
+});

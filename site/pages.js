@@ -13,6 +13,10 @@
   document.getElementById('homeLink').setAttribute('href', withLang('./'));
   document.querySelector('.skip').textContent = t('Skip to content');
   document.querySelector('.foot p').firstChild.textContent = t('Created by') + ' ';
+  // the sticky header's height, so jumps to a section are not hidden under it (it wraps on narrow screens)
+  const top = document.querySelector('.top');
+  const setTop = () => { if (top) document.documentElement.style.setProperty('--top-h', top.offsetHeight + 'px'); };
+  setTop(); addEventListener('resize', setTop);
   const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   try {
     if (page === 'guide') {
@@ -71,6 +75,7 @@
         <section aria-labelledby="shipped"><h2 id="shipped">${esc(t('Shipped'))}</h2><p class="lede">${esc(t('Features you can use today.'))}</p>
           <div class="shipped-list">${r.shipped.map(s2 => `<div class="release"><h3 class="group-head">${esc(pick(s2, 'version'))}</h3><ul class="group done">${(pick(s2, 'items') || []).map(i => `<li>${st('shipped')}<span>${esc(i)}</span></li>`).join('')}</ul></div>`).join('')}</div></section>`;
     }
+    if (location.hash) { const target = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (target) target.scrollIntoView(); }
   } catch {
     main.innerHTML = `<p class="loading">${esc(t('Sorry, this page could not load. Please try again.'))}</p>`;
   }

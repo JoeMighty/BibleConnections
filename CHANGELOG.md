@@ -11,6 +11,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - A security contact: SECURITY.md and /.well-known/security.txt.
 
 ### Fixed
+- On the How to use page (and the other help pages), jumping to a section no longer hides its title under the top bar, and a link straight to a section opens at that section.
 - The For churches page skipped a heading level, which screen readers rely on to move around a page.
 
 ## [0.20.0] - 2026-11-18 - Welcome
