@@ -936,7 +936,10 @@
     "Your notes stay on this device": "Tus notas se quedan en este dispositivo",
     "Data from OpenBible.info and STEP Bible": "Datos de OpenBible.info y STEP Bible",
     "Psalm 23": "Salmo 23",
-    "Romans 8:28": "Romanos 8:28"
+    "Romans 8:28": "Romanos 8:28",
+    "connects to {n} passages across the Bible. Each arc joins two passages that point to each other.": "se conecta con {n} pasajes de toda la Biblia. Cada arco une dos pasajes que se señalan entre sí.",
+    "Some of the passages it connects to": "Algunos de los pasajes con los que se conecta",
+    "{n} votes": "{n} votos"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

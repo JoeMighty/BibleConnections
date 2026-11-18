@@ -82,17 +82,21 @@ test('deleting a note can be undone', async ({ page }) => {
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.notes'))['John.3.16'].text)).toBe('God so loved');
 });
 
-test('the welcome page explains cross references on a first visit, and offers the plan in progress', async ({ page }) => {
+test('the welcome page shows one verse\'s connections, and offers the plan in progress', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('bc.plans', JSON.stringify({ story: { done: [0, 1] } })));
   await page.goto('/');
   await ready(page);
-  await expect(page.locator('#firstVisit')).toBeVisible();
+  // the picture explains itself: John 3:16's arcs, a caption, and three of its passages to open
+  await expect(page.locator('#demoCaption')).toContainText('John 3:16 connects to 64 passages');
+  await expect(page.locator('#demoCards .demo-card')).toHaveCount(3);
   await expect(page.locator('#landingPlan')).toContainText('Day 3 of');
   await page.locator('#landingPlan [data-season-plan]').click();
   await expect(page.locator('#panel .step-count')).toContainText('Day 3 of');
   await page.goto('/');
   await ready(page);
-  await expect(page.locator('#firstVisit')).toBeHidden();
+  await page.locator('#demoCards .demo-card').first().click();
+  await expect(page.locator('#landing')).toBeHidden();
+  await expect(page.locator('#panelTitle')).toHaveText('Connection');
 });
 
 test('an offline note appears when the connection drops', async ({ page, context }) => {

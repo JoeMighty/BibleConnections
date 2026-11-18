@@ -111,3 +111,23 @@ test.describe('phones: the map with a thumb', () => {
     await expect(page).toHaveURL(/step=2/);
   });
 });
+
+test('after the places map, going home and opening the map or a verse shows the connections map', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=places');
+  await ready(page);
+  await expect(page.locator('#geo')).toBeVisible();
+  await page.click('#homeLink');
+  await expect(page.locator('#landing')).toBeVisible();
+  await page.click('[data-start=map]');
+  await expect(page.locator('#viz')).toBeVisible();
+  await expect(page.locator('#geo')).toBeHidden();
+  await page.goto('/?view=places');
+  await ready(page);
+  await page.click('#homeLink');
+  await page.fill('#landingQ', 'John 3:16');
+  await page.press('#landingQ', 'Enter');
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await expect(page.locator('#viz')).toBeVisible();
+  await expect(page.locator('#geo')).toBeHidden();
+});

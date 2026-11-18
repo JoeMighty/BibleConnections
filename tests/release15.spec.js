@@ -72,6 +72,8 @@ test('every route stop is a real place and passage', async ({ page }) => {
 test('the places map can be zoomed with the buttons and the keyboard', async ({ page }) => {
   await page.goto('/?view=places');
   await ready(page);
+  // the places data loads after the page is ready
+  await page.waitForFunction(() => (document.getElementById('geoCanvas')._hit || []).length > 0);
   const n0 = await page.evaluate(() => document.getElementById('geoCanvas')._hit.length);
   await page.locator('#geoIsrael').click();
   await page.waitForTimeout(200);

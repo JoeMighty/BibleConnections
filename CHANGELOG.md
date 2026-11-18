@@ -5,8 +5,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- After using the Places map, going home and choosing Explore the whole map or looking up a verse showed the places map again instead of the connections map.
+
 ### Changed
 - Welcome page: one clear first step. A promise line says what the site does ("Look up any verse and see every passage that points to it"), a large "Look up a verse" box with Show connections is the main action, with John 3:16, Psalm 23 and Romans 8:28 to try. A guided journey is offered underneath, and "Explore the whole map" sits under the picture.
+- Welcome page: the picture now explains itself. The rest of the map fades and one verse's arcs light up (John 3:16, then Isaiah 53:5 and Genesis 3:15 when animations are on), with a caption ("John 3:16 connects to 64 passages…") and three of its passages to open. Pointing at a suggested verse previews its arcs. This replaces the "New here?" text box.
 - Welcome page: a strip says what you can count on: free, no account, no adverts, your notes stay on this device, three languages, and where the data comes from.
 - Welcome page: the band of numbers is gone (its counts did not match the rest of the site), and the separate search box below it is merged into the main one.
 

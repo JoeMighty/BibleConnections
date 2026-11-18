@@ -4736,6 +4736,87 @@
       ctx.drawImage(glr.canvas, sx0 * gd, sy0 * gd, sw * gd, sh * gd, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
     }
     ctx.drawImage(el.base, sx0 * dpr, sy0 * dpr, sw * dpr, sh * dpr, (w - dw) / 2 * dpr, (h - dh) / 2 * dpr, dw * dpr, dh * dpr);
+    // keep the plain picture, so one verse's arcs can be drawn over it
+    demo.base = document.createElement('canvas'); demo.base.width = hero.width; demo.base.height = hero.height;
+    demo.base.getContext('2d').drawImage(hero, 0, 0);
+    demo.g = { sx0, sy0, scale, ox: (w - dw) / 2, oy: (h - dh) / 2, dpr, tx: view.tx, ty: view.ty, k: view.k };
+    if (demo.v < 0) startDemo(); else drawDemo(1);
+  }
+
+  // ---------- Welcome page demo: one verse's arcs light up across the whole Bible ----------
+  // The rest of the map fades, the verse's strongest connections are drawn from it, and a caption and
+  // three of the passages it connects to appear underneath, each one tap away.
+  const DEMO_REFS = ['John 3:16', 'Isaiah 53:5', 'Genesis 3:15'];
+  const demo = { base: null, g: null, v: -1, links: [], step: 0, timer: 0, raf: 0, pinned: false };
+  function demoLinks(v) {
+    // counted the same way as the verse pages (/verse/john-3-16/): each passage or passage range once
+    const best = new Map();
+    for (let i = 0; i < N; i++) {
+      if (F[i] !== v && T[i] !== v) continue;
+      const [o, z] = F[i] === v ? [T[i], E[i]] : [F[i], F[i]];
+      const key = o + '-' + z, c = best.get(key);
+      if (c === undefined || V[c[1]] < V[i]) best.set(key, [o, i]);
+    }
+    return [...best.values()].sort((a, b) => V[b[1]] - V[a[1]]);
+  }
+  function drawDemo(p) {
+    const hero = $('heroCanvas');
+    if (!hero || !demo.base || !demo.g || demo.v < 0) return;
+    const ctx = hero.getContext('2d'), G = demo.g, d = G.dpr;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(demo.base, 0, 0);
+    ctx.globalAlpha = isLight ? 0.78 : 0.74; ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, hero.width, hero.height); ctx.globalAlpha = 1;
+    const X = (v) => (G.ox + (G.tx + (POS[v] + 0.5) * G.k - G.sx0) * G.scale) * d;
+    const Y = (G.oy + (G.ty - G.sy0) * G.scale) * d;
+    const xv = X(demo.v), top = demo.links.slice(0, 48), maxV = top.length ? V[top[0][1]] : 1;
+    ctx.lineCap = 'round';
+    for (const [o, i] of top) {
+      const xo = X(o), cx = (xv + xo) / 2, r = Math.abs(xo - xv) / 2;
+      if (r < 0.5) continue;
+      ctx.strokeStyle = colorOf(i);
+      ctx.globalAlpha = 0.45 + 0.55 * Math.sqrt(V[i] / maxV);
+      ctx.lineWidth = Math.max(1, 1.6 * d * (0.6 + 0.4 * V[i] / maxV));
+      ctx.beginPath();
+      if (xo > xv) ctx.arc(cx, Y, r, Math.PI, Math.PI + Math.PI * p);
+      else ctx.arc(cx, Y, r, 2 * Math.PI, 2 * Math.PI - Math.PI * p, true);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = isLight ? '#000' : '#fff';
+    ctx.beginPath(); ctx.arc(xv, Y, 4.5 * d, 0, 2 * Math.PI); ctx.fill();
+  }
+  function showDemo(v, { animate = true } = {}) {
+    if (v < 0 || !N) return;
+    demo.v = v; demo.links = demoLinks(v);
+    const loc = LANGS[LANG].locale, ref = refLabel(v), n = demo.links.length;
+    $('demoCaption').innerHTML = `<strong>${esc(ref)}</strong> ${esc(tr('connects to {n} passages across the Bible. Each arc joins two passages that point to each other.').replace('{n}', n.toLocaleString(loc)))}`;
+    $('demoCards').innerHTML = demo.links.slice(0, 3).map(([o, i]) => `<li><button type="button" class="demo-card" data-action="gotoRef" data-ref="${i}">
+      <span class="demo-ref">${esc(refLabel(o))}</span><span class="demo-sub">${esc(tr(verseBook[o] >= 39 ? 'New Testament' : 'Old Testament'))} · ${esc(tr('{n} votes').replace('{n}', V[i].toLocaleString(loc)))}</span></button></li>`).join('');
+    $('heroCanvas').setAttribute('aria-label', `${ref}: ${n} connections drawn across the Bible`);
+    cancelAnimationFrame(demo.raf);
+    if (!animate || document.documentElement.dataset.motion !== 'on') { drawDemo(1); return; }
+    const t0 = performance.now(), D = 1100;
+    const tick = (t) => { const q = Math.min(1, (t - t0) / D); drawDemo(1 - Math.pow(1 - q, 3)); if (q < 1) demo.raf = requestAnimationFrame(tick); };
+    demo.raf = requestAnimationFrame(tick);
+  }
+  // a few examples in turn (when animations are on), then it rests on the first one
+  function startDemo() {
+    clearTimeout(demo.timer); demo.step = 0;
+    const at = (k) => { const r = parseReference(DEMO_REFS[k]); return r && !r.error ? r.start : -1; };
+    showDemo(at(0));
+    if (document.documentElement.dataset.motion !== 'on') return;
+    const next = () => {
+      if (landing.hidden) return;
+      if (!demo.pinned) { demo.step = (demo.step + 1) % DEMO_REFS.length; showDemo(at(demo.step)); }
+      if (demo.step !== 0 || demo.pinned) demo.timer = setTimeout(next, 5200);
+    };
+    demo.timer = setTimeout(next, 5200);
+  }
+  // the suggested verses under the search box preview their arcs on the picture
+  for (const chip of document.querySelectorAll('[data-hero-q]')) {
+    const preview = () => { const r = parseReference(chip.dataset.heroQ); if (r && !r.error && N) { demo.pinned = true; showDemo(r.start); } };
+    chip.addEventListener('pointerenter', preview); chip.addEventListener('focus', preview);
+    chip.addEventListener('pointerleave', () => { demo.pinned = false; }); chip.addEventListener('blur', () => { demo.pinned = false; });
   }
   // Welcome page animations: the picture is drawn from Genesis to Revelation, the numbers count up,
   // and sections ease in as they scroll into view. Everything ends in its normal resting state.
@@ -4764,7 +4845,6 @@
     renderLandingRecent();
     renderSeasonBanner();
     renderYourPlan();
-    $('firstVisit').hidden = !!store.get('visited', false);
     // the timeline under the picture: Old and New Testament widths match their share of verses
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     renderFeelings();
@@ -4820,6 +4900,9 @@
     colPlay = null; renderColBar();
     Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, focus: null, selected: -1, mode: 'explore', journey: null, colorMode: 'distance', order: 'bible' });
     if (POS) setOrder('bible');
+    // going home or starting over always comes back to the connections map, not the places map
+    state.route = null;
+    if (state.stage === 'places') { state.stage = 'arcs'; applyStage(); }
     syncControls(); renderLegend(); el.search.value = ''; el.searchError.textContent = '';
     updateNav(); applyFilters();
   }

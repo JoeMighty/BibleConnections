@@ -109,7 +109,6 @@
               <button type="button" class="chip" data-hero-q="Romans 8:28">Romans 8:28</button>
             </p>
           </form>
-          <p class="first-visit" id="firstVisit" hidden>New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map below is one of them.</p>
           <p class="hero-alt"><button type="button" class="link-btn" data-start="journeys">Or take a 5 minute guided journey <span aria-hidden="true">›</span></button></p>
         </div>
       </div>
@@ -119,7 +118,11 @@
           <span class="axis-ot"><b>Old Testament</b><i>Genesis</i></span>
           <span class="axis-nt"><b>New Testament</b><i>Matthew</i><i class="end">Revelation</i></span>
         </div>
-        <figcaption class="hero-map"><button type="button" class="btn ghost" data-start="map">Explore the whole map <span aria-hidden="true">›</span></button></figcaption>
+        <figcaption class="hero-demo" id="heroDemo">
+          <p class="demo-caption" id="demoCaption" aria-live="polite"></p>
+          <ul class="demo-cards" id="demoCards" aria-label="Some of the passages it connects to"></ul>
+          <p class="hero-map"><button type="button" class="btn ghost" data-start="map">Explore the whole map <span aria-hidden="true">›</span></button></p>
+        </figcaption>
       </figure>
     </div>
     <ul class="trust-strip" aria-label="About this site">
