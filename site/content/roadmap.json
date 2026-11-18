@@ -59,6 +59,24 @@
   ],
   "shipped": [
     {
+      "version": "0.19.0",
+      "items": [
+        "Phones: more room for the map, and Places and Me tabs",
+        "Slide along the books, swipe between steps, verse arcs fanned across the Bible",
+        "Lighter and faster first visit on mobile data"
+      ],
+      "items_es": [
+        "Teléfonos: más espacio para el mapa y pestañas Lugares y Yo",
+        "Desliza por los libros, pasa de un paso a otro y ve los arcos del versículo en toda la Biblia",
+        "Primera visita más ligera y rápida con datos móviles"
+      ],
+      "items_pt": [
+        "Celulares: mais espaço para o mapa e abas Lugares e Eu",
+        "Deslize pelos livros, passe de um passo a outro e veja os arcos do versículo em toda a Bíblia",
+        "Primeira visita mais leve e rápida com dados móveis"
+      ]
+    },
+    {
       "version": "0.18.0",
       "items": [
         "A page for every book and the 1,000 most connected verses",

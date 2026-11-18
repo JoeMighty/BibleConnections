@@ -913,7 +913,14 @@
     "Most connected books": "Libros más conectados",
     "All the numbers for this book": "Todos los datos de este libro",
     "(English)": "(en inglés)",
-    "along the bottom, or slide along them, to pick a chapter.": "en la parte inferior, o desliza el dedo por ellas, para elegir un capítulo."
+    "along the bottom, or slide along them, to pick a chapter.": "en la parte inferior, o desliza el dedo por ellas, para elegir un capítulo.",
+    "Me": "Yo",
+    "Search": "Buscar",
+    "More map actions": "Más acciones del mapa",
+    "More": "Más",
+    "Connect two verses": "Conectar dos versículos",
+    "Find the chain of connections that links any two passages.": "Encuentra la cadena de conexiones que une dos pasajes cualesquiera.",
+    "Tap ☆ Save on any verse, connection or journey to keep it here. Everything stays on this device.": "Toca ☆ Guardar en cualquier versículo, conexión o jornada para tenerlo aquí. Todo se queda en este dispositivo."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

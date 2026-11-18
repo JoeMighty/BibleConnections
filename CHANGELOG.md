@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-11-18 - Pocket
+
 ### Changed
 - Faster on mobile data: opening a verse link downloads about 1.4 MB instead of 3.4 MB. The Hebrew and Greek text and dictionary load when you scroll to them, and the places data only when it is needed. The map data is no longer downloaded twice on a first visit.
 - A picture of the whole map shows straight away on a link to the map (dark mode), until the real one is drawn. The page also no longer flashes dark before switching to light mode.
