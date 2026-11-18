@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-11-18 - Welcome
+
 ### Fixed
 - After using the Places map, going home and choosing Explore the whole map or looking up a verse showed the places map again instead of the connections map.
 

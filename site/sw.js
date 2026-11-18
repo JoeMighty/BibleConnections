@@ -1,6 +1,6 @@
 // Offline support: the app and its data are cached so the map works without a connection.
 // Reading links still need the internet because they open Bible.com.
-const CACHE = 'bible-connections-v50';
+const CACHE = 'bible-connections-v51';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'handout.html', 'handout.js', 'guide.html', 'roadmap.html', 'privacy.html', 'content/privacy.json', 'churches.html', 'content/churches.json', '404.html', 'pages.css', 'pages.js', 'content/guide.json', 'content/roadmap.json',
   'content/themes.json', 'content/notes.json', 'content/journeys.json', 'content/series.json',

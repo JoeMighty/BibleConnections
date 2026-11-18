@@ -59,6 +59,24 @@
   ],
   "shipped": [
     {
+      "version": "0.20.0",
+      "items": [
+        "A clearer welcome page: look up a verse first, and see one verse light up",
+        "Made for you: reading, small groups and church leaders",
+        "For churches page, Study grouped into Read, Learn and Teach"
+      ],
+      "items_es": [
+        "Una página de inicio más clara: busca un versículo primero y mira cómo se ilumina uno",
+        "Hecho para ti: lectura, grupos pequeños y líderes de la iglesia",
+        "Página Para iglesias y Estudio agrupado en Leer, Aprender y Enseñar"
+      ],
+      "items_pt": [
+        "Uma página inicial mais clara: busque um versículo primeiro e veja um deles se acender",
+        "Feito para você: leitura, pequenos grupos e líderes da igreja",
+        "Página Para igrejas e Estudo agrupado em Ler, Aprender e Ensinar"
+      ]
+    },
+    {
       "version": "0.19.0",
       "items": [
         "Phones: more room for the map, and Places and Me tabs",
