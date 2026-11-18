@@ -1914,27 +1914,28 @@
   const nameOf = (x) => loc(x, 'name');
   const descOf = (x) => loc(x, 'description');
   function studyHTML() {
-    const cards = [
-      ['plans', 'Reading plans', 'Follow the connections a few at a time, with your progress saved on this device.'],
-      ['people', 'People and places', 'See where a person or place appears across the whole Bible.'],
-      ['topics', 'Topics', 'Explore what Scripture says about worry, forgiveness, money, rest and more.'],
-      ['wordstudy', 'Word study', 'Follow a Hebrew or Greek word, such as hesed or agape, through the Bible.'],
-      ['notes', 'My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
-      ['places', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
-      ['path', 'Connect two verses', 'Find the chain of connections that links any two passages.'],
-      ['shared', 'Shared connections', 'Pick two passages and find the passages they both link to.'],
-      ['prophecy', 'Prophecy and fulfilment', 'Old Testament promises, covenants and pictures, followed to the New Testament.'],
-      ['timeline', 'Timeline', 'Key events of the Bible story in order, with their passages and places.'],
-      ['collections', 'Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
-      ['church', 'Church page', 'Put your sermon series on your church website, with this week\'s passage first.'],
-      ['game', 'Guess the connection', 'A quick quiz for you or your small group.'],
-      ['insights', 'Insights', 'The most connected verses and chapters, and links between categories.'],
-    ];
-    let html = '<ul class="study-list">';
-    for (const [mode, title, text] of cards) {
-      html += `<li><button type="button" class="study-card" data-action="mode" data-mode="${mode}"><strong>${title}</strong><span>${text}</span></button></li>`;
-    }
-    html += `<li><button type="button" class="study-card" data-action="poster"><strong>Print a poster</strong><span>Download the whole map as a high-resolution image for printing.</span></button></li></ul>`;
+    // grouped so each tool is easy to find: reading, learning more, and teaching others
+    const C = {
+      plans: ['Reading plans', 'Follow the connections a few at a time, with your progress saved on this device.'],
+      people: ['People and places', 'See where a person or place appears across the whole Bible.'],
+      topics: ['Topics', 'Explore what Scripture says about worry, forgiveness, money, rest and more.'],
+      timeline: ['Timeline', 'Key events of the Bible story in order, with their passages and places.'],
+      places: ['Places on a map', 'See where places named in the Bible were, and every verse that mentions them.'],
+      notes: ['My notes', 'Your own notes on any verse, kept on this device. Export them to keep a copy.'],
+      wordstudy: ['Word study', 'Follow a Hebrew or Greek word, such as hesed or agape, through the Bible.'],
+      prophecy: ['Prophecy and fulfilment', 'Old Testament promises, covenants and pictures, followed to the New Testament.'],
+      path: ['Connect two verses', 'Find the chain of connections that links any two passages.'],
+      shared: ['Shared connections', 'Pick two passages and find the passages they both link to.'],
+      insights: ['Insights', 'The most connected verses and chapters, and links between categories.'],
+      collections: ['Collections', 'Group connections and verses for a sermon or small group, and share them as one link.'],
+      church: ['Church page', 'Put your sermon series on your church website, with this week\'s passage first.'],
+      game: ['Guess the connection', 'A quick quiz for you or your small group.'],
+    };
+    const groups = [['Read', ['plans', 'people', 'topics', 'timeline', 'places', 'notes']], ['Learn', ['wordstudy', 'prophecy', 'path', 'shared', 'insights']], ['Teach', ['collections', 'church', 'game', 'poster']]];
+    const card = (mode) => (mode === 'poster'
+      ? '<li><button type="button" class="study-card" data-action="poster"><strong>Print a poster</strong><span>Download the whole map as a high-resolution image for printing.</span></button></li>'
+      : `<li><button type="button" class="study-card" data-action="mode" data-mode="${mode}"><strong>${C[mode][0]}</strong><span>${C[mode][1]}</span></button></li>`);
+    let html = groups.map(([name, modes]) => `<h3 class="study-group">${name}</h3><ul class="study-list">${modes.map(card).join('')}</ul>`).join('');
     const cotd = connectionOfTheDay();
     if (cotd >= 0) html += `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
     html += feedsHTML();
@@ -2717,7 +2718,7 @@
     }
     if (R) {
       const rs = R.filter(r => has(loc(r, 'name')) || has(r.name) || r.stops.some(st => plain(st.place.replace(/ \d+$/, '')) === q));
-      if (rs.length) groups.push(['Journeys on the map', rs.map(r => chip(`data-action="openRoute" data-id="${esc(r.id)}"`, loc(r, 'name'))).join('')]);
+      if (rs.length) groups.push(['Routes on the map', rs.map(r => chip(`data-action="openRoute" data-id="${esc(r.id)}"`, loc(r, 'name'))).join('')]);
     }
     box.innerHTML = groups.length ? `<section class="also-found" aria-labelledby="alsoTitle"><h3 id="alsoTitle">Also found</h3>${groups.map(([t, items]) => `<p class="also-label">${esc(t)}</p><ul class="chip-list">${items}</ul>`).join('')}</section>` : '';
   }
@@ -3166,7 +3167,7 @@
   // routes: journeys drawn on the places map
   function routesListHTML() {
     if (!ROUTES) { loadRoutes().then(() => { if (state.mode === 'places') renderPanel(); }, () => {}); return ''; }
-    return `<h3>Journeys on the map</h3><ul class="study-list">${ROUTES.map(r => `<li><button type="button" class="study-card" data-action="openRoute" data-id="${esc(r.id)}"><strong>${esc(loc(r, 'name'))}</strong><span>${esc(loc(r, 'summary'))}</span></button></li>`).join('')}</ul>`;
+    return `<h3>Routes on the map</h3><ul class="study-list">${ROUTES.map(r => `<li><button type="button" class="study-card" data-action="openRoute" data-id="${esc(r.id)}"><strong>${esc(loc(r, 'name'))}</strong><span>${esc(loc(r, 'summary'))}</span></button></li>`).join('')}</ul>`;
   }
   function routeHTML() {
     const r = ROUTES && ROUTES.find(x => x.id === state.route);
@@ -3615,7 +3616,18 @@
     ['Tempted', 'temptation'], ['Weak', 'strength'], ['Waiting', 'patience'], ['Suffering', 'suffering'], ['Thankful', 'thanks'], ['Joyful', 'joy']];
   function renderFeelings() {
     const box = $('landingFeelings');
-    if (box) box.innerHTML = FEELINGS.filter(([, id]) => (TOPICS || []).some(t => t.id === id)).map(([label, id]) => `<li><button type="button" class="chip" data-feel="${id}">${esc(label)}</button></li>`).join('');
+    if (box) { box.innerHTML = FEELINGS.filter(([, id]) => (TOPICS || []).some(t => t.id === id)).map(([label, id]) => `<li><button type="button" class="chip" data-feel="${id}">${esc(label)}</button></li>`).join(''); addMore(box); }
+  }
+  // a long row of chips shows its first six, with More to show the rest
+  function addMore(ul, n = 6) {
+    if (ul.children.length <= n + 1) { ul.classList.remove('few'); return; }
+    ul.classList.add('few');
+    ul.insertAdjacentHTML('beforeend', `<li class="more-li"><button type="button" class="chip more-chip" aria-expanded="false">${esc(tr('More'))}</button></li>`);
+    ul.querySelector('.more-chip').addEventListener('click', (e) => {
+      const open = ul.classList.toggle('few') === false;
+      e.currentTarget.setAttribute('aria-expanded', String(open));
+      e.currentTarget.textContent = tr(open ? 'Fewer' : 'More');
+    });
   }
   function surprise() {
     if (!notedList) connectionOfTheDay();
@@ -4841,7 +4853,7 @@
     $('aboutVersion').textContent = VERSION;
     const cotd = connectionOfTheDay();
     $('landingCotd').hidden = cotd < 0;
-    if (cotd >= 0) $('landingCotd').innerHTML = `<h3>Connection of the day</h3>${cotdHTML(cotd)}`;
+    if (cotd >= 0) $('landingCotd').innerHTML = cotdHTML(cotd).replace('<div class="cotd">', `<div class="cotd"><p class="eyebrow">${esc(tr('Connection of the day'))}</p>`);
     renderLandingRecent();
     renderSeasonBanner();
     renderYourPlan();
@@ -4849,6 +4861,7 @@
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     renderFeelings();
     $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
+    addMore($('landingThemes'));
   }
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');

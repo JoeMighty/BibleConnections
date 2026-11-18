@@ -129,20 +129,25 @@
       <li>Free</li><li>No account</li><li>No adverts</li><li>Your notes stay on this device</li><li>English, Español, Português</li><li>Data from OpenBible.info and STEP Bible</li>
     </ul>
     <div class="landing-inner">
-      <section class="landing-series your-plan" id="landingPlan" aria-labelledby="yourPlanTitle" hidden></section>
-      <section class="landing-series season-banner" id="seasonBanner" aria-labelledby="seasonTitle" hidden></section>
       <div class="landing-series" id="landingSeries" hidden></div>
       <div class="landing-recent" id="landingRecent" hidden></div>
-      <section class="feelings" aria-labelledby="feelTitle">
-        <h3 id="feelTitle">How are you feeling?</h3>
-        <ul class="chip-list" id="landingFeelings"></ul>
-        <p class="surprise-row"><button type="button" class="btn ghost" data-start="surprise">Surprise me</button> <span class="muted">Opens a random connection with an explanation.</span></p>
+      <section class="today" aria-labelledby="todayTitle">
+        <h3 id="todayTitle">Today</h3>
+        <div class="today-row">
+          <section class="landing-series your-plan" id="landingPlan" aria-labelledby="yourPlanTitle" hidden></section>
+          <section class="landing-series season-banner" id="seasonBanner" aria-labelledby="seasonTitle" hidden></section>
+          <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
+        </div>
       </section>
       <div class="landing-split">
-        <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
+        <section class="feelings" aria-labelledby="feelTitle">
+          <h3 id="feelTitle">How are you feeling?</h3>
+          <ul class="chip-list few" id="landingFeelings"></ul>
+          <p class="surprise-row"><button type="button" class="btn ghost" data-start="surprise">Surprise me</button> <span class="muted">Opens a random connection with an explanation.</span></p>
+        </section>
         <section class="landing-themes" aria-labelledby="themesTitle">
           <h3 id="themesTitle">Start with a theme</h3>
-          <ul class="chip-list" id="landingThemes"></ul>
+          <ul class="chip-list few" id="landingThemes"></ul>
         </section>
       </div>
       <section aria-labelledby="forTitle">

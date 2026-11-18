@@ -13,6 +13,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Welcome page: the picture now explains itself. The rest of the map fades and one verse's arcs light up (John 3:16, then Isaiah 53:5 and Genesis 3:15 when animations are on), with a caption ("John 3:16 connects to 64 passages…") and three of its passages to open. Pointing at a suggested verse previews its arcs. This replaces the "New here?" text box.
 - Welcome page: "Made for you" cards for your own reading, small groups and church leaders, each with one clear button. They replace the "Ways in" and "How it works" sections.
 - A For churches page (`/churches.html`, in English, Spanish and Portuguese) gathers the tools for pastors and group leaders: sermon series pages, guided journeys, printable handouts with leader notes, slides, the quiz, a poster and the daily feeds, each with a button to try it.
+- Welcome page: a Today row puts your plan, the season's plan and the connection of the day side by side. How are you feeling? and Start with a theme show six choices each, with More for the rest.
+- Study is grouped into Read, Learn and Teach, so each tool is easier to find. Paul's journeys and the other mapped routes are now called routes ("Routes on the map"), so "journeys" only means the guided journeys.
 - Welcome page: a strip says what you can count on: free, no account, no adverts, your notes stay on this device, three languages, and where the data comes from.
 - Welcome page: the band of numbers is gone (its counts did not match the rest of the site), and the separate search box below it is merged into the main one.
 

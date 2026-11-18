@@ -108,3 +108,25 @@ test('an offline note appears when the connection drops', async ({ page, context
   await context.setOffline(false);
   await expect(page.locator('#offlineNote')).toBeHidden();
 });
+
+test('the welcome page keeps rows short: six feelings and themes, with More for the rest', async ({ page }) => {
+  await page.goto('/');
+  await ready(page);
+  await expect(page.locator('#todayTitle')).toHaveText('Today');
+  const visible = (sel) => page.locator(`${sel} > li:visible .chip:not(.more-chip)`);
+  await expect(visible('#landingFeelings')).toHaveCount(6);
+  await page.locator('#landingFeelings .more-chip').click();
+  await expect(visible('#landingFeelings')).toHaveCount(12);
+  await expect(page.locator('#landingFeelings .more-chip')).toHaveAttribute('aria-expanded', 'true');
+  await expect(visible('#landingThemes')).toHaveCount(6);
+});
+
+test('Study is grouped into Read, Learn and Teach, and routes are called routes', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=study');
+  await ready(page);
+  await expect(page.locator('#panelBody h3.study-group')).toHaveText(['Read', 'Learn', 'Teach']);
+  await page.goto('/?view=places');
+  await ready(page);
+  await expect(page.locator('#panelBody')).toContainText('Routes on the map');
+});

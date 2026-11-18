@@ -1057,3 +1057,14 @@ details.study-sec > summary h3 { margin: 0; }
 .aud .btn { align-self: flex-start; margin-top: 8px; text-decoration: none; }
 .aud-icon { width: 30px; height: 30px; fill: none; stroke: var(--link); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 860px) { .audiences { grid-template-columns: 1fr; } }
+
+/* welcome page: today, and short chip rows */
+.today-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: stretch; }
+.today-row > [hidden] { display: none; }
+.today-row > .landing-series { margin: 0; max-width: none; }
+.today-row > .landing-cotd .cotd { height: 100%; }
+.today-label { margin: 0 0 10px; font-size: var(--t-footnote); font-weight: 600; color: var(--muted); }
+.landing-cotd { display: flex; flex-direction: column; }
+.landing-cotd .cotd { flex: 1; }
+.chip-list.few > li:nth-child(n+7):not(.more-li) { display: none; }
+.more-chip { color: var(--link); }

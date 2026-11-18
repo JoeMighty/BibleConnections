@@ -950,7 +950,12 @@
     "Choose a journey": "Elegir una jornada",
     "For church leaders": "Para líderes de la iglesia",
     "Put your sermon series on your church website, turn passages into slides, and print a poster of the whole map.": "Pon tu serie de sermones en el sitio web de tu iglesia, convierte pasajes en diapositivas e imprime un póster de todo el mapa.",
-    "See the tools for churches": "Ver las herramientas para iglesias"
+    "See the tools for churches": "Ver las herramientas para iglesias",
+    "Today": "Hoy",
+    "Fewer": "Menos",
+    "Routes on the map": "Rutas en el mapa",
+    "Learn": "Aprender",
+    "Teach": "Enseñar"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

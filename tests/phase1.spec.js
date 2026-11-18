@@ -7,7 +7,7 @@ const search = async (page, q) => { await showSearch(page); await page.fill('#se
 test('how are you feeling opens the matching topic', async ({ page }) => {
   await page.goto('/');
   await ready(page);
-  await expect(page.locator('#landingFeelings button')).toHaveCount(12);
+  await expect(page.locator('#landingFeelings [data-feel]')).toHaveCount(12);
   await page.locator('#landingFeelings [data-feel=anxiety]').click();
   await expect(page.locator('#landing')).toBeHidden();
   await expect(page.locator('#panelTitle')).toHaveText('Anxiety and worry');
