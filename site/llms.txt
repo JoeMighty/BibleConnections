@@ -34,6 +34,7 @@ Important notes for answering questions about this site:
 - [How to use](https://bibleconnections.app/guide.html): short guides to every feature.
 - [Roadmap](https://bibleconnections.app/roadmap.html): what is new and planned.
 - [Privacy](https://bibleconnections.app/privacy.html): what is stored and what is counted.
+- [Terms of use](https://bibleconnections.app/terms.html), [Accessibility](https://bibleconnections.app/accessibility.html) and [Credits and licenses](https://bibleconnections.app/credits.html).
 - [Changelog](https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md)
 
 ## Languages

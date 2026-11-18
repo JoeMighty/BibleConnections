@@ -1,0 +1,67 @@
+{
+  "updated": "2026-11-18",
+  "intro": "Bible Connections aims to be usable by everyone, including people who use a keyboard, a screen reader, larger text or high contrast. We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA.",
+  "intro_es": "Bible Connections quiere que todos puedan usarlo, también quienes usan teclado, lector de pantalla, texto grande o alto contraste. Nuestro objetivo es cumplir las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 en el nivel AA.",
+  "intro_pt": "O Bible Connections quer que todos possam usá-lo, inclusive quem usa teclado, leitor de tela, texto grande ou alto contraste. Nosso objetivo é atender às Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.1 no nível AA.",
+  "sections": [
+    {
+      "title": "What you can do",
+      "title_es": "Lo que puedes hacer",
+      "title_pt": "O que você pode fazer",
+      "text": [
+        "Use everything with a keyboard (press ? for the shortcuts). Every connection on the map is also listed as text, and screen readers are told what changes.",
+        "In Settings: make text larger, switch on an easier-to-read font, high contrast, a color-blind friendly palette, and light or dark appearance. Animations stop when your device asks for reduced motion."
+      ],
+      "text_es": [
+        "Usar todo con el teclado (pulsa ? para ver los atajos). Cada conexión del mapa también aparece como texto, y los lectores de pantalla anuncian los cambios.",
+        "En Ajustes: agrandar el texto, activar una fuente más fácil de leer, alto contraste, colores aptos para daltonismo y modo claro u oscuro. Las animaciones se detienen si tu dispositivo pide reducir el movimiento."
+      ],
+      "text_pt": [
+        "Usar tudo pelo teclado (pressione ? para ver os atalhos). Cada conexão do mapa também aparece em texto, e os leitores de tela anunciam o que muda.",
+        "Em Ajustes: aumentar o texto, ativar uma fonte mais fácil de ler, alto contraste, cores adequadas para daltonismo e modo claro ou escuro. As animações param quando o aparelho pede menos movimento."
+      ]
+    },
+    {
+      "title": "How we test",
+      "title_es": "Cómo lo comprobamos",
+      "title_pt": "Como testamos",
+      "text": [
+        "Every change is checked automatically with axe in light and dark appearance and in each language, on desktop and phone sizes, and buttons on touch screens are at least 44 points."
+      ],
+      "text_es": [
+        "Cada cambio se comprueba automáticamente con axe en modo claro y oscuro, en cada idioma y en tamaños de escritorio y teléfono, y los botones en pantallas táctiles miden al menos 44 puntos."
+      ],
+      "text_pt": [
+        "Cada mudança é verificada automaticamente com o axe nos modos claro e escuro, em cada idioma e em tamanhos de computador e celular, e os botões em telas de toque têm pelo menos 44 pontos."
+      ]
+    },
+    {
+      "title": "Known limitations",
+      "title_es": "Limitaciones conocidas",
+      "title_pt": "Limitações conhecidas",
+      "text": [
+        "The arc map itself is a picture: its information is also in the lists beside it, but the picture cannot be fully described. Screen readers may pronounce Hebrew and Greek words inconsistently; each one also has a transliteration. Bible.com, where passages open, is not under our control."
+      ],
+      "text_es": [
+        "El mapa de arcos es una imagen: su información también está en las listas de al lado, pero la imagen no se puede describir por completo. Los lectores de pantalla pueden pronunciar de forma irregular las palabras hebreas y griegas; cada una tiene también su transliteración. Bible.com, donde se abren los pasajes, no está bajo nuestro control."
+      ],
+      "text_pt": [
+        "O mapa de arcos é uma imagem: as informações dele também estão nas listas ao lado, mas a imagem não pode ser descrita por completo. Os leitores de tela podem pronunciar palavras hebraicas e gregas de forma irregular; cada uma também tem transliteração. O Bible.com, onde as passagens abrem, não está sob nosso controle."
+      ]
+    },
+    {
+      "title": "Tell us about a problem",
+      "title_es": "Cuéntanos un problema",
+      "title_pt": "Conte-nos um problema",
+      "text": [
+        "If something is hard to use, please tell us: hello@bibleconnections.app, or open an issue on GitHub. We aim to reply within two weeks."
+      ],
+      "text_es": [
+        "Si algo es difícil de usar, cuéntanoslo: hello@bibleconnections.app, o abre una incidencia en GitHub. Intentamos responder en dos semanas."
+      ],
+      "text_pt": [
+        "Se algo for difícil de usar, conte para nós: hello@bibleconnections.app, ou abra uma issue no GitHub. Procuramos responder em até duas semanas."
+      ]
+    }
+  ]
+}

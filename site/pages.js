@@ -6,7 +6,7 @@
   const L = window.bcLang;
   await L.ready;
   const t = (k, v) => L.t('pages', k, v), pick = L.pick, withLang = L.withLang;
-  for (const [id, key] of [['navHome', 'Open the map'], ['navGuide', 'How to use'], ['navRoadmap', 'Roadmap'], ['changelogLink', 'Changelog'], ['privacyLink', 'Privacy']]) {
+  for (const [id, key] of [['navHome', 'Open the map'], ['navGuide', 'How to use'], ['navRoadmap', 'Roadmap'], ['changelogLink', 'Changelog'], ['privacyLink', 'Privacy'], ['termsLink', 'Terms'], ['a11yLink', 'Accessibility'], ['creditsLink', 'Credits']]) {
     const a = document.getElementById(id);
     if (a) { a.textContent = t(key); if (a.getAttribute('href') && !a.href.includes('github')) a.setAttribute('href', withLang(a.getAttribute('href'))); }
   }
@@ -36,15 +36,17 @@
       const mail = (x) => esc(x).replace(/hello@bibleconnections\.app/g, '<a href="mailto:hello@bibleconnections.app">hello@bibleconnections.app</a>');
       main.innerHTML = `<h1>${esc(t('For churches'))}</h1>
         <p class="lede">${esc(pick(C, 'intro'))}</p>
-        <ul class="cards">${C.tools.map(it => `<li class="card"><h3>${esc(pick(it, 'title'))}</h3><p>${esc(pick(it, 'text'))}</p>
+        <ul class="cards">${C.tools.map(it => `<li class="card"><h2 class="card-title">${esc(pick(it, 'title'))}</h2><p>${esc(pick(it, 'text'))}</p>
           <p class="try"><a href="${esc(withLang(/^[?]/.test(it.try) ? './' + it.try : it.try))}">${esc(pick(it, 'try_label'))}</a></p></li>`).join('')}</ul>
         <p class="muted church-note">${mail(pick(C, 'note'))}</p>`;
-    } else if (page === 'privacy') {
-      const P = await (await fetch('content/privacy.json')).json();
-      document.title = `${t('Privacy')} · Bible Connections`;
+    } else if (['privacy', 'terms', 'accessibility', 'credits'].includes(page)) {
+      // the legal pages share one layout: an introduction, a date and titled sections
+      const P = await (await fetch(`content/${page}.json`)).json();
+      const heading = { privacy: 'Privacy', terms: 'Terms of use', accessibility: 'Accessibility', credits: 'Credits and licenses' }[page];
+      document.title = `${t(heading)} · Bible Connections`;
       const date = new Date(P.updated + 'T12:00:00').toLocaleDateString(L.locale, { day: 'numeric', month: 'long', year: 'numeric' });
       const mail = (x) => esc(x).replace(/hello@bibleconnections\.app/g, '<a href="mailto:hello@bibleconnections.app">hello@bibleconnections.app</a>');
-      main.innerHTML = `<h1>${esc(t('Privacy'))}</h1>
+      main.innerHTML = `<h1>${esc(t(heading))}</h1>
         <p class="lede">${esc(pick(P, 'intro'))}</p><p class="muted">${esc(t('Last updated {d}', { d: date }))}</p>
         ${P.sections.map(x => `<section aria-labelledby="${slug(x.title)}"><h2 id="${slug(x.title)}">${esc(pick(x, 'title'))}</h2>${(pick(x, 'text') || []).map(p2 => `<p>${mail(p2)}</p>`).join('')}</section>`).join('')}`;
     } else {

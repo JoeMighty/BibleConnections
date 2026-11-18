@@ -956,7 +956,12 @@
     "Fewer": "Menos",
     "Routes on the map": "Rotas no mapa",
     "Learn": "Aprender",
-    "Teach": "Ensinar"
+    "Teach": "Ensinar",
+    "Terms of use": "Termos de uso",
+    "Terms": "Termos",
+    "Accessibility": "Acessibilidade",
+    "Credits and licenses": "Créditos e licenças",
+    "Credits": "Créditos"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1157,7 +1162,12 @@
       "Last updated {d}": "Última atualização: {d}",
       "Page not found": "Página não encontrada",
       "This page does not exist. It may have moved, or the address may have a typo.": "Esta página não existe. Ela pode ter mudado de lugar ou o endereço pode ter um erro.",
-      "For churches": "Para igrejas"
+      "For churches": "Para igrejas",
+      "Terms of use": "Termos de uso",
+      "Terms": "Termos",
+      "Accessibility": "Acessibilidade",
+      "Credits and licenses": "Créditos e licenças",
+      "Credits": "Créditos"
     },
     "slides": {
       "Slides": "Slides",

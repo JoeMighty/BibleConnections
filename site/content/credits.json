@@ -1,0 +1,120 @@
+{
+  "updated": "2026-11-18",
+  "intro": "Bible Connections is built on the generous work of others. Here is everything it uses, and on what terms.",
+  "intro_es": "Bible Connections se construye sobre el generoso trabajo de otros. Aquí está todo lo que usa y con qué condiciones.",
+  "intro_pt": "O Bible Connections é construído sobre o trabalho generoso de outras pessoas. Aqui está tudo o que ele usa, e em quais condições.",
+  "sections": [
+    {
+      "title": "Cross references",
+      "title_es": "Referencias cruzadas",
+      "title_pt": "Referências cruzadas",
+      "text": [
+        "OpenBible.info cross references, based on the Treasury of Scripture Knowledge, under CC BY 4.0 (openbible.info/labs/cross-references). References with fewer than 3 votes are left out."
+      ],
+      "text_es": [
+        "Referencias cruzadas de OpenBible.info, basadas en el Treasury of Scripture Knowledge, con licencia CC BY 4.0 (openbible.info/labs/cross-references). Se omiten las que tienen menos de 3 votos."
+      ],
+      "text_pt": [
+        "Referências cruzadas do OpenBible.info, baseadas no Treasury of Scripture Knowledge, sob a licença CC BY 4.0 (openbible.info/labs/cross-references). As que têm menos de 3 votos ficam de fora."
+      ]
+    },
+    {
+      "title": "Hebrew, Aramaic and Greek",
+      "title_es": "Hebreo, arameo y griego",
+      "title_pt": "Hebraico, aramaico e grego",
+      "text": [
+        "Text, word data and lexicons from STEP Bible (Tyndale House Cambridge), under CC BY 4.0 (stepbible.org). Dictionary entries from Brown-Driver-Briggs and Abbott-Smith, in the public domain."
+      ],
+      "text_es": [
+        "Texto, datos de palabras y léxicos de STEP Bible (Tyndale House Cambridge), con licencia CC BY 4.0 (stepbible.org). Entradas de diccionario de Brown-Driver-Briggs y Abbott-Smith, de dominio público."
+      ],
+      "text_pt": [
+        "Texto, dados das palavras e léxicos do STEP Bible (Tyndale House Cambridge), sob a licença CC BY 4.0 (stepbible.org). Verbetes de dicionário de Brown-Driver-Briggs e Abbott-Smith, de domínio público."
+      ]
+    },
+    {
+      "title": "Places and maps",
+      "title_es": "Lugares y mapas",
+      "title_pt": "Lugares e mapas",
+      "text": [
+        "Places from OpenBible.info Bible Geocoding Data, under CC BY 4.0. Coastline from Natural Earth, in the public domain."
+      ],
+      "text_es": [
+        "Lugares de OpenBible.info Bible Geocoding Data, con licencia CC BY 4.0. Costas de Natural Earth, de dominio público."
+      ],
+      "text_pt": [
+        "Lugares do OpenBible.info Bible Geocoding Data, sob a licença CC BY 4.0. Litoral do Natural Earth, de domínio público."
+      ]
+    },
+    {
+      "title": "Verse counts and word index",
+      "title_es": "Número de versículos e índice de palabras",
+      "title_pt": "Contagem de versículos e índice de palavras",
+      "text": [
+        "From the Berean Standard Bible (public domain), via scrollmapper/bible_databases (MIT). Only counts and an index are used; no verse text is published."
+      ],
+      "text_es": [
+        "De la Berean Standard Bible (dominio público), a través de scrollmapper/bible_databases (MIT). Solo se usan los recuentos y un índice; no se publica texto de versículos."
+      ],
+      "text_pt": [
+        "Da Berean Standard Bible (domínio público), por meio do scrollmapper/bible_databases (MIT). Só são usadas contagens e um índice; nenhum texto de versículo é publicado."
+      ]
+    },
+    {
+      "title": "Fonts and code from others",
+      "title_es": "Fuentes y código de terceros",
+      "title_pt": "Fontes e código de terceiros",
+      "text": [
+        "Atkinson Hyperlegible by the Braille Institute, under the SIL Open Font License. QR codes by qrcode-generator (MIT, Kazuhiko Arase); \"QR Code\" is a trademark of DENSO WAVE."
+      ],
+      "text_es": [
+        "Atkinson Hyperlegible del Braille Institute, con la licencia SIL Open Font. Códigos QR con qrcode-generator (MIT, Kazuhiko Arase); \"QR Code\" es una marca de DENSO WAVE."
+      ],
+      "text_pt": [
+        "Atkinson Hyperlegible, do Braille Institute, sob a SIL Open Font License. Códigos QR com o qrcode-generator (MIT, Kazuhiko Arase); \"QR Code\" é uma marca da DENSO WAVE."
+      ]
+    },
+    {
+      "title": "Bible.com and translation names",
+      "title_es": "Bible.com y nombres de traducciones",
+      "title_pt": "Bible.com e nomes de traduções",
+      "text": [
+        "Passages open on Bible.com (YouVersion); nothing from Bible.com is copied. Translation names such as NIV and ESV are trademarks of their owners and are used only to label links. This project is not affiliated with Bible.com or any publisher."
+      ],
+      "text_es": [
+        "Los pasajes se abren en Bible.com (YouVersion); no se copia nada de Bible.com. Los nombres de traducciones como NVI o RVR1960 son marcas de sus dueños y solo se usan para nombrar enlaces. Este proyecto no está afiliado a Bible.com ni a ninguna editorial."
+      ],
+      "text_pt": [
+        "As passagens abrem no Bible.com (YouVersion); nada do Bible.com é copiado. Nomes de traduções como NVI e ARA são marcas dos seus donos e só servem para nomear links. Este projeto não tem vínculo com o Bible.com nem com nenhuma editora."
+      ]
+    },
+    {
+      "title": "Inspiration",
+      "title_es": "Inspiración",
+      "title_pt": "Inspiração",
+      "text": [
+        "The arc picture is inspired by the 2007 cross reference visualization by Chris Harrison and Christoph Römhild."
+      ],
+      "text_es": [
+        "La imagen de arcos se inspira en la visualización de referencias cruzadas de 2007 de Chris Harrison y Christoph Römhild."
+      ],
+      "text_pt": [
+        "A imagem de arcos se inspira na visualização de referências cruzadas de 2007 de Chris Harrison e Christoph Römhild."
+      ]
+    },
+    {
+      "title": "This project",
+      "title_es": "Este proyecto",
+      "title_pt": "Este projeto",
+      "text": [
+        "Created by JoeMighty. Code under the Apache License 2.0; written content under CC BY 4.0. Full details are in the project's THIRD_PARTY_NOTICES file on GitHub."
+      ],
+      "text_es": [
+        "Creado por JoeMighty. Código con licencia Apache 2.0; contenido escrito con licencia CC BY 4.0. Todos los detalles están en el archivo THIRD_PARTY_NOTICES del proyecto en GitHub."
+      ],
+      "text_pt": [
+        "Criado por JoeMighty. Código sob a Licença Apache 2.0; conteúdo escrito sob CC BY 4.0. Todos os detalhes estão no arquivo THIRD_PARTY_NOTICES do projeto no GitHub."
+      ]
+    }
+  ]
+}

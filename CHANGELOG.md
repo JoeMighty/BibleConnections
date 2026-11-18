@@ -5,6 +5,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- Terms of use, Accessibility and Credits and licenses pages, in English, Spanish and Portuguese, linked from every page footer and the About window.
+- The Privacy page now says who runs the site, that GitHub Pages hosts it (and what a web host receives), and your rights under UK data protection law.
+- A security contact: SECURITY.md and /.well-known/security.txt.
+
+### Fixed
+- The For churches page skipped a heading level, which screen readers rely on to move around a page.
+
 ## [0.20.0] - 2026-11-18 - Welcome
 
 ### Fixed

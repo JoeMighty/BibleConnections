@@ -14,7 +14,7 @@ test('the welcome page footer links to How to use and the Roadmap', async ({ pag
 for (const theme of ['light', 'dark']) {
   test(`How to use and Roadmap pages are accessible (${theme})`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: theme });
-    for (const u of ['/guide.html', '/roadmap.html']) {
+    for (const u of ['/guide.html', '/roadmap.html', '/privacy.html', '/terms.html', '/accessibility.html', '/credits.html', '/churches.html']) {
       await page.goto(u);
       await expect(page.locator('main h1')).toBeVisible();
       const results = await new AxeBuilder({ page }).analyze();

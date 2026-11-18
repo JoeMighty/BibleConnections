@@ -1,0 +1,160 @@
+{
+  "updated": "2026-11-18",
+  "intro": "These terms explain how you can use Bible Connections. By using the site or the app, you agree to them. They are written to be short and plain.",
+  "intro_es": "Estos términos explican cómo puedes usar Bible Connections. Al usar el sitio o la aplicación, los aceptas. Están escritos de forma breve y sencilla.",
+  "intro_pt": "Estes termos explicam como você pode usar o Bible Connections. Ao usar o site ou o aplicativo, você concorda com eles. Foram escritos de forma curta e simples.",
+  "sections": [
+    {
+      "title": "Who runs this site",
+      "title_es": "Quién gestiona este sitio",
+      "title_pt": "Quem mantém este site",
+      "text": [
+        "Bible Connections is a free, independent project created and run by JoeMighty in the United Kingdom. It is not affiliated with Bible.com, YouVersion, any Bible publisher or any church. Contact: hello@bibleconnections.app."
+      ],
+      "text_es": [
+        "Bible Connections es un proyecto gratuito e independiente, creado y gestionado por JoeMighty en el Reino Unido. No está afiliado a Bible.com, YouVersion, ninguna editorial bíblica ni ninguna iglesia. Contacto: hello@bibleconnections.app."
+      ],
+      "text_pt": [
+        "O Bible Connections é um projeto gratuito e independente, criado e mantido por JoeMighty no Reino Unido. Não tem vínculo com o Bible.com, o YouVersion, nenhuma editora bíblica nem nenhuma igreja. Contato: hello@bibleconnections.app."
+      ]
+    },
+    {
+      "title": "Using the site",
+      "title_es": "Uso del sitio",
+      "title_pt": "Uso do site",
+      "text": [
+        "You can use Bible Connections for free, for personal study, in small groups, in church and in teaching. There is no account to create.",
+        "Please do not misuse the site, for example by trying to break it, overload it, or pass it off as your own."
+      ],
+      "text_es": [
+        "Puedes usar Bible Connections gratis, para el estudio personal, en grupos pequeños, en la iglesia y en la enseñanza. No hace falta crear una cuenta.",
+        "Por favor, no hagas un mal uso del sitio, por ejemplo intentando romperlo, sobrecargarlo o presentarlo como tuyo."
+      ],
+      "text_pt": [
+        "Você pode usar o Bible Connections de graça, para estudo pessoal, em pequenos grupos, na igreja e no ensino. Não é preciso criar conta.",
+        "Por favor, não faça mau uso do site, por exemplo tentando quebrá-lo, sobrecarregá-lo ou apresentá-lo como seu."
+      ]
+    },
+    {
+      "title": "Bible text",
+      "title_es": "Texto bíblico",
+      "title_pt": "Texto bíblico",
+      "text": [
+        "No Bible translation is stored or shown on this site. Reading and listening links open Bible.com, and its own terms apply there.",
+        "The Hebrew, Aramaic and Greek text comes from STEP Bible (Tyndale House) under CC BY 4.0."
+      ],
+      "text_es": [
+        "Este sitio no guarda ni muestra ninguna traducción de la Biblia. Los enlaces para leer y escuchar abren Bible.com, donde se aplican sus propios términos.",
+        "El texto hebreo, arameo y griego procede de STEP Bible (Tyndale House) con licencia CC BY 4.0."
+      ],
+      "text_pt": [
+        "Este site não guarda nem mostra nenhuma tradução da Bíblia. Os links para ler e ouvir abrem o Bible.com, onde valem os termos dele.",
+        "O texto hebraico, aramaico e grego vem do STEP Bible (Tyndale House) sob a licença CC BY 4.0."
+      ]
+    },
+    {
+      "title": "Reusing what you find here",
+      "title_es": "Reutilizar lo que encuentras aquí",
+      "title_pt": "Reutilizar o que você encontra aqui",
+      "text": [
+        "The code is open source under the Apache License 2.0. The written content (notes, journeys, book introductions, questions, themes, translations and guides) is under Creative Commons Attribution 4.0: you may share and adapt it, including in church materials, if you credit \"Bible Connections\" with a link to bibleconnections.app.",
+        "Data from others keeps its own license; see Credits and licenses."
+      ],
+      "text_es": [
+        "El código es de código abierto con la licencia Apache 2.0. El contenido escrito (notas, jornadas, introducciones a los libros, preguntas, temas, traducciones y guías) tiene la licencia Creative Commons Atribución 4.0: puedes compartirlo y adaptarlo, también en materiales de la iglesia, si citas \"Bible Connections\" con un enlace a bibleconnections.app.",
+        "Los datos de terceros mantienen su propia licencia; consulta Créditos y licencias."
+      ],
+      "text_pt": [
+        "O código é aberto sob a Licença Apache 2.0. O conteúdo escrito (notas, jornadas, introduções aos livros, perguntas, temas, traduções e guias) está sob a licença Creative Commons Atribuição 4.0: você pode compartilhar e adaptar, inclusive em materiais da igreja, desde que cite \"Bible Connections\" com um link para bibleconnections.app.",
+        "Os dados de terceiros mantêm a própria licença; veja Créditos e licenças."
+      ]
+    },
+    {
+      "title": "Your notes and shared links",
+      "title_es": "Tus notas y enlaces compartidos",
+      "title_pt": "Suas anotações e links compartilhados",
+      "text": [
+        "Your notes, saved items and settings stay on your device, and you are responsible for keeping a backup.",
+        "Collections and church pages are saved inside the link itself. Anyone with the link can see what is in it, so do not put private or personal information in them."
+      ],
+      "text_es": [
+        "Tus notas, elementos guardados y ajustes se quedan en tu dispositivo, y eres responsable de hacer una copia de seguridad.",
+        "Las colecciones y las páginas de iglesia se guardan dentro del propio enlace. Cualquiera que tenga el enlace puede ver su contenido, así que no incluyas información privada o personal."
+      ],
+      "text_pt": [
+        "Suas anotações, itens salvos e ajustes ficam no seu aparelho, e você é responsável por fazer um backup.",
+        "Coleções e páginas de igreja ficam guardadas dentro do próprio link. Qualquer pessoa com o link pode ver o conteúdo, então não coloque informações privadas ou pessoais nelas."
+      ]
+    },
+    {
+      "title": "Suggestions on GitHub",
+      "title_es": "Sugerencias en GitHub",
+      "title_pt": "Sugestões no GitHub",
+      "text": [
+        "Suggestions, notes and reports sent through the GitHub forms are public. If a suggestion is used, you agree that it can be published under CC BY 4.0 as part of the project."
+      ],
+      "text_es": [
+        "Las sugerencias, notas e informes enviados con los formularios de GitHub son públicos. Si se usa una sugerencia, aceptas que se publique con la licencia CC BY 4.0 como parte del proyecto."
+      ],
+      "text_pt": [
+        "Sugestões, notas e relatos enviados pelos formulários do GitHub são públicos. Se uma sugestão for usada, você concorda que ela seja publicada sob a licença CC BY 4.0 como parte do projeto."
+      ]
+    },
+    {
+      "title": "A study aid, not an authority",
+      "title_es": "Una ayuda para el estudio, no una autoridad",
+      "title_pt": "Uma ajuda para o estudo, não uma autoridade",
+      "text": [
+        "Cross references are chosen by people and voted on by readers; they are interpretive, and reasonable people disagree about some of them. Notes, journeys and introductions are written carefully, but they are not a substitute for reading Scripture itself, for your church, or for pastoral care."
+      ],
+      "text_es": [
+        "Las referencias cruzadas las eligen personas y las votan los lectores; son interpretativas y hay quien no está de acuerdo con algunas. Las notas, jornadas e introducciones se escriben con cuidado, pero no sustituyen la lectura de la Escritura misma, a tu iglesia ni el cuidado pastoral."
+      ],
+      "text_pt": [
+        "As referências cruzadas são escolhidas por pessoas e votadas por leitores; elas são interpretativas, e há quem discorde de algumas. Notas, jornadas e introduções são escritas com cuidado, mas não substituem a leitura da própria Escritura, sua igreja nem o cuidado pastoral."
+      ]
+    },
+    {
+      "title": "No warranty",
+      "title_es": "Sin garantía",
+      "title_pt": "Sem garantia",
+      "text": [
+        "The site is provided as it is, without guarantees that it will always be available, complete or free of mistakes. As far as the law allows, we are not liable for any loss from using it. Nothing in these terms limits any rights you have that cannot be limited by law."
+      ],
+      "text_es": [
+        "El sitio se ofrece tal cual, sin garantía de que esté siempre disponible, completo o libre de errores. En la medida en que la ley lo permita, no somos responsables de ninguna pérdida derivada de su uso. Nada en estos términos limita los derechos que la ley no permite limitar."
+      ],
+      "text_pt": [
+        "O site é oferecido como está, sem garantia de que estará sempre disponível, completo ou livre de erros. Na medida permitida pela lei, não somos responsáveis por perdas decorrentes do uso. Nada nestes termos limita direitos que a lei não permite limitar."
+      ]
+    },
+    {
+      "title": "Other sites",
+      "title_es": "Otros sitios",
+      "title_pt": "Outros sites",
+      "text": [
+        "Links to Bible.com, GitHub and other sites are provided for convenience. We do not control those sites, and their own terms and privacy policies apply."
+      ],
+      "text_es": [
+        "Los enlaces a Bible.com, GitHub y otros sitios se ofrecen por comodidad. No controlamos esos sitios, y se aplican sus propios términos y políticas de privacidad."
+      ],
+      "text_pt": [
+        "Os links para o Bible.com, o GitHub e outros sites são oferecidos por conveniência. Não controlamos esses sites, e valem os termos e as políticas de privacidade deles."
+      ]
+    },
+    {
+      "title": "Changes and governing law",
+      "title_es": "Cambios y ley aplicable",
+      "title_pt": "Mudanças e lei aplicável",
+      "text": [
+        "These terms may change; the new version will be posted here with a new date. They are governed by the laws of England and Wales. Questions: hello@bibleconnections.app."
+      ],
+      "text_es": [
+        "Estos términos pueden cambiar; la nueva versión se publicará aquí con una fecha nueva. Se rigen por las leyes de Inglaterra y Gales. Preguntas: hello@bibleconnections.app."
+      ],
+      "text_pt": [
+        "Estes termos podem mudar; a nova versão será publicada aqui com uma nova data. Eles são regidos pelas leis da Inglaterra e do País de Gales. Dúvidas: hello@bibleconnections.app."
+      ]
+    }
+  ]
+}
