@@ -350,17 +350,17 @@
         "what_es": "Encuentra la cadena más corta de referencias cruzadas entre dos pasajes, o los pasajes con los que ambos se conectan.",
         "what_pt": "Encontre a menor cadeia de referências cruzadas entre duas passagens quaisquer, ou as passagens às quais ambas se ligam.",
         "steps": [
-          "Open Connect and type two passages.",
+          "Open Connect (on a phone: Study, then Connect two verses) and type two passages.",
           "Watch the chain light up on the map.",
           "Try Shared connections for the links they have in common."
         ],
         "steps_es": [
-          "Abre Conectar y escribe dos pasajes.",
+          "Abre Conectar (en el teléfono: Estudio y luego Conectar dos versículos) y escribe dos pasajes.",
           "Mira cómo la cadena se ilumina en el mapa.",
           "Prueba Conexiones compartidas para ver los vínculos que tienen en común."
         ],
         "steps_pt": [
-          "Abra Conectar e digite duas passagens.",
+          "Abra Conectar (no celular: Estudo e depois Ligar dois versículos) e digite duas passagens.",
           "Veja a cadeia se iluminar no mapa.",
           "Experimente Conexões em comum para ver as ligações que elas compartilham."
         ],
@@ -493,15 +493,15 @@
         "what_es": "Elige claro u oscuro, los colores de los arcos (incluido un estilo apto para daltonismo), el tamaño del texto, una letra más fácil de leer, el modo niños y las animaciones.",
         "what_pt": "Escolha claro ou escuro, as cores dos arcos (incluindo um estilo adequado para daltonismo), o tamanho do texto, uma fonte mais fácil de ler, o modo infantil e as animações.",
         "steps": [
-          "Open Settings from the gear button (or the Settings tab on a phone).",
+          "Open Settings from the gear button at the top (on a phone it is also under Me).",
           "Changes are saved on your device."
         ],
         "steps_es": [
-          "Abre Ajustes con el botón del engranaje (o la pestaña Ajustes en un teléfono).",
+          "Abre Ajustes con el botón del engranaje de arriba (en el teléfono también está en Yo).",
           "Los cambios se guardan en tu dispositivo."
         ],
         "steps_pt": [
-          "Abra Configurações pelo botão de engrenagem (ou pela aba Configurações no celular).",
+          "Abra Ajustes pelo botão de engrenagem no alto (no celular também fica em Eu).",
           "As alterações ficam salvas no seu dispositivo."
         ],
         "try": "",

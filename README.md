@@ -29,7 +29,7 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>
   <a href="LICENSE"><img alt="Code license: Apache 2.0" src="https://img.shields.io/badge/code-Apache%202.0-blue?style=plastic"></a>
   <a href="LICENSE-CONTENT.md"><img alt="Content license: CC BY 4.0" src="https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey?style=plastic"></a>
-  <img alt="Interface: English and Spanish" src="https://img.shields.io/badge/interface-English%20%7C%20Espa%C3%B1ol-orange?style=plastic">
+  <img alt="Interface: English, Spanish and Portuguese" src="https://img.shields.io/badge/interface-English%20%7C%20Espa%C3%B1ol%20%7C%20Portugu%C3%AAs-orange?style=plastic">
   <img alt="99 translations in 31 languages" src="https://img.shields.io/badge/translations-99%20in%2031%20languages-e8590c?style=plastic">
 </p>
 
@@ -43,13 +43,14 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### Explore the map
 - **Map:** 199,275 cross references with a strength slider, zoom (scroll, pinch, buttons, keyboard) and pan. Uses WebGL where a graphics chip is available.
-- **Welcome page:** a picture of the full map with an Old and New Testament timeline, search, connection of the day, themes, the current sermon series and "pick up where you left off".
+- **Welcome page:** one clear first step, "Look up a verse", with verses to try and a guided journey as the other way in. The map picture explains itself: one verse's arcs light up across the Bible with a caption and three of its passages to open. Below: free, no account, no adverts; a Today row (your plan, the season's plan, connection of the day); feelings and themes; and "Made for you" cards for personal reading, small groups and church leaders.
 - **Connections:** tap any arc to see both passages and open them on Bible.com.
 - **Why it connects:** 362 short explanations for the strongest links, with a filter to show only explained connections.
 - **Search:** references (`John 3:16`, `Psalm 23`, `Juan 3:16`), words (`shepherd`), Hebrew or Greek (`ἀγάπη`) or Strong's numbers (`G26`), with suggestions as you type and help with misspelled book names.
 - **How are you feeling?** and **Surprise me** on the welcome page, for an easy way in.
 - **Keyboard shortcuts:** press `?` to see them all.
-- **Filters:** Old/New Testament, 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
+- **Filters:** Show links (All, Old, New or Across the testaments), 10 categories, single books and 12 themes, with a "You're viewing" bar and Start over.
+- **Book at a glance:** open a book to see the books and verses it connects to most.
 - **Chronological view:** rearrange the books by when their events happen.
 - **How are these connected?:** the shortest chain of cross references between any two passages, animated on the map.
 - **Shared connections:** pick two passages and find the passages they both link to.
@@ -61,10 +62,10 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Chapter and book study:** key original words, places on a map, the book's introduction and reflection questions for any chapter or book.
 - **Prophecy and fulfilment:** 12 prophecies, 5 covenants and 6 symbols (lamb, shepherd, vine, temple, water, light), each followed from the Old Testament to the New as numbered stages on the map, with a short explanation of the kind of link (quotation, fulfilment, pattern or promise).
 - **Timeline:** 40 key events in order, from creation to Patmos, linked to their passages, places and the map.
-- **Places map:** a full view of its own, beside the connections map (switch with the Places tab, the Connections and Places control, or the M key). 1,277 places from OpenBible.info on an offline map you can drag, pinch and zoom, with dots sized by how often each place is named. It follows whatever is open: a chapter, verse, connection, journey step, person or topic lights up its places. Six journeys are drawn as routes with numbered stops: Abraham, the exodus, Paul's three journeys and his voyage to Rome.
+- **Places map:** a full view of its own, beside the connections map (switch with the Places tab, the Connections and Places control, or the M key). 1,277 places from OpenBible.info on an offline map you can drag, pinch and zoom, with dots sized by how often each place is named. It follows whatever is open: a chapter, verse, connection, journey step, person or topic lights up its places. Six routes are drawn with numbered stops: Abraham, the exodus, Paul's three journeys and his voyage to Rome.
 - **My notes:** private notes on any verse, kept on the device only, with export and import.
 - **Back up everything:** notes, saved items, collections, plan progress and settings in one file, restored on any device.
-- **Study hub:** 7 reading plans (including Advent, the twelve days of Christmas, Lent and Holy Week, each dated to the church calendar) with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
+- **Study hub:** grouped into Read, Learn and Teach: 7 reading plans (including Advent, the twelve days of Christmas, Lent and Holy Week, each dated to the church calendar) with saved progress and calendar reminders, 56 people and places, 42 topics, a "Guess the connection" game for groups, insights and a printable poster.
 - **Connection of the day:** on the welcome page, and as a daily calendar and RSS feed. It follows Advent, the twelve days of Christmas, Lent and Holy Week in season, and the welcome page shows the current season's reading, or the next season when it is three weeks away.
 
 ### Read and listen
@@ -77,6 +78,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
+- **For churches:** a page gathering every tool for pastors and group leaders ([churches.html](https://bibleconnections.app/churches.html)).
 - **Church page:** any church can make a page for its sermon series in Study, with this week's passage first, links to read each passage on Bible.com and see its connections, and embed code for its website. Everything is kept in the link, with no sign-up.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
 - **Collection slides:** show a collection as simple full-screen slides (title, one slide per item with its references, and a closing slide), moved with arrow keys, a clicker or a swipe, and printable as a PDF. References link to Bible.com; no translation text is shown.
@@ -84,15 +86,20 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Community notes:** a "Suggest a note" link on any connection without one opens a ready-made GitHub form.
 - **Report a weak link:** flag a connection that seems loose with a ready-made GitHub form, or hide it on your own device. Label a report `approved` on GitHub and a workflow opens a pull request that adds it to `site/content/weak-links.json`, which hides it for everyone once merged.
 
+### Reference pages
+- **Book and verse pages:** a page for each of the 66 books ([books](https://bibleconnections.app/books/)) and for the 1,000 most connected verses (for example [John 3:16](https://bibleconnections.app/verse/john-3-16/)), with their strongest connections and the Hebrew or Greek text. Built from the map data by `scripts/static-pages.mjs`.
+- **[How many cross references are in the Bible?](https://bibleconnections.app/cross-references/)** The full count, how it splits between the testaments, and why sources differ.
+- **Search engines and AI assistants:** sitemap with language versions, [llms.txt](https://bibleconnections.app/llms.txt) and link previews ([docs/SEO.md](docs/SEO.md)).
+
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.
 - **Spanish and Portuguese:** the full interface, journeys, plans, book introductions, questions, prophecy, timeline, handouts and guides in both languages, chosen automatically from the device. Search understands book names in all three languages.
 - **Settings:** language, light, dark or system appearance, five arc color styles (including a color-blind friendly one), text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Gentle animations on desktop:** the welcome page eases in, and a light travels along each connection you select. Off for reduced motion, and switchable in Settings.
-- **Made for phones:** the details slide up from the bottom as a sheet you can drag, like the Maps app, with the map filling the space above. A Back button steps back through what you opened, search also lists matching people, places, topics, words and journeys, verse sections open and close, and deleting something can be undone.
+- **Made for phones:** tabs for Home, Journeys, Places, Study and Me (notes, collections, plans, saved items and settings). The details slide up from the bottom as a sheet you can drag, like the Maps app, and the map keeps most of the screen. A verse's arcs fan out across the whole Bible, you can slide a finger along the books to pick a chapter, and swipe the details sideways for the next step or connection. A Back button steps back through what you opened, search also lists matching people, places, topics, words and journeys, verse sections open and close, and deleting something can be undone.
 - **Easy tapping on phones:** where several arcs lie close together, a short list lets you pick the one you meant.
 - **Saved and recent:** save items and see recently viewed, stored on the device only.
-- **Fast first load:** the welcome page loads about half as much as before, with the cross references packed into a smaller file and study text fetched only when needed.
+- **Fast first load:** the cross references are packed into a small file, a picture of the map shows while it loads, and the Hebrew and Greek, dictionary and places load only when needed (a shared verse link downloads about 1.4 MB).
 - **Installable and offline:** works as an app and without a connection after the first visit. Studied passages are saved as you go, and **Save for offline** downloads all the original language text, word studies and places at once (Bible.com links still need the internet).
 - **Accessible:** keyboard support, screen reader announcements, list alternatives to the map, 44px touch targets, reduced motion support, tested with axe in both languages and themes.
 
@@ -105,7 +112,10 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Growing the reach of the project](docs/PROMOTION.md)
 - [Content review packet for pastors](docs/THEOLOGY-REVIEW.md)
 - [Portuguese: plan and progress](docs/PORTUGUESE.md)
-- [Google Play: plan](docs/PLAY-STORE.md)
+- [Google Play: plan](docs/PLAY-STORE.md) and [store listing drafts](docs/store/)
+- [Search engines](docs/SEO.md)
+- [For churches](https://bibleconnections.app/churches.html)
+- [Privacy](https://bibleconnections.app/privacy.html)
 
 ## Contributing
 
