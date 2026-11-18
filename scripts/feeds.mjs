@@ -19,6 +19,8 @@ const osisToIndex = (o) => {
   return chapterStart[bi][ci] + Math.min(Math.max(+v, 1), b.chapters[ci]) - 1;
 };
 const label = (v) => `${meta.books[verseBook[v]].name} ${verseChap[v]}:${verseNum[v]}`;
+// the same wording as refLabel() in app.js, so a passage such as Galatians 6:9-10 keeps its end verse
+const rangeLabel = (v, e = v) => (e === v ? label(v) : verseBook[e] === verseBook[v] && verseChap[e] === verseChap[v] ? `${label(v)}-${verseNum[e]}` : `${label(v)} to ${label(e)}`);
 const toOsis = (v) => `${meta.books[verseBook[v]].osis}.${verseChap[v]}.${verseNum[v]}`;
 
 // same matching as the website: every cross reference whose pair has a note
@@ -54,16 +56,16 @@ function seasonal(day) {
   const va = osisToIndex(pair.a), vb = osisToIndex(pair.b);
   for (let i = 0; i < raw.length / 4; i++) {
     const f = raw[i * 4], t = raw[i * 4 + 1], e = raw[i * 4 + 2];
-    if ((f === va && t <= vb && vb <= e) || (f === vb && t <= va && va <= e)) return { f, t, note: pair.note, type };
+    if ((f === va && t <= vb && vb <= e) || (f === vb && t <= va && va <= e)) return { f, t, e, note: pair.note, type };
   }
   return null;
 }
 const entry = (day) => {
   const s = seasonal(day);
-  if (s) return { day, title: `${label(s.f)} and ${label(s.t)}`, note: s.note, type: s.type, url: `${SITE}?c=${toOsis(s.f)}_${toOsis(s.t)}` };
-  const i = pick(day), f = raw[i * 4], t = raw[i * 4 + 1];
+  if (s) return { day, title: `${label(s.f)} and ${rangeLabel(s.t, s.e)}`, note: s.note, type: s.type, url: `${SITE}?c=${toOsis(s.f)}_${toOsis(s.t)}` };
+  const i = pick(day), f = raw[i * 4], t = raw[i * 4 + 1], e = raw[i * 4 + 2];
   const n = wanted.get(key(f, t));
-  return { day, title: `${label(f)} and ${label(t)}`, note: n.note, type: n.type, url: `${SITE}?c=${toOsis(f)}_${toOsis(t)}` };
+  return { day, title: `${label(f)} and ${rangeLabel(t, e)}`, note: n.note, type: n.type, url: `${SITE}?c=${toOsis(f)}_${toOsis(t)}` };
 };
 
 fs.mkdirSync(path.join(ROOT, 'site/feeds'), { recursive: true });

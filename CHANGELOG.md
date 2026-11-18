@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Fixed
+- The daily RSS and calendar feeds now show the whole passage when the connection of the day is a range (for example Galatians 6:9-10, not 6:9).
+
 ## [0.19.0] - 2026-11-18 - Pocket
 
 ### Changed
