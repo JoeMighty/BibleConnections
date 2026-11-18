@@ -78,8 +78,6 @@ test('desktop animations play and end in the normal resting state', async ({ pag
   await ready(page);
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'on');
   await expect(page.locator('#landing')).toHaveClass(/play/);
-  // the numbers count up and finish on the real values
-  await expect(page.locator('#landingStats strong').first()).toHaveText('199,275', { timeout: 5000 });
   // sections ease in as they scroll into view
   await page.locator('.landing-foot').scrollIntoViewIfNeeded();
   await expect(page.locator('.landing-inner > .reveal').last()).toHaveClass(/in/);

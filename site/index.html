@@ -95,13 +95,22 @@
       <div class="hero-head">
         <h2 id="landingTitle">See how the whole Bible fits together</h2>
         <div class="hero-side">
-          <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Tap one to find out how they connect!</p>
-          <p class="lede adult-only">Every arc joins two passages that point to each other. Tens of thousands of links, from Genesis to Revelation, telling one connected story.</p>
-          <p class="first-visit" id="firstVisit" hidden>New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map is one of them.</p>
-          <div class="landing-actions">
-            <button type="button" class="btn big" data-start="map">Explore the map</button>
-            <button type="button" class="btn ghost big" data-start="journeys">Take a guided journey</button>
-          </div>
+          <p class="lede kids-only">Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads!</p>
+          <p class="lede promise adult-only">Look up any verse and see every passage that points to it, from Genesis to Revelation. Read them in your own Bible translation.</p>
+          <form class="hero-search" id="landingSearch" role="search" aria-label="Look up a verse">
+            <label for="landingQ">Look up a verse</label>
+            <div class="search-row">
+              <input id="landingQ" type="search" placeholder="John 3:16 or a word" autocomplete="off" spellcheck="false" enterkeyhint="search">
+              <button type="submit" class="btn">Show connections</button>
+            </div>
+            <p class="try-row"><span class="muted">Try</span>
+              <button type="button" class="chip" data-hero-q="John 3:16">John 3:16</button>
+              <button type="button" class="chip" data-hero-q="Psalm 23">Psalm 23</button>
+              <button type="button" class="chip" data-hero-q="Romans 8:28">Romans 8:28</button>
+            </p>
+          </form>
+          <p class="first-visit" id="firstVisit" hidden>New here? A cross reference is a place where one passage of the Bible points to another, like a “see also” note. Each arc on the map below is one of them.</p>
+          <p class="hero-alt"><button type="button" class="link-btn" data-start="journeys">Or take a 5 minute guided journey <span aria-hidden="true">›</span></button></p>
         </div>
       </div>
       <figure class="hero-figure is-loading">
@@ -110,18 +119,12 @@
           <span class="axis-ot"><b>Old Testament</b><i>Genesis</i></span>
           <span class="axis-nt"><b>New Testament</b><i>Matthew</i><i class="end">Revelation</i></span>
         </div>
+        <figcaption class="hero-map"><button type="button" class="btn ghost" data-start="map">Explore the whole map <span aria-hidden="true">›</span></button></figcaption>
       </figure>
     </div>
-    <div class="stat-band"><ul class="stat-row" id="landingStats" aria-label="At a glance"></ul></div>
-    <div class="landing-search-wrap">
-        <form class="landing-search" id="landingSearch" role="search" aria-label="Jump to a verse or word">
-        <label for="landingQ">Jump to a verse, chapter or word</label>
-        <div class="search-row">
-          <input id="landingQ" type="search" placeholder="e.g. John 3:16, shepherd or ἀγάπη" autocomplete="off" spellcheck="false">
-          <button type="submit" class="btn">Go</button>
-        </div>
-      </form>
-    </div>
+    <ul class="trust-strip" aria-label="About this site">
+      <li>Free</li><li>No account</li><li>No adverts</li><li>Your notes stay on this device</li><li>English, Español, Português</li><li>Data from OpenBible.info and STEP Bible</li>
+    </ul>
     <div class="landing-inner">
       <section class="landing-series your-plan" id="landingPlan" aria-labelledby="yourPlanTitle" hidden></section>
       <section class="landing-series season-banner" id="seasonBanner" aria-labelledby="seasonTitle" hidden></section>

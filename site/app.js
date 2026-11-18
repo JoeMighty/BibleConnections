@@ -4743,14 +4743,6 @@
   function playLanding() {
     if (document.documentElement.dataset.motion !== 'on' || landing.hidden) return;
     landing.classList.remove('play'); void landing.offsetWidth; landing.classList.add('play');
-    const nums = [...$('landingStats').querySelectorAll('strong[data-n]')];
-    const t0 = performance.now(), D = 1300;
-    const tick = (t) => {
-      const p = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - p, 3);
-      for (const el2 of nums) el2.textContent = Math.round(+el2.dataset.n * e).toLocaleString(LANGS[LANG].locale);
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
     if ('IntersectionObserver' in window) {
       if (!revealObserver) revealObserver = new IntersectionObserver((entries) => {
         for (const en of entries) if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); }
@@ -4761,10 +4753,6 @@
   // the guide and roadmap pages open in the same language as the site
   if (LANG !== 'en') for (const a of document.querySelectorAll('#footGuide, #footRoadmap, a.lang-link')) a.setAttribute('href', a.getAttribute('href') + '?lang=' + LANG);
   function buildLanding() {
-    const fmt = (n) => n.toLocaleString(LANGS[LANG].locale);
-    $('landingStats').innerHTML = [
-      [fmt(N), 'cross references'], [fmt(TOTAL), 'verses'], ['66', 'books'], [String(JOURNEYS.length), 'guided journeys'],
-    ].map(([n, l]) => `<li><strong data-n="${n.replace(/\D/g, '')}">${n}</strong> <span>${l}</span></li>`).join('');
     playLanding();
     const S = window.SERIES || {};
     $('landingSeries').hidden = !S.enabled;
@@ -4786,10 +4774,12 @@
     const btn = e.target.closest('button');
     if (!btn) return;
     if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
+    if (btn.dataset.heroQ) { track('home/try'); $('landingQ').value = btn.dataset.heroQ; $('landingSearch').requestSubmit(); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
     if (btn.dataset.seasonPlan) { hideLanding(); track('season/' + btn.dataset.seasonPlan); openPlan(btn.dataset.seasonPlan, +btn.dataset.day); focusPanelHeading(); return; }
     if (btn.dataset.seasonJourney) { hideLanding(); startJourney(+btn.dataset.seasonJourney, 0); focusPanelHeading(); return; }
+    if (btn.dataset.start) track('home/' + btn.dataset.start);
     if (btn.dataset.start === 'map') {
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString(LANGS[LANG].locale)} connections. Use the details panel or arrow keys to explore.`);
@@ -4811,6 +4801,7 @@
     e.preventDefault();
     const q = $('landingQ').value.trim();
     if (!q) { $('landingQ').focus(); return; }
+    track('home/search');
     hideLanding();
     el.search.value = q;
     runSearch().then(focusPanelHeading);

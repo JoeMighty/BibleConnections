@@ -17,7 +17,10 @@ test('landing page shows on first visit and opens the map', async ({ page }) => 
   await page.goto('/');
   await ready(page);
   await expect(page.locator('#landing')).toBeVisible();
-  await expect(page.locator('#landingStats li')).toHaveCount(4);
+  // one main action: look up a verse, with a guided journey and the whole map as the other ways in
+  await expect(page.locator('#landingQ')).toBeVisible();
+  await expect(page.locator('.hero-search button[type=submit]')).toHaveText('Show connections');
+  await expect(page.locator('.trust-strip li')).toHaveCount(6);
   await page.click('[data-start=map]');
   await expect(page.locator('#landing')).toBeHidden();
   await expect(page.locator('#viz')).toBeFocused();
@@ -53,6 +56,10 @@ test('landing search, theme and journey shortcuts work', async ({ page }) => {
   await page.click('#homeLink');
   await page.click('[data-start=journeys]');
   await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+  // a suggested verse opens straight away
+  await page.click('#homeLink');
+  await page.locator('[data-hero-q="Psalm 23"]').click();
+  await expect(page.locator('#panelTitle')).toHaveText(/^Psalms? 23$/);
 });
 
 test('landing is skipped for shared links', async ({ page }) => {

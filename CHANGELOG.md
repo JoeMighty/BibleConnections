@@ -5,6 +5,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- Welcome page: one clear first step. A promise line says what the site does ("Look up any verse and see every passage that points to it"), a large "Look up a verse" box with Show connections is the main action, with John 3:16, Psalm 23 and Romans 8:28 to try. A guided journey is offered underneath, and "Explore the whole map" sits under the picture.
+- Welcome page: a strip says what you can count on: free, no account, no adverts, your notes stay on this device, three languages, and where the data comes from.
+- Welcome page: the band of numbers is gone (its counts did not match the rest of the site), and the separate search box below it is merged into the main one.
+
 ### Fixed
 - The daily RSS and calendar feeds now show the whole passage when the connection of the day is a range (for example Galatians 6:9-10, not 6:9).
 
