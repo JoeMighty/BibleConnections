@@ -940,7 +940,18 @@
     "Romans 8:28": "Romanos 8:28",
     "connects to {n} passages across the Bible. Each arc joins two passages that point to each other.": "se conecta a {n} passagens em toda a Bíblia. Cada arco une duas passagens que apontam uma para a outra.",
     "Some of the passages it connects to": "Algumas das passagens com que se conecta",
-    "{n} votes": "{n} votos"
+    "{n} votes": "{n} votos",
+    "For churches": "Para igrejas",
+    "Made for you": "Feito para você",
+    "For your own reading": "Para sua leitura pessoal",
+    "Look up a verse and follow where it leads. Keep a short reading plan going, or find passages for how you are feeling today.": "Busque um versículo e siga aonde ele leva. Mantenha um plano de leitura curto ou encontre passagens para como você está se sentindo hoje.",
+    "Start a reading plan": "Começar um plano de leitura",
+    "For small groups": "Para pequenos grupos",
+    "Guided journeys with questions to talk about, a printable handout with leader notes, and a quick quiz for the group.": "Jornadas guiadas com perguntas para conversar, uma folha para imprimir com notas para o líder e um jogo rápido para o grupo.",
+    "Choose a journey": "Escolher uma jornada",
+    "For church leaders": "Para líderes da igreja",
+    "Put your sermon series on your church website, turn passages into slides, and print a poster of the whole map.": "Coloque sua série de sermões no site da igreja, transforme passagens em slides e imprima um pôster do mapa inteiro.",
+    "See the tools for churches": "Ver as ferramentas para igrejas"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1140,7 +1151,8 @@
       "Privacy": "Privacidade",
       "Last updated {d}": "Última atualização: {d}",
       "Page not found": "Página não encontrada",
-      "This page does not exist. It may have moved, or the address may have a typo.": "Esta página não existe. Ela pode ter mudado de lugar ou o endereço pode ter um erro."
+      "This page does not exist. It may have moved, or the address may have a typo.": "Esta página não existe. Ela pode ter mudado de lugar ou o endereço pode ter um erro.",
+      "For churches": "Para igrejas"
     },
     "slides": {
       "Slides": "Slides",

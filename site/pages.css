@@ -126,3 +126,4 @@ main section p { max-width: 40em; }
 .qa p { max-width: 40em; }
 .qa .list { margin-bottom: 12px; }
 @media (max-width: 480px) { .meter { width: 44px; } .stat-n { font-size: 24px; } }
+.church-note { margin-top: 28px; max-width: 40em; }

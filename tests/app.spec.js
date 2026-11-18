@@ -283,18 +283,23 @@ for (const [name, viewport] of [['iPad landscape', { width: 1180, height: 820 }]
   });
 }
 
-test('welcome page cards open word study and the passage explorer', async ({ page }) => {
+test('welcome page cards are made for readers, groups and church leaders', async ({ page }) => {
   await page.goto('/');
   await ready(page);
   await expect(page.locator('#landingAxis')).toContainText('New Testament');
-  await page.locator('.way[data-start=wordstudy]').click();
+  await expect(page.locator('.audiences .aud')).toHaveCount(3);
+  await page.locator('.aud [data-start=plans]').click();
   await expect(page.locator('#landing')).toBeHidden();
-  await expect(page.locator('#panelTitle')).toHaveText('Word study');
+  await expect(page.locator('#panelTitle')).toHaveText('Reading plans');
   await page.goto('/');
   await ready(page);
-  await page.locator('.way[data-start=passage]').click();
-  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
-  await expect(page.locator('#secContext')).toBeVisible();
+  await page.locator('.aud [data-start=journeys]').click();
+  await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+  await page.goto('/');
+  await ready(page);
+  await page.locator('#churchesLink').click();
+  await expect(page).toHaveURL(/churches\.html/);
+  await expect(page.locator('h1')).toHaveText('For churches');
 });
 
 test('clicking outside a pop-up closes it', async ({ page }) => {

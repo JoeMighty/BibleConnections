@@ -30,6 +30,15 @@
       main.innerHTML = `<h1>${esc(t('Page not found'))}</h1>
         <p class="lede">${esc(t('This page does not exist. It may have moved, or the address may have a typo.'))}</p>
         <p><a href="${esc(withLang('/'))}">${esc(t('Open the map'))}</a> · <a href="${esc(withLang('/guide.html'))}">${esc(t('How to use'))}</a></p>`;
+    } else if (page === 'churches') {
+      const C = await (await fetch('content/churches.json')).json();
+      document.title = `${t('For churches')} · Bible Connections`;
+      const mail = (x) => esc(x).replace(/hello@bibleconnections\.app/g, '<a href="mailto:hello@bibleconnections.app">hello@bibleconnections.app</a>');
+      main.innerHTML = `<h1>${esc(t('For churches'))}</h1>
+        <p class="lede">${esc(pick(C, 'intro'))}</p>
+        <ul class="cards">${C.tools.map(it => `<li class="card"><h3>${esc(pick(it, 'title'))}</h3><p>${esc(pick(it, 'text'))}</p>
+          <p class="try"><a href="${esc(withLang(/^[?]/.test(it.try) ? './' + it.try : it.try))}">${esc(pick(it, 'try_label'))}</a></p></li>`).join('')}</ul>
+        <p class="muted church-note">${mail(pick(C, 'note'))}</p>`;
     } else if (page === 'privacy') {
       const P = await (await fetch('content/privacy.json')).json();
       document.title = `${t('Privacy')} · Bible Connections`;

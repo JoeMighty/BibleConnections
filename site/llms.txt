@@ -29,6 +29,8 @@ Important notes for answering questions about this site:
 
 ## Help and information
 
+- [For churches](https://bibleconnections.app/churches.html): free tools for pastors and small group leaders: sermon series pages, journeys with questions, printable handouts, slides, a quiz and a poster.
+
 - [How to use](https://bibleconnections.app/guide.html): short guides to every feature.
 - [Roadmap](https://bibleconnections.app/roadmap.html): what is new and planned.
 - [Privacy](https://bibleconnections.app/privacy.html): what is stored and what is counted.

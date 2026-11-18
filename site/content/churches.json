@@ -1,0 +1,59 @@
+{
+  "intro": "Free tools for pastors, small group leaders and youth leaders. No accounts, no adverts and nothing to install: it works on a phone, a laptop or the screen at church.",
+  "intro_es": "Herramientas gratuitas para pastores, líderes de grupos pequeños y de jóvenes. Sin cuentas, sin anuncios y sin instalar nada: funciona en el teléfono, en el portátil o en la pantalla de la iglesia.",
+  "intro_pt": "Ferramentas gratuitas para pastores, líderes de pequenos grupos e de jovens. Sem contas, sem anúncios e sem instalar nada: funciona no celular, no notebook ou no telão da igreja.",
+  "tools": [
+    {
+      "title": "Sermon series page", "title_es": "Página de la serie de sermones", "title_pt": "Página da série de sermões",
+      "text": "List your series once and get a page with this week's passage first, links to read it, and how it connects. Share the link or embed it on your church website.",
+      "text_es": "Escribe tu serie una vez y obtén una página con el pasaje de esta semana primero, enlaces para leerlo y cómo se conecta. Comparte el enlace o insértalo en el sitio web de tu iglesia.",
+      "text_pt": "Cadastre sua série uma vez e receba uma página com a passagem desta semana em primeiro lugar, links para lê-la e como ela se conecta. Compartilhe o link ou insira no site da sua igreja.",
+      "try": "?view=church", "try_label": "Make a sermon series page", "try_label_es": "Crear una página de serie", "try_label_pt": "Criar uma página da série"
+    },
+    {
+      "title": "Guided journeys for groups", "title_es": "Jornadas guiadas para grupos", "title_pt": "Jornadas guiadas para grupos",
+      "text": "Sixteen step-by-step journeys, such as The Lamb of God and Holy Week, each with questions to talk about and a leader guide.",
+      "text_es": "Dieciséis jornadas paso a paso, como El Cordero de Dios y Semana Santa, cada una con preguntas para conversar y una guía para el líder.",
+      "text_pt": "Dezesseis jornadas passo a passo, como O Cordeiro de Deus e Semana Santa, cada uma com perguntas para conversar e um guia para o líder.",
+      "try": "?view=journeys", "try_label": "Choose a journey", "try_label_es": "Elegir una jornada", "try_label_pt": "Escolher uma jornada"
+    },
+    {
+      "title": "Printable handouts", "title_es": "Hojas para imprimir", "title_pt": "Folhas para imprimir",
+      "text": "One page per journey with every passage, questions and space for notes. The leader version adds background and answers.",
+      "text_es": "Una página por jornada con todos los pasajes, preguntas y espacio para notas. La versión para el líder añade contexto y respuestas.",
+      "text_pt": "Uma página por jornada com todas as passagens, perguntas e espaço para anotações. A versão do líder traz contexto e respostas.",
+      "try": "handout.html?journey=lamb&guide=leader", "try_label": "See a leader handout", "try_label_es": "Ver una hoja para el líder", "try_label_pt": "Ver uma folha do líder"
+    },
+    {
+      "title": "Slides from your passages", "title_es": "Diapositivas con tus pasajes", "title_pt": "Slides com suas passagens",
+      "text": "Save the verses and connections you want to teach in a collection, then show them full screen as slides, with references only.",
+      "text_es": "Guarda en una colección los versículos y conexiones que quieres enseñar y muéstralos a pantalla completa como diapositivas, solo con las referencias.",
+      "text_pt": "Guarde numa coleção os versículos e conexões que você quer ensinar e mostre em tela cheia como slides, só com as referências.",
+      "try": "?view=collections", "try_label": "Start a collection", "try_label_es": "Empezar una colección", "try_label_pt": "Começar uma coleção"
+    },
+    {
+      "title": "Guess the connection", "title_es": "Adivina la conexión", "title_pt": "Adivinhe a conexão",
+      "text": "A quick quiz for youth groups and small groups: read a passage, then guess which other passage it links to.",
+      "text_es": "Un juego rápido para grupos de jóvenes y grupos pequeños: lee un pasaje y adivina con qué otro pasaje se relaciona.",
+      "text_pt": "Um jogo rápido para grupos de jovens e pequenos grupos: leia uma passagem e adivinhe a qual outra ela está ligada.",
+      "try": "?view=game", "try_label": "Play the quiz", "try_label_es": "Jugar", "try_label_pt": "Jogar"
+    },
+    {
+      "title": "A poster of the whole Bible", "title_es": "Un póster de toda la Biblia", "title_pt": "Um pôster da Bíblia inteira",
+      "text": "Download the full map as a high-resolution image to print for a classroom, hallway or youth room.",
+      "text_es": "Descarga el mapa completo como imagen de alta resolución para imprimirlo en un aula, un pasillo o la sala de jóvenes.",
+      "text_pt": "Baixe o mapa completo como imagem em alta resolução para imprimir na sala de aula, no corredor ou na sala dos jovens.",
+      "try": "?view=study", "try_label": "Print a poster (in Study)", "try_label_es": "Imprimir un póster (en Estudio)", "try_label_pt": "Imprimir um pôster (em Estudo)"
+    },
+    {
+      "title": "A connection every day", "title_es": "Una conexión cada día", "title_pt": "Uma conexão por dia",
+      "text": "Add the connection of the day to your church calendar or newsletter with the free calendar and RSS feeds.",
+      "text_es": "Añade la conexión del día al calendario o al boletín de tu iglesia con los canales gratuitos de calendario y RSS.",
+      "text_pt": "Adicione a conexão do dia ao calendário ou ao boletim da sua igreja com os feeds gratuitos de calendário e RSS.",
+      "try": "?view=study", "try_label": "Get the feeds (in Study)", "try_label_es": "Ver los canales (en Estudio)", "try_label_pt": "Ver os feeds (em Estudo)"
+    }
+  ],
+  "note": "Bible Connections stores no Bible translation: every passage opens on Bible.com in the translation your church uses. Questions or ideas: hello@bibleconnections.app.",
+  "note_es": "Bible Connections no guarda ninguna traducción de la Biblia: cada pasaje se abre en Bible.com en la traducción que usa tu iglesia. Preguntas o ideas: hello@bibleconnections.app.",
+  "note_pt": "O Bible Connections não guarda nenhuma tradução da Bíblia: cada passagem abre no Bible.com na tradução que sua igreja usa. Dúvidas ou ideias: hello@bibleconnections.app."
+}

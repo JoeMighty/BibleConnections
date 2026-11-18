@@ -4832,7 +4832,7 @@
     }
   }
   // the guide and roadmap pages open in the same language as the site
-  if (LANG !== 'en') for (const a of document.querySelectorAll('#footGuide, #footRoadmap, a.lang-link')) a.setAttribute('href', a.getAttribute('href') + '?lang=' + LANG);
+  if (LANG !== 'en') for (const a of document.querySelectorAll('#footGuide, #footRoadmap, #churchesLink, a.lang-link')) a.setAttribute('href', a.getAttribute('href') + '?lang=' + LANG);
   function buildLanding() {
     playLanding();
     const S = window.SERIES || {};
@@ -4866,7 +4866,7 @@
     }
     else if (btn.dataset.start === 'journeys') { hideLanding(); setMode('journeys'); }
     else if (btn.dataset.start === 'series') { hideLanding(); setMode('series'); }
-    else if (btn.dataset.start === 'study' || btn.dataset.start === 'wordstudy') { hideLanding(); setMode(btn.dataset.start); }
+    else if (['study', 'wordstudy', 'plans'].includes(btn.dataset.start)) { hideLanding(); setMode(btn.dataset.start); }
     else if (btn.dataset.start === 'surprise') { hideLanding(); surprise(); }
     else if (btn.dataset.feel) { hideLanding(); track('feeling/' + btn.dataset.feel); openEntity('topic', btn.dataset.feel).then(focusPanelHeading); }
     else if (btn.dataset.start === 'passage') { hideLanding(); el.search.value = 'John 3:16'; runSearch(); focusPanelHeading(); }

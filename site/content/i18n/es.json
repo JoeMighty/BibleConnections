@@ -939,7 +939,18 @@
     "Romans 8:28": "Romanos 8:28",
     "connects to {n} passages across the Bible. Each arc joins two passages that point to each other.": "se conecta con {n} pasajes de toda la Biblia. Cada arco une dos pasajes que se señalan entre sí.",
     "Some of the passages it connects to": "Algunos de los pasajes con los que se conecta",
-    "{n} votes": "{n} votos"
+    "{n} votes": "{n} votos",
+    "For churches": "Para iglesias",
+    "Made for you": "Hecho para ti",
+    "For your own reading": "Para tu lectura personal",
+    "Look up a verse and follow where it leads. Keep a short reading plan going, or find passages for how you are feeling today.": "Busca un versículo y sigue a dónde lleva. Mantén un plan de lectura corto o encuentra pasajes para cómo te sientes hoy.",
+    "Start a reading plan": "Empezar un plan de lectura",
+    "For small groups": "Para grupos pequeños",
+    "Guided journeys with questions to talk about, a printable handout with leader notes, and a quick quiz for the group.": "Jornadas guiadas con preguntas para conversar, una hoja para imprimir con notas para el líder y un juego rápido para el grupo.",
+    "Choose a journey": "Elegir una jornada",
+    "For church leaders": "Para líderes de la iglesia",
+    "Put your sermon series on your church website, turn passages into slides, and print a poster of the whole map.": "Pon tu serie de sermones en el sitio web de tu iglesia, convierte pasajes en diapositivas e imprime un póster de todo el mapa.",
+    "See the tools for churches": "Ver las herramientas para iglesias"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1139,7 +1150,8 @@
       "Privacy": "Privacidad",
       "Last updated {d}": "Última actualización: {d}",
       "Page not found": "Página no encontrada",
-      "This page does not exist. It may have moved, or the address may have a typo.": "Esta página no existe. Puede que se haya movido o que la dirección tenga un error."
+      "This page does not exist. It may have moved, or the address may have a typo.": "Esta página no existe. Puede que se haya movido o que la dirección tenga un error.",
+      "For churches": "Para iglesias"
     },
     "slides": {
       "Slides": "Diapositivas",
