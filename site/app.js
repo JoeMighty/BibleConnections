@@ -1301,9 +1301,16 @@
   }
 
   // ---------- Panel ----------
+  const ICON_PATHS = {
+    star: '<path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/>',
+    starFill: '<path fill="currentColor" d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/>',
+    x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+    ext: '<path d="M8 16 16.5 7.5M9.5 7.5h7v7"/>',
+  };
+  const ICON = (n) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON_PATHS[n]}</svg>`;
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   const ext = (href, html, cls = 'btn ghost small') =>
-    `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${html}<span class="sr-only"> (opens Bible.com in a new tab)</span> <span aria-hidden="true">↗</span></a>`;
+    `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${html}<span class="sr-only"> (opens Bible.com in a new tab)</span>${ICON('ext')}</a>`;
 
   function refCard(start, end, color) {
     return `<div class="verse-card" style="--c:${color}">
@@ -1369,7 +1376,7 @@
   }
   const shareButtons = () => {
     const saved = isSaved();
-    return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${saved ? '★ Saved' : '☆ Save'}</button>
+    return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${ICON(saved ? 'starFill' : 'star')}<span>${saved ? 'Saved' : 'Save'}</span></button>
       <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
       <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
       <button type="button" class="btn ghost small" data-action="image">Save image</button>
@@ -1822,7 +1829,7 @@
     let html = '';
     if (saved.length) {
       html += `<h3>Saved</h3><ul class="mini-list">${saved.map(x => `<li><button type="button" class="link-btn" data-action="goto" data-url="${esc(x.url)}">${esc(x.label)}</button>
-        <button type="button" class="ctx-x" data-action="unsave" data-url="${esc(x.url)}" aria-label="Remove ${esc(x.label)} from saved">✕</button></li>`).join('')}</ul>`;
+        <button type="button" class="ctx-x" data-action="unsave" data-url="${esc(x.url)}" aria-label="Remove ${esc(x.label)} from saved">${ICON('x')}</button></li>`).join('')}</ul>`;
     }
     if (recent.length) {
       html += `<h3>Recently viewed</h3><ul class="mini-list">${recent.slice(0, 6).map(x => `<li><button type="button" class="link-btn" data-action="goto" data-url="${esc(x.url)}">${esc(x.label)}</button></li>`).join('')}</ul>
@@ -2272,7 +2279,7 @@
     html += '</ul>';
     if (g.answered !== null) {
       const ok = g.answered === g.correct, n = noteMap.get(g.i);
-      html += `<p class="result ${ok ? 'ok' : 'no'}" role="status">${ok ? 'Correct!' : `Not quite. The answer is ${esc(refLabel(g.correct))}.`}</p>
+      html += `<p class="result ${ok ? 'ok' : 'no'}" role="status">${ok ? 'Correct.' : `Not quite. The answer is ${esc(refLabel(g.correct))}.`}</p>
         ${n ? `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p></div>` : ''}
         <div class="actions"><button type="button" class="btn" data-action="nextQuestion">Next question</button>${readBoth(g.correct, `Read ${esc(refLabel(g.correct))}`)}</div>`;
     }
@@ -5028,7 +5035,7 @@
     bar.hidden = !items.length;
     if (!items.length) { $('contextList').innerHTML = ''; return; }
     $('contextList').innerHTML = items.map(([k, label]) =>
-      `<li class="ctx-chip"><span>${esc(label)}</span><button type="button" class="ctx-x" data-clear="${k}" aria-label="Remove ${esc(label)}">✕</button></li>`).join('');
+      `<li class="ctx-chip"><span>${esc(label)}</span><button type="button" class="ctx-x" data-clear="${k}" aria-label="Remove ${esc(label)}">${ICON('x')}</button></li>`).join('');
   }
   $('contextBar').addEventListener('click', (e) => {
     const btn = e.target.closest('button');
@@ -5093,7 +5100,7 @@
     updateBack();
     if (push && !restoring && !EMBED) recordRecent();
     const sb = el.panelBody.querySelector('[data-action=save]');
-    if (sb) { const on = isSaved(); sb.setAttribute('aria-pressed', on); sb.textContent = on ? '★ Saved' : '☆ Save'; }
+    if (sb) { const on = isSaved(); sb.setAttribute('aria-pressed', on); sb.innerHTML = `${ICON(on ? 'starFill' : 'star')}<span>${esc(tr(on ? 'Saved' : 'Save'))}</span>`; }
   }
   function readURL() {
     const p = new URLSearchParams(location.search);

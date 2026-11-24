@@ -978,7 +978,10 @@
     "Start again": "Empezar de nuevo",
     "Reset settings": "Restablecer ajustes",
     "Puts appearance, text size, colors and translations back to how they were at first. Your notes, saved items, collections and plan progress are kept.": "Devuelve la apariencia, el tamaño del texto, los colores y las traducciones a como estaban al principio. Tus notas, elementos guardados, colecciones y progreso de planes se conservan.",
-    "Reset all settings to how they were at first? Your notes, saved items and collections are kept.": "¿Restablecer todos los ajustes a como estaban al principio? Tus notas, elementos guardados y colecciones se conservan."
+    "Reset all settings to how they were at first? Your notes, saved items and collections are kept.": "¿Restablecer todos los ajustes a como estaban al principio? Tus notas, elementos guardados y colecciones se conservan.",
+    "Save": "Guardar",
+    "Correct.": "Correcto.",
+    "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada línea de colores une dos lugares de la Biblia que hablan de lo mismo. Escribe un versículo para ver a dónde lleva."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

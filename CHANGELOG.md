@@ -12,6 +12,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - "You're viewing" lists only what you chose (a verse, a filter, a journey step), not the section you are in, and the map's filters and translations show only in Explore.
 - Old links to `?view=me` open the Library.
 - Going home keeps your place: the welcome page shows Continue with where you were (a verse, a journey step, a plan day). Explore the whole map starts a fresh map.
+- Cleaner look ("unslop" polish): real icons instead of text symbols for Save, close and open-in-Bible.com; spacing on a 4 point grid; fewer corner sizes; labels like "Echo" and "Quotation" in sentence case on a soft tint instead of shouty capitals; no exclamation marks in the interface.
 - Three separate resets, so nothing is lost by accident: Clear all (what you are looking at, shown only when more than one thing is open), Reset filters (only the filters) and Reset settings in Settings, which asks first and keeps your notes, saved items and collections.
 
 ### Added
