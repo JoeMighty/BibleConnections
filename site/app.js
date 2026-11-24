@@ -1432,7 +1432,7 @@
       else html += `<p class="hint">No note yet for this connection. <a href="${esc(suggestUrl(i))}" target="_blank" rel="noopener" data-track="suggest">Suggest a note<span class="sr-only"> (opens GitHub in a new tab)</span></a></p>`;
       html += `<div id="commonWords" data-a="${F[i]}" data-b="${T[i]}" data-e="${E[i]}"></div>`;
       html += hiddenLink[i] ? `<p class="hint">${hiddenLink[i] === 2 ? 'You hid this link on this device.' : 'This link is hidden from the map after readers reported it as weak.'}</p>` : '';
-      html += `<p class="muted">Strength: ${V[i]} votes on OpenBible.info</p>
+      html += `<p class="muted">${esc(tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[i].toLocaleString(LANGS[LANG].locale)))}</p>
         <div class="actions"><button type="button" class="btn small" data-action="zoomRef">Zoom to this arc</button>${shareButtons()}</div>
         <div class="actions">
           <button type="button" class="btn ghost small" data-action="focusVerse" data-v="${F[i]}">All links for ${esc(refLabel(F[i]))}</button>

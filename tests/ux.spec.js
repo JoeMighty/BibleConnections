@@ -175,3 +175,22 @@ test('three different resets: clear all, reset filters, reset settings', async (
   expect(await page.evaluate(() => localStorage.getItem('bc.textsize'))).toBeNull();
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.notes'))['John.3.16'].text)).toBe('keep me');
 });
+
+test('the three-step tour can be shown again from More, and strength is in plain words', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=more');
+  await ready(page);
+  await page.click('.me-row[data-action=tour]');
+  await expect(page.locator('#tips')).toBeVisible();
+  await expect(page.locator('#tipsTitle')).toHaveText('Getting around');
+  await expect(page.locator('#tipsCount')).toHaveText('1 of 3');
+  await page.click('#tipsNext');
+  await page.click('#tipsNext');
+  await expect(page.locator('#tipsNext')).toHaveText('Got it');
+  await page.click('#tipsNext');
+  await expect(page.locator('#tips')).toBeHidden();
+  await page.goto('/?c=Rom.8.28_Gen.50.20');
+  await ready(page);
+  await expect(page.locator('#panelBody')).toContainText('readers agree on this link');
+  await expect(page.locator('label[for=votes]')).toContainText('Readers who agree');
+});

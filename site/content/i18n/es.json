@@ -983,7 +983,18 @@
     "Correct.": "Correcto.",
     "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada línea de colores une dos lugares de la Biblia que hablan de lo mismo. Escribe un versículo para ver a dónde lleva.",
     "Help": "Ayuda",
-    "No verses found for \"{q}\". Check the spelling, try a shorter word, or a reference like John 3:16. You can also browse Topics and People in Explore.": "No se encontraron versículos para \"{q}\". Revisa la ortografía, prueba una palabra más corta o una referencia como Juan 3:16. También puedes ver Temas y Personas en Explorar."
+    "No verses found for \"{q}\". Check the spelling, try a shorter word, or a reference like John 3:16. You can also browse Topics and People in Explore.": "No se encontraron versículos para \"{q}\". Revisa la ortografía, prueba una palabra más corta o una referencia como Juan 3:16. También puedes ver Temas y Personas en Explorar.",
+    "Readers who agree:": "Lectores que coinciden:",
+    "or more": "o más",
+    "Each link was confirmed by readers on OpenBible.info. A lower number shows more arcs, including looser links.": "Cada conexión fue confirmada por lectores en OpenBible.info. Un número más bajo muestra más arcos, incluidas conexiones más débiles.",
+    "Getting around": "Cómo moverte",
+    "Explore.": "Explora.",
+    "Understand.": "Comprende.",
+    "Go deeper.": "Profundiza.",
+    "Every arc joins two passages that point to each other. Tap an arc, or tap or slide along the books at the bottom to pick a chapter. Pinch or scroll to zoom.": "Cada arco une dos pasajes que se señalan entre sí. Toca un arco, o toca o desliza por los libros de abajo para elegir un capítulo. Pellizca o desplaza para acercar.",
+    "Open any verse to see its Hebrew or Greek words, its context and every passage it connects to.": "Abre cualquier versículo para ver sus palabras en hebreo o griego, su contexto y cada pasaje con el que se conecta.",
+    "Follow a guided journey, save what you find to your Library, and share it with your group. You can see this tour again in More.": "Sigue una jornada guiada, guarda lo que encuentres en tu Biblioteca y compártelo con tu grupo. Puedes volver a ver este recorrido en Más.",
+    "{n} readers agree on this link (OpenBible.info)": "{n} lectores coinciden en esta conexión (OpenBible.info)"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
