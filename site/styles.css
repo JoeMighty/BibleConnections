@@ -1107,3 +1107,13 @@ a .i { margin-left: 4px; }
 .landing-foot .foot-group a { display: inline-flex; align-items: center; min-height: 32px; color: var(--muted); text-decoration: none; font-size: var(--t-subhead); }
 .landing-foot .foot-group a:hover { color: var(--link); }
 @media (max-width: 480px) { .landing-foot .foot-groups { grid-template-columns: 1fr 1fr; } }
+
+/* More under a verse or connection: the less used ways to share */
+.more-actions { display: contents; }
+.more-actions > summary { list-style: none; cursor: pointer; }
+.more-actions > summary::-webkit-details-marker { display: none; }
+.more-actions[open] > summary { background: var(--surface-3); }
+.more-actions > .actions { flex-basis: 100%; margin-top: 0; }
+/* the welcome page has one filled button, Show connections; the others are tinted */
+.landing .aud .btn, .landing .today .btn:not(.ghost), .landing .landing-cotd .btn:not(.ghost) { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--link); }
+:root[data-theme="light"] .landing .aud .btn, :root[data-theme="light"] .landing .today .btn:not(.ghost) { color: #00427f; }

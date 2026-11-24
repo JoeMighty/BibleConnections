@@ -1,4 +1,4 @@
-const { openSettings, showSearch, openMore } = require('./helpers');
+const { openSettings, showSearch, openMore, openShare } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const { execFileSync } = require('child_process');
@@ -104,6 +104,7 @@ test('story image downloads for a connection', async ({ page, isMobile }) => {
   test.skip(isMobile);
   await page.goto('/?c=Rom.8.28_Gen.50.20');
   await ready(page);
+  await openShare(page);
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#panel [data-action=story]')]);
   expect(dl.suggestedFilename()).toBe('bible-connection-story.png');
 });

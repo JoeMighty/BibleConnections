@@ -1,3 +1,4 @@
+const { openShare } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -101,6 +102,7 @@ test('small embed cards for a connection, verse, journey step and prophecy', asy
 test('the embed dialog offers a small card and fixed colors', async ({ page }) => {
   await page.goto('/?prophecy=bethlehem');
   await ready(page);
+  await openShare(page);
   await page.locator('[data-action=embed]').click();
   await page.locator('label:has(#embedKindCard)').click();
   await expect(page.locator('#embedCode')).toHaveValue(/card\.html\?prophecy=bethlehem/);

@@ -1,3 +1,4 @@
+const { openShare } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -70,11 +71,13 @@ test('connection of the day is the same all day and shown on the welcome page', 
 test('QR code, embed code and suggest a note', async ({ page }) => {
   await page.goto('/?c=Gen.1.3_2Cor.4.6');
   await ready(page);
+  await openShare(page);
   await page.click('[data-action=qr]');
   await expect(page.locator('#qrImage svg')).toBeVisible();
   const [qr] = await Promise.all([page.waitForEvent('download'), page.click('#qrDownload')]);
   expect(qr.suggestedFilename()).toBe('bible-connections-qr.png');
   await page.keyboard.press('Escape');
+  await openShare(page);
   await page.click('[data-action=embed]');
   await expect(page.locator('#embedCode')).toHaveValue(/<iframe src="[^"]+embed=1" title="Bible Connections: /);
   await page.keyboard.press('Escape');

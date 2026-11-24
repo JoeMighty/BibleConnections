@@ -1,4 +1,4 @@
-const { openSettings, showSearch, openMore, startOver, openAbout } = require('./helpers');
+const { openSettings, showSearch, openMore, startOver, openAbout, openShare } = require('./helpers');
 const { test, expect } = require('@playwright/test');
 
 const ready = (page) => page.waitForSelector('body[data-ready=true]');
@@ -136,6 +136,7 @@ test('copy references puts text on the clipboard', async ({ page, context, brows
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('/?c=Rom.8.28~Gen.50.20');
   await ready(page);
+  await openShare(page);
   await page.click('[data-action=copy]');
   const text = await page.evaluate(() => navigator.clipboard.readText());
   expect(text).toContain('Romans 8:28');

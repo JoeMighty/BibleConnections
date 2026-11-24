@@ -21,4 +21,9 @@ async function openAbout(page) {
   await page.click('[data-nav=more]');
   await page.click('.me-row[data-action=openAbout]');
 }
-module.exports = { openSettings, showSearch, openMore, startOver, openAbout };
+// Copy references, Save image, QR code and Embed sit under More below a verse or connection
+async function openShare(page) {
+  const d = page.locator('#panel details.more-actions').first();
+  if (await d.count() && !(await d.getAttribute('open') !== null)) await d.locator('summary').click();
+}
+module.exports = { openSettings, showSearch, openMore, startOver, openAbout, openShare };

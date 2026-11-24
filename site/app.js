@@ -1374,16 +1374,19 @@
     if (shown < list.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="more">Show more (${(list.length - shown).toLocaleString(LANGS[LANG].locale)} left)</button></div>`;
     return html;
   }
+  // the actions people use most stay in view (Save, Share, Add to collection); the rest sit under More
   const shareButtons = () => {
     const saved = isSaved();
     return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${ICON(saved ? 'starFill' : 'star')}<span>${saved ? 'Saved' : 'Save'}</span></button>
       <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
-      <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
-      <button type="button" class="btn ghost small" data-action="image">Save image</button>
       <button type="button" class="btn ghost small" data-action="addToCollection">Add to collection</button>
-      ${state.selected >= 0 && state.mode === 'explore' ? '<button type="button" class="btn ghost small" data-action="story">Story image</button>' : ''}
-      <button type="button" class="btn ghost small" data-action="qr">QR code</button>
-      <button type="button" class="btn ghost small" data-action="embed">Embed</button>`;
+      <details class="more-actions"><summary class="btn ghost small">More</summary><div class="actions tight">
+        <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
+        <button type="button" class="btn ghost small" data-action="image">Save image</button>
+        ${state.selected >= 0 && state.mode === 'explore' ? '<button type="button" class="btn ghost small" data-action="story">Story image</button>' : ''}
+        <button type="button" class="btn ghost small" data-action="qr">QR code</button>
+        <button type="button" class="btn ghost small" data-action="embed">Embed</button>
+      </div></details>`;
   };
 
   let lastPanelSel = -2, studyTextReady = false, studyWaiting = false;

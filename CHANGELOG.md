@@ -17,6 +17,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Search keeps your words as you typed them, and when nothing is found it suggests what to try next.
 - Plainer wording for how strong a link is: "Readers who agree: 7 or more" instead of "Minimum strength: 7 votes", and "320 readers agree on this link" on a connection.
 - A three-step tour for first visits (Explore, Understand, Go deeper), which you can see again from More.
+- Below a verse or connection, the main actions (Save, Share or Copy link, Add to collection) stay in view and the rest (Copy references, Save image, QR code, Embed) sit under More. The welcome page has one filled button, Show connections; the others are tinted.
 - Three separate resets, so nothing is lost by accident: Clear all (what you are looking at, shown only when more than one thing is open), Reset filters (only the filters) and Reset settings in Settings, which asks first and keeps your notes, saved items and collections.
 
 ### Added
