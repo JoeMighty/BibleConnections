@@ -5,6 +5,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- Navigation: five sections, the same on phones and computers. **Explore** (the map, places, people, topics, timeline, prophecy and books), **Journeys** (guided journeys, reading plans, and tools for groups and churches), **Study** (look up a passage, word study, connect two verses, shared connections, insights), **Library** (notes, collections, plan progress, saved and recent items, backup) and **More** (settings, the tour, help, about and the small print). Search and Settings are at the top of every screen, and the logo goes to the welcome page.
+- Tapping the tab you are on goes back to the start of that section, instead of closing it.
+- The Connections / Places switch is at the top of the Explore panel instead of on the map.
+- "You're viewing" lists only what you chose (a verse, a filter, a journey step), not the section you are in, and the map's filters and translations show only in Explore.
+- Old links to `?view=me` open the Library.
+
 ### Added
 - Terms of use, Accessibility and Credits and licenses pages, in English, Spanish and Portuguese, linked from every page footer and the About window.
 - The Privacy page now says who runs the site, that GitHub Pages hosts it (and what a web host receives), and your rights under UK data protection law.

@@ -257,7 +257,7 @@ test('browser back steps back through what you looked at', async ({ page }) => {
 test('home button returns to the landing page and clears everything', async ({ page }) => {
   await page.goto('/?theme=love&ref=John+3%3A16');
   await ready(page);
-  await page.click('#homeBtn');
+  await page.click('#homeLink');
   await expect(page.locator('#landing')).toBeVisible();
   await expect(page).toHaveURL(/\/$/);
   await page.click('[data-start=map]');

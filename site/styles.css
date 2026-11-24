@@ -999,7 +999,7 @@ details.study-sec:not([open]) { padding-bottom: 0; }
   .context-bar:not(:has(.ctx-list > li + li)) .ctx-reset { display: none; }
   .ctx-reset { background: var(--overlay); color: var(--link); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
   /* Places has its own tab, and the colors are explained in Settings */
-  .stage-switch, .viz-wrap > .legend { display: none !important; }
+  .viz-wrap > .legend { display: none !important; }
   /* map buttons: pinch zooms, so only Reset and More show; More opens Describe and Save image */
   #zoomIn, #zoomOut { display: none; }
   .viz-tools:not(.more-open) #describeBtn, .viz-tools:not(.more-open) #saveImage { display: none; }
@@ -1068,3 +1068,20 @@ details.study-sec > summary h3 { margin: 0; }
 .landing-cotd .cotd { flex: 1; }
 .chip-list.few > li:nth-child(n+7):not(.more-li) { display: none; }
 .more-chip { color: var(--link); }
+
+/* the Connections / Places switch at the top of the Explore panel */
+.panel .stage-switch { position: static; transform: none; width: 100%; max-width: 320px; margin: 0 0 16px; box-shadow: none; z-index: auto; }
+/* section lists: a title with an optional line of detail */
+.me-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.me-detail { font-size: var(--t-footnote); color: var(--muted); }
+a.me-row { text-decoration: none; }
+.panel h3 + .me-list { margin-top: 0; }
+
+/* the map's search, translations and filters belong to Explore and Study; other sections show only their own content */
+body:not([data-section="explore"]):not([data-section="study"]) .sidebar > .controls > .search-field:not(:focus-within) { display: none; }
+body:not([data-section="explore"]) .sidebar .controls .translations,
+body:not([data-section="explore"]) .sidebar .controls .testament-field,
+body:not([data-section="explore"]) .sidebar .controls .filters,
+body:not([data-section="explore"]) .sidebar .controls .count { display: none; }
+body.search-open .sidebar > .controls > .search-field { display: block !important; }
+.about-btn[hidden] { display: none !important; }

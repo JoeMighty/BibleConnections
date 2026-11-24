@@ -7,13 +7,13 @@ test('the Connections and Places switch changes the main map and the link', asyn
   test.skip(isMobile, 'phones use the Places tab instead (tests/mobile.spec.js)');
   await page.goto('/?view=map');
   await ready(page);
-  await expect(page.locator('[data-stage=arcs]')).toHaveAttribute('aria-pressed', 'true');
-  await page.locator('[data-stage=places]').click();
+  await expect(page.locator('.stage-switch [data-stage=arcs]')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('.stage-switch [data-stage=places]').click();
   expect(await placesShown(page)).toBe(true);
   await expect(page).toHaveURL(/view=places/);
   await expect(page.locator('#panelTitle')).toHaveText('Places');
   await expect(page.locator('#geoCanvas')).toBeVisible();
-  await page.locator('[data-stage=arcs]').click();
+  await page.locator('.stage-switch [data-stage=arcs]').click();
   expect(await placesShown(page)).toBe(false);
   await expect(page.locator('#panelTitle')).toHaveText('Explore');
   // the M key switches too

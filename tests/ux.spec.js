@@ -121,11 +121,17 @@ test('the welcome page keeps rows short: six feelings and themes, with More for 
   await expect(visible('#landingThemes')).toHaveCount(6);
 });
 
-test('Study is grouped into Read, Learn and Teach, and routes are called routes', async ({ page }) => {
+test('each section lists its own tools, and routes are called routes', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=map');
+  await ready(page);
+  for (const m of ['people', 'topics', 'timeline', 'prophecy']) await expect(page.locator(`#panelBody .me-row[data-mode=${m}]`)).toHaveCount(1);
+  await page.goto('/?view=journeys');
+  await ready(page);
+  for (const m of ['plans', 'game', 'church']) await expect(page.locator(`#panelBody .me-row[data-mode=${m}]`)).toHaveCount(1);
   await page.goto('/?view=study');
   await ready(page);
-  await expect(page.locator('#panelBody h3.study-group')).toHaveText(['Read', 'Learn', 'Teach']);
+  for (const m of ['wordstudy', 'path', 'shared', 'insights']) await expect(page.locator(`#panelBody .me-row[data-mode=${m}]`)).toHaveCount(1);
   await page.goto('/?view=places');
   await ready(page);
   await expect(page.locator('#panelBody')).toContainText('Routes on the map');

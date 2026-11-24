@@ -1,6 +1,5 @@
 // Shared steps that differ between desktop and phones (phones have Settings under Me, and search behind a button).
 async function openSettings(page) {
-  if (await page.locator('#settingsBtn').isVisible()) { await page.click('#settingsBtn'); return; }
   await page.click('#settingsTop');
 }
 async function showSearch(page) {
@@ -19,7 +18,7 @@ async function startOver(page) {
 // phones keep About under Me
 async function openAbout(page) {
   if (await page.locator('#aboutBtn').isVisible()) { await page.click('#aboutBtn'); return; }
-  await page.click('[data-nav=me]');
+  await page.click('[data-nav=more]');
   await page.click('.me-row[data-action=openAbout]');
 }
 module.exports = { openSettings, showSearch, openMore, startOver, openAbout };

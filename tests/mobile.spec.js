@@ -9,7 +9,6 @@ test.describe('phones', () => {
     await page.goto('/?ref=John+3%3A16');
     await ready(page);
     await expect(page.locator('#tagline')).toBeHidden();
-    await expect(page.locator('.stage-switch')).toBeHidden();
     await expect(page.locator('#zoomIn')).toBeHidden();
     await expect(page.locator('#zoomReset')).toBeVisible();
     // the current item floats on the map: its ✕ clears it, and there is no separate Start over for one item
@@ -38,10 +37,10 @@ test.describe('phones', () => {
     await expect(page.locator('#search')).toBeHidden();
   });
 
-  test('Places is a tab, and other tabs go back to the connections map', async ({ page }) => {
+  test('Places is part of Explore, and other tabs go back to the connections map', async ({ page }) => {
     await page.goto('/?view=map');
     await ready(page);
-    await page.click('#placesNav');
+    await page.locator('#panel [data-stage=places]').first().click();
     await expect(page.locator('#geoCanvas')).toBeVisible();
     await expect(page.locator('#panelTitle')).toHaveText('Places');
     await expect(page).toHaveURL(/view=places/);
@@ -50,17 +49,19 @@ test.describe('phones', () => {
     await expect(page.locator('#geo')).toBeHidden();
   });
 
-  test('Me gathers notes, collections, plans, settings and saved items', async ({ page }) => {
+  test('Library gathers notes, collections, plans and saved items, and More has Settings', async ({ page }) => {
     await page.goto('/?ref=Psalm+23%3A1');
     await ready(page);
     await page.locator('[data-action=save]').first().click();
-    await page.click('[data-nav=me]');
-    await expect(page.locator('#panelTitle')).toHaveText('Me');
-    await expect(page).toHaveURL(/view=me/);
+    await page.click('[data-nav=library]');
+    await expect(page.locator('#panelTitle')).toHaveText('Library');
+    await expect(page).toHaveURL(/view=library/);
     await expect(page.locator('.mini-list').first()).toContainText(/Psalms? 23:1/);
+    await page.click('[data-nav=more]');
     await page.click('.me-row[data-action=openSettings]');
     await expect(page.locator('#settings')).toBeVisible();
     await page.keyboard.press('Escape');
+    await page.click('[data-nav=library]');
     await page.click('.me-row[data-mode=notes]');
     await expect(page).toHaveURL(/view=notes/);
   });
@@ -68,8 +69,7 @@ test.describe('phones', () => {
   test('Connect two verses is in Study on phones', async ({ page }) => {
     await page.goto('/?view=study');
     await ready(page);
-    await expect(page.locator('[data-nav=path]')).toBeHidden();
-    await page.click('.study-card[data-mode=path]');
+    await page.click('.me-row[data-mode=path]');
     await expect(page).toHaveURL(/view=path/);
   });
 });
@@ -130,4 +130,36 @@ test('after the places map, going home and opening the map or a verse shows the 
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
   await expect(page.locator('#viz')).toBeVisible();
   await expect(page.locator('#geo')).toBeHidden();
+});
+
+test('the same five sections on every screen size, and tapping the current tab goes to its start', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?view=map');
+  await ready(page);
+  await expect(page.locator('.header-nav [data-nav]')).toHaveText(['Explore', 'Journeys', 'Study', 'Library', 'More']);
+  await expect(page.locator('[data-nav=explore]')).toHaveAttribute('aria-pressed', 'true');
+  // in a journey step, the Journeys tab goes back to the list of journeys (it does not close it)
+  await page.goto('/?journey=lamb&step=2');
+  await ready(page);
+  await expect(page.locator('[data-nav=journeys]')).toHaveAttribute('aria-pressed', 'true');
+  await page.click('[data-nav=journeys]');
+  await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+  await page.click('[data-nav=journeys]');
+  await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+  // on a verse, Explore keeps it; tapping Explore again goes back to the whole map
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  await page.click('[data-nav=study]');
+  await page.click('[data-nav=explore]');
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  await page.click('[data-nav=explore]');
+  await expect(page.locator('#panelTitle')).toHaveText('Explore');
+  // sections are shown by the tab, not listed in "You're viewing"
+  await page.goto('/?view=study');
+  await ready(page);
+  await expect(page.locator('#contextBar')).toBeHidden();
+  // old links to Me still work
+  await page.goto('/?view=me');
+  await ready(page);
+  await expect(page.locator('#panelTitle')).toHaveText('Library');
 });

@@ -14,7 +14,8 @@ test('Study tab opens the study hub', async ({ page }) => {
   await ready(page);
   await page.click('[data-nav=study]');
   await expect(page.locator('#panelTitle')).toHaveText('Study');
-  await expect(page.locator('.study-card')).toHaveCount(15);
+  // Study is about understanding a passage; the other tools live in Explore, Journeys and Library
+  await expect(page.locator('#panelBody > .me-list .me-row')).toHaveCount(5);
   await expect(page.locator('#panel .cotd')).toBeVisible();
 });
 
@@ -95,7 +96,8 @@ test('embed mode shows only the map with a link to the full site', async ({ page
 test('poster downloads as SVG and PNG', async ({ page, isMobile }) => {
   test.skip(isMobile);
   test.setTimeout(90_000);
-  await page.goto('/?view=study');
+  // the poster is with the group and church tools in Journeys
+  await page.goto('/?view=journeys');
   await ready(page);
   await page.click('[data-action=poster]');
   const [svg] = await Promise.all([page.waitForEvent('download'), page.click('#posterSvg')]);
@@ -122,7 +124,7 @@ test('Study is translated in Spanish', async ({ page }) => {
   await page.goto('/?view=study&lang=es');
   await ready(page);
   await expect(page.locator('#panelTitle')).toHaveText('Estudio');
-  await expect(page.locator('.study-card').first()).toContainText('Planes de lectura');
+  await expect(page.locator('#panelBody .me-row').first()).toContainText('Busca un pasaje');
 });
 
 for (const url of ['/?view=study', '/?plan=story&day=2', '/?view=game', '/?view=people', '/?topic=peace']) {

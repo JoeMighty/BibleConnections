@@ -960,7 +960,19 @@
     "Terms": "Términos",
     "Accessibility": "Accesibilidad",
     "Credits and licenses": "Créditos y licencias",
-    "Credits": "Créditos"
+    "Credits": "Créditos",
+    "Library": "Biblioteca",
+    "Look up a passage": "Busca un pasaje",
+    "For groups and churches": "Para grupos e iglesias",
+    "All the tools for churches": "Todas las herramientas para iglesias",
+    "More to explore": "Más para explorar",
+    "Books of the Bible": "Libros de la Biblia",
+    "How each book connects to the rest.": "Cómo se conecta cada libro con el resto.",
+    "Language, appearance, text size, Bible translations": "Idioma, apariencia, tamaño del texto, traducciones de la Biblia",
+    "Show the tour": "Ver el recorrido",
+    "Tap Save on any verse, connection or journey to keep it here. Everything stays on this device.": "Toca Guardar en cualquier versículo, conexión o jornada para tenerlo aquí. Todo se queda en este dispositivo.",
+    "Notes, saved items, collections, plan progress and settings in one file.": "Notas, elementos guardados, colecciones, progreso de planes y ajustes en un solo archivo.",
+    "Your progress is saved on this device.": "Tu progreso se guarda en este dispositivo."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

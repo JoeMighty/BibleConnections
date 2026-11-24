@@ -7,8 +7,8 @@ test.beforeEach(async ({ page }) => { page.on('pageerror', (e) => { throw e; });
 test('finds the chain of links between two passages', async ({ page }) => {
   await page.goto('/?view=map');
   await ready(page);
-  if (await page.locator('[data-nav=path]').isVisible()) await page.click('[data-nav=path]');
-  else { await page.click('[data-nav=study]'); await page.click('.study-card[data-mode=path]'); }
+  await page.click('[data-nav=study]');
+  await page.click('.me-row[data-mode=path]');
   await expect(page.locator('#panelTitle')).toHaveText('How are these connected?');
   await page.fill('#pathFrom', 'Genesis 3:15');
   await page.fill('#pathTo', 'Revelation 12:9');
@@ -42,11 +42,12 @@ test('save, then find it again under Saved and Recently viewed', async ({ page }
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
   await page.click('[data-action=save]');
   await expect(page.locator('[data-action=save]')).toHaveAttribute('aria-pressed', 'true');
-  await startOver(page);
+  // saved and recent items live in the Library
+  await page.click('[data-nav=library]');
   await expect(page.locator('.mini-list').first()).toContainText('John 3:16');
   await page.locator('.mini-list [data-action=goto]').first().click();
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
-  await page.click('#homeBtn');
+  await page.click('#homeLink');
   await expect(page.locator('#landingRecent')).toContainText('John 3:16');
 });
 
