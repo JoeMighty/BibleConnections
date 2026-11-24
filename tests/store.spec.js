@@ -23,7 +23,7 @@ test('the privacy page explains what is stored, in each language', async ({ page
   await expect(page.locator('h1')).toHaveText('Privacidade');
   await expect(page.locator('main')).toContainText('nunca são enviados');
   await page.goto('/privacy.html?lang=es');
-  await expect(page.locator('#privacyLink')).toHaveText('Privacidad');
+  await expect(page.locator('.foot-group').getByRole('link', { name: 'Privacidad' })).toBeVisible();
 });
 
 test('the welcome page and About window link to the privacy page', async ({ page }) => {
@@ -62,7 +62,7 @@ for (const [file, en, es] of [['terms', 'Terms of use', 'Términos de uso'], ['a
     await page.goto(`/${file}.html?lang=es`);
     await expect(page.locator('h1')).toHaveText(es);
     await page.goto('/guide.html');
-    await expect(page.locator(`.foot a[href="${file}.html"]`)).toHaveCount(1);
+    await expect(page.locator(`.foot a[href*="${file}.html"]`)).toHaveCount(1);
   });
 }
 

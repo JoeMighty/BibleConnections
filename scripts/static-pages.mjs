@@ -97,6 +97,7 @@ function page({ file, title, description, crumbs, body, nav = '' }) {
 ${body}
   </main>
   <footer class="foot"><p>Cross references from <a href="https://www.openbible.info/labs/cross-references/" rel="noopener">OpenBible.info</a> (CC BY 4.0). Hebrew and Greek from <a href="https://www.stepbible.org/" rel="noopener">STEP Bible</a> (CC BY 4.0). Passages open on Bible.com; no Bible translation is stored on this site. · <a href="/privacy.html">Privacy</a></p></footer>
+  <script src="/chrome.js"></script>
 </body>
 </html>
 `;

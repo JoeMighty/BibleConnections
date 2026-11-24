@@ -12,7 +12,6 @@
   }
   document.getElementById('homeLink').setAttribute('href', withLang('./'));
   document.querySelector('.skip').textContent = t('Skip to content');
-  document.querySelector('.foot p').firstChild.textContent = t('Created by') + ' ';
   // the sticky header's height, so jumps to a section are not hidden under it (it wraps on narrow screens)
   const top = document.querySelector('.top');
   const setTop = () => { if (top) document.documentElement.style.setProperty('--top-h', top.offsetHeight + 'px'); };

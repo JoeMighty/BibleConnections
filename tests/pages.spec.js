@@ -89,3 +89,31 @@ test('jumping to a section keeps its title below the sticky header', async ({ pa
   expect(title.y).toBeGreaterThanOrEqual(header.y + header.height);
   expect(title.y).toBeLessThan(400);
 });
+
+test('every page outside the map has the same five sections, search and a grouped footer', async ({ page, isMobile }) => {
+  for (const u of ['/guide.html', '/privacy.html', '/books/john/', '/verse/john-3-16/', '/cross-references/']) {
+    await page.goto(u);
+    const nav = page.locator('header.top nav.sections a');
+    await expect(nav).toHaveText(['Explore', 'Journeys', 'Study', 'Library', 'More']);
+    await expect(page.locator('.foot .foot-group h2')).toHaveText(['Help', 'Explore', 'About']);
+    if (isMobile) {
+      // a tab bar at the bottom, like the app
+      const box = await page.locator('header.top nav.sections').boundingBox();
+      expect(box.y + box.height).toBeGreaterThan(page.viewportSize().height - 4);
+    }
+  }
+  await page.goto('/books/john/');
+  await expect(page.locator('nav.sections a[aria-current=page]')).toHaveText('Explore');
+  await page.locator('nav.sections a', { hasText: 'Journeys' }).click();
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
+  // search from any page opens the search box in the app
+  await page.goto('/guide.html');
+  await page.locator('.top-search').click();
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#search')).toBeFocused();
+  // the language links keep you on the same page
+  await page.goto('/privacy.html');
+  await page.locator('.foot-lang a', { hasText: 'Português' }).click();
+  await expect(page.locator('h1')).toHaveText('Privacidade');
+});

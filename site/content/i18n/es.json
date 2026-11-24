@@ -981,7 +981,9 @@
     "Reset all settings to how they were at first? Your notes, saved items and collections are kept.": "¿Restablecer todos los ajustes a como estaban al principio? Tus notas, elementos guardados y colecciones se conservan.",
     "Save": "Guardar",
     "Correct.": "Correcto.",
-    "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada línea de colores une dos lugares de la Biblia que hablan de lo mismo. Escribe un versículo para ver a dónde lleva."
+    "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada línea de colores une dos lugares de la Biblia que hablan de lo mismo. Escribe un versículo para ver a dónde lleva.",
+    "Help": "Ayuda",
+    "No verses found for \"{q}\". Check the spelling, try a shorter word, or a reference like John 3:16. You can also browse Topics and People in Explore.": "No se encontraron versículos para \"{q}\". Revisa la ortografía, prueba una palabra más corta o una referencia como Juan 3:16. También puedes ver Temas y Personas en Explorar."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1187,7 +1189,22 @@
       "Terms": "Términos",
       "Accessibility": "Accesibilidad",
       "Credits and licenses": "Créditos y licencias",
-      "Credits": "Créditos"
+      "Credits": "Créditos",
+      "Explore": "Explorar",
+      "Journeys": "Recorridos",
+      "Study": "Estudio",
+      "Library": "Biblioteca",
+      "More": "Más",
+      "Search": "Buscar",
+      "Help": "Ayuda",
+      "About": "Acerca de",
+      "What’s new": "Novedades",
+      "Books": "Libros",
+      "How many cross references?": "¿Cuántas referencias cruzadas hay?",
+      "Source code": "Código fuente",
+      "Language": "Idioma",
+      "Passages open on Bible.com. No Bible translation is stored on this site.": "Los pasajes se abren en Bible.com. Este sitio no guarda ninguna traducción de la Biblia.",
+      "Main": "Principal"
     },
     "slides": {
       "Slides": "Diapositivas",

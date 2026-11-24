@@ -130,3 +130,36 @@ main section p { max-width: 40em; }
 .card .card-title { font: 600 19px/1.3 var(--font-display); letter-spacing: 0; margin: 0 0 8px; }
 /* jumping to a section leaves room for the sticky header (its height is measured in pages.js) */
 html { scroll-padding-top: calc(var(--top-h, 64px) + 16px); }
+
+/* the same sections as the app: across the top on a computer, a tab bar on a phone */
+.top { flex-wrap: nowrap; }
+.top .sections { display: flex; gap: 4px; margin-left: auto; }
+.top .sections a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: var(--t-sub); color: var(--link); }
+.top .sections a[aria-current="page"] { background: var(--surface); color: var(--text); }
+.top .sections .icon { display: none; }
+.icon { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.top-search { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; color: var(--link); flex: none; }
+@media (max-width: 760px) {
+  /* a blurred header would hold the fixed tab bar inside it, so it is solid on phones */
+  body.has-sections .top { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--bg); }
+  body.has-sections { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  .top .brand span { font-size: 17px; }
+  .top .sections { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; margin: 0; gap: 0; justify-content: space-around;
+    padding: 0 4px env(safe-area-inset-bottom); background: var(--bar); border-top: 0.5px solid var(--separator);
+    -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
+  .top .sections a { flex: 1; flex-direction: column; gap: 2px; min-height: 52px; padding: 6px 0 4px; border-radius: 0; font-size: 10px; font-weight: 500; color: var(--muted); }
+  .top .sections a[aria-current="page"] { background: transparent; color: var(--link); font-weight: 600; }
+  .top .sections .icon { display: block; }
+  .top-search { margin-left: auto; }
+}
+/* one grouped footer */
+.foot { text-align: left; }
+.foot-groups { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.foot-group h2 { margin: 0 0 8px; font-size: var(--t-foot); font-weight: 600; color: var(--text); }
+.foot-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.foot-group a { color: var(--muted); text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
+.foot-group a:hover { color: var(--link); }
+.foot > p { max-width: 1040px; margin: 16px auto 0; }
+.foot-lang span[aria-current] { color: var(--text); font-weight: 600; }
+.foot-lang a { color: var(--muted); }
+@media (max-width: 480px) { .foot-groups { grid-template-columns: 1fr 1fr; } }

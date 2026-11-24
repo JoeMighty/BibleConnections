@@ -13,6 +13,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Old links to `?view=me` open the Library.
 - Going home keeps your place: the welcome page shows Continue with where you were (a verse, a journey step, a plan day). Explore the whole map starts a fresh map.
 - Cleaner look ("unslop" polish): real icons instead of text symbols for Save, close and open-in-Bible.com; spacing on a 4 point grid; fewer corner sizes; labels like "Echo" and "Quotation" in sentence case on a soft tint instead of shouty capitals; no exclamation marks in the interface.
+- Every page outside the map (How to use, Roadmap, books, verses, How many?, For churches and the legal pages) has the same five sections and Search as the app, as a tab bar on phones, and one footer grouped into Help, Explore and About with English, Español and Português links. The welcome page footer is grouped the same way.
+- Search keeps your words as you typed them, and when nothing is found it suggests what to try next.
 - Three separate resets, so nothing is lost by accident: Clear all (what you are looking at, shown only when more than one thing is open), Reset filters (only the filters) and Reset settings in Settings, which asks first and keeps your notes, saved items and collections.
 
 ### Added

@@ -4589,11 +4589,11 @@
       result = result ? new Set([...result].filter(v => set.has(v))) : set;
       if (!result.size) break;
     }
-    if (!result || !result.size) { el.searchError.textContent = `No verses found for "${q}". Try another word, or a reference like John 3:16.`; return null; }
+    if (!result || !result.size) { el.searchError.textContent = tr('No verses found for "{q}". Check the spelling, try a shorter word, or a reference like John 3:16. You can also browse Topics and People in Explore.').replace('{q}', q); return null; }
     const verses = Int32Array.from(result).sort();
     const mask = new Uint8Array(TOTAL);
     for (const v of verses) mask[v] = 1;
-    return { kind: 'words', query: terms.join(' '), verses, mask, start: verses[0], end: verses[verses.length - 1] + 1 };
+    return { kind: 'words', query: q.trim().replace(/\s+/g, ' ') || terms.join(' '), verses, mask, start: verses[0], end: verses[verses.length - 1] + 1 };   // as typed: “Moses”, not “moses”
   }
 
   // ---------- Translations: one to read in, and an optional one to compare with ----------
@@ -5136,6 +5136,7 @@
   async function restoreFromURL(p) {
     const wantPlaces = p.get('stage') === 'places' || p.get('view') === 'places' || !!p.get('route');
     if ((state.stage === 'places') !== wantPlaces) { state.stage = wantPlaces ? 'places' : 'arcs'; applyStage(); }
+    if (p.get('search')) { setTimeout(() => { document.body.classList.add('search-open'); if (isPhone()) setSheet('full'); el.search.focus(); }, 0); return; }
     if (p.get('route')) { await openRoute(p.get('route'), { push: false }); return; }
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
     if (jn >= 0) { startJourney(jn, Math.min(journeySteps[jn].length, Math.max(1, +p.get('step') || 1)) - 1); return; }

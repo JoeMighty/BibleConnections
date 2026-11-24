@@ -982,7 +982,9 @@
     "Reset all settings to how they were at first? Your notes, saved items and collections are kept.": "Redefinir todos os ajustes como estavam no início? Suas anotações, itens salvos e coleções são mantidos.",
     "Save": "Salvar",
     "Correct.": "Correto.",
-    "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada linha colorida une dois lugares da Bíblia que falam da mesma coisa. Digite um versículo para ver aonde ele leva."
+    "Every rainbow line joins two places in the Bible that talk about the same thing. Type a verse to see where it leads.": "Cada linha colorida une dois lugares da Bíblia que falam da mesma coisa. Digite um versículo para ver aonde ele leva.",
+    "Help": "Ajuda",
+    "No verses found for \"{q}\". Check the spelling, try a shorter word, or a reference like John 3:16. You can also browse Topics and People in Explore.": "Nenhum versículo encontrado para \"{q}\". Confira a ortografia, tente uma palavra mais curta ou uma referência como João 3:16. Você também pode ver Temas e Pessoas em Explorar."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1188,7 +1190,22 @@
       "Terms": "Termos",
       "Accessibility": "Acessibilidade",
       "Credits and licenses": "Créditos e licenças",
-      "Credits": "Créditos"
+      "Credits": "Créditos",
+      "Explore": "Explorar",
+      "Journeys": "Jornadas",
+      "Study": "Estudo",
+      "Library": "Biblioteca",
+      "More": "Mais",
+      "Search": "Buscar",
+      "Help": "Ajuda",
+      "About": "Sobre",
+      "What’s new": "Novidades",
+      "Books": "Livros",
+      "How many cross references?": "Quantas referências cruzadas existem?",
+      "Source code": "Código-fonte",
+      "Language": "Idioma",
+      "Passages open on Bible.com. No Bible translation is stored on this site.": "As passagens abrem no Bible.com. Este site não guarda nenhuma tradução da Bíblia.",
+      "Main": "Principal"
     },
     "slides": {
       "Slides": "Slides",

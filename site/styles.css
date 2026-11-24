@@ -1099,3 +1099,11 @@ a .i { margin-left: 4px; }
 .ctx-x .i { width: 14px; height: 14px; stroke-width: 2; }
 [data-action=save] { display: inline-flex; align-items: center; gap: 4px; }
 :root[data-theme="light"] .tag { color: #00427f; }
+
+/* welcome page footer: three short groups and the language choice */
+.landing-foot .foot-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0 0 16px; }
+.landing-foot .foot-group h4 { margin: 0 0 8px; font-size: var(--t-footnote); font-weight: 600; color: var(--text); }
+.landing-foot .foot-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.landing-foot .foot-group a { display: inline-flex; align-items: center; min-height: 32px; color: var(--muted); text-decoration: none; font-size: var(--t-subhead); }
+.landing-foot .foot-group a:hover { color: var(--link); }
+@media (max-width: 480px) { .landing-foot .foot-groups { grid-template-columns: 1fr 1fr; } }
