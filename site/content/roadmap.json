@@ -59,6 +59,27 @@
   ],
   "shipped": [
     {
+      "version": "0.21.0",
+      "items": [
+        "Five sections everywhere: Explore, Journeys, Study, Library and More",
+        "Home keeps your place, and three separate resets",
+        "The same sections, search and footer on every page",
+        "Plainer wording, a short tour and a cleaner look"
+      ],
+      "items_es": [
+        "Cinco secciones en todas partes: Explorar, Recorridos, Estudio, Biblioteca y Más",
+        "Inicio guarda tu lugar, y tres formas separadas de restablecer",
+        "Las mismas secciones, búsqueda y pie en cada página",
+        "Palabras más claras, un recorrido corto y un aspecto más limpio"
+      ],
+      "items_pt": [
+        "Cinco seções em todo lugar: Explorar, Jornadas, Estudo, Biblioteca e Mais",
+        "O início guarda seu lugar, e três formas separadas de redefinir",
+        "As mesmas seções, busca e rodapé em todas as páginas",
+        "Palavras mais claras, um tour curto e um visual mais limpo"
+      ]
+    },
+    {
       "version": "0.20.0",
       "items": [
         "A clearer welcome page: look up a verse first, and see one verse light up",

@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-11-24 - One Way Round
+
 ### Changed
 - Navigation: five sections, the same on phones and computers. **Explore** (the map, places, people, topics, timeline, prophecy and books), **Journeys** (guided journeys, reading plans, and tools for groups and churches), **Study** (look up a passage, word study, connect two verses, shared connections, insights), **Library** (notes, collections, plan progress, saved and recent items, backup) and **More** (settings, the tour, help, about and the small print). Search and Settings are at the top of every screen, and the logo goes to the welcome page.
 - Tapping the tab you are on goes back to the start of that section, instead of closing it.
