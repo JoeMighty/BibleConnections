@@ -1884,6 +1884,10 @@
     box.innerHTML = html;
   }
   function renderLandingRecent() {
+    // Continue: where you just were, or the last thing you looked at
+    const cont = lastPlace || store.get('recent', [])[0], row = $('continueRow');
+    row.hidden = !cont;
+    if (cont) row.innerHTML = `<span class="muted">${esc(tr('Continue'))}</span> <button type="button" class="chip continue-chip" data-goto="${esc(cont.url)}" data-resume="1">${esc(cont.label)} <span aria-hidden="true">›</span></button>`;
     const recent = store.get('recent', []).slice(0, 3), box = $('landingRecent');
     box.hidden = !recent.length;
     box.innerHTML = recent.length ? `<h3>Pick up where you left off</h3><ul class="chip-list">${recent.map(x => `<li><button type="button" class="chip" data-goto="${esc(x.url)}">${esc(x.label)}</button></li>`).join('')}</ul>` : '';
@@ -4762,8 +4766,9 @@
     playLanding();
     renderLandingRecent();
   }
-  function hideLanding() {
+  function hideLanding({ resume = false } = {}) {
     if (landing.hidden) return false;
+    if (!resume && state.stage === 'places') { state.stage = 'arcs'; applyStage(); }
     store.set('visited', true);
     landing.hidden = true;
     layout.inert = false;
@@ -4913,7 +4918,7 @@
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
-    if (btn.dataset.goto) { hideLanding(); goTo(btn.dataset.goto); return; }
+    if (btn.dataset.goto) { if (btn.dataset.resume) track('home/continue'); hideLanding({ resume: true }); goTo(btn.dataset.goto); return; }
     if (btn.dataset.heroQ) { track('home/try'); $('landingQ').value = btn.dataset.heroQ; $('landingSearch').requestSubmit(); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
@@ -4921,6 +4926,7 @@
     if (btn.dataset.seasonJourney) { hideLanding(); startJourney(+btn.dataset.seasonJourney, 0); focusPanelHeading(); return; }
     if (btn.dataset.start) track('home/' + btn.dataset.start);
     if (btn.dataset.start === 'map') {
+      resetState(); resetView(false);   // the whole map, fresh: your last place stays under Continue
       hideLanding(); syncURL(true); el.viz.focus(); maybeShowTips();
       announce(`Map of ${filtered.length.toLocaleString(LANGS[LANG].locale)} connections. Use the details panel or arrow keys to explore.`);
     }
@@ -4946,8 +4952,11 @@
     el.search.value = q;
     runSearch().then(focusPanelHeading);
   });
+  // Home keeps your place: the welcome page offers to continue where you were
+  let lastPlace = null;
   function goHome() {
-    resetState();
+    const here = landing.hidden ? currentEntry() : null;
+    if (here) lastPlace = here;
     showLanding();
     syncURL(true);
     landing.querySelector('[data-start=map]').focus();
@@ -4965,12 +4974,25 @@
     syncControls(); renderLegend(); el.search.value = ''; el.searchError.textContent = '';
     updateNav(); applyFilters();
   }
+  // three different resets, so nothing is lost by accident:
+  // Clear all (what you are looking at and the filters), Reset filters (only the filters), Reset settings (in Settings, asks first)
   function startOver() {
     resetState(); resetView(); syncURL(true);
     el.viz.focus();
     announce('Back to the whole Bible. All filters and selections cleared.');
   }
-  $('resetAll').addEventListener('click', startOver);
+  function resetFilters() {
+    Object.assign(state, { minVotes: DEFAULT_VOTES, from: 'all', to: 'all', theme: '', notesOnly: false, colorMode: 'distance', order: 'bible' });
+    if (POS) setOrder('bible');
+    syncControls(); renderLegend(); applyFilters(); syncURL(true);
+    announce(tr('Filters reset.'));
+  }
+  $('resetAll').addEventListener('click', resetFilters);
+  $('resetSettings').addEventListener('click', () => {
+    if (!confirm(tr('Reset all settings to how they were at first? Your notes, saved items and collections are kept.'))) return;
+    for (const k of ['appearance', 'arcStyle', 'contrast', 'kids', 'motion', 'readable', 'textsize', 'version', 'version2', 'showGrammar', 'secOpen']) { try { localStorage.removeItem('bc.' + k); } catch { /* storage unavailable */ } }
+    location.reload();
+  });
 
   function contextItems() {
     const items = [];

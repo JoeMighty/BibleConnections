@@ -11,6 +11,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - The Connections / Places switch is at the top of the Explore panel instead of on the map.
 - "You're viewing" lists only what you chose (a verse, a filter, a journey step), not the section you are in, and the map's filters and translations show only in Explore.
 - Old links to `?view=me` open the Library.
+- Going home keeps your place: the welcome page shows Continue with where you were (a verse, a journey step, a plan day). Explore the whole map starts a fresh map.
+- Three separate resets, so nothing is lost by accident: Clear all (what you are looking at, shown only when more than one thing is open), Reset filters (only the filters) and Reset settings in Settings, which asks first and keeps your notes, saved items and collections.
 
 ### Added
 - Terms of use, Accessibility and Credits and licenses pages, in English, Spanish and Portuguese, linked from every page footer and the About window.

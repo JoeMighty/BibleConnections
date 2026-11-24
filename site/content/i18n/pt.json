@@ -973,7 +973,13 @@
     "Show the tour": "Ver o tour",
     "Tap Save on any verse, connection or journey to keep it here. Everything stays on this device.": "Toque em Salvar em qualquer versículo, conexão ou jornada para guardá-lo aqui. Tudo fica neste aparelho.",
     "Notes, saved items, collections, plan progress and settings in one file.": "Anotações, itens salvos, coleções, progresso dos planos e ajustes num só arquivo.",
-    "Your progress is saved on this device.": "Seu progresso fica salvo neste aparelho."
+    "Your progress is saved on this device.": "Seu progresso fica salvo neste aparelho.",
+    "Clear all": "Limpar tudo",
+    "Reset filters": "Redefinir filtros",
+    "Start again": "Recomeçar",
+    "Reset settings": "Redefinir ajustes",
+    "Puts appearance, text size, colors and translations back to how they were at first. Your notes, saved items, collections and plan progress are kept.": "Volta a aparência, o tamanho do texto, as cores e as traduções a como estavam no início. Suas anotações, itens salvos, coleções e progresso dos planos são mantidos.",
+    "Reset all settings to how they were at first? Your notes, saved items and collections are kept.": "Redefinir todos os ajustes como estavam no início? Suas anotações, itens salvos e coleções são mantidos."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",

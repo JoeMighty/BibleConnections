@@ -136,3 +136,42 @@ test('each section lists its own tools, and routes are called routes', async ({ 
   await ready(page);
   await expect(page.locator('#panelBody')).toContainText('Routes on the map');
 });
+
+test('going home keeps your place: the welcome page offers to continue', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  await page.goto('/?journey=lamb&step=3');
+  await ready(page);
+  await page.click('#homeLink');
+  await expect(page.locator('#landing')).toBeVisible();
+  await expect(page.locator('#continueRow')).toContainText('The Lamb of God, step 3');
+  await page.locator('#continueRow .continue-chip').click();
+  await expect(page.locator('#landing')).toBeHidden();
+  await expect(page).toHaveURL(/journey=lamb&step=3/);
+});
+
+test('three different resets: clear all, reset filters, reset settings', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+  // one item: its own ✕ clears it, and Clear all is not shown
+  await page.goto('/?ref=John+3%3A16');
+  await ready(page);
+  await expect(page.locator('#startOver')).toBeHidden();
+  // Reset filters keeps the verse you are looking at
+  await page.goto('/?ref=John+3%3A16&from=ot&to=nt');
+  await ready(page);
+  await expect(page.locator('#startOver')).toHaveText('Clear all');
+  await page.evaluate(() => { document.getElementById('filtersBox').open = true; });
+  await page.click('#resetAll');
+  await expect(page.locator('#fromSel')).toHaveValue('all');
+  await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
+  // Reset settings asks first, and keeps notes
+  await page.evaluate(() => { localStorage.setItem('bc.textsize', JSON.stringify('large')); localStorage.setItem('bc.notes', JSON.stringify({ 'John.3.16': { text: 'keep me' } })); });
+  const { openSettings } = require('./helpers');
+  await openSettings(page);
+  page.once('dialog', (d) => d.dismiss());
+  await page.click('#resetSettings');
+  expect(await page.evaluate(() => localStorage.getItem('bc.textsize'))).toBe('"large"');
+  page.once('dialog', (d) => d.accept());
+  await Promise.all([page.waitForEvent('load'), page.click('#resetSettings')]);
+  expect(await page.evaluate(() => localStorage.getItem('bc.textsize'))).toBeNull();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('bc.notes'))['John.3.16'].text)).toBe('keep me');
+});

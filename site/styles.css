@@ -996,7 +996,6 @@ details.study-sec:not([open]) { padding-bottom: 0; }
   .context-bar .ctx-list { flex-basis: auto; order: 0; }
   .ctx-chip { max-width: calc(100vw - 150px); background: var(--overlay); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18); }
   /* one item: its ✕ clears it; "Start over" only when there is more than one */
-  .context-bar:not(:has(.ctx-list > li + li)) .ctx-reset { display: none; }
   .ctx-reset { background: var(--overlay); color: var(--link); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
   /* Places has its own tab, and the colors are explained in Settings */
   .viz-wrap > .legend { display: none !important; }
@@ -1085,3 +1084,9 @@ body:not([data-section="explore"]) .sidebar .controls .filters,
 body:not([data-section="explore"]) .sidebar .controls .count { display: none; }
 body.search-open .sidebar > .controls > .search-field { display: block !important; }
 .about-btn[hidden] { display: none !important; }
+
+/* Clear all only when more than one thing is open; one item is cleared with its own ✕ */
+.context-bar:not(:has(.ctx-list > li + li)) .ctx-reset { display: none; }
+.continue-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0 0; font-size: var(--t-subhead); }
+.continue-chip { font-weight: 600; }
+.btn.danger { color: var(--danger); }

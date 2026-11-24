@@ -107,6 +107,7 @@
               <button type="button" class="chip" data-hero-q="Romans 8:28">Romans 8:28</button>
             </p>
           </form>
+          <p class="continue-row" id="continueRow" hidden></p>
           <p class="hero-alt"><button type="button" class="link-btn" data-start="journeys">Or take a 5 minute guided journey <span aria-hidden="true">›</span></button></p>
         </div>
       </div>
@@ -194,7 +195,7 @@
     <nav class="context-bar" id="contextBar" aria-label="What you are viewing" hidden>
       <span class="ctx-label">You’re viewing:</span>
       <ul class="ctx-list" id="contextList"></ul>
-      <button type="button" class="btn small ctx-reset" id="startOver">Start over</button>
+      <button type="button" class="btn ghost small ctx-reset" id="startOver">Clear all</button>
     </nav>
     <main class="viz-wrap" id="main">
       <div class="geo" id="geo" tabindex="0" role="group" aria-roledescription="interactive map" aria-label="Map of places named in the Bible" aria-describedby="geoHelp" hidden>
@@ -331,7 +332,7 @@
             </div>
             <p class="hint">Chronological order is approximate: books are placed by when their events happen.</p>
           </fieldset>
-          <button type="button" class="btn ghost full" id="resetAll">Reset everything</button>
+          <button type="button" class="btn ghost full" id="resetAll">Reset filters</button>
         </details>
         <p class="count" id="count" aria-live="polite"></p>
       </form>
@@ -512,6 +513,11 @@
         <p class="label-like">Hidden links</p>
         <p class="hint" id="hiddenStatus" role="status">You have not hidden any links.</p>
         <button type="button" class="btn ghost" id="unhideAll" hidden>Show all hidden links again</button>
+      </div>
+      <div class="field">
+        <p class="label-like">Start again</p>
+        <button type="button" class="btn ghost danger" id="resetSettings">Reset settings</button>
+        <p class="hint">Puts appearance, text size, colors and translations back to how they were at first. Your notes, saved items, collections and plan progress are kept.</p>
       </div>
       <button class="btn">Done</button>
     </form>
