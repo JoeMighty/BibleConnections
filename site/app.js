@@ -629,7 +629,10 @@
   }
   function fitView() {
     const k = view.fitK;
-    return { k, tx: (view.W - TOTAL * k) / 2, ty: view.H - AXIS_H };
+    // phones: the arcs are limited by the width, so center them in the height instead of leaving a gap above
+    // (and keep the testament names clear of the sheet's rounded top)
+    const spare = view.H - AXIS_H - TOTAL * k / 2 - 12;
+    return { k, tx: (view.W - TOTAL * k) / 2, ty: view.H - AXIS_H - (matchMedia('(max-width: 860px)').matches && spare > 0 ? spare / 2 + 12 : 0) };
   }
   function resetView(animate = true) { animateTo(fitView(), animate); }
   function clampView() {
@@ -868,7 +871,7 @@
 
     // Old / New Testament divider
     const ntx = sx(NT_POS);
-    if (ntx > 0 && ntx < W) { ctx.fillStyle = pal.label; ctx.fillRect(Math.round(ntx) - 1, y0, 2, AXIS_H - 6); }
+    if (ntx > 0 && ntx < W) { ctx.fillStyle = pal.label; ctx.fillRect(Math.round(ntx) - 1, y0, 2, BAR_MAX + 6); }   // through the bars only, so it never cuts a book name
 
     ctx.textBaseline = 'top';
     const row = [y0 + BAR_MAX + 8, y0 + BAR_MAX + 23];
@@ -2119,7 +2122,7 @@
       <p><span class="tag">${esc(n.type)}</span></p>
       <p${LANG !== 'en' && !n.seasonal ? ' lang="en"' : ''}>${esc(n.text)}</p>
       <div class="actions tight"><button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button></div>
-      <p class="quiet-links">${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`, 'mini-link')} · ${ext(bibleUrl(T[i], E[i]), `Read ${esc(refLabel(T[i], E[i]))}`, 'mini-link')} ·
+      <p class="quiet-links">${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`, 'mini-link')}${ext(bibleUrl(T[i], E[i]), `Read ${esc(refLabel(T[i], E[i]))}`, 'mini-link')}
         <button type="button" class="link-btn" data-action="story" data-ref="${i}" data-keep="1">Story image</button></p></div>`;
   }
 

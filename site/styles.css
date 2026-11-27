@@ -1145,5 +1145,13 @@ a .i { margin-left: 4px; }
 .landing .today .btn:not(.ghost), .landing .landing-cotd .btn:not(.ghost) { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--link); }
 :root[data-theme="light"] .landing .today .btn:not(.ghost) { color: #00427f; }
 
-.quiet-links { font-size: var(--t-subhead); margin: 12px 0 0; }
+.quiet-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; font-size: var(--t-subhead); margin: 8px 0 0; }
+.quiet-links .mini-link { padding: 10px 0; }
 .quiet-links .mini-link, .quiet-links .link-btn { font-size: inherit; }
+
+/* the header subtitle only on the welcome page */
+body:not(.landing-open) .tagline { display: none; }
+/* reading-heavy sections get a wider panel on large screens; Explore keeps the most room for the map */
+@media (min-width: 1280px) {
+  body:not([data-section="explore"]) { --sidebar: 460px; }
+}
