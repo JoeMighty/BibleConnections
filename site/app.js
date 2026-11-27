@@ -3543,7 +3543,7 @@
     ctx.fillStyle = CATEGORIES[b.cat].dark; ctx.fillRect(0, 0, W, 14);
     const L = 90;
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 30);
+    ctx.fillStyle = '#3cc2b1'; ctx.font = font(700, 30);
     ctx.fillText(tr('Passage study').toUpperCase(), L, 120);
     ctx.fillStyle = '#fff'; ctx.font = font(800, 92);
     ctx.fillText(refLabel(v), L, 230);
@@ -3583,7 +3583,7 @@
     }
     if (conns.length) {
       y += 50;
-      ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 28); ctx.fillText(tr('Connects to').toUpperCase(), L, y); y += 52;
+      ctx.fillStyle = '#3cc2b1'; ctx.font = font(700, 28); ctx.fillText(tr('Connects to').toUpperCase(), L, y); y += 52;
       ctx.fillStyle = '#fff'; ctx.font = font(600, 40);
       for (const r of conns) { ctx.fillText(r, L, y); y += 54; }
     }
@@ -4057,7 +4057,7 @@
     ctx.beginPath(); ctx.arc(W / 2, 760, W / 2 - 140, Math.PI, 0); ctx.stroke();
     ctx.fillStyle = '#ffd60a';
     for (const x of [140, W - 140]) { ctx.beginPath(); ctx.arc(x, 760, 18, 0, Math.PI * 2); ctx.fill(); }
-    ctx.textAlign = 'center'; ctx.fillStyle = '#5eb0ff'; ctx.font = font(700, 34);
+    ctx.textAlign = 'center'; ctx.fillStyle = '#3cc2b1'; ctx.font = font(700, 34);
     ctx.fillText(tr('Connection').toUpperCase(), W / 2, 200);
     ctx.fillStyle = '#fff'; ctx.font = font(700, 64);
     ctx.fillText(refLabel(F[i]), W / 2, 880);

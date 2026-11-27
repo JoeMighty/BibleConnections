@@ -1,12 +1,12 @@
 /* Collection slides: one idea per slide, large type, readable from the back of a room. */
 :root {
-  --bg: #000000; --text: #ffffff; --muted: rgba(235, 235, 245, 0.86); --link: #7cc0ff; --accent: #0a84ff;
+  --bg: #000000; --text: #ffffff; --muted: rgba(235, 235, 245, 0.86); --link: #5fd4c4; --accent: #0e7c72;
   --surface: #1c1c1e; --separator: rgba(84, 84, 88, 0.6); --bar: rgba(22, 22, 24, 0.82);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
 }
 :root[data-theme="light"] {
-  --bg: #ffffff; --text: #000000; --muted: rgba(60, 60, 67, 0.92); --link: #004a99; --accent: #0071e3;
+  --bg: #ffffff; --text: #000000; --muted: rgba(60, 60, 67, 0.92); --link: #075a53; --accent: #0e7c72;
   --surface: #f2f2f7; --separator: rgba(60, 60, 67, 0.29); --bar: rgba(249, 249, 251, 0.85);
   color-scheme: light;
 }
