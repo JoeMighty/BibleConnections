@@ -1011,7 +1011,10 @@
     "For leaders": "Para líderes",
     "Christmas plan to share": "Plano de Natal para compartilhar",
     "Christmas plan": "Plano de Natal",
-    "Verses by topic": "Versículos por tema"
+    "Verses by topic": "Versículos por tema",
+    "Lent and Holy Week plans to share": "Planos da Quaresma e da Semana Santa para compartilhar",
+    "Lent plan": "Plano da Quaresma",
+    "Holy Week plan": "Plano da Semana Santa"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1287,7 +1290,18 @@
       "Before Christmas:": "Antes do Natal:",
       "the Advent plan": "o plano do Advento",
       "Verses by topic": "Versículos por tema",
-      "People and places": "Pessoas e lugares"
+      "People and places": "Pessoas e lugares",
+      "Lent reading plan": "Plano de leitura da Quaresma",
+      "Holy Week reading plan": "Plano de leitura da Semana Santa",
+      "Palm Sunday to Easter": "Do Domingo de Ramos à Páscoa",
+      "Ash Wednesday": "Quarta-feira de Cinzas",
+      "Week {n}": "Semana {n}",
+      "After Lent:": "Depois da Quaresma:",
+      "the Holy Week plan": "o plano da Semana Santa",
+      "Before Holy Week:": "Antes da Semana Santa:",
+      "the Lent plan": "o plano da Quaresma",
+      "Lent plan": "Plano da Quaresma",
+      "Holy Week plan": "Plano da Semana Santa"
     },
     "slides": {
       "Slides": "Slides",

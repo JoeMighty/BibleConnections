@@ -42,8 +42,8 @@
         <ul class="cards">${C.tools.map(it => `<li class="card"><h2 class="card-title">${esc(pick(it, 'title'))}</h2><p>${esc(pick(it, 'text'))}</p>
           <p class="try"><a href="${esc(withLang(/^[?]/.test(it.try) ? './' + it.try : it.try))}">${esc(pick(it, 'try_label'))}</a></p></li>`).join('')}</ul>
         <p class="muted church-note">${mail(pick(C, 'note'))}</p>`;
-    } else if (page === 'advent' || page === 'christmas') {
-      // the Advent plan as one page to share with a church: every day's promise and fulfilment, with dates
+    } else if (['advent', 'christmas', 'lent', 'holyweek'].includes(page)) {
+      // a seasonal plan as one page to share with a church: every day's passage and fulfilment, with dates
       const [plans, meta, versions] = await Promise.all(['content/plans.json', 'data/books.json', 'content/versions.json'].map(u => fetch(u).then(r => r.json())));
       const plan = plans.find(p => p.season === page), B = meta.books, names = L.books();
       const en = B.map(b => b.name);
@@ -60,7 +60,12 @@
       const sunday = (y) => { const d = new Date(y, 11, 24, 12); d.setDate(d.getDate() - d.getDay() - 21); return d; };
       // the twelve days run from Christmas Day to 5 January; after that the page shows next Christmas
       const xmas = () => { const y = now.getFullYear(); return now <= new Date(y, 0, 5, 12) ? new Date(y - 1, 11, 25, 12) : new Date(y, 11, 25, 12); };
+      // Easter (Western, anonymous Gregorian method); Lent starts on Ash Wednesday and Holy Week on Palm Sunday
+      const easter = (y) => { const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1; return new Date(y, mo - 1, da, 12); };
+      const shift = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+      const seasonStart = (y) => (page === 'lent' ? shift(easter(y), -46) : shift(easter(y), -7));
       const start = page === 'christmas' ? xmas()
+        : page === 'lent' || page === 'holyweek' ? (now > shift(seasonStart(now.getFullYear()), plan.days.length - 1) ? seasonStart(now.getFullYear() + 1) : seasonStart(now.getFullYear()))
         : now > new Date(now.getFullYear(), 11, 25, 12) ? sunday(now.getFullYear() + 1) : sunday(now.getFullYear());
       const dayOf = (k) => { const d = new Date(start); d.setDate(d.getDate() + k); return d; };
       const todayK = Math.round((now - start) / 86400000), inAdvent = todayK >= 0 && todayK < plan.days.length;
@@ -71,13 +76,13 @@
       const pair = (d) => { const a = ref(d.a), b = ref(d.b); return `<p class="advent-refs"><a href="${esc(read(a))}" rel="noopener">${esc(label(a))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a> <span aria-hidden="true">→</span><span class="sr-only">${esc(t('and'))}</span> <a href="${esc(read(b))}" rel="noopener">${esc(label(b))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a></p>`; };
       // the weeks: the part of each title before the colon (Hope, Peace, Joy, Love, Christmas Day)
       const weeks = [];
-      plan.days.forEach((d, k) => { const w = page === 'christmas' ? t('The twelve days') : pick(d, 'title').split(':')[0]; const last = weeks[weeks.length - 1]; if (last && last.name === w) last.days.push(k); else weeks.push({ name: w, days: [k] }); });
+      plan.days.forEach((d, k) => { const w = page === 'christmas' ? t('The twelve days') : page === 'holyweek' ? t('Palm Sunday to Easter') : page === 'lent' ? (k < 4 ? t('Ash Wednesday') : t('Week {n}', { n: Math.floor((k - 4) / 7) + 1 })) : pick(d, 'title').split(':')[0]; const last = weeks[weeks.length - 1]; if (last && last.name === w) last.days.push(k); else weeks.push({ name: w, days: [k] }); });
       const cap = (x) => x.charAt(0).toLocaleUpperCase(L.locale) + x.slice(1);
       const day = (k) => { const d = plan.days[k], title = pick(d, 'title'); return `<li class="advent-day" id="day-${k + 1}"${k === todayK ? ' aria-current="date"' : ''}>
           <p class="eyebrow">${esc(t('Day {n}', { n: k + 1 }))} · ${esc(fmtD(dayOf(k)))}${k === todayK ? `<span class="no-print"> · <strong>${esc(t('Today'))}</strong></span>` : ''}</p>
           <h3>${esc(cap(title.split(':').slice(1).join(':').trim() || title))}</h3>${pair(d)}<p>${esc(pick(d, 'note'))}</p>
           <p class="day-link no-print"><a href="${esc(appURL(k))}">${esc(t('See it on the map'))}</a></p></li>`; };
-      document.title = `${t(page === 'christmas' ? 'Christmas reading plan' : 'Advent reading plan')} · Bible Connections`;
+      document.title = `${t({ advent: 'Advent reading plan', christmas: 'Christmas reading plan', lent: 'Lent reading plan', holyweek: 'Holy Week reading plan' }[page])} · Bible Connections`;
       const td = inAdvent ? plan.days[todayK] : null;
       main.innerHTML = `<h1>${esc(pick(plan, 'name'))}</h1>
         <p class="lede">${esc(pick(plan, 'description'))}</p>
@@ -94,7 +99,12 @@
           <p class="muted" id="adventStatus" role="status"></p></section>
         ${weeks.map(w => `<section aria-labelledby="w-${slug(w.name)}"><h2 id="w-${slug(w.name)}">${esc(w.name)}</h2><ol class="advent-days" start="${w.days[0] + 1}">${w.days.map(day).join('')}</ol></section>`).join('')}
         <p class="muted church-note">${esc(t('Each day opens two passages on Bible.com and shows how they connect on the map. No Bible translation is stored on this site.'))}</p>
-        <p class="no-print">${page === 'advent' ? `${esc(t('After Christmas Day:'))} <a href="${esc(withLang('christmas.html'))}">${esc(t('the twelve days of Christmas'))}</a>` : `${esc(t('Before Christmas:'))} <a href="${esc(withLang('advent.html'))}">${esc(t('the Advent plan'))}</a>`}</p>`;
+        <p class="no-print">${{
+          advent: [t('After Christmas Day:'), 'christmas.html', t('the twelve days of Christmas')],
+          christmas: [t('Before Christmas:'), 'advent.html', t('the Advent plan')],
+          lent: [t('After Lent:'), 'holyweek.html', t('the Holy Week plan')],
+          holyweek: [t('Before Holy Week:'), 'lent.html', t('the Lent plan')],
+        }[page].map((x, n) => (n === 1 ? '' : n === 0 ? esc(x) + ' ' : `<a href="${esc(withLang({ advent: 'christmas.html', christmas: 'advent.html', lent: 'holyweek.html', holyweek: 'lent.html' }[page]))}">${esc(x)}</a>`)).join('')}</p>`;
       document.getElementById('adventPrint').addEventListener('click', () => print());
       document.getElementById('adventShare').addEventListener('click', async () => {
         const status = document.getElementById('adventStatus');

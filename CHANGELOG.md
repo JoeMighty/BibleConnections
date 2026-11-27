@@ -8,6 +8,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ### Added
 - **People and places in the Bible:** a page for each of 56 people and places (Abraham, Moses, David, Mary, Paul, Jerusalem, Bethlehem and more) with how many verses name them, the books they appear in, their most connected verses with Read links, how those verses link across books, and a button to see them all on the map ([people/](https://bibleconnections.app/people/)).
 
+- **Lent and Holy Week plans to share:** dated pages for Lent (Ash Wednesday to the day before Palm Sunday) and Holy Week (Palm Sunday to Easter), worked out from the date of Easter, like the Advent and Christmas pages ([lent.html](https://bibleconnections.app/lent.html), [holyweek.html](https://bibleconnections.app/holyweek.html)). The welcome page's season card links to them in season.
+
 ### Changed
 - Topics leave out word forms and verses that use a key word in another sense (such as "all kinds" under kindness, "restore" under rest, or the Holy Spirit under holiness), in the app and on the topic pages.
 

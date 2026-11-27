@@ -385,6 +385,54 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/christmas.html"/>
   </url>
   <url>
+    <loc>https://bibleconnections.app/lent.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/lent.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/lent.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/lent.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/lent.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/lent.html?lang=es</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/lent.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/lent.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/lent.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/lent.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/lent.html?lang=pt</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/lent.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/lent.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/lent.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/lent.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/holyweek.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/holyweek.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/holyweek.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/holyweek.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/holyweek.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/holyweek.html?lang=es</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/holyweek.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/holyweek.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/holyweek.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/holyweek.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/holyweek.html?lang=pt</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/holyweek.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/holyweek.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/holyweek.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/holyweek.html"/>
+  </url>
+  <url>
     <loc>https://bibleconnections.app/support.html</loc>
     <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/support.html"/>

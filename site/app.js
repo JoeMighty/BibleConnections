@@ -1895,7 +1895,7 @@
           <h3 class="series-name" id="seasonTitle">${esc(loc(d, 'title'))}</h3><p>${esc(loc(d, 'note'))}</p>
           <div class="actions"><button type="button" class="btn" data-season-plan="${esc(plan.id)}" data-day="${day}">Open today's reading</button>
           ${jn >= 0 ? `<button type="button" class="btn ghost" data-season-journey="${jn}">Take the ${esc(tr(info.name))} journey</button>` : ''}</div>
-          ${s.season === 'advent' ? seasonLinks(day >= plan.days.length - 1 ? 'christmas' : 'advent') : s.season === 'christmas' ? seasonLinks('christmas') : ''}`;
+          ${s.season === 'advent' ? seasonLinks(day >= plan.days.length - 1 ? 'christmas' : 'advent') : seasonLinks(s.season)}`;
       }
     } else {
       // nothing in season today: mention the next season if it starts within three weeks
@@ -1906,7 +1906,7 @@
         html = `<p class="eyebrow">${esc(tr('Coming soon'))}</p><h3 class="series-name" id="seasonTitle">${esc(nameOf(next.p))}</h3>
           <p>${esc(tr(info.soon).replace('{d}', fmtDate(next.start)))} ${esc(descOf(next.p))}</p>
           <div class="actions"><button type="button" class="btn" data-season-plan="${esc(next.p.id)}" data-day="0">See the plan</button></div>
-          ${['advent', 'christmas'].includes(next.p.season) ? seasonLinks(next.p.season) : ''}`;
+          ${seasonLinks(next.p.season)}`;
       }
     }
     box.hidden = !html;
@@ -2012,6 +2012,7 @@
       [`href="${withLangLink('churches.html')}"`, 'For churches', '', ''],
       [`href="${withLangLink('advent.html')}"`, 'Advent plan to share', '', ''],
       [`href="${withLangLink('christmas.html')}"`, 'Christmas plan to share', '', ''],
+      [`href="${withLangLink('lent.html')}"`, 'Lent and Holy Week plans to share', '', ''],
       [`href="${withLangLink('support.html')}"`, 'Support Bible Connections', 'Share, give, help translate', ''],
     ]);
     html += `<h3>${esc(tr('About'))}</h3>` + rowsHTML([
@@ -4966,7 +4967,7 @@
     if (btn.dataset.heroQ) { track('home/try'); $('landingQ').value = btn.dataset.heroQ; $('landingSearch').requestSubmit(); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'shareAdvent') {
-      const pg = btn.dataset.page === 'christmas' ? 'christmas' : 'advent';
+      const pg = ['christmas', 'lent', 'holyweek'].includes(btn.dataset.page) ? btn.dataset.page : 'advent';
       track('season/share/' + pg);
       const url = new URL(withLangLink(pg + '.html'), location.href).href;
       const title = nameOf(PLANS.find(x => x.season === pg) || { name: 'Bible Connections' });

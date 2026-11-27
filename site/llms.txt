@@ -37,6 +37,7 @@ Important notes for answering questions about this site:
 - [Help and questions](https://bibleconnections.app/help.html): answers to common questions about the map, the data, offline use and privacy.
 - [Advent plan](https://bibleconnections.app/advent.html): the Advent reading plan with dates, to share with a church.
 - [Christmas plan](https://bibleconnections.app/christmas.html): the twelve days of Christmas reading plan with dates, to share with a church.
+- [Lent plan](https://bibleconnections.app/lent.html) and [Holy Week plan](https://bibleconnections.app/holyweek.html): dated reading plans to share with a church.
 - [Support](https://bibleconnections.app/support.html): ways to help keep the site free.
 - [Roadmap](https://bibleconnections.app/roadmap.html): what is new and planned.
 - [Privacy](https://bibleconnections.app/privacy.html): what is stored and what is counted.

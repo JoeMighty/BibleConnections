@@ -114,3 +114,25 @@ test('on Christmas Day the welcome page links to the Christmas page, and after i
   await expect(page.locator('#seasonBanner a[href="christmas.html"]')).toBeVisible();
   await expect(page.locator('#seasonBanner [data-action="shareAdvent"][data-page="christmas"]')).toBeVisible();
 });
+
+test('the Lent and Holy Week pages are dated from Easter and mark today', async ({ page }) => {
+  // Easter 2027 is 28 March: Ash Wednesday is 10 February, Palm Sunday 21 March
+  await page.goto('/lent.html?today=2027-02-12');
+  await expect(page.locator('h1')).toHaveText('Lent: the road to the cross');
+  await expect(page.locator('.advent-day')).toHaveCount(39);
+  await expect(page.locator('.advent-day').first()).toContainText('Wednesday, February 10');
+  await expect(page.locator('.advent-day[aria-current="date"]')).toHaveAttribute('id', 'day-3');
+  await expect(page.locator('section[aria-labelledby^="w-"] h2').first()).toHaveText('Ash Wednesday');
+  await expect(page.locator('main a[href="holyweek.html"]')).toBeVisible();
+  await page.goto('/holyweek.html?today=2027-03-25');
+  await expect(page.locator('.advent-day')).toHaveCount(8);
+  await expect(page.locator('.advent-day').first()).toContainText('Sunday, March 21');
+  await expect(page.locator('.advent-day').last()).toContainText('Sunday, March 28');
+  await expect(page.locator('.advent-day[aria-current="date"]')).toHaveAttribute('id', 'day-5');
+  // after Easter it shows next year (Easter 2028 is 16 April)
+  await page.goto('/holyweek.html?today=2027-04-10');
+  await expect(page.locator('.advent-day').first()).toContainText('Sunday, April 9');
+  await page.goto('/?today=2027-02-12');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#seasonBanner a[href="lent.html"]')).toBeVisible();
+});
