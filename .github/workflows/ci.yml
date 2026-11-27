@@ -73,6 +73,8 @@ jobs:
         run: node scripts/feeds.mjs
       - name: Build the book and verse pages
         run: node scripts/static-pages.mjs
+      - name: Minify scripts and styles for the deployed copy
+        run: npm ci && node scripts/minify.mjs site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

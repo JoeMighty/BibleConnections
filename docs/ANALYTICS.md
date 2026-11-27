@@ -21,3 +21,12 @@ Stats are **off** by default. When switched on, the site loads one small script 
 ```
 
 To switch stats off again, set `"provider": ""`.
+
+## Measuring the verse screen
+
+Two events show whether the verse screen works:
+
+- `event/verse/open`: someone opened a single verse.
+- `event/verse/connection`: from that verse, they opened one of its connections.
+
+Divide the second by the first. If fewer than about a third of people who open a verse go on to a connection, the connections are still too hard to see or too uninviting. Compare the number before and after a change, over at least two weeks.

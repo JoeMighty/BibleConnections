@@ -1290,6 +1290,7 @@
     computeFocus();
     drawBase(); renderPanel(); syncURL(true);
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.`);
+    if (range.kind === 'verse') track('verse/open');
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
       // a verse's arcs fan out across the whole Bible: the whole map with them lit up reads better than a deep zoom
@@ -4255,7 +4256,11 @@
     if (tracked) track(tracked.dataset.track);
     const btn = e.target.closest('button');
     if (!btn) return;
-    if (btn.dataset.ref && !btn.dataset.action) { selectRef(+btn.dataset.ref); focusPanelHeading(); return; }
+    if (btn.dataset.ref && !btn.dataset.action) {
+      // the measure for the verse screen: of the people who open a verse, how many go on to open one of its connections
+      if (state.focus && state.focus.kind === 'verse') track('verse/connection');
+      selectRef(+btn.dataset.ref); focusPanelHeading(); return;
+    }
     const a = btn.dataset.action;
     if (a === 'more') { listShown += PAGE; renderPanel(); el.panelBody.querySelectorAll('.conn-item')[listShown - PAGE]?.focus(); }
     else if (a === 'moreVerses') { versesShown += 40; renderPanel(); el.panelBody.querySelectorAll('.verse-list .link-btn')[versesShown - 40]?.focus(); }
