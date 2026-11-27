@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.22.0] - 2026-11-27 - First Things First
+
 ### Added
 - **Advent plan to share:** a page for churches with every day of the Advent plan from Advent Sunday to Christmas Day, with its date, both passages (opening on Bible.com) and a short note. Today's reading is shown first in season. Copy or share the link, or print the whole plan ([advent.html](https://bibleconnections.app/advent.html)). In English, Spanish and Portuguese.
 - The Advent card on the welcome page links to the whole plan and has a Share button. For churches has an Advent card.
