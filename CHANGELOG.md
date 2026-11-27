@@ -7,6 +7,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ### Added
 - **Christmas plan to share:** a page for the twelve days of Christmas, like the Advent one: every day from Christmas Day to 5 January with its date, both passages and a note, today first in season, and a link to copy, share or print ([christmas.html](https://bibleconnections.app/christmas.html)). In English, Spanish and Portuguese.
+- **Bible verses by topic:** a page for each of 42 topics (anxiety, fear, grief, forgiveness, hope and more) with its most connected verses, how they link across the Bible, a Read link to Bible.com for each and a button to see them on the map. The index puts the welcome page's feelings first ([topics/](https://bibleconnections.app/topics/)). Built with the book and verse pages; no translation text.
 - From Christmas Day to 5 January the welcome page's season card links to the Christmas page and can share it. The Advent and Christmas pages link to each other, and the Christmas plan is in More and every footer.
 
 ## [0.23.0] - 2026-11-27 - Own Colors

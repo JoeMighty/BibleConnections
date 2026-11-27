@@ -226,3 +226,10 @@ main::before { content: ''; position: absolute; z-index: -1; top: 0; right: max(
 @media (prefers-reduced-motion: no-preference) { main::before { animation: arcs-drift 48s ease-in-out infinite alternate; } }
 @keyframes arcs-drift { from { transform: translateX(0) scale(1); } to { transform: translateX(-4%) scale(1.05); } }
 @media print { main::before { display: none; } }
+
+/* topic pages: a verse row with its own Read link, and related topics as chips */
+.topic-row { display: flex; align-items: stretch; }
+.topic-row > a:first-child { flex: 1; min-width: 0; }
+.list .row-read { flex: none; display: inline-flex; align-items: center; padding: 0 16px; min-height: 48px; color: var(--link); font-weight: 600; font-size: var(--t-sub); border-left: 0.5px solid var(--separator); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chip-row a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border-radius: 999px; background: var(--surface); color: var(--text); text-decoration: none; font-size: var(--t-sub); }

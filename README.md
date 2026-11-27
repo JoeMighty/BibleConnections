@@ -118,6 +118,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Search engines](docs/SEO.md)
 - [For churches](https://bibleconnections.app/churches.html)
 - [Help and questions](https://bibleconnections.app/help.html)
+- [Bible verses by topic](https://bibleconnections.app/topics/)
 - [Advent plan](https://bibleconnections.app/advent.html)
 - [Support](https://bibleconnections.app/support.html)
 - [Privacy](https://bibleconnections.app/privacy.html), [Terms of use](https://bibleconnections.app/terms.html), [Accessibility](https://bibleconnections.app/accessibility.html) and [Credits and licenses](https://bibleconnections.app/credits.html)

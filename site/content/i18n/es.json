@@ -1009,7 +1009,8 @@
     "Collect": "Guardar en colección",
     "For leaders": "Para líderes",
     "Christmas plan to share": "Plan de Navidad para compartir",
-    "Christmas plan": "Plan de Navidad"
+    "Christmas plan": "Plan de Navidad",
+    "Verses by topic": "Versículos por tema"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1283,7 +1284,8 @@
       "After Christmas Day:": "Después de Navidad:",
       "the twelve days of Christmas": "los doce días de Navidad",
       "Before Christmas:": "Antes de Navidad:",
-      "the Advent plan": "el plan de Adviento"
+      "the Advent plan": "el plan de Adviento",
+      "Verses by topic": "Versículos por tema"
     },
     "slides": {
       "Slides": "Diapositivas",

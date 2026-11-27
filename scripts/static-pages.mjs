@@ -37,7 +37,7 @@ const label = (D, k) => `${D.B[D.vb[k]].name} ${D.vc[k]}:${D.vn[k]}`;
 const rangeLabel = (D, a, z) => (z === a ? label(D, a) : D.vb[z] === D.vb[a] && D.vc[z] === D.vc[a] ? `${label(D, a)}-${D.vn[z]}` : `${label(D, a)}-${D.vb[z] === D.vb[a] ? '' : D.B[D.vb[z]].name + ' '}${D.vc[z]}:${D.vn[z]}`);
 const verseSlug = (D, k) => `${D.B[D.vb[k]].slug}-${D.vc[k]}-${D.vn[k]}`;
 export function urls(D) {
-  return ['books/', ...D.B.map(b => `books/${b.slug}/`), ...[...D.pages].map(k => `verse/${verseSlug(D, k)}/`), 'cross-references/'];
+  return ['books/', ...D.B.map(b => `books/${b.slug}/`), ...[...D.pages].map(k => `verse/${verseSlug(D, k)}/`), 'cross-references/', 'topics/', ...topicList().map(t => `topics/${t.id}/`)];
 }
 
 // ---------- page frame ----------
@@ -90,6 +90,7 @@ function page({ file, title, description, crumbs, body, nav = '' }) {
       <a href="/">Open the map</a>
       <a href="/books/"${nav === 'books' ? ' aria-current="page"' : ''}>Books</a>
       <a href="/cross-references/"${nav === 'count' ? ' aria-current="page"' : ''}>How many?</a>
+      <a href="/topics/"${nav === 'topics' ? ' aria-current="page"' : ''}>Topics</a>
     </nav>
   </header>
   <main id="main">
@@ -242,11 +243,75 @@ function countPage(D, per) {
   });
 }
 
+
+// ---------- topic pages: "Bible verses about anxiety" and the rest, from the same topics and word index as the map ----------
+// how someone might feel, for the topics the welcome page offers under "How are you feeling?" (FEELINGS in app.js)
+const FEELING_OF = { anxiety: 'anxious', fear: 'afraid', comfort: 'grieving', rest: 'tired', forgiveness: 'guilty', anger: 'angry', temptation: 'tempted', strength: 'weak', patience: 'waiting', suffering: 'suffering', thanks: 'thankful', joy: 'joyful' };
+export function topicList() { return readJSON('content/topics.json'); }
+function topicPages(D) {
+  const { B, N, F, T, E, V, vb, vc, vn, deg } = D, TOP = topicList();
+  const idx = readJSON('data/words.json'), keys = Object.keys(idx);
+  const decode = (str) => { let v = 0; return str.split(',').map(d => (v += parseInt(d, 36))); };
+  const lower = (s) => s.charAt(0).toLowerCase() + s.slice(1);
+  const built = TOP.map(t => {
+    // the same matching as the map: each key word, plus forms up to three letters longer (worry, worried, worries)
+    const set = new Set();
+    for (const w of t.words) for (const k of keys.filter(k => k === w || (k.startsWith(w) && k.length - w.length <= 3))) for (const v of decode(idx[k])) set.add(v);
+    const verses = [...set].sort((a, b) => a - b);
+    const inSet = new Uint8Array(D.TOTAL); for (const v of verses) inSet[v] = 1;
+    const top = verses.filter(v => deg[v]).sort((a, b) => deg[b] - deg[a] || a - b).slice(0, 20);
+    // the strongest links between two verses that are both about this topic
+    const links = [];
+    for (let i = 0; i < N; i++) if (inSet[F[i]] && inSet[T[i]] && vb[F[i]] !== vb[T[i]]) links.push(i);
+    links.sort((a, b) => V[b] - V[a]);
+    return { t, slug: t.id, verses, top, links: links.slice(0, 8) };
+  }).filter(x => x.top.length >= 3);
+  const read = (k) => readURL(B[vb[k]], vc[k], vn[k]);
+  const verseRow = (k, max) => `<li class="topic-row"><a href="${verseHref(D, k)}"><span class="row-main"><span class="row-title">${esc(label(D, k))}</span><span class="row-detail">${B[vb[k]].nt ? 'New Testament' : 'Old Testament'}</span></span><span class="row-end"><span class="meter" aria-hidden="true"><span style="width:${Math.max(4, Math.round(100 * deg[k] / max))}%"></span></span><span class="row-n">${fmt(deg[k])}</span>${chevron}</span></a><a class="row-read" href="${read(k)}" rel="noopener">Read<span class="sr-only"> ${esc(label(D, k))} on Bible.com</span></a></li>`;
+  for (const x of built) {
+    const name = lower(x.t.name), feel = FEELING_OF[x.t.id];
+    const lead = `${fmt(x.verses.length)} verses in the Bible use words such as ${x.t.words.slice(0, 3).map(w => `“${w}”`).join(', ')}. These are the ones other passages point to most, so they are a good place to start${feel ? ` when you feel ${feel}` : ''}.`;
+    page({
+      file: `topics/${x.slug}/index.html`, nav: 'topics', title: `Bible verses about ${name} · Bible Connections`,
+      description: `Bible verses about ${name}: the ${x.top.length} most connected passages, and how they link across the Bible. Read each one on Bible.com in your own translation.`,
+      crumbs: [['Bible Connections', '/'], ['Topics', '/topics/'], [x.t.name, `/topics/${x.slug}/`]],
+      body: `    <h1>Bible verses about ${esc(name)}</h1>
+    <p class="lede">${esc(lead)}</p>
+    <p class="actions"><a class="btn" href="/?topic=${encodeURIComponent(x.t.id)}">See them on the map</a></p>
+    <h2>Most connected verses</h2>
+    <p class="hint">The number is how many cross references each verse has. Tap a verse to see what it connects to.</p>
+    <ul class="list">${x.top.map(k => verseRow(k, deg[x.top[0]])).join('')}</ul>
+    ${x.links.length ? `<h2>How they connect</h2>
+    <p class="hint">Pairs of these verses that point to each other across different books, strongest first.</p>
+    <ul class="list">${x.links.map(i => `<li><a href="/?c=${D.B[vb[F[i]]].osis}.${vc[F[i]]}.${vn[F[i]]}~${D.B[vb[T[i]]].osis}.${vc[T[i]]}.${vn[T[i]]}"><span class="row-main"><span class="row-title">${esc(label(D, F[i]))} and ${esc(rangeLabel(D, T[i], E[i]))}</span><span class="row-detail">${fmt(V[i])} readers agree</span></span><span class="row-end">${chevron}</span></a></li>`).join('')}</ul>` : ''}
+    <p class="hint">Topics are found by key words in the Berean Standard Bible, so this is a starting point rather than a complete list. No Bible translation is stored on this site: every passage opens on Bible.com.</p>
+    <h2>Related topics</h2>
+    <ul class="chip-row">${[1, 2, 3, 5, 8, 13, 21, 34].map(n => built[(built.indexOf(x) + n) % built.length]).filter((y, n, arr) => y !== x && arr.indexOf(y) === n).map(y => `<li><a href="/topics/${y.slug}/">${esc(y.t.name)}</a></li>`).join('')}</ul>`,
+    });
+  }
+  // index, with the feelings first
+  const feelings = built.filter(x => FEELING_OF[x.t.id]), rest = built.filter(x => !FEELING_OF[x.t.id]);
+  const tile = (x) => `<li><a href="/topics/${x.slug}/"><span class="row-main"><span class="row-title">${esc(x.t.name)}</span><span class="row-detail">${fmt(x.verses.length)} verses</span></span><span class="row-end">${chevron}</span></a></li>`;
+  page({
+    file: 'topics/index.html', nav: 'topics', title: 'Bible verses by topic · Bible Connections',
+    description: 'Bible verses about anxiety, fear, grief, forgiveness, hope and 37 more topics: the most connected passages for each, and how they link across the Bible.',
+    crumbs: [['Bible Connections', '/'], ['Topics', '/topics/']],
+    body: `    <h1>Bible verses by topic</h1>
+    <p class="lede">For each topic, the verses other passages point to most, and how they connect. Every passage opens on Bible.com in your own translation.</p>
+    <h2>How are you feeling?</h2>
+    <ul class="list">${feelings.map(x => tile(x).replace(esc(x.t.name), `${esc(FEELING_OF[x.t.id].charAt(0).toUpperCase() + FEELING_OF[x.t.id].slice(1))}: ${esc(lower(x.t.name))}`)).join('')}</ul>
+    <h2>More topics</h2>
+    <ul class="list">${rest.map(tile).join('')}</ul>`,
+  });
+  return built;
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const D = load();
-  for (const d of ['books', 'verse', 'cross-references']) fs.rmSync(path.join(SITE, d), { recursive: true, force: true });
+  for (const d of ['books', 'verse', 'cross-references', 'topics']) fs.rmSync(path.join(SITE, d), { recursive: true, force: true });
   const per = bookPages(D);
   versePages(D);
   countPage(D, per);
-  console.log(`Wrote ${urls(D).length} pages: books, ${D.pages.size} verses, how many`);
+  const topics = topicPages(D);
+  console.log(`Wrote ${urls(D).length} pages: books, ${D.pages.size} verses, how many, ${topics.length} topics`);
 }
