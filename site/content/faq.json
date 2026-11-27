@@ -1,0 +1,130 @@
+[
+  {
+    "group": "Getting started", "group_es": "Primeros pasos", "group_pt": "Primeiros passos",
+    "items": [
+      {
+        "q": "What is Bible Connections?", "q_es": "¿Qué es Bible Connections?", "q_pt": "O que é o Bible Connections?",
+        "a": ["A free map of the cross references in the Bible. Every arc joins two passages that point to each other, so you can see how the whole Bible fits together and follow one passage to another."],
+        "a_es": ["Un mapa gratuito de las referencias cruzadas de la Biblia. Cada arco une dos pasajes que se señalan entre sí, para que veas cómo encaja toda la Biblia y pases de un pasaje a otro."],
+        "a_pt": ["Um mapa gratuito das referências cruzadas da Bíblia. Cada arco liga duas passagens que apontam uma para a outra, para você ver como toda a Bíblia se encaixa e seguir de uma passagem para outra."]
+      },
+      {
+        "q": "What do the arcs and colors mean?", "q_es": "¿Qué significan los arcos y los colores?", "q_pt": "O que significam os arcos e as cores?",
+        "a": ["The books run from Genesis on the left to Revelation on the right. Each arc joins two passages: the farther apart they are, the taller the arc. Colors show the part of the Bible a link starts in, such as the Law, the Prophets or the Gospels. A color-blind friendly style is in Settings."],
+        "a_es": ["Los libros van de Génesis a la izquierda a Apocalipsis a la derecha. Cada arco une dos pasajes: cuanto más separados están, más alto es el arco. Los colores muestran la parte de la Biblia donde empieza la conexión, como la Ley, los Profetas o los Evangelios. En Ajustes hay un estilo apto para daltónicos."],
+        "a_pt": ["Os livros vão de Gênesis, à esquerda, a Apocalipse, à direita. Cada arco liga duas passagens: quanto mais distantes, mais alto o arco. As cores mostram a parte da Bíblia onde a conexão começa, como a Lei, os Profetas ou os Evangelhos. Em Ajustes há um estilo adequado para daltônicos."]
+      },
+      {
+        "q": "How do I find a verse?", "q_es": "¿Cómo busco un versículo?", "q_pt": "Como encontro um versículo?",
+        "a": ["Tap the search button at the top and type a reference such as John 3:16, a chapter, a book or a word. Misspelled book names are understood, and you can search in Hebrew or Greek too."],
+        "a_es": ["Toca el botón de búsqueda arriba y escribe una referencia como Juan 3:16, un capítulo, un libro o una palabra. Se entienden los nombres de libros mal escritos, y también puedes buscar en hebreo o griego."],
+        "a_pt": ["Toque no botão de busca no alto e digite uma referência como João 3:16, um capítulo, um livro ou uma palavra. Nomes de livros com erro de digitação são entendidos, e você também pode buscar em hebraico ou grego."]
+      },
+      {
+        "q": "Why don't I see every connection?", "q_es": "¿Por qué no veo todas las conexiones?", "q_pt": "Por que não vejo todas as conexões?",
+        "a": ["To keep the map readable, it first shows only the links that many readers agree on. Move the \"Readers who agree\" slider in Explore to see more or fewer."],
+        "a_es": ["Para que el mapa se pueda leer, al principio solo muestra las conexiones en las que coinciden muchos lectores. Mueve el control \"Lectores que coinciden\" en Explorar para ver más o menos."],
+        "a_pt": ["Para manter o mapa legível, ele mostra primeiro só as conexões em que muitos leitores concordam. Mova o controle \"Leitores que concordam\" em Explorar para ver mais ou menos."]
+      }
+    ]
+  },
+  {
+    "group": "About the content", "group_es": "Sobre el contenido", "group_pt": "Sobre o conteúdo",
+    "items": [
+      {
+        "q": "Where do the connections come from?", "q_es": "¿De dónde vienen las conexiones?", "q_pt": "De onde vêm as conexões?",
+        "a": ["From OpenBible.info, the largest openly licensed set of cross references (344,799 in all). It is based on the Treasury of Scripture Knowledge, and readers vote on how strongly each pair of passages is linked."],
+        "a_es": ["De OpenBible.info, el mayor conjunto de referencias cruzadas con licencia abierta (344.799 en total). Se basa en el Treasury of Scripture Knowledge, y los lectores votan qué tan fuerte es cada conexión."],
+        "a_pt": ["Do OpenBible.info, o maior conjunto de referências cruzadas com licença aberta (344.799 no total). Ele se baseia no Treasury of Scripture Knowledge, e os leitores votam na força de cada conexão."]
+      },
+      {
+        "q": "Why can't I read the verses on this site?", "q_es": "¿Por qué no puedo leer los versículos en este sitio?", "q_pt": "Por que não consigo ler os versículos neste site?",
+        "a": ["Most Bible translations are under copyright, so no translation is stored here. Every passage opens on Bible.com in the translation you choose, where you can also listen. The site does show the original Hebrew and Greek, from STEP Bible (CC BY 4.0)."],
+        "a_es": ["La mayoría de las traducciones de la Biblia tienen derechos de autor, así que aquí no se guarda ninguna. Cada pasaje se abre en Bible.com en la traducción que elijas, donde también puedes escucharlo. El sitio sí muestra el hebreo y el griego originales, de STEP Bible (CC BY 4.0)."],
+        "a_pt": ["A maioria das traduções da Bíblia tem direitos autorais, então nenhuma fica guardada aqui. Cada passagem abre no Bible.com na tradução que você escolher, onde também dá para ouvir. O site mostra o hebraico e o grego originais, do STEP Bible (CC BY 4.0)."]
+      },
+      {
+        "q": "Can I change the Bible translation?", "q_es": "¿Puedo cambiar la traducción de la Biblia?", "q_pt": "Posso mudar a tradução da Bíblia?",
+        "a": ["Yes. Open Settings and choose from 99 translations in 31 languages. You can also pick a second translation to compare."],
+        "a_es": ["Sí. Abre Ajustes y elige entre 99 traducciones en 31 idiomas. También puedes elegir una segunda traducción para comparar."],
+        "a_pt": ["Sim. Abra Ajustes e escolha entre 99 traduções em 31 idiomas. Você também pode escolher uma segunda tradução para comparar."]
+      },
+      {
+        "q": "What if a connection looks wrong?", "q_es": "¿Y si una conexión parece incorrecta?", "q_pt": "E se uma conexão parecer errada?",
+        "a": ["Open the connection and choose \"Report it\" under \"Does this link seem weak?\". You can also hide it on your own device straight away."],
+        "a_es": ["Abre la conexión y elige \"Repórtalo\" debajo de \"¿Te parece débil este vínculo?\". También puedes ocultarla en tu dispositivo al momento."],
+        "a_pt": ["Abra a conexão e escolha \"Informe\" abaixo de \"Esta ligação parece fraca?\". Você também pode ocultá-la no seu aparelho na hora."]
+      },
+      {
+        "q": "Who wrote the notes, journeys and plans?", "q_es": "¿Quién escribió las notas, los recorridos y los planes?", "q_pt": "Quem escreveu as notas, as jornadas e os planos?",
+        "a": ["They were written for this site to help you explore, and a pastor is reviewing them. They are not a statement of any church's teaching: read each passage for yourself and talk it over with your church."],
+        "a_es": ["Se escribieron para este sitio como ayuda para explorar, y un pastor las está revisando. No son una declaración de la enseñanza de ninguna iglesia: lee cada pasaje por ti mismo y coméntalo con tu iglesia."],
+        "a_pt": ["Foram escritos para este site como ajuda para explorar, e um pastor está revisando. Não são uma declaração do ensino de nenhuma igreja: leia cada passagem por conta própria e converse sobre ela com sua igreja."]
+      }
+    ]
+  },
+  {
+    "group": "Using the app", "group_es": "Usar la app", "group_pt": "Usar o app",
+    "items": [
+      {
+        "q": "Can I install it on my phone?", "q_es": "¿Puedo instalarla en el teléfono?", "q_pt": "Posso instalar no celular?",
+        "a": ["Yes. On iPhone or iPad, open the site in Safari, tap Share, then Add to Home Screen. On Android, open it in Chrome and choose Install app from the menu. It then opens like any other app."],
+        "a_es": ["Sí. En iPhone o iPad, abre el sitio en Safari, toca Compartir y luego Añadir a pantalla de inicio. En Android, ábrelo en Chrome y elige Instalar app en el menú. Después se abre como cualquier otra app."],
+        "a_pt": ["Sim. No iPhone ou iPad, abra o site no Safari, toque em Compartilhar e depois em Adicionar à Tela de Início. No Android, abra no Chrome e escolha Instalar app no menu. Depois ele abre como qualquer outro app."]
+      },
+      {
+        "q": "Does it work offline?", "q_es": "¿Funciona sin conexión?", "q_pt": "Funciona sem internet?",
+        "a": ["The map works offline once you have opened it. To keep everything, open Settings and choose \"Save everything for offline\". Passages still open on Bible.com, which needs a connection."],
+        "a_es": ["El mapa funciona sin conexión una vez que lo has abierto. Para guardarlo todo, abre Ajustes y elige \"Guardar todo para usar sin conexión\". Los pasajes se siguen abriendo en Bible.com, que necesita conexión."],
+        "a_pt": ["O mapa funciona sem internet depois que você o abre. Para guardar tudo, abra Ajustes e escolha \"Salvar tudo para usar sem internet\". As passagens continuam abrindo no Bible.com, que precisa de internet."]
+      },
+      {
+        "q": "Where are my notes and progress saved?", "q_es": "¿Dónde se guardan mis notas y mi progreso?", "q_pt": "Onde ficam minhas notas e meu progresso?",
+        "a": ["Only on your device. There are no accounts, so nothing is sent to us. To move to a new phone or computer, choose \"Back up everything\" in the Library to save one file, then open it on the new device."],
+        "a_es": ["Solo en tu dispositivo. No hay cuentas, así que no se nos envía nada. Para pasar a otro teléfono u ordenador, elige \"Hacer una copia de todo\" en la Biblioteca para guardar un archivo y ábrelo en el nuevo dispositivo."],
+        "a_pt": ["Só no seu aparelho. Não há contas, então nada é enviado para nós. Para passar para outro celular ou computador, escolha \"Fazer backup de tudo\" na Biblioteca para salvar um arquivo e abra-o no novo aparelho."]
+      },
+      {
+        "q": "How do I change the language?", "q_es": "¿Cómo cambio el idioma?", "q_pt": "Como mudo o idioma?",
+        "a": ["Open Settings, or use the language links at the bottom of any page. The site is in English, Spanish and Portuguese."],
+        "a_es": ["Abre Ajustes o usa los enlaces de idioma al final de cualquier página. El sitio está en inglés, español y portugués."],
+        "a_pt": ["Abra Ajustes ou use os links de idioma no fim de qualquer página. O site está em inglês, espanhol e português."]
+      },
+      {
+        "q": "Can I use it with a screen reader or keyboard?", "q_es": "¿Puedo usarla con lector de pantalla o teclado?", "q_pt": "Posso usar com leitor de tela ou teclado?",
+        "a": ["Yes. Everything on the map is also listed as text, and the whole site works with a keyboard. Settings has larger text, an easier-to-read font and higher contrast. The Accessibility page has the details."],
+        "a_es": ["Sí. Todo lo del mapa también aparece como texto, y el sitio entero funciona con teclado. En Ajustes hay texto más grande, una letra más fácil de leer y más contraste. La página de Accesibilidad tiene los detalles."],
+        "a_pt": ["Sim. Tudo o que está no mapa também aparece como texto, e o site inteiro funciona com teclado. Em Ajustes há texto maior, uma fonte mais fácil de ler e mais contraste. A página de Acessibilidade tem os detalhes."]
+      }
+    ]
+  },
+  {
+    "group": "Cost, privacy and churches", "group_es": "Costo, privacidad e iglesias", "group_pt": "Custo, privacidade e igrejas",
+    "items": [
+      {
+        "q": "Is it really free?", "q_es": "¿De verdad es gratis?", "q_pt": "É gratuito mesmo?",
+        "a": ["Yes. There are no adverts, no accounts and nothing to buy, and the code is open source on GitHub."],
+        "a_es": ["Sí. No hay anuncios, ni cuentas, ni nada que comprar, y el código es abierto en GitHub."],
+        "a_pt": ["Sim. Não há anúncios, nem contas, nem nada para comprar, e o código é aberto no GitHub."]
+      },
+      {
+        "q": "Do you track me?", "q_es": "¿Me rastrean?", "q_pt": "Vocês me rastreiam?",
+        "a": ["No. The site counts visits with GoatCounter, which uses no cookies and collects no personal information. The Privacy page explains exactly what is stored."],
+        "a_es": ["No. El sitio cuenta las visitas con GoatCounter, que no usa cookies ni recoge datos personales. La página de Privacidad explica exactamente qué se guarda."],
+        "a_pt": ["Não. O site conta as visitas com o GoatCounter, que não usa cookies nem coleta dados pessoais. A página de Privacidade explica exatamente o que é guardado."]
+      },
+      {
+        "q": "Can my church use it?", "q_es": "¿Puede usarlo mi iglesia?", "q_pt": "Minha igreja pode usar?",
+        "a": ["Yes, freely, on screens, in handouts and on your website. The For churches page gathers the tools: sermon series pages, leader guides, slides, the Advent plan and more."],
+        "a_es": ["Sí, libremente, en pantallas, en hojas impresas y en tu sitio web. La página Para iglesias reúne las herramientas: páginas de series de sermones, guías para líderes, diapositivas, el plan de Adviento y más."],
+        "a_pt": ["Sim, livremente, no telão, em folhetos e no site da igreja. A página Para igrejas reúne as ferramentas: páginas de séries de sermões, guias para líderes, slides, o plano do Advento e mais."]
+      },
+      {
+        "q": "Something isn't working. What should I do?", "q_es": "Algo no funciona. ¿Qué hago?", "q_pt": "Algo não está funcionando. O que faço?",
+        "a": ["First try reloading the page. If it still goes wrong, report it on GitHub or email hello@bibleconnections.app, and say what you saw and on which device."],
+        "a_es": ["Primero prueba a recargar la página. Si sigue fallando, infórmalo en GitHub o escribe a hello@bibleconnections.app, y di qué viste y en qué dispositivo."],
+        "a_pt": ["Primeiro tente recarregar a página. Se continuar com problema, relate no GitHub ou escreva para hello@bibleconnections.app, dizendo o que você viu e em qual aparelho."]
+      }
+    ]
+  }
+]

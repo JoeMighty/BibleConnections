@@ -65,3 +65,24 @@ test('the Support page shows giving buttons once a link is in the config', async
   await expect(page.locator('.support-give .btn')).toHaveCount(1);
   await expect(page.locator('.support-give .btn')).toHaveAttribute('href', 'https://ko-fi.com/example');
 });
+
+test('the Help page answers questions in groups, opens a linked question, and is in every language', async ({ page }) => {
+  await page.goto('/help.html#why-can-t-i-read-the-verses-on-this-site');
+  await expect(page.locator('h1')).toHaveText('Help and questions');
+  expect(await page.locator('details.faq').count()).toBeGreaterThan(15);
+  await expect(page.locator('#why-can-t-i-read-the-verses-on-this-site')).toHaveAttribute('open', '');
+  await expect(page.locator('#why-can-t-i-read-the-verses-on-this-site p')).toContainText('Bible.com');
+  const first = page.locator('details.faq').first();
+  await first.locator('summary').click();
+  await expect(first.locator('p')).toBeVisible();
+  const ld = JSON.parse(await page.locator('script[type="application/ld+json"]').last().textContent());
+  expect(ld['@type']).toBe('FAQPage');
+  await expect(page.locator('.faq-more a[href^="mailto:"]')).toHaveCount(1);
+  await page.goto('/help.html?lang=es');
+  await expect(page.locator('h1')).toHaveText('Ayuda y preguntas');
+  await page.goto('/help.html?lang=pt');
+  await expect(page.locator('h1')).toHaveText('Ajuda e perguntas');
+  await page.goto('/?view=more');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#panel a[href="help.html"]')).toBeVisible();
+});

@@ -1993,6 +1993,7 @@
       ['data-action="openSettings"', 'Settings', 'Language, appearance, text size, Bible translations', ''],
       ['data-action="tour"', 'Show the tour', '', ''],
       [`href="${withLangLink('guide.html')}"`, 'How to use', '', ''],
+      [`href="${withLangLink('help.html')}"`, 'Help and questions', 'What the arcs mean, offline use, privacy and more', ''],
       ['data-action="keys"', 'Keyboard shortcuts', '', ''],
       [`href="${withLangLink('churches.html')}"`, 'For churches', '', ''],
       [`href="${withLangLink('advent.html')}"`, 'Advent plan to share', '', ''],

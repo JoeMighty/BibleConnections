@@ -1001,7 +1001,10 @@
     "Share, give, help translate": "Compartir, donar, ayudar a traducir",
     "Advent plan": "Plan de Adviento",
     "Support": "Apoyar",
-    "Advent: promise and fulfilment": "Adviento: promesa y cumplimiento"
+    "Advent: promise and fulfilment": "Adviento: promesa y cumplimiento",
+    "Help and questions": "Ayuda y preguntas",
+    "What the arcs mean, offline use, privacy and more": "Qué significan los arcos, uso sin conexión, privacidad y más",
+    "Questions": "Preguntas"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1262,7 +1265,12 @@
       "Report on GitHub": "Informar en GitHub",
       "Email": "Correo",
       "Advent plan": "Plan de Adviento",
-      "Support": "Apoyar"
+      "Support": "Apoyar",
+      "Help and questions": "Ayuda y preguntas",
+      "Quick answers to the questions people ask most. For step by step guides, see How to use.": "Respuestas rápidas a las preguntas más frecuentes. Para guías paso a paso, consulta Cómo usar.",
+      "Still need help?": "¿Necesitas más ayuda?",
+      "Write to us and say what you were trying to do. We read every message.": "Escríbenos y cuéntanos qué intentabas hacer. Leemos todos los mensajes.",
+      "Questions": "Preguntas"
     },
     "slides": {
       "Slides": "Diapositivas",

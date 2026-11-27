@@ -9,6 +9,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - **Advent plan to share:** a page for churches with every day of the Advent plan from Advent Sunday to Christmas Day, with its date, both passages (opening on Bible.com) and a short note. Today's reading is shown first in season. Copy or share the link, or print the whole plan ([advent.html](https://bibleconnections.app/advent.html)). In English, Spanish and Portuguese.
 - The Advent card on the welcome page links to the whole plan and has a Share button. For churches has an Advent card.
 - **Support page:** ways to help (share it, use it at church, help translate, report a problem), and a Give section that appears once a giving link is set in `content/config.json` ([support.html](https://bibleconnections.app/support.html)).
+- **Help and questions:** answers to the 18 questions people ask most, in four groups (getting started, the content, using the app, cost, privacy and churches), each opening in place, with a link to email or GitHub for anything else. Linked from More and every footer, and marked up as an FAQ for search engines ([help.html](https://bibleconnections.app/help.html)). In English, Spanish and Portuguese.
 - `?poster=1` opens the poster window. Advent and Support are linked from More and every footer.
 
 ## [0.21.0] - 2026-11-24 - One Way Round

@@ -97,6 +97,26 @@
         if (navigator.share) { try { await navigator.share({ title: pick(plan, 'name'), url: pageURL }); } catch { /* closed */ } return; }
         try { await navigator.clipboard.writeText(pageURL); status.textContent = t('Link copied.'); } catch { status.textContent = pageURL; }
       });
+    } else if (page === 'help') {
+      // questions and answers, grouped, each one opening in place; also given to search engines as an FAQ
+      const groups = await (await fetch('content/faq.json')).json();
+      document.title = `${t('Help and questions')} · Bible Connections`;
+      const mail = (x) => esc(x).replace(/hello@bibleconnections\.app/g, '<a href="mailto:hello@bibleconnections.app">hello@bibleconnections.app</a>');
+      const ask = (it) => `<details class="faq" id="${slug(it.q)}"><summary>${esc(pick(it, 'q'))}</summary>${(pick(it, 'a') || []).map(p2 => `<p>${mail(p2)}</p>`).join('')}</details>`;
+      main.innerHTML = `<h1>${esc(t('Help and questions'))}</h1>
+        <p class="lede">${esc(t('Quick answers to the questions people ask most. For step by step guides, see How to use.'))}</p>
+        <nav aria-label="${esc(t('Sections'))}"><ul class="toc">${groups.map(g => `<li><a href="#${slug(g.group)}">${esc(pick(g, 'group'))}</a></li>`).join('')}</ul></nav>
+        ${groups.map(g => `<section aria-labelledby="${slug(g.group)}"><h2 id="${slug(g.group)}">${esc(pick(g, 'group'))}</h2><div class="faq-list">${g.items.map(ask).join('')}</div></section>`).join('')}
+        <section class="card faq-more" aria-labelledby="moreHelp"><h2 id="moreHelp" class="card-title">${esc(t('Still need help?'))}</h2>
+          <p>${esc(t('Write to us and say what you were trying to do. We read every message.'))}</p>
+          <p class="try try-many"><a href="mailto:hello@bibleconnections.app">${esc(t('Email'))}</a><a href="https://github.com/JoeMighty/BibleConnections/issues/new/choose" rel="noopener">${esc(t('Report on GitHub'))}</a><a href="${esc(withLang('guide.html'))}">${esc(t('How to use'))}</a></p></section>`;
+      const ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: L.lang, mainEntity: groups.flatMap(g => g.items.map(it => ({ '@type': 'Question', name: pick(it, 'q'), acceptedAnswer: { '@type': 'Answer', text: (pick(it, 'a') || []).join(' ') } }))) });
+      document.head.append(ld);
+      // a link to one question opens it
+      const open = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (open && open.tagName === 'DETAILS') open.open = true;
     } else if (page === 'support') {
       // ways to help: share, give (only when a giving link is set in content/config.json), print, translate, report
       const cfg = await fetch('content/config.json').then(r => r.json()).catch(() => ({}));

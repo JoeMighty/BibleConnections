@@ -79,6 +79,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
 - **For churches:** a page gathering every tool for pastors and group leaders ([churches.html](https://bibleconnections.app/churches.html)), and an Advent plan to share or print ([advent.html](https://bibleconnections.app/advent.html)).
+- **Help and questions:** answers to common questions ([help.html](https://bibleconnections.app/help.html)).
 - **Support:** ways to help keep the site free ([support.html](https://bibleconnections.app/support.html)).
 - **Church page:** any church can make a page for its sermon series in Study, with this week's passage first, links to read each passage on Bible.com and see its connections, and embed code for its website. Everything is kept in the link, with no sign-up.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
@@ -116,6 +117,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Google Play: plan](docs/PLAY-STORE.md) and [store listing drafts](docs/store/)
 - [Search engines](docs/SEO.md)
 - [For churches](https://bibleconnections.app/churches.html)
+- [Help and questions](https://bibleconnections.app/help.html)
 - [Advent plan](https://bibleconnections.app/advent.html)
 - [Support](https://bibleconnections.app/support.html)
 - [Privacy](https://bibleconnections.app/privacy.html), [Terms of use](https://bibleconnections.app/terms.html), [Accessibility](https://bibleconnections.app/accessibility.html) and [Credits and licenses](https://bibleconnections.app/credits.html)

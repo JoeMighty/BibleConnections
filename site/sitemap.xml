@@ -385,6 +385,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/support.html"/>
   </url>
   <url>
+    <loc>https://bibleconnections.app/help.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/help.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/help.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/help.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/help.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/help.html?lang=es</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/help.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/help.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/help.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/help.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/help.html?lang=pt</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/help.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/help.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/help.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/help.html"/>
+  </url>
+  <url>
     <loc>https://bibleconnections.app/terms.html</loc>
     <lastmod>2026-11-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/terms.html"/>

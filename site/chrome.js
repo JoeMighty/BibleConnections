@@ -36,7 +36,7 @@
     const group = (title, links) => `<div class="foot-group"><h2>${esc(t(title))}</h2><ul>${links.map(([label, href, ext]) => `<li><a href="${esc(href)}"${ext ? ' rel="noopener"' : ''}>${esc(t(label))}</a></li>`).join('')}</ul></div>`;
     const here = (l) => { const u = new URL(location.href); if (l === 'en') u.searchParams.delete('lang'); else u.searchParams.set('lang', l); return u.pathname + u.search + u.hash; };
     foot.innerHTML = `<div class="foot-groups">
-        ${group('Help', [['How to use', page('guide.html')], ['What’s new', 'https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md', 1], ['Roadmap', page('roadmap.html')]])}
+        ${group('Help', [['How to use', page('guide.html')], ['Questions', page('help.html')], ['What’s new', 'https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md', 1], ['Roadmap', page('roadmap.html')]])}
         ${group('Explore', [['Books', root + 'books/'], ['How many cross references?', root + 'cross-references/'], ['For churches', page('churches.html')], ['Advent plan', page('advent.html')]])}
         ${group('About', [['Support', page('support.html')], ['Privacy', page('privacy.html')], ['Terms', page('terms.html')], ['Accessibility', page('accessibility.html')], ['Credits', page('credits.html')], ['Source code', 'https://github.com/JoeMighty/BibleConnections', 1]])}
       </div>
