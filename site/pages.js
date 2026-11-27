@@ -42,6 +42,87 @@
         <ul class="cards">${C.tools.map(it => `<li class="card"><h2 class="card-title">${esc(pick(it, 'title'))}</h2><p>${esc(pick(it, 'text'))}</p>
           <p class="try"><a href="${esc(withLang(/^[?]/.test(it.try) ? './' + it.try : it.try))}">${esc(pick(it, 'try_label'))}</a></p></li>`).join('')}</ul>
         <p class="muted church-note">${mail(pick(C, 'note'))}</p>`;
+    } else if (page === 'advent') {
+      // the Advent plan as one page to share with a church: every day's promise and fulfilment, with dates
+      const [plans, meta, versions] = await Promise.all(['content/plans.json', 'data/books.json', 'content/versions.json'].map(u => fetch(u).then(r => r.json())));
+      const plan = plans.find(p => p.season === 'advent'), B = meta.books, names = L.books();
+      const en = B.map(b => b.name);
+      if (names) B.forEach((b, i) => { b.name = names[i] || b.name; });
+      const ver = versions.find(v => (v.key || v.code) === L.bible) || { id: 111, code: 'NIV' }, niv = versions.find(v => v.code === 'NIV') || ver;
+      const ref = (o) => { const [bk, c, v] = o.split('.'); const bi = B.findIndex(b => b.osis === bk); return { bi, c: +c, v: +v }; };
+      const label = (r) => `${B[r.bi].name} ${r.c}:${r.v}`;
+      const read = (r) => { const u = ver.nt && r.bi < 39 ? niv : ver; return `https://www.bible.com/bible/${u.id}/${B[r.bi].usfm}.${r.c}.${r.v}.${u.code}`; };
+      // ?today=2026-12-01 shows the page as it looks on that date
+      const q = new URLSearchParams(location.search).get('today');
+      const now = q && /^\d{4}-\d{2}-\d{2}$/.test(q) ? new Date(q + 'T12:00:00') : new Date();
+      now.setHours(12, 0, 0, 0);
+      // Advent Sunday is the fourth Sunday before Christmas; after Christmas the page shows next year's dates
+      const sunday = (y) => { const d = new Date(y, 11, 24, 12); d.setDate(d.getDate() - d.getDay() - 21); return d; };
+      const start = now > new Date(now.getFullYear(), 11, 25, 12) ? sunday(now.getFullYear() + 1) : sunday(now.getFullYear());
+      const dayOf = (k) => { const d = new Date(start); d.setDate(d.getDate() + k); return d; };
+      const todayK = Math.round((now - start) / 86400000), inAdvent = todayK >= 0 && todayK < plan.days.length;
+      const long = { weekday: 'long', day: 'numeric', month: 'long' };
+      const fmtD = (d, o = long) => d.toLocaleDateString(L.locale, o);
+      const appURL = (k) => withLang(`./?plan=${plan.id}&day=${k + 1}`);
+      const pageURL = new URL(withLang('advent.html'), location.href).href;
+      const pair = (d) => { const a = ref(d.a), b = ref(d.b); return `<p class="advent-refs"><a href="${esc(read(a))}" rel="noopener">${esc(label(a))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a> <span aria-hidden="true">→</span><span class="sr-only">${esc(t('and'))}</span> <a href="${esc(read(b))}" rel="noopener">${esc(label(b))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a></p>`; };
+      // the weeks: the part of each title before the colon (Hope, Peace, Joy, Love, Christmas Day)
+      const weeks = [];
+      plan.days.forEach((d, k) => { const w = pick(d, 'title').split(':')[0]; const last = weeks[weeks.length - 1]; if (last && last.name === w) last.days.push(k); else weeks.push({ name: w, days: [k] }); });
+      const cap = (x) => x.charAt(0).toLocaleUpperCase(L.locale) + x.slice(1);
+      const day = (k) => { const d = plan.days[k], title = pick(d, 'title'); return `<li class="advent-day" id="day-${k + 1}"${k === todayK ? ' aria-current="date"' : ''}>
+          <p class="eyebrow">${esc(t('Day {n}', { n: k + 1 }))} · ${esc(fmtD(dayOf(k)))}${k === todayK ? `<span class="no-print"> · <strong>${esc(t('Today'))}</strong></span>` : ''}</p>
+          <h3>${esc(cap(title.split(':').slice(1).join(':').trim() || title))}</h3>${pair(d)}<p>${esc(pick(d, 'note'))}</p>
+          <p class="day-link no-print"><a href="${esc(appURL(k))}">${esc(t('See it on the map'))}</a></p></li>`; };
+      document.title = `${t('Advent reading plan')} · Bible Connections`;
+      const td = inAdvent ? plan.days[todayK] : null;
+      main.innerHTML = `<h1>${esc(pick(plan, 'name'))}</h1>
+        <p class="lede">${esc(pick(plan, 'description'))}</p>
+        <p class="muted">${esc(t('{a} to {b}', { a: fmtD(start, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), b: fmtD(dayOf(plan.days.length - 1), { weekday: 'long', day: 'numeric', month: 'long' }) }))}</p>
+        ${td ? `<section class="card advent-today" aria-labelledby="todayHead"><p class="eyebrow">${esc(t('Today'))} · ${esc(t('Day {n} of {m}', { n: todayK + 1, m: plan.days.length }))}</p>
+          <h2 id="todayHead" class="card-title">${esc(pick(td, 'title'))}</h2>${pair(td)}<p>${esc(pick(td, 'note'))}</p>
+          <p class="actions"><a class="btn" href="${esc(appURL(todayK))}">${esc(t('Open today’s reading'))}</a><a class="btn tinted" href="#day-${todayK + 1}">${esc(t('Find it in the plan'))}</a></p></section>`
+          : `<p class="actions"><a class="btn" href="${esc(appURL(0))}">${esc(t('Start the plan'))}</a></p>`}
+        <section class="card advent-share no-print" aria-labelledby="shareHead">
+          <h2 id="shareHead" class="card-title">${esc(t('Share it with your church'))}</h2>
+          <p>${esc(t('Send this page to your church or small group, put it in the notices, or print it. Everyone can follow along on their phone, with no account.'))}</p>
+          <p class="share-url"><code>${esc(pageURL)}</code></p>
+          <p class="actions"><button type="button" class="btn" id="adventShare">${esc(navigator.share ? t('Share') : t('Copy link'))}</button><button type="button" class="btn tinted" id="adventPrint">${esc(t('Print the plan'))}</button></p>
+          <p class="muted" id="adventStatus" role="status"></p></section>
+        ${weeks.map(w => `<section aria-labelledby="w-${slug(w.name)}"><h2 id="w-${slug(w.name)}">${esc(w.name)}</h2><ol class="advent-days" start="${w.days[0] + 1}">${w.days.map(day).join('')}</ol></section>`).join('')}
+        <p class="muted church-note">${esc(t('Each day opens two passages on Bible.com and shows how they connect on the map. No Bible translation is stored on this site.'))}</p>`;
+      document.getElementById('adventPrint').addEventListener('click', () => print());
+      document.getElementById('adventShare').addEventListener('click', async () => {
+        const status = document.getElementById('adventStatus');
+        if (navigator.share) { try { await navigator.share({ title: pick(plan, 'name'), url: pageURL }); } catch { /* closed */ } return; }
+        try { await navigator.clipboard.writeText(pageURL); status.textContent = t('Link copied.'); } catch { status.textContent = pageURL; }
+      });
+    } else if (page === 'support') {
+      // ways to help: share, give (only when a giving link is set in content/config.json), print, translate, report
+      const cfg = await fetch('content/config.json').then(r => r.json()).catch(() => ({}));
+      const give = ((cfg.support || {}).give || []).filter(g => g && /^https:\/\//.test(g.url));
+      document.title = `${t('Support Bible Connections')} · Bible Connections`;
+      const card = (title, text, links) => `<li class="card"><h2 class="card-title">${esc(t(title))}</h2><p>${esc(t(text))}</p>
+        <p class="try try-many">${links.map(([label, href, ext]) => `<a href="${esc(href)}"${ext ? ' rel="noopener"' : ''}>${esc(t(label))}</a>`).join('')}</p></li>`;
+      main.innerHTML = `<h1>${esc(t('Support Bible Connections'))}</h1>
+        <p class="lede">${esc(t('Bible Connections is free, with no adverts and no accounts, and it will stay that way. If it helps you, here are some ways to help it reach more people.'))}</p>
+        ${give.length ? `<section class="card support-give" aria-labelledby="giveHead"><h2 id="giveHead" class="card-title">${esc(t('Give'))}</h2>
+          <p>${esc(t('Gifts pay for the web address and the time it takes to add new journeys, plans and languages. Giving is optional and does not unlock anything.'))}</p>
+          <p class="actions">${give.map((g, i) => `<a class="btn${i ? ' tinted' : ''}" href="${esc(g.url)}" rel="noopener">${esc(pick(g, 'label'))}</a>`).join('')}</p></section>` : ''}
+        <ul class="cards">
+          ${card('Share it', 'Tell a friend, your small group or your church. A link from a church website helps people find it too.', [['Copy the link', '#share']])}
+          ${card('Print a poster', 'Every connection in the Bible on one sheet, free to download and print at any size, for a church hall, a classroom or a study.', [['Make a poster', withLang('./?poster=1')]])}
+          ${card('Use it at church', 'Sermon series pages, leader guides, handouts, slides and the Advent plan.', [['For churches', withLang('churches.html')], ['Advent', withLang('advent.html')]])}
+          ${card('Help translate', 'Bible Connections is in English, Spanish and Portuguese. Native speakers can check the wording or help start a new language.', [['Offer help on GitHub', 'https://github.com/JoeMighty/BibleConnections/issues/new/choose', 1]])}
+          ${card('Report a problem', 'Something broken, confusing or wrong? Say what you saw and on which device.', [['Report on GitHub', 'https://github.com/JoeMighty/BibleConnections/issues/new/choose', 1], ['Email', 'mailto:hello@bibleconnections.app']])}
+        </ul>`;
+      const shareLink = main.querySelector('a[href="#share"]');
+      shareLink.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const url = new URL(withLang('./'), location.href).href;
+        if (navigator.share) { try { await navigator.share({ title: 'Bible Connections', url }); } catch { /* closed */ } return; }
+        try { await navigator.clipboard.writeText(url); shareLink.textContent = t('Link copied.'); } catch { shareLink.textContent = url; }
+      });
     } else if (['privacy', 'terms', 'accessibility', 'credits'].includes(page)) {
       // the legal pages share one layout: an introduction, a date and titled sections
       const P = await (await fetch(`content/${page}.json`)).json();

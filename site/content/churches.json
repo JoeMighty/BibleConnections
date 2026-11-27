@@ -11,6 +11,13 @@
       "try": "?view=church", "try_label": "Make a sermon series page", "try_label_es": "Crear una página de serie", "try_label_pt": "Criar uma página da série"
     },
     {
+      "title": "Advent with your church", "title_es": "Adviento con tu iglesia", "title_pt": "Advento com sua igreja",
+      "text": "One promise and its fulfilment each day from Advent Sunday to Christmas Day. Send one link round the church, put it in the notices or print the whole plan.",
+      "text_es": "Una promesa y su cumplimiento cada día, del primer domingo de Adviento a Navidad. Envía un solo enlace a la iglesia, ponlo en los anuncios o imprime el plan entero.",
+      "text_pt": "Uma promessa e seu cumprimento a cada dia, do primeiro domingo do Advento ao dia de Natal. Envie um só link para a igreja, coloque nos avisos ou imprima o plano inteiro.",
+      "try": "advent.html", "try_label": "Open the Advent plan", "try_label_es": "Abrir el plan de Adviento", "try_label_pt": "Abrir o plano do Advento"
+    },
+    {
       "title": "Guided journeys for groups", "title_es": "Jornadas guiadas para grupos", "title_pt": "Jornadas guiadas para grupos",
       "text": "Sixteen step-by-step journeys, such as The Lamb of God and Holy Week, each with questions to talk about and a leader guide.",
       "text_es": "Dieciséis jornadas paso a paso, como El Cordero de Dios y Semana Santa, cada una con preguntas para conversar y una guía para el líder.",

@@ -163,3 +163,34 @@ html { scroll-padding-top: calc(var(--top-h, 64px) + 16px); }
 .foot-lang span[aria-current] { color: var(--text); font-weight: 600; }
 .foot-lang a { color: var(--muted); }
 @media (max-width: 480px) { .foot-groups { grid-template-columns: 1fr 1fr; } }
+
+/* Advent plan */
+.eyebrow { margin: 0; font-size: var(--t-foot); font-weight: 600; color: var(--muted); }
+.advent-today, .advent-share, .support-give { margin: 24px 0 0; max-width: 44em; }
+.advent-today { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.advent-refs { font-weight: 600; margin: 0; }
+.advent-refs a { text-decoration: none; }
+.advent-refs a:hover { text-decoration: underline; }
+.share-url code { font-size: var(--t-sub); word-break: break-all; color: var(--text); }
+.advent-days { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.advent-day { background: var(--surface); border-radius: 14px; padding: 16px 20px; display: grid; gap: 4px; }
+.advent-day h3 { margin: 4px 0 0; }
+.advent-day p { margin: 0; }
+.advent-day > p:not(.eyebrow):not(.advent-refs):not(.day-link) { color: var(--muted); }
+.advent-day[aria-current="date"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.day-link { padding-top: 4px; font-weight: 600; font-size: var(--t-sub); }
+button.btn { border: 0; cursor: pointer; font-family: inherit; }
+@media print {
+  .top, .foot, .no-print, .skip, .actions { display: none !important; }
+  :root, :root[data-theme] { --bg: #fff; --surface: #fff; --text: #000; --muted: #333; --link: #000; }
+  .advent-today { display: none; }
+  body { font-size: 11pt; }
+  main { padding: 0; max-width: none; }
+  h1 { font-size: 22pt; }
+  h2 { font-size: 15pt; margin: 16px 0 6px; break-after: avoid; }
+  .advent-days { gap: 6px; }
+  .advent-day { padding: 6px 0; border-bottom: 0.5pt solid #bbb; border-radius: 0; break-inside: avoid; }
+  .advent-day[aria-current="date"] { box-shadow: none; }
+  a { text-decoration: none; }
+}
+.try-many { display: flex; flex-wrap: wrap; gap: 8px; }

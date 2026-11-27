@@ -44,7 +44,7 @@ test('text shared into the app opens the reference it mentions', async ({ page }
 test('the For churches page lists the leader tools, each with a way to try it, in each language', async ({ page }) => {
   await page.goto('/churches.html');
   await expect(page.locator('h1')).toHaveText('For churches');
-  await expect(page.locator('main .card')).toHaveCount(7);
+  await expect(page.locator('main .card')).toHaveCount(8);
   await expect(page.locator('main .card .try a').first()).toHaveAttribute('href', './?view=church');
   await page.locator('main .card .try a', { hasText: 'See a leader handout' }).click();
   await expect(page).toHaveURL(/handout\.html\?journey=lamb&guide=leader/);

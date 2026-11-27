@@ -3,5 +3,8 @@
     "provider": "goatcounter",
     "goatcounterCode": "bibleconnections",
     "plausibleDomain": ""
+  },
+  "support": {
+    "give": []
   }
 }

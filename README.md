@@ -78,7 +78,8 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - **Share a verse study as an image:** a ready-made picture with the reference, original words, connections and a question.
 - **Printable handouts:** for any journey, and for any verse (book introduction, original words, strongest connections, reflection questions and space for notes).
 - **Sermon series:** show the current series passages on the welcome page.
-- **For churches:** a page gathering every tool for pastors and group leaders ([churches.html](https://bibleconnections.app/churches.html)).
+- **For churches:** a page gathering every tool for pastors and group leaders ([churches.html](https://bibleconnections.app/churches.html)), and an Advent plan to share or print ([advent.html](https://bibleconnections.app/advent.html)).
+- **Support:** ways to help keep the site free ([support.html](https://bibleconnections.app/support.html)).
 - **Church page:** any church can make a page for its sermon series in Study, with this week's passage first, links to read each passage on Bible.com and see its connections, and embed code for its website. Everything is kept in the link, with no sign-up.
 - **Collections:** group connections and verses for a sermon or small group and share them as one link.
 - **Collection slides:** show a collection as simple full-screen slides (title, one slide per item with its references, and a closing slide), moved with arrow keys, a clicker or a swipe, and printable as a PDF. References link to Bible.com; no translation text is shown.
@@ -115,6 +116,8 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 - [Google Play: plan](docs/PLAY-STORE.md) and [store listing drafts](docs/store/)
 - [Search engines](docs/SEO.md)
 - [For churches](https://bibleconnections.app/churches.html)
+- [Advent plan](https://bibleconnections.app/advent.html)
+- [Support](https://bibleconnections.app/support.html)
 - [Privacy](https://bibleconnections.app/privacy.html), [Terms of use](https://bibleconnections.app/terms.html), [Accessibility](https://bibleconnections.app/accessibility.html) and [Credits and licenses](https://bibleconnections.app/credits.html)
 - [Security](SECURITY.md)
 

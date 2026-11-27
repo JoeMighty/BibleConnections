@@ -1862,6 +1862,9 @@
       <h3 class="series-name" id="yourPlanTitle">${esc(nameOf(going.p))}</h3>${day && day.title ? `<p>${esc(day.title)}</p>` : ''}
       <div class="actions"><button type="button" class="btn" data-season-plan="${esc(going.p.id)}" data-day="${d}">Continue</button></div>`;
   }
+  // the Advent page to send round a church, and a quick way to share it
+  const adventLinks = () => `<p class="season-share"><a href="${esc(withLangLink('advent.html'))}">${esc(tr('The whole plan, to share with your church'))}</a> <span aria-hidden="true">·</span>
+    <button type="button" class="link-btn" data-action="shareAdvent">${esc(tr(navigator.share ? 'Share' : 'Copy link'))}</button></p>`;
   function renderSeasonBanner() {
     const box = $('seasonBanner');
     if (!box || !PLANS.length) return;
@@ -1877,7 +1880,8 @@
         html = `<p class="eyebrow">${esc(tr(info.name))} · ${esc(tr(`Day ${day + 1} of ${plan.days.length}`))}</p>
           <h3 class="series-name" id="seasonTitle">${esc(loc(d, 'title'))}</h3><p>${esc(loc(d, 'note'))}</p>
           <div class="actions"><button type="button" class="btn" data-season-plan="${esc(plan.id)}" data-day="${day}">Open today's reading</button>
-          ${jn >= 0 ? `<button type="button" class="btn ghost" data-season-journey="${jn}">Take the ${esc(tr(info.name))} journey</button>` : ''}</div>`;
+          ${jn >= 0 ? `<button type="button" class="btn ghost" data-season-journey="${jn}">Take the ${esc(tr(info.name))} journey</button>` : ''}</div>
+          ${s.season === 'advent' ? adventLinks() : ''}`;
       }
     } else {
       // nothing in season today: mention the next season if it starts within three weeks
@@ -1887,7 +1891,8 @@
         const info = SEASON_INFO[next.p.season];
         html = `<p class="eyebrow">${esc(tr('Coming soon'))}</p><h3 class="series-name" id="seasonTitle">${esc(nameOf(next.p))}</h3>
           <p>${esc(tr(info.soon).replace('{d}', fmtDate(next.start)))} ${esc(descOf(next.p))}</p>
-          <div class="actions"><button type="button" class="btn" data-season-plan="${esc(next.p.id)}" data-day="0">See the plan</button></div>`;
+          <div class="actions"><button type="button" class="btn" data-season-plan="${esc(next.p.id)}" data-day="0">See the plan</button></div>
+          ${next.p.season === 'advent' ? adventLinks() : ''}`;
       }
     }
     box.hidden = !html;
@@ -1990,6 +1995,8 @@
       [`href="${withLangLink('guide.html')}"`, 'How to use', '', ''],
       ['data-action="keys"', 'Keyboard shortcuts', '', ''],
       [`href="${withLangLink('churches.html')}"`, 'For churches', '', ''],
+      [`href="${withLangLink('advent.html')}"`, 'Advent plan to share', '', ''],
+      [`href="${withLangLink('support.html')}"`, 'Support Bible Connections', 'Share, give, print a poster, help translate', ''],
     ]);
     html += `<h3>${esc(tr('About'))}</h3>` + rowsHTML([
       ['data-action="openAbout"', 'About Bible Connections', '', ''],
@@ -4931,6 +4938,12 @@
     if (btn.dataset.goto) { if (btn.dataset.resume) track('home/continue'); hideLanding({ resume: true }); goTo(btn.dataset.goto); return; }
     if (btn.dataset.heroQ) { track('home/try'); $('landingQ').value = btn.dataset.heroQ; $('landingSearch').requestSubmit(); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
+    if (btn.dataset.action === 'shareAdvent') {
+      track('season/share');
+      const url = new URL(withLangLink('advent.html'), location.href).href;
+      if (navigator.share) navigator.share({ title: tr('Advent: promise and fulfilment'), url }).catch(() => { /* cancelled */ }); else copyText(url);
+      return;
+    }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }
     if (btn.dataset.seasonPlan) { hideLanding(); track('season/' + btn.dataset.seasonPlan); openPlan(btn.dataset.seasonPlan, +btn.dataset.day); focusPanelHeading(); return; }
     if (btn.dataset.seasonJourney) { hideLanding(); startJourney(+btn.dataset.seasonJourney, 0); focusPanelHeading(); return; }
@@ -5139,6 +5152,8 @@
   async function restoreFromURL(p) {
     const wantPlaces = p.get('stage') === 'places' || p.get('view') === 'places' || !!p.get('route');
     if ((state.stage === 'places') !== wantPlaces) { state.stage = wantPlaces ? 'places' : 'arcs'; applyStage(); }
+    // ?poster=1 opens the poster dialog (linked from the Support page)
+    if (p.get('poster') && !$('posterDialog').open) setTimeout(() => $('posterDialog').showModal(), 0);
     if (p.get('search')) { setTimeout(() => { document.body.classList.add('search-open'); if (isPhone()) setSheet('full'); el.search.focus(); }, 0); return; }
     if (p.get('route')) { await openRoute(p.get('route'), { push: false }); return; }
     const jn = JOURNEYS.findIndex(j => j.id === p.get('journey'));
