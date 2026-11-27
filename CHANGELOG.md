@@ -5,6 +5,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- **Previous and next connection:** a connection opened from a list has Previous and Next buttons and shows where it is ("3 of 72"), so you can step through a verse's links without going back. The order matches the list (Old Testament links, then New Testament). The N and ] keys still do the same.
+- **Your trail:** the verses and connections you have followed in this visit, at the top of the panel. Tap any step to go back to it; stepping with Previous and Next updates the last step instead of adding one.
+- **Why they connect, for every link:** a connection without a written note shows the original words both passages use ("Both use: spirit, water") at the top.
+
+### Changed
+- Roadmap: A year of connections, sermon prep export and an open data download are next; more notes on why passages connect and posters to order are planned. French is no longer listed as next.
+
 ## [0.25.0] - 2026-11-27 - Who and Where
 
 ### Added

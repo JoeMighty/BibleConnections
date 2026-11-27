@@ -1220,7 +1220,19 @@
     if (!topCache) topCache = Int32Array.from(filtered).sort((a, b) => V[b] - V[a]);
     return topCache;
   }
-  const currentList = () => (state.focus ? focusList : topList());
+  // the order the panel shows: a single verse lists its Old Testament links, then its New Testament ones
+  let orderedFor = null, orderedList = [];
+  const currentList = () => {
+    if (!state.focus) return topList();
+    const f = state.focus;
+    if (f.kind !== 'verse' || f.end - f.start !== 1) return focusList;
+    if (orderedFor !== focusList) {
+      const v = f.start, other = (i) => (F[i] === v ? T[i] : F[i]), all = [...focusList];
+      orderedList = all.filter(i => verseBook[other(i)] < 39).concat(all.filter(i => verseBook[other(i)] >= 39));
+      orderedFor = focusList;
+    }
+    return orderedList;
+  };
   // phones: swipe the details sideways for the next or previous journey step, plan day or connection
   {
     let sx = 0, sy = 0, st = 0;
@@ -1276,11 +1288,32 @@
     }
     if (p < 1) requestAnimationFrame(drawOverlay); else trace = null;
   }
+  // ---------- Your trail: the verses and connections followed in this visit, to jump back to any of them ----------
+  let trail = [], trailStepping = false;
+  function addTrail(label) {
+    const url = location.search || '?view=map';
+    const at = trail.findIndex(t => t.url === url), last = trail[trail.length - 1];
+    if (at >= 0) trail = trail.slice(0, at + 1);   // going back to an earlier step trims what came after it
+    // stepping through a list with Previous and Next, or reaching the same place again, updates the last step instead of adding one
+    else if (last && (trailStepping || last.label === label)) { last.label = label; last.url = url; }
+    else trail.push({ label, url });
+    trailStepping = false;
+    if (trail.length > 8) trail = trail.slice(-8);
+  }
+  function trailHTML() {
+    if (trail.length < 2 || state.mode !== 'explore') return '';
+    const here = location.search;
+    return `<nav class="trail" aria-label="${esc(tr('Your trail'))}"><span class="trail-label">${esc(tr('Your trail'))}</span><ol>${trail.map(t => t.url === here
+      ? `<li><span aria-current="step">${esc(t.label)}</span></li>`
+      : `<li><button type="button" class="link-btn" data-goto-trail="${esc(t.url)}">${esc(t.label)}</button></li>`).join('')}</ol></nav>`;
+  }
   function selectRef(i, opts = {}) {
     state.mode = 'explore'; state.journey = null; updateNav();
     state.selected = i;
     startTrace(i);
-    drawBase(); renderPanel(); syncURL(true);
+    syncURL(true);
+    addTrail(state.focus && state.focus.kind !== 'words' ? otherSideLabel(i) : `${refLabel(F[i])} ↔ ${refLabel(T[i], E[i])}`);
+    drawBase(); renderPanel();
     announce(`${refLabel(F[i])} connects to ${refLabel(T[i], E[i])}, ${V[i]} votes.${hasNote[i] ? ' Has a note.' : ''}`);
     if (opts.zoom) zoomToRef(i);
   }
@@ -1289,7 +1322,9 @@
     state.focus = range;
     state.selected = -1;
     computeFocus();
-    drawBase(); renderPanel(); syncURL(true);
+    syncURL(true);
+    addTrail(rangeLabel(range));
+    drawBase(); renderPanel();
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.`);
     if (range.kind === 'verse') track('verse/open');
     if (opts.zoom) {
@@ -1445,6 +1480,14 @@
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
+      // step through the list this connection came from without going back to it
+      const list = currentList(), pos = list.indexOf(i);
+      if (pos >= 0 && list.length > 1) html += `<div class="conn-step" role="group" aria-label="${esc(tr('Connections'))}">
+        <button type="button" class="btn ghost small" data-action="stepConn" data-d="-1" aria-label="${esc(tr('Previous connection'))}">‹ <span>${esc(tr('Previous'))}</span></button>
+        <span class="conn-pos">${esc(tr('{n} of {m}').replace('{n}', (pos + 1).toLocaleString(LANGS[LANG].locale)).replace('{m}', list.length.toLocaleString(LANGS[LANG].locale)))}</span>
+        <button type="button" class="btn ghost small" data-action="stepConn" data-d="1" aria-label="${esc(tr('Next connection'))}"><span>${esc(tr('Next'))}</span> ›</button></div>`;
+      // one line on why they connect: the written note's kind, or the original words both passages use
+      if (!noteMap.get(i)) html += `<p class="why-line" id="whyLine" hidden></p>`;
       html += refCard(F[i], F[i], color) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(T[i], E[i], color, { primary: false });
       const n = noteMap.get(i);
       if (n) html += noteHTML(n);
@@ -1538,6 +1581,7 @@
       ]);
       html += `<h3>Strongest connections</h3>` + listHTML(topList(), false);
     }
+    if (state.mode === 'explore' && (state.focus || state.selected >= 0)) html = trailHTML() + html;
     if (['explore', 'places', 'route'].includes(state.mode)) html = `<div class="stage-switch segmented" role="group" aria-label="${esc(tr('Map type'))}">
         <button type="button" data-stage="arcs" aria-pressed="${state.stage !== 'places'}">${esc(tr('Connections'))}</button>
         <button type="button" data-stage="places" aria-pressed="${state.stage === 'places'}">${esc(tr('Places'))}</button></div>` + html;
@@ -3401,6 +3445,8 @@
     try {
       const [list, S] = await Promise.all([wordsInCommon(a, a + 1, b, e + 1), loadStrongs()]);
       if (!box.isConnected) return;
+      const why = $('whyLine');
+      if (why && list.length) { why.textContent = tr('Both use: {w}').replace('{w}', list.slice(0, 4).map(x => x[2]).join(', ')); why.hidden = false; }
       box.innerHTML = list.length ? `<h3>Words in common</h3>
         <p class="hint">Original words both passages use, or a Greek word and the Hebrew word it stands for.</p>
         <ul class="common-words">${list.map(([x, y, k]) => `<li><strong>${esc(k)}</strong> ${wordBtn(x, S)}${y !== x ? wordBtn(y, S) : ''}</li>`).join('')}</ul>` : '';
@@ -4272,6 +4318,7 @@
     if (tracked) track(tracked.dataset.track);
     const btn = e.target.closest('button');
     if (!btn) return;
+    if (btn.dataset.gotoTrail) { track('trail'); goTo(btn.dataset.gotoTrail); return; }
     if (btn.dataset.ref && !btn.dataset.action) {
       // the measure for the verse screen: of the people who open a verse, how many go on to open one of its connections
       if (state.focus && state.focus.kind === 'verse') track('verse/connection');
@@ -4384,6 +4431,7 @@
     else if (a === 'replayPath') { animatePath(); }
     else if (a === 'presentJourney') { startJourney(+btn.dataset.j); enterPresenter(); }
     else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
+    else if (a === 'stepConn') { trailStepping = true; stepSelection(+btn.dataset.d); requestAnimationFrame(() => el.panelBody.querySelector(`[data-action="stepConn"][data-d="${btn.dataset.d}"]`)?.focus()); }
     else if (a === 'share') { share(); if (!navigator.share) confirmBtn(btn, tr('Copied')); }
     else if (a === 'copy') { copyText(shareInfo().text); confirmBtn(btn, tr('Copied')); }
     else if (a === 'heat') {

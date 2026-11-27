@@ -1013,7 +1013,12 @@
     "Verses by topic": "Versículos por tema",
     "Lent and Holy Week plans to share": "Planes de Cuaresma y Semana Santa para compartir",
     "Lent plan": "Plan de Cuaresma",
-    "Holy Week plan": "Plan de Semana Santa"
+    "Holy Week plan": "Plan de Semana Santa",
+    "Your trail": "Tu recorrido",
+    "Previous connection": "Conexión anterior",
+    "Next connection": "Conexión siguiente",
+    "{n} of {m}": "{n} de {m}",
+    "Both use: {w}": "Ambos usan: {w}"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
