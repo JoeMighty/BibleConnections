@@ -10,9 +10,9 @@
       },
       {
         "q": "What do the arcs and colors mean?", "q_es": "¿Qué significan los arcos y los colores?", "q_pt": "O que significam os arcos e as cores?",
-        "a": ["The books run from Genesis on the left to Revelation on the right. Each arc joins two passages: the farther apart they are, the taller the arc. Colors show the part of the Bible a link starts in, such as the Law, the Prophets or the Gospels. A color-blind friendly style is in Settings."],
-        "a_es": ["Los libros van de Génesis a la izquierda a Apocalipsis a la derecha. Cada arco une dos pasajes: cuanto más separados están, más alto es el arco. Los colores muestran la parte de la Biblia donde empieza la conexión, como la Ley, los Profetas o los Evangelios. En Ajustes hay un estilo apto para daltónicos."],
-        "a_pt": ["Os livros vão de Gênesis, à esquerda, a Apocalipse, à direita. Cada arco liga duas passagens: quanto mais distantes, mais alto o arco. As cores mostram a parte da Bíblia onde a conexão começa, como a Lei, os Profetas ou os Evangelhos. Em Ajustes há um estilo adequado para daltônicos."]
+        "a": ["The books run from Genesis on the left to Revelation on the right. Each arc joins two passages: the farther apart they are, the taller the arc. Colors show distance too: pink for passages close together, through to green for passages far apart. In Settings you can color by part of the Bible instead, or pick a color-blind friendly style."],
+        "a_es": ["Los libros van de Génesis a la izquierda a Apocalipsis a la derecha. Cada arco une dos pasajes: cuanto más separados están, más alto es el arco. Los colores también muestran la distancia: rosa para pasajes cercanos y verde para pasajes lejanos. En Ajustes puedes colorear por parte de la Biblia o elegir un estilo apto para daltónicos."],
+        "a_pt": ["Os livros vão de Gênesis, à esquerda, a Apocalipse, à direita. Cada arco liga duas passagens: quanto mais distantes, mais alto o arco. As cores também mostram a distância: rosa para passagens próximas e verde para passagens distantes. Em Ajustes você pode colorir por parte da Bíblia ou escolher um estilo adequado para daltônicos."]
       },
       {
         "q": "How do I find a verse?", "q_es": "¿Cómo busco un versículo?", "q_pt": "Como encontro um versículo?",
