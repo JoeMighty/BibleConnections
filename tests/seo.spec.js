@@ -15,7 +15,7 @@ test('the sitemap lists every page in each language with its language versions',
   expect(x).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
   // every translated page lists its language versions; the book, verse and topic pages are English only
   const urls = x.split('<url>').slice(1);
-  for (const u of urls.filter(u => !/\/(books|verse|cross-references|topics)\//.test(u))) expect(u).toContain('hreflang="x-default"');
+  for (const u of urls.filter(u => !/\/(books|verse|cross-references|topics|people|places)\//.test(u))) expect(u).toContain('hreflang="x-default"');
   expect(x).toContain('<loc>https://bibleconnections.app/verse/john-3-16/</loc>');
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).toContain('Sitemap: https://bibleconnections.app/sitemap.xml');

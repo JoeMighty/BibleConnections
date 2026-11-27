@@ -31,3 +31,35 @@ test('the topics index puts feelings first and links every topic; pages are acce
     }
   }
 });
+
+test('people and places pages show where each appears and the most connected verses', async ({ page }) => {
+  await page.goto('/people/abraham/');
+  await expect(page.locator('h1')).toHaveText('Abraham in the Bible');
+  await expect(page).toHaveTitle(/Abraham in the Bible: [\d,]+ verses/);
+  expect(await page.locator('.topic-row').count()).toBeGreaterThanOrEqual(10);
+  await expect(page.locator('main a.btn').first()).toHaveAttribute('href', '/?person=abraham');
+  await expect(page.locator('main h2', { hasText: 'Where Abraham appears' })).toBeVisible();
+  await page.goto('/places/bethlehem/');
+  await expect(page.locator('h1')).toHaveText('Bethlehem in the Bible');
+  await expect(page.locator('main a.btn').first()).toHaveAttribute('href', '/?place=bethlehem');
+  await page.locator('main a.btn').first().click();
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#panelTitle')).toHaveText(/Bethlehem/);
+  await page.goto('/people/');
+  expect(await page.locator('main .list a[href^="/people/"]').count()).toBeGreaterThanOrEqual(30);
+  expect(await page.locator('main .list a[href^="/places/"]').count()).toBeGreaterThanOrEqual(15);
+  const AxeBuilder = require('@axe-core/playwright').default;
+  for (const u of ['/people/', '/people/david/', '/places/jerusalem/']) {
+    await page.goto(u);
+    expect((await new AxeBuilder({ page }).analyze()).violations, u).toEqual([]);
+  }
+});
+
+test('topic pages leave out verses that use a key word in another sense', async ({ page }) => {
+  await page.goto('/topics/anxiety/');
+  await expect(page.locator('main')).not.toContainText('Ezekiel 4:16');
+  await page.goto('/topics/kindness/');
+  await expect(page.locator('main')).not.toContainText('Ephesians 6:18');
+  await page.goto('/topics/rest/');
+  await expect(page.locator('main')).not.toContainText('Isaiah 49:6');
+});

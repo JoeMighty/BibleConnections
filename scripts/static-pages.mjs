@@ -37,7 +37,7 @@ const label = (D, k) => `${D.B[D.vb[k]].name} ${D.vc[k]}:${D.vn[k]}`;
 const rangeLabel = (D, a, z) => (z === a ? label(D, a) : D.vb[z] === D.vb[a] && D.vc[z] === D.vc[a] ? `${label(D, a)}-${D.vn[z]}` : `${label(D, a)}-${D.vb[z] === D.vb[a] ? '' : D.B[D.vb[z]].name + ' '}${D.vc[z]}:${D.vn[z]}`);
 const verseSlug = (D, k) => `${D.B[D.vb[k]].slug}-${D.vc[k]}-${D.vn[k]}`;
 export function urls(D) {
-  return ['books/', ...D.B.map(b => `books/${b.slug}/`), ...[...D.pages].map(k => `verse/${verseSlug(D, k)}/`), 'cross-references/', 'topics/', ...topicList().map(t => `topics/${t.id}/`)];
+  return ['books/', ...D.B.map(b => `books/${b.slug}/`), ...[...D.pages].map(k => `verse/${verseSlug(D, k)}/`), 'cross-references/', 'topics/', ...topicList().map(t => `topics/${t.id}/`), 'people/', ...peopleList().map(e => `${e.type === 'place' ? 'places' : 'people'}/${e.id}/`)];
 }
 
 // ---------- page frame ----------
@@ -91,6 +91,7 @@ function page({ file, title, description, crumbs, body, nav = '' }) {
       <a href="/books/"${nav === 'books' ? ' aria-current="page"' : ''}>Books</a>
       <a href="/cross-references/"${nav === 'count' ? ' aria-current="page"' : ''}>How many?</a>
       <a href="/topics/"${nav === 'topics' ? ' aria-current="page"' : ''}>Topics</a>
+      <a href="/people/"${nav === 'people' ? ' aria-current="page"' : ''}>People</a>
     </nav>
   </header>
   <main id="main">
@@ -308,12 +309,73 @@ function topicPages(D) {
   return built;
 }
 
+
+// ---------- people and places pages: "Abraham in the Bible", "Bethlehem in the Bible" ----------
+export function peopleList() { return readJSON('content/people-places.json'); }
+function peoplePages(D) {
+  const { B, N, F, T, E, V, vb, vc, vn, deg } = D;
+  const idx = readJSON('data/words.json');
+  const decode = (str) => { let v = 0; return str.split(',').map(d => (v += parseInt(d, 36))); };
+  const built = peopleList().map(e => {
+    const set = new Set();
+    for (const w of e.words) if (idx[w]) for (const v of decode(idx[w])) set.add(v);
+    const verses = [...set].sort((a, b) => a - b);
+    const inSet = new Uint8Array(D.TOTAL); for (const v of verses) inSet[v] = 1;
+    const top = verses.filter(v => deg[v]).sort((a, b) => deg[b] - deg[a] || a - b).slice(0, 15);
+    const books = new Map(); for (const v of verses) books.set(vb[v], (books.get(vb[v]) || 0) + 1);
+    const links = [];
+    for (let i = 0; i < N; i++) if (inSet[F[i]] && inSet[T[i]] && vb[F[i]] !== vb[T[i]]) links.push(i);
+    links.sort((a, b) => V[b] - V[a]);
+    return { e, dir: e.type === 'place' ? 'places' : 'people', verses, top, books: [...books].sort((a, b) => b[1] - a[1]), links: links.slice(0, 6) };
+  }).filter(x => x.top.length >= 3);
+  const read = (k) => readURL(B[vb[k]], vc[k], vn[k]);
+  const ref = (k) => `${B[vb[k]].osis}.${vc[k]}.${vn[k]}`;
+  for (const x of built) {
+    const { e } = x, first = x.verses[0], last = x.verses[x.verses.length - 1];
+    const nt = x.verses.filter(v => B[vb[v]].nt).length;
+    const lead = `${e.description} ${e.name} is named in ${fmt(x.verses.length)} verses across ${x.books.length} ${x.books.length === 1 ? 'book' : 'books'}, from ${label(D, first)} to ${label(D, last)}.`;
+    const maxB = x.books[0][1];
+    page({
+      file: `${x.dir}/${e.id}/index.html`, nav: 'people', title: `${e.name} in the Bible: ${fmt(x.verses.length)} verses · Bible Connections`,
+      description: `${e.name} in the Bible: ${e.description} Every book that mentions ${e.name}, the most connected verses, and how they link across the Bible.`,
+      crumbs: [['Bible Connections', '/'], ['People and places', '/people/'], [e.name, `/${x.dir}/${e.id}/`]],
+      body: `    <h1>${esc(e.name)} in the Bible</h1>
+    <p class="lede">${esc(lead)}</p>
+    ${stats([[fmt(x.verses.length), 'verses'], [String(x.books.length), x.books.length === 1 ? 'book' : 'books'], [fmt(x.verses.length - nt), 'in the Old Testament'], [fmt(nt), 'in the New Testament']])}
+    <p class="actions"><a class="btn" href="/?${e.type}=${encodeURIComponent(e.id)}">See every verse on the map</a><a class="btn tinted" href="${read(first)}" rel="noopener">Read the first mention<span class="sr-only">, ${esc(label(D, first))}, on Bible.com</span></a></p>
+    <h2>Most connected verses</h2>
+    <p class="hint">Verses that name ${esc(e.name)}, with how many cross references each has.</p>
+    <ul class="list">${x.top.map(k => `<li class="topic-row"><a href="${verseHref(D, k)}"><span class="row-main"><span class="row-title">${esc(label(D, k))}</span><span class="row-detail">${B[vb[k]].nt ? 'New Testament' : 'Old Testament'}</span></span><span class="row-end"><span class="meter" aria-hidden="true"><span style="width:${Math.max(4, Math.round(100 * deg[k] / deg[x.top[0]]))}%"></span></span><span class="row-n">${fmt(deg[k])}</span>${chevron}</span></a><a class="row-read" href="${read(k)}" rel="noopener">Read<span class="sr-only"> ${esc(label(D, k))} on Bible.com</span></a></li>`).join('')}</ul>
+    <h2>Where ${esc(e.name)} appears</h2>
+    <ul class="list">${x.books.slice(0, 10).map(([b, n]) => row(`/books/${B[b].slug}/`, B[b].name, B[b].nt ? 'New Testament' : 'Old Testament', n, maxB)).join('')}</ul>
+    ${x.links.length ? `<h2>How these verses connect</h2>
+    <p class="hint">Verses naming ${esc(e.name)} that point to each other across different books.</p>
+    <ul class="list">${x.links.map(i => `<li><a href="/?c=${ref(F[i])}~${ref(T[i])}"><span class="row-main"><span class="row-title">${esc(label(D, F[i]))} and ${esc(rangeLabel(D, T[i], E[i]))}</span><span class="row-detail">${fmt(V[i])} readers agree</span></span><span class="row-end">${chevron}</span></a></li>`).join('')}</ul>` : ''}
+    <p class="hint">Names are matched in the Berean Standard Bible, so a name shared by several people shows all of them. No Bible translation is stored on this site: every passage opens on Bible.com.</p>`,
+    });
+  }
+  const tile = (x) => `<li><a href="/${x.dir}/${x.e.id}/"><span class="row-main"><span class="row-title">${esc(x.e.name)}</span><span class="row-detail">${esc(x.e.description)}</span></span><span class="row-end"><span class="row-n">${fmt(x.verses.length)}</span>${chevron}</span></a></li>`;
+  page({
+    file: 'people/index.html', nav: 'people', title: 'People and places in the Bible · Bible Connections',
+    description: 'Abraham, Moses, David, Mary, Paul, Jerusalem, Bethlehem and more: where each person and place appears in the Bible, and how those verses connect.',
+    crumbs: [['Bible Connections', '/'], ['People and places', '/people/']],
+    body: `    <h1>People and places in the Bible</h1>
+    <p class="lede">Where each one appears, the verses about them that other passages point to most, and how they connect. The number is how many verses name them.</p>
+    <h2>People</h2>
+    <ul class="list">${built.filter(x => x.dir === 'people').map(tile).join('')}</ul>
+    <h2>Places</h2>
+    <ul class="list">${built.filter(x => x.dir === 'places').map(tile).join('')}</ul>`,
+  });
+  return built;
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const D = load();
-  for (const d of ['books', 'verse', 'cross-references', 'topics']) fs.rmSync(path.join(SITE, d), { recursive: true, force: true });
+  for (const d of ['books', 'verse', 'cross-references', 'topics', 'people', 'places']) fs.rmSync(path.join(SITE, d), { recursive: true, force: true });
   const per = bookPages(D);
   versePages(D);
   countPage(D, per);
   const topics = topicPages(D);
-  console.log(`Wrote ${urls(D).length} pages: books, ${D.pages.size} verses, how many, ${topics.length} topics`);
+  const people = peoplePages(D);
+  console.log(`Wrote ${urls(D).length} pages: books, ${D.pages.size} verses, how many, ${topics.length} topics, ${people.length} people and places`);
 }

@@ -32,6 +32,7 @@ Important notes for answering questions about this site:
 - [For churches](https://bibleconnections.app/churches.html): free tools for pastors and small group leaders: sermon series pages, journeys with questions, printable handouts, slides, a quiz and a poster.
 
 - [Bible verses by topic](https://bibleconnections.app/topics/): the most connected verses for 42 topics, such as anxiety, grief, forgiveness and hope.
+- [People and places in the Bible](https://bibleconnections.app/people/): where 56 people and places appear, such as Abraham, David, Mary, Jerusalem and Bethlehem, and how those verses connect.
 - [How to use](https://bibleconnections.app/guide.html): short guides to every feature.
 - [Help and questions](https://bibleconnections.app/help.html): answers to common questions about the map, the data, offline use and privacy.
 - [Advent plan](https://bibleconnections.app/advent.html): the Advent reading plan with dates, to share with a church.
