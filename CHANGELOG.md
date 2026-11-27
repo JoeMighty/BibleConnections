@@ -12,6 +12,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - **Help and questions:** answers to the 18 questions people ask most, in four groups (getting started, the content, using the app, cost, privacy and churches), each opening in place, with a link to email or GitHub for anything else. Linked from More and every footer, and marked up as an FAQ for search engines ([help.html](https://bibleconnections.app/help.html)). In English, Spanish and Portuguese.
 - `?poster=1` opens the poster window. Advent and Support are linked from More and every footer.
 
+### Changed
+- **Verse screen:** the connections come straight after the Read buttons, the count is said once, and Save, Share, Collect and More sit in one row of icons. Zoom, Whole book, Copy references, images, QR code, Embed and Clear are under More. Each testament shows its 8 strongest connections first.
+- Opening a verse shows the whole map with its arcs lit up and the rest faded, instead of zooming deep into the chapter.
+- Listen sits next to Read, and the chapter link is shorter.
+- Journey cards open the journey when tapped. Present, the handout and the leader guide are inside each journey, under For leaders.
+- Connection of the day has one button (See it on the map), with the passages and Story image as links.
+- Welcome page: themes moved to the Explore panel, and Made for you is three short rows.
+- The header subtitle shows on the welcome page only. The testament divider no longer cuts through book names. On phones the map sits higher, so the testament names are clear of the sheet. Study, Journeys, Library and More get a wider panel on large screens.
+- Scripts and styles are minified on deploy (about a quarter smaller after compression). The files in the repository stay readable.
+- Two new events measure whether people who open a verse go on to open a connection (see docs/ANALYTICS.md), and docs/USABILITY-TEST.md has a five-person test script.
+
 ## [0.21.0] - 2026-11-24 - One Way Round
 
 ### Changed
