@@ -2256,9 +2256,11 @@
     try { idx = await loadWords(); } catch { return null; }
     const set = new Set();
     const keys = type === 'topic' ? Object.keys(idx) : null;
+    // a topic can skip word forms that mean something else (kinds, restore) and leave out verses that use the word in another sense
+    const skip = new Set(e.skip || []), drop = new Set((e.exclude || []).map(osisToIndex));
     for (const w of e.words) {
-      const matches = type === 'topic' ? keys.filter(k => k === w || (k.startsWith(w) && k.length - w.length <= 3)) : (idx[w] ? [w] : []);
-      for (const k of matches) for (const v of decodePostings(idx[k])) set.add(v);
+      const matches = type === 'topic' ? keys.filter(k => !skip.has(k) && (k === w || (k.startsWith(w) && k.length - w.length <= 3))) : (idx[w] ? [w] : []);
+      for (const k of matches) for (const v of decodePostings(idx[k])) if (!drop.has(v)) set.add(v);
     }
     if (!set.size) return null;
     const verses = Int32Array.from(set).sort();

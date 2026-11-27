@@ -256,7 +256,9 @@ function topicPages(D) {
   const built = TOP.map(t => {
     // the same matching as the map: each key word, plus forms up to three letters longer (worry, worried, worries)
     const set = new Set();
-    for (const w of t.words) for (const k of keys.filter(k => k === w || (k.startsWith(w) && k.length - w.length <= 3))) for (const v of decode(idx[k])) set.add(v);
+    // skip: word forms that mean something else (kinds, restore); exclude: verses that use the word in another sense
+    const skip = new Set(t.skip || []), osis = (v) => `${B[vb[v]].osis}.${vc[v]}.${vn[v]}`, drop = new Set(t.exclude || []);
+    for (const w of t.words) for (const k of keys.filter(k => !skip.has(k) && (k === w || (k.startsWith(w) && k.length - w.length <= 3)))) for (const v of decode(idx[k])) if (!drop.has(osis(v))) set.add(v);
     const verses = [...set].sort((a, b) => a - b);
     const inSet = new Uint8Array(D.TOTAL); for (const v of verses) inSet[v] = 1;
     const top = verses.filter(v => deg[v]).sort((a, b) => deg[b] - deg[a] || a - b).slice(0, 20);
