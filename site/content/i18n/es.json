@@ -1007,7 +1007,9 @@
     "Questions": "Preguntas",
     "Chapter": "Capítulo",
     "Collect": "Guardar en colección",
-    "For leaders": "Para líderes"
+    "For leaders": "Para líderes",
+    "Christmas plan to share": "Plan de Navidad para compartir",
+    "Christmas plan": "Plan de Navidad"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1274,7 +1276,14 @@
       "Quick answers to the questions people ask most. For step by step guides, see How to use.": "Respuestas rápidas a las preguntas más frecuentes. Para guías paso a paso, consulta Cómo usar.",
       "Still need help?": "¿Necesitas más ayuda?",
       "Write to us and say what you were trying to do. We read every message.": "Escríbenos y cuéntanos qué intentabas hacer. Leemos todos los mensajes.",
-      "Questions": "Preguntas"
+      "Questions": "Preguntas",
+      "Christmas reading plan": "Plan de lectura de Navidad",
+      "The twelve days": "Los doce días",
+      "Christmas plan": "Plan de Navidad",
+      "After Christmas Day:": "Después de Navidad:",
+      "the twelve days of Christmas": "los doce días de Navidad",
+      "Before Christmas:": "Antes de Navidad:",
+      "the Advent plan": "el plan de Adviento"
     },
     "slides": {
       "Slides": "Diapositivas",

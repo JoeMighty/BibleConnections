@@ -1876,8 +1876,9 @@
       <div class="actions"><button type="button" class="btn" data-season-plan="${esc(going.p.id)}" data-day="${d}">Continue</button></div>`;
   }
   // the Advent page to send round a church, and a quick way to share it
-  const adventLinks = () => `<p class="season-share"><a href="${esc(withLangLink('advent.html'))}">${esc(tr('The whole plan, to share with your church'))}</a> <span aria-hidden="true">·</span>
-    <button type="button" class="link-btn" data-action="shareAdvent">${esc(tr(navigator.share ? 'Share' : 'Copy link'))}</button></p>`;
+  // the season's page (Advent or the twelve days of Christmas) to send round a church, and a quick way to share it
+  const seasonLinks = (pg) => `<p class="season-share"><a href="${esc(withLangLink(pg + '.html'))}">${esc(tr('The whole plan, to share with your church'))}</a> <span aria-hidden="true">·</span>
+    <button type="button" class="link-btn" data-action="shareAdvent" data-page="${pg}">${esc(tr(navigator.share ? 'Share' : 'Copy link'))}</button></p>`;
   function renderSeasonBanner() {
     const box = $('seasonBanner');
     if (!box || !PLANS.length) return;
@@ -1894,7 +1895,7 @@
           <h3 class="series-name" id="seasonTitle">${esc(loc(d, 'title'))}</h3><p>${esc(loc(d, 'note'))}</p>
           <div class="actions"><button type="button" class="btn" data-season-plan="${esc(plan.id)}" data-day="${day}">Open today's reading</button>
           ${jn >= 0 ? `<button type="button" class="btn ghost" data-season-journey="${jn}">Take the ${esc(tr(info.name))} journey</button>` : ''}</div>
-          ${s.season === 'advent' ? adventLinks() : ''}`;
+          ${s.season === 'advent' ? seasonLinks(day >= plan.days.length - 1 ? 'christmas' : 'advent') : s.season === 'christmas' ? seasonLinks('christmas') : ''}`;
       }
     } else {
       // nothing in season today: mention the next season if it starts within three weeks
@@ -1905,7 +1906,7 @@
         html = `<p class="eyebrow">${esc(tr('Coming soon'))}</p><h3 class="series-name" id="seasonTitle">${esc(nameOf(next.p))}</h3>
           <p>${esc(tr(info.soon).replace('{d}', fmtDate(next.start)))} ${esc(descOf(next.p))}</p>
           <div class="actions"><button type="button" class="btn" data-season-plan="${esc(next.p.id)}" data-day="0">See the plan</button></div>
-          ${next.p.season === 'advent' ? adventLinks() : ''}`;
+          ${['advent', 'christmas'].includes(next.p.season) ? seasonLinks(next.p.season) : ''}`;
       }
     }
     box.hidden = !html;
@@ -2010,6 +2011,7 @@
       ['data-action="keys"', 'Keyboard shortcuts', '', ''],
       [`href="${withLangLink('churches.html')}"`, 'For churches', '', ''],
       [`href="${withLangLink('advent.html')}"`, 'Advent plan to share', '', ''],
+      [`href="${withLangLink('christmas.html')}"`, 'Christmas plan to share', '', ''],
       [`href="${withLangLink('support.html')}"`, 'Support Bible Connections', 'Share, give, help translate', ''],
     ]);
     html += `<h3>${esc(tr('About'))}</h3>` + rowsHTML([
@@ -4962,9 +4964,11 @@
     if (btn.dataset.heroQ) { track('home/try'); $('landingQ').value = btn.dataset.heroQ; $('landingSearch').requestSubmit(); return; }
     if (btn.dataset.action === 'story') { storyImage(+btn.dataset.ref); return; }
     if (btn.dataset.action === 'shareAdvent') {
-      track('season/share');
-      const url = new URL(withLangLink('advent.html'), location.href).href;
-      if (navigator.share) navigator.share({ title: tr('Advent: promise and fulfilment'), url }).catch(() => { /* cancelled */ }); else copyText(url);
+      const pg = btn.dataset.page === 'christmas' ? 'christmas' : 'advent';
+      track('season/share/' + pg);
+      const url = new URL(withLangLink(pg + '.html'), location.href).href;
+      const title = nameOf(PLANS.find(x => x.season === pg) || { name: 'Bible Connections' });
+      if (navigator.share) navigator.share({ title, url }).catch(() => { /* cancelled */ }); else { copyText(url); confirmBtn(btn, tr('Copied')); }
       return;
     }
     if (btn.dataset.action === 'gotoRef') { hideLanding(); track('cotd'); selectRef(+btn.dataset.ref, { zoom: true }); focusPanelHeading(); return; }

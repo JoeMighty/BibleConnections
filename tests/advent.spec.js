@@ -86,3 +86,31 @@ test('the Help page answers questions in groups, opens a linked question, and is
   await page.waitForSelector('body[data-ready=true]');
   await expect(page.locator('#panel a[href="help.html"]')).toBeVisible();
 });
+
+test('the Christmas page lists the twelve days from Christmas Day and marks today', async ({ page }) => {
+  await page.goto('/christmas.html?today=2026-12-28');
+  await expect(page.locator('h1')).toHaveText('The twelve days of Christmas');
+  await expect(page.locator('.advent-day')).toHaveCount(12);
+  await expect(page.locator('.advent-day').first()).toContainText('Friday, December 25');
+  await expect(page.locator('.advent-day').last()).toContainText('Tuesday, January 5');
+  await expect(page.locator('.advent-day[aria-current="date"]')).toHaveAttribute('id', 'day-4');
+  await expect(page.locator('.advent-today .btn').first()).toHaveAttribute('href', './?plan=christmas&day=4');
+  await expect(page.locator('.share-url code')).toHaveText(/\/christmas\.html$/);
+  // in early January it is still this season; after 5 January it shows next Christmas
+  await page.goto('/christmas.html?today=2027-01-03');
+  await expect(page.locator('.advent-day[aria-current="date"]')).toHaveAttribute('id', 'day-10');
+  await page.goto('/christmas.html?today=2027-01-10');
+  await expect(page.locator('.advent-day').first()).toContainText('Saturday, December 25');
+  await page.goto('/christmas.html?lang=es&today=2026-12-25');
+  await expect(page.locator('section h2')).toContainText(['Los doce días']);
+});
+
+test('on Christmas Day the welcome page links to the Christmas page, and after it too', async ({ page }) => {
+  await page.goto('/?today=2026-12-25');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#seasonBanner a[href="christmas.html"]')).toBeVisible();
+  await page.goto('/?today=2026-12-30');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#seasonBanner a[href="christmas.html"]')).toBeVisible();
+  await expect(page.locator('#seasonBanner [data-action="shareAdvent"][data-page="christmas"]')).toBeVisible();
+});

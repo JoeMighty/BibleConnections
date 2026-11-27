@@ -42,10 +42,10 @@
         <ul class="cards">${C.tools.map(it => `<li class="card"><h2 class="card-title">${esc(pick(it, 'title'))}</h2><p>${esc(pick(it, 'text'))}</p>
           <p class="try"><a href="${esc(withLang(/^[?]/.test(it.try) ? './' + it.try : it.try))}">${esc(pick(it, 'try_label'))}</a></p></li>`).join('')}</ul>
         <p class="muted church-note">${mail(pick(C, 'note'))}</p>`;
-    } else if (page === 'advent') {
+    } else if (page === 'advent' || page === 'christmas') {
       // the Advent plan as one page to share with a church: every day's promise and fulfilment, with dates
       const [plans, meta, versions] = await Promise.all(['content/plans.json', 'data/books.json', 'content/versions.json'].map(u => fetch(u).then(r => r.json())));
-      const plan = plans.find(p => p.season === 'advent'), B = meta.books, names = L.books();
+      const plan = plans.find(p => p.season === page), B = meta.books, names = L.books();
       const en = B.map(b => b.name);
       if (names) B.forEach((b, i) => { b.name = names[i] || b.name; });
       const ver = versions.find(v => (v.key || v.code) === L.bible) || { id: 111, code: 'NIV' }, niv = versions.find(v => v.code === 'NIV') || ver;
@@ -58,23 +58,26 @@
       now.setHours(12, 0, 0, 0);
       // Advent Sunday is the fourth Sunday before Christmas; after Christmas the page shows next year's dates
       const sunday = (y) => { const d = new Date(y, 11, 24, 12); d.setDate(d.getDate() - d.getDay() - 21); return d; };
-      const start = now > new Date(now.getFullYear(), 11, 25, 12) ? sunday(now.getFullYear() + 1) : sunday(now.getFullYear());
+      // the twelve days run from Christmas Day to 5 January; after that the page shows next Christmas
+      const xmas = () => { const y = now.getFullYear(); return now <= new Date(y, 0, 5, 12) ? new Date(y - 1, 11, 25, 12) : new Date(y, 11, 25, 12); };
+      const start = page === 'christmas' ? xmas()
+        : now > new Date(now.getFullYear(), 11, 25, 12) ? sunday(now.getFullYear() + 1) : sunday(now.getFullYear());
       const dayOf = (k) => { const d = new Date(start); d.setDate(d.getDate() + k); return d; };
       const todayK = Math.round((now - start) / 86400000), inAdvent = todayK >= 0 && todayK < plan.days.length;
       const long = { weekday: 'long', day: 'numeric', month: 'long' };
       const fmtD = (d, o = long) => d.toLocaleDateString(L.locale, o);
       const appURL = (k) => withLang(`./?plan=${plan.id}&day=${k + 1}`);
-      const pageURL = new URL(withLang('advent.html'), location.href).href;
+      const pageURL = new URL(withLang(page + '.html'), location.href).href;
       const pair = (d) => { const a = ref(d.a), b = ref(d.b); return `<p class="advent-refs"><a href="${esc(read(a))}" rel="noopener">${esc(label(a))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a> <span aria-hidden="true">→</span><span class="sr-only">${esc(t('and'))}</span> <a href="${esc(read(b))}" rel="noopener">${esc(label(b))}<span class="sr-only"> (${esc(t('opens Bible.com'))})</span></a></p>`; };
       // the weeks: the part of each title before the colon (Hope, Peace, Joy, Love, Christmas Day)
       const weeks = [];
-      plan.days.forEach((d, k) => { const w = pick(d, 'title').split(':')[0]; const last = weeks[weeks.length - 1]; if (last && last.name === w) last.days.push(k); else weeks.push({ name: w, days: [k] }); });
+      plan.days.forEach((d, k) => { const w = page === 'christmas' ? t('The twelve days') : pick(d, 'title').split(':')[0]; const last = weeks[weeks.length - 1]; if (last && last.name === w) last.days.push(k); else weeks.push({ name: w, days: [k] }); });
       const cap = (x) => x.charAt(0).toLocaleUpperCase(L.locale) + x.slice(1);
       const day = (k) => { const d = plan.days[k], title = pick(d, 'title'); return `<li class="advent-day" id="day-${k + 1}"${k === todayK ? ' aria-current="date"' : ''}>
           <p class="eyebrow">${esc(t('Day {n}', { n: k + 1 }))} · ${esc(fmtD(dayOf(k)))}${k === todayK ? `<span class="no-print"> · <strong>${esc(t('Today'))}</strong></span>` : ''}</p>
           <h3>${esc(cap(title.split(':').slice(1).join(':').trim() || title))}</h3>${pair(d)}<p>${esc(pick(d, 'note'))}</p>
           <p class="day-link no-print"><a href="${esc(appURL(k))}">${esc(t('See it on the map'))}</a></p></li>`; };
-      document.title = `${t('Advent reading plan')} · Bible Connections`;
+      document.title = `${t(page === 'christmas' ? 'Christmas reading plan' : 'Advent reading plan')} · Bible Connections`;
       const td = inAdvent ? plan.days[todayK] : null;
       main.innerHTML = `<h1>${esc(pick(plan, 'name'))}</h1>
         <p class="lede">${esc(pick(plan, 'description'))}</p>
@@ -90,7 +93,8 @@
           <p class="actions"><button type="button" class="btn" id="adventShare">${esc(navigator.share ? t('Share') : t('Copy link'))}</button><button type="button" class="btn tinted" id="adventPrint">${esc(t('Print the plan'))}</button></p>
           <p class="muted" id="adventStatus" role="status"></p></section>
         ${weeks.map(w => `<section aria-labelledby="w-${slug(w.name)}"><h2 id="w-${slug(w.name)}">${esc(w.name)}</h2><ol class="advent-days" start="${w.days[0] + 1}">${w.days.map(day).join('')}</ol></section>`).join('')}
-        <p class="muted church-note">${esc(t('Each day opens two passages on Bible.com and shows how they connect on the map. No Bible translation is stored on this site.'))}</p>`;
+        <p class="muted church-note">${esc(t('Each day opens two passages on Bible.com and shows how they connect on the map. No Bible translation is stored on this site.'))}</p>
+        <p class="no-print">${page === 'advent' ? `${esc(t('After Christmas Day:'))} <a href="${esc(withLang('christmas.html'))}">${esc(t('the twelve days of Christmas'))}</a>` : `${esc(t('Before Christmas:'))} <a href="${esc(withLang('advent.html'))}">${esc(t('the Advent plan'))}</a>`}</p>`;
       document.getElementById('adventPrint').addEventListener('click', () => print());
       document.getElementById('adventShare').addEventListener('click', async () => {
         const status = document.getElementById('adventStatus');

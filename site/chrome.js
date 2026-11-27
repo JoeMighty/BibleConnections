@@ -37,7 +37,7 @@
     const here = (l) => { const u = new URL(location.href); if (l === 'en') u.searchParams.delete('lang'); else u.searchParams.set('lang', l); return u.pathname + u.search + u.hash; };
     foot.innerHTML = `<div class="foot-groups">
         ${group('Help', [['How to use', page('guide.html')], ['Questions', page('help.html')], ['What’s new', 'https://github.com/JoeMighty/BibleConnections/blob/main/CHANGELOG.md', 1], ['Roadmap', page('roadmap.html')]])}
-        ${group('Explore', [['Books', root + 'books/'], ['How many cross references?', root + 'cross-references/'], ['For churches', page('churches.html')], ['Advent plan', page('advent.html')]])}
+        ${group('Explore', [['Books', root + 'books/'], ['How many cross references?', root + 'cross-references/'], ['For churches', page('churches.html')], ['Advent plan', page('advent.html')], ['Christmas plan', page('christmas.html')]])}
         ${group('About', [['Support', page('support.html')], ['Privacy', page('privacy.html')], ['Terms', page('terms.html')], ['Accessibility', page('accessibility.html')], ['Credits', page('credits.html')], ['Source code', 'https://github.com/JoeMighty/BibleConnections', 1]])}
       </div>
       <p class="foot-lang" aria-label="${esc(t('Language'))}">${[['en', 'English'], ['es', 'Español'], ['pt', 'Português']].map(([l, n]) => l === lang ? `<span aria-current="true">${n}</span>` : `<a href="${esc(here(l))}" hreflang="${l}" lang="${l}">${n}</a>`).join(' · ')}</p>

@@ -361,6 +361,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/advent.html"/>
   </url>
   <url>
+    <loc>https://bibleconnections.app/christmas.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/christmas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/christmas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/christmas.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/christmas.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/christmas.html?lang=es</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/christmas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/christmas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/christmas.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/christmas.html"/>
+  </url>
+  <url>
+    <loc>https://bibleconnections.app/christmas.html?lang=pt</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/christmas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bibleconnections.app/christmas.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bibleconnections.app/christmas.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bibleconnections.app/christmas.html"/>
+  </url>
+  <url>
     <loc>https://bibleconnections.app/support.html</loc>
     <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://bibleconnections.app/support.html"/>
