@@ -51,9 +51,6 @@ test('landing search, theme and journey shortcuts work', async ({ page }) => {
   await expect(page.locator('#panelTitle')).toHaveText('John 3:16');
   await page.click('#homeLink');
   await expect(page.locator('#landing')).toBeVisible();
-  await page.locator('#landingThemes [data-theme=messiah]').click();
-  await expect(page.locator('#theme')).toHaveValue('messiah');
-  await page.click('#homeLink');
   await page.click('[data-start=journeys]');
   await expect(page.locator('#panelTitle')).toHaveText('Guided journeys');
   // a suggested verse opens straight away
@@ -290,7 +287,7 @@ test('welcome page cards are made for readers, groups and church leaders', async
   await ready(page);
   await expect(page.locator('#landingAxis')).toContainText('New Testament');
   await expect(page.locator('.audiences .aud')).toHaveCount(3);
-  await page.locator('.aud [data-start=plans]').click();
+  await page.locator('.aud[data-start=plans], .aud [data-start=plans]').first().click();
   await expect(page.locator('#landing')).toBeHidden();
   await expect(page.locator('#panelTitle')).toHaveText('Reading plans');
   await page.goto('/');

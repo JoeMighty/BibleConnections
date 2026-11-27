@@ -109,7 +109,7 @@ test('an offline note appears when the connection drops', async ({ page, context
   await expect(page.locator('#offlineNote')).toBeHidden();
 });
 
-test('the welcome page keeps rows short: six feelings and themes, with More for the rest', async ({ page }) => {
+test('the welcome page keeps rows short: six feelings, with More for the rest', async ({ page }) => {
   await page.goto('/');
   await ready(page);
   await expect(page.locator('#todayTitle')).toHaveText('Today');
@@ -118,7 +118,12 @@ test('the welcome page keeps rows short: six feelings and themes, with More for 
   await page.locator('#landingFeelings .more-chip').click();
   await expect(visible('#landingFeelings')).toHaveCount(12);
   await expect(page.locator('#landingFeelings .more-chip')).toHaveAttribute('aria-expanded', 'true');
-  await expect(visible('#landingThemes')).toHaveCount(6);
+  // themes moved to the Explore panel
+  await expect(page.locator('#landingThemes')).toHaveCount(0);
+  await page.goto('/?view=map');
+  await ready(page);
+  await page.locator('#panel [data-action=setTheme][data-theme-id=messiah]').click();
+  await expect(page.locator('#theme')).toHaveValue('messiah');
 });
 
 test('each section lists its own tools, and routes are called routes', async ({ page }) => {

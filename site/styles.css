@@ -370,6 +370,15 @@ input.switch:checked::after { transform: translateX(20px); }
 .journey-card { background: var(--surface-2); border-radius: var(--radius); padding: 16px; margin: 0 0 12px; }
 .journey-card h3 { margin: 0 0 4px !important; color: var(--text) !important; text-transform: none !important; letter-spacing: 0 !important; font-size: var(--t-headline) !important; font-weight: 600 !important; font-family: var(--font-display) !important; }
 .journey-card p { color: var(--muted); font-size: var(--t-subhead); }
+.journey-card.tappable { padding: 0; overflow: hidden; }
+.card-open { display: flex; align-items: center; gap: 12px; width: 100%; padding: 16px; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.card-open:hover { background: var(--surface-3); }
+.card-open:active { opacity: 0.8; }
+.card-open .card-text { flex: 1; min-width: 0; }
+.card-open p { margin: 0 0 4px; }
+.card-meta { font-size: var(--t-footnote); color: var(--link); font-weight: 600; }
+.card-open .chev { width: 8px; height: 14px; flex: none; color: var(--muted); opacity: 0.6; }
+.leader-row { font-size: var(--t-subhead); margin: 4px 0 12px; }
 .step-count { color: var(--muted); font-size: var(--t-footnote); margin-bottom: 8px !important; }
 .progress { height: 4px; background: var(--fill); border-radius: 2px; overflow: hidden; margin-bottom: 16px; }
 .progress span { display: block; height: 100%; background: var(--accent); border-radius: 2px; }
@@ -1050,13 +1059,18 @@ details.study-sec > summary h3 { margin: 0; }
 @media (max-width: 520px) { .demo-cards { grid-template-columns: 1fr; } .demo-card { min-height: 52px; flex-direction: row; justify-content: space-between; align-items: center; } }
 
 /* welcome page: who it is for */
-.audiences { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.aud { background: var(--surface); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.aud h4 { margin: 4px 0 0; font: 600 var(--t-title3, 20px)/1.25 var(--font-display); letter-spacing: 0; }
-.aud p { margin: 0; color: var(--muted); flex: 1; }
-.aud .btn { align-self: flex-start; margin-top: 8px; text-decoration: none; }
-.aud-icon { width: 30px; height: 30px; fill: none; stroke: var(--link); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-@media (max-width: 860px) { .audiences { grid-template-columns: 1fr; } }
+.audiences { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.aud { min-width: 0; }
+.aud-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 12px 16px; border: 0; border-radius: 14px; background: var(--surface);
+  color: var(--text); font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.aud-row:hover { background: var(--surface-2); }
+.aud-row:active { opacity: 0.8; }
+.aud-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.aud-title { font-weight: 600; }
+.aud-detail { font-size: var(--t-subhead); color: var(--muted); }
+.aud-row .chev { width: 8px; height: 14px; flex: none; color: var(--muted); opacity: 0.6; }
+.aud-icon { width: 28px; height: 28px; flex: none; fill: none; stroke: var(--link); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 860px) { .audiences { grid-template-columns: 1fr; gap: 8px; } }
 
 /* welcome page: today, and short chip rows */
 .today-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px; align-items: stretch; }
@@ -1128,5 +1142,8 @@ a .i { margin-left: 4px; }
 .menu-item + .menu-item { box-shadow: 0 -0.5px 0 var(--separator); }
 .verse-card.bare { background: none; border: 0; padding: 0; margin: 0 0 12px; }
 /* the welcome page has one filled button, Show connections; the others are tinted */
-.landing .aud .btn, .landing .today .btn:not(.ghost), .landing .landing-cotd .btn:not(.ghost) { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--link); }
-:root[data-theme="light"] .landing .aud .btn, :root[data-theme="light"] .landing .today .btn:not(.ghost) { color: #00427f; }
+.landing .today .btn:not(.ghost), .landing .landing-cotd .btn:not(.ghost) { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--link); }
+:root[data-theme="light"] .landing .today .btn:not(.ghost) { color: #00427f; }
+
+.quiet-links { font-size: var(--t-subhead); margin: 12px 0 0; }
+.quiet-links .mini-link, .quiet-links .link-btn { font-size: inherit; }

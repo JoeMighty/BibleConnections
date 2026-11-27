@@ -1006,7 +1006,8 @@
     "What the arcs mean, offline use, privacy and more": "Qué significan los arcos, uso sin conexión, privacidad y más",
     "Questions": "Preguntas",
     "Chapter": "Capítulo",
-    "Collect": "Guardar en colección"
+    "Collect": "Guardar en colección",
+    "For leaders": "Para líderes"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",
@@ -1131,7 +1132,8 @@
     "Route: {x}": "Ruta: {x}",
     "Day {d} of {n}": "Día {d} de {n}",
     "Take the {x} journey": "Hacer el recorrido de {x}",
-    "{n} of {m}": "{n} de {m}"
+    "{n} of {m}": "{n} de {m}",
+    "{n} steps": "{n} pasos"
   },
   "pages": {
     "handout": {

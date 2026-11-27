@@ -1521,6 +1521,7 @@
           or take a <button type="button" class="chip" data-action="mode" data-mode="journeys">guided journey</button>
           <button type="button" class="chip" data-action="surprise">Surprise me</button></p>`;
       }
+      if (!theme) html += `<h3>${esc(tr('Start with a theme'))}</h3><ul class="chip-list">${THEMES.slice(0, 8).map(t => `<li><button type="button" class="chip" data-action="setTheme" data-theme-id="${t.id}">${esc(t.name)}</button></li>`).join('')}</ul>`;
       if (!theme) html += `<h3>${esc(tr('More to explore'))}</h3>` + rowsHTML([
         ['data-stage="places"', 'Places on a map', 'See where places named in the Bible were, and every verse that mentions them.', ''],
         ['data-action="mode" data-mode="people"', 'People and places', 'See where a person or place appears across the whole Bible.', ''],
@@ -1553,13 +1554,10 @@
   }
   const currentStep = () => (state.journey ? journeySteps[state.journey.j]?.[state.journey.step] : null);
   function journeysHTML() {
-    const card = (j, n) => `<li class="journey-card"><h3>${esc(j.name)}</h3><p>${esc(j.summary)}</p>
-        <div class="actions tight">
-          <button type="button" class="btn small" data-action="startJourney" data-j="${n}">Start<span class="sr-only"> ${esc(j.name)}</span> (${journeySteps[n].length} steps)</button>
-          <button type="button" class="btn ghost small" data-action="presentJourney" data-j="${n}">Present<span class="sr-only"> ${esc(j.name)}</span></button>
-          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Handout<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
-          <a class="btn ghost small" href="handout.html?journey=${esc(j.id)}&guide=leader${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Leader guide<span class="sr-only"> for ${esc(j.name)} (opens in a new tab)</span></a>
-        </div></li>`;
+    // the whole card starts the journey; Present, the handout and the leader guide are inside it
+    const card = (j, n) => `<li class="journey-card tappable"><button type="button" class="card-open" data-action="startJourney" data-j="${n}">
+        <span class="card-text"><h3>${esc(j.name)}</h3><p>${esc(j.summary)}</p><span class="card-meta">${esc(tr(`${journeySteps[n].length} steps`))}</span></span>
+        <svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>`;
     const all = JOURNEYS.map((j, n) => [j, n]);
     const kids = all.filter(([j]) => j.kids), grown = all.filter(([j]) => !j.kids);
     const groups = settings.kids ? [['For kids', kids], ['More journeys', grown]] : [['Journeys', grown], ['For kids', kids]];
@@ -1585,11 +1583,11 @@
     html += `<div class="actions nav-row">
       <button type="button" class="btn ghost" data-action="stepPrev" ${step === 0 ? 'disabled' : ''}>Previous</button>
       ${step < steps.length - 1 ? '<button type="button" class="btn" data-action="stepNext">Next step</button>' : '<button type="button" class="btn" data-action="mode" data-mode="journeys">Finish</button>'}
-    </div><div class="actions">
-      <button type="button" class="btn ghost small" data-action="present">Present</button>
-      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a>
-      <a class="btn ghost small" href="handout.html?journey=${esc(J.id)}&guide=leader${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Leader guide<span class="sr-only"> (opens in a new tab)</span></a>
-      ${shareButtons()}<button type="button" class="btn ghost small" data-action="mode" data-mode="journeys">All journeys</button></div>`;
+    </div>${shareButtons()}
+    <p class="leader-row"><span class="muted">${esc(tr('For leaders'))}:</span> <button type="button" class="link-btn" data-action="present">Present</button> ·
+      <a href="handout.html?journey=${esc(J.id)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Printable handout<span class="sr-only"> (opens in a new tab)</span></a> ·
+      <a href="handout.html?journey=${esc(J.id)}&guide=leader${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Leader guide<span class="sr-only"> (opens in a new tab)</span></a></p>
+    <p><button type="button" class="link-btn" data-action="mode" data-mode="journeys">All journeys</button></p>`;
     return [J.name, html];
   }
   function startJourney(j, step = 0) {
@@ -2120,12 +2118,9 @@
       <p class="cotd-refs">${esc(refLabel(F[i]))} <span aria-hidden="true">↔</span><span class="sr-only"> and </span> ${esc(refLabel(T[i], E[i]))}</p>
       <p><span class="tag">${esc(n.type)}</span></p>
       <p${LANG !== 'en' && !n.seasonal ? ' lang="en"' : ''}>${esc(n.text)}</p>
-      <div class="actions tight">
-        <button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button>
-        ${readBoth(F[i], `Read ${esc(refLabel(F[i]))}`)}
-        ${readBoth(T[i], `Read ${esc(refLabel(T[i]))}`)}
-        <button type="button" class="btn ghost small" data-action="story" data-ref="${i}" data-keep="1">Story image</button>
-      </div></div>`;
+      <div class="actions tight"><button type="button" class="btn small" data-action="gotoRef" data-ref="${i}" data-cotd="1">See it on the map</button></div>
+      <p class="quiet-links">${ext(bibleUrl(F[i]), `Read ${esc(refLabel(F[i]))}`, 'mini-link')} · ${ext(bibleUrl(T[i], E[i]), `Read ${esc(refLabel(T[i], E[i]))}`, 'mini-link')} ·
+        <button type="button" class="link-btn" data-action="story" data-ref="${i}" data-keep="1">Story image</button></p></div>`;
   }
 
   // ---------- Reading plans ----------
@@ -4940,8 +4935,7 @@
     // the timeline under the picture: Old and New Testament widths match their share of verses
     $('landingAxis').style.setProperty('--ot', BOOKS[39].start / TOTAL);
     renderFeelings();
-    $('landingThemes').innerHTML = THEMES.map(t => `<li><button type="button" class="chip" data-theme="${t.id}">${esc(t.name)}</button></li>`).join('');
-    addMore($('landingThemes'));
+
   }
   landing.addEventListener('click', (e) => {
     const btn = e.target.closest('button');

@@ -138,38 +138,23 @@
           <section class="landing-cotd" id="landingCotd" hidden aria-label="Connection of the day"></section>
         </div>
       </section>
-      <div class="landing-split">
-        <section class="feelings" aria-labelledby="feelTitle">
-          <h3 id="feelTitle">How are you feeling?</h3>
-          <ul class="chip-list few" id="landingFeelings"></ul>
-          <p class="surprise-row"><button type="button" class="btn ghost" data-start="surprise">Surprise me</button> <span class="muted">Opens a random connection with an explanation.</span></p>
-        </section>
-        <section class="landing-themes" aria-labelledby="themesTitle">
-          <h3 id="themesTitle">Start with a theme</h3>
-          <ul class="chip-list few" id="landingThemes"></ul>
-        </section>
-      </div>
+      <section class="feelings" aria-labelledby="feelTitle">
+        <h3 id="feelTitle">How are you feeling?</h3>
+        <ul class="chip-list few" id="landingFeelings"></ul>
+        <p class="surprise-row"><button type="button" class="btn ghost" data-start="surprise">Surprise me</button> <span class="muted">Opens a random connection with an explanation.</span></p>
+      </section>
       <section aria-labelledby="forTitle">
         <h3 id="forTitle">Made for you</h3>
         <ul class="audiences">
-          <li class="aud">
+          <li class="aud"><button type="button" class="aud-row" data-start="plans">
             <svg class="aud-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2zM12 6.5v13"/></svg>
-            <h4>For your own reading</h4>
-            <p>Look up a verse and follow where it leads. Keep a short reading plan going, or find passages for how you are feeling today.</p>
-            <button type="button" class="btn" data-start="plans">Start a reading plan</button>
-          </li>
-          <li class="aud">
+            <span class="aud-text"><span class="aud-title">For your own reading</span><span class="aud-detail">Start a reading plan</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li class="aud"><button type="button" class="aud-row" data-start="journeys">
             <svg class="aud-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M2.5 19c.7-3.2 2.9-5 5.5-5s4.8 1.8 5.5 5M13.5 15.2c.9-.8 1.9-1.2 3-1.2 2.2 0 4 1.5 4.6 4.5"/></svg>
-            <h4>For small groups</h4>
-            <p>Guided journeys with questions to talk about, a printable handout with leader notes, and a quick quiz for the group.</p>
-            <button type="button" class="btn" data-start="journeys">Choose a journey</button>
-          </li>
-          <li class="aud">
+            <span class="aud-text"><span class="aud-title">For small groups</span><span class="aud-detail">Choose a journey with questions</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>
+          <li class="aud"><a class="aud-row" href="churches.html" id="churchesLink">
             <svg class="aud-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4M5 21V11l7-4 7 4v10M9.5 21v-5h5v5M3 21h18"/></svg>
-            <h4>For church leaders</h4>
-            <p>Put your sermon series on your church website, turn passages into slides, and print a poster of the whole map.</p>
-            <a class="btn" href="churches.html" id="churchesLink">See the tools for churches</a>
-          </li>
+            <span class="aud-text"><span class="aud-title">For church leaders</span><span class="aud-detail">Sermon series, slides and handouts</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
         </ul>
       </section>
       <footer class="landing-foot">
