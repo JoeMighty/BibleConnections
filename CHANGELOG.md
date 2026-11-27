@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.25.0] - 2026-11-27 - Who and Where
+
 ### Added
 - **People and places in the Bible:** a page for each of 56 people and places (Abraham, Moses, David, Mary, Paul, Jerusalem, Bethlehem and more) with how many verses name them, the books they appear in, their most connected verses with Read links, how those verses link across books, and a button to see them all on the map ([people/](https://bibleconnections.app/people/)).
 
