@@ -62,12 +62,16 @@ test('the version shown in About matches the latest release in the changelog', a
 test('packed data files match the full ones (run scripts/pack-data.mjs after rebuilding data)', async () => {
   const fs = require('fs'), zlib = require('zlib');
   const raw = new Uint16Array(fs.readFileSync('site/data/refs.bin').buffer.slice(0));
-  const bytes = zlib.gunzipSync(fs.readFileSync('site/data/refs.v2.gz'));
-  let p = 0, from = 0;
+  const bytes = zlib.gunzipSync(fs.readFileSync('site/data/refs.v3.gz'));
+  let p = 0;
   const next = () => { let x = 0, sh = 0, b; do { b = bytes[p++]; x += (b & 127) * 2 ** sh; sh += 7; } while (b & 128); return x; };
   const unzig = (x) => (x & 1 ? -(x + 1) / 2 : x / 2);
-  const out = [];
-  while (p < bytes.length) { from += unzig(next()); const to = from + unzig(next()), end = to + next(); out.push(from, to, end, next()); }
+  const n = next(), out = new Array(n * 4);
+  for (let i = 0, f = 0; i < n; i++) { f += next(); out[i * 4] = f; }
+  for (let i = 0; i < n; i++) { const same = i > 0 && out[i * 4] === out[i * 4 - 4]; out[i * 4 + 1] = (same ? out[i * 4 - 3] : out[i * 4]) + unzig(next()); }
+  for (let i = 0; i < n; i++) out[i * 4 + 2] = out[i * 4 + 1] + next();
+  for (let i = 0; i < n; i++) out[i * 4 + 3] = next();
+  expect(p).toBe(bytes.length);
   expect(out.length).toBe(raw.length);
   expect(out.every((x, i) => x === raw[i])).toBe(true);
   const full = JSON.parse(fs.readFileSync('site/data/strongs.json', 'utf8')), lite = JSON.parse(fs.readFileSync('site/data/strongs-lite.json', 'utf8'));

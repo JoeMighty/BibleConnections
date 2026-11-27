@@ -1,7 +1,7 @@
 // Packs the large data files into smaller ones the site loads first. Run after the data is rebuilt:
 //   node scripts/pack-data.mjs
 // Writes:
-//   site/data/refs.v2.gz        cross references as variable-length numbers, gzip compressed (refs.bin stays as a fallback)
+//   site/data/refs.v3.gz        cross references in columns of variable-length numbers, gzip compressed (refs.bin stays as a fallback)
 //   site/data/strongs-lite.json each Hebrew and Greek word without its verse list: [lemma, transliteration, gloss, verse count]
 //   site/data/entities.json     the verses that name each person, place and topic on the site
 //   site/content/i18n/books-es.json, books-pt.json  book names, so any page can search "Juan 3:16" or "João 3:16"
@@ -14,16 +14,19 @@ const site = (p) => path.join(ROOT, 'site', p);
 
 // 1. cross references: [from, to, toEnd, votes] quads, sorted by "from"
 const raw = new Uint16Array(fs.readFileSync(site('data/refs.bin')).buffer.slice(0));
+// refs.v3: the count, then one column at a time (gzip packs a column of similar numbers far better than mixed quads).
+// "to" is stored as a step from the previous "to" while "from" stays the same, which keeps the numbers small.
 const out = [];
 const varint = (x) => { while (x >= 128) { out.push((x & 127) | 128); x >>>= 7; } out.push(x); };
 const zigzag = (x) => (x >= 0 ? x * 2 : -x * 2 - 1);
-let prevFrom = 0;
-for (let i = 0; i < raw.length; i += 4) {
-  const [f, t, e, v] = [raw[i], raw[i + 1], raw[i + 2], raw[i + 3]];
-  varint(zigzag(f - prevFrom)); varint(zigzag(t - f)); varint(e - t); varint(v);
-  prevFrom = f;
-}
-fs.writeFileSync(site('data/refs.v2.gz'), zlib.gzipSync(Buffer.from(out), { level: 9 }));
+const n = raw.length / 4;
+varint(n);
+for (let i = 0, prev = 0; i < n; i++) { varint(raw[i * 4] - prev); prev = raw[i * 4]; }
+for (let i = 0; i < n; i++) { const same = i > 0 && raw[i * 4] === raw[i * 4 - 4]; varint(zigzag(raw[i * 4 + 1] - (same ? raw[i * 4 - 3] : raw[i * 4]))); }
+for (let i = 0; i < n; i++) varint(raw[i * 4 + 2] - raw[i * 4 + 1]);
+for (let i = 0; i < n; i++) varint(raw[i * 4 + 3]);
+fs.writeFileSync(site('data/refs.v3.gz'), zlib.gzipSync(Buffer.from(out), { level: 9 }));
+fs.rmSync(site('data/refs.v2.gz'), { force: true });
 
 // 2. slim dictionary for glosses, chips and search; the full file is loaded only for word studies
 const strongs = JSON.parse(fs.readFileSync(site('data/strongs.json'), 'utf8'));
@@ -54,4 +57,4 @@ for (const lang of ['es', 'pt']) {
 }
 
 const size = (p) => (fs.statSync(site(p)).size / 1024).toFixed(0) + ' KB';
-console.log(`refs.v2.gz ${size('data/refs.v2.gz')}, strongs-lite.json ${size('data/strongs-lite.json')}, entities.json ${size('data/entities.json')}, books-es.json ${size('content/i18n/books-es.json')}`);
+console.log(`refs.v3.gz ${size('data/refs.v3.gz')}, strongs-lite.json ${size('data/strongs-lite.json')}, entities.json ${size('data/entities.json')}, books-es.json ${size('content/i18n/books-es.json')}`);

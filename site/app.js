@@ -199,24 +199,25 @@
   let wordIndex = null, INTROS = {}, REFLECT = {};
 
   // Cross references come packed (variable-length numbers, gzip) where the browser can unpack them,
-  // which is under half the size of refs.bin. Older browsers get refs.bin as before.
+  // which is about a third of the size of refs.bin. Older browsers get refs.bin as before.
   async function loadRefs() {
     const plainBin = () => fetch('data/refs.bin').then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); });
     if (typeof DecompressionStream !== 'function') return plainBin();
     try {
-      const r = await fetch('data/refs.v2.gz');
+      const r = await fetch('data/refs.v3.gz');
       if (!r.ok) throw new Error(r.status);
       const bytes = new Uint8Array(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer());
-      const quads = [];
-      let p = 0, from = 0;
+      // refs.v3: the number of links, then four columns (from, to, toEnd, votes) as variable-length numbers.
+      // "from" goes up in steps; "to" is a step from the previous "to" while "from" stays the same, else from "from"
       const next = () => { let x = 0, sh = 0, b; do { b = bytes[p++]; x += (b & 127) * 2 ** sh; sh += 7; } while (b & 128); return x; };
       const unzig = (x) => (x & 1 ? -(x + 1) / 2 : x / 2);
-      while (p < bytes.length) {
-        from += unzig(next());
-        const to = from + unzig(next()), end = to + next(), votes = next();
-        quads.push(from, to, end, votes);
-      }
-      return Uint16Array.from(quads).buffer;
+      let p = 0;
+      const n = next(), q = new Uint16Array(n * 4);
+      for (let i = 0, f = 0; i < n; i++) { f += next(); q[i * 4] = f; }
+      for (let i = 0; i < n; i++) { const same = i > 0 && q[i * 4] === q[i * 4 - 4]; q[i * 4 + 1] = (same ? q[i * 4 - 3] : q[i * 4]) + unzig(next()); }
+      for (let i = 0; i < n; i++) q[i * 4 + 2] = q[i * 4 + 1] + next();
+      for (let i = 0; i < n; i++) q[i * 4 + 3] = next();
+      return q.buffer;
     } catch { return plainBin(); }
   }
   // book introductions and reflection questions are fetched once the map is showing

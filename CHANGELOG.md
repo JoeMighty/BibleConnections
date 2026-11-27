@@ -11,6 +11,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - **Lent and Holy Week plans to share:** dated pages for Lent (Ash Wednesday to the day before Palm Sunday) and Holy Week (Palm Sunday to Easter), worked out from the date of Easter, like the Advent and Christmas pages ([lent.html](https://bibleconnections.app/lent.html), [holyweek.html](https://bibleconnections.app/holyweek.html)). The welcome page's season card links to them in season.
 
 ### Changed
+- **Faster first load:** the cross references, three quarters of what the map downloads, are packed in columns and are now 491 KB instead of 647 KB (about a quarter less), so the map is ready sooner on slow connections.
 - Topics leave out word forms and verses that use a key word in another sense (such as "all kinds" under kindness, "restore" under rest, or the Holy Spirit under holiness), in the app and on the topic pages.
 
 ## [0.24.0] - 2026-11-27 - Every Season
