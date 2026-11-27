@@ -1313,6 +1313,7 @@
     ext: '<path d="M8 16 16.5 7.5M9.5 7.5h7v7"/>',
     share: '<path d="M12 3.5v11M8 7.5l4-4 4 4M6.5 11H5.5v8.5h13V11h-1"/>',
     collect: '<path d="M4 7.5h6l1.5 2H20v9H4z"/><path d="M12 12v4.5M9.75 14.25h4.5"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     more: '<circle cx="6" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="1.3" fill="currentColor"/>',
   };
   const ICON = (n) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON_PATHS[n]}</svg>`;
@@ -1320,11 +1321,11 @@
   const ext = (href, html, cls = 'btn ghost small') =>
     `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${html}<span class="sr-only"> (opens Bible.com in a new tab)</span>${ICON('ext')}</a>`;
 
-  function refCard(start, end, color, { title = true } = {}) {
+  function refCard(start, end, color, { title = true, primary = true } = {}) {
     return `<div class="verse-card${title ? '' : ' bare'}" style="--c:${color}">
       ${title ? `<p class="ref">${esc(refLabel(start, end))}</p>` : ''}
       <div class="actions tight">
-        ${ext(bibleUrl(start, end), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn small')}
+        ${ext(bibleUrl(start, end), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, primary ? 'btn small' : 'btn ghost small')}
         ${listenBtn(start)}
         ${ext(bibleUrl(start, start, true), `Chapter<span class="sr-only"> ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
       </div>
@@ -1443,7 +1444,7 @@
     else if (i >= 0) {
       title = 'Connection';
       const color = colorOf(i);
-      html += refCard(F[i], F[i], color) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(T[i], E[i], color);
+      html += refCard(F[i], F[i], color) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(T[i], E[i], color, { primary: false });
       const n = noteMap.get(i);
       if (n) html += noteHTML(n);
       else html += `<p class="hint">No note yet for this connection. <a href="${esc(suggestUrl(i))}" target="_blank" rel="noopener" data-track="suggest">Suggest a note<span class="sr-only"> (opens GitHub in a new tab)</span></a></p>`;
@@ -1468,7 +1469,7 @@
             <p><strong>${esc(w.t)}</strong> · ${esc(w.g)} · <span class="muted">${heb ? 'Hebrew' : 'Greek'} ${esc(f.entity.id)}</span></p>
             ${w.d ? `<p class="hint" lang="en">${esc(w.d)}</p>` : ''}
             ${w.v ? `<p>Used in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, touching ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.</p>` : `<p>This word appears in ${w.n.toLocaleString(LANGS[LANG].locale)} verses, too many to show on the map.</p>`}
-            <div id="wordDetail" data-code="${esc(f.entity.id)}"><p class="muted loading-msg">Loading the full word study…</p></div>
+            <div id="wordDetail" data-code="${esc(f.entity.id)}"><div class="loading-msg"><span class="sr-only">Loading the full word study…</span><span class="skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div></div>
             <p class="hint">Hebrew and Greek data from <a href="https://www.stepbible.org" rel="noopener">STEP Bible</a>, licensed CC BY 4.0. Dictionary entries are from Brown-Driver-Briggs and Abbott-Smith (public domain).</p>`;
         } else if (f.entity && f.entity.type === 'geo') {
           const P0 = f.entity.place;
@@ -1583,7 +1584,7 @@
       <div class="progress" aria-hidden="true"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div>
       <h3 class="step-title">${esc(s.title)}</h3><p class="step-note">${esc(s.note)}</p>
       ${s.question ? `<div class="question"><p class="note-head">Talk about it</p><p>${esc(s.question)}</p></div>` : ''}`;
-    html += refCard(s.ia, s.ia, pal.marker) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(s.ib, s.ib, pal.marker);
+    html += refCard(s.ia, s.ia, pal.marker) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(s.ib, s.ib, pal.marker, { primary: false });
     html += `<div class="actions nav-row">
       <button type="button" class="btn ghost" data-action="stepPrev" ${step === 0 ? 'disabled' : ''}>Previous</button>
       ${step < steps.length - 1 ? '<button type="button" class="btn" data-action="stepNext">Next step</button>' : '<button type="button" class="btn" data-action="mode" data-mode="journeys">Finish</button>'}
@@ -2721,10 +2722,10 @@
         ${intro ? `<p class="book-intro"><strong>About ${esc(b.name)}:</strong> ${esc(loc(intro, 'about'))}</p>` : ''}
       </details>
       <details class="study-sec" data-sec="secOrig"${secOpen('secOrig')}><summary><h3 id="secOrig">Original text</h3></summary>
-        <div id="origText" data-v="${v}"><p class="muted loading-msg">Loading the original text…</p></div>
+        <div id="origText" data-v="${v}"><div class="loading-msg"><span class="sr-only">Loading the original text…</span><span class="skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div></div>
       </details>
       <details class="study-sec" data-sec="secPeople"${secOpen('secPeople')}><summary><h3 id="secPeople">People, places and topics</h3></summary>
-        <div id="verseEntities" data-v="${v}"><p class="muted loading-msg">Looking for people, places and topics…</p></div>
+        <div id="verseEntities" data-v="${v}"><div class="loading-msg"><span class="sr-only">Looking for people, places and topics…</span><span class="skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div></div>
         <div id="versePlaces" data-v="${v}"></div>
       </details>
       ${noted.length ? `<details class="study-sec" data-sec="secNotes"${secOpen('secNotes')}><summary><h3 id="secNotes">Explained connections</h3></summary><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></details>` : ''}
@@ -2974,7 +2975,7 @@
   function placesHTML() {
     if (!PLACES) {
       loadPlaces().then(() => { if (state.mode === 'places') renderPanel(); }, () => {});
-      return ['Places', '<p class="muted loading-msg">Loading the map…</p>'];
+      return ['Places', '<div class="loading-msg"><span class="sr-only">Loading the map…</span><span class="skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div>'];
     }
     const view = state.placesView || 'lands';
     const top = PLACES.places.filter(p => p.conf >= 1).slice(0, 40);
@@ -3725,7 +3726,7 @@
   function timelineHTML() {
     if (!TIMELINE) {
       loadTimeline().then(() => { if (state.mode === 'timeline') renderPanel(); }, () => {});
-      return ['Timeline', '<p class="muted loading-msg">Loading the timeline…</p>'];
+      return ['Timeline', '<div class="loading-msg"><span class="sr-only">Loading the timeline…</span><span class="skeleton" aria-hidden="true"><i></i><i></i><i></i></span></div>'];
     }
     let html = `<p>Key events of the Bible story in order. Choose an event to see its passage and connections, or show a whole period on the map.</p><p class="hint">${esc(tl(TIMELINE, 'note'))}</p>`;
     for (const era of TIMELINE.eras) {
@@ -4222,6 +4223,15 @@
     if (navigator.share) { try { await navigator.share({ title: info.title, url: info.url }); } catch { /* cancelled */ } }
     else copyText(info.url);
   }
+  // the button itself confirms what happened, for a moment: a checkmark and a word such as Copied
+  function confirmBtn(btn, label) {
+    if (!btn || btn.dataset.confirming) return;
+    const was = btn.innerHTML;
+    btn.dataset.confirming = '1';
+    btn.classList.add('confirmed');
+    btn.innerHTML = btn.classList.contains('icon-action') ? `${ICON('check')}<span>${esc(label)}</span>` : `${ICON('check')} ${esc(label)}`;
+    setTimeout(() => { btn.innerHTML = was; btn.classList.remove('confirmed'); delete btn.dataset.confirming; }, 1600);
+  }
   let flashT = 0;
   function flash(msg) {
     let t = document.querySelector('.toast');
@@ -4368,8 +4378,8 @@
     else if (a === 'replayPath') { animatePath(); }
     else if (a === 'presentJourney') { startJourney(+btn.dataset.j); enterPresenter(); }
     else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
-    else if (a === 'share') share();
-    else if (a === 'copy') copyText(shareInfo().text);
+    else if (a === 'share') { share(); if (!navigator.share) confirmBtn(btn, tr('Copied')); }
+    else if (a === 'copy') { copyText(shareInfo().text); confirmBtn(btn, tr('Copied')); }
     else if (a === 'heat') {
       state.from = 'cat:' + btn.dataset.a; state.to = 'cat:' + btn.dataset.b;
       el.fromSel.value = state.from; el.toSel.value = state.to;

@@ -5,6 +5,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- **New look:** a deep teal accent in place of Apple blue, tuned to meet WCAG AA contrast in both themes. Headings use Bricolage Grotesque, kept on the site (no outside requests, works offline); body text stays the system font, and the easier-to-read font setting still replaces both.
+- Solid bars and panels instead of blurred glass. Corners follow one scale (8, 12, 16), shadows are kept for things that float (menus, sheets, dialogs), and motion uses three set speeds, all off when reduced motion is asked for.
+- The arc, the site's own shape, sits as a quiet, slowly drifting pattern behind the welcome title and every page title.
+- Copy link and Copy references show a checkmark and "Copied" on the button itself.
+- The original text, word study, places, timeline and people sections show placeholder lines while they load, so the panel does not jump.
+- Each screen has one filled button: in a connection or journey step, the second passage's Read button is the lighter style.
+- Text on the help, Advent and legal pages keeps to a comfortable reading width.
+
 ## [0.22.0] - 2026-11-27 - First Things First
 
 ### Added

@@ -1156,3 +1156,25 @@ body:not(.landing-open) .tagline { display: none; }
 @media (min-width: 1280px) {
   body:not([data-section="explore"]) { --sidebar: 460px; }
 }
+
+/* the button confirms what happened (Copied) */
+.confirmed, .confirmed .i { color: var(--text); }
+:root[data-motion="on"] .confirmed .i { animation: pop var(--dur-2) var(--ease); }
+@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+/* loading placeholders in the shape of the text that is coming */
+.skeleton { display: grid; gap: 8px; padding: 4px 0 8px; }
+.skeleton i { display: block; height: 12px; border-radius: 6px; background: var(--fill); }
+.skeleton i:nth-child(2) { width: 86%; }
+.skeleton i:nth-child(3) { width: 60%; }
+:root[data-motion="on"] .skeleton i { animation: breathe 1.4s var(--ease) infinite alternate; }
+@keyframes breathe { from { opacity: 0.55; } to { opacity: 1; } }
+
+/* the arc, the site's own shape, as a quiet pattern behind the welcome title; it drifts slowly when motion is on */
+.landing-hero { overflow-x: clip; }
+.hero-head { position: relative; isolation: isolate; }
+.hero-head::before { content: ''; position: absolute; z-index: -1; inset: -20% -12% -10% 38%; pointer-events: none;
+  background: url(arcs.svg) center bottom / contain no-repeat; opacity: 0.14; }
+:root[data-theme="light"] .hero-head::before { opacity: 0.22; }
+:root[data-motion="on"] .hero-head::before { animation: arcs-drift 48s ease-in-out infinite alternate; }
+@keyframes arcs-drift { from { transform: translateX(0) scale(1); } to { transform: translateX(-5%) scale(1.06); } }
+@media (max-width: 860px) { .hero-head::before { inset: -8% -30% 40% 10%; opacity: 0.1; } }

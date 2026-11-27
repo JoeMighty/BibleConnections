@@ -217,3 +217,12 @@ button.btn { border: 0; cursor: pointer; font-family: inherit; }
 @media (prefers-reduced-motion: no-preference) {
   .btn, .try a, .toc a, .list a, .chapters a, .faq summary, .aud-row { transition: background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 }
+
+/* the arc pattern behind each page title, quiet and slow */
+main { position: relative; isolation: isolate; }
+main::before { content: ''; position: absolute; z-index: -1; top: 0; right: max(16px, env(safe-area-inset-right, 0px)); width: min(440px, 60vw); aspect-ratio: 2 / 1;
+  pointer-events: none; background: url(arcs.svg) center bottom / contain no-repeat; opacity: 0.12; }
+:root[data-theme="light"] main::before { opacity: 0.2; }
+@media (prefers-reduced-motion: no-preference) { main::before { animation: arcs-drift 48s ease-in-out infinite alternate; } }
+@keyframes arcs-drift { from { transform: translateX(0) scale(1); } to { transform: translateX(-4%) scale(1.05); } }
+@media print { main::before { display: none; } }
