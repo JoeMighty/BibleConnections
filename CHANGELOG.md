@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-11-27 - Own Colors
+
 ### Changed
 - **New look:** a deep teal accent in place of Apple blue, tuned to meet WCAG AA contrast in both themes. Headings use Bricolage Grotesque, kept on the site (no outside requests, works offline); body text stays the system font, and the easier-to-read font setting still replaces both.
 - Solid bars and panels instead of blurred glass. Corners follow one scale (8, 12, 16), shadows are kept for things that float (menus, sheets, dialogs), and motion uses three set speeds, all off when reduced motion is asked for.
