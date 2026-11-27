@@ -1004,7 +1004,9 @@
     "Advent: promise and fulfilment": "Adviento: promesa y cumplimiento",
     "Help and questions": "Ayuda y preguntas",
     "What the arcs mean, offline use, privacy and more": "Qué significan los arcos, uso sin conexión, privacidad y más",
-    "Questions": "Preguntas"
+    "Questions": "Preguntas",
+    "Chapter": "Capítulo",
+    "Collect": "Guardar en colección"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

@@ -112,7 +112,8 @@ test('verses link to Bible.com in the chosen translation', async ({ page }) => {
   await pickVersion(page, 'versionSel', 'ESV');
   await page.click('#settingsForm button.btn:not(#installBtn)');
   await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.16.ESV');
-  await expect(page.locator('.verse-card a').nth(1)).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.ESV');
+  await expect(page.locator('.verse-card a.listen').first()).toHaveAttribute('href', 'https://www.bible.com/audio-bible/59/JHN.3.ESV');
+  await expect(page.locator('.verse-card a:not(.listen)').nth(1)).toHaveAttribute('href', 'https://www.bible.com/bible/59/JHN.3.ESV');
 });
 
 test('a shared connection link opens that connection with its note', async ({ page }) => {

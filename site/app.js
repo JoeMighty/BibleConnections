@@ -826,7 +826,8 @@
     let alpha = Math.min(0.9, Math.max(0.05, 22 / Math.sqrt(Math.max(1, filtered.length)) * Math.sqrt(zoom)));
     if (highContrast) alpha = Math.min(1, alpha * 1.8);
     if (isLight) alpha = Math.min(1, alpha * 1.3);
-    if (dim) alpha *= highContrast ? 0.15 : isPhone() ? 0.12 : 0.3;   // phones: fade the rest more so the chosen arcs stand out
+    // fade the rest so the chosen arcs stand out; a little less when zoomed in, where fewer arcs overlap
+    if (dim) alpha *= highContrast ? 0.15 : isPhone() || zoom < 2 ? 0.12 : 0.3;
     if (useGL) {
       glr.draw(filtered, bucketOf, state.colorMode === 'category' ? catColors : distColors, Math.min(1, alpha * (highContrast ? 1.3 : 1.15)), pal.bg);
     } else {
@@ -1288,8 +1289,8 @@
     announce(`${rangeLabel(range)}: ${focusList.length.toLocaleString(LANGS[LANG].locale)} connections.`);
     if (opts.zoom) {
       if (range.kind === 'words') resetView();
-      // phones: a verse's arcs fan out across the whole Bible, which reads better on a small screen than a deep zoom
-      else if (range.kind === 'verse' && isPhone()) resetView();
+      // a verse's arcs fan out across the whole Bible: the whole map with them lit up reads better than a deep zoom
+      else if (range.kind === 'verse') resetView();
       else zoomToRange(range.start, range.end, range.kind === 'verse' ? 40 : 0.6);
     }
   }
@@ -1306,19 +1307,22 @@
     starFill: '<path fill="currentColor" d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/>',
     x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
     ext: '<path d="M8 16 16.5 7.5M9.5 7.5h7v7"/>',
+    share: '<path d="M12 3.5v11M8 7.5l4-4 4 4M6.5 11H5.5v8.5h13V11h-1"/>',
+    collect: '<path d="M4 7.5h6l1.5 2H20v9H4z"/><path d="M12 12v4.5M9.75 14.25h4.5"/>',
+    more: '<circle cx="6" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="1.3" fill="currentColor"/>',
   };
   const ICON = (n) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON_PATHS[n]}</svg>`;
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
   const ext = (href, html, cls = 'btn ghost small') =>
     `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${html}<span class="sr-only"> (opens Bible.com in a new tab)</span>${ICON('ext')}</a>`;
 
-  function refCard(start, end, color) {
-    return `<div class="verse-card" style="--c:${color}">
-      <p class="ref">${esc(refLabel(start, end))}</p>
+  function refCard(start, end, color, { title = true } = {}) {
+    return `<div class="verse-card${title ? '' : ' bare'}" style="--c:${color}">
+      ${title ? `<p class="ref">${esc(refLabel(start, end))}</p>` : ''}
       <div class="actions tight">
         ${ext(bibleUrl(start, end), `Read in ${esc(vLabel(settings.version))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn small')}
-        ${ext(bibleUrl(start, start, true), `Whole chapter<span class="sr-only">: ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
         ${listenBtn(start)}
+        ${ext(bibleUrl(start, start, true), `Chapter<span class="sr-only"> ${esc(BOOKS[verseBook[start]].name)} ${verseChap[start]}</span>`)}
       </div>
       ${second() ? `<div class="actions tight compare-row">
         ${ext(bibleUrl(start, end, false, second()), `Read in ${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(start, end))}</span>`, 'btn ghost small')}
@@ -1365,29 +1369,35 @@
     if (fromIn) return single ? refLabel(T[i], E[i]) : `${refLabel(F[i])} → ${refLabel(T[i], E[i])}`;
     return single ? refLabel(F[i]) : `${refLabel(F[i])} → ${refLabel(T[i], E[i])}`;
   }
-  function listHTML(list, otherSide) {
+  // compact: a verse shows its strongest few first, so the rest of the panel stays in reach
+  function listHTML(list, otherSide, compact = false) {
     if (!list.length) return '<p class="muted">No connections match the current filters. Try lowering the minimum strength.</p>';
-    const shown = Math.min(listShown, list.length);
+    const shown = Math.min(compact && listShown === PAGE ? 8 : listShown, list.length);
     let html = `<ul class="conn-list" aria-label="Connections, strongest first">`;
     for (let n = 0; n < shown; n++) html += connItem(list[n], otherSide);
     html += '</ul>';
     if (shown < list.length) html += `<div class="actions"><button type="button" class="btn ghost small" data-action="more">Show more (${(list.length - shown).toLocaleString(LANGS[LANG].locale)} left)</button></div>`;
     return html;
   }
-  // the actions people use most stay in view (Save, Share, Add to collection); the rest sit under More
-  const shareButtons = () => {
+  // the actions people use most stay in view as one compact row of icons (Save, Share, Collect);
+  // everything else, including the extra items a view passes in, sits under More
+  const shareButtons = (extra = '') => {
     const saved = isSaved();
-    return `<button type="button" class="btn ghost small" data-action="save" aria-pressed="${saved}">${ICON(saved ? 'starFill' : 'star')}<span>${saved ? 'Saved' : 'Save'}</span></button>
-      <button type="button" class="btn ghost small" data-action="share">${navigator.share ? 'Share' : 'Copy link'}</button>
-      <button type="button" class="btn ghost small" data-action="addToCollection">Add to collection</button>
-      <details class="more-actions"><summary class="btn ghost small">More</summary><div class="actions tight">
-        <button type="button" class="btn ghost small" data-action="copy">Copy references</button>
-        <button type="button" class="btn ghost small" data-action="image">Save image</button>
-        ${state.selected >= 0 && state.mode === 'explore' ? '<button type="button" class="btn ghost small" data-action="story">Story image</button>' : ''}
-        <button type="button" class="btn ghost small" data-action="qr">QR code</button>
-        <button type="button" class="btn ghost small" data-action="embed">Embed</button>
-      </div></details>`;
+    const ib = (attrs, icon, label) => `<button type="button" class="icon-action" ${attrs}>${ICON(icon)}<span>${label}</span></button>`;
+    return `<div class="icon-actions">
+      ${ib(`data-action="save" aria-pressed="${saved}"`, saved ? 'starFill' : 'star', saved ? 'Saved' : 'Save')}
+      ${ib('data-action="share"', 'share', navigator.share ? 'Share' : 'Copy link')}
+      ${ib('data-action="addToCollection"', 'collect', 'Collect')}
+      <details class="more-actions"><summary class="icon-action">${ICON('more')}<span>More</span></summary><div class="more-menu">
+        ${extra}
+        <button type="button" class="menu-item" data-action="copy">Copy references</button>
+        <button type="button" class="menu-item" data-action="image">Save image</button>
+        ${state.selected >= 0 && state.mode === 'explore' ? '<button type="button" class="menu-item" data-action="story">Story image</button>' : ''}
+        <button type="button" class="menu-item" data-action="qr">QR code</button>
+        <button type="button" class="menu-item" data-action="embed">Embed</button>
+      </div></details></div>`;
   };
+  const menuItem = (attrs, label) => `<button type="button" class="menu-item" ${attrs}>${label}</button>`;
 
   let lastPanelSel = -2, studyTextReady = false, studyWaiting = false;
   function renderPanel() {
@@ -1436,7 +1446,7 @@
       html += `<div id="commonWords" data-a="${F[i]}" data-b="${T[i]}" data-e="${E[i]}"></div>`;
       html += hiddenLink[i] ? `<p class="hint">${hiddenLink[i] === 2 ? 'You hid this link on this device.' : 'This link is hidden from the map after readers reported it as weak.'}</p>` : '';
       html += `<p class="muted">${esc(tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[i].toLocaleString(LANGS[LANG].locale)))}</p>
-        <div class="actions"><button type="button" class="btn small" data-action="zoomRef">Zoom to this arc</button>${shareButtons()}</div>
+        ${shareButtons(menuItem('data-action="zoomRef"', 'Zoom to this arc'))}
         <div class="actions">
           <button type="button" class="btn ghost small" data-action="focusVerse" data-v="${F[i]}">All links for ${esc(refLabel(F[i]))}</button>
           <button type="button" class="btn ghost small" data-action="focusVerse" data-v="${T[i]}">All links for ${esc(refLabel(T[i]))}</button>
@@ -1467,7 +1477,7 @@
           <div id="alsoFound" data-q="${esc(f.query || '')}"></div>`;
         html += `
           ${f.entity && f.entity.type === 'word' ? '' : '<p class="hint">Word search uses the wording of the Berean Standard Bible, so results may differ slightly from other translations.</p>'}
-          <div class="actions">${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>
+          ${shareButtons(menuItem('data-action="clear"', 'Clear'))}
           <h3>Verses</h3><ul class="verse-list">`;
         const vs = Math.min(versesShown, f.verses.length);
         for (let n = 0; n < vs; n++) {
@@ -1479,16 +1489,16 @@
         html += `<h3>Connections</h3>` + listHTML(focusList, true);
       } else {
         const single = f.kind === 'verse' && f.end - f.start === 1;
-        if (f.kind === 'verse') html += refCard(f.start, f.end - 1, pal.focus);
+        if (f.kind === 'verse') html += refCard(f.start, f.end - 1, pal.focus, { title: !single });
         else {
           const label = f.kind === 'book' ? `${BOOKS[f.book].name} 1` : rangeLabel(f);
           html += `<div class="actions">${ext(bibleUrl(f.start, f.start, true), `Read ${esc(label)} in ${esc(vLabel(settings.version))}`, 'btn small')}${listenBtn(f.start)}${second() ? ext(bibleUrl(f.start, f.start, true, second()), `Read ${esc(label)} in ${esc(vLabel(second()))}`, 'btn ghost small') + listenBtn(f.start, second()) : ''}</div>`;
         }
-        html += `<p>${focusList.length.toLocaleString(LANGS[LANG].locale)} connection${focusList.length === 1 ? '' : 's'} with the current filters.</p>
-          <p class="summary">${esc(describeView())}</p>
-          <div class="actions"><button type="button" class="btn ghost small" data-action="zoomFocus">Zoom to ${esc(rangeLabel(f))}</button>`;
-        if (f.kind !== 'book') html += `<button type="button" class="btn ghost small" data-action="focusBook" data-b="${f.book}">Whole book</button>`;
-        html += `${shareButtons()}<button type="button" class="btn ghost small" data-action="clear">Clear</button></div>`;
+        // one line about the connections, the actions as icons, then the connections themselves
+        html += `<p class="summary plain">${esc(describeView())}</p>`
+          + shareButtons(menuItem('data-action="zoomFocus"', `Zoom to ${esc(rangeLabel(f))}`)
+            + (f.kind !== 'book' ? menuItem(`data-action="focusBook" data-b="${f.book}"`, 'Whole book') : '')
+            + menuItem('data-action="clear"', 'Clear'));
         if (single) html += passageStudyHTML(f.start);
         else {
           if (f.kind === 'book') html += bookGlanceHTML(f.book);
@@ -2698,7 +2708,12 @@
     for (const i of focusList) { const other = F[i] === v ? T[i] : F[i]; (verseBook[other] < 39 ? ot : nt).push(i); }
     const q = (REFLECT[cat] || {})[LANG] || (REFLECT[cat] || {}).en || [];
     const noted = [...focusList].filter(i => hasNote[i]).slice(0, 6);
-    return `<details class="study-sec" data-sec="secContext"${secOpen('secContext')}><summary><h3 id="secContext">In context</h3></summary>
+    return `<details class="study-sec" data-sec="secRefs"${secOpen('secRefs')}><summary><h3 id="secRefs">Connections</h3></summary>
+        <p>${ot.length.toLocaleString(LANGS[LANG].locale)} to the Old Testament and ${nt.length.toLocaleString(LANGS[LANG].locale)} to the New Testament, strongest first.</p>
+        <h4>Old Testament</h4>${ot.length ? listHTML(ot, true, true) : '<p class="muted">None with the current filters.</p>'}
+        <h4>New Testament</h4>${nt.length ? listHTML(nt, true, true) : '<p class="muted">None with the current filters.</p>'}
+      </details>
+      <details class="study-sec" data-sec="secContext"${secOpen('secContext')}><summary><h3 id="secContext">In context</h3></summary>
         <p>Verse ${n} of ${inChap} in ${esc(b.name)} ${c} · <span class="muted">${esc(CATEGORIES[cat].name)}</span></p>
         <div class="actions tight">
           ${v > b.start ? `<button type="button" class="btn ghost small" data-action="focusVerse" data-v="${v - 1}">Previous verse<span class="sr-only">: ${esc(refLabel(v - 1))}</span></button>` : ''}
@@ -2714,11 +2729,6 @@
         <div id="versePlaces" data-v="${v}"></div>
       </details>
       ${noted.length ? `<details class="study-sec" data-sec="secNotes"${secOpen('secNotes')}><summary><h3 id="secNotes">Explained connections</h3></summary><ul class="conn-list">${noted.map(i => connItem(i, true)).join('')}</ul></details>` : ''}
-      <details class="study-sec" data-sec="secRefs"${secOpen('secRefs')}><summary><h3 id="secRefs">Connections</h3></summary>
-        <p>${ot.length.toLocaleString(LANGS[LANG].locale)} to the Old Testament and ${nt.length.toLocaleString(LANGS[LANG].locale)} to the New Testament, strongest first.</p>
-        <h4>Old Testament</h4>${ot.length ? listHTML(ot, true) : '<p class="muted">None with the current filters.</p>'}
-        <h4>New Testament</h4>${nt.length ? listHTML(nt, true) : '<p class="muted">None with the current filters.</p>'}
-      </details>
       <details class="study-sec" data-sec="secNote"${secOpen('secNote')}><summary><h3 id="secNote">My notes</h3></summary>
         <label for="verseNote" class="sr-only">My notes on ${esc(refLabel(v))}</label>
         <textarea id="verseNote" data-key="${esc(noteKey(v))}" rows="4" placeholder="Write what you notice, questions or a prayer…">${esc((getNotes()[noteKey(v)] || {}).text || '')}</textarea>

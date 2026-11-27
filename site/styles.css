@@ -475,6 +475,7 @@ body.embed { padding-bottom: 0 !important; }
 /* Word study, collections, summaries */
 .lemma { font-size: 40px; line-height: 1.2; margin: 0 0 4px !important; font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif; }
 .summary { background: var(--surface-2); border-radius: var(--radius); padding: 12px 16px; font-size: var(--t-subhead); }
+.summary.plain { background: none; padding: 0; color: var(--muted); }
 .col-bar {
   position: sticky; top: 0; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px;
   padding: 12px 16px; background: var(--accent-soft); border-bottom: 0.5px solid var(--separator); font-weight: 600;
@@ -1109,11 +1110,23 @@ a .i { margin-left: 4px; }
 @media (max-width: 480px) { .landing-foot .foot-groups { grid-template-columns: 1fr 1fr; } }
 
 /* More under a verse or connection: the less used ways to share */
-.more-actions { display: contents; }
-.more-actions > summary { list-style: none; cursor: pointer; }
+/* the actions for a verse or connection: one compact row of icons, the rest under More */
+.icon-actions { display: flex; flex-wrap: wrap; gap: 4px; margin: 12px 0 4px; flex-basis: 100%; }
+.icon-action { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 64px; min-height: 52px; padding: 6px 8px;
+  border: 0; border-radius: var(--radius); background: transparent; color: var(--link); font: 500 var(--t-caption, 12px)/1.2 var(--font); cursor: pointer; list-style: none; }
+.icon-action .i { width: 22px; height: 22px; }
+.icon-action:hover { background: var(--surface-2); }
+.icon-action:active { opacity: 0.7; }
+.icon-action[aria-pressed="true"] { color: var(--text); }
+.more-actions { position: relative; }
 .more-actions > summary::-webkit-details-marker { display: none; }
-.more-actions[open] > summary { background: var(--surface-3); }
-.more-actions > .actions { flex-basis: 100%; margin-top: 0; }
+.more-actions[open] > summary { background: var(--surface-2); }
+.more-menu { position: absolute; z-index: 20; top: calc(100% + 4px); right: 0; min-width: 220px; padding: 6px; border-radius: 12px;
+  background: var(--surface-2); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 0 0.5px var(--separator); display: grid; }
+.menu-item { text-align: left; border: 0; background: transparent; color: var(--text); font: 400 var(--t-subhead) var(--font); padding: 10px 12px; min-height: 44px; border-radius: 8px; cursor: pointer; }
+.menu-item:hover, .menu-item:focus-visible { background: var(--surface-3); }
+.menu-item + .menu-item { box-shadow: 0 -0.5px 0 var(--separator); }
+.verse-card.bare { background: none; border: 0; padding: 0; margin: 0 0 12px; }
 /* the welcome page has one filled button, Show connections; the others are tinted */
 .landing .aud .btn, .landing .today .btn:not(.ghost), .landing .landing-cotd .btn:not(.ghost) { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--link); }
 :root[data-theme="light"] .landing .aud .btn, :root[data-theme="light"] .landing .today .btn:not(.ghost) { color: #00427f; }
