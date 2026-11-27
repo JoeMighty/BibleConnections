@@ -45,12 +45,16 @@ test('the welcome page links to the Advent page in season, and the Support page 
   await expect(page.locator('#panel a[href="advent.html"]')).toBeVisible();
 });
 
-test('the Support page lists ways to help, links to a poster, and hides giving until a link is set', async ({ page }) => {
+test('the Support page lists ways to help, and hides giving until a link is set', async ({ page }) => {
   await page.goto('/support.html');
   await expect(page.locator('h1')).toHaveText('Support Bible Connections');
-  await expect(page.locator('main .card')).toHaveCount(5);
+  await expect(page.locator('main .card')).toHaveCount(4);
   await expect(page.locator('.support-give')).toHaveCount(0);
-  await page.getByRole('link', { name: 'Make a poster' }).click();
+  await expect(page.getByRole('link', { name: 'Make a poster' })).toHaveCount(0);
+});
+
+test('?poster=1 opens the poster window', async ({ page }) => {
+  await page.goto('/?poster=1&view=map');
   await page.waitForSelector('body[data-ready=true]');
   await expect(page.locator('#posterDialog')).toBeVisible();
 });

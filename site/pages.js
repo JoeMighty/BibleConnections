@@ -111,7 +111,6 @@
           <p class="actions">${give.map((g, i) => `<a class="btn${i ? ' tinted' : ''}" href="${esc(g.url)}" rel="noopener">${esc(pick(g, 'label'))}</a>`).join('')}</p></section>` : ''}
         <ul class="cards">
           ${card('Share it', 'Tell a friend, your small group or your church. A link from a church website helps people find it too.', [['Copy the link', '#share']])}
-          ${card('Print a poster', 'Every connection in the Bible on one sheet, free to download and print at any size, for a church hall, a classroom or a study.', [['Make a poster', withLang('./?poster=1')]])}
           ${card('Use it at church', 'Sermon series pages, leader guides, handouts, slides and the Advent plan.', [['For churches', withLang('churches.html')], ['Advent', withLang('advent.html')]])}
           ${card('Help translate', 'Bible Connections is in English, Spanish and Portuguese. Native speakers can check the wording or help start a new language.', [['Offer help on GitHub', 'https://github.com/JoeMighty/BibleConnections/issues/new/choose', 1]])}
           ${card('Report a problem', 'Something broken, confusing or wrong? Say what you saw and on which device.', [['Report on GitHub', 'https://github.com/JoeMighty/BibleConnections/issues/new/choose', 1], ['Email', 'mailto:hello@bibleconnections.app']])}

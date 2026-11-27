@@ -1996,7 +1996,7 @@
       ['data-action="keys"', 'Keyboard shortcuts', '', ''],
       [`href="${withLangLink('churches.html')}"`, 'For churches', '', ''],
       [`href="${withLangLink('advent.html')}"`, 'Advent plan to share', '', ''],
-      [`href="${withLangLink('support.html')}"`, 'Support Bible Connections', 'Share, give, print a poster, help translate', ''],
+      [`href="${withLangLink('support.html')}"`, 'Support Bible Connections', 'Share, give, help translate', ''],
     ]);
     html += `<h3>${esc(tr('About'))}</h3>` + rowsHTML([
       ['data-action="openAbout"', 'About Bible Connections', '', ''],
