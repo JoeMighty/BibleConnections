@@ -1,7 +1,8 @@
 /*
   Bible Connections styles.
-  Layout and controls follow Apple's Human Interface Guidelines: the system font and type scale,
-  grouped lists, segmented controls, switches, translucent bars, 44pt touch targets and an 8pt grid.
+  Layout and controls follow Apple's Human Interface Guidelines: grouped lists, segmented controls,
+  switches, 44pt touch targets and an 8pt grid. The look is the site's own: a deep teal accent,
+  Bricolage Grotesque headings over the system font, solid bars and the arc as a quiet pattern.
   Colors are tuned to meet WCAG 2.1 AA contrast in both themes.
 */
 /* Bricolage Grotesque (SIL Open Font License 1.1), kept on this site: headings only */
