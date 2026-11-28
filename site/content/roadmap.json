@@ -19,29 +19,6 @@
   ],
   "planned": [
     {
-      "when": "Next",
-      "when_es": "Próximamente",
-      "when_pt": "Em breve",
-      "items": [
-        {
-          "title": "Sermon prep export",
-          "title_es": "Exportar para preparar sermones",
-          "title_pt": "Exportar para preparar sermões",
-          "text": "Turn a collection and your notes into a document (Word or Markdown) and slides, ready for a sermon or a study.",
-          "text_es": "Convierte una colección y tus notas en un documento (Word o Markdown) y diapositivas, listos para un sermón o un estudio.",
-          "text_pt": "Transforme uma coleção e suas notas em um documento (Word ou Markdown) e slides, prontos para um sermão ou um estudo."
-        },
-        {
-          "title": "Open data download",
-          "title_es": "Descarga de datos abiertos",
-          "title_pt": "Download de dados abertos",
-          "text": "The written notes, topics, journeys and plans as open data (CC BY), for developers, researchers and other Bible tools.",
-          "text_es": "Las notas, los temas, los recorridos y los planes como datos abiertos (CC BY), para programadores, investigadores y otras herramientas bíblicas.",
-          "text_pt": "As notas, os temas, as jornadas e os planos como dados abertos (CC BY), para programadores, pesquisadores e outras ferramentas bíblicas."
-        }
-      ]
-    },
-    {
       "when": "Later",
       "when_es": "Más adelante",
       "when_pt": "Mais adiante",
@@ -82,6 +59,21 @@
     }
   ],
   "shipped": [
+    {
+      "version": "0.27.0",
+      "items": [
+        "Sermon prep: a collection as a Word document or Markdown",
+        "Open data: notes, journeys, plans and more as CC BY JSON"
+      ],
+      "items_es": [
+        "Preparar sermones: una colección como documento de Word o Markdown",
+        "Datos abiertos: notas, recorridos, planes y más como JSON CC BY"
+      ],
+      "items_pt": [
+        "Preparar sermões: uma coleção como documento do Word ou Markdown",
+        "Dados abertos: notas, jornadas, planos e mais como JSON CC BY"
+      ]
+    },
     {
       "version": "0.26.0",
       "items": [
