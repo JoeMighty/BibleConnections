@@ -24,14 +24,6 @@
       "when_pt": "Em breve",
       "items": [
         {
-          "title": "A year of connections",
-          "title_es": "Un año de conexiones",
-          "title_pt": "Um ano de conexões",
-          "text": "A one-year plan through the whole Bible, chapter by chapter, with each day's strongest connections to follow. Progress is saved on your device.",
-          "text_es": "Un plan de un año por toda la Biblia, capítulo a capítulo, con las conexiones más fuertes de cada día. El progreso se guarda en tu dispositivo.",
-          "text_pt": "Um plano de um ano por toda a Bíblia, capítulo a capítulo, com as conexões mais fortes de cada dia. O progresso fica salvo no seu aparelho."
-        },
-        {
           "title": "Sermon prep export",
           "title_es": "Exportar para preparar sermones",
           "title_pt": "Exportar para preparar sermões",
@@ -90,6 +82,24 @@
     }
   ],
   "shipped": [
+    {
+      "version": "0.26.0",
+      "items": [
+        "A year of connections: the whole Bible in 365 days, with where each day leads",
+        "Previous and next connection, and your trail",
+        "Why they connect, for every link"
+      ],
+      "items_es": [
+        "Un año de conexiones: toda la Biblia en 365 días, con adónde lleva cada día",
+        "Conexión anterior y siguiente, y tu recorrido",
+        "Por qué se conectan, en cada vínculo"
+      ],
+      "items_pt": [
+        "Um ano de conexões: a Bíblia inteira em 365 dias, com para onde cada dia leva",
+        "Conexão anterior e seguinte, e seu caminho",
+        "Por que se conectam, em cada ligação"
+      ]
+    },
     {
       "version": "0.25.0",
       "items": [

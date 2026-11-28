@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.26.0] - 2026-11-28 - Follow the Thread
+
 ### Added
 - **A year of connections:** a reading plan through the whole Bible in 365 days, whole chapters only and about the same number of verses each day (Genesis 1-3 on day 1, Revelation 19-22 on day 365). Each day links its chapters to Bible.com and shows three places the reading leads in other books, with the note where there is one; tap one to see it on the map. Progress and calendar reminders work as for the other plans.
 - **Previous and next connection:** a connection opened from a list has Previous and Next buttons and shows where it is ("3 of 72"), so you can step through a verse's links without going back. The order matches the list (Old Testament links, then New Testament). The N and ] keys still do the same.
