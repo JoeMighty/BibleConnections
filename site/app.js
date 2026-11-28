@@ -2068,6 +2068,7 @@
       [`href="${withLangLink('terms.html')}"`, 'Terms of use', '', ''],
       [`href="${withLangLink('accessibility.html')}"`, 'Accessibility', '', ''],
       [`href="${withLangLink('credits.html')}"`, 'Credits and licenses', '', ''],
+      [`href="${withLangLink('data.html')}"`, 'Open data', '', ''],
     ]);
     return ['More', html];
   }

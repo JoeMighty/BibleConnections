@@ -56,3 +56,19 @@ test('a collection exports as Markdown', async ({ page }) => {
   expect(md).toContain('](https://www.bible.com/bible/111/JHN.3.16.NIV)');
   expect(md).toContain("> Start with God's love");
 });
+
+test('the open data page lists every file, links the zip and states the license', async ({ page, request }) => {
+  await page.goto('/data.html');
+  await expect(page.locator('h1')).toHaveText('Open data');
+  expect(await page.locator('main .list a[href^="open-data/"]').count()).toBeGreaterThanOrEqual(10);
+  await expect(page.locator('main a[href="open-data/bible-connections-open-data.zip"]')).toBeVisible();
+  await expect(page.locator('main code')).toHaveText('Bible Connections (bibleconnections.app), CC BY 4.0');
+  const zip = await request.get('/open-data/bible-connections-open-data.zip');
+  expect(zip.ok()).toBe(true);
+  expect((await zip.body()).readUInt32LE(0)).toBe(0x04034b50);
+  const notes = await (await request.get('/open-data/notes.json')).json();
+  expect(notes.length).toBeGreaterThan(300);
+  expect(notes[0]).toEqual(expect.objectContaining({ from: expect.any(String), to: expect.any(String), note: expect.any(String) }));
+  await page.goto('/guide.html');
+  await expect(page.locator('.foot a[href*="data.html"]')).toHaveCount(1);
+});

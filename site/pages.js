@@ -131,6 +131,22 @@
       // a link to one question opens it
       const open = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
       if (open && open.tagName === 'DETAILS') open.open = true;
+    } else if (page === 'data') {
+      // the open data download: what is in it, the license and how to credit it
+      const m = await (await fetch('open-data/manifest.json')).json();
+      const kb = (n) => `${Math.max(1, Math.round(n / 1024))} KB`;
+      document.title = `${t('Open data')} · Bible Connections`;
+      main.innerHTML = `<h1>${esc(t('Open data'))}</h1>
+        <p class="lede">${esc(t('The writing behind Bible Connections, free to use in your own app, research or teaching. Bible references use OSIS codes such as Rom.8.28. No Bible translation text is included.'))}</p>
+        <p class="actions"><a class="btn" href="open-data/bible-connections-open-data.zip" download>${esc(t('Download everything (zip)'))}</a><a class="btn tinted" href="open-data/README.md">README</a></p>
+        <p class="muted">${esc(t('Version {v}, CC BY 4.0', { v: m.version }))}</p>
+        <h2>${esc(t('What is included'))}</h2>
+        <ul class="list">${m.sets.map(x => `<li><a href="open-data/${esc(x.file)}"><span class="row-main"><span class="row-title">${esc(t(x.title))} <span class="muted">(${x.count})</span></span><span class="row-detail">${esc(t(x.description))}</span></span><span class="row-end"><span class="row-n">${kb(x.bytes)}</span></span></a></li>`).join('')}</ul>
+        <section aria-labelledby="licHead"><h2 id="licHead">${esc(t('License and credit'))}</h2>
+          <p>${esc(t('You may share and adapt these files for any purpose, including commercially, as long as you give credit:'))}</p>
+          <p><code>Bible Connections (bibleconnections.app), CC BY 4.0</code></p>
+          <p>${esc(t('The cross references themselves come from OpenBible.info (CC BY 4.0). Get them from OpenBible.info directly.'))} <a href="https://www.openbible.info/labs/cross-references/" rel="noopener">OpenBible.info</a></p>
+          <p>${esc(t('Found a mistake, or built something with the data? Tell us on GitHub.'))} <a href="https://github.com/JoeMighty/BibleConnections/issues/new/choose" rel="noopener">GitHub</a></p></section>`;
     } else if (page === 'support') {
       // ways to help: share, give (only when a giving link is set in content/config.json), print, translate, report
       const cfg = await fetch('content/config.json').then(r => r.json()).catch(() => ({}));

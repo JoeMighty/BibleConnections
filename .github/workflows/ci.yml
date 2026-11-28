@@ -24,6 +24,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node scripts/feeds.mjs
       - run: node scripts/static-pages.mjs
+      - run: node scripts/open-data.mjs
       - run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -73,6 +74,8 @@ jobs:
         run: node scripts/feeds.mjs
       - name: Build the book and verse pages
         run: node scripts/static-pages.mjs
+      - name: Build the open data download
+        run: node scripts/open-data.mjs
       - name: Minify scripts and styles for the deployed copy
         run: npm ci && node scripts/minify.mjs site
       - uses: actions/configure-pages@v5

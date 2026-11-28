@@ -6,6 +6,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- **Open data:** the notes on connections, journeys (in three languages), reading plans, topics, people and places, themes, book introductions, reflection questions, prophecy chains and the timeline as JSON under CC BY 4.0, with a README and one zip download ([data.html](https://bibleconnections.app/data.html)). Built with the site; linked from More and every footer.
 - **Sermon prep export:** a collection downloads as a Word document or Markdown, ready to edit. Each item has its reference, a link to read it on Bible.com, the note on why a connection matters, a verse's five strongest connections, your own notes on those verses, and a link back to the map. No Bible text is included. The export code loads only when used.
 
 ## [0.26.0] - 2026-11-28 - Follow the Thread

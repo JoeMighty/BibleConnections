@@ -1030,7 +1030,8 @@
     "Read each passage in your own Bible or on Bible.com. No Bible text is included here.": "Leia cada passagem na sua própria Bíblia ou no Bible.com. Nenhum texto bíblico está incluído aqui.",
     "Cross references from OpenBible.info (CC BY 4.0). Made with bibleconnections.app.": "Referências cruzadas do OpenBible.info (CC BY 4.0). Feito com bibleconnections.app.",
     "Downloaded.": "Baixado.",
-    "Sorry, the file could not be made. Please try again.": "Desculpe, não foi possível criar o arquivo. Tente novamente."
+    "Sorry, the file could not be made. Please try again.": "Desculpe, não foi possível criar o arquivo. Tente novamente.",
+    "Open data": "Dados abertos"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
@@ -1317,7 +1318,27 @@
       "Before Holy Week:": "Antes da Semana Santa:",
       "the Lent plan": "o plano da Quaresma",
       "Lent plan": "Plano da Quaresma",
-      "Holy Week plan": "Plano da Semana Santa"
+      "Holy Week plan": "Plano da Semana Santa",
+      "Open data": "Dados abertos",
+      "The writing behind Bible Connections, free to use in your own app, research or teaching. Bible references use OSIS codes such as Rom.8.28. No Bible translation text is included.": "Os textos por trás do Bible Connections, livres para usar no seu próprio app, pesquisa ou ensino. As referências usam códigos OSIS como Rom.8.28. Nenhum texto de tradução da Bíblia está incluído.",
+      "Download everything (zip)": "Baixar tudo (zip)",
+      "Version {v}, CC BY 4.0": "Versão {v}, CC BY 4.0",
+      "What is included": "O que está incluído",
+      "License and credit": "Licença e crédito",
+      "You may share and adapt these files for any purpose, including commercially, as long as you give credit:": "Você pode compartilhar e adaptar estes arquivos para qualquer fim, inclusive comercial, desde que dê o crédito:",
+      "The cross references themselves come from OpenBible.info (CC BY 4.0). Get them from OpenBible.info directly.": "As referências cruzadas vêm do OpenBible.info (CC BY 4.0). Baixe-as diretamente do OpenBible.info.",
+      "Found a mistake, or built something with the data? Tell us on GitHub.": "Encontrou um erro ou criou algo com os dados? Conte para nós no GitHub.",
+      "Notes on connections": "Notas sobre conexões",
+      "Guided journeys": "Jornadas guiadas",
+      "Reading plans": "Planos de leitura",
+      "Topics": "Temas",
+      "Themes": "Temas principais",
+      "Book introductions": "Introduções aos livros",
+      "Reflection questions": "Perguntas para reflexão",
+      "Prophecy chains": "Cadeias de profecia",
+      "Timeline": "Linha do tempo",
+      "Data": "Dados",
+      "Open data download": "Download de dados abertos"
     },
     "slides": {
       "Slides": "Slides",
