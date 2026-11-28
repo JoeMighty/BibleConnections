@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Changed
+- Roadmap: in progress are more notes on why passages connect, search that suggests as you type, read aloud and simpler settings. Next: make your own journey, Sunday readings, see what you have explored, reading streaks and a daily challenge. Later adds group mode, moving to a new device with a QR code, an App Store listing and more languages.
+
 ## [0.27.0] - 2026-11-28 - Take It With You
 
 ### Added

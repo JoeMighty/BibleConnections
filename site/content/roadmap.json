@@ -4,9 +4,9 @@
       "title": "Portuguese review by native speakers",
       "title_es": "Revisión del portugués por hablantes nativos",
       "title_pt": "Revisão do português por falantes nativos",
-      "text": "Portuguese is live. Native speakers are invited to check the wording on every screen and suggest improvements on GitHub. French, Korean and Chinese will follow.",
-      "text_es": "El portugués ya está disponible. Invitamos a hablantes nativos a revisar el texto de cada pantalla y sugerir mejoras en GitHub. Seguirán el francés, el coreano y el chino.",
-      "text_pt": "O português já está disponível. Convidamos falantes nativos a revisar o texto de cada tela e sugerir melhorias no GitHub. Depois virão o francês, o coreano e o chinês."
+      "text": "Portuguese is live. Native speakers are invited to check the wording on every screen and suggest improvements on GitHub.",
+      "text_es": "El portugués ya está disponible. Invitamos a hablantes nativos a revisar el texto de cada pantalla y sugerir mejoras en GitHub.",
+      "text_pt": "O português já está disponível. Convidamos falantes nativos a revisar o texto de cada tela e sugerir melhorias no GitHub."
     },
     {
       "title": "Pastoral review of written content",
@@ -15,9 +15,88 @@
       "text": "A pastor is reviewing the book introductions, reflection questions, Advent readings, timeline dates and the prophecy chains.",
       "text_es": "Un pastor está revisando las introducciones a los libros, las preguntas de reflexión, las lecturas de Adviento, las fechas de la línea de tiempo y las cadenas de profecía.",
       "text_pt": "Um pastor está revisando as introduções aos livros, as perguntas para reflexão, as leituras do Advento, as datas da linha do tempo e as cadeias de profecia."
+    },
+    {
+      "title": "More notes on why passages connect",
+      "title_es": "Más notas sobre por qué se conectan los pasajes",
+      "title_pt": "Mais notas sobre por que as passagens se conectam",
+      "text": "Written notes for the strongest connections, starting with the ones people open most, each checked by a pastor.",
+      "text_es": "Notas escritas para las conexiones más fuertes, empezando por las que más se abren, cada una revisada por un pastor.",
+      "text_pt": "Notas escritas para as conexões mais fortes, começando pelas mais abertas, cada uma revisada por um pastor."
+    },
+    {
+      "title": "Search that suggests as you type",
+      "title_es": "Búsqueda que sugiere mientras escribes",
+      "title_pt": "Busca que sugere enquanto você digita",
+      "text": "Book names, chapters, topics and people appear as you type, and a reference that does not exist is caught before you search.",
+      "text_es": "Aparecen nombres de libros, capítulos, temas y personas mientras escribes, y una referencia que no existe se detecta antes de buscar.",
+      "text_pt": "Nomes de livros, capítulos, temas e pessoas aparecem enquanto você digita, e uma referência que não existe é percebida antes da busca."
+    },
+    {
+      "title": "Read aloud",
+      "title_es": "Lectura en voz alta",
+      "title_pt": "Leitura em voz alta",
+      "text": "Hear the notes, journeys and plans read by your device's own voice, for accessibility, the car or the screen at church.",
+      "text_es": "Escucha las notas, los recorridos y los planes con la voz de tu dispositivo, para accesibilidad, el coche o la pantalla de la iglesia.",
+      "text_pt": "Ouça as notas, as jornadas e os planos com a voz do seu aparelho, para acessibilidade, o carro ou o telão da igreja."
+    },
+    {
+      "title": "Simpler settings",
+      "title_es": "Ajustes más sencillos",
+      "title_pt": "Ajustes mais simples",
+      "text": "Settings in three short groups: Reading, Look and Accessibility.",
+      "text_es": "Los ajustes en tres grupos cortos: Lectura, Aspecto y Accesibilidad.",
+      "text_pt": "Os ajustes em três grupos curtos: Leitura, Aparência e Acessibilidade."
     }
   ],
   "planned": [
+    {
+      "when": "Next",
+      "when_es": "Próximamente",
+      "when_pt": "Em breve",
+      "items": [
+        {
+          "title": "Make your own journey",
+          "title_es": "Crea tu propio recorrido",
+          "title_pt": "Crie sua própria jornada",
+          "text": "Leaders choose the steps, write their own notes and questions, and share the journey with one link. Nothing is stored on a server.",
+          "text_es": "Los líderes eligen los pasos, escriben sus propias notas y preguntas y comparten el recorrido con un solo enlace. No se guarda nada en un servidor.",
+          "text_pt": "Os líderes escolhem os passos, escrevem suas próprias notas e perguntas e compartilham a jornada com um só link. Nada fica guardado em um servidor."
+        },
+        {
+          "title": "Sunday readings",
+          "title_es": "Lecturas del domingo",
+          "title_pt": "Leituras de domingo",
+          "text": "Each Sunday's lectionary readings with how they connect, for churches that follow the church year.",
+          "text_es": "Las lecturas del leccionario de cada domingo y cómo se conectan, para iglesias que siguen el año litúrgico.",
+          "text_pt": "As leituras do lecionário de cada domingo e como se conectam, para igrejas que seguem o ano litúrgico."
+        },
+        {
+          "title": "See what you have explored",
+          "title_es": "Ve lo que ya exploraste",
+          "title_pt": "Veja o que você já explorou",
+          "text": "Connections you have opened are marked, so you can spot the ones still waiting for you. Kept on your device only.",
+          "text_es": "Las conexiones que ya abriste quedan marcadas, para que veas las que aún te esperan. Solo se guarda en tu dispositivo.",
+          "text_pt": "As conexões que você já abriu ficam marcadas, para você ver as que ainda esperam por você. Fica salvo só no seu aparelho."
+        },
+        {
+          "title": "Reading streaks",
+          "title_es": "Rachas de lectura",
+          "title_pt": "Sequências de leitura",
+          "text": "A gentle count of the days in a row you have kept a reading plan going, stored on your device.",
+          "text_es": "Un conteo sencillo de los días seguidos que has mantenido un plan de lectura, guardado en tu dispositivo.",
+          "text_pt": "Uma contagem simples dos dias seguidos em que você manteve um plano de leitura, salva no seu aparelho."
+        },
+        {
+          "title": "A daily challenge",
+          "title_es": "Un reto diario",
+          "title_pt": "Um desafio diário",
+          "text": "One “Guess the connection” question a day, the same for everyone, to try on your own or share with your group.",
+          "text_es": "Una pregunta de “Adivina la conexión” al día, la misma para todos, para hacerla solo o compartirla con tu grupo.",
+          "text_pt": "Uma pergunta de “Adivinhe a conexão” por dia, a mesma para todos, para fazer sozinho ou compartilhar com seu grupo."
+        }
+      ]
+    },
     {
       "when": "Later",
       "when_es": "Más adelante",
@@ -40,20 +119,44 @@
           "text_pt": "O aplicativo instalável, também disponível na Play Store."
         },
         {
-          "title": "More notes on why passages connect",
-          "title_es": "Más notas sobre por qué se conectan los pasajes",
-          "title_pt": "Mais notas sobre por que as passagens se conectam",
-          "text": "Written notes for the 1,000 strongest connections, checked by a pastor, so more links explain themselves.",
-          "text_es": "Notas escritas para las 1.000 conexiones más fuertes, revisadas por un pastor, para que más vínculos se expliquen solos.",
-          "text_pt": "Notas escritas para as 1.000 conexões mais fortes, revisadas por um pastor, para que mais ligações se expliquem sozinhas."
-        },
-        {
           "title": "Posters to order",
           "title_es": "Pósteres por encargo",
           "title_pt": "Pôsteres sob encomenda",
           "text": "Printed posters of the whole map, made and shipped on demand.",
           "text_es": "Pósteres impresos del mapa completo, hechos y enviados por encargo.",
           "text_pt": "Pôsteres impressos do mapa completo, feitos e enviados sob encomenda."
+        },
+        {
+          "title": "Group mode",
+          "title_es": "Modo grupo",
+          "title_pt": "Modo grupo",
+          "text": "A leader's screen moves everyone's phone to the same step during a class or small group, joined with a QR code.",
+          "text_es": "La pantalla del líder lleva el teléfono de todos al mismo paso durante una clase o grupo pequeño, uniéndose con un código QR.",
+          "text_pt": "A tela do líder leva o celular de todos ao mesmo passo durante uma aula ou pequeno grupo, entrando com um código QR."
+        },
+        {
+          "title": "Move to a new device with a QR code",
+          "title_es": "Pasar a un dispositivo nuevo con un código QR",
+          "title_pt": "Passar para um aparelho novo com um código QR",
+          "text": "Copy your notes, collections and plan progress to another phone or computer by scanning a code, still with no account.",
+          "text_es": "Copia tus notas, colecciones y progreso de planes a otro teléfono u ordenador escaneando un código, sin cuenta.",
+          "text_pt": "Copie suas notas, coleções e progresso dos planos para outro celular ou computador lendo um código, sem conta."
+        },
+        {
+          "title": "App Store listing",
+          "title_es": "Publicación en App Store",
+          "title_pt": "Publicação na App Store",
+          "text": "The app on iPhone and iPad through the App Store, after the Google Play listing.",
+          "text_es": "La app en iPhone y iPad a través del App Store, después de Google Play.",
+          "text_pt": "O app no iPhone e no iPad pela App Store, depois do Google Play."
+        },
+        {
+          "title": "More languages",
+          "title_es": "Más idiomas",
+          "title_pt": "Mais idiomas",
+          "text": "New languages once English, Spanish and Portuguese are fully reviewed.",
+          "text_es": "Nuevos idiomas cuando el inglés, el español y el portugués estén completamente revisados.",
+          "text_pt": "Novos idiomas quando o inglês, o espanhol e o português estiverem totalmente revisados."
         }
       ]
     }
