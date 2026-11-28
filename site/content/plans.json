@@ -8,7 +8,13 @@
     "description_es": "Toda la Biblia en un año, unos capítulos al día, con los pasajes de otros libros a los que apunta la lectura de cada día.",
     "description_pt": "A Bíblia inteira em um ano, alguns capítulos por dia, com as passagens de outros livros para as quais a leitura de cada dia aponta.",
     "source": "year",
-    "perDay": 3
+    "perDay": 3,
+    "name_fr": "Une année de connexions",
+    "description_fr": "Toute la Bible en un an, quelques chapitres par jour, avec les passages d’autres livres auxquels renvoie la lecture du jour.",
+    "name_ko": "연결로 읽는 일 년",
+    "description_ko": "일 년 동안 하루에 몇 장씩 성경 전체를 읽고, 그날 읽은 본문이 다른 책의 어느 본문을 가리키는지도 함께 봐요.",
+    "name_zh": "一年的连接",
+    "description_zh": "一年读完整本圣经，每天几章，并附上当天读经所指向的其他书卷中的经文。"
   },
   {
     "id": "advent",
@@ -30,7 +36,13 @@
         "title_pt": "Esperança: o primeiro anúncio",
         "note": "Right after the fall, God promises that a child of the woman will defeat the serpent. Paul says that when the time had fully come, God sent his Son, born of a woman.",
         "note_es": "Justo después de la caída, Dios promete que un descendiente de la mujer vencerá a la serpiente. Pablo dice que, cuando llegó el tiempo, Dios envió a su Hijo, nacido de mujer.",
-        "note_pt": "Logo depois da queda, Deus promete que um descendente da mulher vai derrotar a serpente. Paulo diz que, quando chegou a plenitude do tempo, Deus enviou seu Filho, nascido de mulher."
+        "note_pt": "Logo depois da queda, Deus promete que um descendente da mulher vai derrotar a serpente. Paulo diz que, quando chegou a plenitude do tempo, Deus enviou seu Filho, nascido de mulher.",
+        "title_fr": "Espérance : la première promesse",
+        "note_fr": "Juste après la chute, Dieu promet qu’un enfant de la femme vaincra le serpent. Paul dit que, lorsque les temps furent accomplis, Dieu envoya son Fils, né d’une femme.",
+        "title_ko": "소망: 첫 번째 약속",
+        "note_ko": "타락 직후 하나님은 여자의 후손이 뱀을 이길 것이라고 약속하세요. 바울은 때가 차매 하나님이 그 아들을 보내사 여자에게서 나게 하셨다고 말해요.",
+        "title_zh": "盼望：第一个应许",
+        "note_zh": "人刚刚堕落，神就应许女人的后裔要胜过蛇。保罗说，及至时候满足，神就差遣他的儿子，为女子所生。"
       },
       {
         "a": "Gen.12.3",
@@ -40,7 +52,13 @@
         "title_pt": "Esperança: bênção para todas as nações",
         "note": "God tells Abraham that all the families of the earth will be blessed through him. Paul calls this the gospel announced ahead of time.",
         "note_es": "Dios le dice a Abraham que todas las familias de la tierra serán bendecidas por medio de él. Pablo lo llama el evangelio anunciado de antemano.",
-        "note_pt": "Deus diz a Abraão que todas as famílias da terra serão abençoadas por meio dele. Paulo chama isso de evangelho anunciado de antemão."
+        "note_pt": "Deus diz a Abraão que todas as famílias da terra serão abençoadas por meio dele. Paulo chama isso de evangelho anunciado de antemão.",
+        "title_fr": "Espérance : une bénédiction pour toutes les nations",
+        "note_fr": "Dieu dit à Abraham que toutes les familles de la terre seront bénies en lui. Paul y voit l’Évangile annoncé d’avance.",
+        "title_ko": "소망: 모든 민족을 위한 복",
+        "note_ko": "하나님은 아브라함에게 땅의 모든 족속이 그로 말미암아 복을 받을 것이라고 말씀하세요. 바울은 이것을 미리 전한 복음이라고 불러요.",
+        "title_zh": "盼望：万国的福",
+        "note_zh": "神告诉亚伯拉罕，地上的万族都要因他得福。保罗称这是预先传给亚伯拉罕的福音。"
       },
       {
         "a": "Gen.49.10",
@@ -50,7 +68,13 @@
         "title_pt": "Esperança: o leão de Judá",
         "note": "Jacob blesses Judah with a ruler's staff that will not depart. In Revelation the Lion of the tribe of Judah has won the victory.",
         "note_es": "Jacob bendice a Judá con un cetro de gobernante que no se apartará. En Apocalipsis, el León de la tribu de Judá ha vencido.",
-        "note_pt": "Jacó abençoa Judá com um cetro de governante que não se afastará dele. Em Apocalipse, o Leão da tribo de Judá conquistou a vitória."
+        "note_pt": "Jacó abençoa Judá com um cetro de governante que não se afastará dele. Em Apocalipse, o Leão da tribo de Judá conquistou a vitória.",
+        "title_fr": "Espérance : le lion de Juda",
+        "note_fr": "Jacob bénit Juda : le sceptre ne s’éloignera pas de lui. Dans l’Apocalypse, le Lion de la tribu de Juda a remporté la victoire.",
+        "title_ko": "소망: 유다의 사자",
+        "note_ko": "야곱은 유다에게 통치자의 지팡이가 떠나지 않으리라고 축복해요. 요한계시록에서 유다 지파의 사자가 이기셨어요.",
+        "title_zh": "盼望：犹大的狮子",
+        "note_zh": "雅各祝福犹大，说权杖必不离开他。在启示录中，犹大支派的狮子已经得胜。"
       },
       {
         "a": "Num.24.17",
@@ -60,7 +84,13 @@
         "title_pt": "Esperança: uma estrela de Jacó",
         "note": "Balaam sees a star rising from Jacob and a ruler from Israel. The wise men follow a star to find the newborn king.",
         "note_es": "Balaam ve una estrella que sale de Jacob y un gobernante de Israel. Los sabios siguen una estrella para encontrar al rey recién nacido.",
-        "note_pt": "Balaão vê uma estrela surgindo de Jacó e um governante saindo de Israel. Os magos seguem uma estrela para encontrar o rei recém-nascido."
+        "note_pt": "Balaão vê uma estrela surgindo de Jacó e um governante saindo de Israel. Os magos seguem uma estrela para encontrar o rei recém-nascido.",
+        "title_fr": "Espérance : une étoile issue de Jacob",
+        "note_fr": "Balaam voit une étoile se lever de Jacob et un chef sortir d’Israël. Les mages suivent une étoile pour trouver le roi qui vient de naître.",
+        "title_ko": "소망: 야곱에게서 나온 별",
+        "note_ko": "발람은 야곱에게서 한 별이 나오고 이스라엘에게서 한 통치자가 일어나는 것을 봐요. 동방박사들은 별을 따라가 새로 나신 왕을 찾아요.",
+        "title_zh": "盼望：从雅各出的星",
+        "note_zh": "巴兰看见有星从雅各而出，有杖从以色列兴起。博士们跟着一颗星，找到了新生的王。"
       },
       {
         "a": "Deut.18.15",
@@ -70,7 +100,13 @@
         "title_pt": "Esperança: um profeta como Moisés",
         "note": "Moses promises that God will raise up a prophet like him. Peter tells the crowd in Jerusalem that this prophet is Jesus.",
         "note_es": "Moisés promete que Dios levantará un profeta como él. Pedro le dice a la multitud en Jerusalén que ese profeta es Jesús.",
-        "note_pt": "Moisés promete que Deus levantará um profeta como ele. Pedro diz à multidão em Jerusalém que esse profeta é Jesus."
+        "note_pt": "Moisés promete que Deus levantará um profeta como ele. Pedro diz à multidão em Jerusalém que esse profeta é Jesus.",
+        "title_fr": "Espérance : un prophète comme Moïse",
+        "note_fr": "Moïse promet que Dieu suscitera un prophète comme lui. Pierre dit à la foule de Jérusalem que ce prophète, c’est Jésus.",
+        "title_ko": "소망: 모세와 같은 선지자",
+        "note_ko": "모세는 하나님이 자기와 같은 선지자를 일으키실 것이라고 약속해요. 베드로는 예루살렘의 무리에게 그 선지자가 바로 예수님이라고 말해요.",
+        "title_zh": "盼望：像摩西的先知",
+        "note_zh": "摩西应许，神要兴起一位像他的先知。彼得告诉耶路撒冷的众人，这位先知就是耶稣。"
       },
       {
         "a": "2Sam.7.12",
@@ -80,7 +116,13 @@
         "title_pt": "Esperança: um filho de Davi",
         "note": "God promises David a descendant whose kingdom will last. The angel tells Mary that her son will be given the throne of his father David.",
         "note_es": "Dios promete a David un descendiente cuyo reino durará. El ángel le dice a María que su hijo recibirá el trono de su padre David.",
-        "note_pt": "Deus promete a Davi um descendente cujo reino vai durar. O anjo diz a Maria que o filho dela receberá o trono de seu pai Davi."
+        "note_pt": "Deus promete a Davi um descendente cujo reino vai durar. O anjo diz a Maria que o filho dela receberá o trono de seu pai Davi.",
+        "title_fr": "Espérance : un fils de David",
+        "note_fr": "Dieu promet à David un descendant dont le règne durera. L’ange dit à Marie que son fils recevra le trône de David, son père.",
+        "title_ko": "소망: 다윗의 자손",
+        "note_ko": "하나님은 다윗에게 나라가 영원히 이어질 후손을 약속하세요. 천사는 마리아에게 그 아들이 조상 다윗의 왕위를 받을 것이라고 말해요.",
+        "title_zh": "盼望：大卫的子孙",
+        "note_zh": "神应许大卫，他的后裔要建立永存的国。天使告诉马利亚，神要把她儿子祖先大卫的王位赐给他。"
       },
       {
         "a": "Ps.2.7",
@@ -90,7 +132,13 @@
         "title_pt": "Esperança: tu és meu Filho",
         "note": "In the psalm, God declares his chosen king to be his Son. Hebrews uses these words to show that Jesus is greater than the angels.",
         "note_es": "En el salmo, Dios declara que su rey escogido es su Hijo. Hebreos usa estas palabras para mostrar que Jesús es superior a los ángeles.",
-        "note_pt": "No salmo, Deus declara que o rei escolhido é seu Filho. Hebreus usa essas palavras para mostrar que Jesus é maior que os anjos."
+        "note_pt": "No salmo, Deus declara que o rei escolhido é seu Filho. Hebreus usa essas palavras para mostrar que Jesus é maior que os anjos.",
+        "title_fr": "Espérance : tu es mon Fils",
+        "note_fr": "Dans le psaume, Dieu déclare que le roi qu’il a choisi est son Fils. L’épître aux Hébreux reprend ces mots pour montrer que Jésus est supérieur aux anges.",
+        "title_ko": "소망: 너는 내 아들이라",
+        "note_ko": "시편에서 하나님은 택하신 왕을 자기 아들이라고 선포하세요. 히브리서는 이 말씀으로 예수님이 천사들보다 뛰어나심을 보여 줘요.",
+        "title_zh": "盼望：你是我的儿子",
+        "note_zh": "在诗篇中，神宣告他所拣选的王是他的儿子。希伯来书用这些话表明耶稣远比天使尊贵。"
       },
       {
         "a": "Isa.7.14",
@@ -100,7 +148,13 @@
         "title_pt": "Paz: Deus conosco",
         "note": "Isaiah gives a sign: a child called Immanuel, God with us. Matthew sees the full meaning of the sign in the birth of Jesus.",
         "note_es": "Isaías da una señal: un niño llamado Emanuel, Dios con nosotros. Mateo ve el pleno sentido de la señal en el nacimiento de Jesús.",
-        "note_pt": "Isaías dá um sinal: uma criança chamada Emanuel, Deus conosco. Mateus vê o pleno sentido desse sinal no nascimento de Jesus."
+        "note_pt": "Isaías dá um sinal: uma criança chamada Emanuel, Deus conosco. Mateus vê o pleno sentido desse sinal no nascimento de Jesus.",
+        "title_fr": "Paix : Dieu avec nous",
+        "note_fr": "Ésaïe donne un signe : un enfant appelé Emmanuel, Dieu avec nous. Matthieu voit le sens plein de ce signe dans la naissance de Jésus.",
+        "title_ko": "평화: 하나님이 우리와 함께",
+        "note_ko": "이사야는 징조를 주어요. 임마누엘, 곧 하나님이 우리와 함께 계신다는 이름의 아기예요. 마태는 예수님의 탄생에서 이 징조의 온전한 의미를 봐요.",
+        "title_zh": "平安：神与我们同在",
+        "note_zh": "以赛亚给出一个兆头：有一个孩子名叫以马内利，就是神与我们同在。马太在耶稣的降生中看见这兆头的完整意义。"
       },
       {
         "a": "Isa.9.6",
@@ -110,7 +164,13 @@
         "title_pt": "Paz: um menino nos nasceu",
         "note": "Isaiah announces a child who will be called Prince of Peace. The angels tell the shepherds that a Savior has been born in the town of David.",
         "note_es": "Isaías anuncia un niño que será llamado Príncipe de paz. Los ángeles les dicen a los pastores que ha nacido un Salvador en la ciudad de David.",
-        "note_pt": "Isaías anuncia uma criança que será chamada Príncipe da Paz. Os anjos dizem aos pastores que um Salvador nasceu na cidade de Davi."
+        "note_pt": "Isaías anuncia uma criança que será chamada Príncipe da Paz. Os anjos dizem aos pastores que um Salvador nasceu na cidade de Davi.",
+        "title_fr": "Paix : un enfant nous est né",
+        "note_fr": "Ésaïe annonce un enfant qu’on appellera Prince de la paix. Les anges disent aux bergers qu’un Sauveur est né dans la ville de David.",
+        "title_ko": "평화: 한 아기가 태어났어요",
+        "note_ko": "이사야는 평강의 왕이라 불릴 아기를 알려요. 천사들은 목자들에게 다윗의 동네에 구주가 나셨다고 전해요.",
+        "title_zh": "平安：有一婴孩为我们而生",
+        "note_zh": "以赛亚宣告有一个孩子要被称为和平的君。天使告诉牧羊人，在大卫的城里为他们生了救主。"
       },
       {
         "a": "Isa.9.7",
@@ -120,7 +180,13 @@
         "title_pt": "Paz: um reino sem fim",
         "note": "Isaiah says the peace of this king's rule will never end. Gabriel tells Mary that her son's kingdom will have no end.",
         "note_es": "Isaías dice que la paz del reinado de este rey no tendrá fin. Gabriel le dice a María que el reino de su hijo no tendrá fin.",
-        "note_pt": "Isaías diz que a paz do reinado desse rei nunca terá fim. Gabriel diz a Maria que o reino do seu filho não terá fim."
+        "note_pt": "Isaías diz que a paz do reinado desse rei nunca terá fim. Gabriel diz a Maria que o reino do seu filho não terá fim.",
+        "title_fr": "Paix : un règne sans fin",
+        "note_fr": "Ésaïe dit que la paix du règne de ce roi n’aura pas de fin. Gabriel dit à Marie que le règne de son fils n’aura pas de fin.",
+        "title_ko": "평화: 끝없는 나라",
+        "note_ko": "이사야는 이 왕의 다스림과 평강이 끝이 없을 것이라고 말해요. 가브리엘은 마리아에게 그 아들의 나라가 무궁할 것이라고 전해요.",
+        "title_zh": "平安：无穷无尽的国",
+        "note_zh": "以赛亚说这位王的平安必无穷尽。加百列告诉马利亚，她儿子的国没有穷尽。"
       },
       {
         "a": "Isa.11.1",
@@ -130,7 +196,13 @@
         "title_pt": "Paz: um rebento de Jessé",
         "note": "From what looks like a dead stump, a new shoot grows from Jesse's family. Paul says the nations put their hope in this root of Jesse.",
         "note_es": "De lo que parece un tronco muerto brota un retoño de la familia de Isaí. Pablo dice que las naciones ponen su esperanza en esta raíz de Isaí.",
-        "note_pt": "Do que parece um tronco morto, nasce um broto novo da família de Jessé. Paulo diz que as nações põem sua esperança nessa raiz de Jessé."
+        "note_pt": "Do que parece um tronco morto, nasce um broto novo da família de Jessé. Paulo diz que as nações põem sua esperança nessa raiz de Jessé.",
+        "title_fr": "Paix : un rameau du tronc d’Isaï",
+        "note_fr": "De ce qui ressemble à une souche morte, un nouveau rameau sort de la famille d’Isaï. Paul dit que les nations mettent leur espérance en ce rejeton d’Isaï.",
+        "title_ko": "평화: 이새의 줄기에서 난 싹",
+        "note_ko": "죽은 그루터기처럼 보이는 곳에서 이새의 가문에 새싹이 돋아요. 바울은 열방이 이새의 뿌리에게 소망을 둔다고 말해요.",
+        "title_zh": "平安：耶西的枝子",
+        "note_zh": "从看似枯死的树墩上，耶西的家族长出一根新枝。保罗说，外邦人要仰望这耶西的根。"
       },
       {
         "a": "Isa.40.3",
@@ -140,7 +212,13 @@
         "title_pt": "Paz: preparem o caminho",
         "note": "A voice calls for a road to be prepared for the Lord. Mark begins his Gospel with John the Baptist as that voice in the wilderness.",
         "note_es": "Una voz pide que se prepare un camino para el Señor. Marcos comienza su Evangelio con Juan el Bautista como esa voz en el desierto.",
-        "note_pt": "Uma voz pede que se prepare um caminho para o Senhor. Marcos começa seu Evangelho com João Batista como essa voz no deserto."
+        "note_pt": "Uma voz pede que se prepare um caminho para o Senhor. Marcos começa seu Evangelho com João Batista como essa voz no deserto.",
+        "title_fr": "Paix : préparez le chemin",
+        "note_fr": "Une voix appelle à préparer une route pour le Seigneur. Marc commence son Évangile avec Jean-Baptiste, cette voix dans le désert.",
+        "title_ko": "평화: 길을 예비하라",
+        "note_ko": "한 소리가 주님의 길을 예비하라고 외쳐요. 마가는 광야에서 외치는 그 소리인 세례 요한으로 복음서를 시작해요.",
+        "title_zh": "平安：预备道路",
+        "note_zh": "有声音呼喊，要为主预备道路。马可的福音书以施洗约翰开始，他就是旷野里的那个声音。"
       },
       {
         "a": "Isa.40.11",
@@ -150,7 +228,13 @@
         "title_pt": "Paz: o pastor bondoso",
         "note": "Isaiah pictures God carrying his lambs close to his heart. Jesus calls himself the good shepherd who lays down his life for the sheep.",
         "note_es": "Isaías describe a Dios llevando a sus corderos junto a su corazón. Jesús se llama a sí mismo el buen pastor que da su vida por las ovejas.",
-        "note_pt": "Isaías descreve Deus levando seus cordeiros junto ao coração. Jesus se chama de bom pastor, que dá a vida pelas ovelhas."
+        "note_pt": "Isaías descreve Deus levando seus cordeiros junto ao coração. Jesus se chama de bom pastor, que dá a vida pelas ovelhas.",
+        "title_fr": "Paix : le doux berger",
+        "note_fr": "Ésaïe montre Dieu portant ses agneaux contre son cœur. Jésus se dit le bon berger qui donne sa vie pour ses brebis.",
+        "title_ko": "평화: 온유한 목자",
+        "note_ko": "이사야는 하나님이 어린양들을 품에 안으시는 모습을 그려요. 예수님은 자신을 양들을 위해 목숨을 버리는 선한 목자라고 부르세요.",
+        "title_zh": "平安：温柔的牧者",
+        "note_zh": "以赛亚描绘神把小羊抱在怀中。耶稣称自己是好牧人，为羊舍命。"
       },
       {
         "a": "Isa.52.7",
@@ -160,7 +244,13 @@
         "title_pt": "Paz: boas notícias nos montes",
         "note": "Isaiah celebrates the messenger who brings news of peace and salvation. Paul applies it to those who carry the good news about Jesus.",
         "note_es": "Isaías celebra al mensajero que trae noticias de paz y salvación. Pablo lo aplica a quienes llevan las buenas noticias de Jesús.",
-        "note_pt": "Isaías celebra o mensageiro que traz notícias de paz e salvação. Paulo aplica isso aos que levam a boa notícia de Jesus."
+        "note_pt": "Isaías celebra o mensageiro que traz notícias de paz e salvação. Paulo aplica isso aos que levam a boa notícia de Jesus.",
+        "title_fr": "Paix : une bonne nouvelle sur les montagnes",
+        "note_fr": "Ésaïe célèbre le messager qui annonce la paix et le salut. Paul l’applique à ceux qui portent la bonne nouvelle de Jésus.",
+        "title_ko": "평화: 산 위의 좋은 소식",
+        "note_ko": "이사야는 평화와 구원의 소식을 전하는 사람을 기뻐해요. 바울은 이 말씀을 예수님에 대한 좋은 소식을 전하는 사람들에게 적용해요.",
+        "title_zh": "平安：山上报佳音的脚",
+        "note_zh": "以赛亚称颂那传平安、报救恩的使者。保罗把这话用在传扬耶稣福音的人身上。"
       },
       {
         "a": "Isa.35.5",
@@ -170,7 +260,13 @@
         "title_pt": "Alegria: olhos abertos",
         "note": "Isaiah promises that the blind will see and the lame will leap. When John's followers ask who Jesus is, he points to these very signs.",
         "note_es": "Isaías promete que los ciegos verán y los cojos saltarán. Cuando los seguidores de Juan preguntan quién es Jesús, él señala estas mismas señales.",
-        "note_pt": "Isaías promete que os cegos verão e os coxos saltarão. Quando os seguidores de João perguntam quem Jesus é, ele aponta para esses mesmos sinais."
+        "note_pt": "Isaías promete que os cegos verão e os coxos saltarão. Quando os seguidores de João perguntam quem Jesus é, ele aponta para esses mesmos sinais.",
+        "title_fr": "Joie : des yeux ouverts",
+        "note_fr": "Ésaïe promet que les aveugles verront et que les boiteux bondiront. Quand les disciples de Jean demandent qui est Jésus, il montre justement ces signes.",
+        "title_ko": "기쁨: 눈이 열려요",
+        "note_ko": "이사야는 맹인이 보고 저는 사람이 뛸 것이라고 약속해요. 요한의 제자들이 예수님이 누구신지 묻자, 예수님은 바로 이 표적들을 가리키세요.",
+        "title_zh": "喜乐：眼睛得开",
+        "note_zh": "以赛亚应许瞎子要看见，瘸子要跳跃。约翰的门徒来问耶稣是谁，他就指出这些神迹。"
       },
       {
         "a": "Isa.61.1",
@@ -180,7 +276,13 @@
         "title_pt": "Alegria: boas notícias aos pobres",
         "note": "The servant is anointed to bring good news to the poor and freedom to captives. In Nazareth, Jesus reads this passage and says it is fulfilled today.",
         "note_es": "El siervo es ungido para dar buenas noticias a los pobres y libertad a los cautivos. En Nazaret, Jesús lee este pasaje y dice que hoy se ha cumplido.",
-        "note_pt": "O servo é ungido para levar boas notícias aos pobres e libertação aos cativos. Em Nazaré, Jesus lê essa passagem e diz que ela se cumpre hoje."
+        "note_pt": "O servo é ungido para levar boas notícias aos pobres e libertação aos cativos. Em Nazaré, Jesus lê essa passagem e diz que ela se cumpre hoje.",
+        "title_fr": "Joie : une bonne nouvelle pour les pauvres",
+        "note_fr": "Le serviteur reçoit l’onction pour annoncer une bonne nouvelle aux pauvres et la délivrance aux captifs. À Nazareth, Jésus lit ce passage et dit qu’il s’accomplit aujourd’hui.",
+        "title_ko": "기쁨: 가난한 사람에게 전하는 좋은 소식",
+        "note_ko": "종은 가난한 사람에게 좋은 소식을, 포로된 사람에게 자유를 전하도록 기름 부음을 받아요. 나사렛에서 예수님은 이 말씀을 읽으시고 오늘 이루어졌다고 말씀하세요.",
+        "title_zh": "喜乐：传福音给贫穷的人",
+        "note_zh": "这位仆人受膏，要传好信息给贫穷的人，报告被掳的得释放。在拿撒勒，耶稣读了这段经文，说今天这经应验了。"
       },
       {
         "a": "Isa.42.1",
@@ -190,7 +292,13 @@
         "title_pt": "Alegria: meu servo escolhido",
         "note": "God introduces his servant, full of the Spirit and gentle with the weak. Matthew quotes this to explain the quiet, healing way of Jesus.",
         "note_es": "Dios presenta a su siervo, lleno del Espíritu y tierno con los débiles. Mateo lo cita para explicar la manera humilde y sanadora de Jesús.",
-        "note_pt": "Deus apresenta seu servo, cheio do Espírito e manso com os fracos. Mateus cita isso para explicar o jeito sereno e restaurador de Jesus."
+        "note_pt": "Deus apresenta seu servo, cheio do Espírito e manso com os fracos. Mateus cita isso para explicar o jeito sereno e restaurador de Jesus.",
+        "title_fr": "Joie : mon serviteur que j’ai choisi",
+        "note_fr": "Dieu présente son serviteur, rempli de l’Esprit et doux envers les faibles. Matthieu cite ce passage pour expliquer la manière discrète et guérissante de Jésus.",
+        "title_ko": "기쁨: 내가 택한 종",
+        "note_ko": "하나님은 성령이 충만하고 약한 사람에게 온유한 자기 종을 소개하세요. 마태는 이 말씀을 인용해 예수님의 조용하고 치유하시는 방식을 설명해요.",
+        "title_zh": "喜乐：我所拣选的仆人",
+        "note_zh": "神介绍他的仆人，被圣灵充满，温柔对待软弱的人。马太引用这段话，说明耶稣安静而医治人的作风。"
       },
       {
         "a": "Isa.9.2",
@@ -200,7 +308,13 @@
         "title_pt": "Alegria: uma grande luz",
         "note": "People walking in darkness see a great light. Matthew says this happened when Jesus began his ministry in Galilee.",
         "note_es": "El pueblo que andaba en oscuridad ve una gran luz. Mateo dice que esto ocurrió cuando Jesús comenzó su ministerio en Galilea.",
-        "note_pt": "O povo que andava nas trevas vê uma grande luz. Mateus diz que isso aconteceu quando Jesus começou seu ministério na Galileia."
+        "note_pt": "O povo que andava nas trevas vê uma grande luz. Mateus diz que isso aconteceu quando Jesus começou seu ministério na Galileia.",
+        "title_fr": "Joie : une grande lumière",
+        "note_fr": "Le peuple qui marche dans les ténèbres voit une grande lumière. Matthieu dit que cela s’est produit quand Jésus a commencé son ministère en Galilée.",
+        "title_ko": "기쁨: 큰 빛",
+        "note_ko": "흑암에 행하던 백성이 큰 빛을 봐요. 마태는 예수님이 갈릴리에서 사역을 시작하실 때 이 일이 일어났다고 말해요.",
+        "title_zh": "喜乐：大光",
+        "note_zh": "在黑暗中行走的百姓看见了大光。马太说，耶稣在加利利开始传道时，这话就应验了。"
       },
       {
         "a": "Jer.23.5",
@@ -210,7 +324,13 @@
         "title_pt": "Alegria: um Renovo justo",
         "note": "Jeremiah promises a righteous Branch from David who will reign wisely. Luke announces Jesus as the son of David who will reign for ever.",
         "note_es": "Jeremías promete un Renuevo justo de David que reinará con sabiduría. Lucas anuncia a Jesús como el hijo de David que reinará para siempre.",
-        "note_pt": "Jeremias promete um Renovo justo da casa de Davi que reinará com sabedoria. Lucas anuncia Jesus como o filho de Davi que reinará para sempre."
+        "note_pt": "Jeremias promete um Renovo justo da casa de Davi que reinará com sabedoria. Lucas anuncia Jesus como o filho de Davi que reinará para sempre.",
+        "title_fr": "Joie : un germe juste",
+        "note_fr": "Jérémie promet un germe juste issu de David, qui régnera avec sagesse. Luc annonce Jésus comme le fils de David qui régnera pour toujours.",
+        "title_ko": "기쁨: 의로운 가지",
+        "note_ko": "예레미야는 다윗에게서 나서 지혜롭게 다스릴 의로운 가지를 약속해요. 누가는 영원히 다스리실 다윗의 자손으로 예수님을 알려요.",
+        "title_zh": "喜乐：公义的苗裔",
+        "note_zh": "耶利米应许，要从大卫兴起一个公义的苗裔，他必掌王权，行事有智慧。路加宣告耶稣就是大卫的子孙，要作王直到永远。"
       },
       {
         "a": "Mal.4.2",
@@ -220,7 +340,13 @@
         "title_pt": "Alegria: o sol nascente do alto",
         "note": "Malachi pictures the sun of righteousness rising with healing. Zechariah sings that the rising sun will visit us from heaven.",
         "note_es": "Malaquías describe el sol de justicia que sale trayendo sanidad. Zacarías canta que la aurora nos visitará desde lo alto.",
-        "note_pt": "Malaquias descreve o sol da justiça nascendo com cura. Zacarias canta que o sol nascente nos visitará do alto."
+        "note_pt": "Malaquias descreve o sol da justiça nascendo com cura. Zacarias canta que o sol nascente nos visitará do alto.",
+        "title_fr": "Joie : le soleil levant d’en haut",
+        "note_fr": "Malachie montre le soleil de justice qui se lève avec la guérison. Zacharie chante que le soleil levant nous visitera d’en haut.",
+        "title_ko": "기쁨: 위로부터 돋는 해",
+        "note_ko": "말라기는 치료하는 광선을 비추며 떠오르는 공의로운 해를 그려요. 사가랴는 돋는 해가 위로부터 우리에게 임할 것이라고 노래해요.",
+        "title_zh": "喜乐：清晨的日光从高天临到",
+        "note_zh": "玛拉基描绘公义的日头出现，其光线有医治之能。撒迦利亚歌唱说，清晨的日光要从高天临到我们。"
       },
       {
         "a": "Mal.3.1",
@@ -230,7 +356,13 @@
         "title_pt": "Alegria: meu mensageiro",
         "note": "God promises to send a messenger ahead of him. Mark opens with John the Baptist preparing the way for Jesus.",
         "note_es": "Dios promete enviar un mensajero delante de él. Marcos comienza con Juan el Bautista preparando el camino para Jesús.",
-        "note_pt": "Deus promete enviar um mensageiro à sua frente. Marcos começa com João Batista preparando o caminho para Jesus."
+        "note_pt": "Deus promete enviar um mensageiro à sua frente. Marcos começa com João Batista preparando o caminho para Jesus.",
+        "title_fr": "Joie : mon messager",
+        "note_fr": "Dieu promet d’envoyer un messager devant lui. Marc s’ouvre sur Jean-Baptiste qui prépare le chemin de Jésus.",
+        "title_ko": "기쁨: 내 사자",
+        "note_ko": "하나님은 자기 앞에 사자를 보내시겠다고 약속하세요. 마가복음은 예수님의 길을 예비하는 세례 요한으로 시작해요.",
+        "title_zh": "喜乐：我的使者",
+        "note_zh": "神应许要差遣使者在他前面预备道路。马可福音一开始，就是施洗约翰为耶稣预备道路。"
       },
       {
         "a": "Isa.53.5",
@@ -240,7 +372,13 @@
         "title_pt": "Amor: pelas suas feridas",
         "note": "The servant is wounded for the wrongs of others. Peter says Christ carried our sins in his body, so that we might be healed.",
         "note_es": "El siervo es herido por las faltas de otros. Pedro dice que Cristo llevó nuestros pecados en su cuerpo para que fuéramos sanados.",
-        "note_pt": "O servo é ferido pelas faltas de outros. Pedro diz que Cristo levou nossos pecados em seu corpo, para que fôssemos curados."
+        "note_pt": "O servo é ferido pelas faltas de outros. Pedro diz que Cristo levou nossos pecados em seu corpo, para que fôssemos curados.",
+        "title_fr": "Amour : par ses meurtrissures",
+        "note_fr": "Le serviteur est blessé pour les fautes des autres. Pierre dit que Christ a porté nos péchés dans son corps, afin que nous soyons guéris.",
+        "title_ko": "사랑: 그가 채찍에 맞음으로",
+        "note_ko": "종은 다른 사람들의 허물 때문에 상처를 입어요. 베드로는 그리스도께서 우리 죄를 그 몸으로 담당하셔서 우리가 나음을 얻었다고 말해요.",
+        "title_zh": "爱：因他受的鞭伤",
+        "note_zh": "这位仆人为别人的过犯受伤。彼得说，基督亲身担当了我们的罪，因他受的鞭伤，我们便得了医治。"
       },
       {
         "a": "Jer.31.31",
@@ -250,7 +388,13 @@
         "title_pt": "Amor: uma nova aliança",
         "note": "Jeremiah promises a new covenant written on the heart. At the Last Supper Jesus calls the cup the new covenant in his blood.",
         "note_es": "Jeremías promete un nuevo pacto escrito en el corazón. En la última cena, Jesús llama a la copa el nuevo pacto en su sangre.",
-        "note_pt": "Jeremias promete uma nova aliança escrita no coração. Na Última Ceia, Jesus chama o cálice de nova aliança no seu sangue."
+        "note_pt": "Jeremias promete uma nova aliança escrita no coração. Na Última Ceia, Jesus chama o cálice de nova aliança no seu sangue.",
+        "title_fr": "Amour : une nouvelle alliance",
+        "note_fr": "Jérémie promet une nouvelle alliance écrite dans le cœur. Lors de la Cène, Jésus appelle la coupe la nouvelle alliance en son sang.",
+        "title_ko": "사랑: 새 언약",
+        "note_ko": "예레미야는 마음에 새겨질 새 언약을 약속해요. 마지막 만찬에서 예수님은 잔을 내 피로 세우는 새 언약이라고 부르세요.",
+        "title_zh": "爱：新约",
+        "note_zh": "耶利米应许一个写在心上的新约。在最后的晚餐中，耶稣称这杯是用他的血所立的新约。"
       },
       {
         "a": "Mic.5.2",
@@ -260,7 +404,13 @@
         "title_pt": "Amor: a pequena Belém",
         "note": "Micah names small Bethlehem as the birthplace of Israel's ruler. When Herod asks, the scholars answer from this passage.",
         "note_es": "Miqueas nombra a la pequeña Belén como el lugar de nacimiento del gobernante de Israel. Cuando Herodes pregunta, los maestros responden con este pasaje.",
-        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Quando Herodes pergunta, os mestres respondem com essa passagem."
+        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Quando Herodes pergunta, os mestres respondem com essa passagem.",
+        "title_fr": "Amour : la petite Bethléhem",
+        "note_fr": "Michée désigne la petite Bethléhem comme lieu de naissance du chef d’Israël. Quand Hérode pose la question, les scribes répondent avec ce passage.",
+        "title_ko": "사랑: 작은 베들레헴",
+        "note_ko": "미가는 작은 베들레헴을 이스라엘을 다스릴 자가 태어날 곳으로 말해요. 헤롯이 묻자 서기관들은 이 말씀으로 대답해요.",
+        "title_zh": "爱：小小的伯利恒",
+        "note_zh": "弥迦指出小小的伯利恒是以色列掌权者的出生地。希律询问时，学者们就用这段经文回答。"
       },
       {
         "a": "Isa.49.6",
@@ -270,7 +420,13 @@
         "title_pt": "Amor: luz para as nações",
         "note": "The servant will be a light for the nations, not only for Israel. Holding the baby Jesus, Simeon praises God for this light.",
         "note_es": "El siervo será luz para las naciones, no solo para Israel. Con el niño Jesús en brazos, Simeón alaba a Dios por esta luz.",
-        "note_pt": "O servo será luz para as nações, não só para Israel. Segurando o menino Jesus, Simeão louva a Deus por essa luz."
+        "note_pt": "O servo será luz para as nações, não só para Israel. Segurando o menino Jesus, Simeão louva a Deus por essa luz.",
+        "title_fr": "Amour : une lumière pour les nations",
+        "note_fr": "Le serviteur sera une lumière pour les nations, pas seulement pour Israël. Tenant l’enfant Jésus, Siméon loue Dieu pour cette lumière.",
+        "title_ko": "사랑: 이방의 빛",
+        "note_ko": "종은 이스라엘만이 아니라 이방의 빛이 될 거예요. 아기 예수님을 안은 시므온은 이 빛을 주신 하나님을 찬양해요.",
+        "title_zh": "爱：外邦人的光",
+        "note_zh": "这位仆人不仅是以色列的光，也要作外邦人的光。西面抱着婴孩耶稣，为这光赞美神。"
       },
       {
         "a": "Ps.72.10",
@@ -280,7 +436,13 @@
         "title_pt": "Amor: presentes para o rei",
         "note": "The psalm pictures kings from far away bringing gifts to Israel's king. The wise men kneel before the child and open their treasures.",
         "note_es": "El salmo describe reyes lejanos que traen regalos al rey de Israel. Los sabios se arrodillan ante el niño y abren sus tesoros.",
-        "note_pt": "O salmo descreve reis de terras distantes levando presentes ao rei de Israel. Os magos se ajoelham diante do menino e abrem seus tesouros."
+        "note_pt": "O salmo descreve reis de terras distantes levando presentes ao rei de Israel. Os magos se ajoelham diante do menino e abrem seus tesouros.",
+        "title_fr": "Amour : des présents pour le roi",
+        "note_fr": "Le psaume montre des rois venus de loin apportant des présents au roi d’Israël. Les mages se prosternent devant l’enfant et ouvrent leurs trésors.",
+        "title_ko": "사랑: 왕께 드리는 예물",
+        "note_ko": "시편은 먼 곳의 왕들이 이스라엘의 왕에게 예물을 가져오는 모습을 그려요. 동방박사들은 아기 앞에 엎드려 보배합을 열어요.",
+        "title_zh": "爱：献给王的礼物",
+        "note_zh": "诗篇描绘远方的君王向以色列的王献上礼物。博士们俯伏在孩子面前，打开宝盒献上礼物。"
       },
       {
         "a": "Phil.2.7",
@@ -290,9 +452,21 @@
         "title_pt": "Dia de Natal: o Verbo se fez carne",
         "note": "Paul describes Christ taking the nature of a servant and being born as a man. John says the Word became flesh and lived among us, full of grace and truth.",
         "note_es": "Pablo describe a Cristo tomando la forma de siervo y naciendo como hombre. Juan dice que el Verbo se hizo carne y habitó entre nosotros, lleno de gracia y de verdad.",
-        "note_pt": "Paulo descreve Cristo assumindo a natureza de servo e nascendo como homem. João diz que o Verbo se fez carne e habitou entre nós, cheio de graça e de verdade."
+        "note_pt": "Paulo descreve Cristo assumindo a natureza de servo e nascendo como homem. João diz que o Verbo se fez carne e habitou entre nós, cheio de graça e de verdade.",
+        "title_fr": "Jour de Noël : la Parole a été faite chair",
+        "note_fr": "Paul décrit Christ prenant la condition de serviteur et devenant semblable aux hommes. Jean dit que la Parole a été faite chair et a habité parmi nous, pleine de grâce et de vérité.",
+        "title_ko": "성탄절: 말씀이 육신이 되어",
+        "note_ko": "바울은 그리스도께서 종의 형체를 가지사 사람으로 태어나셨다고 말해요. 요한은 말씀이 육신이 되어 은혜와 진리가 충만하게 우리 가운데 거하셨다고 말해요.",
+        "title_zh": "圣诞节：道成了肉身",
+        "note_zh": "保罗描述基督取了奴仆的形像，成为人的样式。约翰说道成了肉身，住在我们中间，充充满满地有恩典有真理。"
       }
-    ]
+    ],
+    "name_fr": "Avent : promesse et accomplissement",
+    "description_fr": "Une promesse et son accomplissement chaque jour, du premier dimanche de l’Avent au jour de Noël, à travers les thèmes de l’espérance, de la paix, de la joie et de l’amour.",
+    "name_ko": "대림절: 약속과 성취",
+    "description_ko": "대림절 첫 주일부터 성탄절까지 날마다 약속 하나와 그 성취를 소망, 평화, 기쁨, 사랑의 주제를 따라 읽어요.",
+    "name_zh": "将临期：应许与应验",
+    "description_zh": "从将临期第一主日到圣诞节，每天一个应许及其应验，贯穿盼望、平安、喜乐和爱四个主题。"
   },
   {
     "id": "christmas",
@@ -314,7 +488,13 @@
         "title_pt": "Dia de Natal: boas notícias",
         "note": "Isaiah tells a messenger to climb a high mountain and shout good news. On the first Christmas night an angel brings the shepherds good news of great joy for all the people.",
         "note_es": "Isaías le pide a un mensajero que suba a un monte alto y anuncie buenas noticias. La primera noche de Navidad un ángel trae a los pastores buenas noticias de gran gozo para todo el pueblo.",
-        "note_pt": "Isaías manda um mensageiro subir a um monte alto e anunciar boas notícias. Na primeira noite de Natal, um anjo traz aos pastores boas notícias de grande alegria para todo o povo."
+        "note_pt": "Isaías manda um mensageiro subir a um monte alto e anunciar boas notícias. Na primeira noite de Natal, um anjo traz aos pastores boas notícias de grande alegria para todo o povo.",
+        "title_fr": "Jour de Noël : une bonne nouvelle",
+        "note_fr": "Ésaïe dit à un messager de monter sur une haute montagne et de crier la bonne nouvelle. La première nuit de Noël, un ange annonce aux bergers une bonne nouvelle, une grande joie pour tout le peuple.",
+        "title_ko": "성탄절: 좋은 소식",
+        "note_ko": "이사야는 전령에게 높은 산에 올라 좋은 소식을 외치라고 말해요. 첫 성탄절 밤, 천사는 목자들에게 온 백성에게 미칠 큰 기쁨의 좋은 소식을 전해요.",
+        "title_zh": "圣诞节：大好的信息",
+        "note_zh": "以赛亚吩咐报好信息的人登上高山，大声传扬。第一个圣诞夜，天使向牧羊人报告大喜的信息，是关乎万民的。"
       },
       {
         "a": "Mic.5.2",
@@ -324,7 +504,13 @@
         "title_pt": "A cidade de Davi",
         "note": "Micah names little Bethlehem as the birthplace of Israel's ruler. A census sends Joseph and Mary to Bethlehem, the town of David, just in time.",
         "note_es": "Miqueas nombra a la pequeña Belén como lugar de nacimiento del gobernante de Israel. Un censo lleva a José y María a Belén, la ciudad de David, justo a tiempo.",
-        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Um recenseamento leva José e Maria a Belém, a cidade de Davi, bem a tempo."
+        "note_pt": "Miqueias aponta a pequena Belém como o lugar de nascimento do governante de Israel. Um recenseamento leva José e Maria a Belém, a cidade de Davi, bem a tempo.",
+        "title_fr": "La ville de David",
+        "note_fr": "Michée désigne la petite Bethléhem comme lieu de naissance du chef d’Israël. Un recensement envoie Joseph et Marie à Bethléhem, la ville de David, juste à temps.",
+        "title_ko": "다윗의 동네",
+        "note_ko": "미가는 작은 베들레헴을 이스라엘을 다스릴 자가 태어날 곳으로 말해요. 호적 조사 때문에 요셉과 마리아는 마침 다윗의 동네 베들레헴으로 가게 돼요.",
+        "title_zh": "大卫的城",
+        "note_zh": "弥迦指出小小的伯利恒是以色列掌权者的出生地。一次人口登记，让约瑟和马利亚及时来到大卫的城伯利恒。"
       },
       {
         "a": "Isa.40.5",
@@ -334,7 +520,13 @@
         "title_pt": "A glória revelada",
         "note": "Isaiah promises that the glory of the Lord will be revealed and all people will see it. John says that in Jesus we have seen his glory, full of grace and truth.",
         "note_es": "Isaías promete que la gloria del Señor se manifestará y todos la verán. Juan dice que en Jesús hemos visto su gloria, llena de gracia y de verdad.",
-        "note_pt": "Isaías promete que a glória do Senhor será revelada e todos a verão. João diz que em Jesus vimos a sua glória, cheia de graça e de verdade."
+        "note_pt": "Isaías promete que a glória do Senhor será revelada e todos a verão. João diz que em Jesus vimos a sua glória, cheia de graça e de verdade.",
+        "title_fr": "La gloire révélée",
+        "note_fr": "Ésaïe promet que la gloire du Seigneur sera révélée et que tous la verront. Jean dit qu’en Jésus nous avons contemplé sa gloire, pleine de grâce et de vérité.",
+        "title_ko": "드러난 영광",
+        "note_ko": "이사야는 여호와의 영광이 나타나고 모든 육체가 그것을 함께 볼 것이라고 약속해요. 요한은 예수님 안에서 은혜와 진리가 충만한 그 영광을 보았다고 말해요.",
+        "title_zh": "荣耀显现",
+        "note_zh": "以赛亚应许，耶和华的荣耀必然显现，凡有血气的必一同看见。约翰说，在耶稣身上我们见过他的荣光，充充满满地有恩典有真理。"
       },
       {
         "a": "Jer.31.15",
@@ -344,7 +536,13 @@
         "title_pt": "Raquel chora",
         "note": "Jeremiah hears Rachel weeping for her children. Matthew remembers these words when Herod's soldiers kill the boys of Bethlehem. Christmas comes into a world that still knows grief.",
         "note_es": "Jeremías oye a Raquel llorar por sus hijos. Mateo recuerda estas palabras cuando los soldados de Herodes matan a los niños de Belén. La Navidad llega a un mundo que todavía conoce el dolor.",
-        "note_pt": "Jeremias ouve Raquel chorando por seus filhos. Mateus lembra essas palavras quando os soldados de Herodes matam os meninos de Belém. O Natal chega a um mundo que ainda conhece a dor."
+        "note_pt": "Jeremias ouve Raquel chorando por seus filhos. Mateus lembra essas palavras quando os soldados de Herodes matam os meninos de Belém. O Natal chega a um mundo que ainda conhece a dor.",
+        "title_fr": "Rachel pleure",
+        "note_fr": "Jérémie entend Rachel pleurer ses enfants. Matthieu se souvient de ces mots quand les soldats d’Hérode tuent les garçons de Bethléhem. Noël vient dans un monde qui connaît encore le deuil.",
+        "title_ko": "라헬의 애곡",
+        "note_ko": "예레미야는 자식들 때문에 우는 라헬의 소리를 들어요. 마태는 헤롯의 군사들이 베들레헴의 사내아이들을 죽일 때 이 말씀을 기억해요. 성탄절은 여전히 슬픔이 있는 세상에 찾아와요.",
+        "title_zh": "拉结哭泣",
+        "note_zh": "耶利米听见拉结为她的儿女哭泣。希律的士兵杀害伯利恒的男孩时，马太想起了这些话。圣诞节临到的，是一个仍有悲伤的世界。"
       },
       {
         "a": "Isa.52.10",
@@ -354,7 +552,13 @@
         "title_pt": "A salvação vista",
         "note": "Isaiah says all the ends of the earth will see the salvation of God. Old Simeon holds the baby Jesus in the temple and says, my eyes have seen your salvation.",
         "note_es": "Isaías dice que todos los confines de la tierra verán la salvación de Dios. El anciano Simeón toma al niño Jesús en el templo y dice: mis ojos han visto tu salvación.",
-        "note_pt": "Isaías diz que todos os confins da terra verão a salvação de Deus. O velho Simeão segura o menino Jesus no templo e diz: meus olhos viram a tua salvação."
+        "note_pt": "Isaías diz que todos os confins da terra verão a salvação de Deus. O velho Simeão segura o menino Jesus no templo e diz: meus olhos viram a tua salvação.",
+        "title_fr": "Le salut contemplé",
+        "note_fr": "Ésaïe dit que toutes les extrémités de la terre verront le salut de Dieu. Le vieux Siméon tient l’enfant Jésus dans le temple et dit : mes yeux ont vu ton salut.",
+        "title_ko": "구원을 보았어요",
+        "note_ko": "이사야는 땅끝까지 모두 하나님의 구원을 볼 것이라고 말해요. 나이 든 시므온은 성전에서 아기 예수님을 안고, 내 눈이 주의 구원을 보았다고 말해요.",
+        "title_zh": "看见救恩",
+        "note_zh": "以赛亚说，地极的人都要看见我们神的救恩。年迈的西面在圣殿里抱着婴孩耶稣说：我的眼睛已经看见你的救恩。"
       },
       {
         "a": "Isa.42.6",
@@ -364,7 +568,13 @@
         "title_pt": "Luz para as nações",
         "note": "God calls his servant to be a light for the nations. Simeon sees that the child he is holding is that light, for every people and not only for Israel.",
         "note_es": "Dios llama a su siervo a ser luz para las naciones. Simeón ve que el niño que tiene en brazos es esa luz, para todos los pueblos y no solo para Israel.",
-        "note_pt": "Deus chama seu servo para ser luz para as nações. Simeão vê que a criança que ele segura é essa luz, para todos os povos e não só para Israel."
+        "note_pt": "Deus chama seu servo para ser luz para as nações. Simeão vê que a criança que ele segura é essa luz, para todos os povos e não só para Israel.",
+        "title_fr": "Une lumière pour les nations",
+        "note_fr": "Dieu appelle son serviteur à être la lumière des nations. Siméon voit que l’enfant qu’il tient est cette lumière, pour tous les peuples et pas seulement pour Israël.",
+        "title_ko": "이방의 빛",
+        "note_ko": "하나님은 자기 종을 이방의 빛으로 부르세요. 시므온은 품에 안은 아기가 이스라엘만이 아니라 모든 민족을 위한 바로 그 빛임을 알아봐요.",
+        "title_zh": "外邦人的光",
+        "note_zh": "神呼召他的仆人作外邦人的光。西面看出他怀中的孩子就是那光，是给万民的，不只是给以色列的。"
       },
       {
         "a": "Ps.90.4",
@@ -374,7 +584,13 @@
         "title_pt": "Mil anos como um dia",
         "note": "As the year ends, the psalm reminds us that a thousand years are like a day to God. Peter uses the same words to say God is patient and keeps every promise in his time.",
         "note_es": "Al terminar el año, el salmo nos recuerda que mil años son como un día para Dios. Pedro usa las mismas palabras para decir que Dios es paciente y cumple cada promesa a su tiempo.",
-        "note_pt": "No fim do ano, o salmo nos lembra que mil anos são como um dia para Deus. Pedro usa as mesmas palavras para dizer que Deus é paciente e cumpre cada promessa no seu tempo."
+        "note_pt": "No fim do ano, o salmo nos lembra que mil anos são como um dia para Deus. Pedro usa as mesmas palavras para dizer que Deus é paciente e cumpre cada promessa no seu tempo.",
+        "title_fr": "Mille ans comme un jour",
+        "note_fr": "Alors que l’année se termine, le psaume nous rappelle que mille ans sont comme un jour pour Dieu. Pierre reprend ces mots pour dire que Dieu est patient et tient chaque promesse en son temps.",
+        "title_ko": "천 년이 하루 같아요",
+        "note_ko": "한 해가 저물 때, 시편은 주님께는 천 년이 하루 같다고 일깨워 줘요. 베드로는 같은 말로 하나님이 오래 참으시며 때가 되면 모든 약속을 지키신다고 말해요.",
+        "title_zh": "千年如一日",
+        "note_zh": "一年将尽，诗篇提醒我们，在神看来千年如已过的昨日。彼得用同样的话说明神有耐心，必按他的时候成就每一个应许。"
       },
       {
         "a": "Ps.130.8",
@@ -384,7 +600,13 @@
         "title_pt": "O nome dele é Jesus",
         "note": "The psalm says the Lord himself will redeem Israel from all its sins. The angel tells Joseph to name the child Jesus, because he will save his people from their sins.",
         "note_es": "El salmo dice que el Señor mismo redimirá a Israel de todos sus pecados. El ángel le dice a José que llame al niño Jesús, porque él salvará a su pueblo de sus pecados.",
-        "note_pt": "O salmo diz que o próprio Senhor vai redimir Israel de todos os seus pecados. O anjo diz a José que dê ao menino o nome de Jesus, porque ele salvará o seu povo dos seus pecados."
+        "note_pt": "O salmo diz que o próprio Senhor vai redimir Israel de todos os seus pecados. O anjo diz a José que dê ao menino o nome de Jesus, porque ele salvará o seu povo dos seus pecados.",
+        "title_fr": "Son nom est Jésus",
+        "note_fr": "Le psaume dit que le Seigneur lui-même rachètera Israël de tous ses péchés. L’ange dit à Joseph d’appeler l’enfant Jésus, car il sauvera son peuple de ses péchés.",
+        "title_ko": "그 이름은 예수",
+        "note_ko": "시편은 주님께서 친히 이스라엘을 모든 죄악에서 속량하실 것이라고 말해요. 천사는 요셉에게 아기의 이름을 예수라 하라고 말해요. 그가 자기 백성을 죄에서 구원하실 것이기 때문이에요.",
+        "title_zh": "他的名叫耶稣",
+        "note_zh": "诗篇说，主自己要救赎以色列脱离一切的罪孽。天使告诉约瑟，要给孩子起名叫耶稣，因他要将自己的百姓从罪恶里救出来。"
       },
       {
         "a": "Exod.4.22",
@@ -394,7 +616,13 @@
         "title_pt": "Do Egito",
         "note": "God calls Israel his firstborn son and brings them out of Egypt. Jesus, God's Son, also goes down to Egypt and is called out again, living Israel's story in his own life.",
         "note_es": "Dios llama a Israel su hijo primogénito y lo saca de Egipto. Jesús, el Hijo de Dios, también baja a Egipto y es llamado a salir, viviendo en su propia vida la historia de Israel.",
-        "note_pt": "Deus chama Israel de seu filho primogênito e o tira do Egito. Jesus, o Filho de Deus, também desce ao Egito e é chamado de volta, vivendo em sua própria vida a história de Israel."
+        "note_pt": "Deus chama Israel de seu filho primogênito e o tira do Egito. Jesus, o Filho de Deus, também desce ao Egito e é chamado de volta, vivendo em sua própria vida a história de Israel.",
+        "title_fr": "Hors d’Égypte",
+        "note_fr": "Dieu appelle Israël son fils premier-né et le fait sortir d’Égypte. Jésus, le Fils de Dieu, descend lui aussi en Égypte et en est rappelé, vivant dans sa propre vie l’histoire d’Israël.",
+        "title_ko": "애굽에서 불러내어",
+        "note_ko": "하나님은 이스라엘을 장자라 부르시고 애굽에서 이끌어 내세요. 하나님의 아들 예수님도 애굽으로 내려갔다가 다시 부름을 받아 나오시며, 이스라엘의 이야기를 자신의 삶으로 살아 내세요.",
+        "title_zh": "出埃及",
+        "note_zh": "神称以色列为他的长子，把他们从埃及领出来。耶稣是神的儿子，也下到埃及，又被召出来，在自己的生命中重演以色列的故事。"
       },
       {
         "a": "Isa.60.3",
@@ -404,7 +632,13 @@
         "title_pt": "As nações vêm para a luz",
         "note": "Isaiah sees nations and kings coming to the light rising over Jerusalem. Wise men from the east follow a star, looking for the newborn king.",
         "note_es": "Isaías ve naciones y reyes que vienen a la luz que brilla sobre Jerusalén. Unos sabios de oriente siguen una estrella buscando al rey recién nacido.",
-        "note_pt": "Isaías vê nações e reis vindo para a luz que brilha sobre Jerusalém. Magos do Oriente seguem uma estrela, procurando o rei recém-nascido."
+        "note_pt": "Isaías vê nações e reis vindo para a luz que brilha sobre Jerusalém. Magos do Oriente seguem uma estrela, procurando o rei recém-nascido.",
+        "title_fr": "Les nations viennent à la lumière",
+        "note_fr": "Ésaïe voit des nations et des rois venir à la lumière qui se lève sur Jérusalem. Des mages d’Orient suivent une étoile, à la recherche du roi qui vient de naître.",
+        "title_ko": "열방이 빛으로 나아와요",
+        "note_ko": "이사야는 열방과 왕들이 예루살렘 위에 떠오르는 빛으로 나아오는 것을 봐요. 동방에서 온 박사들은 새로 나신 왕을 찾아 별을 따라가요.",
+        "title_zh": "万国来就光",
+        "note_zh": "以赛亚看见万国和君王来就耶路撒冷上空升起的光。东方的博士跟着一颗星，寻找新生的王。"
       },
       {
         "a": "Isa.60.6",
@@ -414,7 +648,13 @@
         "title_pt": "Ouro e incenso",
         "note": "Isaiah pictures visitors bringing gold and frankincense and praising the Lord. The wise men kneel before the child and open their treasures.",
         "note_es": "Isaías describe visitantes que traen oro e incienso y alaban al Señor. Los sabios se arrodillan ante el niño y abren sus tesoros.",
-        "note_pt": "Isaías descreve visitantes que trazem ouro e incenso e louvam o Senhor. Os magos se ajoelham diante do menino e abrem seus tesouros."
+        "note_pt": "Isaías descreve visitantes que trazem ouro e incenso e louvam o Senhor. Os magos se ajoelham diante do menino e abrem seus tesouros.",
+        "title_fr": "L’or et l’encens",
+        "note_fr": "Ésaïe montre des visiteurs apportant de l’or et de l’encens et louant le Seigneur. Les mages se prosternent devant l’enfant et ouvrent leurs trésors.",
+        "title_ko": "황금과 유향",
+        "note_ko": "이사야는 손님들이 황금과 유향을 가져와 주님을 찬양하는 모습을 그려요. 동방박사들은 아기 앞에 엎드려 보배합을 열어요.",
+        "title_zh": "黄金和乳香",
+        "note_zh": "以赛亚描绘来访者带着黄金和乳香，传说耶和华的赞美。博士们俯伏在孩子面前，打开宝盒献上礼物。"
       },
       {
         "a": "Gen.1.3",
@@ -424,9 +664,21 @@
         "title_pt": "Luz nas trevas",
         "note": "On the first day God says, let there be light. On the eve of Epiphany, John reminds us that the light has come into the world and the darkness has not overcome it.",
         "note_es": "El primer día Dios dice: sea la luz. En la víspera de la Epifanía, Juan nos recuerda que la luz vino al mundo y la oscuridad no la ha vencido.",
-        "note_pt": "No primeiro dia, Deus diz: haja luz. Na véspera da Epifania, João nos lembra que a luz veio ao mundo e as trevas não a venceram."
+        "note_pt": "No primeiro dia, Deus diz: haja luz. Na véspera da Epifania, João nos lembra que a luz veio ao mundo e as trevas não a venceram.",
+        "title_fr": "La lumière dans les ténèbres",
+        "note_fr": "Le premier jour, Dieu dit : que la lumière soit. À la veille de l’Épiphanie, Jean nous rappelle que la lumière est venue dans le monde et que les ténèbres ne l’ont pas vaincue.",
+        "title_ko": "어둠 속의 빛",
+        "note_ko": "첫째 날 하나님은 빛이 있으라 말씀하세요. 주현절 전날, 요한은 빛이 세상에 왔고 어둠이 빛을 이기지 못했다고 일깨워 줘요.",
+        "title_zh": "光照在黑暗里",
+        "note_zh": "第一天，神说：要有光。在主显节前夕，约翰提醒我们，光已经来到世上，黑暗却不能胜过光。"
       }
-    ]
+    ],
+    "name_fr": "Les douze jours de Noël",
+    "description_fr": "Une promesse et son accomplissement pour chacun des douze jours, du jour de Noël à la veille de l’Épiphanie.",
+    "name_ko": "성탄절의 열두 날",
+    "description_ko": "성탄절부터 주현절 전날까지 열두 날 동안 날마다 약속 하나와 그 성취를 읽어요.",
+    "name_zh": "圣诞节十二日",
+    "description_zh": "从圣诞节到主显节前夕，十二天中每天一个应许及其应验。"
   },
   {
     "id": "lent",
@@ -448,7 +700,13 @@
         "title_pt": "Quarta-feira de Cinzas: pó",
         "note": "God tells Adam that he came from dust and will return to it. Paul says death came into the world through one man's sin. Lent begins honestly, with our need of God.",
         "note_es": "Dios le dice a Adán que vino del polvo y volverá a él. Pablo dice que la muerte entró en el mundo por el pecado de un hombre. La Cuaresma empieza con honestidad, reconociendo que necesitamos a Dios.",
-        "note_pt": "Deus diz a Adão que ele veio do pó e ao pó voltará. Paulo diz que a morte entrou no mundo pelo pecado de um só homem. A Quaresma começa com honestidade, reconhecendo que precisamos de Deus."
+        "note_pt": "Deus diz a Adão que ele veio do pó e ao pó voltará. Paulo diz que a morte entrou no mundo pelo pecado de um só homem. A Quaresma começa com honestidade, reconhecendo que precisamos de Deus.",
+        "title_fr": "Mercredi des Cendres : la poussière",
+        "note_fr": "Dieu dit à Adam qu’il a été tiré de la poussière et qu’il y retournera. Paul dit que la mort est entrée dans le monde par le péché d’un seul homme. Le Carême commence avec honnêteté, par notre besoin de Dieu.",
+        "title_ko": "재의 수요일: 흙",
+        "note_ko": "하나님은 아담에게 흙에서 왔으니 흙으로 돌아갈 것이라고 말씀하세요. 바울은 한 사람의 죄로 사망이 세상에 들어왔다고 말해요. 사순절은 하나님이 필요한 우리 모습을 정직하게 인정하며 시작해요.",
+        "title_zh": "圣灰星期三：尘土",
+        "note_zh": "神告诉亚当，他本是尘土，仍要归于尘土。保罗说，罪是从一人入了世界，死又是从罪来的。大斋期以诚实开始，承认我们需要神。"
       },
       {
         "a": "Ps.51.10",
@@ -458,7 +716,13 @@
         "title_pt": "Um coração puro",
         "note": "David asks God to create a clean heart in him. Paul says that anyone in Christ is a new creation. What David prayed for, God gives.",
         "note_es": "David le pide a Dios que cree en él un corazón limpio. Pablo dice que quien está en Cristo es una nueva creación. Lo que David pidió, Dios lo da.",
-        "note_pt": "Davi pede a Deus que crie nele um coração puro. Paulo diz que quem está em Cristo é nova criação. O que Davi pediu, Deus dá."
+        "note_pt": "Davi pede a Deus que crie nele um coração puro. Paulo diz que quem está em Cristo é nova criação. O que Davi pediu, Deus dá.",
+        "title_fr": "Un cœur pur",
+        "note_fr": "David demande à Dieu de créer en lui un cœur pur. Paul dit que si quelqu’un est en Christ, il est une nouvelle création. Ce que David demandait, Dieu le donne.",
+        "title_ko": "정결한 마음",
+        "note_ko": "다윗은 하나님께 자기 안에 정결한 마음을 창조해 달라고 구해요. 바울은 누구든지 그리스도 안에 있으면 새로운 피조물이라고 말해요. 다윗이 기도한 것을 하나님이 주세요.",
+        "title_zh": "清洁的心",
+        "note_zh": "大卫求神为他造清洁的心。保罗说，若有人在基督里，他就是新造的人。大卫所求的，神赐下了。"
       },
       {
         "a": "Isa.61.1",
@@ -468,7 +732,13 @@
         "title_pt": "Boas notícias para os pobres",
         "note": "Isaiah's servant brings good news to the poor and the brokenhearted. Jesus begins his great sermon by calling the poor in spirit blessed.",
         "note_es": "El siervo de Isaías trae buenas noticias a los pobres y a los quebrantados. Jesús comienza su gran sermón llamando dichosos a los pobres en espíritu.",
-        "note_pt": "O servo de Isaías traz boas notícias aos pobres e aos de coração quebrantado. Jesus começa seu grande sermão chamando bem-aventurados os pobres de espírito."
+        "note_pt": "O servo de Isaías traz boas notícias aos pobres e aos de coração quebrantado. Jesus começa seu grande sermão chamando bem-aventurados os pobres de espírito.",
+        "title_fr": "Une bonne nouvelle pour les pauvres",
+        "note_fr": "Le serviteur d’Ésaïe apporte une bonne nouvelle aux pauvres et à ceux qui ont le cœur brisé. Jésus commence son grand sermon en déclarant heureux les pauvres en esprit.",
+        "title_ko": "가난한 사람에게 전하는 좋은 소식",
+        "note_ko": "이사야서의 종은 가난한 사람과 마음이 상한 사람에게 좋은 소식을 전해요. 예수님은 심령이 가난한 사람은 복이 있다는 말씀으로 위대한 설교를 시작하세요.",
+        "title_zh": "传福音给贫穷的人",
+        "note_zh": "以赛亚书中的仆人把好信息带给贫穷的人和伤心的人。耶稣开始他的登山宝训，就说虚心的人有福了。"
       },
       {
         "a": "Prov.3.34",
@@ -478,7 +748,13 @@
         "title_pt": "Graça para os humildes",
         "note": "Proverbs says God opposes the proud but gives grace to the humble. James quotes it and calls us to come near to God.",
         "note_es": "Proverbios dice que Dios se opone a los orgullosos pero da gracia a los humildes. Santiago lo cita y nos llama a acercarnos a Dios.",
-        "note_pt": "Provérbios diz que Deus se opõe aos orgulhosos, mas dá graça aos humildes. Tiago cita isso e nos chama a nos aproximarmos de Deus."
+        "note_pt": "Provérbios diz que Deus se opõe aos orgulhosos, mas dá graça aos humildes. Tiago cita isso e nos chama a nos aproximarmos de Deus.",
+        "title_fr": "La grâce pour les humbles",
+        "note_fr": "Les Proverbes disent que Dieu résiste aux orgueilleux mais fait grâce aux humbles. Jacques le cite et nous appelle à nous approcher de Dieu.",
+        "title_ko": "겸손한 사람에게 주시는 은혜",
+        "note_ko": "잠언은 하나님이 교만한 사람을 물리치시고 겸손한 사람에게 은혜를 주신다고 말해요. 야고보는 이 말씀을 인용하며 하나님을 가까이하라고 권해요.",
+        "title_zh": "赐恩给谦卑的人",
+        "note_zh": "箴言说神阻挡骄傲的人，赐恩给谦卑的人。雅各引用这话，呼召我们亲近神。"
       },
       {
         "a": "Exod.34.28",
@@ -488,7 +764,13 @@
         "title_pt": "Deserto: quarenta dias",
         "note": "Moses spends forty days and nights with God on the mountain without food. Jesus fasts forty days and nights in the wilderness before his ministry begins.",
         "note_es": "Moisés pasa cuarenta días y cuarenta noches con Dios en el monte sin comer. Jesús ayuna cuarenta días y cuarenta noches en el desierto antes de comenzar su ministerio.",
-        "note_pt": "Moisés passa quarenta dias e quarenta noites com Deus no monte, sem comer. Jesus jejua quarenta dias e quarenta noites no deserto antes de começar seu ministério."
+        "note_pt": "Moisés passa quarenta dias e quarenta noites com Deus no monte, sem comer. Jesus jejua quarenta dias e quarenta noites no deserto antes de começar seu ministério.",
+        "title_fr": "Désert : quarante jours",
+        "note_fr": "Moïse passe quarante jours et quarante nuits avec Dieu sur la montagne, sans manger. Jésus jeûne quarante jours et quarante nuits dans le désert avant le début de son ministère.",
+        "title_ko": "광야: 사십 일",
+        "note_ko": "모세는 산에서 먹지 않고 사십 주야를 하나님과 함께 보내요. 예수님은 사역을 시작하시기 전 광야에서 사십 주야를 금식하세요.",
+        "title_zh": "旷野：四十天",
+        "note_zh": "摩西在山上与神同在四十昼夜，不吃不喝。耶稣在开始传道之前，在旷野禁食四十昼夜。"
       },
       {
         "a": "Deut.8.3",
@@ -498,7 +780,13 @@
         "title_pt": "Deserto: pão",
         "note": "Moses reminds Israel that people do not live by bread alone but by every word from God. Jesus answers the first temptation with these words.",
         "note_es": "Moisés recuerda a Israel que no solo de pan vive el hombre, sino de toda palabra de Dios. Jesús responde a la primera tentación con estas palabras.",
-        "note_pt": "Moisés lembra a Israel que nem só de pão viverá o homem, mas de toda palavra de Deus. Jesus responde à primeira tentação com essas palavras."
+        "note_pt": "Moisés lembra a Israel que nem só de pão viverá o homem, mas de toda palavra de Deus. Jesus responde à primeira tentação com essas palavras.",
+        "title_fr": "Désert : le pain",
+        "note_fr": "Moïse rappelle à Israël que l’homme ne vit pas de pain seulement, mais de toute parole de Dieu. Jésus répond à la première tentation avec ces mots.",
+        "title_ko": "광야: 떡",
+        "note_ko": "모세는 이스라엘에게 사람이 떡으로만 사는 것이 아니라 하나님의 입에서 나오는 모든 말씀으로 산다고 일깨워요. 예수님은 첫 번째 시험에 이 말씀으로 대답하세요.",
+        "title_zh": "旷野：食物",
+        "note_zh": "摩西提醒以色列，人活着不是单靠食物，乃是靠神口里所出的一切话。耶稣用这句话回应第一个试探。"
       },
       {
         "a": "Deut.6.16",
@@ -508,7 +796,13 @@
         "title_pt": "Deserto: pôr Deus à prova",
         "note": "Israel is told not to put the Lord to the test as they did at Massah. Jesus refuses to throw himself from the temple to force God's hand.",
         "note_es": "A Israel se le manda no poner a prueba al Señor como en Masá. Jesús se niega a lanzarse del templo para forzar la mano de Dios.",
-        "note_pt": "Israel é ordenado a não pôr o Senhor à prova como em Massá. Jesus se recusa a se jogar do templo para forçar a mão de Deus."
+        "note_pt": "Israel é ordenado a não pôr o Senhor à prova como em Massá. Jesus se recusa a se jogar do templo para forçar a mão de Deus.",
+        "title_fr": "Désert : tenter Dieu",
+        "note_fr": "Israël reçoit l’ordre de ne pas tenter le Seigneur comme à Massa. Jésus refuse de se jeter du haut du temple pour forcer la main de Dieu.",
+        "title_ko": "광야: 하나님을 시험하지 말라",
+        "note_ko": "이스라엘은 맛사에서처럼 주님을 시험하지 말라는 말씀을 들어요. 예수님은 성전에서 뛰어내려 하나님을 억지로 움직이려 하지 않으세요.",
+        "title_zh": "旷野：试探神",
+        "note_zh": "以色列受命不可试探耶和华他们的神，像在玛撒那样。耶稣拒绝从圣殿顶上跳下去，逼神出手。"
       },
       {
         "a": "Ps.91.11",
@@ -518,7 +812,13 @@
         "title_pt": "Deserto: palavras distorcidas",
         "note": "The psalm promises God's angels will guard his people. The tempter quotes it to Jesus, but twists it. Scripture is a gift to trust, not a lever to pull.",
         "note_es": "El salmo promete que los ángeles de Dios guardarán a su pueblo. El tentador se lo cita a Jesús, pero lo tuerce. La Escritura es un regalo para confiar, no una palanca para manipular.",
-        "note_pt": "O salmo promete que os anjos de Deus guardarão o seu povo. O tentador o cita a Jesus, mas o distorce. A Escritura é um presente para confiar, não uma alavanca para manipular."
+        "note_pt": "O salmo promete que os anjos de Deus guardarão o seu povo. O tentador o cita a Jesus, mas o distorce. A Escritura é um presente para confiar, não uma alavanca para manipular.",
+        "title_fr": "Désert : des paroles déformées",
+        "note_fr": "Le psaume promet que les anges de Dieu garderont son peuple. Le tentateur le cite à Jésus, mais en le déformant. L’Écriture est un don auquel se fier, pas un levier à actionner.",
+        "title_ko": "광야: 비틀린 말씀",
+        "note_ko": "시편은 하나님의 천사들이 그분의 백성을 지킬 것이라고 약속해요. 시험하는 자는 이 말씀을 예수님께 인용하지만 비틀어 버려요. 성경은 신뢰하라고 주신 선물이지, 마음대로 당기는 지렛대가 아니에요.",
+        "title_zh": "旷野：被扭曲的话",
+        "note_zh": "诗篇应许神的使者要保护他的百姓。试探者向耶稣引用这段经文，却加以扭曲。圣经是要我们信靠的恩赐，而不是供人操纵的杠杆。"
       },
       {
         "a": "Deut.6.13",
@@ -528,7 +828,13 @@
         "title_pt": "Deserto: adorar só a Deus",
         "note": "Israel is called to fear the Lord and serve him only. Jesus refuses the kingdoms of the world and quotes these words.",
         "note_es": "A Israel se le llama a temer al Señor y servirle solo a él. Jesús rechaza los reinos del mundo y cita estas palabras.",
-        "note_pt": "Israel é chamado a temer o Senhor e servir somente a ele. Jesus recusa os reinos do mundo e cita essas palavras."
+        "note_pt": "Israel é chamado a temer o Senhor e servir somente a ele. Jesus recusa os reinos do mundo e cita essas palavras.",
+        "title_fr": "Désert : adorer Dieu seul",
+        "note_fr": "Israël est appelé à craindre le Seigneur et à le servir lui seul. Jésus refuse les royaumes du monde et cite ces mots.",
+        "title_ko": "광야: 하나님만 경배하라",
+        "note_ko": "이스라엘은 주님을 경외하고 그분만 섬기라는 부르심을 받아요. 예수님은 세상의 나라들을 거절하시며 이 말씀을 인용하세요.",
+        "title_zh": "旷野：单单敬拜神",
+        "note_zh": "以色列受召要敬畏耶和华，单单事奉他。耶稣拒绝世上的万国，并引用了这些话。"
       },
       {
         "a": "Exod.16.4",
@@ -538,7 +844,13 @@
         "title_pt": "Pão do céu",
         "note": "God rains bread from heaven on the hungry people in the desert. The crowd reminds Jesus of the manna, and he says he is the true bread from heaven.",
         "note_es": "Dios hace llover pan del cielo sobre el pueblo hambriento en el desierto. La multitud le recuerda a Jesús el maná, y él dice que es el verdadero pan del cielo.",
-        "note_pt": "Deus faz chover pão do céu sobre o povo faminto no deserto. A multidão lembra a Jesus o maná, e ele diz que é o verdadeiro pão do céu."
+        "note_pt": "Deus faz chover pão do céu sobre o povo faminto no deserto. A multidão lembra a Jesus o maná, e ele diz que é o verdadeiro pão do céu.",
+        "title_fr": "Le pain du ciel",
+        "note_fr": "Dieu fait pleuvoir du pain du ciel sur le peuple affamé dans le désert. La foule rappelle la manne à Jésus, et il dit qu’il est le vrai pain du ciel.",
+        "title_ko": "하늘에서 내린 떡",
+        "note_ko": "하나님은 광야에서 굶주린 백성에게 하늘에서 떡을 비처럼 내리세요. 무리가 예수님께 만나를 떠올리게 하자, 예수님은 자신이 하늘에서 내려온 참 떡이라고 말씀하세요.",
+        "title_zh": "从天上来的粮",
+        "note_zh": "神从天上降粮给旷野中饥饿的百姓。众人向耶稣提起吗哪，他说自己才是从天上来的真粮。"
       },
       {
         "a": "Num.21.9",
@@ -548,7 +860,13 @@
         "title_pt": "Levantado",
         "note": "Moses lifts up a bronze serpent, and those who look at it live. Jesus says the Son of Man must be lifted up in the same way, so that all who believe may have life.",
         "note_es": "Moisés levanta una serpiente de bronce, y quienes la miran viven. Jesús dice que el Hijo del Hombre tiene que ser levantado de la misma manera, para que todo el que cree tenga vida.",
-        "note_pt": "Moisés levanta uma serpente de bronze, e quem olha para ela vive. Jesus diz que o Filho do Homem precisa ser levantado da mesma forma, para que todo o que crê tenha vida."
+        "note_pt": "Moisés levanta uma serpente de bronze, e quem olha para ela vive. Jesus diz que o Filho do Homem precisa ser levantado da mesma forma, para que todo o que crê tenha vida.",
+        "title_fr": "Élevé",
+        "note_fr": "Moïse élève un serpent de bronze, et ceux qui le regardent vivent. Jésus dit que le Fils de l’homme doit être élevé de la même manière, afin que quiconque croit ait la vie.",
+        "title_ko": "들려야 하리라",
+        "note_ko": "모세가 놋뱀을 들자 그것을 쳐다본 사람들이 살아나요. 예수님은 인자도 이와 같이 들려야 믿는 사람마다 생명을 얻는다고 말씀하세요.",
+        "title_zh": "被举起来",
+        "note_zh": "摩西举起铜蛇，凡望这蛇的就得存活。耶稣说人子也必照样被举起来，叫一切信他的人得生命。"
       },
       {
         "a": "Ps.130.3",
@@ -558,7 +876,13 @@
         "title_pt": "Misericórdia: quem poderia subsistir?",
         "note": "The psalmist asks who could stand if God kept a record of sins. Paul answers that all have sinned and fall short, and all are made right freely by his grace.",
         "note_es": "El salmista pregunta quién podría estar en pie si Dios llevara cuenta de los pecados. Pablo responde que todos han pecado y no alcanzan la gloria de Dios, y todos son justificados gratuitamente por su gracia.",
-        "note_pt": "O salmista pergunta quem poderia subsistir se Deus levasse em conta os pecados. Paulo responde que todos pecaram e carecem da glória de Deus, e todos são justificados gratuitamente pela sua graça."
+        "note_pt": "O salmista pergunta quem poderia subsistir se Deus levasse em conta os pecados. Paulo responde que todos pecaram e carecem da glória de Deus, e todos são justificados gratuitamente pela sua graça.",
+        "title_fr": "Miséricorde : qui pourrait subsister ?",
+        "note_fr": "Le psalmiste demande qui pourrait subsister si Dieu tenait compte des péchés. Paul répond que tous ont péché et sont privés de la gloire de Dieu, et que tous sont justifiés gratuitement par sa grâce.",
+        "title_ko": "긍휼: 누가 서리이까?",
+        "note_ko": "시인은 하나님이 죄악을 지켜보신다면 누가 설 수 있겠느냐고 물어요. 바울은 모든 사람이 죄를 범하여 하나님의 영광에 이르지 못했으나 그분의 은혜로 값없이 의롭다 함을 얻는다고 대답해요.",
+        "title_zh": "怜悯：谁能站得住？",
+        "note_zh": "诗人问：神若究察罪孽，谁能站得住呢？保罗回答：世人都犯了罪，亏缺了神的荣耀，如今却蒙神的恩典，白白地称义。"
       },
       {
         "a": "Ezek.18.32",
@@ -568,7 +892,13 @@
         "title_pt": "Misericórdia: Deus não tem prazer na morte",
         "note": "Through Ezekiel God says he takes no pleasure in anyone's death, so turn and live. Peter says God is patient, not wanting anyone to perish.",
         "note_es": "Por medio de Ezequiel Dios dice que no le agrada la muerte de nadie, así que conviértanse y vivan. Pedro dice que Dios es paciente y no quiere que nadie perezca.",
-        "note_pt": "Por meio de Ezequiel, Deus diz que não tem prazer na morte de ninguém: convertam-se e vivam. Pedro diz que Deus é paciente e não quer que ninguém pereça."
+        "note_pt": "Por meio de Ezequiel, Deus diz que não tem prazer na morte de ninguém: convertam-se e vivam. Pedro diz que Deus é paciente e não quer que ninguém pereça.",
+        "title_fr": "Miséricorde : Dieu ne prend pas plaisir à la mort",
+        "note_fr": "Par Ézéchiel, Dieu dit qu’il ne prend pas plaisir à la mort de qui que ce soit : revenez et vivez. Pierre dit que Dieu est patient et ne veut pas qu’aucun périsse.",
+        "title_ko": "긍휼: 하나님은 죽음을 기뻐하지 않으세요",
+        "note_ko": "하나님은 에스겔을 통해 누구의 죽음도 기뻐하지 않으시니 돌이켜 살라고 말씀하세요. 베드로는 하나님이 아무도 멸망하지 않기를 바라시며 오래 참으신다고 말해요.",
+        "title_zh": "怜悯：神不喜悦人死亡",
+        "note_zh": "神借着以西结说，他不喜悦人死亡，所以要回转而存活。彼得说神宽容，不愿有一人沉沦。"
       },
       {
         "a": "Ps.32.5",
@@ -578,7 +908,13 @@
         "title_pt": "Misericórdia: confissão",
         "note": "David stops hiding his sin and confesses it, and God forgives. John promises that if we confess our sins, God is faithful to forgive.",
         "note_es": "David deja de ocultar su pecado y lo confiesa, y Dios perdona. Juan promete que si confesamos nuestros pecados, Dios es fiel para perdonarnos.",
-        "note_pt": "Davi para de esconder seu pecado e o confessa, e Deus perdoa. João promete que, se confessarmos os nossos pecados, Deus é fiel para nos perdoar."
+        "note_pt": "Davi para de esconder seu pecado e o confessa, e Deus perdoa. João promete que, se confessarmos os nossos pecados, Deus é fiel para nos perdoar.",
+        "title_fr": "Miséricorde : la confession",
+        "note_fr": "David cesse de cacher son péché et le confesse, et Dieu pardonne. Jean promet que si nous confessons nos péchés, Dieu est fidèle pour nous pardonner.",
+        "title_ko": "긍휼: 죄의 고백",
+        "note_ko": "다윗은 죄를 숨기기를 멈추고 고백하고, 하나님은 용서하세요. 요한은 우리가 죄를 자백하면 하나님은 신실하셔서 용서하신다고 약속해요.",
+        "title_zh": "怜悯：认罪",
+        "note_zh": "大卫不再隐藏他的罪，向神承认，神就赦免了他。约翰应许，我们若认自己的罪，神是信实的，必要赦免。"
       },
       {
         "a": "Hos.6.6",
@@ -588,7 +924,13 @@
         "title_pt": "Misericórdia, e não sacrifício",
         "note": "God says through Hosea that he wants mercy more than sacrifice. Jesus quotes it when he is criticized for eating with sinners.",
         "note_es": "Dios dice por medio de Oseas que quiere misericordia más que sacrificio. Jesús lo cita cuando lo critican por comer con pecadores.",
-        "note_pt": "Deus diz por meio de Oseias que quer misericórdia mais do que sacrifício. Jesus cita isso quando é criticado por comer com pecadores."
+        "note_pt": "Deus diz por meio de Oseias que quer misericórdia mais do que sacrifício. Jesus cita isso quando é criticado por comer com pecadores.",
+        "title_fr": "La miséricorde plutôt que les sacrifices",
+        "note_fr": "Par Osée, Dieu dit qu’il veut la miséricorde plus que les sacrifices. Jésus le cite quand on lui reproche de manger avec les pécheurs.",
+        "title_ko": "제사보다 긍휼",
+        "note_ko": "하나님은 호세아를 통해 제사보다 긍휼을 원하신다고 말씀하세요. 예수님은 죄인들과 함께 식사하신다고 비난받으실 때 이 말씀을 인용하세요.",
+        "title_zh": "我喜爱怜恤，不喜爱祭祀",
+        "note_zh": "神借着何西阿说，他喜爱怜恤过于祭祀。耶稣因与罪人一同吃饭而受批评时，引用了这句话。"
       },
       {
         "a": "Jonah.3.10",
@@ -598,7 +940,13 @@
         "title_pt": "Misericórdia: Nínive se converte",
         "note": "When Nineveh turns from its evil ways, God relents. Jesus says the people of Nineveh repented at Jonah's preaching, and someone greater than Jonah is here.",
         "note_es": "Cuando Nínive deja sus malos caminos, Dios se compadece. Jesús dice que los ninivitas se arrepintieron con la predicación de Jonás, y aquí hay alguien más grande que Jonás.",
-        "note_pt": "Quando Nínive abandona seus maus caminhos, Deus se compadece. Jesus diz que os ninivitas se arrependeram com a pregação de Jonas, e aqui está alguém maior do que Jonas."
+        "note_pt": "Quando Nínive abandona seus maus caminhos, Deus se compadece. Jesus diz que os ninivitas se arrependeram com a pregação de Jonas, e aqui está alguém maior do que Jonas.",
+        "title_fr": "Miséricorde : Ninive se repent",
+        "note_fr": "Quand Ninive se détourne de sa mauvaise voie, Dieu renonce au châtiment. Jésus dit que les habitants de Ninive se sont repentis à la prédication de Jonas, et qu’il y a ici plus que Jonas.",
+        "title_ko": "긍휼: 니느웨가 돌이켜요",
+        "note_ko": "니느웨가 악한 길에서 돌이키자 하나님은 뜻을 돌이키세요. 예수님은 니느웨 사람들이 요나의 전도를 듣고 회개했는데 요나보다 더 큰 이가 여기 있다고 말씀하세요.",
+        "title_zh": "怜悯：尼尼微回转",
+        "note_zh": "尼尼微离开恶道，神就后悔，不降所说的灾。耶稣说尼尼微人听了约拿所传的就悔改了，而在这里有一人比约拿更大。"
       },
       {
         "a": "Isa.55.7",
@@ -608,7 +956,13 @@
         "title_pt": "Misericórdia: o pai corre",
         "note": "Isaiah invites the wicked to return to the Lord, who will freely pardon. In Jesus' story, the father runs to meet his returning son.",
         "note_es": "Isaías invita al malvado a volverse al Señor, que perdona con generosidad. En la historia de Jesús, el padre corre a recibir al hijo que regresa.",
-        "note_pt": "Isaías convida o ímpio a voltar para o Senhor, que perdoa com generosidade. Na história de Jesus, o pai corre para receber o filho que volta."
+        "note_pt": "Isaías convida o ímpio a voltar para o Senhor, que perdoa com generosidade. Na história de Jesus, o pai corre para receber o filho que volta.",
+        "title_fr": "Miséricorde : le père court",
+        "note_fr": "Ésaïe invite le méchant à revenir au Seigneur, qui pardonne abondamment. Dans la parabole de Jésus, le père court à la rencontre de son fils qui revient.",
+        "title_ko": "긍휼: 달려가는 아버지",
+        "note_ko": "이사야는 악인에게 주님께 돌아오라고 초청해요. 주님께서 너그럽게 용서하실 거예요. 예수님의 비유에서 아버지는 돌아오는 아들을 맞으러 달려가요.",
+        "title_zh": "怜悯：父亲跑去迎接",
+        "note_zh": "以赛亚邀请恶人归向耶和华，因为他必广行赦免。在耶稣讲的比喻中，父亲跑去迎接回家的儿子。"
       },
       {
         "a": "Isa.1.18",
@@ -618,7 +972,13 @@
         "title_pt": "Misericórdia: branco como a neve",
         "note": "God promises that sins like scarlet will become white as snow. In John's vision, a great crowd has washed their robes white in the blood of the Lamb.",
         "note_es": "Dios promete que los pecados como la grana quedarán blancos como la nieve. En la visión de Juan, una gran multitud ha lavado sus ropas en la sangre del Cordero.",
-        "note_pt": "Deus promete que os pecados vermelhos como escarlate ficarão brancos como a neve. Na visão de João, uma grande multidão lavou suas vestes no sangue do Cordeiro."
+        "note_pt": "Deus promete que os pecados vermelhos como escarlate ficarão brancos como a neve. Na visão de João, uma grande multidão lavou suas vestes no sangue do Cordeiro.",
+        "title_fr": "Miséricorde : blancs comme la neige",
+        "note_fr": "Dieu promet que des péchés rouges comme l’écarlate deviendront blancs comme la neige. Dans la vision de Jean, une grande foule a blanchi ses robes dans le sang de l’Agneau.",
+        "title_ko": "긍휼: 눈과 같이 희게",
+        "note_ko": "하나님은 주홍 같은 죄가 눈과 같이 희어질 것이라고 약속하세요. 요한의 환상에서 큰 무리가 어린양의 피에 그들의 옷을 씻어 희게 했어요.",
+        "title_zh": "怜悯：白如雪",
+        "note_zh": "神应许，罪虽像朱红，必变成雪白。在约翰所见的异象中，一大群人用羔羊的血把衣裳洗白净了。"
       },
       {
         "a": "1Sam.16.7",
@@ -628,7 +988,13 @@
         "title_pt": "O coração: não pela aparência",
         "note": "When Samuel looks for a king, God says people look at appearance but he looks at the heart. Jesus tells the crowd to stop judging by appearances.",
         "note_es": "Cuando Samuel busca un rey, Dios dice que la gente mira la apariencia, pero él mira el corazón. Jesús le dice a la multitud que deje de juzgar por las apariencias.",
-        "note_pt": "Quando Samuel procura um rei, Deus diz que as pessoas olham a aparência, mas ele olha o coração. Jesus diz à multidão que pare de julgar pelas aparências."
+        "note_pt": "Quando Samuel procura um rei, Deus diz que as pessoas olham a aparência, mas ele olha o coração. Jesus diz à multidão que pare de julgar pelas aparências.",
+        "title_fr": "Le cœur : pas selon l’apparence",
+        "note_fr": "Quand Samuel cherche un roi, Dieu dit que l’homme regarde à l’apparence, mais que lui regarde au cœur. Jésus dit à la foule de ne plus juger selon l’apparence.",
+        "title_ko": "마음: 외모로 보지 않으세요",
+        "note_ko": "사무엘이 왕을 찾을 때, 하나님은 사람은 외모를 보지만 자신은 중심을 보신다고 말씀하세요. 예수님은 무리에게 외모로 판단하지 말라고 하세요.",
+        "title_zh": "内心：不看外貌",
+        "note_zh": "撒母耳寻找君王时，神说人是看外貌，神是看内心。耶稣告诉众人不可按外貌断定是非。"
       },
       {
         "a": "Jer.17.10",
@@ -638,7 +1004,13 @@
         "title_pt": "O coração: Deus o sonda",
         "note": "Jeremiah says the Lord searches the heart and tests the mind. In Revelation the risen Jesus says the same of himself.",
         "note_es": "Jeremías dice que el Señor examina el corazón y prueba la mente. En Apocalipsis Jesús resucitado dice lo mismo de sí mismo.",
-        "note_pt": "Jeremias diz que o Senhor sonda o coração e examina a mente. Em Apocalipse, Jesus ressuscitado diz o mesmo de si."
+        "note_pt": "Jeremias diz que o Senhor sonda o coração e examina a mente. Em Apocalipse, Jesus ressuscitado diz o mesmo de si.",
+        "title_fr": "Le cœur : Dieu le sonde",
+        "note_fr": "Jérémie dit que le Seigneur sonde le cœur et éprouve les pensées. Dans l’Apocalypse, Jésus ressuscité dit la même chose de lui-même.",
+        "title_ko": "마음: 하나님이 살피세요",
+        "note_ko": "예레미야는 주님께서 마음을 살피시고 생각을 시험하신다고 말해요. 요한계시록에서 부활하신 예수님은 자신에 대해 같은 말씀을 하세요.",
+        "title_zh": "内心：神察验人心",
+        "note_zh": "耶利米说耶和华是鉴察人心、试验人肺腑的。在启示录中，复活的耶稣也这样论到自己。"
       },
       {
         "a": "Isa.29.13",
@@ -648,7 +1020,13 @@
         "title_pt": "O coração: perto ou longe",
         "note": "Isaiah describes people who honor God with their lips while their hearts are far away. Jesus says these words fit the religious leaders of his day.",
         "note_es": "Isaías describe a un pueblo que honra a Dios con los labios mientras su corazón está lejos. Jesús dice que estas palabras describen a los líderes religiosos de su tiempo.",
-        "note_pt": "Isaías descreve um povo que honra a Deus com os lábios, enquanto o coração está longe. Jesus diz que essas palavras descrevem os líderes religiosos do seu tempo."
+        "note_pt": "Isaías descreve um povo que honra a Deus com os lábios, enquanto o coração está longe. Jesus diz que essas palavras descrevem os líderes religiosos do seu tempo.",
+        "title_fr": "Le cœur : proche ou loin",
+        "note_fr": "Ésaïe décrit un peuple qui honore Dieu des lèvres alors que son cœur est loin. Jésus dit que ces mots s’appliquent aux chefs religieux de son temps.",
+        "title_ko": "마음: 가까운가, 먼가",
+        "note_ko": "이사야는 입술로는 하나님을 공경하지만 마음은 멀리 떠난 사람들을 묘사해요. 예수님은 이 말씀이 당시 종교 지도자들에게 들어맞는다고 말씀하세요.",
+        "title_zh": "内心：近或远",
+        "note_zh": "以赛亚描述有些人用嘴唇尊敬神，心却远离神。耶稣说这话正适用于当时的宗教领袖。"
       },
       {
         "a": "Deut.6.5",
@@ -658,7 +1036,13 @@
         "title_pt": "O coração: amar a Deus",
         "note": "Moses calls Israel to love the Lord with all their heart, soul and strength. Jesus names it the first and greatest commandment.",
         "note_es": "Moisés llama a Israel a amar al Señor con todo el corazón, el alma y las fuerzas. Jesús lo llama el primer y más grande mandamiento.",
-        "note_pt": "Moisés chama Israel a amar o Senhor de todo o coração, alma e força. Jesus o chama de o primeiro e maior mandamento."
+        "note_pt": "Moisés chama Israel a amar o Senhor de todo o coração, alma e força. Jesus o chama de o primeiro e maior mandamento.",
+        "title_fr": "Le cœur : aimer Dieu",
+        "note_fr": "Moïse appelle Israël à aimer le Seigneur de tout son cœur, de toute son âme et de toute sa force. Jésus en fait le premier et le plus grand commandement.",
+        "title_ko": "마음: 하나님을 사랑하라",
+        "note_ko": "모세는 이스라엘에게 마음과 뜻과 힘을 다하여 주님을 사랑하라고 말해요. 예수님은 이것을 첫째이자 가장 큰 계명이라고 하세요.",
+        "title_zh": "内心：爱神",
+        "note_zh": "摩西呼召以色列要尽心、尽性、尽力爱耶和华。耶稣称这是诫命中的第一，且是最大的。"
       },
       {
         "a": "Lev.19.18",
@@ -668,7 +1052,13 @@
         "title_pt": "O coração: amar o próximo",
         "note": "The law says to love your neighbor as yourself. Jesus puts it beside the love of God as the second great commandment.",
         "note_es": "La ley dice que ames a tu prójimo como a ti mismo. Jesús lo pone junto al amor a Dios como el segundo gran mandamiento.",
-        "note_pt": "A lei diz para amar o próximo como a si mesmo. Jesus coloca isso ao lado do amor a Deus como o segundo grande mandamento."
+        "note_pt": "A lei diz para amar o próximo como a si mesmo. Jesus coloca isso ao lado do amor a Deus como o segundo grande mandamento.",
+        "title_fr": "Le cœur : aimer son prochain",
+        "note_fr": "La loi dit d’aimer son prochain comme soi-même. Jésus place ce commandement à côté de l’amour de Dieu, comme le second grand commandement.",
+        "title_ko": "마음: 이웃을 사랑하라",
+        "note_ko": "율법은 네 이웃을 네 자신과 같이 사랑하라고 말해요. 예수님은 이것을 하나님 사랑 곁에 두어 둘째로 큰 계명이라고 하세요.",
+        "title_zh": "内心：爱邻舍",
+        "note_zh": "律法说要爱人如己。耶稣把它与爱神并列，称为第二条最大的诫命。"
       },
       {
         "a": "Mic.6.8",
@@ -678,7 +1068,13 @@
         "title_pt": "O coração: justiça e misericórdia",
         "note": "Micah sums up what God asks: act justly, love mercy, walk humbly. Jesus says justice, mercy and faithfulness are the weightier matters of the law.",
         "note_es": "Miqueas resume lo que Dios pide: practicar la justicia, amar la misericordia y caminar humildemente. Jesús dice que la justicia, la misericordia y la fidelidad son lo más importante de la ley.",
-        "note_pt": "Miqueias resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente. Jesus diz que a justiça, a misericórdia e a fidelidade são o mais importante da lei."
+        "note_pt": "Miqueias resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente. Jesus diz que a justiça, a misericórdia e a fidelidade são o mais importante da lei.",
+        "title_fr": "Le cœur : la justice et la miséricorde",
+        "note_fr": "Michée résume ce que Dieu demande : pratiquer la justice, aimer la miséricorde, marcher humblement. Jésus dit que la justice, la miséricorde et la fidélité sont ce qu’il y a de plus important dans la loi.",
+        "title_ko": "마음: 정의와 긍휼",
+        "note_ko": "미가는 하나님이 구하시는 것을 이렇게 요약해요. 정의를 행하고, 인자를 사랑하며, 겸손히 하나님과 함께 행하는 것이에요. 예수님은 정의와 긍휼과 믿음이 율법의 더 중요한 것이라고 말씀하세요.",
+        "title_zh": "内心：公义与怜悯",
+        "note_zh": "弥迦总结了神的要求：行公义，好怜悯，存谦卑的心与神同行。耶稣说公义、怜悯、信实是律法上更重要的事。"
       },
       {
         "a": "Isa.42.3",
@@ -688,7 +1084,13 @@
         "title_pt": "O servo manso",
         "note": "God's servant will not break a bruised reed or snuff out a smoldering wick. Matthew sees this gentleness in the way Jesus heals.",
         "note_es": "El siervo de Dios no quebrará la caña cascada ni apagará la mecha que humea. Mateo ve esta mansedumbre en la forma en que Jesús sana.",
-        "note_pt": "O servo de Deus não quebrará a cana rachada nem apagará o pavio que fumega. Mateus vê essa mansidão na forma como Jesus cura."
+        "note_pt": "O servo de Deus não quebrará a cana rachada nem apagará o pavio que fumega. Mateus vê essa mansidão na forma como Jesus cura.",
+        "title_fr": "Le serviteur plein de douceur",
+        "note_fr": "Le serviteur de Dieu ne brisera pas le roseau froissé et n’éteindra pas la mèche qui fume encore. Matthieu voit cette douceur dans la manière dont Jésus guérit.",
+        "title_ko": "온유한 종",
+        "note_ko": "하나님의 종은 상한 갈대를 꺾지 않고 꺼져 가는 심지를 끄지 않아요. 마태는 예수님이 고치시는 모습에서 이 온유함을 봐요.",
+        "title_zh": "温柔的仆人",
+        "note_zh": "神的仆人压伤的芦苇不折断，将残的灯火不吹灭。马太在耶稣医治人的方式中看见这份温柔。"
       },
       {
         "a": "Ps.118.17",
@@ -698,7 +1100,13 @@
         "title_pt": "Vida: não morrerei",
         "note": "The psalmist trusts that he will not die but live and declare God's works. Jesus says Lazarus' sickness will not end in death but bring God glory.",
         "note_es": "El salmista confía en que no morirá sino que vivirá para contar las obras de Dios. Jesús dice que la enfermedad de Lázaro no terminará en muerte, sino que dará gloria a Dios.",
-        "note_pt": "O salmista confia que não morrerá, mas viverá para anunciar as obras de Deus. Jesus diz que a doença de Lázaro não terminará em morte, mas trará glória a Deus."
+        "note_pt": "O salmista confia que não morrerá, mas viverá para anunciar as obras de Deus. Jesus diz que a doença de Lázaro não terminará em morte, mas trará glória a Deus.",
+        "title_fr": "La vie : je ne mourrai pas",
+        "note_fr": "Le psalmiste a confiance : il ne mourra pas, il vivra et racontera les œuvres de Dieu. Jésus dit que la maladie de Lazare n’aboutira pas à la mort, mais servira à la gloire de Dieu.",
+        "title_ko": "생명: 내가 죽지 않고 살리라",
+        "note_ko": "시인은 자신이 죽지 않고 살아서 하나님의 일을 선포할 것이라고 믿어요. 예수님은 나사로의 병이 죽을 병이 아니라 하나님의 영광을 위한 것이라고 말씀하세요.",
+        "title_zh": "生命：我必不至死",
+        "note_zh": "诗人深信自己必不至死，仍要存活，并要传扬神的作为。耶稣说拉撒路的病不至于死，乃是为神的荣耀。"
       },
       {
         "a": "Isa.25.8",
@@ -708,7 +1116,13 @@
         "title_pt": "Vida: a morte tragada",
         "note": "Isaiah promises that God will swallow up death for ever. Paul says this will come true when the dead are raised.",
         "note_es": "Isaías promete que Dios devorará la muerte para siempre. Pablo dice que esto se cumplirá cuando los muertos resuciten.",
-        "note_pt": "Isaías promete que Deus tragará a morte para sempre. Paulo diz que isso se cumprirá quando os mortos ressuscitarem."
+        "note_pt": "Isaías promete que Deus tragará a morte para sempre. Paulo diz que isso se cumprirá quando os mortos ressuscitarem.",
+        "title_fr": "La vie : la mort engloutie",
+        "note_fr": "Ésaïe promet que Dieu engloutira la mort pour toujours. Paul dit que cela s’accomplira quand les morts ressusciteront.",
+        "title_ko": "생명: 사망을 삼키심",
+        "note_ko": "이사야는 하나님이 사망을 영원히 멸하실 것이라고 약속해요. 바울은 죽은 사람들이 살아날 때 이 말씀이 이루어질 것이라고 말해요.",
+        "title_zh": "生命：死被吞灭",
+        "note_zh": "以赛亚应许神要永远吞灭死亡。保罗说，死人复活的时候，这话就要应验。"
       },
       {
         "a": "Isa.6.9",
@@ -718,7 +1132,13 @@
         "title_pt": "Ouvidos para ouvir",
         "note": "Isaiah is sent to a people who hear but do not understand. Jesus says the same as he teaches in parables, and calls those with ears to listen.",
         "note_es": "Isaías es enviado a un pueblo que oye pero no entiende. Jesús dice lo mismo al enseñar en parábolas, y llama a escuchar a quien tenga oídos.",
-        "note_pt": "Isaías é enviado a um povo que ouve, mas não entende. Jesus diz o mesmo ao ensinar por parábolas e chama quem tem ouvidos a ouvir."
+        "note_pt": "Isaías é enviado a um povo que ouve, mas não entende. Jesus diz o mesmo ao ensinar por parábolas e chama quem tem ouvidos a ouvir.",
+        "title_fr": "Des oreilles pour entendre",
+        "note_fr": "Ésaïe est envoyé à un peuple qui entend mais ne comprend pas. Jésus dit la même chose en enseignant par paraboles, et appelle ceux qui ont des oreilles à écouter.",
+        "title_ko": "들을 귀",
+        "note_ko": "이사야는 듣기는 들어도 깨닫지 못하는 백성에게 보내져요. 예수님도 비유로 가르치시며 같은 말씀을 하시고, 들을 귀 있는 사람은 들으라고 부르세요.",
+        "title_zh": "有耳可听的",
+        "note_zh": "以赛亚被差往一群听是要听见，却不明白的百姓。耶稣用比喻教导时也说了同样的话，并呼召有耳可听的人去听。"
       },
       {
         "a": "Ps.69.9",
@@ -728,7 +1148,13 @@
         "title_pt": "O zelo pela casa de Deus",
         "note": "The psalmist says zeal for God's house consumes him. When Jesus clears the temple, his disciples remember these words.",
         "note_es": "El salmista dice que el celo por la casa de Dios lo consume. Cuando Jesús purifica el templo, sus discípulos recuerdan estas palabras.",
-        "note_pt": "O salmista diz que o zelo pela casa de Deus o consome. Quando Jesus purifica o templo, seus discípulos se lembram dessas palavras."
+        "note_pt": "O salmista diz que o zelo pela casa de Deus o consome. Quando Jesus purifica o templo, seus discípulos se lembram dessas palavras.",
+        "title_fr": "Le zèle pour la maison de Dieu",
+        "note_fr": "Le psalmiste dit que le zèle pour la maison de Dieu le dévore. Quand Jésus chasse les marchands du temple, ses disciples se souviennent de ces mots.",
+        "title_ko": "주의 집을 위하는 열심",
+        "note_ko": "시인은 주의 집을 위하는 열심이 자신을 삼킨다고 말해요. 예수님이 성전을 깨끗하게 하실 때 제자들은 이 말씀을 기억해요.",
+        "title_zh": "为神的殿心里焦急",
+        "note_zh": "诗人说，他为神的殿心里焦急，如同火烧。耶稣洁净圣殿时，门徒就想起了这句话。"
       },
       {
         "a": "Gen.22.2",
@@ -738,7 +1164,13 @@
         "title_pt": "O seu único filho",
         "note": "God asks Abraham to offer his only son, then provides a ram instead. Paul says God did not spare his own Son but gave him up for us all.",
         "note_es": "Dios le pide a Abraham que ofrezca a su único hijo, y luego provee un carnero en su lugar. Pablo dice que Dios no perdonó ni a su propio Hijo, sino que lo entregó por todos nosotros.",
-        "note_pt": "Deus pede a Abraão que ofereça seu único filho e depois provê um carneiro no lugar dele. Paulo diz que Deus não poupou o próprio Filho, mas o entregou por todos nós."
+        "note_pt": "Deus pede a Abraão que ofereça seu único filho e depois provê um carneiro no lugar dele. Paulo diz que Deus não poupou o próprio Filho, mas o entregou por todos nós.",
+        "title_fr": "Ton fils unique",
+        "note_fr": "Dieu demande à Abraham d’offrir son fils unique, puis pourvoit un bélier à sa place. Paul dit que Dieu n’a pas épargné son propre Fils, mais l’a livré pour nous tous.",
+        "title_ko": "너의 독자",
+        "note_ko": "하나님은 아브라함에게 독자를 바치라고 하시고, 대신 숫양을 준비하세요. 바울은 하나님이 자기 아들을 아끼지 않으시고 우리 모두를 위해 내주셨다고 말해요.",
+        "title_zh": "你独生的儿子",
+        "note_zh": "神要亚伯拉罕献上他独生的儿子，后来却预备了一只公羊代替。保罗说神不爱惜自己的儿子，为我们众人舍了。"
       },
       {
         "a": "Gen.4.10",
@@ -748,7 +1180,13 @@
         "title_pt": "Sangue que fala",
         "note": "Abel's blood cries out from the ground for justice. Hebrews says Jesus' blood speaks a better word than Abel's.",
         "note_es": "La sangre de Abel clama desde la tierra pidiendo justicia. Hebreos dice que la sangre de Jesús habla mejor que la de Abel.",
-        "note_pt": "O sangue de Abel clama da terra por justiça. Hebreus diz que o sangue de Jesus fala melhor do que o de Abel."
+        "note_pt": "O sangue de Abel clama da terra por justiça. Hebreus diz que o sangue de Jesus fala melhor do que o de Abel.",
+        "title_fr": "Un sang qui parle",
+        "note_fr": "Le sang d’Abel crie de la terre pour réclamer justice. L’épître aux Hébreux dit que le sang de Jésus parle mieux que celui d’Abel.",
+        "title_ko": "말하는 피",
+        "note_ko": "아벨의 피가 땅에서 정의를 부르짖어요. 히브리서는 예수님의 피가 아벨의 피보다 더 나은 것을 말한다고 해요.",
+        "title_zh": "说话的血",
+        "note_zh": "亚伯的血从地里向神哀告，求伸冤。希伯来书说，耶稣所洒的血所说的比亚伯的血所说的更美。"
       },
       {
         "a": "Ps.22.27",
@@ -758,7 +1196,13 @@
         "title_pt": "Todas as nações se voltarão",
         "note": "The psalm that begins in abandonment ends with all the nations turning to the Lord. The risen Jesus sends his followers to make disciples of all nations.",
         "note_es": "El salmo que empieza con el abandono termina con todas las naciones volviéndose al Señor. Jesús resucitado envía a sus seguidores a hacer discípulos de todas las naciones.",
-        "note_pt": "O salmo que começa com abandono termina com todas as nações se voltando para o Senhor. Jesus ressuscitado envia seus seguidores a fazer discípulos de todas as nações."
+        "note_pt": "O salmo que começa com abandono termina com todas as nações se voltando para o Senhor. Jesus ressuscitado envia seus seguidores a fazer discípulos de todas as nações.",
+        "title_fr": "Toutes les nations se tourneront vers lui",
+        "note_fr": "Le psaume qui commence par l’abandon se termine avec toutes les nations qui se tournent vers le Seigneur. Jésus ressuscité envoie ses disciples faire de toutes les nations des disciples.",
+        "title_ko": "모든 민족이 돌아와요",
+        "note_ko": "버림받은 외침으로 시작하는 시편은 모든 민족이 주님께 돌아오는 것으로 끝나요. 부활하신 예수님은 제자들을 보내어 모든 민족을 제자로 삼으라고 하세요.",
+        "title_zh": "万国都要归向他",
+        "note_zh": "这篇以被离弃开头的诗篇，以万国归向耶和华作结。复活的耶稣差遣跟随者去使万民作他的门徒。"
       },
       {
         "a": "Isa.50.7",
@@ -768,7 +1212,13 @@
         "title_pt": "A Jerusalém: o rosto como pedra",
         "note": "The servant sets his face like flint, knowing he will not be put to shame. Jesus resolutely sets out for Jerusalem.",
         "note_es": "El siervo pone su rostro como pedernal, sabiendo que no será avergonzado. Jesús se dirige con determinación a Jerusalén.",
-        "note_pt": "O servo firma o rosto como pedra, sabendo que não será envergonhado. Jesus parte decidido para Jerusalém."
+        "note_pt": "O servo firma o rosto como pedra, sabendo que não será envergonhado. Jesus parte decidido para Jerusalém.",
+        "title_fr": "Vers Jérusalem : un visage dur comme le silex",
+        "note_fr": "Le serviteur rend son visage dur comme le silex, sachant qu’il ne sera pas confondu. Jésus prend résolument la route de Jérusalem.",
+        "title_ko": "예루살렘으로: 부싯돌 같은 얼굴",
+        "note_ko": "종은 부끄러움을 당하지 않을 것을 알고 얼굴을 부싯돌같이 굳게 해요. 예수님은 굳게 결심하시고 예루살렘으로 향하세요.",
+        "title_zh": "往耶路撒冷去：面如坚石",
+        "note_zh": "这位仆人硬着脸面好像坚石，知道自己必不至蒙羞。耶稣定意向耶路撒冷去。"
       },
       {
         "a": "Ps.110.1",
@@ -778,7 +1228,13 @@
         "title_pt": "A Jerusalém: o Senhor de Davi",
         "note": "David hears God say to his Lord, sit at my right hand. Teaching in the temple, Jesus asks how the Messiah can be David's son and David's Lord.",
         "note_es": "David oye a Dios decirle a su Señor: siéntate a mi derecha. Enseñando en el templo, Jesús pregunta cómo el Mesías puede ser hijo de David y Señor de David.",
-        "note_pt": "Davi ouve Deus dizer ao seu Senhor: sente-se à minha direita. Ensinando no templo, Jesus pergunta como o Messias pode ser filho de Davi e Senhor de Davi."
+        "note_pt": "Davi ouve Deus dizer ao seu Senhor: sente-se à minha direita. Ensinando no templo, Jesus pergunta como o Messias pode ser filho de Davi e Senhor de Davi.",
+        "title_fr": "Vers Jérusalem : le Seigneur de David",
+        "note_fr": "David entend Dieu dire à son Seigneur : assieds-toi à ma droite. En enseignant dans le temple, Jésus demande comment le Messie peut être à la fois le fils de David et le Seigneur de David.",
+        "title_ko": "예루살렘으로: 다윗의 주",
+        "note_ko": "다윗은 하나님께서 내 주에게 내 우편에 앉으라 하시는 말씀을 들어요. 성전에서 가르치시던 예수님은 그리스도가 어떻게 다윗의 자손이면서 다윗의 주가 될 수 있는지 물으세요.",
+        "title_zh": "往耶路撒冷去：大卫的主",
+        "note_zh": "大卫听见神对他的主说：你坐在我的右边。耶稣在圣殿里教导时问：基督怎么既是大卫的子孙，又是大卫的主呢？"
       },
       {
         "a": "Ps.8.2",
@@ -788,7 +1244,13 @@
         "title_pt": "A Jerusalém: o louvor das crianças",
         "note": "The psalm says God has ordained praise from the lips of children. When children shout Hosanna in the temple, Jesus quotes it.",
         "note_es": "El salmo dice que Dios ha dispuesto la alabanza de los labios de los niños. Cuando los niños gritan Hosanna en el templo, Jesús lo cita.",
-        "note_pt": "O salmo diz que Deus tirou louvor da boca das crianças. Quando as crianças gritam Hosana no templo, Jesus o cita."
+        "note_pt": "O salmo diz que Deus tirou louvor da boca das crianças. Quando as crianças gritam Hosana no templo, Jesus o cita.",
+        "title_fr": "Vers Jérusalem : la louange des enfants",
+        "note_fr": "Le psaume dit que Dieu a tiré la louange de la bouche des enfants. Quand des enfants crient Hosanna dans le temple, Jésus le cite.",
+        "title_ko": "예루살렘으로: 어린아이들의 찬미",
+        "note_ko": "시편은 하나님이 어린아이들의 입에서 찬미를 온전하게 하셨다고 말해요. 성전에서 아이들이 호산나를 외칠 때 예수님은 이 말씀을 인용하세요.",
+        "title_zh": "往耶路撒冷去：孩童的赞美",
+        "note_zh": "诗篇说，神从婴孩和吃奶的口中完全了赞美。孩子们在圣殿里喊着“和散那”时，耶稣引用了这句话。"
       },
       {
         "a": "Ps.41.9",
@@ -798,7 +1260,13 @@
         "title_pt": "A Jerusalém: a traição de um amigo",
         "note": "David grieves that a close friend who shared his bread has turned against him. Jesus says these words will come true at his own table.",
         "note_es": "David sufre porque un amigo íntimo que comía su pan se volvió contra él. Jesús dice que estas palabras se cumplirán en su propia mesa.",
-        "note_pt": "Davi sofre porque um amigo íntimo que comia do seu pão se voltou contra ele. Jesus diz que essas palavras se cumprirão à sua própria mesa."
+        "note_pt": "Davi sofre porque um amigo íntimo que comia do seu pão se voltou contra ele. Jesus diz que essas palavras se cumprirão à sua própria mesa.",
+        "title_fr": "Vers Jérusalem : la trahison d’un ami",
+        "note_fr": "David souffre de voir un ami proche, qui partageait son pain, se tourner contre lui. Jésus dit que ces mots vont s’accomplir à sa propre table.",
+        "title_ko": "예루살렘으로: 친구의 배신",
+        "note_ko": "다윗은 떡을 함께 먹던 가까운 친구가 자신을 대적한 것을 슬퍼해요. 예수님은 이 말씀이 자신의 식탁에서 이루어질 것이라고 말씀하세요.",
+        "title_zh": "往耶路撒冷去：朋友的出卖",
+        "note_zh": "大卫伤心，因为与他同吃饭的知己朋友竟用脚踢他。耶稣说这话要在他自己的餐桌上应验。"
       },
       {
         "a": "Zech.13.7",
@@ -808,7 +1276,13 @@
         "title_pt": "A Jerusalém: o pastor ferido",
         "note": "Zechariah says strike the shepherd, and the sheep will scatter. Jesus quotes it on the night his disciples will run away.",
         "note_es": "Zacarías dice: hiere al pastor y las ovejas se dispersarán. Jesús lo cita la noche en que sus discípulos huirán.",
-        "note_pt": "Zacarias diz: fira o pastor, e as ovelhas se dispersarão. Jesus o cita na noite em que seus discípulos fugirão."
+        "note_pt": "Zacarias diz: fira o pastor, e as ovelhas se dispersarão. Jesus o cita na noite em que seus discípulos fugirão.",
+        "title_fr": "Vers Jérusalem : le berger frappé",
+        "note_fr": "Zacharie dit : frappe le berger, et les brebis seront dispersées. Jésus le cite la nuit où ses disciples vont s’enfuir.",
+        "title_ko": "예루살렘으로: 목자를 치라",
+        "note_ko": "스가랴는 목자를 치면 양들이 흩어질 것이라고 말해요. 예수님은 제자들이 도망칠 그 밤에 이 말씀을 인용하세요.",
+        "title_zh": "往耶路撒冷去：击打牧人",
+        "note_zh": "撒迦利亚说：击打牧人，羊就分散。在门徒将要逃散的那一夜，耶稣引用了这句话。"
       },
       {
         "a": "Isa.50.6",
@@ -818,7 +1292,13 @@
         "title_pt": "A Jerusalém: o servo não se afasta",
         "note": "The servant offers his back to those who beat him and does not hide his face. At his trial Jesus is struck and spat upon.",
         "note_es": "El siervo ofrece la espalda a los que lo golpean y no esconde el rostro. En su juicio Jesús es golpeado y escupido.",
-        "note_pt": "O servo oferece as costas aos que o ferem e não esconde o rosto. No seu julgamento, Jesus é esbofeteado e cuspido."
+        "note_pt": "O servo oferece as costas aos que o ferem e não esconde o rosto. No seu julgamento, Jesus é esbofeteado e cuspido.",
+        "title_fr": "Vers Jérusalem : le serviteur ne se détourne pas",
+        "note_fr": "Le serviteur livre son dos à ceux qui le frappent et ne cache pas son visage. Lors de son procès, Jésus est frappé et on crache sur lui.",
+        "title_ko": "예루살렘으로: 물러서지 않는 종",
+        "note_ko": "종은 때리는 사람들에게 등을 내주고 얼굴을 가리지 않아요. 재판에서 예수님은 맞으시고 침 뱉음을 당하세요.",
+        "title_zh": "往耶路撒冷去：仆人并不退后",
+        "note_zh": "这位仆人任人打他的背，也不掩面躲避。受审时，耶稣被人击打、吐唾沫。"
       },
       {
         "a": "Isa.53.12",
@@ -828,9 +1308,21 @@
         "title_pt": "A Jerusalém: contado com os pecadores",
         "note": "The servant is numbered with the transgressors and bears the sin of many. Jesus says this must be fulfilled in him.",
         "note_es": "El siervo es contado entre los transgresores y carga con el pecado de muchos. Jesús dice que esto tiene que cumplirse en él.",
-        "note_pt": "O servo é contado com os transgressores e carrega o pecado de muitos. Jesus diz que isso precisa se cumprir nele."
+        "note_pt": "O servo é contado com os transgressores e carrega o pecado de muitos. Jesus diz que isso precisa se cumprir nele.",
+        "title_fr": "Vers Jérusalem : compté parmi les pécheurs",
+        "note_fr": "Le serviteur est compté parmi les malfaiteurs et porte le péché de beaucoup. Jésus dit que cela doit s’accomplir en lui.",
+        "title_ko": "예루살렘으로: 범죄자 중 하나로 헤아림을 받아",
+        "note_ko": "종은 범죄자 중 하나로 헤아림을 받고 많은 사람의 죄를 담당해요. 예수님은 이 말씀이 자신에게 이루어져야 한다고 말씀하세요.",
+        "title_zh": "往耶路撒冷去：被列在罪犯之中",
+        "note_zh": "这位仆人被列在罪犯之中，担当了多人的罪。耶稣说，这话必应验在他身上。"
       }
-    ]
+    ],
+    "name_fr": "Carême : le chemin de la croix",
+    "description_fr": "Une promesse et son accomplissement chaque jour, du mercredi des Cendres à la veille des Rameaux, à travers la poussière, le désert, la miséricorde, le cœur et la route vers Jérusalem. La Semaine sainte suit.",
+    "name_ko": "사순절: 십자가로 가는 길",
+    "description_ko": "재의 수요일부터 종려주일 전날까지, 흙, 광야, 긍휼, 마음, 예루살렘으로 가는 길을 따라 날마다 약속 하나와 그 성취를 읽어요. 이어서 고난주간이 시작돼요.",
+    "name_zh": "大斋期：走向十字架的路",
+    "description_zh": "从圣灰星期三到棕枝主日前夕，每天一个应许及其应验，经过尘土、旷野、怜悯、内心，以及前往耶路撒冷的路。之后接着受难周。"
   },
   {
     "id": "holyweek",
@@ -852,7 +1344,13 @@
         "title_pt": "Domingo de Ramos: o rei humilde",
         "note": "Zechariah pictures Jerusalem's king arriving gently on a donkey. Jesus rides into the city this way while the crowds wave branches and shout Hosanna.",
         "note_es": "Zacarías describe al rey de Jerusalén llegando con humildad en un asno. Jesús entra así en la ciudad mientras la multitud agita ramas y grita: ¡Hosanna!",
-        "note_pt": "Zacarias descreve o rei de Jerusalém chegando com mansidão, montado em um jumento. Jesus entra assim na cidade enquanto a multidão agita ramos e grita: Hosana!"
+        "note_pt": "Zacarias descreve o rei de Jerusalém chegando com mansidão, montado em um jumento. Jesus entra assim na cidade enquanto a multidão agita ramos e grita: Hosana!",
+        "title_fr": "Dimanche des Rameaux : le roi humble",
+        "note_fr": "Zacharie montre le roi de Jérusalem arrivant avec douceur, monté sur un âne. Jésus entre ainsi dans la ville tandis que la foule agite des branches et crie Hosanna.",
+        "title_ko": "종려주일: 겸손한 왕",
+        "note_ko": "스가랴는 예루살렘의 왕이 나귀를 타고 겸손히 오시는 모습을 그려요. 예수님은 무리가 가지를 흔들며 호산나를 외치는 가운데 이렇게 성에 들어가세요.",
+        "title_zh": "棕枝主日：谦和的王",
+        "note_zh": "撒迦利亚描绘耶路撒冷的王谦谦和和地骑着驴驹而来。耶稣就是这样进城的，众人挥动树枝，高呼“和散那”。"
       },
       {
         "a": "Isa.56.7",
@@ -862,7 +1360,13 @@
         "title_pt": "Segunda-feira: casa de oração",
         "note": "God promised that his house would be a house of prayer for all nations. Jesus drives out the traders who have filled the temple courts and quotes Isaiah's words.",
         "note_es": "Dios prometió que su casa sería casa de oración para todas las naciones. Jesús echa a los comerciantes que llenaban los atrios del templo y cita las palabras de Isaías.",
-        "note_pt": "Deus prometeu que sua casa seria casa de oração para todos os povos. Jesus expulsa os comerciantes que tinham tomado os pátios do templo e cita as palavras de Isaías."
+        "note_pt": "Deus prometeu que sua casa seria casa de oração para todos os povos. Jesus expulsa os comerciantes que tinham tomado os pátios do templo e cita as palavras de Isaías.",
+        "title_fr": "Lundi : une maison de prière",
+        "note_fr": "Dieu a promis que sa maison serait une maison de prière pour tous les peuples. Jésus chasse les marchands qui ont envahi les parvis du temple et cite les paroles d’Ésaïe.",
+        "title_ko": "월요일: 기도하는 집",
+        "note_ko": "하나님은 그분의 집이 만민이 기도하는 집이 될 것이라고 약속하셨어요. 예수님은 성전 뜰을 채운 장사꾼들을 내쫓으시며 이사야의 말씀을 인용하세요.",
+        "title_zh": "星期一：祷告的殿",
+        "note_zh": "神应许他的殿要称为万民祷告的殿。耶稣赶出挤满圣殿院子的商贩，并引用以赛亚的话。"
       },
       {
         "a": "Ps.118.22",
@@ -872,7 +1376,13 @@
         "title_pt": "Terça-feira: a pedra rejeitada",
         "note": "The psalm sings of a stone the builders rejected that became the cornerstone. Teaching in the temple, Jesus tells the leaders that this is about him.",
         "note_es": "El salmo canta de una piedra que desecharon los constructores y que llegó a ser la piedra angular. Enseñando en el templo, Jesús dice a los líderes que habla de él.",
-        "note_pt": "O salmo canta sobre uma pedra que os construtores rejeitaram e que se tornou a pedra angular. Ensinando no templo, Jesus diz aos líderes que isso fala dele."
+        "note_pt": "O salmo canta sobre uma pedra que os construtores rejeitaram e que se tornou a pedra angular. Ensinando no templo, Jesus diz aos líderes que isso fala dele.",
+        "title_fr": "Mardi : la pierre rejetée",
+        "note_fr": "Le psaume chante la pierre rejetée par les bâtisseurs, devenue la pierre angulaire. En enseignant dans le temple, Jésus dit aux chefs que cela parle de lui.",
+        "title_ko": "화요일: 버린 돌",
+        "note_ko": "시편은 건축자들이 버린 돌이 모퉁이의 머릿돌이 되었다고 노래해요. 성전에서 가르치시던 예수님은 지도자들에게 이것이 자신에 관한 말씀이라고 하세요.",
+        "title_zh": "星期二：被弃的石头",
+        "note_zh": "诗篇歌唱匠人所弃的石头已成了房角的头块石头。耶稣在圣殿里教导时，告诉宗教领袖这话是指着他说的。"
       },
       {
         "a": "Zech.11.12",
@@ -882,7 +1392,13 @@
         "title_pt": "Quarta-feira: trinta moedas de prata",
         "note": "In Zechariah the shepherd of God's people is valued at thirty pieces of silver. Judas agrees to betray Jesus for the same price.",
         "note_es": "En Zacarías el pastor del pueblo de Dios es valorado en treinta monedas de plata. Judas acepta traicionar a Jesús por el mismo precio.",
-        "note_pt": "Em Zacarias, o pastor do povo de Deus é avaliado em trinta moedas de prata. Judas aceita trair Jesus pelo mesmo preço."
+        "note_pt": "Em Zacarias, o pastor do povo de Deus é avaliado em trinta moedas de prata. Judas aceita trair Jesus pelo mesmo preço.",
+        "title_fr": "Mercredi : trente pièces d’argent",
+        "note_fr": "Dans Zacharie, le berger du peuple de Dieu est estimé à trente pièces d’argent. Judas accepte de livrer Jésus pour ce même prix.",
+        "title_ko": "수요일: 은 삼십",
+        "note_ko": "스가랴서에서 하나님 백성의 목자는 은 삼십으로 값이 매겨져요. 유다는 같은 값에 예수님을 넘겨주기로 해요.",
+        "title_zh": "星期三：三十块钱",
+        "note_zh": "在撒迦利亚书中，神百姓的牧人被估价为三十块钱。犹大同意以同样的价钱出卖耶稣。"
       },
       {
         "a": "Exod.24.8",
@@ -892,7 +1408,13 @@
         "title_pt": "Quinta-feira: o sangue da aliança",
         "note": "At Sinai Moses seals the covenant with blood. At the Last Supper Jesus takes the cup and calls it his blood of the covenant, poured out for many.",
         "note_es": "En el Sinaí Moisés sella el pacto con sangre. En la última cena Jesús toma la copa y la llama su sangre del pacto, derramada por muchos.",
-        "note_pt": "No Sinai, Moisés sela a aliança com sangue. Na Última Ceia, Jesus pega o cálice e o chama de seu sangue da aliança, derramado por muitos."
+        "note_pt": "No Sinai, Moisés sela a aliança com sangue. Na Última Ceia, Jesus pega o cálice e o chama de seu sangue da aliança, derramado por muitos.",
+        "title_fr": "Jeudi : le sang de l’alliance",
+        "note_fr": "Au Sinaï, Moïse scelle l’alliance par le sang. Lors de la Cène, Jésus prend la coupe et l’appelle son sang de l’alliance, répandu pour beaucoup.",
+        "title_ko": "목요일: 언약의 피",
+        "note_ko": "시내산에서 모세는 피로 언약을 세워요. 마지막 만찬에서 예수님은 잔을 들고 많은 사람을 위해 흘리는 언약의 피라고 말씀하세요.",
+        "title_zh": "星期四：立约的血",
+        "note_zh": "在西奈山，摩西用血立约。在最后的晚餐中，耶稣拿起杯来，称它为他立约的血，为多人流出来。"
       },
       {
         "a": "Ps.22.1",
@@ -902,7 +1424,13 @@
         "title_pt": "Sexta-feira Santa: por que me abandonaste?",
         "note": "David's psalm begins with a cry of abandonment and ends in praise. On the cross Jesus prays its first line aloud.",
         "note_es": "El salmo de David empieza con un grito de abandono y termina en alabanza. En la cruz Jesús ora en voz alta su primera línea.",
-        "note_pt": "O salmo de Davi começa com um grito de abandono e termina em louvor. Na cruz, Jesus ora em voz alta seu primeiro verso."
+        "note_pt": "O salmo de Davi começa com um grito de abandono e termina em louvor. Na cruz, Jesus ora em voz alta seu primeiro verso.",
+        "title_fr": "Vendredi saint : pourquoi m’as-tu abandonné ?",
+        "note_fr": "Le psaume de David commence par un cri d’abandon et se termine par la louange. Sur la croix, Jésus prie à voix haute sa première ligne.",
+        "title_ko": "성금요일: 어찌하여 나를 버리셨나이까?",
+        "note_ko": "다윗의 시는 버림받은 외침으로 시작해 찬양으로 끝나요. 십자가에서 예수님은 그 첫 줄을 소리 내어 기도하세요.",
+        "title_zh": "受难日：你为什么离弃我？",
+        "note_zh": "大卫的诗篇以被离弃的呼喊开始，以赞美结束。耶稣在十字架上高声说出了它的第一句。"
       },
       {
         "a": "Jonah.1.17",
@@ -912,7 +1440,13 @@
         "title_pt": "Sábado de Aleluia: três dias",
         "note": "Jonah spends three days and nights inside the great fish. Jesus said the Son of Man would likewise spend three days in the heart of the earth.",
         "note_es": "Jonás pasa tres días y tres noches dentro del gran pez. Jesús dijo que el Hijo del Hombre también estaría tres días en el corazón de la tierra.",
-        "note_pt": "Jonas passa três dias e três noites dentro do grande peixe. Jesus disse que o Filho do Homem também passaria três dias no coração da terra."
+        "note_pt": "Jonas passa três dias e três noites dentro do grande peixe. Jesus disse que o Filho do Homem também passaria três dias no coração da terra.",
+        "title_fr": "Samedi saint : trois jours",
+        "note_fr": "Jonas passe trois jours et trois nuits dans le ventre du grand poisson. Jésus a dit que le Fils de l’homme passerait de même trois jours dans le sein de la terre.",
+        "title_ko": "성토요일: 사흘",
+        "note_ko": "요나는 큰 물고기 뱃속에서 사흘 밤낮을 보내요. 예수님은 인자도 그렇게 사흘 동안 땅속에 있을 것이라고 말씀하셨어요.",
+        "title_zh": "圣周六：三日三夜",
+        "note_zh": "约拿在大鱼腹中三日三夜。耶稣说，人子也要这样三日三夜在地里头。"
       },
       {
         "a": "Ps.16.10",
@@ -922,9 +1456,21 @@
         "title_pt": "Domingo de Páscoa: não abandonado na sepultura",
         "note": "David trusts that God will not abandon his holy one to the grave. At Pentecost Peter says this was fulfilled when God raised Jesus from the dead.",
         "note_es": "David confía en que Dios no abandonará a su santo en la tumba. En Pentecostés Pedro dice que esto se cumplió cuando Dios resucitó a Jesús.",
-        "note_pt": "Davi confia que Deus não deixará seu santo na sepultura. No Pentecostes, Pedro diz que isso se cumpriu quando Deus ressuscitou Jesus dentre os mortos."
+        "note_pt": "Davi confia que Deus não deixará seu santo na sepultura. No Pentecostes, Pedro diz que isso se cumpriu quando Deus ressuscitou Jesus dentre os mortos.",
+        "title_fr": "Dimanche de Pâques : pas abandonné au séjour des morts",
+        "note_fr": "David a confiance que Dieu n’abandonnera pas son fidèle au séjour des morts. À la Pentecôte, Pierre dit que cela s’est accompli quand Dieu a ressuscité Jésus d’entre les morts.",
+        "title_ko": "부활주일: 음부에 버려두지 않으심",
+        "note_ko": "다윗은 하나님이 거룩한 자를 음부에 버려두지 않으실 것이라고 믿어요. 오순절에 베드로는 하나님이 예수님을 죽은 자 가운데서 살리셨을 때 이 말씀이 이루어졌다고 말해요.",
+        "title_zh": "复活节：不将我的灵魂撇在阴间",
+        "note_zh": "大卫深信神必不将他的圣者撇在阴间。在五旬节，彼得说神使耶稣从死里复活，这话就应验了。"
       }
-    ]
+    ],
+    "name_fr": "Semaine sainte",
+    "description_fr": "Huit jours, du dimanche des Rameaux au matin de Pâques, chacun avec un passage de l’Ancien Testament qui annonce ce jour.",
+    "name_ko": "고난주간",
+    "description_ko": "종려주일부터 부활절 아침까지 여드레 동안, 날마다 그날을 가리키는 구약 본문을 함께 읽어요.",
+    "name_zh": "受难周",
+    "description_zh": "从棕枝主日到复活节早晨的八天，每天配有一段指向当天事件的旧约经文。"
   },
   {
     "id": "story",
@@ -935,7 +1481,13 @@
     "description_es": "Todos los recorridos guiados, dos pasos al día.",
     "description_pt": "Todas as jornadas guiadas, dois passos por dia.",
     "source": "journeys",
-    "perDay": 2
+    "perDay": 2,
+    "name_fr": "L’histoire des Écritures",
+    "description_fr": "Tous les parcours guidés, deux étapes par jour.",
+    "name_ko": "성경 이야기",
+    "description_ko": "모든 안내 여정을 하루에 두 단계씩 읽어요.",
+    "name_zh": "圣经的故事",
+    "description_zh": "全部导览旅程，每天两步。"
   },
   {
     "id": "messiah",
@@ -947,7 +1499,13 @@
     "description_pt": "Uma promessa sobre o Messias e onde ela se cumpre, duas por dia.",
     "source": "theme",
     "theme": "messiah",
-    "perDay": 2
+    "perDay": 2,
+    "name_fr": "Jésus annoncé",
+    "description_fr": "Une promesse au sujet du Messie et son accomplissement, deux par jour.",
+    "name_ko": "예언된 예수님",
+    "description_ko": "메시아에 대한 약속과 그 성취를 하루에 두 개씩 읽어요.",
+    "name_zh": "预言中的耶稣",
+    "description_zh": "关于弥赛亚的应许及其应验之处，每天两则。"
   },
   {
     "id": "themes",
@@ -958,6 +1516,12 @@
     "description_es": "Un tema al día durante doce días, con sus conexiones clave.",
     "description_pt": "Um tema por dia durante doze dias, com suas principais conexões.",
     "source": "themes",
-    "perDay": 3
+    "perDay": 3,
+    "name_fr": "Douze thèmes",
+    "description_fr": "Un thème par jour pendant douze jours, avec ses connexions clés.",
+    "name_ko": "열두 가지 주제",
+    "description_ko": "열두 날 동안 하루에 한 주제씩, 핵심 연결과 함께 읽어요.",
+    "name_zh": "十二个主题",
+    "description_zh": "十二天中每天一个主题，附有其中的关键连接。"
   }
 ]

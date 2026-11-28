@@ -29,7 +29,7 @@ Every arc joins two passages that point to each other, from Genesis on the left 
 <p>
   <a href="LICENSE"><img alt="Code license: Apache 2.0" src="https://img.shields.io/badge/code-Apache%202.0-blue?style=plastic"></a>
   <a href="LICENSE-CONTENT.md"><img alt="Content license: CC BY 4.0" src="https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey?style=plastic"></a>
-  <img alt="Interface: English, Spanish and Portuguese" src="https://img.shields.io/badge/interface-English%20%7C%20Espa%C3%B1ol%20%7C%20Portugu%C3%AAs-orange?style=plastic">
+  <img alt="Interface: English, Spanish, Portuguese, French, Korean and Chinese" src="https://img.shields.io/badge/interface-6%20languages-orange?style=plastic">
   <img alt="99 translations in 31 languages" src="https://img.shields.io/badge/translations-99%20in%2031%20languages-e8590c?style=plastic">
 </p>
 
@@ -95,7 +95,7 @@ No Bible translation is published on this site. Every passage links out to [Bibl
 
 ### For everyone
 - **Kids mode:** bigger text, simpler words and journeys written for children.
-- **Spanish and Portuguese:** the full interface, journeys, plans, book introductions, questions, prophecy, timeline, handouts and guides in both languages, chosen automatically from the device. Search understands book names in all three languages.
+- **Spanish, Portuguese, French, Korean and Chinese:** the full interface, journeys, plans, book introductions, questions, prophecy, timeline, handouts and guides in each language, chosen automatically from the device. Search understands book names in every language.
 - **Settings:** language, light, dark or system appearance, five arc color styles (including a color-blind friendly one), text size, an easier-to-read font, high contrast mode and Bible.com translations.
 - **Gentle animations on desktop:** the welcome page eases in, and a light travels along each connection you select. Off for reduced motion, and switchable in Settings.
 - **Simple navigation:** five sections on every screen size and every page: Explore, Journeys, Study, Library (notes, collections, plans, saved items, backup) and More (settings, the tour, help and the small print), with Search and Settings at the top. Tapping the current tab goes to the start of its section, and Home keeps your place with Continue. On phones the details slide up as a sheet like the Maps app, a verse's arcs fan out across the whole Bible, you can slide along the books to pick a chapter, and swipe for the next step or connection.

@@ -1,0 +1,594 @@
+[
+  {
+    "id": "advent",
+    "name": "Avent : dans l’attente du Roi",
+    "summary": "Sept promesses du Roi à venir et comment elles se sont réalisées en Jésus.",
+    "steps": [
+      {
+        "title": "La première promesse",
+        "note": "Tout au début de l’histoire, Dieu promet un enfant qui vaincra le mal. Paul dit que Jésus est venu exactement au bon moment, né d’une femme.",
+        "question": "Pourquoi, à ton avis, Dieu a-t-il fait cette promesse si peu de temps après que tout a mal tourné ?"
+      },
+      {
+        "title": "Un roi de la famille de David",
+        "note": "Dieu promet à David un fils dont le règne durera. Gabriel dit à Marie que son fils recevra le trône de David.",
+        "question": "Quel genre de roi les gens attendaient-ils, et quel genre de roi Jésus s’est-il révélé être ?"
+      },
+      {
+        "title": "Dieu avec nous",
+        "note": "Ésaïe donne pour signe un enfant appelé Emmanuel. Matthieu en voit le sens plein en Jésus, Dieu avec nous.",
+        "question": "Qu’est-ce que cela change que Dieu soit venu être avec nous, et pas seulement nous aider de loin ?"
+      },
+      {
+        "title": "Un enfant nous est né",
+        "note": "Ésaïe annonce un enfant avec des noms comme Conseiller merveilleux et Prince de la paix. Les anges annoncent le Sauveur né à Bethléhem.",
+        "question": "Lequel des noms qu’Ésaïe donne à cet enfant compte le plus pour toi en ce moment ?"
+      },
+      {
+        "title": "Préparez le chemin",
+        "note": "Une voix appelle à préparer une route pour Dieu. Jean-Baptiste est cette voix, qui prépare les gens à recevoir Jésus.",
+        "question": "À quoi ressemblerait le fait de préparer le chemin de Jésus dans ta vie pendant cet Avent ?"
+      },
+      {
+        "title": "La petite Bethléhem",
+        "note": "Dieu choisit une petite ville pour la naissance d’un grand chef. Les scribes indiquent à Hérode les paroles de Michée.",
+        "question": "Pourquoi Dieu choisirait-il des lieux petits et humbles pour faire de grandes choses ?"
+      },
+      {
+        "title": "Le soleil levant",
+        "note": "Le dernier prophète de l’Ancien Testament montre le soleil de justice qui se lève avec la guérison. Zacharie chante que ce soleil levant est venu.",
+        "question": "Où as-tu besoin de la lumière et de la guérison de Dieu en attendant Noël ?"
+      }
+    ]
+  },
+  {
+    "id": "christmas",
+    "name": "Noël : la Parole a été faite chair",
+    "summary": "Pourquoi la naissance de Jésus compte, de la création aux mages.",
+    "steps": [
+      {
+        "title": "Au commencement",
+        "note": "Jean commence son Évangile avec les mêmes mots que la Genèse. Celui qui est né à Noël était là lors de la création.",
+        "question": "Qu’est-ce que cela change à ta vision de Noël de savoir que le bébé de la crèche est la Parole qui a créé le monde ?"
+      },
+      {
+        "title": "La Parole a été faite chair",
+        "note": "Paul décrit Christ choisissant de devenir serviteur et de naître homme. Jean dit que la Parole a habité parmi nous.",
+        "question": "Qu’est-ce que cela te dit de Dieu, qu’il soit venu d’une manière si humble ?"
+      },
+      {
+        "title": "Une grande lumière",
+        "note": "Le peuple qui vit dans les ténèbres voit une grande lumière. Jésus apporte cette lumière en Galilée.",
+        "question": "Qui connais-tu qui marche dans les ténèbres en ce Noël ?"
+      },
+      {
+        "title": "Une lumière pour toutes les nations",
+        "note": "Le serviteur de Dieu apportera le salut jusqu’aux extrémités de la terre. Le vieux Siméon tient l’enfant et loue Dieu pour cette lumière.",
+        "question": "Pourquoi est-ce une bonne nouvelle que Jésus soit venu pour toutes les nations, et pas pour une seule ?"
+      },
+      {
+        "title": "Des présents pour le roi",
+        "note": "Le psaume montre des rois venus de loin qui honorent le roi d’Israël. Les mages adorent l’enfant et lui offrent leurs présents.",
+        "question": "Que pourrais-tu offrir à Jésus en ce Noël ?"
+      },
+      {
+        "title": "Hors d’Égypte",
+        "note": "Osée se souvient que Dieu a appelé son fils Israël hors d’Égypte. Matthieu voit Jésus refaire le parcours d’Israël quand la famille revient d’Égypte.",
+        "question": "En quoi le fait que Jésus revive l’histoire d’Israël nous aide-t-il à comprendre qui il est ?"
+      }
+    ]
+  },
+  {
+    "id": "holy-week",
+    "name": "La Semaine sainte : le chemin de la croix",
+    "summary": "Du dimanche des Rameaux au matin de Pâques, les passages de l’Ancien Testament qui annoncent chaque jour.",
+    "steps": [
+      {
+        "title": "Dimanche des Rameaux : le roi humble",
+        "note": "Zacharie montre le roi de Jérusalem arrivant avec douceur, monté sur un âne. Jésus entre ainsi dans la ville tandis que la foule agite des branches et crie Hosanna.",
+        "question": "Quel genre de roi la foule voulait-elle, et quel genre de roi est venu ?"
+      },
+      {
+        "title": "Lundi : une maison de prière",
+        "note": "Dieu a promis que sa maison serait une maison de prière pour tous les peuples. Jésus chasse les marchands qui ont envahi les parvis du temple et cite les paroles d’Ésaïe.",
+        "question": "Qu’est-ce qui étouffe la prière dans nos vies ou dans nos Églises ?"
+      },
+      {
+        "title": "Mardi : la pierre rejetée",
+        "note": "Le psaume chante la pierre rejetée par les bâtisseurs, devenue la pierre angulaire. En enseignant dans le temple, Jésus dit aux chefs que cela parle de lui.",
+        "question": "Pourquoi, à ton avis, Dieu agit-il si souvent à travers ce que les gens rejettent ?"
+      },
+      {
+        "title": "Mercredi : trente pièces d’argent",
+        "note": "Dans Zacharie, le berger du peuple de Dieu est estimé à trente pièces d’argent. Judas accepte de livrer Jésus pour ce même prix.",
+        "question": "Que dit ce prix de la valeur qu’on accordait à Jésus, et quelle valeur lui accordons-nous ?"
+      },
+      {
+        "title": "Jeudi : le sang de l’alliance",
+        "note": "Au Sinaï, Moïse scelle l’alliance par le sang. Lors de la Cène, Jésus prend la coupe et l’appelle son sang de l’alliance, répandu pour beaucoup.",
+        "question": "Que représente pour toi le fait que Jésus ait choisi un repas pour expliquer sa mort ?"
+      },
+      {
+        "title": "Vendredi saint : pourquoi m’as-tu abandonné ?",
+        "note": "Le psaume de David commence par un cri d’abandon et se termine par la louange. Sur la croix, Jésus prie à voix haute sa première ligne.",
+        "question": "Pourquoi Jésus aurait-il choisi de prier un psaume à l’heure la plus sombre ?"
+      },
+      {
+        "title": "Samedi saint : trois jours",
+        "note": "Jonas passe trois jours et trois nuits dans le ventre du grand poisson. Jésus a dit que le Fils de l’homme passerait de même trois jours dans le sein de la terre.",
+        "question": "Comment attends-tu quand Dieu semble silencieux ?"
+      },
+      {
+        "title": "Dimanche de Pâques : pas abandonné au séjour des morts",
+        "note": "David a confiance que Dieu n’abandonnera pas son fidèle au séjour des morts. À la Pentecôte, Pierre dit que cela s’est accompli quand Dieu a ressuscité Jésus d’entre les morts.",
+        "question": "Qu’est-ce que la résurrection change à ta semaine ?"
+      }
+    ]
+  },
+  {
+    "id": "lamb",
+    "name": "L’Agneau de Dieu",
+    "summary": "D’une montagne dans la Genèse jusqu’au trône dans l’Apocalypse, suis l’Agneau qui ôte le péché.",
+    "steps": [
+      {
+        "title": "Dieu pourvoira à l’agneau",
+        "note": "En montant sur la montagne, Abraham assure à Isaac que Dieu pourvoira au sacrifice. Des siècles plus tard, Jean-Baptiste désigne Jésus et l’appelle l’Agneau de Dieu.",
+        "question": "Pourquoi, à ton avis, Dieu a-t-il demandé un substitut au lieu de simplement fermer les yeux sur le péché ?"
+      },
+      {
+        "title": "La Pâque",
+        "note": "En Égypte, les maisons marquées du sang d’un agneau furent épargnées la nuit du jugement. Paul reconnaît en Christ l’agneau de la Pâque, immolé pour son peuple.",
+        "question": "Que signifie pour toi personnellement que le jugement « passe par-dessus » grâce à Jésus ?"
+      },
+      {
+        "title": "Sans défaut",
+        "note": "L’agneau de la Pâque devait être sans aucun défaut. Pierre dit que les croyants ont été rachetés par le sang précieux de Christ, l’Agneau sans tache.",
+        "question": "Pourquoi est-il important que Jésus ait été sans faute ?"
+      },
+      {
+        "title": "Mené comme un agneau",
+        "note": "Ésaïe décrit un serviteur souffrant qui va en silence vers la mort, comme un agneau. Philippe rencontre un haut fonctionnaire éthiopien qui lit ce passage et lui explique qu’il parle de Jésus.",
+        "question": "Comment Philippe a-t-il utilisé un seul passage pour expliquer toute l’histoire de Jésus ? Pour qui pourrais-tu le faire ?"
+      },
+      {
+        "title": "L’Agneau sur le trône",
+        "note": "Dans sa vision du ciel, Jean voit un Agneau qui porte les marques du sacrifice, debout au centre du trône. Le sacrifié est devenu le Roi.",
+        "question": "Qu’est-ce qui change quand nous voyons celui qui a été sacrifié régner maintenant ?"
+      },
+      {
+        "title": "La lumière de la ville",
+        "note": "Le ciel loue l’Agneau d’avoir racheté des gens de toutes les nations. Dans la nouvelle création, la ville n’a pas besoin de soleil, car l’Agneau est sa lumière.",
+        "question": "Comment l’espérance de la lumière de l’Agneau façonne-t-elle ta manière d’affronter les périodes sombres ?"
+      }
+    ]
+  },
+  {
+    "id": "temple",
+    "name": "Dieu avec nous",
+    "summary": "L’histoire de Dieu qui vient habiter avec les hommes, de l’Éden à la nouvelle Jérusalem.",
+    "steps": [
+      {
+        "title": "Marcher avec Dieu",
+        "note": "En Éden, Dieu était présent avec les hommes dans le jardin. Le péché a brisé cette proximité. La Bible se termine avec la même espérance retrouvée : Dieu habite avec l’humanité.",
+        "question": "Qu’est-ce qui a été perdu, à ton avis, quand les hommes n’ont plus pu marcher près de Dieu ?"
+      },
+      {
+        "title": "Le tabernacle",
+        "note": "Dieu dit à Moïse de construire un sanctuaire pour habiter au milieu de son peuple. Quand il est achevé, sa gloire le remplit.",
+        "question": "Pourquoi Dieu choisirait-il d’habiter au milieu d’un peuple qui ne cessait de lui être infidèle ?"
+      },
+      {
+        "title": "Le temple",
+        "note": "Quand Salomon dédie le temple, la nuée de la gloire de Dieu le remplit, comme elle avait rempli le tabernacle.",
+        "question": "Que nous dit la nuée de gloire qui remplit le temple sur ce que Dieu désire ?"
+      },
+      {
+        "title": "La Parole a été faite chair",
+        "note": "Jean dit que la Parole a pris une vie humaine et a habité parmi nous, avec un mot qui rappelle la tente du tabernacle, et que sa gloire a été vue. Jésus est la présence de Dieu en personne.",
+        "question": "En quoi le fait de voir Jésus comme la présence de Dieu en personne change-t-il ta lecture des Évangiles ?"
+      },
+      {
+        "title": "Le vrai temple",
+        "note": "Jésus appelle son propre corps le temple. Quand il meurt, le voile du temple se déchire de haut en bas, ouvrant le chemin vers Dieu.",
+        "question": "Que signifie le voile déchiré pour ta manière de t’approcher de Dieu dans la prière ?"
+      },
+      {
+        "title": "Vous êtes le temple",
+        "note": "Désormais, l’Esprit de Dieu habite en son peuple. Ensemble, et chacun personnellement, les croyants sont son temple.",
+        "question": "Si l’Esprit de Dieu habite en toi, comment cela pourrait-il façonner un lundi ordinaire ?"
+      },
+      {
+        "title": "Plus besoin de temple",
+        "note": "Ézéchiel a promis que Dieu habiterait pour toujours au milieu de son peuple. Jean ne voit aucun temple dans la nouvelle Jérusalem, car Dieu et l’Agneau en tiennent lieu.",
+        "question": "Qu’attends-tu le plus de la vie pour toujours en présence de Dieu ?"
+      }
+    ]
+  },
+  {
+    "id": "king",
+    "name": "Le Roi promis",
+    "summary": "Les promesses d’un Roi issu de Juda et de la lignée de David, accomplies en Jésus.",
+    "steps": [
+      {
+        "title": "Le Lion de Juda",
+        "note": "La bénédiction de Jacob promet un règne durable à la tribu de Juda. Dans l’Apocalypse, Jésus est honoré comme le Lion vainqueur de Juda.",
+        "question": "Quel genre de roi Israël attendait-il, et en quoi Jésus lui ressemble-t-il ou en diffère-t-il ?"
+      },
+      {
+        "title": "Un trône pour toujours",
+        "note": "Dieu promet à David un descendant dont le règne durera pour toujours. Gabriel dit à Marie que son fils recevra le trône de David, son père.",
+        "question": "Pourquoi est-il important que Dieu ait tenu sa promesse à David pendant mille ans ?"
+      },
+      {
+        "title": "Un rameau du tronc d’Isaï",
+        "note": "Ésaïe voit une pousse nouvelle sur la lignée coupée d’Isaï, le père de David. Paul le cite pour montrer que le Messie règne sur les nations, qui mettent en lui leur espérance.",
+        "question": "Dans quel domaine de ta vie te sens-tu comme une « souche », et quelle espérance cette promesse t’offre-t-elle ?"
+      },
+      {
+        "title": "Né à Bethléhem",
+        "note": "Michée désigne la petite Bethléhem comme lieu de naissance du futur chef d’Israël. Quand les mages arrivent à la recherche du Roi, les scribes renvoient à Michée.",
+        "question": "Pourquoi, à ton avis, Dieu a-t-il choisi une petite ville pour la naissance du Roi ?"
+      },
+      {
+        "title": "Monté sur un âne",
+        "note": "Zacharie montre un Roi humble monté sur un âne. Jésus entre à Jérusalem exactement de cette manière.",
+        "question": "Qu’est-ce qu’un roi monté sur un âne nous apprend sur la manière dont Jésus use de sa puissance ?"
+      },
+      {
+        "title": "Assis à la droite",
+        "note": "Dans ce psaume, David entend Dieu inviter le propre Seigneur de David à prendre la place d’honneur à ses côtés. À la Pentecôte, Pierre dit que cela parle de Jésus ressuscité et monté au ciel.",
+        "question": "Comment le fait de savoir que Jésus règne maintenant change-t-il ta manière de gérer l’inquiétude ?"
+      },
+      {
+        "title": "Un règne sans fin",
+        "note": "Daniel voit quelqu’un de semblable à un fils d’homme recevoir un règne qui ne finira jamais. L’Apocalypse annonce que le règne du monde appartient désormais pour toujours à Dieu et à son Messie.",
+        "question": "À quoi ressemblerait le fait de vivre aujourd’hui en citoyen d’un royaume sans fin ?"
+      }
+    ]
+  },
+  {
+    "id": "spirit",
+    "name": "L’Esprit répandu",
+    "summary": "Le souffle de Dieu, de la création à la Pentecôte et au-delà.",
+    "steps": [
+      {
+        "title": "Le souffle de vie",
+        "note": "Dieu insuffle la vie au premier être humain. Après sa résurrection, Jésus souffle sur ses disciples et leur donne le Saint-Esprit. Une nouvelle création commence.",
+        "question": "Quel lien y a-t-il entre le souffle de Dieu à la création et l’Esprit que donne Jésus ?"
+      },
+      {
+        "title": "Si seulement tous avaient l’Esprit",
+        "note": "Moïse souhaite que tout le peuple de Dieu ait l’Esprit. Joël promet un jour où Dieu répandra son Esprit sur toute chair.",
+        "question": "Moïse souhaitait que chaque croyant ait l’Esprit. Qu’est-ce que cela changerait dans ton Église ?"
+      },
+      {
+        "title": "Un cœur nouveau",
+        "note": "Dieu promet de remplacer les cœurs de pierre par des cœurs de chair et de mettre son Esprit au-dedans. Paul dit que l’Esprit écrit désormais sur les cœurs humains, et non sur la pierre.",
+        "question": "Où as-tu besoin que Dieu remplace en toi quelque chose de dur par quelque chose de nouveau ?"
+      },
+      {
+        "title": "De l’eau pour ceux qui ont soif",
+        "note": "Dieu promet de l’eau sur la terre desséchée et son Esprit sur son peuple. Jésus dit que des fleuves d’eau vive couleront de ceux qui croient, en parlant de l’Esprit.",
+        "question": "De quoi as-tu soif, et comment Jésus répond-il à cette soif ?"
+      },
+      {
+        "title": "La Pentecôte",
+        "note": "À la Pentecôte, l’Esprit descend sur les disciples, et Pierre explique que c’est l’effusion annoncée par Joël.",
+        "question": "Qu’est-ce qui a surpris la foule à la Pentecôte, et qu’est-ce qui pourrait surprendre les gens dans ton Église ?"
+      },
+      {
+        "title": "Pour toutes les nations",
+        "note": "L’Esprit descend sur des non-Juifs dans la maison de Corneille. La promesse de Joël pour toute chair inclut vraiment tout le monde.",
+        "question": "Qui pourrais-tu négliger alors que Dieu veut l’inclure ?"
+      },
+      {
+        "title": "Venez et buvez",
+        "note": "Ésaïe invite ceux qui ont soif à boire sans payer. La Bible se termine avec l’Esprit et l’Église qui répètent cette invitation, offrant gratuitement l’eau de la vie.",
+        "question": "Qui pourrais-tu inviter cette semaine à « venir boire » ?"
+      }
+    ]
+  },
+  {
+    "id": "eden",
+    "name": "De l’Éden à la nouvelle création",
+    "summary": "Comment les dernières pages de la Bible répondent aux premières.",
+    "steps": [
+      {
+        "title": "Le ciel et la terre",
+        "note": "La Bible s’ouvre sur Dieu qui crée les cieux et la terre, et se termine par un nouveau ciel et une nouvelle terre.",
+        "question": "Que nous disent la première et la dernière page de la Bible sur le plan de Dieu pour le monde ?"
+      },
+      {
+        "title": "La première promesse",
+        "note": "Juste après la chute, Dieu promet qu’un descendant de la femme vaincra le serpent. Paul assure l’Église que Dieu écrasera bientôt Satan définitivement.",
+        "question": "Pourquoi est-il significatif que Dieu ait promis le salut juste après le premier péché ?"
+      },
+      {
+        "title": "Une bénédiction pour toutes les nations",
+        "note": "Dieu promet à Abraham que toutes les nations seront bénies en lui. Paul y voit l’Évangile annoncé d’avance.",
+        "question": "Comment la bénédiction promise à Abraham atteint-elle les gens aujourd’hui ?"
+      },
+      {
+        "title": "Le chemin du retour",
+        "note": "Des chérubins gardent le chemin de l’arbre de vie. L’épître aux Hébreux dit que Jésus a ouvert un chemin nouveau vers la présence de Dieu.",
+        "question": "Que signifie le fait que le chemin du retour vers Dieu soit désormais ouvert ?"
+      },
+      {
+        "title": "Plus de malédiction",
+        "note": "Le sol est maudit à cause du péché. Dans la nouvelle création, la malédiction disparaît pour de bon.",
+        "question": "Quelle part des blessures du monde désires-tu le plus voir guérie ?"
+      },
+      {
+        "title": "L’arbre de vie",
+        "note": "L’arbre de vie se trouvait en Éden. Il réapparaît dans la nouvelle Jérusalem, avec des feuilles qui servent à la guérison des nations.",
+        "question": "Que suggèrent les feuilles « pour la guérison des nations » sur l’avenir ?"
+      },
+      {
+        "title": "Face à face",
+        "note": "Après avoir péché, Adam et Ève se sont cachés de Dieu. À la fin de l’histoire, son peuple le voit face à face.",
+        "question": "Comment l’espérance de voir Dieu face à face change-t-elle ta façon de vivre maintenant ?"
+      }
+    ]
+  },
+  {
+    "id": "covenant",
+    "name": "Les promesses de l’alliance de Dieu",
+    "summary": "Suis les promesses par lesquelles Dieu s’engage, de Noé à la nouvelle alliance en Jésus.",
+    "steps": [
+      {
+        "title": "Une promesse après le déluge",
+        "note": "Après le déluge, Dieu s’engage à ne plus jamais détruire la terre par les eaux. Ésaïe rappelle cette promesse pour assurer les exilés que la bonté de Dieu ne leur sera pas retirée.",
+        "question": "Pourquoi, à ton avis, Dieu choisit-il de s’engager par des promesses ?"
+      },
+      {
+        "title": "La famille d’Abraham",
+        "note": "Dieu promet d’être le Dieu d’Abraham et de ses descendants pour toujours. Paul dit que tous ceux qui appartiennent à Christ sont comptés dans la famille d’Abraham et partagent cette promesse.",
+        "question": "Que représente pour toi le fait de faire partie d’une famille de foi qui traverse des milliers d’années ?"
+      },
+      {
+        "title": "Le sang de l’alliance",
+        "note": "Au Sinaï, Moïse scelle l’alliance par le sang du sacrifice. Lors de la Cène, Jésus parle de son propre sang comme du sang de l’alliance, répandu pour le pardon.",
+        "question": "Comment la Cène prend-elle un sens nouveau à la lumière de ce lien ?"
+      },
+      {
+        "title": "Une promesse à David",
+        "note": "Dieu promet à David un trône qui durera pour toujours. Le Psaume 89 rappelle à Dieu cette alliance même quand le royaume semble s’effondrer.",
+        "question": "Comment t’accroches-tu aux promesses de Dieu quand les circonstances semblent dire le contraire ?"
+      },
+      {
+        "title": "La nouvelle alliance",
+        "note": "Jérémie annonce une nouvelle alliance écrite dans les cœurs. Jésus déclare que la nouvelle alliance commence avec sa mort.",
+        "question": "Quelle est la différence entre des règles écrites sur la pierre et une loi écrite dans le cœur ?"
+      },
+      {
+        "title": "Une alliance éternelle",
+        "note": "Ézéchiel promet une alliance de paix qui dure pour toujours. L’épître aux Hébreux se termine en présentant Jésus comme le berger ramené à la vie par le sang de cette alliance éternelle.",
+        "question": "Où as-tu le plus besoin de la paix que promet cette alliance ?"
+      }
+    ]
+  },
+  {
+    "id": "exodus",
+    "name": "Hors d’Égypte : la route de la liberté",
+    "summary": "La délivrance de l’esclavage devient le modèle de la liberté plus grande qu’apporte Jésus.",
+    "steps": [
+      {
+        "title": "Dieu voit et entend",
+        "note": "Au buisson ardent, Dieu dit à Moïse qu’il a vu la souffrance de son peuple et qu’il est venu le délivrer. Étienne raconte ce moment pour montrer que Dieu a toujours agi pour sauver.",
+        "question": "Que signifie pour toi le fait que Dieu voie et entende la souffrance ?"
+      },
+      {
+        "title": "À travers la mer",
+        "note": "Dieu ouvre un chemin à travers la mer pour qu’Israël s’échappe. Paul voit dans cette traversée une leçon et une image pour les croyants.",
+        "question": "Quand Dieu a-t-il ouvert pour toi un chemin là où il ne semblait y en avoir aucun ?"
+      },
+      {
+        "title": "Le pain du ciel",
+        "note": "Dieu nourrit Israël avec la manne dans le désert. Jésus dit que le Père donne maintenant le vrai pain du ciel, qui est Jésus lui-même.",
+        "question": "Sur quoi comptes-tu pour tenir, et comment Jésus offre-t-il quelque chose de plus profond ?"
+      },
+      {
+        "title": "L’eau du rocher",
+        "note": "L’eau jaillit d’un rocher pour sauver un peuple assoiffé. Paul dit que ce rocher annonçait le Christ.",
+        "question": "Comment Jésus a-t-il pourvu à tes besoins dans une période de sécheresse ?"
+      },
+      {
+        "title": "Appelé hors d’Égypte",
+        "note": "Osée se souvient que Dieu a appelé Israël, son fils, hors d’Égypte. Matthieu voit le même modèle quand le jeune Jésus revient d’Égypte.",
+        "question": "Pourquoi Matthieu voudrait-il que ses lecteurs voient Jésus revivre l’histoire d’Israël ?"
+      },
+      {
+        "title": "Libérés pour être libres",
+        "note": "Les commandements commencent par rappeler à Israël que Dieu l’a libéré de l’esclavage. Paul presse les croyants de tenir ferme dans la liberté que Christ a gagnée et de ne pas retourner à l’esclavage.",
+        "question": "Quelles vieilles habitudes essaient de te ramener en arrière, et qu’est-ce qui t’aide à rester libre ?"
+      },
+      {
+        "title": "Le chant des rachetés",
+        "note": "Après la traversée de la mer, Moïse et Israël chantent la victoire de Dieu. Dans l’Apocalypse, les rachetés chantent le cantique de Moïse et de l’Agneau.",
+        "question": "Quelle délivrance dans ta vie mérite d’être chantée ?"
+      }
+    ]
+  },
+  {
+    "id": "priest",
+    "name": "Notre grand souverain sacrificateur",
+    "summary": "Les prêtres se tenaient entre Dieu et le peuple. L’épître aux Hébreux montre comment Jésus accomplit ce rôle une fois pour toutes.",
+    "steps": [
+      {
+        "title": "Un prêtre mystérieux",
+        "note": "Abraham rencontre Melchisédek, roi et prêtre, qui le bénit. L’épître aux Hébreux se sert de cette courte scène pour expliquer un sacerdoce plus ancien et plus grand que celui d’Aaron.",
+        "question": "Pourquoi l’épître aux Hébreux remonte-t-elle si loin pour expliquer qui est Jésus ?"
+      },
+      {
+        "title": "Prêtre pour toujours",
+        "note": "Le Psaume 110 parle d’un roi qui est aussi prêtre pour toujours. L’épître aux Hébreux l’applique directement à Jésus.",
+        "question": "Qu’est-ce que cela change que le sacerdoce de Jésus ne finisse jamais ?"
+      },
+      {
+        "title": "Porter les noms du peuple",
+        "note": "Aaron portait les noms des tribus d’Israël sur son cœur dans la présence de Dieu. L’épître aux Hébreux dit que Jésus est toujours vivant pour intercéder auprès du Père en faveur de son peuple.",
+        "question": "Que ressens-tu en sachant que Jésus prie pour toi ?"
+      },
+      {
+        "title": "Le jour des Expiations",
+        "note": "Une fois par an, le grand-prêtre apportait le sang du sacrifice dans le lieu très saint. Jésus y est entré une fois pour toutes avec son propre sang et a obtenu une rédemption éternelle.",
+        "question": "Que signifie « une fois pour toutes » pour la culpabilité que tu portes encore ?"
+      },
+      {
+        "title": "L’assurance de s’approcher",
+        "note": "Même le grand-prêtre ne pouvait pas entrer dans le lieu très saint quand il le voulait. L’épître aux Hébreux dit que les croyants peuvent maintenant s’approcher de Dieu avec assurance grâce à Jésus.",
+        "question": "Qu’est-ce qui te retient de t’approcher de Dieu, et comment ce passage y répond-il ?"
+      },
+      {
+        "title": "Un royaume de prêtres",
+        "note": "Au Sinaï, Dieu appelle Israël à être un royaume de prêtres. Pierre donne la même vocation à l’Église : proclamer la bonté de Dieu au monde.",
+        "question": "Comment pourrais-tu servir de pont entre Dieu et les gens autour de toi cette semaine ?"
+      }
+    ]
+  },
+  {
+    "id": "water",
+    "name": "L’eau et la vie nouvelle",
+    "summary": "De la création au fleuve de vie, l’eau porte l’histoire de la purification, de la délivrance et du renouveau.",
+    "steps": [
+      {
+        "title": "L’Esprit et l’eau",
+        "note": "À la création, l’Esprit se meut au-dessus des eaux. Jésus dit à Nicodème que pour entrer dans le royaume de Dieu, il faut naître d’eau et d’Esprit.",
+        "question": "Que signifie être rendu nouveau plutôt que simplement amélioré ?"
+      },
+      {
+        "title": "Sauvés à travers le déluge",
+        "note": "La famille de Noé est gardée saine et sauve à travers les eaux du jugement. Pierre relie cette délivrance au baptême et à la vie nouvelle qu’il représente.",
+        "question": "Que dit ton baptême, ou l’idée du baptême, sur l’endroit où se trouve ta sécurité ?"
+      },
+      {
+        "title": "À travers la mer",
+        "note": "Israël traverse la mer à pied sec. Paul décrit cette traversée comme une sorte de baptême dans une nouvelle identité.",
+        "question": "De quoi Dieu t’a-t-il fait sortir, et dans quoi t’a-t-il fait entrer ?"
+      },
+      {
+        "title": "La source d’eau vive",
+        "note": "Jérémie dit que le peuple de Dieu l’a abandonné, lui, la source d’eau vive, pour des citernes crevassées. Jésus offre à une femme samaritaine l’eau vive que lui seul peut donner.",
+        "question": "Sur quelles « citernes crevassées » est-on tenté de compter aujourd’hui ?"
+      },
+      {
+        "title": "Conduits vers les sources",
+        "note": "Le berger du Psaume 23 mène ses brebis près des eaux paisibles. Dans l’Apocalypse, l’Agneau conduit son peuple aux sources des eaux de la vie et essuie leurs larmes.",
+        "question": "Où as-tu besoin que le Berger te conduise vers le repos ?"
+      },
+      {
+        "title": "Le fleuve de vie",
+        "note": "Ézéchiel voit un fleuve sortir du temple et apporter la vie partout où il passe. Jean voit le fleuve d’eau de la vie couler du trône de Dieu dans la nouvelle création.",
+        "question": "Comment ta vie pourrait-elle être un canal par lequel la vie de Dieu atteint les autres ?"
+      }
+    ]
+  },
+  {
+    "id": "kids-promises",
+    "name": "Dieu tient ses promesses",
+    "summary": "Pour les enfants : Dieu fait toujours ce qu’il dit.",
+    "steps": [
+      {
+        "title": "L’arc-en-ciel",
+        "note": "Après le déluge, Dieu a mis un arc-en-ciel dans le ciel comme signe de sa promesse. Au ciel, Jean voit un arc-en-ciel tout autour du trône de Dieu.",
+        "question": "Qu’est-ce qu’un arc-en-ciel te rappelle sur Dieu ?"
+      },
+      {
+        "title": "Compte les étoiles",
+        "note": "Dieu a dit à Abraham de regarder les étoiles et lui a promis une famille aussi grande. L’épître aux Hébreux dit que c’est vraiment arrivé !",
+        "question": "Te souviens-tu d’une promesse que quelqu’un a tenue pour toi ?"
+      },
+      {
+        "title": "Un bébé pour Sara",
+        "note": "Sara était très âgée, mais Dieu lui a donné un petit garçon, exactement comme il l’avait promis.",
+        "question": "Y a-t-il quelque chose de trop difficile pour Dieu ?"
+      },
+      {
+        "title": "Toutes les promesses",
+        "note": "Josué a dit qu’aucune des bonnes promesses de Dieu n’avait manqué. Paul dit que toutes les promesses de Dieu sont « oui » en Jésus.",
+        "question": "Quelle promesse de Dieu aimerais-tu retenir cette semaine ?"
+      }
+    ]
+  },
+  {
+    "id": "kids-shepherd",
+    "name": "Jésus, le bon berger",
+    "summary": "Pour les enfants : Jésus prend soin de ses brebis.",
+    "steps": [
+      {
+        "title": "Mon berger",
+        "note": "David a dit que le Seigneur est son berger. Jésus a dit : je suis le bon berger.",
+        "question": "Que fait un berger pour ses brebis ?"
+      },
+      {
+        "title": "La brebis perdue",
+        "note": "Dieu a dit qu’il irait chercher ses brebis perdues. Jésus a raconté l’histoire d’un berger qui a cherché jusqu’à ce qu’il retrouve celle qui était perdue.",
+        "question": "À ton avis, qu’a ressenti la brebis perdue quand elle a été retrouvée ?"
+      },
+      {
+        "title": "Porté tout près",
+        "note": "Ésaïe dit que Dieu porte les petits agneaux tout près de son cœur. Jésus a pris les enfants dans ses bras et les a bénis.",
+        "question": "Que ressens-tu en sachant que Jésus aime les enfants ?"
+      },
+      {
+        "title": "Suivre le berger",
+        "note": "Les brebis de Jésus connaissent sa voix et le suivent. Un jour, il les conduira vers une eau fraîche et essuiera toute larme.",
+        "question": "Comment pouvons-nous écouter Jésus ?"
+      }
+    ]
+  },
+  {
+    "id": "kids-rescue",
+    "name": "Les grands sauvetages de Dieu",
+    "summary": "Pour les enfants : des histoires où Dieu sauve son peuple.",
+    "steps": [
+      {
+        "title": "L’arche de Noé",
+        "note": "Dieu a dit à Noé de construire un grand bateau, et ce bateau a protégé sa famille pendant le déluge.",
+        "question": "Qu’est-ce que tu emporterais dans l’arche de Noé ?"
+      },
+      {
+        "title": "La fosse aux lions",
+        "note": "Dieu a envoyé un ange fermer la gueule des lions, et Daniel a été protégé. L’épître aux Hébreux se souvient de gens qui ont fait confiance à Dieu comme lui.",
+        "question": "Quand as-tu besoin d’être courageux ?"
+      },
+      {
+        "title": "Jonas et le grand poisson",
+        "note": "Jonas a prié dans le ventre du poisson, et Dieu l’a sauvé. Jésus a dit que son propre sauvetage serait comme les trois jours de Jonas.",
+        "question": "Où peux-tu prier Dieu ? (Partout !)"
+      },
+      {
+        "title": "Le plus grand sauvetage",
+        "note": "Dieu a promis de chercher ceux qui sont perdus. Jésus a dit qu’il est venu chercher et sauver ceux qui sont perdus.",
+        "question": "À qui pourrais-tu parler de Jésus ?"
+      }
+    ]
+  },
+  {
+    "id": "kids-christmas",
+    "name": "Le premier Noël",
+    "summary": "Pour les enfants : Dieu a tenu ses promesses quand Jésus est né.",
+    "steps": [
+      {
+        "title": "Né à Bethléhem",
+        "note": "Bien avant la naissance de Jésus, Dieu a dit qu’un roi spécial viendrait de la petite Bethléhem. Et c’est justement là que Jésus est né !",
+        "question": "Pourquoi, à ton avis, Dieu a-t-il choisi une petite ville ?"
+      },
+      {
+        "title": "Dieu avec nous",
+        "note": "Dieu a promis un bébé appelé Emmanuel, ce qui veut dire Dieu avec nous. Jésus est Dieu venu pour être avec nous.",
+        "question": "Que ressens-tu en sachant que Dieu est toujours avec toi ?"
+      },
+      {
+        "title": "Suivre l’étoile",
+        "note": "Dieu a dit qu’une étoile sortirait de la famille de Jacob. Des mages ont vu une étoile et l’ont suivie jusqu’à Jésus.",
+        "question": "Si tu pouvais apporter un cadeau au bébé Jésus, que serait-il ?"
+      },
+      {
+        "title": "Un bébé qui est Roi",
+        "note": "Dieu a promis un enfant qui serait un roi de paix. Des anges ont dit aux bergers que ce Sauveur était né !",
+        "question": "À qui peux-tu annoncer la bonne nouvelle en ce Noël ?"
+      }
+    ]
+  }
+]

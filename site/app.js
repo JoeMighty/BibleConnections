@@ -75,9 +75,9 @@
     en: { name: 'English', locale: 'en-US', bible: 'NIV', listed: true },
     es: { name: 'Español', locale: 'es', bible: 'NVI', listed: true },
     pt: { name: 'Português', locale: 'pt-BR', bible: 'NVI-PT', listed: true },
-    fr: { name: 'Français', locale: 'fr-FR', bible: 'S21', listed: false },
-    ko: { name: '한국어', locale: 'ko-KR', bible: 'KRV', listed: false },
-    zh: { name: '简体中文', locale: 'zh-CN', bible: 'CUNPSS', listed: false },
+    fr: { name: 'Français', locale: 'fr-FR', bible: 'S21', listed: true },
+    ko: { name: '한국어', locale: 'ko-KR', bible: 'KRV', listed: true },
+    zh: { name: '简体中文', locale: 'zh-CN', bible: 'CUNPSS', listed: true },
   };
   // Language: a ?lang= link wins, then the saved choice, then the device language.
   const urlLang = new URLSearchParams(location.search).get('lang');

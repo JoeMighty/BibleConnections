@@ -1289,7 +1289,6 @@
       "Sermon series pages, leader guides, handouts, slides and the Advent plan.": "Páginas de séries de sermões, guias para líderes, folhetos, slides e o plano do Advento.",
       "Advent": "Advento",
       "Help translate": "Ajude a traduzir",
-      "Bible Connections is in English, Spanish and Portuguese. Native speakers can check the wording or help start a new language.": "O Bible Connections está em inglês, espanhol e português. Falantes nativos podem revisar o texto ou ajudar a começar um novo idioma.",
       "Offer help on GitHub": "Oferecer ajuda no GitHub",
       "Report a problem": "Relatar um problema",
       "Something broken, confusing or wrong? Say what you saw and on which device.": "Algo quebrado, confuso ou errado? Diga o que você viu e em qual aparelho.",
@@ -1341,7 +1340,8 @@
       "Prophecy chains": "Cadeias de profecia",
       "Timeline": "Linha do tempo",
       "Data": "Dados",
-      "Open data download": "Download de dados abertos"
+      "Open data download": "Download de dados abertos",
+      "Bible Connections is in English, Spanish, Portuguese, French, Korean and Chinese. Native speakers can check the wording or help start a new language.": "O Bible Connections está em inglês, espanhol, português, francês, coreano e chinês. Falantes nativos podem revisar o texto ou ajudar a começar um novo idioma."
     },
     "slides": {
       "Slides": "Slides",

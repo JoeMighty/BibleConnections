@@ -32,7 +32,34 @@
         "try": "?view=map",
         "try_label": "Open the map",
         "try_label_es": "Abrir el mapa",
-        "try_label_pt": "Abrir o mapa"
+        "try_label_pt": "Abrir o mapa",
+        "title_fr": "Explorer la carte",
+        "what_fr": "Chaque arc relie deux passages qui renvoient l’un à l’autre, de la Genèse à gauche jusqu’à l’Apocalypse à droite.",
+        "steps_fr": [
+          "Fais défiler, pince ou utilise les boutons + et − pour zoomer sur un livre.",
+          "Fais glisser pour te déplacer. Appuie sur 0 ou sur le bouton de réinitialisation pour revoir toute la Bible.",
+          "Touche un arc pour voir les deux passages qu’il relie.",
+          "Un lien te semble faible ? Signale-le, ou masque-le sur ton appareil."
+        ],
+        "try_label_fr": "Ouvrir la carte",
+        "title_ko": "지도 탐험하기",
+        "what_ko": "모든 호는 서로를 가리키는 두 본문을 이어 줘요. 왼쪽은 창세기, 오른쪽은 요한계시록이에요.",
+        "steps_ko": [
+          "스크롤하거나 두 손가락으로 벌리거나 + 와 − 버튼으로 원하는 책을 확대해요.",
+          "끌어서 이동해요. 0을 누르거나 초기화 버튼을 누르면 성경 전체가 다시 보여요.",
+          "호를 누르면 그 호가 잇는 두 본문을 볼 수 있어요.",
+          "연결이 약해 보이나요? 신고하거나 내 기기에서 숨길 수 있어요."
+        ],
+        "try_label_ko": "지도 열기",
+        "title_zh": "探索地图",
+        "what_zh": "每一条弧线都连接两段彼此呼应的经文，从左边的创世记到右边的启示录。",
+        "steps_zh": [
+          "滚动、双指缩放或使用 + 和 − 按钮，放大任何一卷书。",
+          "拖动可移动视图。按 0 或重置按钮，重新查看整本圣经。",
+          "点按弧线，查看它连接的两段经文。",
+          "觉得某条连接牵强？可以报告它，或在你的设备上隐藏它。"
+        ],
+        "try_label_zh": "打开地图"
       },
       {
         "title": "Search",
@@ -59,7 +86,31 @@
         "try": "?q=shepherd",
         "try_label": "Search for shepherd",
         "try_label_es": "Buscar pastor",
-        "try_label_pt": "Buscar pastor"
+        "try_label_pt": "Buscar pastor",
+        "title_fr": "Recherche",
+        "what_fr": "Trouve un verset, un chapitre, un livre ou un mot. Les noms de livres mal orthographiés sont compris, et tu peux aussi chercher en hébreu ou en grec.",
+        "steps_fr": [
+          "Tape Jean 3:16, Psaumes 23, shepherd, ἀγάπη ou G26 dans la zone de recherche.",
+          "Choisis une suggestion pendant que tu tapes, ou appuie sur Entrée.",
+          "Appuie sur / au clavier pour aller directement à la zone de recherche."
+        ],
+        "try_label_fr": "Chercher « shepherd »",
+        "title_ko": "검색",
+        "what_ko": "구절, 장, 책, 단어를 찾아보세요. 책 이름의 오타도 알아듣고, 히브리어나 헬라어로도 검색할 수 있어요.",
+        "steps_ko": [
+          "검색창에 요한복음 3:16, 시편 23편, 목자, ἀγάπη 또는 G26을 입력해 보세요.",
+          "입력하는 동안 추천 항목을 고르거나 Enter를 누르세요.",
+          "키보드에서 /를 누르면 검색창으로 바로 이동해요."
+        ],
+        "try_label_ko": "목자 검색하기",
+        "title_zh": "搜索",
+        "what_zh": "查找经文、章、书卷或词语。拼错的书卷名也能识别，还可以用希伯来文或希腊文搜索。",
+        "steps_zh": [
+          "在搜索框中输入 约翰福音 3:16、诗篇 23、shepherd（牧人）、ἀγάπη 或 G26。",
+          "输入时选择一个建议，或按回车键。",
+          "在键盘上按 / 可直接跳到搜索框。"
+        ],
+        "try_label_zh": "搜索 shepherd（牧人）"
       },
       {
         "title": "How are you feeling?",
@@ -86,9 +137,36 @@
         "try": "?topic=anxiety",
         "try_label": "Open anxiety and worry",
         "try_label_es": "Abrir ansiedad y preocupación",
-        "try_label_pt": "Abrir ansiedade e preocupação"
+        "try_label_pt": "Abrir ansiedade e preocupação",
+        "title_fr": "Comment te sens-tu ?",
+        "what_fr": "Pars de ce que tu ressens aujourd’hui et vois ce qu’en disent les Écritures.",
+        "steps_fr": [
+          "Sur la page d’accueil, touche un ressenti comme Anxiété, Deuil ou Gratitude.",
+          "Parcours les versets sur ce sujet et les connexions entre eux.",
+          "Ou touche Surprends-moi pour une connexion expliquée au hasard."
+        ],
+        "try_label_fr": "Ouvrir l’anxiété et l’inquiétude",
+        "title_ko": "오늘 마음이 어떠세요?",
+        "what_ko": "오늘 내 마음에서 출발해 성경이 무엇을 말하는지 보세요.",
+        "steps_ko": [
+          "시작 페이지에서 불안해요, 슬퍼요, 감사해요 같은 감정을 눌러 보세요.",
+          "그 주제의 구절들과 그 사이의 연결을 둘러보세요.",
+          "또는 아무거나 보여 줘요를 눌러 설명이 있는 연결을 무작위로 보세요."
+        ],
+        "try_label_ko": "불안과 걱정 열기",
+        "title_zh": "你现在感觉如何？",
+        "what_zh": "从你今天的感受出发，看看圣经怎么说。",
+        "steps_zh": [
+          "在欢迎页上，点按一种感受，如“焦虑”“悲伤”或“感恩”。",
+          "浏览这个话题的经文以及它们之间的连接。",
+          "或者点按“给我惊喜”，随机查看一条附有讲解的连接。"
+        ],
+        "try_label_zh": "打开“焦虑与忧虑”"
       }
-    ]
+    ],
+    "group_fr": "Pour commencer",
+    "group_ko": "시작하기",
+    "group_zh": "入门"
   },
   {
     "group": "Study a passage",
@@ -120,7 +198,31 @@
         "try": "?ref=John+3%3A16",
         "try_label": "Study John 3:16",
         "try_label_es": "Estudiar Juan 3:16",
-        "try_label_pt": "Estudar João 3:16"
+        "try_label_pt": "Estudar João 3:16",
+        "title_fr": "Explorateur de passage",
+        "what_fr": "Ouvre n’importe quel verset pour voir ses mots originaux en hébreu ou en grec, sa place dans le chapitre, une introduction au livre, ses connexions, ses personnages, ses lieux et des questions de réflexion.",
+        "steps_fr": [
+          "Cherche un verset, ou choisis-en un dans une liste.",
+          "Touche un mot original pour l’étudier, ou active Afficher la grammaire.",
+          "Utilise Verset précédent et Verset suivant pour continuer la lecture."
+        ],
+        "try_label_fr": "Étudier Jean 3:16",
+        "title_ko": "본문 탐색",
+        "what_ko": "어떤 구절이든 열면 히브리어나 헬라어 원어, 장 안에서의 위치, 책 소개, 연결, 인물, 장소, 묵상 질문을 볼 수 있어요.",
+        "steps_ko": [
+          "구절을 검색하거나 목록에서 하나를 고르세요.",
+          "원어 단어를 눌러 연구하거나, 문법 보기를 켜세요.",
+          "이전 구절과 다음 구절로 계속 읽어 가세요."
+        ],
+        "try_label_ko": "요한복음 3:16 연구하기",
+        "title_zh": "经文浏览器",
+        "what_zh": "打开任何一节经文，查看它的希伯来文或希腊文原文词语、在本章中的位置、书卷简介、连接、人物、地点和默想问题。",
+        "steps_zh": [
+          "搜索一节经文，或从任何列表中选择一节。",
+          "点按一个原文词语进行研读，或打开“显示语法”。",
+          "使用“上一节”和“下一节”继续往下读。"
+        ],
+        "try_label_zh": "研读约翰福音 3:16"
       },
       {
         "title": "Words in common",
@@ -147,7 +249,31 @@
         "try": "?c=Gen.1.1_John.1.1",
         "try_label": "Genesis 1:1 and John 1:1",
         "try_label_es": "Génesis 1:1 y Juan 1:1",
-        "try_label_pt": "Gênesis 1:1 e João 1:1"
+        "try_label_pt": "Gênesis 1:1 e João 1:1",
+        "title_fr": "Mots en commun",
+        "what_fr": "Chaque connexion montre les mots hébreux et grecs employés par les deux passages, même d’un Testament à l’autre.",
+        "steps_fr": [
+          "Touche un arc, ou choisis une connexion dans une liste.",
+          "Cherche Mots en commun sous les deux passages.",
+          "Touche un mot pour le suivre à travers la Bible."
+        ],
+        "try_label_fr": "Genèse 1:1 et Jean 1:1",
+        "title_ko": "공통 단어",
+        "what_ko": "각 연결에는 두 본문이 함께 쓰는 히브리어와 헬라어 단어가 나와요. 신구약을 넘나들 때도요.",
+        "steps_ko": [
+          "호를 누르거나 목록에서 연결을 고르세요.",
+          "두 본문 아래에서 공통 단어를 찾아보세요.",
+          "단어를 누르면 성경 전체에서 그 단어를 따라갈 수 있어요."
+        ],
+        "try_label_ko": "창세기 1:1과 요한복음 1:1",
+        "title_zh": "共同的词语",
+        "what_zh": "每条连接都会显示两段经文共同使用的希伯来文和希腊文词语，即使跨越新旧两约也一样。",
+        "steps_zh": [
+          "点按弧线，或从列表中选择一条连接。",
+          "在两段经文下方找到“共同的词语”。",
+          "点按一个词语，跟着它走遍整本圣经。"
+        ],
+        "try_label_zh": "创世记 1:1 和 约翰福音 1:1"
       },
       {
         "title": "Word study",
@@ -174,7 +300,31 @@
         "try": "?word=G0026",
         "try_label": "Study agape (love)",
         "try_label_es": "Estudiar ágape (amor)",
-        "try_label_pt": "Estudar ágape (amor)"
+        "try_label_pt": "Estudar ágape (amor)",
+        "title_fr": "Étude de mots",
+        "what_fr": "Suis environ 14 000 mots hébreux et grecs : prononciation, sens selon le contexte, emplois, formes et mots apparentés.",
+        "steps_fr": [
+          "Ouvre Étudier, puis Étude de mots, ou cherche un mot hébreu ou grec.",
+          "Choisis un sens pour ne voir que ces versets.",
+          "Ouvre l’article du dictionnaire pour plus de détails."
+        ],
+        "try_label_fr": "Étudier agapè (amour)",
+        "title_ko": "원어 단어 연구",
+        "what_ko": "약 14,000개의 히브리어와 헬라어 단어를 따라가 보세요. 발음, 문맥 속 의미, 쓰인 곳, 형태, 관련 단어를 볼 수 있어요.",
+        "steps_ko": [
+          "공부에서 원어 단어 연구를 열거나, 히브리어나 헬라어 단어를 검색하세요.",
+          "의미를 고르면 그 의미로 쓰인 구절만 보여요.",
+          "더 자세히 보려면 사전 항목을 여세요."
+        ],
+        "try_label_ko": "아가페(사랑) 연구하기",
+        "title_zh": "原文词语研读",
+        "what_zh": "追踪约 14,000 个希伯来文和希腊文词语：读音、上下文中的含义、出现的位置、词形和相关词语。",
+        "steps_zh": [
+          "打开“研读”，再选择“原文词语研读”，或搜索一个希伯来文或希腊文词语。",
+          "选择一个含义，只看那些经文。",
+          "打开词典条目查看更多详情。"
+        ],
+        "try_label_zh": "研读 agape（爱）"
       },
       {
         "title": "Chapter and book study",
@@ -198,7 +348,28 @@
         "try": "?ref=Isaiah",
         "try_label": "Key words of Isaiah",
         "try_label_es": "Palabras clave de Isaías",
-        "try_label_pt": "Palavras-chave de Isaías"
+        "try_label_pt": "Palavras-chave de Isaías",
+        "title_fr": "Étude d’un chapitre ou d’un livre",
+        "what_fr": "Chaque chapitre ou livre montre ses mots originaux clés, les lieux qu’il nomme et une introduction au livre.",
+        "steps_fr": [
+          "Touche une barre en bas de la carte, ou cherche un chapitre comme Jean 3.",
+          "Choisis un mot clé ou un lieu pour aller plus loin."
+        ],
+        "try_label_fr": "Mots clés d’Ésaïe",
+        "title_ko": "장과 책 연구",
+        "what_ko": "어떤 장이나 책이든 핵심 원어 단어, 나오는 장소, 책 소개를 보여 줘요.",
+        "steps_ko": [
+          "지도 아래쪽 막대를 누르거나 요한복음 3장 같은 장을 검색하세요.",
+          "핵심 단어나 장소를 골라 더 살펴보세요."
+        ],
+        "try_label_ko": "이사야서의 핵심 단어",
+        "title_zh": "章与书卷研读",
+        "what_zh": "任何一章或一卷书都会显示其中的关键原文词语、提到的地点以及书卷简介。",
+        "steps_zh": [
+          "点按地图底部的条形，或搜索某一章，如 约翰福音 3。",
+          "选择一个关键词或地点，进一步探索。"
+        ],
+        "try_label_zh": "以赛亚书的关键词"
       },
       {
         "title": "My notes",
@@ -225,9 +396,36 @@
         "try": "?view=notes",
         "try_label": "Open my notes",
         "try_label_es": "Abrir mis notas",
-        "try_label_pt": "Abrir minhas notas"
+        "try_label_pt": "Abrir minhas notas",
+        "title_fr": "Mes notes",
+        "what_fr": "Écris tes propres notes sur n’importe quel verset. Elles restent sur ton appareil, et tu peux les sauvegarder.",
+        "steps_fr": [
+          "Ouvre un verset et écris dans la case Mes notes. L’enregistrement se fait pendant que tu tapes.",
+          "Retrouve toutes tes notes dans Étudier, puis Mes notes.",
+          "Va dans Réglages, puis Tout sauvegarder, pour en garder une copie."
+        ],
+        "try_label_fr": "Ouvrir mes notes",
+        "title_ko": "내 노트",
+        "what_ko": "어떤 구절에든 나만의 노트를 쓰세요. 노트는 내 기기에 저장되고 백업할 수 있어요.",
+        "steps_ko": [
+          "구절을 열고 내 노트 칸에 적어 보세요. 입력하는 대로 저장돼요.",
+          "공부에서 내 노트를 열면 모든 노트를 볼 수 있어요.",
+          "사본을 보관하려면 설정에서 모두 백업을 누르세요."
+        ],
+        "try_label_ko": "내 노트 열기",
+        "title_zh": "我的笔记",
+        "what_zh": "在任何经文上写下自己的笔记。笔记保存在你的设备上，你也可以备份。",
+        "steps_zh": [
+          "打开一节经文，在“我的笔记”框中书写。输入时会自动保存。",
+          "在“研读”中选择“我的笔记”，查看你的全部笔记。",
+          "在“设置”中选择“全部备份”，保留一份副本。"
+        ],
+        "try_label_zh": "打开我的笔记"
       }
-    ]
+    ],
+    "group_fr": "Étudier un passage",
+    "group_ko": "본문 연구",
+    "group_zh": "研读一段经文"
   },
   {
     "group": "Explore further",
@@ -259,7 +457,31 @@
         "try": "?view=journeys",
         "try_label": "See the journeys",
         "try_label_es": "Ver los recorridos",
-        "try_label_pt": "Ver as jornadas"
+        "try_label_pt": "Ver as jornadas",
+        "title_fr": "Parcours guidés",
+        "what_fr": "Des visites pas à pas à travers l’histoire des Écritures, avec des questions pour échanger. Certains sont écrits pour les enfants.",
+        "steps_fr": [
+          "Ouvre Parcours et choisis-en un.",
+          "Utilise Étape suivante et Précédent, ou les touches N et P.",
+          "Utilise Présenter pour un groupe, ou Fiche pour l’imprimer."
+        ],
+        "try_label_fr": "Voir les parcours",
+        "title_ko": "안내 여정",
+        "what_ko": "나눔 질문과 함께 성경 이야기를 한 걸음씩 따라가는 여정이에요. 어린이를 위한 여정도 있어요.",
+        "steps_ko": [
+          "여정을 열고 하나를 고르세요.",
+          "다음 단계와 이전, 또는 N과 P 키를 쓰세요.",
+          "그룹에서는 발표를, 인쇄하려면 유인물을 쓰세요."
+        ],
+        "try_label_ko": "여정 보기",
+        "title_zh": "导览旅程",
+        "what_zh": "逐步导览圣经故事，并附有讨论问题。有些是专为儿童编写的。",
+        "steps_zh": [
+          "打开“旅程”，选择一个。",
+          "使用“下一步”和“上一步”，或按 N 和 P 键。",
+          "小组使用时选择“演示”，或选择“讲义”打印出来。"
+        ],
+        "try_label_zh": "查看旅程"
       },
       {
         "title": "Reading plans",
@@ -286,7 +508,31 @@
         "try": "?view=plans",
         "try_label": "See the plans",
         "try_label_es": "Ver los planes",
-        "try_label_pt": "Ver os planos"
+        "try_label_pt": "Ver os planos",
+        "title_fr": "Plans de lecture",
+        "what_fr": "De courtes lectures quotidiennes qui suivent les connexions, un plan pour lire toute la Bible en un an avec où mènent les chapitres de chaque jour, et des plans pour l’Avent, les douze jours de Noël, le Carême et la Semaine sainte qui suivent le calendrier. Ta progression est enregistrée sur ton appareil.",
+        "steps_fr": [
+          "Ouvre Étudier, puis Plans de lecture.",
+          "Marque chaque jour comme terminé au fur et à mesure.",
+          "Ajoute des rappels à ton agenda."
+        ],
+        "try_label_fr": "Voir les plans",
+        "title_ko": "읽기 계획",
+        "what_ko": "연결을 따라가는 짧은 매일 읽기, 날마다 읽은 장이 어디로 이어지는지 보며 일 년에 성경 전체를 읽는 계획, 그리고 교회력을 따라가는 대림절, 성탄절의 열두 날, 사순절, 고난주간 계획이 있어요. 진행 상황은 내 기기에 저장돼요.",
+        "steps_ko": [
+          "공부에서 읽기 계획을 여세요.",
+          "하루하루 읽을 때마다 완료로 표시하세요.",
+          "캘린더에 알림을 추가하세요."
+        ],
+        "try_label_ko": "계획 보기",
+        "title_zh": "读经计划",
+        "what_zh": "跟随连接的每日简短读经；一年读完整本圣经的计划，并显示每天的章节通向哪里；还有按教会年历编排的将临期、圣诞节十二日、大斋期和受难周计划。你的进度保存在你的设备上。",
+        "steps_zh": [
+          "打开“研读”，再选择“读经计划”。",
+          "每读完一天就标记完成。",
+          "把提醒添加到你的日历。"
+        ],
+        "try_label_zh": "查看计划"
       },
       {
         "title": "Places and timeline",
@@ -313,7 +559,31 @@
         "try": "?route=paul2",
         "try_label": "Paul's second journey",
         "try_label_es": "Segundo viaje de Pablo",
-        "try_label_pt": "Segunda viagem de Paulo"
+        "try_label_pt": "Segunda viagem de Paulo",
+        "title_fr": "Lieux et frise chronologique",
+        "what_fr": "Une carte complète de 1 277 lieux nommés dans la Bible, des voyages tracés comme des itinéraires, et 40 grands événements dans l’ordre.",
+        "steps_fr": [
+          "Choisis Lieux en haut de la carte, ou appuie sur M. Fais glisser et zoome pour explorer.",
+          "Touche un lieu pour voir ses versets, ou ouvre un verset ou un chapitre pour voir ses lieux.",
+          "Choisis un voyage comme le deuxième voyage de Paul pour le suivre étape par étape, ou ouvre Étudier, puis Frise chronologique."
+        ],
+        "try_label_fr": "Le deuxième voyage de Paul",
+        "title_ko": "장소와 연대표",
+        "what_ko": "성경에 나오는 장소 1,277곳의 전체 지도, 경로로 그린 여정, 순서대로 정리한 주요 사건 40개가 있어요.",
+        "steps_ko": [
+          "지도 위쪽에서 장소를 고르거나 M을 누르세요. 끌고 확대하며 살펴보세요.",
+          "장소를 누르면 그 장소의 구절을 볼 수 있고, 구절이나 장을 열면 그 안의 장소를 볼 수 있어요.",
+          "바울의 2차 전도 여행 같은 여정을 골라 한 곳씩 따라가거나, 공부에서 연대표를 여세요."
+        ],
+        "try_label_ko": "바울의 2차 전도 여행",
+        "title_zh": "地点与时间线",
+        "what_zh": "一张包含圣经中 1,277 个地名的完整地图，以路线显示的旅程，以及按顺序排列的 40 个重要事件。",
+        "steps_zh": [
+          "在地图顶部选择“地点”，或按 M 键。拖动和缩放进行探索。",
+          "点按一个地点查看相关经文，或打开一节经文或一章查看其中的地点。",
+          "选择一段旅程，如保罗第二次旅行布道，逐站跟随；或打开“研读”，再选择“时间线”。"
+        ],
+        "try_label_zh": "保罗第二次旅行布道"
       },
       {
         "title": "Prophecy and fulfilment",
@@ -340,7 +610,31 @@
         "try": "?prophecy=bethlehem",
         "try_label": "Born in Bethlehem",
         "try_label_es": "Nacido en Belén",
-        "try_label_pt": "Nascido em Belém"
+        "try_label_pt": "Nascido em Belém",
+        "title_fr": "Prophétie et accomplissement",
+        "what_fr": "Suis les promesses, les alliances et les images de l’Ancien Testament jusqu’aux passages du Nouveau Testament qui les reprennent.",
+        "steps_fr": [
+          "Ouvre Étudier, puis Prophétie et accomplissement.",
+          "Choisis une prophétie, une alliance ou un symbole pour voir ses étapes reliées sur la carte.",
+          "Utilise Rejouer pour voir les étapes dans l’ordre, ou Lire pour ouvrir chaque passage sur Bible.com."
+        ],
+        "try_label_fr": "Né à Bethléhem",
+        "title_ko": "예언과 성취",
+        "what_ko": "구약의 약속, 언약, 그림이 신약의 어떤 본문으로 이어지는지 따라가 보세요.",
+        "steps_ko": [
+          "공부에서 예언과 성취를 여세요.",
+          "예언, 언약, 상징을 고르면 그 단계들이 지도에서 이어진 모습을 볼 수 있어요.",
+          "다시 하기로 단계를 순서대로 보거나, 읽기로 각 본문을 Bible.com에서 여세요."
+        ],
+        "try_label_ko": "베들레헴에서 나심",
+        "title_zh": "预言与应验",
+        "what_zh": "追溯旧约的应许、圣约和预表，直到新约中呼应它们的经文。",
+        "steps_zh": [
+          "打开“研读”，再选择“预言与应验”。",
+          "选择一条预言、圣约或象征，在地图上查看各阶段如何相连。",
+          "使用“再玩一次”按顺序观看各阶段，或使用“阅读”在 Bible.com 上打开每段经文。"
+        ],
+        "try_label_zh": "生在伯利恒"
       },
       {
         "title": "How are these connected?",
@@ -367,9 +661,36 @@
         "try": "?path=Genesis+3%3A15~Revelation+12%3A9",
         "try_label": "Genesis 3:15 to Revelation 12:9",
         "try_label_es": "Génesis 3:15 a Apocalipsis 12:9",
-        "try_label_pt": "Gênesis 3:15 a Apocalipse 12:9"
+        "try_label_pt": "Gênesis 3:15 a Apocalipse 12:9",
+        "title_fr": "Quel est le lien ?",
+        "what_fr": "Trouve la plus courte chaîne de références croisées entre deux passages, ou les passages auxquels deux passages sont tous deux liés.",
+        "steps_fr": [
+          "Ouvre Étudier, puis Relier deux versets, et saisis deux passages.",
+          "Regarde la chaîne s’allumer sur la carte.",
+          "Essaie Connexions communes pour voir les liens qu’ils ont en commun."
+        ],
+        "try_label_fr": "Genèse 3:15 à Apocalypse 12:9",
+        "title_ko": "어떻게 연결될까요?",
+        "what_ko": "어떤 두 본문 사이의 가장 짧은 관주 사슬, 또는 두 본문이 함께 연결된 본문을 찾아보세요.",
+        "steps_ko": [
+          "공부에서 두 구절 잇기를 열고 두 본문을 입력하세요.",
+          "지도에서 사슬이 밝게 빛나는 것을 보세요.",
+          "공통 연결로 두 본문이 함께 가진 연결을 찾아보세요."
+        ],
+        "try_label_ko": "창세기 3:15에서 요한계시록 12:9까지",
+        "title_zh": "它们如何相连？",
+        "what_zh": "找出任意两段经文之间最短的串珠经文链，或两段经文都连接到的经文。",
+        "steps_zh": [
+          "打开“研读”，再选择“连接两节经文”，输入两段经文。",
+          "看着这条链在地图上亮起来。",
+          "试试“共同连接”，查看它们共有的连接。"
+        ],
+        "try_label_zh": "创世记 3:15 到 启示录 12:9"
       }
-    ]
+    ],
+    "group_fr": "Aller plus loin",
+    "group_ko": "더 살펴보기",
+    "group_zh": "深入探索"
   },
   {
     "group": "Read, listen and share",
@@ -398,7 +719,28 @@
         "try": "?ref=Psalm+23%3A1",
         "try_label": "Read Psalm 23:1",
         "try_label_es": "Leer Salmo 23:1",
-        "try_label_pt": "Ler Salmos 23:1"
+        "try_label_pt": "Ler Salmos 23:1",
+        "title_fr": "Deux traductions et l’audio",
+        "what_fr": "Lis sur Bible.com dans l’une des 99 traductions en 31 langues, compare avec une deuxième, et écoute quand l’audio est disponible.",
+        "steps_fr": [
+          "Choisis Lire en et Comparer avec dans la barre latérale. Tu peux taper pour chercher dans la liste.",
+          "Utilise le bouton casque pour écouter un chapitre."
+        ],
+        "try_label_fr": "Lire Psaumes 23:1",
+        "title_ko": "두 번역본과 오디오",
+        "what_ko": "31개 언어, 99개 번역본 가운데 하나로 Bible.com에서 읽고, 두 번째 번역본과 비교하고, 오디오가 있으면 들어 보세요.",
+        "steps_ko": [
+          "사이드바에서 읽을 번역본과 비교 번역본을 고르세요. 입력해서 목록을 검색할 수 있어요.",
+          "헤드폰 버튼을 누르면 장을 들을 수 있어요."
+        ],
+        "try_label_ko": "시편 23:1 읽기",
+        "title_zh": "两个译本与音频",
+        "what_zh": "在 Bible.com 上以 31 种语言、99 个译本中的任何一个阅读，与第二个译本对照，并在有音频时收听。",
+        "steps_zh": [
+          "在侧边栏中选择“阅读译本”和“对照译本”。可以输入文字搜索列表。",
+          "使用耳机按钮收听一章。"
+        ],
+        "try_label_zh": "阅读诗篇 23:1"
       },
       {
         "title": "Share and teach",
@@ -422,7 +764,28 @@
         "try": "?view=collections",
         "try_label": "See collections",
         "try_label_es": "Ver colecciones",
-        "try_label_pt": "Ver coleções"
+        "try_label_pt": "Ver coleções",
+        "title_fr": "Partager et enseigner",
+        "what_fr": "Chaque vue a son propre lien. Partage-le, enregistre une image, imprime une fiche, crée un code QR, ou regroupe des passages dans une collection.",
+        "steps_fr": [
+          "Utilise les boutons Partager, Enregistrer l’image, Code QR et Ajouter à une collection dans le panneau latéral.",
+          "Sur un verset, utilise Partager en image ou Fiche à imprimer."
+        ],
+        "try_label_fr": "Voir les collections",
+        "title_ko": "나누고 가르치기",
+        "what_ko": "모든 화면에는 고유한 링크가 있어요. 공유하고, 이미지를 저장하고, 유인물을 인쇄하고, QR 코드를 만들거나, 본문을 모음집으로 묶어 보세요.",
+        "steps_ko": [
+          "옆 패널의 공유, 이미지 저장, QR 코드, 모음집에 추가 버튼을 쓰세요.",
+          "구절에서는 이미지로 공유나 인쇄용 유인물을 쓰세요."
+        ],
+        "try_label_ko": "모음집 보기",
+        "title_zh": "分享与教导",
+        "what_zh": "每个视图都有自己的链接。你可以分享它、保存图片、打印讲义、生成二维码，或把经文整理成合集。",
+        "steps_zh": [
+          "使用侧边面板中的“分享”“保存图片”“二维码”和“加入合集”按钮。",
+          "在一节经文上，使用“以图片分享”或“可打印讲义”。"
+        ],
+        "try_label_zh": "查看合集"
       },
       {
         "title": "Lead a group",
@@ -449,7 +812,31 @@
         "try": "handout.html?journey=lamb&guide=leader",
         "try_label": "See a leader guide",
         "try_label_es": "Ver una guía para el líder",
-        "try_label_pt": "Ver um guia do líder"
+        "try_label_pt": "Ver um guia do líder",
+        "title_fr": "Animer un groupe",
+        "what_fr": "Transforme une collection en diapositives, imprime un guide de l’animateur pour un parcours, ou mets une petite carte sur le site de ton Église.",
+        "steps_fr": [
+          "Dans une collection, choisis Afficher en diapositives. Utilise les flèches ou une télécommande pour avancer.",
+          "Sur n’importe quel parcours, choisis Guide de l’animateur pour les durées, les notes et les questions.",
+          "Choisis Intégrer, puis Petite carte, pour afficher un verset, une connexion, une étape de parcours ou une prophétie."
+        ],
+        "try_label_fr": "Voir un guide de l’animateur",
+        "title_ko": "그룹 인도하기",
+        "what_ko": "모음집을 슬라이드로 바꾸고, 여정의 인도자 가이드를 인쇄하거나, 교회 웹사이트에 작은 카드를 넣어 보세요.",
+        "steps_ko": [
+          "모음집에서 슬라이드로 보기를 고르세요. 화살표 키나 프레젠터로 넘겨요.",
+          "어떤 여정이든 인도자 가이드를 고르면 시간 배분, 노트, 질문을 볼 수 있어요.",
+          "퍼가기에서 작은 카드를 고르면 구절, 연결, 여정 단계, 예언 하나를 보여 줄 수 있어요."
+        ],
+        "try_label_ko": "인도자 가이드 보기",
+        "title_zh": "带领小组",
+        "what_zh": "把合集变成幻灯片，为旅程打印带领者指南，或在教会网站上放一张小卡片。",
+        "steps_zh": [
+          "在合集中选择“以幻灯片显示”。使用方向键或翻页器切换。",
+          "在任何旅程中选择“带领者指南”，获取时间安排、提示和问题。",
+          "选择“嵌入”，再选择“小卡片”，显示一节经文、一条连接、一个旅程步骤或一条预言。"
+        ],
+        "try_label_zh": "查看带领者指南"
       },
       {
         "title": "Church page",
@@ -476,9 +863,36 @@
         "try": "?view=church",
         "try_label": "Make a church page",
         "try_label_es": "Crear una página",
-        "try_label_pt": "Criar uma página"
+        "try_label_pt": "Criar uma página",
+        "title_fr": "Page pour l’Église",
+        "what_fr": "Mets ta série de prédications sur le site de ton Église, avec le passage de la semaine en premier et des liens pour lire et explorer chacun.",
+        "steps_fr": [
+          "Ouvre Étudier, puis Page pour l’Église.",
+          "Saisis le nom de ton Église, le titre de la série, puis la date et le passage de chaque semaine.",
+          "Choisis Créer la page, puis copie le lien ou le code d’intégration."
+        ],
+        "try_label_fr": "Créer une page pour l’Église",
+        "title_ko": "교회 페이지",
+        "what_ko": "이번 주 본문을 맨 앞에 두고 각 본문을 읽고 탐험하는 링크와 함께 설교 시리즈를 교회 웹사이트에 올려 보세요.",
+        "steps_ko": [
+          "공부에서 교회 페이지를 여세요.",
+          "교회 이름, 시리즈 제목, 주마다 날짜와 본문을 입력하세요.",
+          "페이지 만들기를 누른 다음 링크나 퍼가기 코드를 복사하세요."
+        ],
+        "try_label_ko": "교회 페이지 만들기",
+        "title_zh": "教会页面",
+        "what_zh": "把你的讲道系列放到教会网站上，本周的经文排在最前面，每段经文都附有阅读和探索的链接。",
+        "steps_zh": [
+          "打开“研读”，再选择“教会页面”。",
+          "输入教会名称、系列标题，以及每周的日期和经文。",
+          "选择“生成页面”，然后复制链接或嵌入代码。"
+        ],
+        "try_label_zh": "制作教会页面"
       }
-    ]
+    ],
+    "group_fr": "Lire, écouter et partager",
+    "group_ko": "읽고, 듣고, 나누기",
+    "group_zh": "阅读、聆听与分享"
   },
   {
     "group": "Make it yours",
@@ -506,7 +920,25 @@
         ],
         "try": "",
         "try_label": "",
-        "try_label_es": ""
+        "try_label_es": "",
+        "title_fr": "Réglages",
+        "what_fr": "Choisis le mode clair ou sombre, les couleurs des arcs (dont un style adapté au daltonisme), la taille du texte, une police plus lisible, le mode enfants et les animations.",
+        "steps_fr": [
+          "Ouvre Réglages avec le bouton en forme d’engrenage en haut, ou depuis Plus.",
+          "Les changements sont enregistrés sur ton appareil."
+        ],
+        "title_ko": "설정",
+        "what_ko": "밝은 화면이나 어두운 화면, 호 색상(색각 이상자 친화 스타일 포함), 글자 크기, 읽기 쉬운 글꼴, 어린이 모드, 애니메이션을 고르세요.",
+        "steps_ko": [
+          "위쪽의 톱니바퀴 버튼이나 더 보기에서 설정을 여세요.",
+          "변경 사항은 내 기기에 저장돼요."
+        ],
+        "title_zh": "设置",
+        "what_zh": "选择浅色或深色、弧线颜色（包括色盲友好样式）、字体大小、易读字体、儿童模式和动画效果。",
+        "steps_zh": [
+          "点按顶部的齿轮按钮或在“更多”中打开“设置”。",
+          "更改会保存在你的设备上。"
+        ]
       },
       {
         "title": "Offline and backup",
@@ -529,7 +961,25 @@
         ],
         "try": "",
         "try_label": "",
-        "try_label_es": ""
+        "try_label_es": "",
+        "title_fr": "Hors ligne et sauvegarde",
+        "what_fr": "Installe le site comme une appli, enregistre tout pour l’utiliser hors ligne, et sauvegarde tes notes et ta progression dans un seul fichier.",
+        "steps_fr": [
+          "Dans Réglages, choisis Tout enregistrer pour le hors ligne.",
+          "Choisis Tout sauvegarder, puis plus tard Restaurer une sauvegarde sur n’importe quel appareil."
+        ],
+        "title_ko": "오프라인과 백업",
+        "what_ko": "사이트를 앱으로 설치하고, 모든 자료를 오프라인용으로 저장하고, 노트와 진행 상황을 하나의 파일로 백업하세요.",
+        "steps_ko": [
+          "설정에서 모두 오프라인용으로 저장을 고르세요.",
+          "모두 백업을 고르고, 나중에 어느 기기에서든 백업 복원을 하세요."
+        ],
+        "title_zh": "离线与备份",
+        "what_zh": "把网站安装为应用，保存全部内容供离线使用，并把笔记和进度备份到一个文件中。",
+        "steps_zh": [
+          "在“设置”中选择“全部保存以供离线使用”。",
+          "选择“全部备份”，之后可在任何设备上选择“恢复备份”。"
+        ]
       },
       {
         "title": "Keyboard shortcuts",
@@ -552,8 +1002,29 @@
         ],
         "try": "",
         "try_label": "",
-        "try_label_es": ""
+        "try_label_es": "",
+        "title_fr": "Raccourcis clavier",
+        "what_fr": "Déplace-toi sur la carte et sur le site sans souris.",
+        "steps_fr": [
+          "Appuie sur ? pour voir tous les raccourcis.",
+          "Les flèches déplacent la carte, + et − zooment, N et P parcourent les connexions, S te fait une surprise."
+        ],
+        "title_ko": "키보드 단축키",
+        "what_ko": "마우스 없이 지도와 사이트를 이동해요.",
+        "steps_ko": [
+          "?를 누르면 모든 단축키를 볼 수 있어요.",
+          "화살표 키로 지도를 이동하고, + 와 −로 확대와 축소, N과 P로 연결을 차례로 보고, S를 누르면 아무거나 보여 줘요."
+        ],
+        "title_zh": "键盘快捷键",
+        "what_zh": "不用鼠标也能浏览地图和网站。",
+        "steps_zh": [
+          "按 ? 查看所有快捷键。",
+          "方向键移动地图，+ 和 − 缩放，N 和 P 逐一浏览连接，S 给你惊喜。"
+        ]
       }
-    ]
+    ],
+    "group_fr": "À ta façon",
+    "group_ko": "나에게 맞추기",
+    "group_zh": "个性化设置"
   }
 ]

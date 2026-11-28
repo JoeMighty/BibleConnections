@@ -36,7 +36,13 @@
         "place": "Beersheba 1",
         "ref": "Gen.21.31"
       }
-    ]
+    ],
+    "name_fr": "Le voyage d’Abraham",
+    "summary_fr": "D’Ur jusqu’à la terre promise, à l’appel de Dieu.",
+    "name_ko": "아브라함의 여정",
+    "summary_ko": "하나님의 부르심을 따라 우르에서 약속의 땅까지 가요.",
+    "name_zh": "亚伯拉罕的旅程",
+    "summary_zh": "从吾珥到应许之地，跟随神的呼召。"
   },
   {
     "id": "exodus",
@@ -95,7 +101,13 @@
         "place": "Jericho 1",
         "ref": "Josh.6.1"
       }
-    ]
+    ],
+    "name_fr": "L’exode",
+    "summary_fr": "De l’esclavage en Égypte, à travers le désert, jusqu’au seuil de la terre promise. Beaucoup de ces emplacements sont incertains.",
+    "name_ko": "출애굽",
+    "summary_ko": "애굽의 종살이에서 광야를 지나 약속의 땅 앞까지 가요. 이 장소들 가운데 많은 곳은 위치가 불확실해요.",
+    "name_zh": "出埃及",
+    "summary_zh": "从埃及的奴役，经过旷野，来到应许之地的边缘。其中许多地点的位置并不确定。"
   },
   {
     "id": "paul1",
@@ -150,7 +162,13 @@
         "place": "Antioch 1",
         "ref": "Acts.14.26"
       }
-    ]
+    ],
+    "name_fr": "Le premier voyage de Paul",
+    "summary_fr": "Avec Barnabas, d’Antioche à Chypre et aux villes de Galatie, puis retour.",
+    "name_ko": "바울의 1차 전도 여행",
+    "summary_ko": "바나바와 함께 안디옥에서 구브로와 갈라디아의 여러 도시로 갔다가 다시 돌아와요.",
+    "name_zh": "保罗第一次旅行布道",
+    "summary_zh": "与巴拿巴同行，从安提阿到塞浦路斯和加拉太的各城，然后返回。"
   },
   {
     "id": "paul2",
@@ -217,7 +235,13 @@
         "place": "Antioch 1",
         "ref": "Acts.18.22"
       }
-    ]
+    ],
+    "name_fr": "Le deuxième voyage de Paul",
+    "summary_fr": "Avec Silas, à travers la Galatie puis par la mer jusqu’en Europe, à Philippes, Athènes et Corinthe.",
+    "name_ko": "바울의 2차 전도 여행",
+    "summary_ko": "실라와 함께 갈라디아를 지나 바다 건너 유럽으로, 빌립보, 아덴, 고린도까지 가요.",
+    "name_zh": "保罗第二次旅行布道",
+    "summary_zh": "与西拉同行，经过加拉太，渡海进入欧洲，到腓立比、雅典和哥林多。"
   },
   {
     "id": "paul3",
@@ -280,7 +304,13 @@
         "place": "Jerusalem",
         "ref": "Acts.21.17"
       }
-    ]
+    ],
+    "name_fr": "Le troisième voyage de Paul",
+    "summary_fr": "Des années à Éphèse, puis une dernière visite aux Églises et le voyage vers Jérusalem.",
+    "name_ko": "바울의 3차 전도 여행",
+    "summary_ko": "에베소에서 여러 해를 보낸 뒤, 마지막으로 교회들을 방문하고 예루살렘으로 항해해요.",
+    "name_zh": "保罗第三次旅行布道",
+    "summary_zh": "在以弗所多年，然后最后一次探访各教会，并航行前往耶路撒冷。"
   },
   {
     "id": "rome",
@@ -327,6 +357,12 @@
         "place": "Rome",
         "ref": "Acts.28.16"
       }
-    ]
+    ],
+    "name_fr": "Le voyage de Paul vers Rome",
+    "summary_fr": "Prisonnier, à travers une tempête et un naufrage à Malte, jusqu’à Rome.",
+    "name_ko": "바울의 로마 항해",
+    "summary_ko": "죄수의 몸으로 폭풍과 멜리데 섬의 난파를 지나 로마까지 가요.",
+    "name_zh": "保罗前往罗马的航程",
+    "summary_zh": "作为囚犯，经历风暴和在马耳他的船难，最终抵达罗马。"
   }
 ]

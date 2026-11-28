@@ -1,0 +1,62 @@
+[
+  {
+    "id": "messiah",
+    "name": "Jésus annoncé",
+    "description": "Les promesses de l’Ancien Testament sur le Messie à venir et leur accomplissement."
+  },
+  {
+    "id": "salvation",
+    "name": "Le salut et la croix",
+    "description": "Comment Dieu sauve par la mort et la résurrection de Jésus."
+  },
+  {
+    "id": "grace",
+    "name": "La grâce et le pardon",
+    "description": "La faveur imméritée, la miséricorde et le pardon des péchés."
+  },
+  {
+    "id": "freedom",
+    "name": "Liberté et identité",
+    "description": "Qui nous sommes en Christ et la liberté qu’il apporte."
+  },
+  {
+    "id": "love",
+    "name": "L’amour",
+    "description": "L’amour de Dieu pour nous, et l’amour pour Dieu et pour les autres."
+  },
+  {
+    "id": "faith",
+    "name": "La foi",
+    "description": "Se confier en Dieu et vivre par la foi."
+  },
+  {
+    "id": "spirit",
+    "name": "Le Saint-Esprit",
+    "description": "L’Esprit de Dieu à l’œuvre, de la création à l’Église."
+  },
+  {
+    "id": "prayer",
+    "name": "La prière",
+    "description": "Parler avec Dieu, et ce qu’il promet quand nous prions."
+  },
+  {
+    "id": "kingdom",
+    "name": "Le royaume de Dieu",
+    "description": "Le règne de Dieu annoncé, venu en Jésus et bientôt pleinement établi."
+  },
+  {
+    "id": "creation",
+    "name": "La création",
+    "description": "Dieu, Créateur des cieux, de la terre et de l’humanité."
+  },
+  {
+    "id": "generosity",
+    "name": "La générosité",
+    "description": "Donner, gérer ses biens avec fidélité et avoir la main ouverte."
+  },
+  {
+    "id": "hope",
+    "name": "Espérance et résurrection",
+    "description": "L’espérance vivante d’une vie nouvelle que la mort ne peut arrêter."
+  }
+]

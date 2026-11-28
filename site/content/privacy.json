@@ -16,6 +16,18 @@
       ],
       "text_pt": [
         "O Bible Connections é mantido por JoeMighty no Reino Unido, responsável por esta política. Contato: hello@bibleconnections.app."
+      ],
+      "title_fr": "Qui gère ce site",
+      "text_fr": [
+        "Bible Connections est géré par JoeMighty, au Royaume-Uni, qui est responsable de cette politique. Contact : hello@bibleconnections.app."
+      ],
+      "title_ko": "이 사이트의 운영자",
+      "text_ko": [
+        "Bible Connections는 영국의 JoeMighty가 운영하며, 이 방침에 대한 책임을 져요. 연락처: hello@bibleconnections.app."
+      ],
+      "title_zh": "谁在运营本网站",
+      "text_zh": [
+        "Bible Connections 由英国的 JoeMighty 运营，他对本政策负责。联系方式：hello@bibleconnections.app。"
       ]
     },
     {
@@ -33,6 +45,21 @@
       "text_pt": [
         "Suas anotações, versículos salvos, coleções, progresso nos planos de leitura, versículos recentes, pontuações do jogo, ligações ocultas e ajustes ficam guardados no armazenamento local do seu navegador. Eles nunca são enviados para nós nem para mais ninguém.",
         "Você pode exportá-los para um arquivo de backup em Ajustes, e ao apagar os dados do site no navegador ou nos ajustes do aplicativo eles são excluídos."
+      ],
+      "title_fr": "Ce qui reste sur ton appareil",
+      "text_fr": [
+        "Tes notes, versets enregistrés, collections, progression des plans de lecture, versets récents, scores, liens masqués et réglages sont stockés dans le stockage local de ton navigateur. Ils ne sont jamais envoyés ni à nous ni à personne d’autre.",
+        "Tu peux les exporter dans un fichier de sauvegarde depuis Réglages, et effacer les données du site dans les réglages de ton navigateur ou de l’appli les supprime."
+      ],
+      "title_ko": "내 기기에 남는 것",
+      "text_ko": [
+        "노트, 저장한 구절, 모음집, 읽기 계획 진행 상황, 최근 본 구절, 게임 점수, 숨긴 연결, 설정은 브라우저의 로컬 저장소에 저장돼요. 저희나 다른 누구에게도 절대 전송되지 않아요.",
+        "설정에서 백업 파일로 내보낼 수 있고, 브라우저나 앱 설정에서 사이트 데이터를 지우면 삭제돼요."
+      ],
+      "title_zh": "哪些内容保存在你的设备上",
+      "text_zh": [
+        "你的笔记、收藏的经文、合集、读经计划进度、最近查看的经文、游戏得分、隐藏的连接和设置，都存储在浏览器的本地存储中，永远不会发送给我们或任何其他人。",
+        "你可以在“设置”中把它们导出为备份文件；在浏览器或应用设置中清除本网站的数据，就会删除它们。"
       ]
     },
     {
@@ -50,6 +77,21 @@
       "text_pt": [
         "Para saber quais recursos são usados, o site conta as páginas vistas e alguns toques em botões com o GoatCounter, um serviço que respeita a privacidade. Ele não usa cookies, não guarda dados pessoais e não consegue identificar você. As contagens são totais anônimos.",
         "Se o seu navegador envia Do Not Track ou Global Privacy Control, nada é contado."
+      ],
+      "title_fr": "Comptage des visites",
+      "text_fr": [
+        "Pour savoir quelles fonctions sont utilisées, le site compte les pages vues et quelques touches de boutons avec GoatCounter, un service respectueux de la vie privée. Il n’utilise pas de cookies, ne stocke aucune donnée personnelle et ne peut pas t’identifier. Les chiffres sont des totaux anonymes.",
+        "Si ton navigateur envoie Do Not Track ou Global Privacy Control, rien n’est compté."
+      ],
+      "title_ko": "방문 수 세기",
+      "text_ko": [
+        "어떤 기능이 쓰이는지 알기 위해, 개인정보 보호에 친화적인 서비스인 GoatCounter로 페이지 조회 수와 몇몇 버튼 누름을 세요. 쿠키를 쓰지 않고, 개인정보를 저장하지 않으며, 여러분을 식별할 수 없어요. 집계는 익명의 합계예요.",
+        "브라우저가 Do Not Track이나 Global Privacy Control 신호를 보내면 아무것도 세지 않아요."
+      ],
+      "title_zh": "统计访问量",
+      "text_zh": [
+        "为了了解哪些功能被使用，本网站使用注重隐私的服务 GoatCounter 统计页面浏览量和少数按钮点按次数。它不使用 Cookie，不存储个人数据，也无法识别你的身份。统计数据只是匿名的总数。",
+        "如果你的浏览器发送了“请勿追踪”或“全球隐私控制”信号，则完全不会统计。"
       ]
     },
     {
@@ -64,6 +106,18 @@
       ],
       "text_pt": [
         "O site é hospedado no GitHub Pages. Como qualquer hospedagem, o GitHub recebe seu endereço IP e dados do navegador ao carregar uma página, para entregá-la e manter o serviço seguro; nós não vemos esses registros. Vale a declaração de privacidade do GitHub."
+      ],
+      "title_fr": "Hébergement",
+      "text_fr": [
+        "Le site est hébergé sur GitHub Pages. Comme tout hébergeur web, GitHub reçoit ton adresse IP et des informations sur ton navigateur quand tu charges une page, pour la livrer et sécuriser le service ; nous ne pouvons pas voir ces journaux. La déclaration de confidentialité de GitHub s’y applique."
+      ],
+      "title_ko": "호스팅",
+      "text_ko": [
+        "사이트는 GitHub Pages에서 호스팅돼요. 다른 웹 호스트와 마찬가지로 GitHub는 페이지를 전달하고 서비스를 안전하게 유지하기 위해 페이지를 열 때 IP 주소와 브라우저 정보를 받아요. 저희는 이 기록을 볼 수 없어요. 이 기록에는 GitHub의 개인정보 처리방침이 적용돼요."
+      ],
+      "title_zh": "托管",
+      "text_zh": [
+        "本网站托管在 GitHub Pages 上。和任何网站托管服务一样，当你加载页面时，GitHub 会收到你的 IP 地址和浏览器信息，用于提供页面并保障服务安全；我们看不到这些日志。这些日志适用 GitHub 的隐私声明。"
       ]
     },
     {
@@ -78,6 +132,18 @@
       ],
       "text_pt": [
         "Ler e ouvir abre o Bible.com, e os formulários de sugestões abrem o GitHub. Esses sites têm suas próprias políticas de privacidade, que valem quando você está neles. Não compartilhamos nada com eles."
+      ],
+      "title_fr": "Liens vers d’autres sites",
+      "text_fr": [
+        "La lecture et l’écoute ouvrent Bible.com, et les formulaires de retour ouvrent GitHub. Ces sites ont leurs propres politiques de confidentialité, qui s’appliquent une fois que tu y es. Nous ne partageons rien avec eux."
+      ],
+      "title_ko": "다른 사이트로 가는 링크",
+      "text_ko": [
+        "읽기와 듣기는 Bible.com을 열고, 의견 양식은 GitHub를 열어요. 이 사이트들에는 각자의 개인정보 처리방침이 있고, 그곳에 가면 그 방침이 적용돼요. 저희는 그들과 아무것도 공유하지 않아요."
+      ],
+      "title_zh": "指向其他网站的链接",
+      "text_zh": [
+        "阅读和收听会打开 Bible.com，反馈表单会打开 GitHub。这些网站有各自的隐私政策，你进入后即适用。我们不会与它们分享任何信息。"
       ]
     },
     {
@@ -92,6 +158,18 @@
       ],
       "text_pt": [
         "O site não coleta informações pessoais de ninguém, inclusive de crianças. O modo infantil só muda o que é mostrado."
+      ],
+      "title_fr": "Enfants",
+      "text_fr": [
+        "Le site ne collecte aucune donnée personnelle, de personne, y compris des enfants. Le mode enfants change seulement ce qui est affiché."
+      ],
+      "title_ko": "어린이",
+      "text_ko": [
+        "이 사이트는 어린이를 포함해 누구에게서도 개인정보를 수집하지 않아요. 어린이 모드는 보이는 내용만 바꿔요."
+      ],
+      "title_zh": "儿童",
+      "text_zh": [
+        "本网站不收集任何人（包括儿童）的个人信息。儿童模式只改变显示的内容。"
       ]
     },
     {
@@ -106,6 +184,18 @@
       ],
       "text_pt": [
         "Pela lei de proteção de dados do Reino Unido, você pode perguntar quais informações temos sobre você e pedir que sejam corrigidas ou apagadas. Como não coletamos informações pessoais, normalmente não há nada a fornecer, mas você pode perguntar em hello@bibleconnections.app. Também pode reclamar à Information Commissioner's Office (ico.org.uk)."
+      ],
+      "title_fr": "Tes droits",
+      "text_fr": [
+        "Selon la loi britannique sur la protection des données, tu peux demander quelles informations nous détenons sur toi et demander qu’elles soient corrigées ou supprimées. Comme nous ne collectons pas de données personnelles, il n’y a normalement rien à fournir, mais tu peux nous écrire à hello@bibleconnections.app. Tu peux aussi porter plainte auprès de l’Information Commissioner’s Office (ico.org.uk)."
+      ],
+      "title_ko": "이용자의 권리",
+      "text_ko": [
+        "영국 개인정보 보호법에 따라 저희가 보유한 내 정보가 무엇인지 묻고, 정정이나 삭제를 요청할 수 있어요. 저희는 개인정보를 수집하지 않기 때문에 보통 제공할 것이 없지만, 언제든 hello@bibleconnections.app으로 문의하셔도 돼요. 영국 정보위원회(ico.org.uk)에 민원을 제기할 수도 있어요."
+      ],
+      "title_zh": "你的权利",
+      "text_zh": [
+        "根据英国数据保护法律，你可以询问我们持有哪些关于你的信息，并要求更正或删除。由于我们不收集个人信息，通常没有可提供的内容，但欢迎你发送电子邮件至 hello@bibleconnections.app 询问。你也可以向英国信息专员办公室（ico.org.uk）投诉。"
       ]
     },
     {
@@ -120,7 +210,22 @@
       ],
       "text_pt": [
         "Se esta política mudar, a nova versão será publicada aqui com uma nova data. Dúvidas são bem-vindas em hello@bibleconnections.app."
+      ],
+      "title_fr": "Modifications et contact",
+      "text_fr": [
+        "Si cette politique change, la nouvelle version sera publiée ici avec une nouvelle date. Tes questions sont les bienvenues à hello@bibleconnections.app."
+      ],
+      "title_ko": "변경과 연락처",
+      "text_ko": [
+        "이 방침이 바뀌면 새 날짜와 함께 새 버전을 여기에 올려요. 질문은 hello@bibleconnections.app으로 언제든 환영해요."
+      ],
+      "title_zh": "变更与联系",
+      "text_zh": [
+        "如本政策有变更，新版本将在此处发布，并注明新的日期。如有问题，欢迎联系 hello@bibleconnections.app。"
       ]
     }
-  ]
+  ],
+  "intro_fr": "Bible Connections n’a ni compte, ni publicité, ni cookies. Tout ce que tu enregistres reste sur ton propre appareil.",
+  "intro_ko": "Bible Connections에는 계정도, 광고도, 쿠키도 없어요. 저장하는 모든 것은 내 기기에만 남아요.",
+  "intro_zh": "Bible Connections 不设账户，没有广告，也不使用 Cookie。你保存的一切都留在你自己的设备上。"
 }

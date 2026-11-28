@@ -10,7 +10,13 @@
     "name_es": "Adán",
     "name_pt": "Adão",
     "description_es": "El primer hombre, formado del polvo y vivificado por el aliento de Dios.",
-    "description_pt": "O primeiro homem, feito do pó e que recebeu vida pelo sopro de Deus."
+    "description_pt": "O primeiro homem, feito do pó e que recebeu vida pelo sopro de Deus.",
+    "name_fr": "Adam",
+    "description_fr": "Le premier homme, formé de la poussière et animé par le souffle de Dieu.",
+    "name_ko": "아담",
+    "description_ko": "흙으로 지음 받고 하나님의 숨으로 생명을 얻은 첫 사람이에요.",
+    "name_zh": "亚当",
+    "description_zh": "第一个人，神用尘土造他，将生气吹在他鼻孔里，使他成为活人。"
   },
   {
     "id": "noah",
@@ -23,7 +29,13 @@
     "name_es": "Noé",
     "name_pt": "Noé",
     "description_es": "Construyó el arca y fue llevado a salvo a través del diluvio.",
-    "description_pt": "Construiu a arca e foi levado em segurança pelo dilúvio."
+    "description_pt": "Construiu a arca e foi levado em segurança pelo dilúvio.",
+    "name_fr": "Noé",
+    "description_fr": "Il construisit l’arche et fut gardé sain et sauf pendant le déluge.",
+    "name_ko": "노아",
+    "description_ko": "방주를 짓고 홍수 가운데서 안전하게 보호받았어요.",
+    "name_zh": "挪亚",
+    "description_zh": "建造方舟，安然度过洪水。"
   },
   {
     "id": "abraham",
@@ -37,7 +49,13 @@
     "name_es": "Abraham",
     "name_pt": "Abraão",
     "description_es": "Llamado por Dios a una tierra nueva, con la promesa de una familia que bendeciría a todas las naciones.",
-    "description_pt": "Chamado por Deus para uma nova terra e com a promessa de uma família que abençoaria todas as nações."
+    "description_pt": "Chamado por Deus para uma nova terra e com a promessa de uma família que abençoaria todas as nações.",
+    "name_fr": "Abraham",
+    "description_fr": "Appelé par Dieu vers un nouveau pays, il reçut la promesse d’une famille qui bénirait toutes les nations.",
+    "name_ko": "아브라함",
+    "description_ko": "하나님의 부르심을 받아 새 땅으로 갔고, 모든 민족에게 복이 될 자손을 약속받았어요.",
+    "name_zh": "亚伯拉罕",
+    "description_zh": "蒙神呼召前往新的地方，并蒙应许他的后裔要使万国得福。"
   },
   {
     "id": "sarah",
@@ -51,7 +69,13 @@
     "name_es": "Sara",
     "name_pt": "Sara",
     "description_es": "Esposa de Abraham, que tuvo un hijo en su vejez como Dios prometió.",
-    "description_pt": "Esposa de Abraão, que teve um filho na velhice, como Deus prometeu."
+    "description_pt": "Esposa de Abraão, que teve um filho na velhice, como Deus prometeu.",
+    "name_fr": "Sara",
+    "description_fr": "La femme d’Abraham, qui eut un fils dans sa vieillesse, comme Dieu l’avait promis.",
+    "name_ko": "사라",
+    "description_ko": "아브라함의 아내로, 하나님의 약속대로 늙어서 아들을 낳았어요.",
+    "name_zh": "撒拉",
+    "description_zh": "亚伯拉罕的妻子，照着神的应许，年老时生了一个儿子。"
   },
   {
     "id": "isaac",
@@ -64,7 +88,13 @@
     "name_es": "Isaac",
     "name_pt": "Isaque",
     "description_es": "El hijo prometido de Abraham y Sara.",
-    "description_pt": "O filho prometido de Abraão e Sara."
+    "description_pt": "O filho prometido de Abraão e Sara.",
+    "name_fr": "Isaac",
+    "description_fr": "Le fils promis d’Abraham et de Sara.",
+    "name_ko": "이삭",
+    "description_ko": "아브라함과 사라가 약속으로 얻은 아들이에요.",
+    "name_zh": "以撒",
+    "description_zh": "亚伯拉罕和撒拉所生的应许之子。"
   },
   {
     "id": "jacob",
@@ -77,7 +107,13 @@
     "name_es": "Jacob",
     "name_pt": "Jacó",
     "description_es": "Nieto de Abraham, llamado Israel, padre de las doce tribus.",
-    "description_pt": "Neto de Abraão, que recebeu o nome de Israel, pai das doze tribos."
+    "description_pt": "Neto de Abraão, que recebeu o nome de Israel, pai das doze tribos.",
+    "name_fr": "Jacob",
+    "description_fr": "Le petit-fils d’Abraham, renommé Israël, père des douze tribus.",
+    "name_ko": "야곱",
+    "description_ko": "아브라함의 손자로, 이스라엘이라는 새 이름을 받았고 열두 지파의 조상이에요.",
+    "name_zh": "雅各",
+    "description_zh": "亚伯拉罕的孙子，改名为以色列，是十二支派的父亲。"
   },
   {
     "id": "joseph",
@@ -90,7 +126,13 @@
     "name_es": "José",
     "name_pt": "José",
     "description_es": "Incluye al hijo de Jacob vendido a Egipto y al esposo de María.",
-    "description_pt": "Inclui o filho de Jacó vendido para o Egito e o marido de Maria."
+    "description_pt": "Inclui o filho de Jacó vendido para o Egito e o marido de Maria.",
+    "name_fr": "Joseph",
+    "description_fr": "Comprend le fils de Jacob vendu en Égypte, et le mari de Marie.",
+    "name_ko": "요셉",
+    "description_ko": "애굽에 팔려 간 야곱의 아들과 마리아의 남편이 함께 포함돼요.",
+    "name_zh": "约瑟",
+    "description_zh": "包括被卖到埃及的雅各之子，以及马利亚的丈夫。"
   },
   {
     "id": "moses",
@@ -103,7 +145,13 @@
     "name_es": "Moisés",
     "name_pt": "Moisés",
     "description_es": "Sacó a Israel de Egipto y recibió la ley en el Sinaí.",
-    "description_pt": "Tirou Israel do Egito e recebeu a lei no Sinai."
+    "description_pt": "Tirou Israel do Egito e recebeu a lei no Sinai.",
+    "name_fr": "Moïse",
+    "description_fr": "Il fit sortir Israël d’Égypte et reçut la loi au Sinaï.",
+    "name_ko": "모세",
+    "description_ko": "이스라엘을 애굽에서 이끌어 내고 시내산에서 율법을 받았어요.",
+    "name_zh": "摩西",
+    "description_zh": "带领以色列出埃及，在西奈山领受律法。"
   },
   {
     "id": "aaron",
@@ -116,7 +164,13 @@
     "name_es": "Aarón",
     "name_pt": "Arão",
     "description_es": "Hermano de Moisés y primer sumo sacerdote de Israel.",
-    "description_pt": "Irmão de Moisés e primeiro sumo sacerdote de Israel."
+    "description_pt": "Irmão de Moisés e primeiro sumo sacerdote de Israel.",
+    "name_fr": "Aaron",
+    "description_fr": "Le frère de Moïse et le premier grand-prêtre d’Israël.",
+    "name_ko": "아론",
+    "description_ko": "모세의 형이자 이스라엘의 첫 대제사장이에요.",
+    "name_zh": "亚伦",
+    "description_zh": "摩西的哥哥，以色列的第一位大祭司。"
   },
   {
     "id": "joshua",
@@ -129,7 +183,13 @@
     "name_es": "Josué",
     "name_pt": "Josué",
     "description_es": "Guio a Israel a la tierra prometida después de Moisés.",
-    "description_pt": "Levou Israel para a terra prometida depois de Moisés."
+    "description_pt": "Levou Israel para a terra prometida depois de Moisés.",
+    "name_fr": "Josué",
+    "description_fr": "Il conduisit Israël dans la terre promise après Moïse.",
+    "name_ko": "여호수아",
+    "description_ko": "모세 다음으로 이스라엘을 약속의 땅으로 이끌었어요.",
+    "name_zh": "约书亚",
+    "description_zh": "在摩西之后带领以色列进入应许之地。"
   },
   {
     "id": "rahab",
@@ -142,7 +202,13 @@
     "name_es": "Rahab",
     "name_pt": "Raabe",
     "description_es": "Escondió a los espías de Israel en Jericó y es honrada por su fe.",
-    "description_pt": "Escondeu os espiões de Israel em Jericó e é honrada por sua fé."
+    "description_pt": "Escondeu os espiões de Israel em Jericó e é honrada por sua fé.",
+    "name_fr": "Rahab",
+    "description_fr": "Elle cacha les espions d’Israël à Jéricho et est honorée pour sa foi.",
+    "name_ko": "라합",
+    "description_ko": "여리고에서 이스라엘의 정탐꾼을 숨겨 주었고, 믿음으로 칭찬받아요.",
+    "name_zh": "喇合",
+    "description_zh": "在耶利哥藏匿以色列的探子，因信心而受称赞。"
   },
   {
     "id": "deborah",
@@ -155,7 +221,13 @@
     "name_es": "Débora",
     "name_pt": "Débora",
     "description_es": "Profetisa y jueza que guio a Israel a la victoria.",
-    "description_pt": "Profetisa e juíza que levou Israel à vitória."
+    "description_pt": "Profetisa e juíza que levou Israel à vitória.",
+    "name_fr": "Débora",
+    "description_fr": "Prophétesse et juge qui conduisit Israël à la victoire.",
+    "name_ko": "드보라",
+    "description_ko": "이스라엘을 승리로 이끈 선지자이자 사사예요.",
+    "name_zh": "底波拉",
+    "description_zh": "一位女先知和士师，带领以色列得胜。"
   },
   {
     "id": "gideon",
@@ -168,7 +240,13 @@
     "name_es": "Gedeón",
     "name_pt": "Gideão",
     "description_es": "Un agricultor temeroso a quien Dios usó para rescatar a Israel con un ejército pequeño.",
-    "description_pt": "Um agricultor medroso que Deus usou para libertar Israel com um pequeno exército."
+    "description_pt": "Um agricultor medroso que Deus usou para libertar Israel com um pequeno exército.",
+    "name_fr": "Gédéon",
+    "description_fr": "Un agriculteur craintif dont Dieu se servit pour délivrer Israël avec une petite armée.",
+    "name_ko": "기드온",
+    "description_ko": "하나님이 작은 군대로 이스라엘을 구하시려고 쓰신 겁 많은 농부예요.",
+    "name_zh": "基甸",
+    "description_zh": "一位胆怯的农夫，神使用他率领一支小军队拯救以色列。"
   },
   {
     "id": "ruth",
@@ -181,7 +259,13 @@
     "name_es": "Rut",
     "name_pt": "Rute",
     "description_es": "Viuda moabita cuya lealtad la puso en el linaje de David y de Jesús.",
-    "description_pt": "Uma viúva moabita cuja lealdade a colocou na linhagem de Davi e de Jesus."
+    "description_pt": "Uma viúva moabita cuja lealdade a colocou na linhagem de Davi e de Jesus.",
+    "name_fr": "Ruth",
+    "description_fr": "Une veuve moabite dont la fidélité la plaça dans la lignée de David et de Jésus.",
+    "name_ko": "룻",
+    "description_ko": "신실함으로 다윗과 예수님의 족보에 오른 모압 과부예요.",
+    "name_zh": "路得",
+    "description_zh": "一位摩押寡妇，她的忠诚使她列在大卫和耶稣的家谱中。"
   },
   {
     "id": "samuel",
@@ -194,7 +278,13 @@
     "name_es": "Samuel",
     "name_pt": "Samuel",
     "description_es": "Profeta que ungió a los primeros reyes de Israel.",
-    "description_pt": "Profeta que ungiu os primeiros reis de Israel."
+    "description_pt": "Profeta que ungiu os primeiros reis de Israel.",
+    "name_fr": "Samuel",
+    "description_fr": "Le prophète qui oignit les premiers rois d’Israël.",
+    "name_ko": "사무엘",
+    "description_ko": "이스라엘의 첫 왕들에게 기름을 부은 선지자예요.",
+    "name_zh": "撒母耳",
+    "description_zh": "膏立以色列最早几位君王的先知。"
   },
   {
     "id": "david",
@@ -207,7 +297,13 @@
     "name_es": "David",
     "name_pt": "Davi",
     "description_es": "Pastor, salmista y rey, a quien Dios prometió un trono eterno.",
-    "description_pt": "Pastor, autor de salmos e rei, a quem Deus prometeu um trono eterno."
+    "description_pt": "Pastor, autor de salmos e rei, a quem Deus prometeu um trono eterno.",
+    "name_fr": "David",
+    "description_fr": "Berger, auteur de psaumes et roi, à qui Dieu promit un trône éternel.",
+    "name_ko": "다윗",
+    "description_ko": "목동이자 시인이며 왕으로, 하나님이 영원한 왕위를 약속하셨어요.",
+    "name_zh": "大卫",
+    "description_zh": "牧羊人、诗篇作者和君王，神应许他有永存的王位。"
   },
   {
     "id": "solomon",
@@ -220,7 +316,13 @@
     "name_es": "Salomón",
     "name_pt": "Salomão",
     "description_es": "Hijo de David, conocido por su sabiduría y por construir el templo.",
-    "description_pt": "Filho de Davi, conhecido pela sabedoria e por construir o templo."
+    "description_pt": "Filho de Davi, conhecido pela sabedoria e por construir o templo.",
+    "name_fr": "Salomon",
+    "description_fr": "Le fils de David, connu pour sa sagesse et pour avoir bâti le temple.",
+    "name_ko": "솔로몬",
+    "description_ko": "다윗의 아들로, 지혜와 성전 건축으로 알려졌어요.",
+    "name_zh": "所罗门",
+    "description_zh": "大卫的儿子，以智慧和建造圣殿著称。"
   },
   {
     "id": "elijah",
@@ -233,7 +335,13 @@
     "name_es": "Elías",
     "name_pt": "Elias",
     "description_es": "Profeta valiente que enfrentó la idolatría y fue llevado al cielo.",
-    "description_pt": "Um profeta corajoso que enfrentou a idolatria e foi levado ao céu."
+    "description_pt": "Um profeta corajoso que enfrentou a idolatria e foi levado ao céu.",
+    "name_fr": "Élie",
+    "description_fr": "Un prophète audacieux qui affronta l’idolâtrie et fut enlevé au ciel.",
+    "name_ko": "엘리야",
+    "description_ko": "우상 숭배에 맞서 담대하게 외치고 하늘로 들려 올라간 선지자예요.",
+    "name_zh": "以利亚",
+    "description_zh": "一位勇敢的先知，对抗拜偶像的风气，后来被接升天。"
   },
   {
     "id": "elisha",
@@ -246,7 +354,13 @@
     "name_es": "Eliseo",
     "name_pt": "Eliseu",
     "description_es": "Sucesor de Elías, conocido por muchos milagros.",
-    "description_pt": "Sucessor de Elias, conhecido por muitos milagres."
+    "description_pt": "Sucessor de Elias, conhecido por muitos milagres.",
+    "name_fr": "Élisée",
+    "description_fr": "Le successeur d’Élie, connu pour ses nombreux miracles.",
+    "name_ko": "엘리사",
+    "description_ko": "엘리야의 후계자로, 많은 기적으로 알려졌어요.",
+    "name_zh": "以利沙",
+    "description_zh": "以利亚的继承者，以行了许多神迹著称。"
   },
   {
     "id": "isaiah",
@@ -259,7 +373,13 @@
     "name_es": "Isaías",
     "name_pt": "Isaías",
     "description_es": "Profeta que anunció al Mesías y al siervo sufriente.",
-    "description_pt": "Profeta que anunciou o Messias que viria e o servo sofredor."
+    "description_pt": "Profeta que anunciou o Messias que viria e o servo sofredor.",
+    "name_fr": "Ésaïe",
+    "description_fr": "Le prophète qui annonça la venue du Messie et le serviteur souffrant.",
+    "name_ko": "이사야",
+    "description_ko": "오실 메시아와 고난받는 종을 예언한 선지자예요.",
+    "name_zh": "以赛亚",
+    "description_zh": "预言弥赛亚将要来临和受苦仆人的先知。"
   },
   {
     "id": "jeremiah",
@@ -272,7 +392,13 @@
     "name_es": "Jeremías",
     "name_pt": "Jeremias",
     "description_es": "El profeta que lloraba y que anunció un nuevo pacto.",
-    "description_pt": "O profeta chorão que prometeu uma nova aliança."
+    "description_pt": "O profeta chorão que prometeu uma nova aliança.",
+    "name_fr": "Jérémie",
+    "description_fr": "Le prophète des larmes, qui promit une nouvelle alliance.",
+    "name_ko": "예레미야",
+    "description_ko": "새 언약을 약속한 눈물의 선지자예요.",
+    "name_zh": "耶利米",
+    "description_zh": "流泪的先知，应许了新约。"
   },
   {
     "id": "daniel",
@@ -285,7 +411,13 @@
     "name_es": "Daniel",
     "name_pt": "Daniel",
     "description_es": "Se mantuvo fiel en Babilonia y tuvo visiones del reino eterno de Dios.",
-    "description_pt": "Permaneceu fiel na Babilônia e teve visões do reino eterno de Deus."
+    "description_pt": "Permaneceu fiel na Babilônia e teve visões do reino eterno de Deus.",
+    "name_fr": "Daniel",
+    "description_fr": "Il resta fidèle à Babylone et eut des visions du règne éternel de Dieu.",
+    "name_ko": "다니엘",
+    "description_ko": "바벨론에서 신실함을 지켰고 하나님의 영원한 나라에 대한 환상을 보았어요.",
+    "name_zh": "但以理",
+    "description_zh": "在巴比伦始终忠心，看见神永远国度的异象。"
   },
   {
     "id": "esther",
@@ -298,7 +430,13 @@
     "name_es": "Ester",
     "name_pt": "Ester",
     "description_es": "Reina judía que arriesgó su vida para salvar a su pueblo.",
-    "description_pt": "Uma rainha judia que arriscou a vida para salvar o seu povo."
+    "description_pt": "Uma rainha judia que arriscou a vida para salvar o seu povo.",
+    "name_fr": "Esther",
+    "description_fr": "Une reine juive qui risqua sa vie pour sauver son peuple.",
+    "name_ko": "에스더",
+    "description_ko": "목숨을 걸고 백성을 구한 유대인 왕비예요.",
+    "name_zh": "以斯帖",
+    "description_zh": "一位犹太王后，冒着生命危险拯救她的同胞。"
   },
   {
     "id": "jonah",
@@ -311,7 +449,13 @@
     "name_es": "Jonás",
     "name_pt": "Jonas",
     "description_es": "Profeta reacio enviado a Nínive. Jesús comparó su resurrección con los tres días de Jonás.",
-    "description_pt": "Um profeta relutante enviado a Nínive. Jesus comparou sua ressurreição aos três dias de Jonas."
+    "description_pt": "Um profeta relutante enviado a Nínive. Jesus comparou sua ressurreição aos três dias de Jonas.",
+    "name_fr": "Jonas",
+    "description_fr": "Un prophète réticent envoyé à Ninive. Jésus compara sa résurrection aux trois jours de Jonas.",
+    "name_ko": "요나",
+    "description_ko": "니느웨로 보내진 마지못한 선지자예요. 예수님은 자신의 부활을 요나의 사흘에 비유하셨어요.",
+    "name_zh": "约拿",
+    "description_zh": "一位不情愿的先知，被差往尼尼微。耶稣把他的复活比作约拿的三日三夜。"
   },
   {
     "id": "jesus",
@@ -324,7 +468,13 @@
     "name_es": "Jesús",
     "name_pt": "Jesus",
     "description_es": "El Mesías, el centro de toda la historia.",
-    "description_pt": "O Messias, o centro de toda a história."
+    "description_pt": "O Messias, o centro de toda a história.",
+    "name_fr": "Jésus",
+    "description_fr": "Le Messie, le centre de toute l’histoire.",
+    "name_ko": "예수님",
+    "description_ko": "메시아이시며, 이야기 전체의 중심이세요.",
+    "name_zh": "耶稣",
+    "description_zh": "弥赛亚，整个故事的中心。"
   },
   {
     "id": "mary",
@@ -337,7 +487,13 @@
     "name_es": "María",
     "name_pt": "Maria",
     "description_es": "Incluye a la madre de Jesús, a María Magdalena y a María de Betania.",
-    "description_pt": "Inclui a mãe de Jesus, Maria Madalena e Maria de Betânia."
+    "description_pt": "Inclui a mãe de Jesus, Maria Madalena e Maria de Betânia.",
+    "name_fr": "Marie",
+    "description_fr": "Comprend la mère de Jésus, Marie de Magdala et Marie de Béthanie.",
+    "name_ko": "마리아",
+    "description_ko": "예수님의 어머니, 막달라 마리아, 베다니의 마리아가 함께 포함돼요.",
+    "name_zh": "马利亚",
+    "description_zh": "包括耶稣的母亲、抹大拉的马利亚和伯大尼的马利亚。"
   },
   {
     "id": "john",
@@ -350,7 +506,13 @@
     "name_es": "Juan",
     "name_pt": "João",
     "description_es": "Incluye a Juan el Bautista y al apóstol Juan.",
-    "description_pt": "Inclui João Batista e o apóstolo João."
+    "description_pt": "Inclui João Batista e o apóstolo João.",
+    "name_fr": "Jean",
+    "description_fr": "Comprend Jean-Baptiste et l’apôtre Jean.",
+    "name_ko": "요한",
+    "description_ko": "세례 요한과 사도 요한이 함께 포함돼요.",
+    "name_zh": "约翰",
+    "description_zh": "包括施洗约翰和使徒约翰。"
   },
   {
     "id": "peter",
@@ -365,7 +527,13 @@
     "name_es": "Pedro",
     "name_pt": "Pedro",
     "description_es": "Pescador, discípulo y líder de la iglesia primitiva. Simón también incluye a otras personas con ese nombre.",
-    "description_pt": "Pescador, discípulo e líder da igreja primitiva. Simão também corresponde a outras pessoas com esse nome."
+    "description_pt": "Pescador, discípulo e líder da igreja primitiva. Simão também corresponde a outras pessoas com esse nome.",
+    "name_fr": "Pierre",
+    "description_fr": "Pêcheur, disciple et responsable de l’Église primitive. Simon correspond aussi à d’autres personnes de ce nom.",
+    "name_ko": "베드로",
+    "description_ko": "어부이자 제자이며 초대 교회의 지도자예요. 시몬이라는 이름은 같은 이름을 가진 다른 사람들과도 일치해요.",
+    "name_zh": "彼得",
+    "description_zh": "渔夫、门徒和初期教会的领袖。搜索“西门”也会匹配其他同名的人。"
   },
   {
     "id": "paul",
@@ -378,7 +546,13 @@
     "name_es": "Pablo",
     "name_pt": "Paulo",
     "description_es": "Perseguidor convertido en apóstol, que llevó el evangelio por el mundo romano.",
-    "description_pt": "De perseguidor a apóstolo, levou o evangelho por todo o mundo romano."
+    "description_pt": "De perseguidor a apóstolo, levou o evangelho por todo o mundo romano.",
+    "name_fr": "Paul",
+    "description_fr": "Le persécuteur devenu apôtre, qui porta l’Évangile à travers le monde romain.",
+    "name_ko": "바울",
+    "description_ko": "핍박하던 사람이 사도가 되어 로마 세계 곳곳에 복음을 전했어요.",
+    "name_zh": "保罗",
+    "description_zh": "从逼迫者变为使徒，把福音传遍罗马世界。"
   },
   {
     "id": "stephen",
@@ -391,7 +565,13 @@
     "name_es": "Esteban",
     "name_pt": "Estêvão",
     "description_es": "El primer mártir cristiano.",
-    "description_pt": "O primeiro mártir cristão."
+    "description_pt": "O primeiro mártir cristão.",
+    "name_fr": "Étienne",
+    "description_fr": "Le premier martyr chrétien.",
+    "name_ko": "스데반",
+    "description_ko": "첫 번째 그리스도인 순교자예요.",
+    "name_zh": "司提反",
+    "description_zh": "第一位基督徒殉道者。"
   },
   {
     "id": "barnabas",
@@ -404,7 +584,13 @@
     "name_es": "Bernabé",
     "name_pt": "Barnabé",
     "description_es": "El que animaba, compañero de viaje de Pablo.",
-    "description_pt": "O encorajador que viajou com Paulo."
+    "description_pt": "O encorajador que viajou com Paulo.",
+    "name_fr": "Barnabas",
+    "description_fr": "L’homme d’encouragement qui voyagea avec Paul.",
+    "name_ko": "바나바",
+    "description_ko": "바울과 함께 다닌 위로의 사람이에요.",
+    "name_zh": "巴拿巴",
+    "description_zh": "与保罗同行、善于劝慰人的那位。"
   },
   {
     "id": "timothy",
@@ -417,7 +603,13 @@
     "name_es": "Timoteo",
     "name_pt": "Timóteo",
     "description_es": "Joven colaborador de Pablo, que recibió dos de sus cartas.",
-    "description_pt": "O jovem colaborador de Paulo, que recebeu duas de suas cartas."
+    "description_pt": "O jovem colaborador de Paulo, que recebeu duas de suas cartas.",
+    "name_fr": "Timothée",
+    "description_fr": "Le jeune collaborateur de Paul, qui reçut deux de ses lettres.",
+    "name_ko": "디모데",
+    "description_ko": "바울의 젊은 동역자로, 바울의 편지 두 통을 받았어요.",
+    "name_zh": "提摩太",
+    "description_zh": "保罗年轻的同工，收到他的两封书信。"
   },
   {
     "id": "lazarus",
@@ -430,7 +622,13 @@
     "name_es": "Lázaro",
     "name_pt": "Lázaro",
     "description_es": "El amigo a quien Jesús resucitó.",
-    "description_pt": "O amigo que Jesus ressuscitou dos mortos."
+    "description_pt": "O amigo que Jesus ressuscitou dos mortos.",
+    "name_fr": "Lazare",
+    "description_fr": "L’ami que Jésus ressuscita d’entre les morts.",
+    "name_ko": "나사로",
+    "description_ko": "예수님이 죽은 자 가운데서 살리신 친구예요.",
+    "name_zh": "拉撒路",
+    "description_zh": "耶稣使他从死里复活的朋友。"
   },
   {
     "id": "nicodemus",
@@ -443,7 +641,13 @@
     "name_es": "Nicodemo",
     "name_pt": "Nicodemos",
     "description_es": "El fariseo que fue a ver a Jesús de noche.",
-    "description_pt": "O fariseu que foi falar com Jesus à noite."
+    "description_pt": "O fariseu que foi falar com Jesus à noite.",
+    "name_fr": "Nicodème",
+    "description_fr": "Le pharisien qui vint trouver Jésus de nuit.",
+    "name_ko": "니고데모",
+    "description_ko": "밤에 예수님을 찾아온 바리새인이에요.",
+    "name_zh": "尼哥底母",
+    "description_zh": "夜里来见耶稣的法利赛人。"
   },
   {
     "id": "melchizedek",
@@ -456,7 +660,13 @@
     "name_es": "Melquisedec",
     "name_pt": "Melquisedeque",
     "description_es": "Rey y sacerdote que bendijo a Abraham, una imagen del sacerdocio de Jesús.",
-    "description_pt": "Um rei e sacerdote que abençoou Abraão, imagem do sacerdócio de Jesus."
+    "description_pt": "Um rei e sacerdote que abençoou Abraão, imagem do sacerdócio de Jesus.",
+    "name_fr": "Melchisédek",
+    "description_fr": "Un roi-prêtre qui bénit Abraham, image du sacerdoce de Jésus.",
+    "name_ko": "멜기세덱",
+    "description_ko": "아브라함을 축복한 제사장이자 왕으로, 예수님의 제사장 직분을 보여 주는 그림이에요.",
+    "name_zh": "麦基洗德",
+    "description_zh": "祝福亚伯拉罕的祭司兼君王，是耶稣祭司职分的预表。"
   },
   {
     "id": "eden",
@@ -469,7 +679,13 @@
     "name_es": "Edén",
     "name_pt": "Éden",
     "description_es": "El jardín donde comienza la historia.",
-    "description_pt": "O jardim onde a história começa."
+    "description_pt": "O jardim onde a história começa.",
+    "name_fr": "Éden",
+    "description_fr": "Le jardin où l’histoire commence.",
+    "name_ko": "에덴",
+    "description_ko": "이야기가 시작되는 동산이에요.",
+    "name_zh": "伊甸",
+    "description_zh": "故事开始的那个园子。"
   },
   {
     "id": "egypt",
@@ -482,7 +698,13 @@
     "name_es": "Egipto",
     "name_pt": "Egito",
     "description_es": "Lugar de refugio, luego de esclavitud y luego de rescate.",
-    "description_pt": "Lugar de refúgio, depois de escravidão e depois de resgate."
+    "description_pt": "Lugar de refúgio, depois de escravidão e depois de resgate.",
+    "name_fr": "Égypte",
+    "description_fr": "Lieu de refuge, puis d’esclavage, puis de délivrance.",
+    "name_ko": "애굽",
+    "description_ko": "피난처였다가, 종살이의 땅이 되고, 구원의 무대가 된 곳이에요.",
+    "name_zh": "埃及",
+    "description_zh": "先是避难之处，后成为为奴之地，最后是蒙拯救之地。"
   },
   {
     "id": "sinai",
@@ -495,7 +717,13 @@
     "name_es": "Sinaí",
     "name_pt": "Sinai",
     "description_es": "El monte donde Dios dio la ley.",
-    "description_pt": "O monte onde Deus deu a lei."
+    "description_pt": "O monte onde Deus deu a lei.",
+    "name_fr": "Sinaï",
+    "description_fr": "La montagne où Dieu donna la loi.",
+    "name_ko": "시내산",
+    "description_ko": "하나님이 율법을 주신 산이에요.",
+    "name_zh": "西奈",
+    "description_zh": "神颁布律法的那座山。"
   },
   {
     "id": "canaan",
@@ -508,7 +736,13 @@
     "name_es": "Canaán",
     "name_pt": "Canaã",
     "description_es": "La tierra prometida.",
-    "description_pt": "A terra prometida."
+    "description_pt": "A terra prometida.",
+    "name_fr": "Canaan",
+    "description_fr": "La terre promise.",
+    "name_ko": "가나안",
+    "description_ko": "약속의 땅이에요.",
+    "name_zh": "迦南",
+    "description_zh": "应许之地。"
   },
   {
     "id": "jordan",
@@ -521,7 +755,13 @@
     "name_es": "Río Jordán",
     "name_pt": "Rio Jordão",
     "description_es": "Cruzado para entrar a la tierra prometida y lugar del bautismo de Jesús.",
-    "description_pt": "Atravessado para entrar na terra prometida, e lugar do batismo de Jesus."
+    "description_pt": "Atravessado para entrar na terra prometida, e lugar do batismo de Jesus.",
+    "name_fr": "Le Jourdain",
+    "description_fr": "Traversé pour entrer dans la terre promise, et lieu du baptême de Jésus.",
+    "name_ko": "요단강",
+    "description_ko": "약속의 땅으로 건너간 강이자 예수님이 세례를 받으신 곳이에요.",
+    "name_zh": "约旦河",
+    "description_zh": "以色列人渡过它进入应许之地，也是耶稣受洗的地方。"
   },
   {
     "id": "jericho",
@@ -534,7 +774,13 @@
     "name_es": "Jericó",
     "name_pt": "Jericó",
     "description_es": "La primera ciudad tomada en la tierra prometida.",
-    "description_pt": "A primeira cidade conquistada na terra prometida."
+    "description_pt": "A primeira cidade conquistada na terra prometida.",
+    "name_fr": "Jéricho",
+    "description_fr": "La première ville prise dans la terre promise.",
+    "name_ko": "여리고",
+    "description_ko": "약속의 땅에서 처음으로 점령한 성이에요.",
+    "name_zh": "耶利哥",
+    "description_zh": "在应许之地攻取的第一座城。"
   },
   {
     "id": "jerusalem",
@@ -547,7 +793,13 @@
     "name_es": "Jerusalén",
     "name_pt": "Jerusalém",
     "description_es": "La ciudad de David y lugar del templo, la cruz y la tumba vacía.",
-    "description_pt": "A cidade de Davi e lugar do templo, da cruz e do túmulo vazio."
+    "description_pt": "A cidade de Davi e lugar do templo, da cruz e do túmulo vazio.",
+    "name_fr": "Jérusalem",
+    "description_fr": "La ville de David et le lieu du temple, de la croix et du tombeau vide.",
+    "name_ko": "예루살렘",
+    "description_ko": "다윗의 성이며 성전과 십자가와 빈 무덤이 있던 곳이에요.",
+    "name_zh": "耶路撒冷",
+    "description_zh": "大卫的城，圣殿、十字架和空坟墓的所在地。"
   },
   {
     "id": "zion",
@@ -560,7 +812,13 @@
     "name_es": "Sion",
     "name_pt": "Sião",
     "description_es": "Otro nombre de Jerusalén y del lugar donde Dios habita.",
-    "description_pt": "Outro nome para Jerusalém e para o lugar onde Deus habita."
+    "description_pt": "Outro nome para Jerusalém e para o lugar onde Deus habita.",
+    "name_fr": "Sion",
+    "description_fr": "Un autre nom de Jérusalem et de la demeure de Dieu.",
+    "name_ko": "시온",
+    "description_ko": "예루살렘의 다른 이름이자 하나님이 거하시는 곳이에요.",
+    "name_zh": "锡安",
+    "description_zh": "耶路撒冷的另一个名称，也是神的居所。"
   },
   {
     "id": "bethlehem",
@@ -573,7 +831,13 @@
     "name_es": "Belén",
     "name_pt": "Belém",
     "description_es": "Pueblo de David y lugar de nacimiento de Jesús.",
-    "description_pt": "A cidade natal de Davi e o lugar onde Jesus nasceu."
+    "description_pt": "A cidade natal de Davi e o lugar onde Jesus nasceu.",
+    "name_fr": "Bethléhem",
+    "description_fr": "La ville natale de David et le lieu de naissance de Jésus.",
+    "name_ko": "베들레헴",
+    "description_ko": "다윗의 고향이며 예수님이 태어나신 곳이에요.",
+    "name_zh": "伯利恒",
+    "description_zh": "大卫的家乡，耶稣的出生地。"
   },
   {
     "id": "babylon",
@@ -586,7 +850,13 @@
     "name_es": "Babilonia",
     "name_pt": "Babilônia",
     "description_es": "El imperio del exilio y una imagen del orgullo opuesto a Dios.",
-    "description_pt": "O império do exílio e uma imagem do orgulho que se opõe a Deus."
+    "description_pt": "O império do exílio e uma imagem do orgulho que se opõe a Deus.",
+    "name_fr": "Babylone",
+    "description_fr": "L’empire de l’exil, et une image de l’orgueil opposé à Dieu.",
+    "name_ko": "바벨론",
+    "description_ko": "포로기의 제국이며, 하나님을 대적하는 교만을 상징하는 곳이에요.",
+    "name_zh": "巴比伦",
+    "description_zh": "使以色列被掳的帝国，也是与神作对之骄傲的象征。"
   },
   {
     "id": "nineveh",
@@ -599,7 +869,13 @@
     "name_es": "Nínive",
     "name_pt": "Nínive",
     "description_es": "La ciudad a la que Jonás fue enviado a advertir.",
-    "description_pt": "A cidade que Jonas foi enviado para advertir."
+    "description_pt": "A cidade que Jonas foi enviado para advertir.",
+    "name_fr": "Ninive",
+    "description_fr": "La ville que Jonas fut envoyé avertir.",
+    "name_ko": "니느웨",
+    "description_ko": "요나가 경고하러 보내진 성이에요.",
+    "name_zh": "尼尼微",
+    "description_zh": "约拿被差去警告的那座城。"
   },
   {
     "id": "samaria",
@@ -612,7 +888,13 @@
     "name_es": "Samaria",
     "name_pt": "Samaria",
     "description_es": "Capital del reino del norte y tierra de la mujer junto al pozo.",
-    "description_pt": "Capital do reino do norte e terra do povo da mulher junto ao poço."
+    "description_pt": "Capital do reino do norte e terra do povo da mulher junto ao poço.",
+    "name_fr": "Samarie",
+    "description_fr": "Capitale du royaume du Nord, et ville du peuple de la femme au puits.",
+    "name_ko": "사마리아",
+    "description_ko": "북왕국의 수도이며, 우물가 여인의 동네 사람들이 살던 곳이에요.",
+    "name_zh": "撒马利亚",
+    "description_zh": "北国的首都，也是井旁那位妇人的同胞所住的地方。"
   },
   {
     "id": "nazareth",
@@ -625,7 +907,13 @@
     "name_es": "Nazaret",
     "name_pt": "Nazaré",
     "description_es": "El pueblo donde creció Jesús.",
-    "description_pt": "A cidade onde Jesus cresceu."
+    "description_pt": "A cidade onde Jesus cresceu.",
+    "name_fr": "Nazareth",
+    "description_fr": "La ville où Jésus a grandi.",
+    "name_ko": "나사렛",
+    "description_ko": "예수님이 자라신 마을이에요.",
+    "name_zh": "拿撒勒",
+    "description_zh": "耶稣长大的城镇。"
   },
   {
     "id": "galilee",
@@ -638,7 +926,13 @@
     "name_es": "Galilea",
     "name_pt": "Galileia",
     "description_es": "La región de gran parte del ministerio de Jesús.",
-    "description_pt": "A região de grande parte do ministério de Jesus."
+    "description_pt": "A região de grande parte do ministério de Jesus.",
+    "name_fr": "Galilée",
+    "description_fr": "La région d’une grande partie du ministère de Jésus.",
+    "name_ko": "갈릴리",
+    "description_ko": "예수님이 사역의 많은 부분을 하신 지역이에요.",
+    "name_zh": "加利利",
+    "description_zh": "耶稣大部分事工所在的地区。"
   },
   {
     "id": "capernaum",
@@ -651,7 +945,13 @@
     "name_es": "Capernaúm",
     "name_pt": "Cafarnaum",
     "description_es": "La base de Jesús junto al mar de Galilea.",
-    "description_pt": "A base de Jesus junto ao mar da Galileia."
+    "description_pt": "A base de Jesus junto ao mar da Galileia.",
+    "name_fr": "Capernaüm",
+    "description_fr": "Le point d’attache de Jésus au bord de la mer de Galilée.",
+    "name_ko": "가버나움",
+    "description_ko": "갈릴리 바닷가에 있던 예수님의 사역 거점이에요.",
+    "name_zh": "迦百农",
+    "description_zh": "耶稣在加利利海边的事工基地。"
   },
   {
     "id": "bethany",
@@ -664,7 +964,13 @@
     "name_es": "Betania",
     "name_pt": "Betânia",
     "description_es": "Hogar de María, Marta y Lázaro.",
-    "description_pt": "A casa de Maria, Marta e Lázaro."
+    "description_pt": "A casa de Maria, Marta e Lázaro.",
+    "name_fr": "Béthanie",
+    "description_fr": "Là où vivaient Marie, Marthe et Lazare.",
+    "name_ko": "베다니",
+    "description_ko": "마리아, 마르다, 나사로가 살던 곳이에요.",
+    "name_zh": "伯大尼",
+    "description_zh": "马利亚、马大和拉撒路的家乡。"
   },
   {
     "id": "damascus",
@@ -677,7 +983,13 @@
     "name_es": "Damasco",
     "name_pt": "Damasco",
     "description_es": "Donde Saulo se encontró con Jesús resucitado en el camino.",
-    "description_pt": "Onde Saulo encontrou Jesus ressuscitado no caminho."
+    "description_pt": "Onde Saulo encontrou Jesus ressuscitado no caminho.",
+    "name_fr": "Damas",
+    "description_fr": "Là où Saul rencontra Jésus ressuscité sur le chemin.",
+    "name_ko": "다메섹",
+    "description_ko": "사울이 길에서 부활하신 예수님을 만난 곳이에요.",
+    "name_zh": "大马士革",
+    "description_zh": "扫罗在往这里的路上遇见复活的耶稣。"
   },
   {
     "id": "antioch",
@@ -690,7 +1002,13 @@
     "name_es": "Antioquía",
     "name_pt": "Antioquia",
     "description_es": "Donde a los seguidores de Jesús se les llamó cristianos por primera vez.",
-    "description_pt": "Onde os seguidores de Jesus foram chamados de cristãos pela primeira vez."
+    "description_pt": "Onde os seguidores de Jesus foram chamados de cristãos pela primeira vez.",
+    "name_fr": "Antioche",
+    "description_fr": "Là où les disciples de Jésus furent pour la première fois appelés chrétiens.",
+    "name_ko": "안디옥",
+    "description_ko": "예수님을 따르는 사람들이 처음으로 그리스도인이라 불린 곳이에요.",
+    "name_zh": "安提阿",
+    "description_zh": "跟随耶稣的人在这里首次被称为基督徒。"
   },
   {
     "id": "corinth",
@@ -703,7 +1021,13 @@
     "name_es": "Corinto",
     "name_pt": "Corinto",
     "description_es": "Ciudad portuaria y hogar de una iglesia a la que Pablo escribió.",
-    "description_pt": "Uma movimentada cidade portuária e lar de uma igreja a quem Paulo escreveu."
+    "description_pt": "Uma movimentada cidade portuária e lar de uma igreja a quem Paulo escreveu.",
+    "name_fr": "Corinthe",
+    "description_fr": "Une ville portuaire animée, où vivait une Église à laquelle Paul écrivit.",
+    "name_ko": "고린도",
+    "description_ko": "분주한 항구 도시이며 바울이 편지를 보낸 교회가 있던 곳이에요.",
+    "name_zh": "哥林多",
+    "description_zh": "繁忙的港口城市，保罗曾写信给那里的教会。"
   },
   {
     "id": "ephesus",
@@ -716,7 +1040,13 @@
     "name_es": "Éfeso",
     "name_pt": "Éfeso",
     "description_es": "Gran ciudad donde Pablo enseñó por años.",
-    "description_pt": "Uma cidade importante onde Paulo ensinou durante anos."
+    "description_pt": "Uma cidade importante onde Paulo ensinou durante anos.",
+    "name_fr": "Éphèse",
+    "description_fr": "Une grande ville où Paul enseigna pendant des années.",
+    "name_ko": "에베소",
+    "description_ko": "바울이 여러 해 동안 가르친 큰 도시예요.",
+    "name_zh": "以弗所",
+    "description_zh": "一座大城，保罗在那里教导多年。"
   },
   {
     "id": "rome",
@@ -729,6 +1059,12 @@
     "name_es": "Roma",
     "name_pt": "Roma",
     "description_es": "Capital del imperio, donde Pablo predicó encadenado.",
-    "description_pt": "Capital do império, onde Paulo pregou acorrentado."
+    "description_pt": "Capital do império, onde Paulo pregou acorrentado.",
+    "name_fr": "Rome",
+    "description_fr": "La capitale de l’empire, où Paul prêcha enchaîné.",
+    "name_ko": "로마",
+    "description_ko": "제국의 수도로, 바울이 매인 몸으로 복음을 전한 곳이에요.",
+    "name_zh": "罗马",
+    "description_zh": "帝国的首都，保罗在那里带着锁链传道。"
   }
 ]

@@ -1205,6 +1205,12 @@ body:not(.landing-open) .tagline { display: none; }
 
 /* read aloud */
 .speak-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; margin: 4px 0 8px; border: 0; border-radius: 999px;
-  background: var(--accent-soft); color: var(--link); font: 600 var(--t-subhead) var(--font); cursor: pointer; }
+  background: var(--accent-soft); color: var(--text); font: 600 var(--t-subhead) var(--font); cursor: pointer; }
+.speak-btn .i { color: var(--link); }
 .speak-btn .i { width: 20px; height: 20px; }
 .speak-btn[aria-pressed="true"] { color: var(--text); }
+/* six languages: two rows of three instead of one squeezed row */
+.segmented.lang-choice { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.segmented.lang-choice label { white-space: nowrap; }
+/* Korean wraps between words, not inside them */
+:lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }

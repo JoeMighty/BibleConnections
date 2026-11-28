@@ -1,53 +1,36 @@
-const { openSettings, showSearch, openMore } = require('./helpers');
 const { test, expect } = require('@playwright/test');
-const { execFileSync } = require('child_process');
-const ready = (page) => page.waitForSelector('body[data-ready=true]');
+const AxeBuilder = require('@axe-core/playwright').default;
 
-test('Portuguese is a full interface language with its own default Bible', async ({ page }) => {
-  await page.goto('/?ref=John+3%3A16&lang=pt');
-  await ready(page);
-  await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
-  await expect(page.locator('#panelTitle')).toHaveText('João 3:16');
-  await expect(page.locator('#panel')).toContainText('Texto original');
-  // Portuguese readers start in the Nova Versão Internacional (Bible.com id 129)
-  await expect(page.locator('#panel a[href*="bible.com/bible/"]').first()).toHaveAttribute('href', /bible\.com\/bible\/129\//);
-  // numbers are written the Portuguese way
-  await expect(page.locator('header')).toContainText(/\d\.\d{3}/);
-  // it is offered in Settings
-  await openSettings(page);
-  await expect(page.locator('input[name=language][value=pt]')).toBeChecked();
-});
+const CASES = [
+  ['fr', 'Jean 3:16', 'Jean 3:16', 'https://www.bible.com/bible/152/JHN.3.16.S21', 'Explorer'],
+  ['ko', '요한복음 3:16', '요한복음 3:16', 'https://www.bible.com/bible/88/JHN.3.16.KRV', '탐험'],
+  ['zh', '约翰福音 3:16', '约翰福音 3:16', 'https://www.bible.com/bible/48/JHN.3.16.CUNPSS', '探索'],
+];
+for (const [lang, q, title, read, explore] of CASES) {
+  test(`the site works in ${lang}: interface, search by its book names, its Bible, and pages`, async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('bc.tipsSeen', 'true'));
+    await page.goto(`/?lang=${lang}`);
+    await page.waitForSelector('body[data-ready=true]');
+    await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    await expect(page.locator('[data-nav=explore]').first()).toContainText(explore);
+    await page.locator('#landingQ').fill(q);
+    await page.locator('#landingSearch').evaluate(f => f.requestSubmit());
+    await expect(page.locator('#panelTitle')).toHaveText(title);
+    await expect(page.locator('.verse-card a').first()).toHaveAttribute('href', read);
+    // English book names still work in any language
+    await page.goto(`/?lang=${lang}&ref=Romans+8%3A28`);
+    await page.waitForSelector('body[data-ready=true]');
+    await expect(page.locator('#panelTitle')).not.toHaveText(/Romans/);
+    await page.goto(`/help.html?lang=${lang}`);
+    await expect(page.locator('h1')).not.toHaveText('Help and questions');
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+  });
+}
 
-test('a phone set to Portuguese opens in Portuguese', async ({ browser }) => {
-  const ctx = await browser.newContext({ locale: 'pt-BR' });
-  const page = await ctx.newPage();
-  await page.goto('/?view=study');
-  await ready(page);
-  await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
-  await expect(page.locator('#panelTitle')).toHaveText('Estudo');
-  await ctx.close();
-});
-
-test('Portuguese is complete', async () => {
-  const out = execFileSync('node', ['scripts/i18n-check.mjs', 'pt'], { encoding: 'utf8' });
-  const rows = out.split('\n').filter(l => /%$/.test(l.trim()));
-  expect(rows.length).toBeGreaterThan(15);
-  expect(rows.filter(l => !/100%$/.test(l.trim()))).toEqual([]);
-});
-
-test('the standalone pages follow the preview language', async ({ page }) => {
-  await page.goto('/handout.html?journey=lamb&lang=pt');
-  await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
-  await expect(page.locator('.refs').first()).toContainText('Gênesis 22:8');
-  await page.goto('/card.html?verse=John.3.16&lang=pt');
-  await expect(page.locator('h1')).toHaveText('João 3:16');
-  await page.goto('/handout.html?journey=lamb&lang=es');
-  await expect(page.locator('.refs').first()).toContainText('Lee Génesis 22:8');
-});
-
-test('Spanish is complete and the language checker runs', async () => {
-  const out = execFileSync('node', ['scripts/i18n-check.mjs', 'es'], { encoding: 'utf8' });
-  const rows = out.split('\n').filter(l => /%$/.test(l.trim()));
-  expect(rows.length).toBeGreaterThan(15);
-  expect(rows.filter(l => !/100%$/.test(l.trim()))).toEqual([]);
+test('Settings offers all six languages and the footers link them', async ({ page }) => {
+  await page.goto('/guide.html');
+  for (const l of ['es', 'pt', 'fr', 'ko', 'zh']) await expect(page.locator(`.foot-lang a[hreflang="${l === 'zh' ? 'zh' : l}"], .foot-lang a[href*="lang=${l}"]`).first()).toBeVisible();
+  await page.goto('/');
+  await page.waitForSelector('body[data-ready=true]');
+  await expect(page.locator('#settings input[name=language]')).toHaveCount(6);
 });

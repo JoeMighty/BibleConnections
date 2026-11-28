@@ -35,4 +35,4 @@ Open an issue on GitHub with the Translation form, or comment on the Portuguese 
 
 ## After Portuguese
 
-French, then Korean and Chinese (Simplified), using the same files and checks. Right-to-left languages (Arabic, Farsi) need their own design pass.
+French, Korean and Simplified Chinese followed in the same way and are live. A new language now starts with `node scripts/translate-kit.mjs extract <lang>`, which writes everything to translate into `translations/<lang>/` (so several translators can work at once), and `node scripts/translate-kit.mjs merge <lang>` puts the finished work into the site. Right-to-left languages (Arabic, Farsi) need their own design pass.

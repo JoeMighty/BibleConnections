@@ -1,0 +1,62 @@
+[
+  {
+    "id": "messiah",
+    "name": "预言中的耶稣",
+    "description": "关于那位要来之弥赛亚的旧约应许，以及它们在哪里应验。"
+  },
+  {
+    "id": "salvation",
+    "name": "救恩与十字架",
+    "description": "神如何借着耶稣的死与复活拯救世人。"
+  },
+  {
+    "id": "grace",
+    "name": "恩典与饶恕",
+    "description": "不配得的恩宠、怜悯，以及罪的赦免。"
+  },
+  {
+    "id": "freedom",
+    "name": "自由与身份",
+    "description": "我们在基督里是谁，以及他所带来的自由。"
+  },
+  {
+    "id": "love",
+    "name": "爱",
+    "description": "神对我们的爱，以及爱神爱人。"
+  },
+  {
+    "id": "faith",
+    "name": "信心",
+    "description": "信靠神，凭信心生活。"
+  },
+  {
+    "id": "spirit",
+    "name": "圣灵",
+    "description": "神的灵从创造到教会的工作。"
+  },
+  {
+    "id": "prayer",
+    "name": "祷告",
+    "description": "与神交谈，以及我们祷告时他所应许的。"
+  },
+  {
+    "id": "kingdom",
+    "name": "神的国",
+    "description": "神的统治被宣告，在耶稣里临到，并将完全降临。"
+  },
+  {
+    "id": "creation",
+    "name": "创造",
+    "description": "神是天、地和人类的创造主。"
+  },
+  {
+    "id": "generosity",
+    "name": "慷慨",
+    "description": "施予、管家职分和乐于分享的手。"
+  },
+  {
+    "id": "hope",
+    "name": "盼望与复活",
+    "description": "死亡也不能终结的新生命的活泼盼望。"
+  }
+]

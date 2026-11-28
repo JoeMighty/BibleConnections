@@ -16,6 +16,18 @@
       ],
       "text_pt": [
         "Referências cruzadas do OpenBible.info, baseadas no Treasury of Scripture Knowledge, sob a licença CC BY 4.0 (openbible.info/labs/cross-references). As que têm menos de 3 votos ficam de fora."
+      ],
+      "title_fr": "Références croisées",
+      "text_fr": [
+        "Les références croisées d’OpenBible.info, fondées sur le Treasury of Scripture Knowledge, sous licence CC BY 4.0 (openbible.info/labs/cross-references). Les références ayant moins de 3 votes sont écartées."
+      ],
+      "title_ko": "관주",
+      "text_ko": [
+        "Treasury of Scripture Knowledge를 바탕으로 한 OpenBible.info 관주로, CC BY 4.0을 따라요(openbible.info/labs/cross-references). 3표 미만인 관주는 제외했어요."
+      ],
+      "title_zh": "串珠经文",
+      "text_zh": [
+        "OpenBible.info 串珠经文，以 Treasury of Scripture Knowledge 为基础，采用 CC BY 4.0 授权（openbible.info/labs/cross-references）。少于 3 票的经文连接未被收录。"
       ]
     },
     {
@@ -30,6 +42,18 @@
       ],
       "text_pt": [
         "Texto, dados das palavras e léxicos do STEP Bible (Tyndale House Cambridge), sob a licença CC BY 4.0 (stepbible.org). Verbetes de dicionário de Brown-Driver-Briggs e Abbott-Smith, de domínio público."
+      ],
+      "title_fr": "Hébreu, araméen et grec",
+      "text_fr": [
+        "Texte, données des mots et lexiques de STEP Bible (Tyndale House Cambridge), sous licence CC BY 4.0 (stepbible.org). Articles du dictionnaire de Brown-Driver-Briggs et d’Abbott-Smith, dans le domaine public."
+      ],
+      "title_ko": "히브리어, 아람어, 헬라어",
+      "text_ko": [
+        "본문, 단어 자료, 사전은 STEP Bible(Tyndale House Cambridge)에서 CC BY 4.0으로 제공받았어요(stepbible.org). 사전 항목은 퍼블릭 도메인인 Brown-Driver-Briggs와 Abbott-Smith에서 가져왔어요."
+      ],
+      "title_zh": "希伯来文、亚兰文和希腊文",
+      "text_zh": [
+        "文本、词语资料和词典来自 STEP Bible（Tyndale House Cambridge），采用 CC BY 4.0 授权（stepbible.org）。词典条目来自 Brown-Driver-Briggs 和 Abbott-Smith，属公有领域。"
       ]
     },
     {
@@ -44,6 +68,18 @@
       ],
       "text_pt": [
         "Lugares do OpenBible.info Bible Geocoding Data, sob a licença CC BY 4.0. Litoral do Natural Earth, de domínio público."
+      ],
+      "title_fr": "Lieux et cartes",
+      "text_fr": [
+        "Lieux issus des OpenBible.info Bible Geocoding Data, sous licence CC BY 4.0. Littoral de Natural Earth, dans le domaine public."
+      ],
+      "title_ko": "장소와 지도",
+      "text_ko": [
+        "장소는 OpenBible.info Bible Geocoding Data에서 CC BY 4.0으로 가져왔어요. 해안선은 퍼블릭 도메인인 Natural Earth에서 가져왔어요."
+      ],
+      "title_zh": "地点与地图",
+      "text_zh": [
+        "地点资料来自 OpenBible.info Bible Geocoding Data，采用 CC BY 4.0 授权。海岸线来自 Natural Earth，属公有领域。"
       ]
     },
     {
@@ -58,6 +94,18 @@
       ],
       "text_pt": [
         "Da Berean Standard Bible (domínio público), por meio do scrollmapper/bible_databases (MIT). Só são usadas contagens e um índice; nenhum texto de versículo é publicado."
+      ],
+      "title_fr": "Nombre de versets et index des mots",
+      "text_fr": [
+        "Issus de la Berean Standard Bible (domaine public), via scrollmapper/bible_databases (MIT). Seuls les comptages et un index sont utilisés ; aucun texte de verset n’est publié."
+      ],
+      "title_ko": "구절 수와 단어 색인",
+      "text_ko": [
+        "퍼블릭 도메인인 Berean Standard Bible에서 scrollmapper/bible_databases(MIT)를 통해 가져왔어요. 수와 색인만 쓰고, 구절 본문은 게시하지 않아요."
+      ],
+      "title_zh": "经文节数与词语索引",
+      "text_zh": [
+        "来自 Berean Standard Bible（公有领域），经由 scrollmapper/bible_databases（MIT）。只使用节数统计和索引，不发布任何经文文本。"
       ]
     },
     {
@@ -72,6 +120,18 @@
       ],
       "text_pt": [
         "Atkinson Hyperlegible, do Braille Institute, e Bricolage Grotesque, dos autores do projeto Bricolage Grotesque, ambas sob a SIL Open Font License. Códigos QR com o qrcode-generator (MIT, Kazuhiko Arase); \"QR Code\" é uma marca da DENSO WAVE."
+      ],
+      "title_fr": "Polices et code d’autres auteurs",
+      "text_fr": [
+        "Atkinson Hyperlegible, du Braille Institute, et Bricolage Grotesque, des Bricolage Grotesque Project Authors, toutes deux sous licence SIL Open Font License. Codes QR générés par qrcode-generator (MIT, Kazuhiko Arase) ; « QR Code » est une marque de DENSO WAVE."
+      ],
+      "title_ko": "다른 곳에서 온 글꼴과 코드",
+      "text_ko": [
+        "Braille Institute의 Atkinson Hyperlegible과 Bricolage Grotesque Project Authors의 Bricolage Grotesque는 모두 SIL Open Font License를 따라요. QR 코드는 qrcode-generator(MIT, Kazuhiko Arase)로 만들어요. \"QR Code\"는 DENSO WAVE의 상표예요."
+      ],
+      "title_zh": "来自他人的字体和代码",
+      "text_zh": [
+        "Braille Institute 设计的 Atkinson Hyperlegible，以及 Bricolage Grotesque Project Authors 设计的 Bricolage Grotesque，均采用 SIL Open Font License 授权。二维码由 qrcode-generator（MIT，Kazuhiko Arase）生成；“QR Code”是 DENSO WAVE 的商标。"
       ]
     },
     {
@@ -86,6 +146,18 @@
       ],
       "text_pt": [
         "As passagens abrem no Bible.com (YouVersion); nada do Bible.com é copiado. Nomes de traduções como NVI e ARA são marcas dos seus donos e só servem para nomear links. Este projeto não tem vínculo com o Bible.com nem com nenhuma editora."
+      ],
+      "title_fr": "Bible.com et noms des traductions",
+      "text_fr": [
+        "Les passages s’ouvrent sur Bible.com (YouVersion) ; rien n’est copié de Bible.com. Les noms des traductions comme NIV et ESV sont des marques de leurs propriétaires et servent seulement à nommer les liens. Ce projet n’est affilié ni à Bible.com ni à aucun éditeur."
+      ],
+      "title_ko": "Bible.com과 번역본 이름",
+      "text_ko": [
+        "본문은 Bible.com(YouVersion)에서 열리며, Bible.com의 어떤 내용도 복사하지 않아요. NIV, ESV 같은 번역본 이름은 각 소유자의 상표이며 링크 이름으로만 써요. 이 프로젝트는 Bible.com이나 어떤 출판사와도 제휴하지 않았어요."
+      ],
+      "title_zh": "Bible.com 与译本名称",
+      "text_zh": [
+        "经文在 Bible.com（YouVersion）上打开；本网站没有复制 Bible.com 的任何内容。NIV、ESV 等译本名称是其所有者的商标，仅用于标注链接。本项目与 Bible.com 或任何出版机构均无关联。"
       ]
     },
     {
@@ -100,6 +172,18 @@
       ],
       "text_pt": [
         "A imagem de arcos se inspira na visualização de referências cruzadas de 2007 de Chris Harrison e Christoph Römhild."
+      ],
+      "title_fr": "Inspiration",
+      "text_fr": [
+        "L’image en arcs s’inspire de la visualisation des références croisées réalisée en 2007 par Chris Harrison et Christoph Römhild."
+      ],
+      "title_ko": "영감",
+      "text_ko": [
+        "호 그림은 Chris Harrison과 Christoph Römhild가 2007년에 만든 관주 시각화에서 영감을 받았어요."
+      ],
+      "title_zh": "灵感来源",
+      "text_zh": [
+        "弧线图的灵感来自 Chris Harrison 和 Christoph Römhild 于 2007 年创作的串珠经文可视化作品。"
       ]
     },
     {
@@ -114,7 +198,22 @@
       ],
       "text_pt": [
         "Criado por JoeMighty. Código sob a Licença Apache 2.0; conteúdo escrito sob CC BY 4.0. Todos os detalhes estão no arquivo THIRD_PARTY_NOTICES do projeto no GitHub."
+      ],
+      "title_fr": "Ce projet",
+      "text_fr": [
+        "Créé par JoeMighty. Code sous licence Apache 2.0 ; contenu rédigé sous CC BY 4.0. Tous les détails se trouvent dans le fichier THIRD_PARTY_NOTICES du projet sur GitHub."
+      ],
+      "title_ko": "이 프로젝트",
+      "text_ko": [
+        "JoeMighty가 만들었어요. 코드는 Apache License 2.0, 글 콘텐츠는 CC BY 4.0을 따라요. 자세한 내용은 GitHub에 있는 프로젝트의 THIRD_PARTY_NOTICES 파일에 있어요."
+      ],
+      "title_zh": "本项目",
+      "text_zh": [
+        "由 JoeMighty 创建。代码采用 Apache License 2.0；文字内容采用 CC BY 4.0。完整详情请见 GitHub 上本项目的 THIRD_PARTY_NOTICES 文件。"
       ]
     }
-  ]
+  ],
+  "intro_fr": "Bible Connections repose sur le travail généreux d’autres personnes. Voici tout ce qu’il utilise, et à quelles conditions.",
+  "intro_ko": "Bible Connections는 다른 분들의 너그러운 수고 위에 세워졌어요. 사용하는 모든 것과 그 조건을 여기에 밝혀요.",
+  "intro_zh": "Bible Connections 建立在他人慷慨付出的成果之上。以下是它使用的全部资源及其使用条款。"
 }

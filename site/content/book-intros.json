@@ -3,396 +3,594 @@
     "osis": "Gen",
     "about": "The book of beginnings: creation, the fall, the flood and God's promise to Abraham's family. Traditionally linked to Moses, it sets up the whole story of God's plan to bless all nations.",
     "about_es": "El libro de los comienzos: la creación, la caída, el diluvio y la promesa de Dios a la familia de Abraham. Tradicionalmente vinculado a Moisés, presenta todo el plan de Dios para bendecir a todas las naciones.",
-    "about_pt": "O livro dos começos: a criação, a queda, o dilúvio e a promessa de Deus à família de Abraão. Tradicionalmente ligado a Moisés, ele prepara toda a história do plano de Deus de abençoar todas as nações."
+    "about_pt": "O livro dos começos: a criação, a queda, o dilúvio e a promessa de Deus à família de Abraão. Tradicionalmente ligado a Moisés, ele prepara toda a história do plano de Deus de abençoar todas as nações.",
+    "about_fr": "Le livre des commencements : la création, la chute, le déluge et la promesse de Dieu à la famille d’Abraham. Traditionnellement attribué à Moïse, il pose les bases de toute l’histoire du plan de Dieu pour bénir toutes les nations.",
+    "about_ko": "시작의 책이에요. 창조, 타락, 홍수, 그리고 아브라함의 가족에게 주신 하나님의 약속을 담고 있어요. 전통적으로 모세와 연결되며, 모든 민족에게 복을 주시려는 하나님의 계획 이야기 전체의 기초를 놓아요.",
+    "about_zh": "开端之书：创造、堕落、洪水，以及神对亚伯拉罕家族的应许。传统上认为是摩西所写，它为神要赐福万国的整个计划拉开序幕。"
   },
   {
     "osis": "Exod",
     "about": "God rescues Israel from slavery in Egypt, gives the law at Mount Sinai and comes to live among his people in the tabernacle. The Passover and the exodus shape the rest of Scripture's picture of salvation.",
     "about_es": "Dios rescata a Israel de la esclavitud en Egipto, da la ley en el monte Sinaí y viene a habitar entre su pueblo en el tabernáculo. La Pascua y el éxodo dan forma a la imagen de la salvación en el resto de la Escritura.",
-    "about_pt": "Deus resgata Israel da escravidão no Egito, dá a lei no monte Sinai e vem habitar no meio do seu povo no tabernáculo. A Páscoa e o êxodo moldam a imagem da salvação no restante das Escrituras."
+    "about_pt": "Deus resgata Israel da escravidão no Egito, dá a lei no monte Sinai e vem habitar no meio do seu povo no tabernáculo. A Páscoa e o êxodo moldam a imagem da salvação no restante das Escrituras.",
+    "about_fr": "Dieu délivre Israël de l’esclavage en Égypte, donne la loi au mont Sinaï et vient habiter au milieu de son peuple dans le tabernacle. La Pâque et l’exode façonnent la manière dont le reste des Écritures parle du salut.",
+    "about_ko": "하나님은 이스라엘을 애굽의 종살이에서 구하시고, 시내산에서 율법을 주시고, 성막 안에서 백성 가운데 거하러 오세요. 유월절과 출애굽은 이후 성경이 그리는 구원의 모습을 빚어요.",
+    "about_zh": "神拯救以色列人脱离埃及的奴役，在西奈山颁布律法，并在会幕中住在他百姓中间。逾越节和出埃及塑造了整本圣经对救恩的描绘。"
   },
   {
     "osis": "Lev",
     "about": "Instructions for worship, sacrifice and holy living given at Sinai. It shows how a holy God can live among an imperfect people, and its sacrifices form the background to the New Testament's teaching on Jesus.",
     "about_es": "Instrucciones para la adoración, los sacrificios y la vida santa dadas en el Sinaí. Muestra cómo un Dios santo puede vivir entre un pueblo imperfecto, y sus sacrificios son el trasfondo de la enseñanza del Nuevo Testamento sobre Jesús.",
-    "about_pt": "Instruções sobre adoração, sacrifícios e vida santa dadas no Sinai. Mostra como um Deus santo pode habitar no meio de um povo imperfeito, e seus sacrifícios são o pano de fundo do ensino do Novo Testamento sobre Jesus."
+    "about_pt": "Instruções sobre adoração, sacrifícios e vida santa dadas no Sinai. Mostra como um Deus santo pode habitar no meio de um povo imperfeito, e seus sacrifícios são o pano de fundo do ensino do Novo Testamento sobre Jesus.",
+    "about_fr": "Des instructions pour le culte, les sacrifices et une vie sainte, données au Sinaï. Il montre comment un Dieu saint peut habiter au milieu d’un peuple imparfait, et ses sacrifices éclairent l’enseignement du Nouveau Testament sur Jésus.",
+    "about_ko": "시내산에서 주신 예배, 제사, 거룩한 삶에 대한 가르침이에요. 거룩하신 하나님이 불완전한 백성 가운데 어떻게 거하실 수 있는지 보여 주며, 그 제사들은 예수님에 대한 신약의 가르침의 배경이 돼요.",
+    "about_zh": "在西奈山颁布的关于敬拜、献祭和圣洁生活的条例。它显明圣洁的神如何能住在不完全的百姓中间，其中的献祭也成为新约论述耶稣的背景。"
   },
   {
     "osis": "Num",
     "about": "Israel's forty years in the wilderness between Sinai and the promised land. A story of complaint and unbelief, and of God's patience and faithfulness to a new generation.",
     "about_es": "Los cuarenta años de Israel en el desierto entre el Sinaí y la tierra prometida. Una historia de queja e incredulidad, y de la paciencia y fidelidad de Dios con una nueva generación.",
-    "about_pt": "Os quarenta anos de Israel no deserto, entre o Sinai e a terra prometida. Uma história de murmuração e incredulidade, e da paciência e fidelidade de Deus para com uma nova geração."
+    "about_pt": "Os quarenta anos de Israel no deserto, entre o Sinai e a terra prometida. Uma história de murmuração e incredulidade, e da paciência e fidelidade de Deus para com uma nova geração.",
+    "about_fr": "Les quarante ans d’Israël dans le désert, entre le Sinaï et la terre promise. Une histoire de plaintes et d’incrédulité, mais aussi de la patience et de la fidélité de Dieu envers une nouvelle génération.",
+    "about_ko": "시내산과 약속의 땅 사이 광야에서 보낸 이스라엘의 사십 년이에요. 원망과 불신의 이야기이자, 새 세대를 향한 하나님의 인내와 신실하심의 이야기예요.",
+    "about_zh": "以色列人从西奈到应许之地，在旷野漂流四十年。这是一个抱怨与不信的故事，也是神对新一代忍耐与信实的故事。"
   },
   {
     "osis": "Deut",
     "about": "Moses' farewell speeches on the edge of the promised land, calling Israel to love the Lord with all their heart and to remember his faithfulness. Jesus quotes it more than almost any other book.",
     "about_es": "Los discursos de despedida de Moisés a las puertas de la tierra prometida, que llaman a Israel a amar al Señor con todo el corazón y a recordar su fidelidad. Jesús lo cita más que casi cualquier otro libro.",
-    "about_pt": "Os discursos de despedida de Moisés às portas da terra prometida, chamando Israel a amar o Senhor de todo o coração e a lembrar a sua fidelidade. Jesus o cita mais do que quase qualquer outro livro."
+    "about_pt": "Os discursos de despedida de Moisés às portas da terra prometida, chamando Israel a amar o Senhor de todo o coração e a lembrar a sua fidelidade. Jesus o cita mais do que quase qualquer outro livro.",
+    "about_fr": "Les discours d’adieu de Moïse au seuil de la terre promise, qui appellent Israël à aimer le Seigneur de tout son cœur et à se souvenir de sa fidélité. Jésus le cite plus que presque tout autre livre.",
+    "about_ko": "약속의 땅 앞에서 모세가 남긴 고별 설교로, 이스라엘에게 마음을 다해 주님을 사랑하고 그분의 신실하심을 기억하라고 촉구해요. 예수님은 거의 어느 책보다 이 책을 많이 인용하세요.",
+    "about_zh": "摩西在应许之地边缘的临别讲论，呼召以色列尽心爱耶和华，并记念他的信实。耶稣引用这卷书的次数，几乎超过其他任何书卷。"
   },
   {
     "osis": "Josh",
     "about": "Israel enters and settles the promised land under Joshua. It celebrates God keeping his promises and ends with a call to choose whom the people will serve.",
     "about_es": "Israel entra y se establece en la tierra prometida bajo Josué. Celebra que Dios cumple sus promesas y termina con un llamado a escoger a quién servirá el pueblo.",
-    "about_pt": "Israel entra na terra prometida e se estabelece nela sob a liderança de Josué. O livro celebra Deus cumprindo suas promessas e termina com o desafio de escolher a quem o povo vai servir."
+    "about_pt": "Israel entra na terra prometida e se estabelece nela sob a liderança de Josué. O livro celebra Deus cumprindo suas promessas e termina com o desafio de escolher a quem o povo vai servir.",
+    "about_fr": "Israël entre dans la terre promise et s’y installe sous la conduite de Josué. Le livre célèbre Dieu qui tient ses promesses et se termine par un appel à choisir qui le peuple servira.",
+    "about_ko": "이스라엘이 여호수아의 인도로 약속의 땅에 들어가 정착해요. 약속을 지키시는 하나님을 기뻐하며, 누구를 섬길지 선택하라는 부르심으로 끝나요.",
+    "about_zh": "以色列在约书亚带领下进入并定居应许之地。本书颂扬神信守应许，结尾呼召百姓选择要事奉谁。"
   },
   {
     "osis": "Judg",
     "about": "A repeating cycle of turning away, oppression, crying out and rescue through leaders called judges. It shows how quickly a people drift when everyone does what is right in their own eyes.",
     "about_es": "Un ciclo que se repite: alejamiento, opresión, clamor y rescate por medio de líderes llamados jueces. Muestra con qué rapidez se desvía un pueblo cuando cada uno hace lo que bien le parece.",
-    "about_pt": "Um ciclo que se repete: afastamento, opressão, clamor e livramento por meio de líderes chamados juízes. Mostra como um povo se desvia depressa quando cada um faz o que acha certo."
+    "about_pt": "Um ciclo que se repete: afastamento, opressão, clamor e livramento por meio de líderes chamados juízes. Mostra como um povo se desvia depressa quando cada um faz o que acha certo.",
+    "about_fr": "Un cycle qui se répète : infidélité, oppression, cri vers Dieu et délivrance par des chefs appelés juges. Il montre à quelle vitesse un peuple dérive quand chacun fait ce qui lui semble bon.",
+    "about_ko": "하나님을 떠나고, 억압을 받고, 부르짖고, 사사라 불리는 지도자를 통해 구원받는 일이 되풀이돼요. 모두가 자기 소견에 옳은 대로 행할 때 백성이 얼마나 빨리 표류하는지 보여 줘요.",
+    "about_zh": "离弃神、受欺压、呼求、借着称为士师的领袖得拯救，如此循环往复。它显出当人人任意而行时，一个民族会多快地偏离正道。"
   },
   {
     "osis": "Ruth",
     "about": "A short story of loyalty and kindness set in the time of the judges. A Moabite widow becomes part of Israel and an ancestor of King David, and later of Jesus.",
     "about_es": "Una breve historia de lealtad y bondad en la época de los jueces. Una viuda moabita llega a ser parte de Israel y antepasada del rey David, y después de Jesús.",
-    "about_pt": "Uma história curta de lealdade e bondade no tempo dos juízes. Uma viúva moabita passa a fazer parte de Israel e se torna antepassada do rei Davi e, mais tarde, de Jesus."
+    "about_pt": "Uma história curta de lealdade e bondade no tempo dos juízes. Uma viúva moabita passa a fazer parte de Israel e se torna antepassada do rei Davi e, mais tarde, de Jesus.",
+    "about_fr": "Une courte histoire de fidélité et de bonté au temps des juges. Une veuve moabite entre dans le peuple d’Israël et devient une ancêtre du roi David, puis de Jésus.",
+    "about_ko": "사사 시대를 배경으로 한 신실함과 친절의 짧은 이야기예요. 모압 과부가 이스라엘의 일원이 되어 다윗 왕의 조상, 나아가 예수님의 조상이 돼요.",
+    "about_zh": "发生在士师时代的一个关于忠诚与恩慈的短篇故事。一位摩押寡妇成为以色列的一员，并成为大卫王以及后来耶稣的祖先。"
   },
   {
     "osis": "1Sam",
     "about": "Israel moves from judges to kings: Samuel the prophet, Saul the first king, and the rise of David. It contrasts outward appearance with a heart that trusts God.",
     "about_es": "Israel pasa de los jueces a los reyes: el profeta Samuel, Saúl el primer rey y el ascenso de David. Contrasta la apariencia exterior con un corazón que confía en Dios.",
-    "about_pt": "Israel passa dos juízes aos reis: o profeta Samuel, Saul, o primeiro rei, e a ascensão de Davi. Contrasta a aparência exterior com um coração que confia em Deus."
+    "about_pt": "Israel passa dos juízes aos reis: o profeta Samuel, Saul, o primeiro rei, e a ascensão de Davi. Contrasta a aparência exterior com um coração que confia em Deus.",
+    "about_fr": "Israël passe des juges aux rois : Samuel le prophète, Saül le premier roi, et l’ascension de David. Le livre oppose l’apparence extérieure à un cœur qui se confie en Dieu.",
+    "about_ko": "이스라엘이 사사 시대에서 왕정으로 넘어가요. 선지자 사무엘, 첫 왕 사울, 그리고 다윗의 등장이 나와요. 겉모습과 하나님을 신뢰하는 마음을 대조해요.",
+    "about_zh": "以色列从士师时代进入君王时代：先知撒母耳、第一位君王扫罗，以及大卫的兴起。本书将外貌与信靠神的内心作对比。"
   },
   {
     "osis": "2Sam",
     "about": "The reign of King David, including God's covenant promise of a lasting throne and the painful results of David's sin. The promise to David becomes central to the hope for the Messiah.",
     "about_es": "El reinado del rey David, incluida la promesa del pacto de Dios de un trono duradero y las dolorosas consecuencias del pecado de David. La promesa a David llega a ser central en la esperanza del Mesías.",
-    "about_pt": "O reinado do rei Davi, incluindo a aliança de Deus com a promessa de um trono duradouro e as dolorosas consequências do pecado de Davi. A promessa a Davi se torna central na esperança do Messias."
+    "about_pt": "O reinado do rei Davi, incluindo a aliança de Deus com a promessa de um trono duradouro e as dolorosas consequências do pecado de Davi. A promessa a Davi se torna central na esperança do Messias.",
+    "about_fr": "Le règne du roi David, avec la promesse d’alliance de Dieu d’un trône durable et les douloureuses conséquences du péché de David. La promesse faite à David devient centrale dans l’espérance du Messie.",
+    "about_ko": "다윗 왕의 통치 이야기로, 영원한 왕위에 대한 하나님의 언약과 다윗의 죄가 낳은 아픈 결과를 담고 있어요. 다윗에게 주신 약속은 메시아 소망의 중심이 돼요.",
+    "about_zh": "大卫王的统治，包括神应许永存王位的约，以及大卫犯罪带来的痛苦后果。神对大卫的应许成为弥赛亚盼望的核心。"
   },
   {
     "osis": "1Kgs",
     "about": "Solomon's wisdom and temple, then the kingdom splits in two. Prophets like Elijah call kings and people back to the Lord.",
     "about_es": "La sabiduría y el templo de Salomón, y luego el reino se divide en dos. Profetas como Elías llaman a reyes y pueblo a volver al Señor.",
-    "about_pt": "A sabedoria e o templo de Salomão, e depois o reino dividido em dois. Profetas como Elias chamam reis e povo de volta ao Senhor."
+    "about_pt": "A sabedoria e o templo de Salomão, e depois o reino dividido em dois. Profetas como Elias chamam reis e povo de volta ao Senhor.",
+    "about_fr": "La sagesse de Salomon et son temple, puis le royaume se divise en deux. Des prophètes comme Élie rappellent les rois et le peuple vers le Seigneur.",
+    "about_ko": "솔로몬의 지혜와 성전, 그리고 둘로 나뉘는 나라 이야기예요. 엘리야 같은 선지자들이 왕과 백성을 주님께로 다시 부르세요.",
+    "about_zh": "所罗门的智慧与圣殿，随后王国分裂为二。以利亚等先知呼召君王和百姓归回耶和华。"
   },
   {
     "osis": "2Kgs",
     "about": "The decline of Israel and Judah, ending with exile to Assyria and Babylon. It explains the exile while keeping hope alive through God's promise to David.",
     "about_es": "La decadencia de Israel y Judá, que termina con el exilio a Asiria y Babilonia. Explica el exilio sin apagar la esperanza en la promesa de Dios a David.",
-    "about_pt": "A decadência de Israel e de Judá, que termina com o exílio na Assíria e na Babilônia. Explica o exílio e, ao mesmo tempo, mantém viva a esperança por meio da promessa de Deus a Davi."
+    "about_pt": "A decadência de Israel e de Judá, que termina com o exílio na Assíria e na Babilônia. Explica o exílio e, ao mesmo tempo, mantém viva a esperança por meio da promessa de Deus a Davi.",
+    "about_fr": "Le déclin d’Israël et de Juda, jusqu’à l’exil en Assyrie et à Babylone. Le livre explique l’exil tout en gardant vivante l’espérance grâce à la promesse de Dieu à David.",
+    "about_ko": "이스라엘과 유다의 쇠퇴, 그리고 앗수르와 바벨론으로의 포로 생활로 끝나요. 포로기를 설명하면서도 다윗에게 주신 하나님의 약속으로 소망을 이어 가요.",
+    "about_zh": "以色列和犹大的衰落，最终被掳到亚述和巴比伦。本书解释被掳的原因，同时借着神对大卫的应许让盼望延续。"
   },
   {
     "osis": "1Chr",
     "about": "A retelling of Israel's history for those returning from exile, beginning with family lists and focusing on David and preparations for worship in the temple.",
     "about_es": "Un nuevo relato de la historia de Israel para quienes regresaban del exilio. Comienza con listas familiares y se centra en David y en la preparación de la adoración en el templo.",
-    "about_pt": "Uma releitura da história de Israel para os que voltavam do exílio, começando com genealogias e focando em Davi e nos preparativos para a adoração no templo."
+    "about_pt": "Uma releitura da história de Israel para os que voltavam do exílio, começando com genealogias e focando em Davi e nos preparativos para a adoração no templo.",
+    "about_fr": "Une relecture de l’histoire d’Israël pour ceux qui reviennent d’exil, qui commence par des généalogies et se concentre sur David et la préparation du culte au temple.",
+    "about_ko": "포로에서 돌아온 사람들을 위해 이스라엘의 역사를 다시 들려줘요. 족보로 시작하며 다윗과 성전 예배 준비에 초점을 맞춰요.",
+    "about_zh": "为被掳归回的人重述以色列的历史，以家谱开始，重点讲述大卫以及为圣殿敬拜所作的预备。"
   },
   {
     "osis": "2Chr",
     "about": "The story of the kings of Judah from Solomon to the exile, highlighting times of renewal when people humbled themselves and sought God. It ends with a decree allowing the return home.",
     "about_es": "La historia de los reyes de Judá desde Salomón hasta el exilio, destacando los tiempos de renovación cuando el pueblo se humilló y buscó a Dios. Termina con un decreto que permite el regreso.",
-    "about_pt": "A história dos reis de Judá, de Salomão ao exílio, destacando tempos de renovação em que o povo se humilhou e buscou a Deus. Termina com um decreto que permite a volta para casa."
+    "about_pt": "A história dos reis de Judá, de Salomão ao exílio, destacando tempos de renovação em que o povo se humilhou e buscou a Deus. Termina com um decreto que permite a volta para casa.",
+    "about_fr": "L’histoire des rois de Juda, de Salomon à l’exil, qui met en valeur les temps de renouveau où le peuple s’est humilié et a cherché Dieu. Le livre se termine par un décret qui permet le retour au pays.",
+    "about_ko": "솔로몬부터 포로기까지 유다 왕들의 이야기로, 백성이 스스로 낮추고 하나님을 찾았던 부흥의 때를 부각해요. 고국으로 돌아가도록 허락하는 조서로 끝나요.",
+    "about_zh": "从所罗门到被掳的犹大列王故事，着重讲述百姓自卑寻求神时的复兴时期。结尾是一道准许百姓归回故土的谕旨。"
   },
   {
     "osis": "Ezra",
     "about": "Exiles return to Jerusalem, rebuild the temple and recommit themselves to God's law under Ezra the scribe.",
     "about_es": "Los exiliados regresan a Jerusalén, reconstruyen el templo y se comprometen de nuevo con la ley de Dios bajo el escriba Esdras.",
-    "about_pt": "Os exilados voltam a Jerusalém, reconstroem o templo e renovam seu compromisso com a lei de Deus sob a liderança do escriba Esdras."
+    "about_pt": "Os exilados voltam a Jerusalém, reconstroem o templo e renovam seu compromisso com a lei de Deus sob a liderança do escriba Esdras.",
+    "about_fr": "Des exilés reviennent à Jérusalem, rebâtissent le temple et s’engagent de nouveau à suivre la loi de Dieu sous la conduite d’Esdras le scribe.",
+    "about_ko": "포로들이 예루살렘으로 돌아와 성전을 재건하고, 학사 에스라의 인도로 하나님의 율법에 다시 헌신해요.",
+    "about_zh": "被掳的人回到耶路撒冷，重建圣殿，并在文士以斯拉的带领下重新委身于神的律法。"
   },
   {
     "osis": "Neh",
     "about": "Nehemiah leads the rebuilding of Jerusalem's walls despite opposition, and the people renew their covenant with God. A model of prayer joined with practical action.",
     "about_es": "Nehemías dirige la reconstrucción de los muros de Jerusalén a pesar de la oposición, y el pueblo renueva su pacto con Dios. Un ejemplo de oración unida a la acción práctica.",
-    "about_pt": "Neemias lidera a reconstrução dos muros de Jerusalém apesar da oposição, e o povo renova sua aliança com Deus. Um modelo de oração unida à ação prática."
+    "about_pt": "Neemias lidera a reconstrução dos muros de Jerusalém apesar da oposição, e o povo renova sua aliança com Deus. Um modelo de oração unida à ação prática.",
+    "about_fr": "Néhémie dirige la reconstruction des murailles de Jérusalem malgré l’opposition, et le peuple renouvelle son alliance avec Dieu. Un modèle de prière unie à l’action concrète.",
+    "about_ko": "느헤미야는 반대 속에서도 예루살렘 성벽 재건을 이끌고, 백성은 하나님과의 언약을 새롭게 해요. 기도와 실제적인 행동이 함께하는 본보기예요.",
+    "about_zh": "尼希米不顾反对，带领百姓重建耶路撒冷的城墙，百姓也与神重新立约。这是祷告与实际行动相结合的榜样。"
   },
   {
     "osis": "Esth",
     "about": "A Jewish woman in the Persian court risks her life to save her people. God is never named, yet his care is seen in every turn of the story.",
     "about_es": "Una mujer judía en la corte persa arriesga su vida para salvar a su pueblo. Dios nunca es nombrado, pero su cuidado se ve en cada giro de la historia.",
-    "about_pt": "Uma mulher judia na corte persa arrisca a vida para salvar o seu povo. Deus nunca é mencionado, mas o seu cuidado aparece em cada reviravolta da história."
+    "about_pt": "Uma mulher judia na corte persa arrisca a vida para salvar o seu povo. Deus nunca é mencionado, mas o seu cuidado aparece em cada reviravolta da história.",
+    "about_fr": "Une femme juive à la cour de Perse risque sa vie pour sauver son peuple. Dieu n’est jamais nommé, et pourtant sa sollicitude se voit à chaque tournant de l’histoire.",
+    "about_ko": "페르시아 궁정의 한 유대 여인이 목숨을 걸고 백성을 구해요. 하나님의 이름은 한 번도 나오지 않지만, 이야기의 굽이마다 그분의 돌보심이 보여요.",
+    "about_zh": "一位在波斯王宫中的犹太女子冒着生命危险拯救她的同胞。书中从未提到神的名，但在故事的每一个转折中都可以看见他的看顾。"
   },
   {
     "osis": "Job",
     "about": "A righteous man suffers terrible loss, and he and his friends wrestle with why. It refuses simple answers and ends with God speaking from the whirlwind.",
     "about_es": "Un hombre justo sufre pérdidas terribles, y él y sus amigos luchan con el porqué. Rechaza las respuestas simples y termina con Dios hablando desde el torbellino.",
-    "about_pt": "Um homem justo sofre perdas terríveis, e ele e seus amigos lutam com o porquê. O livro recusa respostas simples e termina com Deus falando do meio da tempestade."
+    "about_pt": "Um homem justo sofre perdas terríveis, e ele e seus amigos lutam com o porquê. O livro recusa respostas simples e termina com Deus falando do meio da tempestade.",
+    "about_fr": "Un homme juste subit des pertes terribles, et lui et ses amis se débattent avec la question du pourquoi. Le livre refuse les réponses simples et se termine par Dieu qui parle du milieu de la tempête.",
+    "about_ko": "한 의인이 끔찍한 상실을 겪고, 그와 친구들이 그 이유를 두고 씨름해요. 단순한 답을 거부하며, 폭풍 가운데서 말씀하시는 하나님으로 끝나요.",
+    "about_zh": "一位义人遭受惨重的损失，他和他的朋友们苦苦思索原因。本书拒绝简单的答案，最后神从旋风中说话。"
   },
   {
     "osis": "Ps",
     "about": "Israel's songbook of 150 prayers and songs: praise, lament, thanksgiving, confession and trust. Many are linked to David, and the New Testament often reads them as pointing to Jesus.",
     "about_es": "El cancionero de Israel: 150 oraciones y cantos de alabanza, lamento, gratitud, confesión y confianza. Muchos están vinculados a David, y el Nuevo Testamento a menudo los lee como señales de Jesús.",
-    "about_pt": "O hinário de Israel, com 150 orações e cânticos: louvor, lamento, gratidão, confissão e confiança. Muitos estão ligados a Davi, e o Novo Testamento muitas vezes os lê como apontando para Jesus."
+    "about_pt": "O hinário de Israel, com 150 orações e cânticos: louvor, lamento, gratidão, confissão e confiança. Muitos estão ligados a Davi, e o Novo Testamento muitas vezes os lê como apontando para Jesus.",
+    "about_fr": "Le recueil de chants d’Israël, 150 prières et chants : louange, lamentation, action de grâce, confession et confiance. Beaucoup sont liés à David, et le Nouveau Testament les lit souvent comme annonçant Jésus.",
+    "about_ko": "찬양, 탄식, 감사, 고백, 신뢰를 담은 150편의 기도와 노래로 된 이스라엘의 찬송집이에요. 많은 시가 다윗과 연결되고, 신약은 자주 이 시들을 예수님을 가리키는 말씀으로 읽어요.",
+    "about_zh": "以色列的诗歌集，共 150 篇祷告和诗歌：赞美、哀歌、感恩、认罪和信靠。许多篇与大卫有关，新约也常把它们解读为指向耶稣。"
   },
   {
     "osis": "Prov",
     "about": "Short sayings on living wisely in everyday life: work, words, money, friendship and family. It begins with the fear of the Lord as the start of knowledge.",
     "about_es": "Dichos breves sobre cómo vivir sabiamente en la vida diaria: el trabajo, las palabras, el dinero, la amistad y la familia. Comienza con el temor del Señor como principio del conocimiento.",
-    "about_pt": "Ditos curtos sobre viver com sabedoria no dia a dia: trabalho, palavras, dinheiro, amizade e família. Começa com o temor do Senhor como o princípio do conhecimento."
+    "about_pt": "Ditos curtos sobre viver com sabedoria no dia a dia: trabalho, palavras, dinheiro, amizade e família. Começa com o temor do Senhor como o princípio do conhecimento.",
+    "about_fr": "De courtes maximes pour vivre avec sagesse au quotidien : le travail, les paroles, l’argent, l’amitié et la famille. Il commence par la crainte du Seigneur, principe de la connaissance.",
+    "about_ko": "일, 말, 돈, 우정, 가정 등 일상에서 지혜롭게 사는 법에 관한 짧은 격언들이에요. 여호와를 경외하는 것이 지식의 근본이라는 말로 시작해요.",
+    "about_zh": "关于在日常生活中智慧度日的简短格言：工作、言语、金钱、友谊和家庭。本书以敬畏耶和华是知识的开端作为起点。"
   },
   {
     "osis": "Eccl",
     "about": "An honest look at life's frustrations under the sun. The Teacher finds meaning not in achievement or pleasure but in enjoying God's gifts and fearing him.",
     "about_es": "Una mirada honesta a las frustraciones de la vida bajo el sol. El Predicador encuentra sentido no en los logros ni el placer, sino en disfrutar los dones de Dios y temerle.",
-    "about_pt": "Um olhar honesto sobre as frustrações da vida debaixo do sol. O Pregador encontra sentido não nas conquistas ou no prazer, mas em desfrutar os presentes de Deus e temê-lo."
+    "about_pt": "Um olhar honesto sobre as frustrações da vida debaixo do sol. O Pregador encontra sentido não nas conquistas ou no prazer, mas em desfrutar os presentes de Deus e temê-lo.",
+    "about_fr": "Un regard honnête sur les frustrations de la vie sous le soleil. Le Sage trouve le sens non dans la réussite ou le plaisir, mais dans le fait de jouir des dons de Dieu et de le craindre.",
+    "about_ko": "해 아래 삶의 좌절을 정직하게 바라봐요. 전도자는 성취나 쾌락이 아니라 하나님의 선물을 누리고 그분을 경외하는 데서 의미를 찾아요.",
+    "about_zh": "坦诚面对日光之下人生的挫折。传道者发现，意义不在于成就或享乐，而在于享受神的恩赐并敬畏他。"
   },
   {
     "osis": "Song",
     "about": "A poem celebrating love between a bride and groom. It honours married love as a good gift, and many readers have also seen in it a picture of God's love for his people.",
     "about_es": "Un poema que celebra el amor entre una novia y un novio. Honra el amor matrimonial como un buen regalo, y muchos lectores también han visto en él una imagen del amor de Dios por su pueblo.",
-    "about_pt": "Um poema que celebra o amor entre a noiva e o noivo. Honra o amor no casamento como um bom presente, e muitos leitores também viram nele uma imagem do amor de Deus pelo seu povo."
+    "about_pt": "Um poema que celebra o amor entre a noiva e o noivo. Honra o amor no casamento como um bom presente, e muitos leitores também viram nele uma imagem do amor de Deus pelo seu povo.",
+    "about_fr": "Un poème qui célèbre l’amour entre une épouse et son époux. Il honore l’amour conjugal comme un beau cadeau, et beaucoup de lecteurs y ont aussi vu une image de l’amour de Dieu pour son peuple.",
+    "about_ko": "신랑과 신부의 사랑을 노래하는 시예요. 부부의 사랑을 좋은 선물로 귀히 여기며, 많은 독자는 여기서 백성을 향한 하나님의 사랑의 그림도 보아 왔어요.",
+    "about_zh": "一首歌颂新郎与新妇之间爱情的诗。它把婚姻之爱尊为美好的恩赐，许多读者也从中看见神爱他百姓的图画。"
   },
   {
     "osis": "Isa",
     "about": "Isaiah calls Judah to trust God and warns of judgement, yet speaks some of Scripture's richest promises: a child called Immanuel, a suffering servant and a new creation. The New Testament quotes it often.",
     "about_es": "Isaías llama a Judá a confiar en Dios y advierte del juicio, pero también ofrece algunas de las promesas más ricas de la Escritura: un niño llamado Emanuel, un siervo sufriente y una nueva creación. El Nuevo Testamento lo cita a menudo.",
-    "about_pt": "Isaías chama Judá a confiar em Deus e adverte sobre o juízo, mas também traz algumas das promessas mais ricas das Escrituras: uma criança chamada Emanuel, um servo sofredor e uma nova criação. O Novo Testamento o cita com frequência."
+    "about_pt": "Isaías chama Judá a confiar em Deus e adverte sobre o juízo, mas também traz algumas das promessas mais ricas das Escrituras: uma criança chamada Emanuel, um servo sofredor e uma nova criação. O Novo Testamento o cita com frequência.",
+    "about_fr": "Ésaïe appelle Juda à se confier en Dieu et annonce le jugement, mais il prononce aussi certaines des plus riches promesses des Écritures : un enfant appelé Emmanuel, un serviteur souffrant et une nouvelle création. Le Nouveau Testament le cite souvent.",
+    "about_ko": "이사야는 유다에게 하나님을 신뢰하라고 부르며 심판을 경고하지만, 임마누엘이라 불릴 아기, 고난받는 종, 새 창조 같은 성경에서 가장 풍성한 약속들도 전해요. 신약은 이 책을 자주 인용해요.",
+    "about_zh": "以赛亚呼召犹大信靠神，并警告审判将临，却也宣讲了圣经中一些最丰富的应许：一个名叫以马内利的孩子、一位受苦的仆人和一个新造的世界。新约经常引用本书。"
   },
   {
     "osis": "Jer",
     "about": "Jeremiah warns Jerusalem before its fall to Babylon and weeps over its people. In the darkness he announces a new covenant written on the heart.",
     "about_es": "Jeremías advierte a Jerusalén antes de su caída ante Babilonia y llora por su pueblo. En medio de la oscuridad anuncia un nuevo pacto escrito en el corazón.",
-    "about_pt": "Jeremias adverte Jerusalém antes da sua queda diante da Babilônia e chora pelo seu povo. Em meio às trevas, ele anuncia uma nova aliança escrita no coração."
+    "about_pt": "Jeremias adverte Jerusalém antes da sua queda diante da Babilônia e chora pelo seu povo. Em meio às trevas, ele anuncia uma nova aliança escrita no coração.",
+    "about_fr": "Jérémie avertit Jérusalem avant sa chute face à Babylone et pleure sur son peuple. Au cœur de l’obscurité, il annonce une nouvelle alliance écrite dans le cœur.",
+    "about_ko": "예레미야는 바벨론에 함락되기 전 예루살렘에 경고하며 백성을 위해 울어요. 어둠 속에서 그는 마음에 새겨질 새 언약을 선포해요.",
+    "about_zh": "耶利米在耶路撒冷陷落于巴比伦之前发出警告，并为他的百姓哭泣。在黑暗之中，他宣告一个写在心上的新约。"
   },
   {
     "osis": "Lam",
     "about": "Five poems of grief after Jerusalem's destruction. At its centre is a confession that the Lord's mercies are new every morning.",
     "about_es": "Cinco poemas de dolor tras la destrucción de Jerusalén. En su centro está la confesión de que las misericordias del Señor son nuevas cada mañana.",
-    "about_pt": "Cinco poemas de luto depois da destruição de Jerusalém. No centro está a confissão de que as misericórdias do Senhor se renovam a cada manhã."
+    "about_pt": "Cinco poemas de luto depois da destruição de Jerusalém. No centro está a confissão de que as misericórdias do Senhor se renovam a cada manhã.",
+    "about_fr": "Cinq poèmes de deuil après la destruction de Jérusalem. En leur centre, une confession : les bontés du Seigneur se renouvellent chaque matin.",
+    "about_ko": "예루살렘이 멸망한 뒤 부른 다섯 편의 슬픔의 시예요. 그 중심에는 주님의 긍휼이 아침마다 새롭다는 고백이 있어요.",
+    "about_zh": "耶路撒冷被毁后的五首哀歌。其核心是一句宣认：耶和华的怜悯每早晨都是新的。"
   },
   {
     "osis": "Ezek",
     "about": "A priest among the exiles in Babylon sees visions of God's glory leaving and one day returning. He promises a new heart, a new spirit and dry bones brought to life.",
     "about_es": "Un sacerdote entre los exiliados en Babilonia ve visiones de la gloria de Dios que se va y que un día regresará. Promete un corazón nuevo, un espíritu nuevo y huesos secos que vuelven a la vida.",
-    "about_pt": "Um sacerdote entre os exilados na Babilônia tem visões da glória de Deus saindo e, um dia, voltando. Ele promete um coração novo, um espírito novo e ossos secos que voltam à vida."
+    "about_pt": "Um sacerdote entre os exilados na Babilônia tem visões da glória de Deus saindo e, um dia, voltando. Ele promete um coração novo, um espírito novo e ossos secos que voltam à vida.",
+    "about_fr": "Un prêtre parmi les exilés à Babylone voit en vision la gloire de Dieu quitter le temple et un jour revenir. Il promet un cœur nouveau, un esprit nouveau et des ossements desséchés ramenés à la vie.",
+    "about_ko": "바벨론 포로 가운데 있던 제사장이 하나님의 영광이 떠나고 언젠가 다시 돌아오는 환상을 봐요. 그는 새 마음, 새 영, 그리고 다시 살아나는 마른 뼈를 약속해요.",
+    "about_zh": "一位在巴比伦被掳之民中的祭司看见异象：神的荣耀离去，并且有一天要回来。他应许一颗新心、一个新灵，以及枯骨复生。"
   },
   {
     "osis": "Dan",
     "about": "Stories of faithfulness in a foreign empire and visions of kingdoms rising and falling. Parts are written in Aramaic. It looks to an everlasting kingdom given to one like a son of man.",
     "about_es": "Historias de fidelidad en un imperio extranjero y visiones de reinos que se levantan y caen. Algunas partes están escritas en arameo. Mira hacia un reino eterno dado a uno como un hijo de hombre.",
-    "about_pt": "Histórias de fidelidade em um império estrangeiro e visões de reinos que se levantam e caem. Partes foram escritas em aramaico. O livro aponta para um reino eterno dado a alguém como um filho de homem."
+    "about_pt": "Histórias de fidelidade em um império estrangeiro e visões de reinos que se levantam e caem. Partes foram escritas em aramaico. O livro aponta para um reino eterno dado a alguém como um filho de homem.",
+    "about_fr": "Des récits de fidélité dans un empire étranger et des visions de royaumes qui s’élèvent et tombent. Certaines parties sont écrites en araméen. Le livre regarde vers un règne éternel donné à quelqu’un de semblable à un fils d’homme.",
+    "about_ko": "이방 제국 안에서 지킨 신실함의 이야기와 나라들이 일어나고 무너지는 환상이에요. 일부는 아람어로 쓰였어요. 인자 같은 이에게 주어질 영원한 나라를 바라봐요.",
+    "about_zh": "在外邦帝国中忠心的故事，以及列国兴衰的异象。部分内容以亚兰文写成。它仰望一个赐给那位像人子者的永远国度。"
   },
   {
     "osis": "Hos",
     "about": "Hosea's painful marriage becomes a picture of God's faithful love for unfaithful Israel, and of his longing to bring his people back.",
     "about_es": "El doloroso matrimonio de Oseas se convierte en una imagen del amor fiel de Dios por un Israel infiel, y de su anhelo de hacer volver a su pueblo.",
-    "about_pt": "O casamento doloroso de Oseias se torna uma imagem do amor fiel de Deus por um Israel infiel, e do seu desejo de trazer o seu povo de volta."
+    "about_pt": "O casamento doloroso de Oseias se torna uma imagem do amor fiel de Deus por um Israel infiel, e do seu desejo de trazer o seu povo de volta.",
+    "about_fr": "Le mariage douloureux d’Osée devient une image de l’amour fidèle de Dieu pour Israël infidèle, et de son désir de ramener son peuple.",
+    "about_ko": "호세아의 아픈 결혼은 신실하지 못한 이스라엘을 향한 하나님의 신실한 사랑, 그리고 백성을 다시 데려오시려는 그분의 갈망을 보여 주는 그림이 돼요.",
+    "about_zh": "何西阿痛苦的婚姻，成为神对不忠的以色列信实之爱的图画，也显出他渴望把百姓领回来。"
   },
   {
     "osis": "Joel",
     "about": "A locust plague becomes a call to return to God. Joel promises that God will pour out his Spirit on all people, a promise Peter quotes at Pentecost.",
     "about_es": "Una plaga de langostas se convierte en un llamado a volver a Dios. Joel promete que Dios derramará su Espíritu sobre todas las personas, promesa que Pedro cita en Pentecostés.",
-    "about_pt": "Uma praga de gafanhotos se torna um chamado para voltar a Deus. Joel promete que Deus derramará o seu Espírito sobre todas as pessoas, promessa que Pedro cita no Pentecostes."
+    "about_pt": "Uma praga de gafanhotos se torna um chamado para voltar a Deus. Joel promete que Deus derramará o seu Espírito sobre todas as pessoas, promessa que Pedro cita no Pentecostes.",
+    "about_fr": "Une invasion de sauterelles devient un appel à revenir à Dieu. Joël promet que Dieu répandra son Esprit sur toute chair, une promesse que Pierre cite à la Pentecôte.",
+    "about_ko": "메뚜기 재앙이 하나님께 돌아오라는 부르심이 돼요. 요엘은 하나님이 모든 사람에게 그분의 영을 부어 주실 것이라고 약속하는데, 베드로가 오순절에 이 약속을 인용해요.",
+    "about_zh": "一场蝗灾成为归向神的呼召。约珥应许神要将他的灵浇灌凡有血气的，彼得在五旬节引用了这个应许。"
   },
   {
     "osis": "Amos",
     "about": "A shepherd sent to the prosperous northern kingdom confronts injustice and empty religion, calling for justice to roll on like a river.",
     "about_es": "Un pastor enviado al próspero reino del norte confronta la injusticia y la religión vacía, y pide que la justicia corra como un río.",
-    "about_pt": "Um pastor enviado ao próspero reino do norte confronta a injustiça e a religião vazia, pedindo que a justiça corra como um rio."
+    "about_pt": "Um pastor enviado ao próspero reino do norte confronta a injustiça e a religião vazia, pedindo que a justiça corra como um rio.",
+    "about_fr": "Un berger envoyé au riche royaume du Nord dénonce l’injustice et la religion vide, et appelle à laisser couler la justice comme un fleuve.",
+    "about_ko": "번영하던 북왕국에 보내진 목자가 불의와 빈껍데기 종교를 꾸짖으며, 정의를 강같이 흐르게 하라고 외쳐요.",
+    "about_zh": "一位被差往富裕北国的牧人，对抗不公义和空洞的宗教，呼吁要使公平如大水滚滚。"
   },
   {
     "osis": "Obad",
     "about": "The shortest book of the Old Testament announces judgement on Edom for turning on its brother Israel, and looks to the day when the kingdom will be the Lord's.",
     "about_es": "El libro más corto del Antiguo Testamento anuncia el juicio sobre Edom por volverse contra su hermano Israel, y mira hacia el día en que el reino será del Señor.",
-    "about_pt": "O livro mais curto do Antigo Testamento anuncia o juízo sobre Edom por ter se voltado contra seu irmão Israel, e aponta para o dia em que o reino será do Senhor."
+    "about_pt": "O livro mais curto do Antigo Testamento anuncia o juízo sobre Edom por ter se voltado contra seu irmão Israel, e aponta para o dia em que o reino será do Senhor.",
+    "about_fr": "Le plus court livre de l’Ancien Testament annonce le jugement sur Édom, qui s’est retourné contre son frère Israël, et regarde vers le jour où le règne appartiendra au Seigneur.",
+    "about_ko": "구약에서 가장 짧은 책으로, 형제 이스라엘을 등진 에돔에게 심판을 선포하고 나라가 주님께 속할 날을 바라봐요.",
+    "about_zh": "旧约中最短的一卷书，宣告以东因攻击其兄弟以色列而受审判，并仰望国度归耶和华的日子。"
   },
   {
     "osis": "Jonah",
     "about": "A reluctant prophet runs from God, is swallowed by a great fish and sees an enemy city repent. It shows God's compassion reaching beyond Israel.",
     "about_es": "Un profeta reacio huye de Dios, es tragado por un gran pez y ve arrepentirse a una ciudad enemiga. Muestra que la compasión de Dios va más allá de Israel.",
-    "about_pt": "Um profeta relutante foge de Deus, é engolido por um grande peixe e vê uma cidade inimiga se arrepender. Mostra a compaixão de Deus chegando além de Israel."
+    "about_pt": "Um profeta relutante foge de Deus, é engolido por um grande peixe e vê uma cidade inimiga se arrepender. Mostra a compaixão de Deus chegando além de Israel.",
+    "about_fr": "Un prophète réticent fuit Dieu, est englouti par un grand poisson et voit une ville ennemie se repentir. Le livre montre que la compassion de Dieu va au-delà d’Israël.",
+    "about_ko": "마지못한 선지자가 하나님을 피해 도망치다 큰 물고기에게 삼켜지고, 원수의 도시가 회개하는 것을 봐요. 하나님의 긍휼이 이스라엘을 넘어 미친다는 것을 보여 줘요.",
+    "about_zh": "一位不情愿的先知逃避神，被大鱼吞下，又看见一座敌国的城悔改。本书显出神的怜悯临及以色列以外的人。"
   },
   {
     "osis": "Mic",
     "about": "Micah condemns corrupt leaders, foretells a ruler born in Bethlehem and sums up what God asks: to act justly, love mercy and walk humbly with him.",
     "about_es": "Miqueas condena a los líderes corruptos, anuncia un gobernante nacido en Belén y resume lo que Dios pide: hacer justicia, amar la misericordia y caminar humildemente con él.",
-    "about_pt": "Miqueias condena líderes corruptos, anuncia um governante nascido em Belém e resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente com ele."
+    "about_pt": "Miqueias condena líderes corruptos, anuncia um governante nascido em Belém e resume o que Deus pede: praticar a justiça, amar a misericórdia e andar humildemente com ele.",
+    "about_fr": "Michée condamne les chefs corrompus, annonce un chef né à Bethléhem et résume ce que Dieu demande : pratiquer la justice, aimer la miséricorde et marcher humblement avec lui.",
+    "about_ko": "미가는 부패한 지도자들을 꾸짖고, 베들레헴에서 태어날 통치자를 예언하며, 하나님이 구하시는 것을 요약해요. 정의를 행하고, 인자를 사랑하며, 겸손히 하나님과 함께 행하는 것이에요.",
+    "about_zh": "弥迦谴责腐败的领袖，预言一位生在伯利恒的掌权者，并总结神的要求：行公义，好怜悯，存谦卑的心与神同行。"
   },
   {
     "osis": "Nah",
     "about": "A poem announcing the fall of Nineveh, the capital of cruel Assyria. It comforts the oppressed with the truth that God is good and a refuge.",
     "about_es": "Un poema que anuncia la caída de Nínive, la capital de la cruel Asiria. Consuela a los oprimidos con la verdad de que Dios es bueno y un refugio.",
-    "about_pt": "Um poema que anuncia a queda de Nínive, a capital da cruel Assíria. Consola os oprimidos com a verdade de que Deus é bom e é refúgio."
+    "about_pt": "Um poema que anuncia a queda de Nínive, a capital da cruel Assíria. Consola os oprimidos com a verdade de que Deus é bom e é refúgio.",
+    "about_fr": "Un poème qui annonce la chute de Ninive, capitale de la cruelle Assyrie. Il console les opprimés avec cette vérité : Dieu est bon et il est un refuge.",
+    "about_ko": "잔인한 앗수르의 수도 니느웨의 멸망을 선포하는 시예요. 하나님은 선하시고 피난처가 되신다는 진리로 억눌린 사람들을 위로해요.",
+    "about_zh": "一首宣告尼尼微倾覆的诗，尼尼微是残暴的亚述的首都。它以神本为善、是避难所的真理安慰受欺压的人。"
   },
   {
     "osis": "Hab",
     "about": "A prophet questions God about injustice and learns to wait in faith. It gives the line the righteous shall live by faith, which Paul takes up.",
     "about_es": "Un profeta cuestiona a Dios sobre la injusticia y aprende a esperar con fe. Contiene la frase el justo vivirá por la fe, que Pablo retoma.",
-    "about_pt": "Um profeta questiona Deus sobre a injustiça e aprende a esperar com fé. Dele vem a frase o justo viverá pela fé, que Paulo retoma."
+    "about_pt": "Um profeta questiona Deus sobre a injustiça e aprende a esperar com fé. Dele vem a frase o justo viverá pela fé, que Paulo retoma.",
+    "about_fr": "Un prophète interroge Dieu sur l’injustice et apprend à attendre avec foi. On y trouve la phrase le juste vivra par la foi, que Paul reprend.",
+    "about_ko": "한 선지자가 불의에 대해 하나님께 묻고, 믿음으로 기다리는 법을 배워요. 의인은 믿음으로 살리라는 말씀이 여기서 나오고, 바울이 이 말씀을 이어받아요.",
+    "about_zh": "一位先知就不公义的事向神发问，并学会凭信心等候。本书写下“义人必因信得生”这句话，保罗后来加以发挥。"
   },
   {
     "osis": "Zeph",
     "about": "A warning of the coming day of the Lord, followed by a tender promise that God will rejoice over his people with singing.",
     "about_es": "Una advertencia sobre el día del Señor que viene, seguida de una tierna promesa de que Dios se regocijará sobre su pueblo con cánticos.",
-    "about_pt": "Uma advertência sobre o dia do Senhor que vem, seguida de uma promessa terna de que Deus se alegrará com o seu povo com cânticos."
+    "about_pt": "Uma advertência sobre o dia do Senhor que vem, seguida de uma promessa terna de que Deus se alegrará com o seu povo com cânticos.",
+    "about_fr": "Un avertissement sur le jour du Seigneur qui vient, suivi d’une tendre promesse : Dieu se réjouira de son peuple avec des chants.",
+    "about_ko": "다가오는 여호와의 날에 대한 경고 뒤에, 하나님이 백성으로 인해 기뻐 노래하며 즐거워하실 것이라는 다정한 약속이 이어져요.",
+    "about_zh": "警告耶和华的日子将临，接着是一个温柔的应许：神要因他的百姓欢呼喜乐。"
   },
   {
     "osis": "Hag",
     "about": "After the exile, Haggai urges the returned people to stop neglecting God's house and rebuild the temple, promising a greater glory to come.",
     "about_es": "Después del exilio, Hageo anima al pueblo que regresó a dejar de descuidar la casa de Dios y reconstruir el templo, prometiendo una gloria mayor por venir.",
-    "about_pt": "Depois do exílio, Ageu insiste com o povo que voltou para que pare de negligenciar a casa de Deus e reconstrua o templo, prometendo uma glória ainda maior."
+    "about_pt": "Depois do exílio, Ageu insiste com o povo que voltou para que pare de negligenciar a casa de Deus e reconstrua o templo, prometendo uma glória ainda maior.",
+    "about_fr": "Après l’exil, Aggée presse le peuple revenu de cesser de négliger la maison de Dieu et de rebâtir le temple, en promettant une gloire plus grande à venir.",
+    "about_ko": "포로기 후, 학개는 돌아온 백성에게 하나님의 집을 방치하지 말고 성전을 재건하라고 촉구하며 더 큰 영광이 올 것을 약속해요.",
+    "about_zh": "被掳归回之后，哈该敦促归回的百姓不要再忽略神的殿，要重建圣殿，并应许将来的荣耀必大过先前的。"
   },
   {
     "osis": "Zech",
     "about": "Visions encouraging the rebuilding of Jerusalem and pointing ahead to a humble king riding on a donkey and a pierced one who is mourned. The Gospels draw on it at Jesus' final week.",
     "about_es": "Visiones que animan la reconstrucción de Jerusalén y señalan a un rey humilde montado en un asno y a uno traspasado por quien se hace duelo. Los Evangelios lo usan en la última semana de Jesús.",
-    "about_pt": "Visões que encorajam a reconstrução de Jerusalém e apontam para um rei humilde montado em um jumento e para alguém traspassado por quem se chora. Os Evangelhos recorrem a ele na última semana de Jesus."
+    "about_pt": "Visões que encorajam a reconstrução de Jerusalém e apontam para um rei humilde montado em um jumento e para alguém traspassado por quem se chora. Os Evangelhos recorrem a ele na última semana de Jesus.",
+    "about_fr": "Des visions qui encouragent la reconstruction de Jérusalem et annoncent un roi humble monté sur un âne et un homme transpercé que l’on pleure. Les Évangiles s’y réfèrent pour la dernière semaine de Jésus.",
+    "about_ko": "예루살렘 재건을 격려하는 환상들로, 나귀를 타신 겸손한 왕과 사람들이 애통하는 찔린 이를 미리 가리켜요. 복음서는 예수님의 마지막 한 주를 기록하며 이 책을 끌어와요.",
+    "about_zh": "一系列异象鼓励重建耶路撒冷，并预先指向一位谦和、骑着驴的王，以及一位被扎而为人所哀哭的。福音书在记述耶稣最后一周时引用了本书。"
   },
   {
     "osis": "Mal",
     "about": "The last Old Testament prophet challenges careless worship and promises a messenger who will prepare the way for the Lord, linked in the Gospels to John the Baptist.",
     "about_es": "El último profeta del Antiguo Testamento desafía la adoración descuidada y promete un mensajero que preparará el camino del Señor, vinculado en los Evangelios a Juan el Bautista.",
-    "about_pt": "O último profeta do Antigo Testamento confronta a adoração descuidada e promete um mensageiro que preparará o caminho para o Senhor, ligado nos Evangelhos a João Batista."
+    "about_pt": "O último profeta do Antigo Testamento confronta a adoração descuidada e promete um mensageiro que preparará o caminho para o Senhor, ligado nos Evangelhos a João Batista.",
+    "about_fr": "Le dernier prophète de l’Ancien Testament dénonce un culte négligent et promet un messager qui préparera le chemin du Seigneur, que les Évangiles relient à Jean-Baptiste.",
+    "about_ko": "구약의 마지막 선지자는 성의 없는 예배를 꾸짖고, 주님의 길을 예비할 사자를 약속해요. 복음서는 이 사자를 세례 요한과 연결해요.",
+    "about_zh": "旧约最后一位先知挑战敷衍了事的敬拜，并应许一位使者要为主预备道路，福音书把他与施洗约翰联系起来。"
   },
   {
     "osis": "Matt",
     "about": "The Gospel written with Jewish readers in mind, showing Jesus as the promised King who fulfils the Scriptures. It includes the Sermon on the Mount and ends with the Great Commission.",
     "about_es": "El Evangelio escrito pensando en lectores judíos, que muestra a Jesús como el Rey prometido que cumple las Escrituras. Incluye el Sermón del Monte y termina con la Gran Comisión.",
-    "about_pt": "O Evangelho escrito pensando em leitores judeus, que mostra Jesus como o Rei prometido que cumpre as Escrituras. Inclui o Sermão do Monte e termina com a Grande Comissão."
+    "about_pt": "O Evangelho escrito pensando em leitores judeus, que mostra Jesus como o Rei prometido que cumpre as Escrituras. Inclui o Sermão do Monte e termina com a Grande Comissão.",
+    "about_fr": "L’Évangile écrit en pensant aux lecteurs juifs, qui présente Jésus comme le Roi promis qui accomplit les Écritures. Il contient le Sermon sur la montagne et se termine par le grand envoi.",
+    "about_ko": "유대인 독자를 염두에 두고 쓴 복음서로, 성경을 성취하시는 약속된 왕으로 예수님을 보여 줘요. 산상수훈이 담겨 있고 지상명령으로 끝나요.",
+    "about_zh": "为犹太读者而写的福音书，显明耶稣是成就圣经的应许之王。书中包括登山宝训，并以大使命作结。"
   },
   {
     "osis": "Mark",
     "about": "The shortest and fastest moving Gospel, often linked to Peter's preaching. It shows Jesus as the Son of God who came to serve and give his life as a ransom.",
     "about_es": "El Evangelio más breve y ágil, a menudo vinculado a la predicación de Pedro. Muestra a Jesús como el Hijo de Dios que vino a servir y a dar su vida en rescate.",
-    "about_pt": "O Evangelho mais curto e mais dinâmico, muitas vezes ligado à pregação de Pedro. Mostra Jesus como o Filho de Deus que veio para servir e dar a sua vida em resgate."
+    "about_pt": "O Evangelho mais curto e mais dinâmico, muitas vezes ligado à pregação de Pedro. Mostra Jesus como o Filho de Deus que veio para servir e dar a sua vida em resgate.",
+    "about_fr": "L’Évangile le plus court et le plus vif, souvent relié à la prédication de Pierre. Il montre Jésus comme le Fils de Dieu venu pour servir et donner sa vie en rançon.",
+    "about_ko": "가장 짧고 가장 빠르게 전개되는 복음서로, 흔히 베드로의 설교와 연결돼요. 섬기러 오셔서 자기 목숨을 대속물로 주신 하나님의 아들로 예수님을 보여 줘요.",
+    "about_zh": "最短、节奏最快的福音书，常被认为与彼得的讲道有关。它显明耶稣是神的儿子，来是要服事人，并且舍命作多人的赎价。"
   },
   {
     "osis": "Luke",
     "about": "A careful account written for Theophilus, with special attention to outsiders, the poor, women and prayer. Luke continues the story in Acts.",
     "about_es": "Un relato cuidadoso escrito para Teófilo, con especial atención a los marginados, los pobres, las mujeres y la oración. Lucas continúa la historia en Hechos.",
-    "about_pt": "Um relato cuidadoso escrito para Teófilo, com atenção especial aos de fora, aos pobres, às mulheres e à oração. Lucas continua a história em Atos."
+    "about_pt": "Um relato cuidadoso escrito para Teófilo, com atenção especial aos de fora, aos pobres, às mulheres e à oração. Lucas continua a história em Atos.",
+    "about_fr": "Un récit soigneux écrit pour Théophile, avec une attention particulière pour les exclus, les pauvres, les femmes et la prière. Luc poursuit l’histoire dans les Actes.",
+    "about_ko": "데오빌로를 위해 꼼꼼하게 쓴 기록으로, 소외된 사람, 가난한 사람, 여성, 기도에 특별히 관심을 기울여요. 누가는 사도행전에서 이 이야기를 이어 가요.",
+    "about_zh": "为提阿非罗所写的详实记述，特别关注边缘人、穷人、妇女和祷告。路加在使徒行传中继续这个故事。"
   },
   {
     "osis": "John",
     "about": "Written so that readers may believe Jesus is the Messiah, the Son of God, and have life in his name. It is built around signs and the I am sayings.",
     "about_es": "Escrito para que los lectores crean que Jesús es el Mesías, el Hijo de Dios, y tengan vida en su nombre. Está organizado en torno a señales y a los dichos yo soy.",
-    "about_pt": "Escrito para que os leitores creiam que Jesus é o Messias, o Filho de Deus, e tenham vida em seu nome. É construído em torno de sinais e das frases “Eu sou”."
+    "about_pt": "Escrito para que os leitores creiam que Jesus é o Messias, o Filho de Deus, e tenham vida em seu nome. É construído em torno de sinais e das frases “Eu sou”.",
+    "about_fr": "Écrit pour que les lecteurs croient que Jésus est le Messie, le Fils de Dieu, et qu’ils aient la vie en son nom. Il est construit autour de signes et des paroles « Je suis ».",
+    "about_ko": "독자들이 예수님이 그리스도, 곧 하나님의 아들이심을 믿고 그 이름으로 생명을 얻게 하려고 쓴 책이에요. 표적들과 나는 ~이다 말씀을 중심으로 짜여 있어요.",
+    "about_zh": "写这书是要叫读者信耶稣是基督，是神的儿子，并且因信他的名得生命。本书围绕神迹和“我是”的宣告展开。"
   },
   {
     "osis": "Acts",
     "about": "The risen Jesus sends his Spirit, and the good news spreads from Jerusalem to Rome through Peter, Paul and many others.",
     "about_es": "Jesús resucitado envía su Espíritu, y las buenas noticias se extienden de Jerusalén a Roma por medio de Pedro, Pablo y muchos otros.",
-    "about_pt": "Jesus ressuscitado envia o seu Espírito, e a boa notícia se espalha de Jerusalém a Roma por meio de Pedro, Paulo e muitos outros."
+    "about_pt": "Jesus ressuscitado envia o seu Espírito, e a boa notícia se espalha de Jerusalém a Roma por meio de Pedro, Paulo e muitos outros.",
+    "about_fr": "Jésus ressuscité envoie son Esprit, et la bonne nouvelle se répand de Jérusalem à Rome par Pierre, Paul et beaucoup d’autres.",
+    "about_ko": "부활하신 예수님이 성령을 보내시고, 좋은 소식은 베드로와 바울과 많은 사람을 통해 예루살렘에서 로마까지 퍼져 나가요.",
+    "about_zh": "复活的耶稣差遣他的灵降临，福音借着彼得、保罗和许多其他人从耶路撒冷传到罗马。"
   },
   {
     "osis": "Rom",
     "about": "Paul's fullest explanation of the gospel: all have sinned, and God puts people right with himself through faith in Jesus. It then shows how grace shapes everyday life.",
     "about_es": "La explicación más completa de Pablo sobre el evangelio: todos han pecado, y Dios hace justas a las personas por medio de la fe en Jesús. Luego muestra cómo la gracia da forma a la vida diaria.",
-    "about_pt": "A explicação mais completa de Paulo sobre o evangelho: todos pecaram, e Deus justifica as pessoas pela fé em Jesus. Depois mostra como a graça molda a vida diária."
+    "about_pt": "A explicação mais completa de Paulo sobre o evangelho: todos pecaram, e Deus justifica as pessoas pela fé em Jesus. Depois mostra como a graça molda a vida diária.",
+    "about_fr": "L’explication la plus complète de l’Évangile par Paul : tous ont péché, et Dieu rend les hommes justes devant lui par la foi en Jésus. Il montre ensuite comment la grâce façonne la vie de tous les jours.",
+    "about_ko": "복음에 대한 바울의 가장 충실한 설명이에요. 모든 사람이 죄를 지었고, 하나님은 예수님을 믿는 믿음으로 사람들을 의롭다 하세요. 이어서 은혜가 일상의 삶을 어떻게 빚는지 보여 줘요.",
+    "about_zh": "保罗对福音最完整的阐述：世人都犯了罪，神借着人信耶稣使人与他和好、得称为义。接着说明恩典如何塑造日常生活。"
   },
   {
     "osis": "1Cor",
     "about": "Paul writes to a gifted but divided church about unity, the cross, spiritual gifts and the resurrection. It includes the well known chapter on love.",
     "about_es": "Pablo escribe a una iglesia con muchos dones pero dividida, sobre la unidad, la cruz, los dones espirituales y la resurrección. Incluye el conocido capítulo sobre el amor.",
-    "about_pt": "Paulo escreve a uma igreja cheia de dons, mas dividida, sobre unidade, a cruz, os dons espirituais e a ressurreição. Inclui o conhecido capítulo sobre o amor."
+    "about_pt": "Paulo escreve a uma igreja cheia de dons, mas dividida, sobre unidade, a cruz, os dons espirituais e a ressurreição. Inclui o conhecido capítulo sobre o amor.",
+    "about_fr": "Paul écrit à une Église pleine de dons mais divisée, au sujet de l’unité, de la croix, des dons spirituels et de la résurrection. On y trouve le célèbre chapitre sur l’amour.",
+    "about_ko": "바울은 은사가 많지만 분열된 교회에게 하나됨, 십자가, 영적 은사, 부활에 대해 써요. 잘 알려진 사랑 장이 담겨 있어요.",
+    "about_zh": "保罗写信给一个恩赐丰富却分裂的教会，论到合一、十字架、属灵恩赐和复活。书中有那著名的爱的篇章。"
   },
   {
     "osis": "2Cor",
     "about": "A personal letter in which Paul defends his ministry and shows that God's power is made perfect in weakness.",
     "about_es": "Una carta personal en la que Pablo defiende su ministerio y muestra que el poder de Dios se perfecciona en la debilidad.",
-    "about_pt": "Uma carta pessoal em que Paulo defende o seu ministério e mostra que o poder de Deus se aperfeiçoa na fraqueza."
+    "about_pt": "Uma carta pessoal em que Paulo defende o seu ministério e mostra que o poder de Deus se aperfeiçoa na fraqueza.",
+    "about_fr": "Une lettre personnelle dans laquelle Paul défend son ministère et montre que la puissance de Dieu s’accomplit dans la faiblesse.",
+    "about_ko": "바울이 자신의 사역을 변호하며 하나님의 능력이 약한 데서 온전해진다는 것을 보여 주는 개인적인 편지예요.",
+    "about_zh": "一封个人色彩浓厚的书信，保罗在其中为他的事奉辩护，并显明神的能力是在人的软弱上显得完全。"
   },
   {
     "osis": "Gal",
     "about": "A passionate defence of the gospel of grace: people are made right with God through faith in Christ, not by keeping the law, and are free to walk by the Spirit.",
     "about_es": "Una defensa apasionada del evangelio de la gracia: las personas son justificadas por la fe en Cristo, no por cumplir la ley, y son libres para andar en el Espíritu.",
-    "about_pt": "Uma defesa apaixonada do evangelho da graça: as pessoas são justificadas diante de Deus pela fé em Cristo, e não pela obediência à lei, e são livres para andar no Espírito."
+    "about_pt": "Uma defesa apaixonada do evangelho da graça: as pessoas são justificadas diante de Deus pela fé em Cristo, e não pela obediência à lei, e são livres para andar no Espírito.",
+    "about_fr": "Une défense passionnée de l’Évangile de la grâce : on est rendu juste devant Dieu par la foi en Christ, non en observant la loi, et on est libre de marcher selon l’Esprit.",
+    "about_ko": "은혜의 복음을 열정적으로 변호해요. 사람은 율법을 지켜서가 아니라 그리스도를 믿는 믿음으로 하나님 앞에 의롭게 되며, 자유롭게 성령을 따라 행해요.",
+    "about_zh": "热切地为恩典的福音辩护：人与神和好是因信基督，而不是靠遵行律法，并且可以自由地顺着圣灵而行。"
   },
   {
     "osis": "Eph",
     "about": "Paul celebrates every spiritual blessing in Christ and the one new people God has made from Jews and Gentiles, then describes life together in the church and the home.",
     "about_es": "Pablo celebra toda bendición espiritual en Cristo y el nuevo pueblo que Dios formó de judíos y gentiles, y luego describe la vida juntos en la iglesia y el hogar.",
-    "about_pt": "Paulo celebra todas as bênçãos espirituais em Cristo e o único povo novo que Deus formou de judeus e gentios, e depois descreve a vida em comunidade na igreja e no lar."
+    "about_pt": "Paulo celebra todas as bênçãos espirituais em Cristo e o único povo novo que Deus formou de judeus e gentios, e depois descreve a vida em comunidade na igreja e no lar.",
+    "about_fr": "Paul célèbre toutes les bénédictions spirituelles en Christ et le seul peuple nouveau que Dieu a formé avec les Juifs et les non-Juifs, puis décrit la vie commune dans l’Église et à la maison.",
+    "about_ko": "바울은 그리스도 안에서 주신 모든 신령한 복과, 하나님이 유대인과 이방인으로 지으신 하나의 새 백성을 기뻐하고, 이어서 교회와 가정에서의 함께하는 삶을 설명해요.",
+    "about_zh": "保罗颂赞在基督里一切属灵的福气，以及神从犹太人和外邦人中所造的一个新人，然后描述在教会和家庭中的共同生活。"
   },
   {
     "osis": "Phil",
     "about": "A warm letter written from prison, full of joy. It includes a hymn about Christ humbling himself and being exalted.",
     "about_es": "Una carta cálida escrita desde la prisión y llena de gozo. Incluye un himno sobre Cristo que se humilló y fue exaltado.",
-    "about_pt": "Uma carta calorosa escrita da prisão, cheia de alegria. Inclui um hino sobre Cristo que se humilhou e foi exaltado."
+    "about_pt": "Uma carta calorosa escrita da prisão, cheia de alegria. Inclui um hino sobre Cristo que se humilhou e foi exaltado.",
+    "about_fr": "Une lettre chaleureuse écrite en prison, pleine de joie. Elle contient un hymne sur le Christ qui s’abaisse et qui est élevé.",
+    "about_ko": "감옥에서 쓴 따뜻한 편지로, 기쁨이 가득해요. 자신을 낮추시고 높아지신 그리스도에 대한 찬송이 담겨 있어요.",
+    "about_zh": "一封在狱中写成、充满喜乐的温暖书信。其中有一首诗歌，讲述基督自己卑微，又被升为至高。"
   },
   {
     "osis": "Col",
     "about": "Paul shows the supremacy of Christ over all creation and urges believers not to be drawn away from him.",
     "about_es": "Pablo muestra la supremacía de Cristo sobre toda la creación y anima a los creyentes a no apartarse de él.",
-    "about_pt": "Paulo mostra a supremacia de Cristo sobre toda a criação e pede aos que creem que não se deixem afastar dele."
+    "about_pt": "Paulo mostra a supremacia de Cristo sobre toda a criação e pede aos que creem que não se deixem afastar dele.",
+    "about_fr": "Paul montre la suprématie du Christ sur toute la création et presse les croyants de ne pas se laisser détourner de lui.",
+    "about_ko": "바울은 모든 피조물보다 뛰어나신 그리스도를 보여 주며, 믿는 사람들이 그분에게서 멀어지지 않도록 권면해요.",
+    "about_zh": "保罗显明基督超越一切受造之物，并劝勉信徒不要被引诱离开他。"
   },
   {
     "osis": "1Thess",
     "about": "One of Paul's earliest letters, encouraging a young church facing opposition and giving hope about Jesus' return.",
     "about_es": "Una de las primeras cartas de Pablo, que anima a una iglesia joven que enfrenta oposición y da esperanza sobre el regreso de Jesús.",
-    "about_pt": "Uma das primeiras cartas de Paulo, que encoraja uma igreja jovem diante da oposição e dá esperança sobre a volta de Jesus."
+    "about_pt": "Uma das primeiras cartas de Paulo, que encoraja uma igreja jovem diante da oposição e dá esperança sobre a volta de Jesus.",
+    "about_fr": "L’une des premières lettres de Paul, qui encourage une jeune Église face à l’opposition et donne l’espérance du retour de Jésus.",
+    "about_ko": "바울의 가장 초기 편지 중 하나로, 반대에 직면한 젊은 교회를 격려하고 예수님의 다시 오심에 대한 소망을 줘요.",
+    "about_zh": "保罗最早的书信之一，鼓励一个面对逼迫的年轻教会，并为耶稣的再来带来盼望。"
   },
   {
     "osis": "2Thess",
     "about": "Paul corrects confusion about the day of the Lord and encourages steady faith and honest work while waiting.",
     "about_es": "Pablo corrige la confusión sobre el día del Señor y anima a una fe firme y al trabajo honrado mientras se espera.",
-    "about_pt": "Paulo corrige confusões sobre o dia do Senhor e incentiva uma fé firme e um trabalho honesto enquanto se espera."
+    "about_pt": "Paulo corrige confusões sobre o dia do Senhor e incentiva uma fé firme e um trabalho honesto enquanto se espera.",
+    "about_fr": "Paul corrige une confusion au sujet du jour du Seigneur et encourage une foi ferme et un travail honnête dans l’attente.",
+    "about_ko": "바울은 주님의 날에 대한 혼란을 바로잡고, 기다리는 동안 흔들림 없는 믿음과 성실한 일을 격려해요.",
+    "about_zh": "保罗纠正对主的日子的误解，鼓励信徒在等候期间坚定信心、诚实工作。"
   },
   {
     "osis": "1Tim",
     "about": "Guidance for Timothy on leading the church in Ephesus: sound teaching, prayer, leadership and godly living.",
     "about_es": "Orientación para Timoteo sobre cómo guiar a la iglesia en Éfeso: sana enseñanza, oración, liderazgo y vida piadosa.",
-    "about_pt": "Orientações a Timóteo para liderar a igreja em Éfeso: ensino sadio, oração, liderança e vida piedosa."
+    "about_pt": "Orientações a Timóteo para liderar a igreja em Éfeso: ensino sadio, oração, liderança e vida piedosa.",
+    "about_fr": "Des conseils à Timothée pour conduire l’Église d’Éphèse : enseignement sain, prière, direction et vie pieuse.",
+    "about_ko": "에베소 교회를 이끄는 디모데를 위한 안내예요. 바른 교훈, 기도, 지도력, 경건한 삶을 다뤄요.",
+    "about_zh": "指导提摩太带领以弗所教会：纯正的教导、祷告、领导和敬虔的生活。"
   },
   {
     "osis": "2Tim",
     "about": "Paul's last letter, written near the end of his life, urging Timothy to stay faithful, guard the gospel and keep preaching the word.",
     "about_es": "La última carta de Pablo, escrita cerca del final de su vida, que anima a Timoteo a mantenerse fiel, guardar el evangelio y seguir predicando la palabra.",
-    "about_pt": "A última carta de Paulo, escrita perto do fim da sua vida, pedindo a Timóteo que permaneça fiel, guarde o evangelho e continue pregando a palavra."
+    "about_pt": "A última carta de Paulo, escrita perto do fim da sua vida, pedindo a Timóteo que permaneça fiel, guarde o evangelho e continue pregando a palavra.",
+    "about_fr": "La dernière lettre de Paul, écrite vers la fin de sa vie, qui presse Timothée de rester fidèle, de garder l’Évangile et de continuer à prêcher la Parole.",
+    "about_ko": "생애 마지막 무렵에 쓴 바울의 마지막 편지로, 디모데에게 끝까지 신실하게 복음을 지키고 말씀을 전파하라고 당부해요.",
+    "about_zh": "保罗的最后一封书信，写于他生命将尽之时，劝勉提摩太要忠心、守护福音，并务要传道。"
   },
   {
     "osis": "Titus",
     "about": "Instructions for Titus as he organises churches on Crete, showing how God's grace trains people for good works.",
     "about_es": "Instrucciones para Tito mientras organiza las iglesias en Creta, que muestran cómo la gracia de Dios enseña a hacer buenas obras.",
-    "about_pt": "Instruções a Tito enquanto ele organiza as igrejas em Creta, mostrando como a graça de Deus ensina as pessoas a praticar boas obras."
+    "about_pt": "Instruções a Tito enquanto ele organiza as igrejas em Creta, mostrando como a graça de Deus ensina as pessoas a praticar boas obras.",
+    "about_fr": "Des instructions à Tite qui organise les Églises de Crète, montrant comment la grâce de Dieu forme les gens aux œuvres bonnes.",
+    "about_ko": "그레데에서 교회들을 세우는 디도를 위한 가르침으로, 하나님의 은혜가 사람들을 선한 일에 힘쓰도록 훈련한다는 것을 보여 줘요.",
+    "about_zh": "给提多的指示，帮助他在克里特建立教会，显明神的恩典如何教导人行善。"
   },
   {
     "osis": "Phlm",
     "about": "A short personal letter asking Philemon to welcome back Onesimus, a runaway slave, as a brother in Christ.",
     "about_es": "Una breve carta personal que pide a Filemón recibir de nuevo a Onésimo, un esclavo que había huido, como hermano en Cristo.",
-    "about_pt": "Uma breve carta pessoal pedindo a Filemom que receba de volta Onésimo, um escravo fugitivo, como irmão em Cristo."
+    "about_pt": "Uma breve carta pessoal pedindo a Filemom que receba de volta Onésimo, um escravo fugitivo, como irmão em Cristo.",
+    "about_fr": "Une courte lettre personnelle qui demande à Philémon d’accueillir Onésime, un esclave en fuite, comme un frère en Christ.",
+    "about_ko": "도망친 종 오네시모를 그리스도 안의 형제로 다시 받아 달라고 빌레몬에게 부탁하는 짧은 개인 편지예요.",
+    "about_zh": "一封简短的私人书信，请腓利门接纳逃跑的奴隶阿尼西母回来，把他当作在基督里的弟兄。"
   },
   {
     "osis": "Heb",
     "about": "Written to believers tempted to turn back, it shows Jesus as greater than angels, Moses and the priesthood, and calls readers to persevere in faith.",
     "about_es": "Escrita a creyentes tentados a volver atrás, muestra a Jesús como superior a los ángeles, a Moisés y al sacerdocio, y llama a perseverar en la fe.",
-    "about_pt": "Escrita a crentes tentados a voltar atrás, mostra Jesus como superior aos anjos, a Moisés e ao sacerdócio, e chama os leitores a perseverar na fé."
+    "about_pt": "Escrita a crentes tentados a voltar atrás, mostra Jesus como superior aos anjos, a Moisés e ao sacerdócio, e chama os leitores a perseverar na fé.",
+    "about_fr": "Écrite à des croyants tentés de revenir en arrière, elle montre que Jésus est supérieur aux anges, à Moïse et au sacerdoce, et appelle les lecteurs à persévérer dans la foi.",
+    "about_ko": "뒤로 돌아서고 싶은 유혹을 받는 신자들에게 쓴 글로, 예수님이 천사와 모세와 제사장 직분보다 뛰어나심을 보여 주며 믿음 안에서 끝까지 견디라고 부르세요.",
+    "about_zh": "写给想要退后的信徒，显明耶稣超越天使、摩西和祭司职分，呼召读者在信心中坚忍到底。"
   },
   {
     "osis": "Jas",
     "about": "Practical wisdom from James, the brother of Jesus: true faith shows itself in action, careful speech and care for the poor.",
     "about_es": "Sabiduría práctica de Santiago, el hermano de Jesús: la fe verdadera se muestra en acciones, en palabras cuidadosas y en el cuidado de los pobres.",
-    "about_pt": "Sabedoria prática de Tiago, irmão de Jesus: a fé verdadeira se mostra em ações, em palavras cuidadosas e no cuidado com os pobres."
+    "about_pt": "Sabedoria prática de Tiago, irmão de Jesus: a fé verdadeira se mostra em ações, em palavras cuidadosas e no cuidado com os pobres.",
+    "about_fr": "La sagesse pratique de Jacques, le frère de Jésus : la vraie foi se montre par les actes, des paroles mesurées et le soin des pauvres.",
+    "about_ko": "예수님의 형제 야고보가 전하는 실제적인 지혜예요. 참된 믿음은 행함, 조심스러운 말, 가난한 사람을 돌보는 것으로 드러나요.",
+    "about_zh": "耶稣的兄弟雅各所写的实用智慧：真正的信心会在行动、谨慎的言语和关怀穷人上显明出来。"
   },
   {
     "osis": "1Pet",
     "about": "Peter encourages Christians facing suffering, reminding them of their living hope and their calling as God's people.",
     "about_es": "Pedro anima a los cristianos que enfrentan sufrimiento, recordándoles su esperanza viva y su llamado como pueblo de Dios.",
-    "about_pt": "Pedro encoraja cristãos que enfrentam sofrimento, lembrando-lhes sua esperança viva e seu chamado como povo de Deus."
+    "about_pt": "Pedro encoraja cristãos que enfrentam sofrimento, lembrando-lhes sua esperança viva e seu chamado como povo de Deus.",
+    "about_fr": "Pierre encourage des chrétiens qui souffrent, en leur rappelant leur espérance vivante et leur vocation de peuple de Dieu.",
+    "about_ko": "베드로는 고난을 겪는 그리스도인들을 격려하며, 그들의 산 소망과 하나님의 백성으로서의 부르심을 일깨워 줘요.",
+    "about_zh": "彼得鼓励受苦的基督徒，提醒他们所拥有的活泼盼望，以及作神子民的呼召。"
   },
   {
     "osis": "2Pet",
     "about": "A final reminder from Peter to grow in grace, hold to the truth against false teachers and look forward to the Lord's return.",
     "about_es": "Un último recordatorio de Pedro para crecer en la gracia, aferrarse a la verdad frente a falsos maestros y esperar el regreso del Señor.",
-    "about_pt": "Um último lembrete de Pedro para crescer na graça, permanecer na verdade contra os falsos mestres e esperar a volta do Senhor."
+    "about_pt": "Um último lembrete de Pedro para crescer na graça, permanecer na verdade contra os falsos mestres e esperar a volta do Senhor.",
+    "about_fr": "Un dernier rappel de Pierre : croître dans la grâce, tenir ferme dans la vérité face aux faux docteurs et attendre le retour du Seigneur.",
+    "about_ko": "은혜 안에서 자라고, 거짓 교사들에 맞서 진리를 붙들며, 주님의 다시 오심을 고대하라는 베드로의 마지막 당부예요.",
+    "about_zh": "彼得最后的提醒：要在恩典上长进，抵挡假教师、持守真理，并仰望主的再来。"
   },
   {
     "osis": "1John",
     "about": "A letter of assurance: God is light and God is love, and those who know him walk in the light and love one another.",
     "about_es": "Una carta de seguridad: Dios es luz y Dios es amor, y quienes lo conocen andan en la luz y se aman unos a otros.",
-    "about_pt": "Uma carta de segurança: Deus é luz e Deus é amor, e quem o conhece anda na luz e ama os irmãos."
+    "about_pt": "Uma carta de segurança: Deus é luz e Deus é amor, e quem o conhece anda na luz e ama os irmãos.",
+    "about_fr": "Une lettre d’assurance : Dieu est lumière et Dieu est amour, et ceux qui le connaissent marchent dans la lumière et s’aiment les uns les autres.",
+    "about_ko": "확신을 주는 편지예요. 하나님은 빛이시고 사랑이시며, 그분을 아는 사람은 빛 가운데 행하고 서로 사랑해요.",
+    "about_zh": "一封使人确信的书信：神就是光，神就是爱，认识他的人行在光明中，彼此相爱。"
   },
   {
     "osis": "2John",
     "about": "A brief letter urging believers to keep loving one another and to hold to the truth about Jesus.",
     "about_es": "Una breve carta que anima a los creyentes a seguir amándose y a mantenerse en la verdad acerca de Jesús.",
-    "about_pt": "Uma breve carta pedindo aos que creem que continuem se amando e permaneçam na verdade sobre Jesus."
+    "about_pt": "Uma breve carta pedindo aos que creem que continuem se amando e permaneçam na verdade sobre Jesus.",
+    "about_fr": "Une courte lettre qui presse les croyants de continuer à s’aimer les uns les autres et de tenir ferme dans la vérité au sujet de Jésus.",
+    "about_ko": "서로 계속 사랑하고 예수님에 대한 진리를 붙들라고 권하는 짧은 편지예요.",
+    "about_zh": "一封简短的书信，劝勉信徒继续彼此相爱，持守关于耶稣的真理。"
   },
   {
     "osis": "3John",
     "about": "A short personal note praising Gaius for his hospitality to travelling teachers.",
     "about_es": "Una breve nota personal que elogia a Gayo por su hospitalidad con los maestros que viajaban.",
-    "about_pt": "Um curto bilhete pessoal elogiando Gaio pela hospitalidade com os mestres itinerantes."
+    "about_pt": "Um curto bilhete pessoal elogiando Gaio pela hospitalidade com os mestres itinerantes.",
+    "about_fr": "Un court billet personnel qui félicite Gaïus pour son hospitalité envers les enseignants itinérants.",
+    "about_ko": "순회하는 교사들을 대접한 가이오를 칭찬하는 짧은 개인 편지예요.",
+    "about_zh": "一封简短的私人信函，称赞该犹接待巡回教师的爱心。"
   },
   {
     "osis": "Jude",
     "about": "A brief, urgent call to contend for the faith against those who twist grace, ending with a well known blessing.",
     "about_es": "Un llamado breve y urgente a contender por la fe frente a quienes distorsionan la gracia, que termina con una conocida bendición.",
-    "about_pt": "Um chamado breve e urgente a batalhar pela fé contra os que distorcem a graça, terminando com uma bênção conhecida."
+    "about_pt": "Um chamado breve e urgente a batalhar pela fé contra os que distorcem a graça, terminando com uma bênção conhecida.",
+    "about_fr": "Un appel bref et urgent à combattre pour la foi face à ceux qui déforment la grâce, qui se termine par une bénédiction bien connue.",
+    "about_ko": "은혜를 왜곡하는 사람들에 맞서 믿음의 도를 위해 힘써 싸우라는 짧고 긴박한 부르심으로, 잘 알려진 축도로 끝나요.",
+    "about_zh": "一封简短而急切的呼召，要为真道竭力争辩，抵挡那些曲解恩典的人，结尾是一段著名的祝福。"
   },
   {
     "osis": "Rev",
     "about": "A vision given to John, full of symbols, showing the risen Christ, the struggle between God's kingdom and evil, and the hope of a new heaven and new earth. Christians read its details in different ways, but agree on its message that Jesus wins.",
     "about_es": "Una visión dada a Juan, llena de símbolos, que muestra al Cristo resucitado, la lucha entre el reino de Dios y el mal, y la esperanza de un cielo nuevo y una tierra nueva. Los cristianos interpretan sus detalles de distintas maneras, pero coinciden en su mensaje: Jesús vence.",
-    "about_pt": "Uma visão dada a João, cheia de símbolos, que mostra Cristo ressuscitado, a luta entre o Reino de Deus e o mal e a esperança de um novo céu e uma nova terra. Os cristãos interpretam seus detalhes de formas diferentes, mas concordam na mensagem de que Jesus vence."
+    "about_pt": "Uma visão dada a João, cheia de símbolos, que mostra Cristo ressuscitado, a luta entre o Reino de Deus e o mal e a esperança de um novo céu e uma nova terra. Os cristãos interpretam seus detalhes de formas diferentes, mas concordam na mensagem de que Jesus vence.",
+    "about_fr": "Une vision donnée à Jean, pleine de symboles, qui montre le Christ ressuscité, le combat entre le règne de Dieu et le mal, et l’espérance d’un nouveau ciel et d’une nouvelle terre. Les chrétiens en lisent les détails de différentes manières, mais s’accordent sur son message : Jésus est vainqueur.",
+    "about_ko": "요한에게 주신 상징이 가득한 환상으로, 부활하신 그리스도, 하나님 나라와 악의 싸움, 새 하늘과 새 땅의 소망을 보여 줘요. 그리스도인들은 세부 내용을 여러 방식으로 읽지만, 예수님이 이기신다는 메시지에는 한마음이에요.",
+    "about_zh": "赐给约翰的异象，充满象征，显明复活的基督、神的国与邪恶之间的争战，以及新天新地的盼望。基督徒对其中细节有不同的解读，但都认同它的信息：耶稣必得胜。"
   }
 ]

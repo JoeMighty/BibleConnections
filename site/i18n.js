@@ -8,9 +8,9 @@ window.bcLang = (() => {
     en: { locale: 'en-US', bible: 'NIV', listed: true },
     es: { locale: 'es', bible: 'NVI', listed: true },
     pt: { locale: 'pt-BR', bible: 'NVI-PT', listed: true },
-    fr: { locale: 'fr-FR', bible: 'S21', listed: false },
-    ko: { locale: 'ko-KR', bible: 'KRV', listed: false },
-    zh: { locale: 'zh-CN', bible: 'CUNPSS', listed: false },
+    fr: { locale: 'fr-FR', bible: 'S21', listed: true },
+    ko: { locale: 'ko-KR', bible: 'KRV', listed: true },
+    zh: { locale: 'zh-CN', bible: 'CUNPSS', listed: true },
   };
   // relative to this script, so pages at any depth (such as the 404 page) find the strings
   const base = (document.currentScript && document.currentScript.src) || location.href;

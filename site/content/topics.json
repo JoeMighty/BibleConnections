@@ -13,7 +13,10 @@
     "name_pt": "Ansiedade e preocupação",
     "exclude": [
       "Ezek.4.16"
-    ]
+    ],
+    "name_fr": "L’anxiété et l’inquiétude",
+    "name_ko": "불안과 걱정",
+    "name_zh": "焦虑与忧虑"
   },
   {
     "id": "fear",
@@ -71,7 +74,10 @@
     "skip": [
       "feared",
       "fearing"
-    ]
+    ],
+    "name_fr": "La peur et le courage",
+    "name_ko": "두려움과 용기",
+    "name_zh": "恐惧与勇气"
   },
   {
     "id": "peace",
@@ -83,7 +89,10 @@
     "name_pt": "Paz",
     "exclude": [
       "1Thess.5.3"
-    ]
+    ],
+    "name_fr": "La paix",
+    "name_ko": "평안",
+    "name_zh": "平安"
   },
   {
     "id": "joy",
@@ -94,7 +103,10 @@
       "glad"
     ],
     "name_es": "Gozo",
-    "name_pt": "Alegria"
+    "name_pt": "Alegria",
+    "name_fr": "La joie",
+    "name_ko": "기쁨",
+    "name_zh": "喜乐"
   },
   {
     "id": "hope",
@@ -103,7 +115,10 @@
       "hope"
     ],
     "name_es": "Esperanza",
-    "name_pt": "Esperança"
+    "name_pt": "Esperança",
+    "name_fr": "L’espérance",
+    "name_ko": "소망",
+    "name_zh": "盼望"
   },
   {
     "id": "comfort",
@@ -112,7 +127,10 @@
       "comfort"
     ],
     "name_es": "Consuelo",
-    "name_pt": "Consolo"
+    "name_pt": "Consolo",
+    "name_fr": "Le réconfort",
+    "name_ko": "위로",
+    "name_zh": "安慰"
   },
   {
     "id": "forgiveness",
@@ -124,7 +142,10 @@
       "pardon"
     ],
     "name_es": "Perdón",
-    "name_pt": "Perdão"
+    "name_pt": "Perdão",
+    "name_fr": "Le pardon",
+    "name_ko": "용서",
+    "name_zh": "饶恕"
   },
   {
     "id": "mercy",
@@ -135,7 +156,10 @@
       "compassion"
     ],
     "name_es": "Misericordia",
-    "name_pt": "Misericórdia"
+    "name_pt": "Misericórdia",
+    "name_fr": "La miséricorde",
+    "name_ko": "긍휼",
+    "name_zh": "怜悯"
   },
   {
     "id": "grace",
@@ -145,7 +169,10 @@
       "gracious"
     ],
     "name_es": "Gracia",
-    "name_pt": "Graça"
+    "name_pt": "Graça",
+    "name_fr": "La grâce",
+    "name_ko": "은혜",
+    "name_zh": "恩典"
   },
   {
     "id": "faith",
@@ -156,7 +183,10 @@
       "believed"
     ],
     "name_es": "Fe",
-    "name_pt": "Fé"
+    "name_pt": "Fé",
+    "name_fr": "La foi",
+    "name_ko": "믿음",
+    "name_zh": "信心"
   },
   {
     "id": "prayer",
@@ -166,7 +196,10 @@
       "prayer"
     ],
     "name_es": "Oración",
-    "name_pt": "Oração"
+    "name_pt": "Oração",
+    "name_fr": "La prière",
+    "name_ko": "기도",
+    "name_zh": "祷告"
   },
   {
     "id": "wisdom",
@@ -176,7 +209,10 @@
       "wise"
     ],
     "name_es": "Sabiduría",
-    "name_pt": "Sabedoria"
+    "name_pt": "Sabedoria",
+    "name_fr": "La sagesse",
+    "name_ko": "지혜",
+    "name_zh": "智慧"
   },
   {
     "id": "healing",
@@ -193,7 +229,10 @@
       "Isa.6.10",
       "John.12.40",
       "Matt.13.15"
-    ]
+    ],
+    "name_fr": "La guérison",
+    "name_ko": "치유",
+    "name_zh": "医治"
   },
   {
     "id": "strength",
@@ -203,7 +242,10 @@
       "strengthen"
     ],
     "name_es": "Fortaleza",
-    "name_pt": "Força"
+    "name_pt": "Força",
+    "name_fr": "La force",
+    "name_ko": "힘",
+    "name_zh": "力量"
   },
   {
     "id": "patience",
@@ -215,7 +257,10 @@
       "persevere"
     ],
     "name_es": "Paciencia",
-    "name_pt": "Paciência"
+    "name_pt": "Paciência",
+    "name_fr": "La patience",
+    "name_ko": "인내",
+    "name_zh": "忍耐"
   },
   {
     "id": "kindness",
@@ -246,7 +291,10 @@
       "kindles",
       "kindling",
       "kindred"
-    ]
+    ],
+    "name_fr": "La bonté",
+    "name_ko": "친절",
+    "name_zh": "恩慈"
   },
   {
     "id": "humility",
@@ -260,7 +308,10 @@
     "exclude": [
       "Col.2.18",
       "Col.2.23"
-    ]
+    ],
+    "name_fr": "L’humilité",
+    "name_ko": "겸손",
+    "name_zh": "谦卑"
   },
   {
     "id": "pride",
@@ -271,7 +322,10 @@
       "arrogant"
     ],
     "name_es": "Orgullo",
-    "name_pt": "Orgulho"
+    "name_pt": "Orgulho",
+    "name_fr": "L’orgueil",
+    "name_ko": "교만",
+    "name_zh": "骄傲"
   },
   {
     "id": "anger",
@@ -282,7 +336,10 @@
       "wrath"
     ],
     "name_es": "Ira",
-    "name_pt": "Ira"
+    "name_pt": "Ira",
+    "name_fr": "La colère",
+    "name_ko": "분노",
+    "name_zh": "愤怒"
   },
   {
     "id": "temptation",
@@ -293,7 +350,10 @@
       "temptation"
     ],
     "name_es": "Tentación",
-    "name_pt": "Tentação"
+    "name_pt": "Tentação",
+    "name_fr": "La tentation",
+    "name_ko": "유혹",
+    "name_zh": "试探"
   },
   {
     "id": "suffering",
@@ -305,7 +365,10 @@
       "afflicted"
     ],
     "name_es": "Sufrimiento",
-    "name_pt": "Sofrimento"
+    "name_pt": "Sofrimento",
+    "name_fr": "La souffrance",
+    "name_ko": "고통스러워요",
+    "name_zh": "苦难"
   },
   {
     "id": "money",
@@ -342,7 +405,10 @@
       "Rom.2.4",
       "Rom.9.23",
       "Ruth.2.12"
-    ]
+    ],
+    "name_fr": "L’argent et la richesse",
+    "name_ko": "돈과 재물",
+    "name_zh": "金钱与财富"
   },
   {
     "id": "generosity",
@@ -355,7 +421,10 @@
       "alms"
     ],
     "name_es": "Generosidad",
-    "name_pt": "Generosidade"
+    "name_pt": "Generosidade",
+    "name_fr": "La générosité",
+    "name_ko": "너그러움",
+    "name_zh": "慷慨"
   },
   {
     "id": "work",
@@ -396,7 +465,10 @@
     "skip": [
       "works",
       "working"
-    ]
+    ],
+    "name_fr": "Le travail",
+    "name_ko": "일",
+    "name_zh": "工作"
   },
   {
     "id": "rest",
@@ -436,7 +508,10 @@
       "restrain",
       "restrained",
       "restless"
-    ]
+    ],
+    "name_fr": "Le repos et le sabbat",
+    "name_ko": "쉼과 안식일",
+    "name_zh": "安息与安息日"
   },
   {
     "id": "marriage",
@@ -477,7 +552,10 @@
       "Matt.1.24",
       "Matt.19.29",
       "Matt.27.19"
-    ]
+    ],
+    "name_fr": "Le mariage",
+    "name_ko": "결혼",
+    "name_zh": "婚姻"
   },
   {
     "id": "children",
@@ -546,7 +624,10 @@
       "Rom.8.21",
       "Rom.9.8",
       "Zech.12.10"
-    ]
+    ],
+    "name_fr": "Enfants et parents",
+    "name_ko": "자녀와 부모",
+    "name_zh": "儿女与父母"
   },
   {
     "id": "friendship",
@@ -560,7 +641,10 @@
     "exclude": [
       "Isa.1.23",
       "Song.5.1"
-    ]
+    ],
+    "name_fr": "L’amitié",
+    "name_ko": "우정",
+    "name_zh": "友谊"
   },
   {
     "id": "justice",
@@ -631,7 +715,10 @@
       "Rom.8.10",
       "Rom.9.30",
       "Titus.3.5"
-    ]
+    ],
+    "name_fr": "La justice",
+    "name_ko": "정의",
+    "name_zh": "公义"
   },
   {
     "id": "poor",
@@ -646,7 +733,10 @@
     "name_pt": "Os pobres e necessitados",
     "exclude": [
       "Rev.3.17"
-    ]
+    ],
+    "name_fr": "Les pauvres et les démunis",
+    "name_ko": "가난하고 궁핍한 사람",
+    "name_zh": "贫穷与困苦的人"
   },
   {
     "id": "truth",
@@ -656,7 +746,10 @@
       "true"
     ],
     "name_es": "Verdad",
-    "name_pt": "Verdade"
+    "name_pt": "Verdade",
+    "name_fr": "La vérité",
+    "name_ko": "진리",
+    "name_zh": "真理"
   },
   {
     "id": "light",
@@ -669,7 +762,10 @@
     "exclude": [
       "2Cor.4.17",
       "Matt.11.30"
-    ]
+    ],
+    "name_fr": "La lumière",
+    "name_ko": "밝게",
+    "name_zh": "光"
   },
   {
     "id": "water",
@@ -684,7 +780,10 @@
     "exclude": [
       "Heb.12.15",
       "Luke.21.34"
-    ]
+    ],
+    "name_fr": "L’eau",
+    "name_ko": "물",
+    "name_zh": "水"
   },
   {
     "id": "shepherd",
@@ -695,7 +794,10 @@
       "flock"
     ],
     "name_es": "Pastor y ovejas",
-    "name_pt": "Pastor e ovelhas"
+    "name_pt": "Pastor e ovelhas",
+    "name_fr": "Le berger et les brebis",
+    "name_ko": "목자와 양",
+    "name_zh": "牧人与羊"
   },
   {
     "id": "worship",
@@ -719,7 +821,10 @@
       "Rev.19.20",
       "Rev.20.4",
       "Rev.9.20"
-    ]
+    ],
+    "name_fr": "L’adoration et la louange",
+    "name_ko": "예배와 찬양",
+    "name_zh": "敬拜与赞美"
   },
   {
     "id": "thanks",
@@ -731,7 +836,10 @@
       "grateful"
     ],
     "name_es": "Gratitud",
-    "name_pt": "Gratidão"
+    "name_pt": "Gratidão",
+    "name_fr": "L’action de grâce",
+    "name_ko": "감사",
+    "name_zh": "感恩"
   },
   {
     "id": "holiness",
@@ -828,7 +936,10 @@
       "Rom.5.5",
       "Rom.9.1",
       "Titus.3.5"
-    ]
+    ],
+    "name_fr": "La sainteté",
+    "name_ko": "거룩",
+    "name_zh": "圣洁"
   },
   {
     "id": "obedience",
@@ -839,7 +950,10 @@
       "obedient"
     ],
     "name_es": "Obediencia",
-    "name_pt": "Obediência"
+    "name_pt": "Obediência",
+    "name_fr": "L’obéissance",
+    "name_ko": "순종",
+    "name_zh": "顺服"
   },
   {
     "id": "repentance",
@@ -849,7 +963,10 @@
       "repentance"
     ],
     "name_es": "Arrepentimiento",
-    "name_pt": "Arrependimento"
+    "name_pt": "Arrependimento",
+    "name_fr": "La repentance",
+    "name_ko": "회개",
+    "name_zh": "悔改"
   },
   {
     "id": "heaven",
@@ -858,7 +975,10 @@
       "heaven"
     ],
     "name_es": "Cielo",
-    "name_pt": "Céu"
+    "name_pt": "Céu",
+    "name_fr": "Le ciel",
+    "name_ko": "천국",
+    "name_zh": "天堂"
   },
   {
     "id": "eternal",
@@ -868,7 +988,10 @@
       "everlasting"
     ],
     "name_es": "Vida eterna",
-    "name_pt": "Vida eterna"
+    "name_pt": "Vida eterna",
+    "name_fr": "La vie éternelle",
+    "name_ko": "영생",
+    "name_zh": "永生"
   },
   {
     "id": "death",
@@ -879,6 +1002,9 @@
       "died"
     ],
     "name_es": "Muerte y vida",
-    "name_pt": "Morte e vida"
+    "name_pt": "Morte e vida",
+    "name_fr": "La mort et la vie",
+    "name_ko": "죽음과 생명",
+    "name_zh": "死亡与生命"
   }
 ]

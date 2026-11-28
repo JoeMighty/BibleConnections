@@ -19,6 +19,21 @@
       "text_pt": [
         "Usar tudo pelo teclado (pressione ? para ver os atalhos). Cada conexão do mapa também aparece em texto, e os leitores de tela anunciam o que muda.",
         "Em Ajustes: aumentar o texto, ativar uma fonte mais fácil de ler, alto contraste, cores adequadas para daltonismo e modo claro ou escuro. As animações param quando o aparelho pede menos movimento."
+      ],
+      "title_fr": "Ce que tu peux faire",
+      "text_fr": [
+        "Tout utiliser au clavier (appuie sur ? pour les raccourcis). Chaque connexion de la carte est aussi listée sous forme de texte, et les lecteurs d’écran annoncent ce qui change.",
+        "Dans Réglages : agrandir le texte, activer une police plus lisible, un contraste élevé, une palette adaptée au daltonisme, et l’apparence claire ou sombre. Les animations s’arrêtent quand ton appareil demande à réduire les mouvements."
+      ],
+      "title_ko": "할 수 있는 것",
+      "text_ko": [
+        "모든 기능을 키보드로 쓸 수 있어요(단축키는 ?를 누르세요). 지도 위의 모든 연결은 글로도 나와 있고, 바뀌는 내용은 화면 낭독기에 알려 줘요.",
+        "설정에서 글자를 키우고, 읽기 쉬운 글꼴, 고대비, 색각 이상자 친화 팔레트, 밝은 화면이나 어두운 화면을 켤 수 있어요. 기기에서 동작 줄이기를 요청하면 애니메이션이 멈춰요."
+      ],
+      "title_zh": "你可以做什么",
+      "text_zh": [
+        "所有功能都可以用键盘操作（按 ? 查看快捷键）。地图上的每条连接也都以文字列出，内容变化时会告知屏幕阅读器。",
+        "在“设置”中：可以放大字体，开启易读字体、高对比度、色盲友好配色，以及浅色或深色外观。当你的设备要求减少动态效果时，动画会停止。"
       ]
     },
     {
@@ -33,6 +48,18 @@
       ],
       "text_pt": [
         "Cada mudança é verificada automaticamente com o axe nos modos claro e escuro, em cada idioma e em tamanhos de computador e celular, e os botões em telas de toque têm pelo menos 44 pontos."
+      ],
+      "title_fr": "Comment nous testons",
+      "text_fr": [
+        "Chaque modification est vérifiée automatiquement avec axe en apparence claire et sombre et dans chaque langue, en tailles ordinateur et téléphone, et les boutons sur écran tactile font au moins 44 points."
+      ],
+      "title_ko": "테스트 방법",
+      "text_ko": [
+        "모든 변경 사항은 밝은 화면과 어두운 화면, 각 언어, 데스크톱과 휴대폰 크기에서 axe로 자동 검사하며, 터치스크린의 버튼은 최소 44포인트예요."
+      ],
+      "title_zh": "我们如何测试",
+      "text_zh": [
+        "每一次修改都会用 axe 自动检查，涵盖浅色和深色外观、每种语言，以及桌面和手机尺寸；触摸屏上的按钮至少为 44 点。"
       ]
     },
     {
@@ -47,6 +74,18 @@
       ],
       "text_pt": [
         "O mapa de arcos é uma imagem: as informações dele também estão nas listas ao lado, mas a imagem não pode ser descrita por completo. Os leitores de tela podem pronunciar palavras hebraicas e gregas de forma irregular; cada uma também tem transliteração. O Bible.com, onde as passagens abrem, não está sob nosso controle."
+      ],
+      "title_fr": "Limites connues",
+      "text_fr": [
+        "La carte des arcs elle-même est une image : ses informations figurent aussi dans les listes à côté, mais l’image ne peut pas être entièrement décrite. Les lecteurs d’écran peuvent prononcer les mots hébreux et grecs de façon irrégulière ; chacun a aussi une translittération. Bible.com, où s’ouvrent les passages, n’est pas sous notre contrôle."
+      ],
+      "title_ko": "알려진 한계",
+      "text_ko": [
+        "호 지도 자체는 그림이에요. 그 정보는 옆의 목록에도 있지만, 그림을 완전히 설명할 수는 없어요. 화면 낭독기가 히브리어와 헬라어 단어를 일관되지 않게 읽을 수 있어서, 단어마다 음역도 함께 표시해요. 본문이 열리는 Bible.com은 저희가 관리하지 않아요."
+      ],
+      "title_zh": "已知限制",
+      "text_zh": [
+        "弧线地图本身是一张图片：其中的信息也列在旁边的列表中，但图片本身无法被完整描述。屏幕阅读器对希伯来文和希腊文词语的发音可能不一致；每个词也都附有音译。打开经文的 Bible.com 不在我们的控制范围内。"
       ]
     },
     {
@@ -61,7 +100,22 @@
       ],
       "text_pt": [
         "Se algo for difícil de usar, conte para nós: hello@bibleconnections.app, ou abra uma issue no GitHub. Procuramos responder em até duas semanas."
+      ],
+      "title_fr": "Signale-nous un problème",
+      "text_fr": [
+        "Si quelque chose est difficile à utiliser, dis-le-nous : hello@bibleconnections.app, ou ouvre un ticket sur GitHub. Nous essayons de répondre sous deux semaines."
+      ],
+      "title_ko": "문제 알려 주기",
+      "text_ko": [
+        "쓰기 어려운 부분이 있으면 hello@bibleconnections.app으로 알려 주시거나 GitHub에 이슈를 열어 주세요. 2주 안에 답장하는 것을 목표로 해요."
+      ],
+      "title_zh": "向我们报告问题",
+      "text_zh": [
+        "如果有什么地方难以使用，请告诉我们：hello@bibleconnections.app，或在 GitHub 上提交问题。我们争取在两周内回复。"
       ]
     }
-  ]
+  ],
+  "intro_fr": "Bible Connections veut être utilisable par tous, y compris par les personnes qui utilisent un clavier, un lecteur d’écran, un texte plus grand ou un contraste élevé. Nous visons le niveau AA des Règles pour l’accessibilité des contenus Web (WCAG) 2.1.",
+  "intro_ko": "Bible Connections는 키보드, 화면 낭독기, 큰 글자, 고대비를 쓰는 분을 포함해 모두가 쓸 수 있는 사이트를 목표로 해요. 웹 콘텐츠 접근성 지침(WCAG) 2.1 AA 수준을 충족하는 것을 목표로 해요.",
+  "intro_zh": "Bible Connections 致力于让每个人都能使用，包括使用键盘、屏幕阅读器、大字体或高对比度的人。我们的目标是符合《Web 内容无障碍指南》（WCAG）2.1 AA 级标准。"
 }

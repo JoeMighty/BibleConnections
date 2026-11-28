@@ -1,130 +1,510 @@
 [
   {
-    "group": "Getting started", "group_es": "Primeros pasos", "group_pt": "Primeiros passos",
+    "group": "Getting started",
+    "group_es": "Primeros pasos",
+    "group_pt": "Primeiros passos",
     "items": [
       {
-        "q": "What is Bible Connections?", "q_es": "¿Qué es Bible Connections?", "q_pt": "O que é o Bible Connections?",
-        "a": ["A free map of the cross references in the Bible. Every arc joins two passages that point to each other, so you can see how the whole Bible fits together and follow one passage to another."],
-        "a_es": ["Un mapa gratuito de las referencias cruzadas de la Biblia. Cada arco une dos pasajes que se señalan entre sí, para que veas cómo encaja toda la Biblia y pases de un pasaje a otro."],
-        "a_pt": ["Um mapa gratuito das referências cruzadas da Bíblia. Cada arco liga duas passagens que apontam uma para a outra, para você ver como toda a Bíblia se encaixa e seguir de uma passagem para outra."]
+        "q": "What is Bible Connections?",
+        "q_es": "¿Qué es Bible Connections?",
+        "q_pt": "O que é o Bible Connections?",
+        "a": [
+          "A free map of the cross references in the Bible. Every arc joins two passages that point to each other, so you can see how the whole Bible fits together and follow one passage to another."
+        ],
+        "a_es": [
+          "Un mapa gratuito de las referencias cruzadas de la Biblia. Cada arco une dos pasajes que se señalan entre sí, para que veas cómo encaja toda la Biblia y pases de un pasaje a otro."
+        ],
+        "a_pt": [
+          "Um mapa gratuito das referências cruzadas da Bíblia. Cada arco liga duas passagens que apontam uma para a outra, para você ver como toda a Bíblia se encaixa e seguir de uma passagem para outra."
+        ],
+        "q_fr": "Qu’est-ce que Bible Connections ?",
+        "a_fr": [
+          "Une carte gratuite des références croisées de la Bible. Chaque arc relie deux passages qui renvoient l’un à l’autre : tu peux ainsi voir comment toute la Bible s’assemble et passer d’un passage à un autre."
+        ],
+        "q_ko": "Bible Connections는 무엇인가요?",
+        "a_ko": [
+          "성경 관주를 보여 주는 무료 지도예요. 모든 호는 서로를 가리키는 두 본문을 이어 주기 때문에, 성경 전체가 어떻게 하나로 이어지는지 보고 한 본문에서 다른 본문으로 따라갈 수 있어요."
+        ],
+        "q_zh": "Bible Connections 是什么？",
+        "a_zh": [
+          "一张免费的圣经串珠经文地图。每一条弧线都连接两段彼此呼应的经文，让你看见整本圣经如何连成一体，并从一段经文追溯到另一段。"
+        ]
       },
       {
-        "q": "What do the arcs and colors mean?", "q_es": "¿Qué significan los arcos y los colores?", "q_pt": "O que significam os arcos e as cores?",
-        "a": ["The books run from Genesis on the left to Revelation on the right. Each arc joins two passages: the farther apart they are, the taller the arc. Colors show distance too: pink for passages close together, through to green for passages far apart. In Settings you can color by part of the Bible instead, or pick a color-blind friendly style."],
-        "a_es": ["Los libros van de Génesis a la izquierda a Apocalipsis a la derecha. Cada arco une dos pasajes: cuanto más separados están, más alto es el arco. Los colores también muestran la distancia: rosa para pasajes cercanos y verde para pasajes lejanos. En Ajustes puedes colorear por parte de la Biblia o elegir un estilo apto para daltónicos."],
-        "a_pt": ["Os livros vão de Gênesis, à esquerda, a Apocalipse, à direita. Cada arco liga duas passagens: quanto mais distantes, mais alto o arco. As cores também mostram a distância: rosa para passagens próximas e verde para passagens distantes. Em Ajustes você pode colorir por parte da Bíblia ou escolher um estilo adequado para daltônicos."]
+        "q": "What do the arcs and colors mean?",
+        "q_es": "¿Qué significan los arcos y los colores?",
+        "q_pt": "O que significam os arcos e as cores?",
+        "a": [
+          "The books run from Genesis on the left to Revelation on the right. Each arc joins two passages: the farther apart they are, the taller the arc. Colors show distance too: pink for passages close together, through to green for passages far apart. In Settings you can color by part of the Bible instead, or pick a color-blind friendly style."
+        ],
+        "a_es": [
+          "Los libros van de Génesis a la izquierda a Apocalipsis a la derecha. Cada arco une dos pasajes: cuanto más separados están, más alto es el arco. Los colores también muestran la distancia: rosa para pasajes cercanos y verde para pasajes lejanos. En Ajustes puedes colorear por parte de la Biblia o elegir un estilo apto para daltónicos."
+        ],
+        "a_pt": [
+          "Os livros vão de Gênesis, à esquerda, a Apocalipse, à direita. Cada arco liga duas passagens: quanto mais distantes, mais alto o arco. As cores também mostram a distância: rosa para passagens próximas e verde para passagens distantes. Em Ajustes você pode colorir por parte da Bíblia ou escolher um estilo adequado para daltônicos."
+        ],
+        "q_fr": "Que signifient les arcs et les couleurs ?",
+        "a_fr": [
+          "Les livres vont de la Genèse à gauche jusqu’à l’Apocalypse à droite. Chaque arc relie deux passages : plus ils sont éloignés, plus l’arc est haut. Les couleurs indiquent aussi la distance : du rose pour les passages proches jusqu’au vert pour les passages éloignés. Dans Réglages, tu peux plutôt colorer par partie de la Bible, ou choisir un style adapté au daltonisme."
+        ],
+        "q_ko": "호와 색은 무엇을 뜻하나요?",
+        "a_ko": [
+          "책은 왼쪽의 창세기부터 오른쪽의 요한계시록까지 이어져요. 각 호는 두 본문을 이어 주는데, 멀리 떨어져 있을수록 호가 높아져요. 색도 거리를 보여 줘요. 가까운 본문은 분홍색, 멀리 떨어진 본문은 초록색이에요. 설정에서 대신 성경의 부분별로 색을 칠하거나 색각 이상자 친화 스타일을 고를 수 있어요."
+        ],
+        "q_zh": "弧线和颜色代表什么？",
+        "a_zh": [
+          "书卷从左边的创世记排到右边的启示录。每条弧线连接两段经文：相距越远，弧线越高。颜色也表示距离：粉红色表示相近的经文，渐变到绿色表示相距遥远的经文。在“设置”中，你也可以改为按圣经的不同部分着色，或选择色盲友好样式。"
+        ]
       },
       {
-        "q": "How do I find a verse?", "q_es": "¿Cómo busco un versículo?", "q_pt": "Como encontro um versículo?",
-        "a": ["Tap the search button at the top and type a reference such as John 3:16, a chapter, a book or a word. Misspelled book names are understood, and you can search in Hebrew or Greek too."],
-        "a_es": ["Toca el botón de búsqueda arriba y escribe una referencia como Juan 3:16, un capítulo, un libro o una palabra. Se entienden los nombres de libros mal escritos, y también puedes buscar en hebreo o griego."],
-        "a_pt": ["Toque no botão de busca no alto e digite uma referência como João 3:16, um capítulo, um livro ou uma palavra. Nomes de livros com erro de digitação são entendidos, e você também pode buscar em hebraico ou grego."]
+        "q": "How do I find a verse?",
+        "q_es": "¿Cómo busco un versículo?",
+        "q_pt": "Como encontro um versículo?",
+        "a": [
+          "Tap the search button at the top and type a reference such as John 3:16, a chapter, a book or a word. Misspelled book names are understood, and you can search in Hebrew or Greek too."
+        ],
+        "a_es": [
+          "Toca el botón de búsqueda arriba y escribe una referencia como Juan 3:16, un capítulo, un libro o una palabra. Se entienden los nombres de libros mal escritos, y también puedes buscar en hebreo o griego."
+        ],
+        "a_pt": [
+          "Toque no botão de busca no alto e digite uma referência como João 3:16, um capítulo, um livro ou uma palavra. Nomes de livros com erro de digitação são entendidos, e você também pode buscar em hebraico ou grego."
+        ],
+        "q_fr": "Comment trouver un verset ?",
+        "a_fr": [
+          "Touche le bouton de recherche en haut et saisis une référence comme Jean 3:16, un chapitre, un livre ou un mot. Les noms de livres mal orthographiés sont compris, et tu peux aussi chercher en hébreu ou en grec."
+        ],
+        "q_ko": "구절은 어떻게 찾나요?",
+        "a_ko": [
+          "위쪽의 검색 버튼을 누르고 요한복음 3:16 같은 구절 주소, 장, 책, 단어를 입력하세요. 책 이름의 오타도 알아듣고, 히브리어나 헬라어로도 검색할 수 있어요."
+        ],
+        "q_zh": "如何查找经文？",
+        "a_zh": [
+          "点按顶部的搜索按钮，输入经文出处，如 约翰福音 3:16，也可以输入一章、一卷书或一个词语。拼错的书卷名也能识别，还可以用希伯来文或希腊文搜索。"
+        ]
       },
       {
-        "q": "Why don't I see every connection?", "q_es": "¿Por qué no veo todas las conexiones?", "q_pt": "Por que não vejo todas as conexões?",
-        "a": ["To keep the map readable, it first shows only the links that many readers agree on. Move the \"Readers who agree\" slider in Explore to see more or fewer."],
-        "a_es": ["Para que el mapa se pueda leer, al principio solo muestra las conexiones en las que coinciden muchos lectores. Mueve el control \"Lectores que coinciden\" en Explorar para ver más o menos."],
-        "a_pt": ["Para manter o mapa legível, ele mostra primeiro só as conexões em que muitos leitores concordam. Mova o controle \"Leitores que concordam\" em Explorar para ver mais ou menos."]
+        "q": "Why don't I see every connection?",
+        "q_es": "¿Por qué no veo todas las conexiones?",
+        "q_pt": "Por que não vejo todas as conexões?",
+        "a": [
+          "To keep the map readable, it first shows only the links that many readers agree on. Move the \"Readers who agree\" slider in Explore to see more or fewer."
+        ],
+        "a_es": [
+          "Para que el mapa se pueda leer, al principio solo muestra las conexiones en las que coinciden muchos lectores. Mueve el control \"Lectores que coinciden\" en Explorar para ver más o menos."
+        ],
+        "a_pt": [
+          "Para manter o mapa legível, ele mostra primeiro só as conexões em que muitos leitores concordam. Mova o controle \"Leitores que concordam\" em Explorar para ver mais ou menos."
+        ],
+        "q_fr": "Pourquoi je ne vois pas toutes les connexions ?",
+        "a_fr": [
+          "Pour que la carte reste lisible, elle n’affiche d’abord que les liens sur lesquels beaucoup de lecteurs sont d’accord. Déplace le curseur « Lecteurs d’accord » dans Explorer pour en voir plus ou moins."
+        ],
+        "q_ko": "왜 모든 연결이 보이지 않나요?",
+        "a_ko": [
+          "지도를 읽기 쉽게 하려고, 처음에는 많은 독자가 동의한 연결만 보여 줘요. 탐험에서 \"동의한 독자 수\" 슬라이더를 움직이면 더 많이 또는 더 적게 볼 수 있어요."
+        ],
+        "q_zh": "为什么我看不到所有的连接？",
+        "a_zh": [
+          "为了让地图清晰易读，一开始只显示许多读者都认同的连接。在“探索”中移动“认同的读者”滑块，即可显示更多或更少。"
+        ]
       }
-    ]
+    ],
+    "group_fr": "Pour commencer",
+    "group_ko": "시작하기",
+    "group_zh": "入门"
   },
   {
-    "group": "About the content", "group_es": "Sobre el contenido", "group_pt": "Sobre o conteúdo",
+    "group": "About the content",
+    "group_es": "Sobre el contenido",
+    "group_pt": "Sobre o conteúdo",
     "items": [
       {
-        "q": "Where do the connections come from?", "q_es": "¿De dónde vienen las conexiones?", "q_pt": "De onde vêm as conexões?",
-        "a": ["From OpenBible.info, the largest openly licensed set of cross references (344,799 in all). It is based on the Treasury of Scripture Knowledge, and readers vote on how strongly each pair of passages is linked."],
-        "a_es": ["De OpenBible.info, el mayor conjunto de referencias cruzadas con licencia abierta (344.799 en total). Se basa en el Treasury of Scripture Knowledge, y los lectores votan qué tan fuerte es cada conexión."],
-        "a_pt": ["Do OpenBible.info, o maior conjunto de referências cruzadas com licença aberta (344.799 no total). Ele se baseia no Treasury of Scripture Knowledge, e os leitores votam na força de cada conexão."]
+        "q": "Where do the connections come from?",
+        "q_es": "¿De dónde vienen las conexiones?",
+        "q_pt": "De onde vêm as conexões?",
+        "a": [
+          "From OpenBible.info, the largest openly licensed set of cross references (344,799 in all). It is based on the Treasury of Scripture Knowledge, and readers vote on how strongly each pair of passages is linked."
+        ],
+        "a_es": [
+          "De OpenBible.info, el mayor conjunto de referencias cruzadas con licencia abierta (344.799 en total). Se basa en el Treasury of Scripture Knowledge, y los lectores votan qué tan fuerte es cada conexión."
+        ],
+        "a_pt": [
+          "Do OpenBible.info, o maior conjunto de referências cruzadas com licença aberta (344.799 no total). Ele se baseia no Treasury of Scripture Knowledge, e os leitores votam na força de cada conexão."
+        ],
+        "q_fr": "D’où viennent les connexions ?",
+        "a_fr": [
+          "D’OpenBible.info, le plus grand ensemble de références croisées sous licence libre (344 799 au total). Il s’appuie sur le Treasury of Scripture Knowledge, et des lecteurs votent sur la force du lien entre chaque paire de passages."
+        ],
+        "q_ko": "연결은 어디에서 왔나요?",
+        "a_ko": [
+          "공개 라이선스로 제공되는 가장 큰 관주 모음인 OpenBible.info(총 344,799개)에서 왔어요. Treasury of Scripture Knowledge를 바탕으로 하며, 독자들이 각 본문 쌍이 얼마나 강하게 연결되는지 투표해요."
+        ],
+        "q_zh": "这些连接从哪里来？",
+        "a_zh": [
+          "来自 OpenBible.info，这是规模最大的开放授权串珠经文资料（共 344,799 条）。它以 Treasury of Scripture Knowledge 为基础，并由读者投票评定每两段经文之间关联的强弱。"
+        ]
       },
       {
-        "q": "Why can't I read the verses on this site?", "q_es": "¿Por qué no puedo leer los versículos en este sitio?", "q_pt": "Por que não consigo ler os versículos neste site?",
-        "a": ["Most Bible translations are under copyright, so no translation is stored here. Every passage opens on Bible.com in the translation you choose, where you can also listen. The site does show the original Hebrew and Greek, from STEP Bible (CC BY 4.0)."],
-        "a_es": ["La mayoría de las traducciones de la Biblia tienen derechos de autor, así que aquí no se guarda ninguna. Cada pasaje se abre en Bible.com en la traducción que elijas, donde también puedes escucharlo. El sitio sí muestra el hebreo y el griego originales, de STEP Bible (CC BY 4.0)."],
-        "a_pt": ["A maioria das traduções da Bíblia tem direitos autorais, então nenhuma fica guardada aqui. Cada passagem abre no Bible.com na tradução que você escolher, onde também dá para ouvir. O site mostra o hebraico e o grego originais, do STEP Bible (CC BY 4.0)."]
+        "q": "Why can't I read the verses on this site?",
+        "q_es": "¿Por qué no puedo leer los versículos en este sitio?",
+        "q_pt": "Por que não consigo ler os versículos neste site?",
+        "a": [
+          "Most Bible translations are under copyright, so no translation is stored here. Every passage opens on Bible.com in the translation you choose, where you can also listen. The site does show the original Hebrew and Greek, from STEP Bible (CC BY 4.0)."
+        ],
+        "a_es": [
+          "La mayoría de las traducciones de la Biblia tienen derechos de autor, así que aquí no se guarda ninguna. Cada pasaje se abre en Bible.com en la traducción que elijas, donde también puedes escucharlo. El sitio sí muestra el hebreo y el griego originales, de STEP Bible (CC BY 4.0)."
+        ],
+        "a_pt": [
+          "A maioria das traduções da Bíblia tem direitos autorais, então nenhuma fica guardada aqui. Cada passagem abre no Bible.com na tradução que você escolher, onde também dá para ouvir. O site mostra o hebraico e o grego originais, do STEP Bible (CC BY 4.0)."
+        ],
+        "q_fr": "Pourquoi ne puis-je pas lire les versets sur ce site ?",
+        "a_fr": [
+          "La plupart des traductions de la Bible sont protégées par le droit d’auteur, donc aucune traduction n’est stockée ici. Chaque passage s’ouvre sur Bible.com dans la traduction que tu choisis, où tu peux aussi l’écouter. Le site montre en revanche l’hébreu et le grec originaux, issus de STEP Bible (CC BY 4.0)."
+        ],
+        "q_ko": "왜 이 사이트에서 구절을 읽을 수 없나요?",
+        "a_ko": [
+          "대부분의 성경 번역본은 저작권이 있어서 여기에는 번역본을 저장하지 않아요. 모든 본문은 내가 고른 번역본으로 Bible.com에서 열리고, 거기서 들을 수도 있어요. 이 사이트에서는 STEP Bible(CC BY 4.0)의 히브리어와 헬라어 원문을 보여 드려요."
+        ],
+        "q_zh": "为什么不能在本网站上阅读经文？",
+        "a_zh": [
+          "大多数圣经译本受版权保护，所以这里不存储任何译本。每段经文都会以你选择的译本在 Bible.com 上打开，你也可以在那里收听。本网站会显示来自 STEP Bible（CC BY 4.0）的希伯来文和希腊文原文。"
+        ]
       },
       {
-        "q": "Can I change the Bible translation?", "q_es": "¿Puedo cambiar la traducción de la Biblia?", "q_pt": "Posso mudar a tradução da Bíblia?",
-        "a": ["Yes. Open Settings and choose from 99 translations in 31 languages. You can also pick a second translation to compare."],
-        "a_es": ["Sí. Abre Ajustes y elige entre 99 traducciones en 31 idiomas. También puedes elegir una segunda traducción para comparar."],
-        "a_pt": ["Sim. Abra Ajustes e escolha entre 99 traduções em 31 idiomas. Você também pode escolher uma segunda tradução para comparar."]
+        "q": "Can I change the Bible translation?",
+        "q_es": "¿Puedo cambiar la traducción de la Biblia?",
+        "q_pt": "Posso mudar a tradução da Bíblia?",
+        "a": [
+          "Yes. Open Settings and choose from 99 translations in 31 languages. You can also pick a second translation to compare."
+        ],
+        "a_es": [
+          "Sí. Abre Ajustes y elige entre 99 traducciones en 31 idiomas. También puedes elegir una segunda traducción para comparar."
+        ],
+        "a_pt": [
+          "Sim. Abra Ajustes e escolha entre 99 traduções em 31 idiomas. Você também pode escolher uma segunda tradução para comparar."
+        ],
+        "q_fr": "Puis-je changer de traduction de la Bible ?",
+        "a_fr": [
+          "Oui. Ouvre Réglages et choisis parmi 99 traductions en 31 langues. Tu peux aussi choisir une deuxième traduction pour comparer."
+        ],
+        "q_ko": "성경 번역본을 바꿀 수 있나요?",
+        "a_ko": [
+          "네. 설정을 열고 31개 언어, 99개 번역본 가운데 고르세요. 비교할 두 번째 번역본도 고를 수 있어요."
+        ],
+        "q_zh": "可以更换圣经译本吗？",
+        "a_zh": [
+          "可以。打开“设置”，从 31 种语言的 99 个译本中选择。你还可以选择第二个译本进行对照。"
+        ]
       },
       {
-        "q": "What if a connection looks wrong?", "q_es": "¿Y si una conexión parece incorrecta?", "q_pt": "E se uma conexão parecer errada?",
-        "a": ["Open the connection and choose \"Report it\" under \"Does this link seem weak?\". You can also hide it on your own device straight away."],
-        "a_es": ["Abre la conexión y elige \"Repórtalo\" debajo de \"¿Te parece débil este vínculo?\". También puedes ocultarla en tu dispositivo al momento."],
-        "a_pt": ["Abra a conexão e escolha \"Informe\" abaixo de \"Esta ligação parece fraca?\". Você também pode ocultá-la no seu aparelho na hora."]
+        "q": "What if a connection looks wrong?",
+        "q_es": "¿Y si una conexión parece incorrecta?",
+        "q_pt": "E se uma conexão parecer errada?",
+        "a": [
+          "Open the connection and choose \"Report it\" under \"Does this link seem weak?\". You can also hide it on your own device straight away."
+        ],
+        "a_es": [
+          "Abre la conexión y elige \"Repórtalo\" debajo de \"¿Te parece débil este vínculo?\". También puedes ocultarla en tu dispositivo al momento."
+        ],
+        "a_pt": [
+          "Abra a conexão e escolha \"Informe\" abaixo de \"Esta ligação parece fraca?\". Você também pode ocultá-la no seu aparelho na hora."
+        ],
+        "q_fr": "Et si une connexion semble fausse ?",
+        "a_fr": [
+          "Ouvre la connexion et choisis « Le signaler » sous « Ce lien te semble faible ? ». Tu peux aussi la masquer tout de suite sur ton appareil."
+        ],
+        "q_ko": "연결이 잘못된 것 같으면 어떻게 하나요?",
+        "a_ko": [
+          "연결을 열고 \"이 연결이 약해 보이나요?\" 아래의 \"신고하기\"를 고르세요. 내 기기에서 바로 숨길 수도 있어요."
+        ],
+        "q_zh": "如果某条连接看起来不对怎么办？",
+        "a_zh": [
+          "打开这条连接，在“这条连接看起来牵强吗？”下方选择“报告”。你也可以马上在自己的设备上隐藏它。"
+        ]
       },
       {
-        "q": "Who wrote the notes, journeys and plans?", "q_es": "¿Quién escribió las notas, los recorridos y los planes?", "q_pt": "Quem escreveu as notas, as jornadas e os planos?",
-        "a": ["They were written for this site to help you explore, and a pastor is reviewing them. They are not a statement of any church's teaching: read each passage for yourself and talk it over with your church."],
-        "a_es": ["Se escribieron para este sitio como ayuda para explorar, y un pastor las está revisando. No son una declaración de la enseñanza de ninguna iglesia: lee cada pasaje por ti mismo y coméntalo con tu iglesia."],
-        "a_pt": ["Foram escritos para este site como ajuda para explorar, e um pastor está revisando. Não são uma declaração do ensino de nenhuma igreja: leia cada passagem por conta própria e converse sobre ela com sua igreja."]
+        "q": "Who wrote the notes, journeys and plans?",
+        "q_es": "¿Quién escribió las notas, los recorridos y los planes?",
+        "q_pt": "Quem escreveu as notas, as jornadas e os planos?",
+        "a": [
+          "They were written for this site to help you explore, and a pastor is reviewing them. They are not a statement of any church's teaching: read each passage for yourself and talk it over with your church."
+        ],
+        "a_es": [
+          "Se escribieron para este sitio como ayuda para explorar, y un pastor las está revisando. No son una declaración de la enseñanza de ninguna iglesia: lee cada pasaje por ti mismo y coméntalo con tu iglesia."
+        ],
+        "a_pt": [
+          "Foram escritos para este site como ajuda para explorar, e um pastor está revisando. Não são uma declaração do ensino de nenhuma igreja: leia cada passagem por conta própria e converse sobre ela com sua igreja."
+        ],
+        "q_fr": "Qui a écrit les notes, les parcours et les plans ?",
+        "a_fr": [
+          "Ils ont été écrits pour ce site afin de t’aider à explorer, et un pasteur les relit. Ils ne sont pas l’expression officielle de l’enseignement d’une Église : lis chaque passage par toi-même et parles-en avec ton Église."
+        ],
+        "q_ko": "설명, 여정, 계획은 누가 썼나요?",
+        "a_ko": [
+          "탐험을 돕기 위해 이 사이트를 위해 쓴 글이고, 한 목사님이 검토하고 계세요. 어떤 교회의 공식 가르침도 아니에요. 각 본문을 직접 읽고 교회와 함께 이야기해 보세요."
+        ],
+        "q_zh": "注释、旅程和计划是谁写的？",
+        "a_zh": [
+          "它们是为本网站撰写的，目的是帮助你探索，目前正由一位牧师审阅。它们并不代表任何教会的教导立场：请亲自阅读每段经文，并与你的教会一同讨论。"
+        ]
       }
-    ]
+    ],
+    "group_fr": "À propos du contenu",
+    "group_ko": "콘텐츠에 대해",
+    "group_zh": "关于内容"
   },
   {
-    "group": "Using the app", "group_es": "Usar la app", "group_pt": "Usar o app",
+    "group": "Using the app",
+    "group_es": "Usar la app",
+    "group_pt": "Usar o app",
     "items": [
       {
-        "q": "Can I install it on my phone?", "q_es": "¿Puedo instalarla en el teléfono?", "q_pt": "Posso instalar no celular?",
-        "a": ["Yes. On iPhone or iPad, open the site in Safari, tap Share, then Add to Home Screen. On Android, open it in Chrome and choose Install app from the menu. It then opens like any other app."],
-        "a_es": ["Sí. En iPhone o iPad, abre el sitio en Safari, toca Compartir y luego Añadir a pantalla de inicio. En Android, ábrelo en Chrome y elige Instalar app en el menú. Después se abre como cualquier otra app."],
-        "a_pt": ["Sim. No iPhone ou iPad, abra o site no Safari, toque em Compartilhar e depois em Adicionar à Tela de Início. No Android, abra no Chrome e escolha Instalar app no menu. Depois ele abre como qualquer outro app."]
+        "q": "Can I install it on my phone?",
+        "q_es": "¿Puedo instalarla en el teléfono?",
+        "q_pt": "Posso instalar no celular?",
+        "a": [
+          "Yes. On iPhone or iPad, open the site in Safari, tap Share, then Add to Home Screen. On Android, open it in Chrome and choose Install app from the menu. It then opens like any other app."
+        ],
+        "a_es": [
+          "Sí. En iPhone o iPad, abre el sitio en Safari, toca Compartir y luego Añadir a pantalla de inicio. En Android, ábrelo en Chrome y elige Instalar app en el menú. Después se abre como cualquier otra app."
+        ],
+        "a_pt": [
+          "Sim. No iPhone ou iPad, abra o site no Safari, toque em Compartilhar e depois em Adicionar à Tela de Início. No Android, abra no Chrome e escolha Instalar app no menu. Depois ele abre como qualquer outro app."
+        ],
+        "q_fr": "Puis-je l’installer sur mon téléphone ?",
+        "a_fr": [
+          "Oui. Sur iPhone ou iPad, ouvre le site dans Safari, touche Partager, puis Sur l’écran d’accueil. Sur Android, ouvre-le dans Chrome et choisis Installer l’application dans le menu. Il s’ouvre ensuite comme n’importe quelle autre appli."
+        ],
+        "q_ko": "휴대폰에 설치할 수 있나요?",
+        "a_ko": [
+          "네. iPhone이나 iPad에서는 Safari로 사이트를 열고 공유를 누른 다음 홈 화면에 추가를 누르세요. Android에서는 Chrome으로 열고 메뉴에서 앱 설치를 고르세요. 그러면 다른 앱처럼 열려요."
+        ],
+        "q_zh": "可以安装到手机上吗？",
+        "a_zh": [
+          "可以。在 iPhone 或 iPad 上，用 Safari 打开本网站，点按“分享”，再选择“添加到主屏幕”。在 Android 上，用 Chrome 打开，从菜单中选择“安装应用”。之后它就会像其他应用一样打开。"
+        ]
       },
       {
-        "q": "Does it work offline?", "q_es": "¿Funciona sin conexión?", "q_pt": "Funciona sem internet?",
-        "a": ["The map works offline once you have opened it. To keep everything, open Settings and choose \"Save everything for offline\". Passages still open on Bible.com, which needs a connection."],
-        "a_es": ["El mapa funciona sin conexión una vez que lo has abierto. Para guardarlo todo, abre Ajustes y elige \"Guardar todo para usar sin conexión\". Los pasajes se siguen abriendo en Bible.com, que necesita conexión."],
-        "a_pt": ["O mapa funciona sem internet depois que você o abre. Para guardar tudo, abra Ajustes e escolha \"Salvar tudo para usar sem internet\". As passagens continuam abrindo no Bible.com, que precisa de internet."]
+        "q": "Does it work offline?",
+        "q_es": "¿Funciona sin conexión?",
+        "q_pt": "Funciona sem internet?",
+        "a": [
+          "The map works offline once you have opened it. To keep everything, open Settings and choose \"Save everything for offline\". Passages still open on Bible.com, which needs a connection."
+        ],
+        "a_es": [
+          "El mapa funciona sin conexión una vez que lo has abierto. Para guardarlo todo, abre Ajustes y elige \"Guardar todo para usar sin conexión\". Los pasajes se siguen abriendo en Bible.com, que necesita conexión."
+        ],
+        "a_pt": [
+          "O mapa funciona sem internet depois que você o abre. Para guardar tudo, abra Ajustes e escolha \"Salvar tudo para usar sem internet\". As passagens continuam abrindo no Bible.com, que precisa de internet."
+        ],
+        "q_fr": "Est-ce que ça marche hors ligne ?",
+        "a_fr": [
+          "La carte marche hors ligne une fois que tu l’as ouverte. Pour tout garder, ouvre Réglages et choisis « Tout enregistrer pour le hors ligne ». Les passages s’ouvrent toujours sur Bible.com, qui a besoin d’une connexion."
+        ],
+        "q_ko": "오프라인에서도 작동하나요?",
+        "a_ko": [
+          "지도는 한 번 열고 나면 오프라인에서도 작동해요. 모든 자료를 보관하려면 설정을 열고 \"모두 오프라인용으로 저장\"을 고르세요. 본문은 여전히 Bible.com에서 열리기 때문에 인터넷 연결이 필요해요."
+        ],
+        "q_zh": "可以离线使用吗？",
+        "a_zh": [
+          "打开过一次之后，地图就可以离线使用。如要保存全部内容，请打开“设置”并选择“全部保存以供离线使用”。经文仍然在 Bible.com 上打开，这需要联网。"
+        ]
       },
       {
-        "q": "Where are my notes and progress saved?", "q_es": "¿Dónde se guardan mis notas y mi progreso?", "q_pt": "Onde ficam minhas notas e meu progresso?",
-        "a": ["Only on your device. There are no accounts, so nothing is sent to us. To move to a new phone or computer, choose \"Back up everything\" in the Library to save one file, then open it on the new device."],
-        "a_es": ["Solo en tu dispositivo. No hay cuentas, así que no se nos envía nada. Para pasar a otro teléfono u ordenador, elige \"Hacer una copia de todo\" en la Biblioteca para guardar un archivo y ábrelo en el nuevo dispositivo."],
-        "a_pt": ["Só no seu aparelho. Não há contas, então nada é enviado para nós. Para passar para outro celular ou computador, escolha \"Fazer backup de tudo\" na Biblioteca para salvar um arquivo e abra-o no novo aparelho."]
+        "q": "Where are my notes and progress saved?",
+        "q_es": "¿Dónde se guardan mis notas y mi progreso?",
+        "q_pt": "Onde ficam minhas notas e meu progresso?",
+        "a": [
+          "Only on your device. There are no accounts, so nothing is sent to us. To move to a new phone or computer, choose \"Back up everything\" in the Library to save one file, then open it on the new device."
+        ],
+        "a_es": [
+          "Solo en tu dispositivo. No hay cuentas, así que no se nos envía nada. Para pasar a otro teléfono u ordenador, elige \"Hacer una copia de todo\" en la Biblioteca para guardar un archivo y ábrelo en el nuevo dispositivo."
+        ],
+        "a_pt": [
+          "Só no seu aparelho. Não há contas, então nada é enviado para nós. Para passar para outro celular ou computador, escolha \"Fazer backup de tudo\" na Biblioteca para salvar um arquivo e abra-o no novo aparelho."
+        ],
+        "q_fr": "Où sont enregistrées mes notes et ma progression ?",
+        "a_fr": [
+          "Uniquement sur ton appareil. Il n’y a pas de compte, donc rien ne nous est envoyé. Pour passer à un nouveau téléphone ou ordinateur, choisis « Tout sauvegarder » dans la Bibliothèque pour enregistrer un fichier, puis ouvre-le sur le nouvel appareil."
+        ],
+        "q_ko": "노트와 진행 상황은 어디에 저장되나요?",
+        "a_ko": [
+          "내 기기에만 저장돼요. 계정이 없어서 저희에게 아무것도 전송되지 않아요. 새 휴대폰이나 컴퓨터로 옮기려면 보관함에서 \"모두 백업\"을 골라 파일 하나로 저장한 다음, 새 기기에서 그 파일을 여세요."
+        ],
+        "q_zh": "我的笔记和进度保存在哪里？",
+        "a_zh": [
+          "只保存在你的设备上。本网站不设账户，所以不会有任何内容发送给我们。如要换到新的手机或电脑，请在“资料库”中选择“全部备份”保存为一个文件，然后在新设备上打开它。"
+        ]
       },
       {
-        "q": "How do I change the language?", "q_es": "¿Cómo cambio el idioma?", "q_pt": "Como mudo o idioma?",
-        "a": ["Open Settings, or use the language links at the bottom of any page. The site is in English, Spanish and Portuguese."],
-        "a_es": ["Abre Ajustes o usa los enlaces de idioma al final de cualquier página. El sitio está en inglés, español y portugués."],
-        "a_pt": ["Abra Ajustes ou use os links de idioma no fim de qualquer página. O site está em inglês, espanhol e português."]
+        "q": "How do I change the language?",
+        "q_es": "¿Cómo cambio el idioma?",
+        "q_pt": "Como mudo o idioma?",
+        "a": [
+          "Open Settings, or use the language links at the bottom of any page. The site is in English, Spanish, Portuguese, French, Korean and Chinese."
+        ],
+        "a_es": [
+          "Abre Ajustes o usa los enlaces de idioma al final de cualquier página. El sitio está en inglés, español, portugués, francés, coreano y chino."
+        ],
+        "a_pt": [
+          "Abra Ajustes ou use os links de idioma no fim de qualquer página. O site está em inglês, espanhol, português, francês, coreano e chinês."
+        ],
+        "q_fr": "Comment changer de langue ?",
+        "a_fr": [
+          "Ouvre Réglages, ou utilise les liens de langue en bas de n’importe quelle page. Le site existe en anglais, en espagnol, en portugais et en français."
+        ],
+        "q_ko": "언어는 어떻게 바꾸나요?",
+        "a_ko": [
+          "설정을 열거나, 어느 페이지에서든 아래쪽의 언어 링크를 쓰세요. 사이트는 영어, 스페인어, 포르투갈어로 제공돼요."
+        ],
+        "q_zh": "如何更改语言？",
+        "a_zh": [
+          "打开“设置”，或使用任何页面底部的语言链接。本网站提供英文、西班牙文、葡萄牙文等语言版本。"
+        ]
       },
       {
-        "q": "Can I use it with a screen reader or keyboard?", "q_es": "¿Puedo usarla con lector de pantalla o teclado?", "q_pt": "Posso usar com leitor de tela ou teclado?",
-        "a": ["Yes. Everything on the map is also listed as text, and the whole site works with a keyboard. Settings has larger text, an easier-to-read font and higher contrast. The Accessibility page has the details."],
-        "a_es": ["Sí. Todo lo del mapa también aparece como texto, y el sitio entero funciona con teclado. En Ajustes hay texto más grande, una letra más fácil de leer y más contraste. La página de Accesibilidad tiene los detalles."],
-        "a_pt": ["Sim. Tudo o que está no mapa também aparece como texto, e o site inteiro funciona com teclado. Em Ajustes há texto maior, uma fonte mais fácil de ler e mais contraste. A página de Acessibilidade tem os detalhes."]
+        "q": "Can I use it with a screen reader or keyboard?",
+        "q_es": "¿Puedo usarla con lector de pantalla o teclado?",
+        "q_pt": "Posso usar com leitor de tela ou teclado?",
+        "a": [
+          "Yes. Everything on the map is also listed as text, and the whole site works with a keyboard. Settings has larger text, an easier-to-read font and higher contrast. The Accessibility page has the details."
+        ],
+        "a_es": [
+          "Sí. Todo lo del mapa también aparece como texto, y el sitio entero funciona con teclado. En Ajustes hay texto más grande, una letra más fácil de leer y más contraste. La página de Accesibilidad tiene los detalles."
+        ],
+        "a_pt": [
+          "Sim. Tudo o que está no mapa também aparece como texto, e o site inteiro funciona com teclado. Em Ajustes há texto maior, uma fonte mais fácil de ler e mais contraste. A página de Acessibilidade tem os detalhes."
+        ],
+        "q_fr": "Puis-je l’utiliser avec un lecteur d’écran ou au clavier ?",
+        "a_fr": [
+          "Oui. Tout ce qui est sur la carte est aussi listé sous forme de texte, et tout le site marche au clavier. Les Réglages proposent un texte plus grand, une police plus lisible et un contraste plus élevé. La page Accessibilité donne les détails."
+        ],
+        "q_ko": "화면 낭독기나 키보드로 쓸 수 있나요?",
+        "a_ko": [
+          "네. 지도에 있는 모든 것은 글로도 나와 있고, 사이트 전체를 키보드로 쓸 수 있어요. 설정에는 큰 글자, 읽기 쉬운 글꼴, 고대비가 있어요. 자세한 내용은 접근성 페이지에 있어요."
+        ],
+        "q_zh": "可以用屏幕阅读器或键盘使用吗？",
+        "a_zh": [
+          "可以。地图上的所有内容也都以文字列出，整个网站都可以用键盘操作。“设置”中有更大的字体、易读字体和高对比度。详情请参阅“无障碍”页面。"
+        ]
       }
-    ]
+    ],
+    "group_fr": "Utiliser l’appli",
+    "group_ko": "앱 사용하기",
+    "group_zh": "使用应用"
   },
   {
-    "group": "Cost, privacy and churches", "group_es": "Costo, privacidad e iglesias", "group_pt": "Custo, privacidade e igrejas",
+    "group": "Cost, privacy and churches",
+    "group_es": "Costo, privacidad e iglesias",
+    "group_pt": "Custo, privacidade e igrejas",
     "items": [
       {
-        "q": "Is it really free?", "q_es": "¿De verdad es gratis?", "q_pt": "É gratuito mesmo?",
-        "a": ["Yes. There are no adverts, no accounts and nothing to buy, and the code is open source on GitHub."],
-        "a_es": ["Sí. No hay anuncios, ni cuentas, ni nada que comprar, y el código es abierto en GitHub."],
-        "a_pt": ["Sim. Não há anúncios, nem contas, nem nada para comprar, e o código é aberto no GitHub."]
+        "q": "Is it really free?",
+        "q_es": "¿De verdad es gratis?",
+        "q_pt": "É gratuito mesmo?",
+        "a": [
+          "Yes. There are no adverts, no accounts and nothing to buy, and the code is open source on GitHub."
+        ],
+        "a_es": [
+          "Sí. No hay anuncios, ni cuentas, ni nada que comprar, y el código es abierto en GitHub."
+        ],
+        "a_pt": [
+          "Sim. Não há anúncios, nem contas, nem nada para comprar, e o código é aberto no GitHub."
+        ],
+        "q_fr": "Est-ce vraiment gratuit ?",
+        "a_fr": [
+          "Oui. Il n’y a pas de publicité, pas de compte et rien à acheter, et le code est open source sur GitHub."
+        ],
+        "q_ko": "정말 무료인가요?",
+        "a_ko": [
+          "네. 광고도, 계정도, 살 것도 없고, 코드는 GitHub에 오픈 소스로 공개되어 있어요."
+        ],
+        "q_zh": "真的免费吗？",
+        "a_zh": [
+          "是的。没有广告，无需注册，也没有任何需要购买的东西，代码在 GitHub 上开源。"
+        ]
       },
       {
-        "q": "Do you track me?", "q_es": "¿Me rastrean?", "q_pt": "Vocês me rastreiam?",
-        "a": ["No. The site counts visits with GoatCounter, which uses no cookies and collects no personal information. The Privacy page explains exactly what is stored."],
-        "a_es": ["No. El sitio cuenta las visitas con GoatCounter, que no usa cookies ni recoge datos personales. La página de Privacidad explica exactamente qué se guarda."],
-        "a_pt": ["Não. O site conta as visitas com o GoatCounter, que não usa cookies nem coleta dados pessoais. A página de Privacidade explica exatamente o que é guardado."]
+        "q": "Do you track me?",
+        "q_es": "¿Me rastrean?",
+        "q_pt": "Vocês me rastreiam?",
+        "a": [
+          "No. The site counts visits with GoatCounter, which uses no cookies and collects no personal information. The Privacy page explains exactly what is stored."
+        ],
+        "a_es": [
+          "No. El sitio cuenta las visitas con GoatCounter, que no usa cookies ni recoge datos personales. La página de Privacidad explica exactamente qué se guarda."
+        ],
+        "a_pt": [
+          "Não. O site conta as visitas com o GoatCounter, que não usa cookies nem coleta dados pessoais. A página de Privacidade explica exatamente o que é guardado."
+        ],
+        "q_fr": "Est-ce que vous me pistez ?",
+        "a_fr": [
+          "Non. Le site compte les visites avec GoatCounter, qui n’utilise pas de cookies et ne collecte aucune donnée personnelle. La page Confidentialité explique exactement ce qui est stocké."
+        ],
+        "q_ko": "저를 추적하나요?",
+        "a_ko": [
+          "아니요. 사이트는 쿠키를 쓰지 않고 개인정보를 수집하지 않는 GoatCounter로 방문 수를 세요. 무엇이 저장되는지는 개인정보 페이지에서 정확히 설명해요."
+        ],
+        "q_zh": "你们会追踪我吗？",
+        "a_zh": [
+          "不会。本网站使用 GoatCounter 统计访问量，它不使用 Cookie，也不收集任何个人信息。“隐私”页面详细说明了存储的内容。"
+        ]
       },
       {
-        "q": "Can my church use it?", "q_es": "¿Puede usarlo mi iglesia?", "q_pt": "Minha igreja pode usar?",
-        "a": ["Yes, freely, on screens, in handouts and on your website. The For churches page gathers the tools: sermon series pages, leader guides, slides, the Advent plan and more."],
-        "a_es": ["Sí, libremente, en pantallas, en hojas impresas y en tu sitio web. La página Para iglesias reúne las herramientas: páginas de series de sermones, guías para líderes, diapositivas, el plan de Adviento y más."],
-        "a_pt": ["Sim, livremente, no telão, em folhetos e no site da igreja. A página Para igrejas reúne as ferramentas: páginas de séries de sermões, guias para líderes, slides, o plano do Advento e mais."]
+        "q": "Can my church use it?",
+        "q_es": "¿Puede usarlo mi iglesia?",
+        "q_pt": "Minha igreja pode usar?",
+        "a": [
+          "Yes, freely, on screens, in handouts and on your website. The For churches page gathers the tools: sermon series pages, leader guides, slides, the Advent plan and more."
+        ],
+        "a_es": [
+          "Sí, libremente, en pantallas, en hojas impresas y en tu sitio web. La página Para iglesias reúne las herramientas: páginas de series de sermones, guías para líderes, diapositivas, el plan de Adviento y más."
+        ],
+        "a_pt": [
+          "Sim, livremente, no telão, em folhetos e no site da igreja. A página Para igrejas reúne as ferramentas: páginas de séries de sermões, guias para líderes, slides, o plano do Advento e mais."
+        ],
+        "q_fr": "Mon Église peut-elle l’utiliser ?",
+        "a_fr": [
+          "Oui, librement, sur écran, dans des fiches et sur votre site web. La page Pour les Églises rassemble les outils : pages de séries de prédications, guides de l’animateur, diapositives, plan de l’Avent et plus encore."
+        ],
+        "q_ko": "우리 교회에서 써도 되나요?",
+        "a_ko": [
+          "네, 화면에서도, 유인물에서도, 웹사이트에서도 자유롭게 쓰세요. 교회를 위해 페이지에 설교 시리즈 페이지, 인도자 가이드, 슬라이드, 대림절 계획 등 도구를 모아 두었어요."
+        ],
+        "q_zh": "我的教会可以使用吗？",
+        "a_zh": [
+          "可以，免费在屏幕上、讲义中和你的网站上使用。“教会专区”页面汇集了各种工具：讲道系列页面、带领者指南、幻灯片、将临期计划等。"
+        ]
       },
       {
-        "q": "Something isn't working. What should I do?", "q_es": "Algo no funciona. ¿Qué hago?", "q_pt": "Algo não está funcionando. O que faço?",
-        "a": ["First try reloading the page. If it still goes wrong, report it on GitHub or email hello@bibleconnections.app, and say what you saw and on which device."],
-        "a_es": ["Primero prueba a recargar la página. Si sigue fallando, infórmalo en GitHub o escribe a hello@bibleconnections.app, y di qué viste y en qué dispositivo."],
-        "a_pt": ["Primeiro tente recarregar a página. Se continuar com problema, relate no GitHub ou escreva para hello@bibleconnections.app, dizendo o que você viu e em qual aparelho."]
+        "q": "Something isn't working. What should I do?",
+        "q_es": "Algo no funciona. ¿Qué hago?",
+        "q_pt": "Algo não está funcionando. O que faço?",
+        "a": [
+          "First try reloading the page. If it still goes wrong, report it on GitHub or email hello@bibleconnections.app, and say what you saw and on which device."
+        ],
+        "a_es": [
+          "Primero prueba a recargar la página. Si sigue fallando, infórmalo en GitHub o escribe a hello@bibleconnections.app, y di qué viste y en qué dispositivo."
+        ],
+        "a_pt": [
+          "Primeiro tente recarregar a página. Se continuar com problema, relate no GitHub ou escreva para hello@bibleconnections.app, dizendo o que você viu e em qual aparelho."
+        ],
+        "q_fr": "Quelque chose ne marche pas. Que faire ?",
+        "a_fr": [
+          "Essaie d’abord de recharger la page. Si le problème persiste, signale-le sur GitHub ou écris à hello@bibleconnections.app, en disant ce que tu as vu et sur quel appareil."
+        ],
+        "q_ko": "무언가 작동하지 않아요. 어떻게 해야 하나요?",
+        "a_ko": [
+          "먼저 페이지를 새로 고침해 보세요. 그래도 문제가 있으면 GitHub에 신고하거나 hello@bibleconnections.app으로 이메일을 보내, 무엇을 보았는지와 어떤 기기였는지 알려 주세요."
+        ],
+        "q_zh": "有功能无法正常使用，我该怎么办？",
+        "a_zh": [
+          "请先尝试重新加载页面。如果仍然有问题，请在 GitHub 上报告，或发送电子邮件至 hello@bibleconnections.app，并说明你看到了什么，以及使用的是什么设备。"
+        ]
       }
-    ]
+    ],
+    "group_fr": "Coût, confidentialité et Églises",
+    "group_ko": "비용, 개인정보, 교회",
+    "group_zh": "费用、隐私与教会"
   }
 ]

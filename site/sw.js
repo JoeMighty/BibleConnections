@@ -1,13 +1,13 @@
 // Offline support: the app and its data are cached so the map works without a connection.
 // Reading links still need the internet because they open Bible.com.
-const CACHE = 'bible-connections-v68';
+const CACHE = 'bible-connections-v69';
 const CORE = [
   './', 'index.html', 'styles.css', 'app.js', 'export.js', 'handout.html', 'handout.js', 'guide.html', 'roadmap.html', 'privacy.html', 'content/privacy.json', 'churches.html', 'content/churches.json', 'advent.html', 'christmas.html', 'lent.html', 'holyweek.html', 'support.html', 'help.html', 'data.html', 'content/faq.json', 'terms.html', 'content/terms.json', 'accessibility.html', 'content/accessibility.json', 'credits.html', 'content/credits.json', '404.html', 'pages.css', 'pages.js', 'arcs.svg', 'fonts/bricolage-grotesque-latin-wght.woff2', 'content/guide.json', 'content/roadmap.json',
   'content/themes.json', 'content/notes.json', 'content/journeys.json', 'content/series.json',
   'content/versions.json', 'content/config.json', 'content/people-places.json', 'content/topics.json', 'content/plans.json', 'vendor/qrcode.js', 'content/words.json', 'content/i18n/es.json', 'content/themes.es.json', 'content/journeys.es.json', 'content/i18n/pt.json', 'content/themes.pt.json', 'content/journeys.pt.json', 'content/i18n/pages-pt.json', 'content/book-intros.json', 'content/reflect.json', 'content/timeline.json', 'content/prophecy.json',
   'slides.html', 'slides.js', 'slides.css', 'card.html', 'card.js', 'church.html', 'church.js', 'content/weak-links.json', 'content/routes.json', 'i18n.js', 'chrome.js', 'content/i18n/pages-es.json',
   'manifest.webmanifest', 'og-image.png', 'robots.txt', 'icons/icon.svg', 'icons/icon-192.png',
-  'data/books.json', 'data/refs.v3.gz', 'content/i18n/books-es.json', 'content/i18n/books-pt.json',
+  'data/books.json', 'data/refs.v3.gz', 'content/i18n/books-es.json', 'content/i18n/books-pt.json', 'content/i18n/books-fr.json', 'content/i18n/books-ko.json', 'content/i18n/books-zh.json',
 ];
 
 self.addEventListener('install', (e) => {

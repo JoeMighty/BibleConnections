@@ -17,8 +17,8 @@ for (const p of read('plans.json')) urls.push(`${base}?plan=${p.id}&amp;day=1`);
 const changelog = fs.readFileSync(new URL('../CHANGELOG.md', import.meta.url), 'utf8');
 const lastmod = (changelog.match(/^## \[\d+\.\d+\.\d+\] - (\d{4}-\d{2}-\d{2})/m) || [])[1];
 const withLang = (u, l) => (l === 'en' ? u : u + (u.includes('?') ? '&amp;' : '?') + 'lang=' + l);
-const langs = ['en', 'es', 'pt'];
-const alt = (u) => [...langs.map(l => `    <xhtml:link rel="alternate" hreflang="${l}" href="${withLang(u, l)}"/>`), `    <xhtml:link rel="alternate" hreflang="x-default" href="${u}"/>`].join('\n');
+const langs = ['en', 'es', 'pt', 'fr', 'ko', 'zh'];
+const alt = (u) => [...langs.map(l => `    <xhtml:link rel="alternate" hreflang="${l === 'zh' ? 'zh-Hans' : l}" href="${withLang(u, l)}"/>`), `    <xhtml:link rel="alternate" hreflang="x-default" href="${u}"/>`].join('\n');
 const entries = urls.flatMap(u => langs.map(l => `  <url>\n    <loc>${withLang(u, l)}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ''}${alt(u)}\n  </url>`));
 // the book, verse and "How many" pages are English only
 const stat = staticURLs(load()).map(u => `  <url>\n    <loc>${base}${u}</loc>\n${lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : ''}  </url>`);

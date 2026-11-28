@@ -16,6 +16,18 @@
       ],
       "text_pt": [
         "O Bible Connections é um projeto gratuito e independente, criado e mantido por JoeMighty no Reino Unido. Não tem vínculo com o Bible.com, o YouVersion, nenhuma editora bíblica nem nenhuma igreja. Contato: hello@bibleconnections.app."
+      ],
+      "title_fr": "Qui gère ce site",
+      "text_fr": [
+        "Bible Connections est un projet gratuit et indépendant, créé et géré par JoeMighty au Royaume-Uni. Il n’est affilié ni à Bible.com, ni à YouVersion, ni à aucun éditeur de la Bible, ni à aucune Église. Contact : hello@bibleconnections.app."
+      ],
+      "title_ko": "이 사이트의 운영자",
+      "text_ko": [
+        "Bible Connections는 영국의 JoeMighty가 만들고 운영하는 무료 독립 프로젝트예요. Bible.com, YouVersion, 어떤 성경 출판사나 교회와도 제휴하지 않았어요. 연락처: hello@bibleconnections.app."
+      ],
+      "title_zh": "谁在运营本网站",
+      "text_zh": [
+        "Bible Connections 是一个免费的独立项目，由英国的 JoeMighty 创建并运营。它与 Bible.com、YouVersion、任何圣经出版机构或任何教会均无关联。联系方式：hello@bibleconnections.app。"
       ]
     },
     {
@@ -33,6 +45,21 @@
       "text_pt": [
         "Você pode usar o Bible Connections de graça, para estudo pessoal, em pequenos grupos, na igreja e no ensino. Não é preciso criar conta.",
         "Por favor, não faça mau uso do site, por exemplo tentando quebrá-lo, sobrecarregá-lo ou apresentá-lo como seu."
+      ],
+      "title_fr": "Utiliser le site",
+      "text_fr": [
+        "Tu peux utiliser Bible Connections gratuitement, pour ton étude personnelle, en groupe de maison, à l’Église et dans l’enseignement. Aucun compte à créer.",
+        "Merci de ne pas faire un mauvais usage du site, par exemple en essayant de le casser, de le surcharger ou de le faire passer pour le tien."
+      ],
+      "title_ko": "사이트 이용",
+      "text_ko": [
+        "Bible Connections는 개인 공부, 소그룹, 교회, 가르침에 무료로 쓸 수 있어요. 만들어야 할 계정도 없어요.",
+        "사이트를 망가뜨리거나, 과부하를 주거나, 자기 것인 양 내세우는 등 사이트를 악용하지 말아 주세요."
+      ],
+      "title_zh": "使用本网站",
+      "text_zh": [
+        "你可以免费使用 Bible Connections，用于个人研读、小组、教会和教学，无需创建账户。",
+        "请不要滥用本网站，例如试图破坏它、使它超载，或把它冒充为你自己的作品。"
       ]
     },
     {
@@ -50,6 +77,21 @@
       "text_pt": [
         "Este site não guarda nem mostra nenhuma tradução da Bíblia. Os links para ler e ouvir abrem o Bible.com, onde valem os termos dele.",
         "O texto hebraico, aramaico e grego vem do STEP Bible (Tyndale House) sob a licença CC BY 4.0."
+      ],
+      "title_fr": "Texte biblique",
+      "text_fr": [
+        "Aucune traduction de la Bible n’est stockée ni affichée sur ce site. Les liens de lecture et d’écoute ouvrent Bible.com, dont les propres conditions s’appliquent.",
+        "Le texte hébreu, araméen et grec vient de STEP Bible (Tyndale House) sous licence CC BY 4.0."
+      ],
+      "title_ko": "성경 본문",
+      "text_ko": [
+        "이 사이트에는 성경 번역본이 저장되거나 표시되지 않아요. 읽기와 듣기 링크는 Bible.com을 열고, 그곳에는 Bible.com의 약관이 적용돼요.",
+        "히브리어, 아람어, 헬라어 본문은 STEP Bible(Tyndale House)에서 CC BY 4.0으로 제공받았어요."
+      ],
+      "title_zh": "圣经经文",
+      "text_zh": [
+        "本网站不存储也不显示任何圣经译本。阅读和收听链接会打开 Bible.com，那里适用其自身的条款。",
+        "希伯来文、亚兰文和希腊文文本来自 STEP Bible（Tyndale House），采用 CC BY 4.0 授权。"
       ]
     },
     {
@@ -67,6 +109,21 @@
       "text_pt": [
         "O código é aberto sob a Licença Apache 2.0. O conteúdo escrito (notas, jornadas, introduções aos livros, perguntas, temas, traduções e guias) está sob a licença Creative Commons Atribuição 4.0: você pode compartilhar e adaptar, inclusive em materiais da igreja, desde que cite \"Bible Connections\" com um link para bibleconnections.app.",
         "Os dados de terceiros mantêm a própria licença; veja Créditos e licenças."
+      ],
+      "title_fr": "Réutiliser ce que tu trouves ici",
+      "text_fr": [
+        "Le code est open source sous licence Apache 2.0. Le contenu rédigé (notes, parcours, introductions aux livres, questions, thèmes, traductions et guides) est sous licence Creative Commons Attribution 4.0 : tu peux le partager et l’adapter, y compris dans des supports d’Église, si tu cites « Bible Connections » avec un lien vers bibleconnections.app.",
+        "Les données venant d’autres sources gardent leur propre licence ; voir Crédits et licences."
+      ],
+      "title_ko": "여기서 찾은 것 재사용하기",
+      "text_ko": [
+        "코드는 Apache License 2.0의 오픈 소스예요. 글 콘텐츠(설명, 여정, 책 소개, 질문, 주제, 번역, 안내)는 Creative Commons 저작자표시 4.0을 따라요. bibleconnections.app 링크와 함께 \"Bible Connections\"라고 출처를 밝히면 교회 자료를 포함해 공유하고 수정할 수 있어요.",
+        "다른 곳에서 온 데이터는 각자의 라이선스를 따라요. 출처와 라이선스를 보세요."
+      ],
+      "title_zh": "重复使用这里的内容",
+      "text_zh": [
+        "代码以 Apache License 2.0 开源。文字内容（注释、旅程、书卷简介、问题、主题、译文和指南）采用知识共享署名 4.0（CC BY 4.0）授权：你可以分享和改编，包括用于教会资料，只要注明“Bible Connections”并附上指向 bibleconnections.app 的链接。",
+        "来自他人的资料保留其各自的许可证；请参阅“致谢与许可”。"
       ]
     },
     {
@@ -84,6 +141,21 @@
       "text_pt": [
         "Suas anotações, itens salvos e ajustes ficam no seu aparelho, e você é responsável por fazer um backup.",
         "Coleções e páginas de igreja ficam guardadas dentro do próprio link. Qualquer pessoa com o link pode ver o conteúdo, então não coloque informações privadas ou pessoais nelas."
+      ],
+      "title_fr": "Tes notes et les liens partagés",
+      "text_fr": [
+        "Tes notes, éléments enregistrés et réglages restent sur ton appareil, et c’est à toi d’en garder une sauvegarde.",
+        "Les collections et les pages pour l’Église sont enregistrées dans le lien lui-même. Toute personne qui a le lien peut voir son contenu, alors n’y mets pas d’informations privées ou personnelles."
+      ],
+      "title_ko": "내 노트와 공유 링크",
+      "text_ko": [
+        "노트, 저장한 항목, 설정은 내 기기에 남고, 백업은 직접 챙기셔야 해요.",
+        "모음집과 교회 페이지는 링크 안에 저장돼요. 링크가 있는 사람은 누구나 내용을 볼 수 있으니 사적인 정보나 개인정보는 넣지 마세요."
+      ],
+      "title_zh": "你的笔记和分享的链接",
+      "text_zh": [
+        "你的笔记、收藏和设置保存在你的设备上，你需要自行负责备份。",
+        "合集和教会页面保存在链接本身之中。任何拿到链接的人都能看到其中的内容，所以请不要在里面放入隐私或个人信息。"
       ]
     },
     {
@@ -98,6 +170,18 @@
       ],
       "text_pt": [
         "Sugestões, notas e relatos enviados pelos formulários do GitHub são públicos. Se uma sugestão for usada, você concorda que ela seja publicada sob a licença CC BY 4.0 como parte do projeto."
+      ],
+      "title_fr": "Suggestions sur GitHub",
+      "text_fr": [
+        "Les suggestions, notes et signalements envoyés via les formulaires GitHub sont publics. Si une suggestion est retenue, tu acceptes qu’elle soit publiée sous CC BY 4.0 dans le cadre du projet."
+      ],
+      "title_ko": "GitHub를 통한 제안",
+      "text_ko": [
+        "GitHub 양식으로 보낸 제안, 설명, 신고는 공개돼요. 제안이 채택되면 프로젝트의 일부로 CC BY 4.0에 따라 게시되는 데 동의하는 거예요."
+      ],
+      "title_zh": "在 GitHub 上提出的建议",
+      "text_zh": [
+        "通过 GitHub 表单发送的建议、注释和报告都是公开的。如果你的建议被采用，即表示你同意它作为本项目的一部分以 CC BY 4.0 授权发布。"
       ]
     },
     {
@@ -112,6 +196,18 @@
       ],
       "text_pt": [
         "As referências cruzadas são escolhidas por pessoas e votadas por leitores; elas são interpretativas, e há quem discorde de algumas. Notas, jornadas e introduções são escritas com cuidado, mas não substituem a leitura da própria Escritura, sua igreja nem o cuidado pastoral."
+      ],
+      "title_fr": "Une aide à l’étude, pas une autorité",
+      "text_fr": [
+        "Les références croisées sont choisies par des personnes et votées par des lecteurs ; elles relèvent de l’interprétation, et des gens raisonnables ne sont pas d’accord sur certaines. Les notes, parcours et introductions sont rédigés avec soin, mais ils ne remplacent ni la lecture des Écritures elles-mêmes, ni ton Église, ni l’accompagnement pastoral."
+      ],
+      "title_ko": "권위가 아닌 공부 도우미",
+      "text_ko": [
+        "관주는 사람들이 고르고 독자들이 투표한 것으로, 해석이 들어가 있고 몇몇은 합리적인 사람들 사이에서도 의견이 갈려요. 설명, 여정, 소개는 신중하게 썼지만, 성경 자체를 읽는 것이나 교회, 목회적 돌봄을 대신할 수는 없어요."
+      ],
+      "title_zh": "研读辅助，而非权威",
+      "text_zh": [
+        "串珠经文由人选定、由读者投票，属于诠释性的内容，对其中一些连接，理性的人也会有不同看法。注释、旅程和简介都经过认真撰写，但不能取代亲自阅读圣经、你的教会或牧养关怀。"
       ]
     },
     {
@@ -126,6 +222,18 @@
       ],
       "text_pt": [
         "O site é oferecido como está, sem garantia de que estará sempre disponível, completo ou livre de erros. Na medida permitida pela lei, não somos responsáveis por perdas decorrentes do uso. Nada nestes termos limita direitos que a lei não permite limitar."
+      ],
+      "title_fr": "Aucune garantie",
+      "text_fr": [
+        "Le site est fourni tel quel, sans garantie qu’il soit toujours disponible, complet ou sans erreurs. Dans les limites permises par la loi, nous ne sommes pas responsables des pertes liées à son utilisation. Rien dans ces conditions ne limite les droits que la loi ne permet pas de limiter."
+      ],
+      "title_ko": "보증하지 않음",
+      "text_ko": [
+        "사이트는 있는 그대로 제공되며, 항상 이용 가능하거나, 완전하거나, 오류가 없다고 보증하지 않아요. 법이 허용하는 범위에서 사이트 사용으로 생긴 어떤 손실에도 책임지지 않아요. 이 약관의 어떤 내용도 법으로 제한할 수 없는 권리를 제한하지 않아요."
+      ],
+      "title_zh": "不作担保",
+      "text_zh": [
+        "本网站按现状提供，不保证始终可用、完整或没有错误。在法律允许的范围内，我们对使用本网站造成的任何损失不承担责任。本条款中的任何内容都不限制你依法不可被限制的任何权利。"
       ]
     },
     {
@@ -140,6 +248,18 @@
       ],
       "text_pt": [
         "Os links para o Bible.com, o GitHub e outros sites são oferecidos por conveniência. Não controlamos esses sites, e valem os termos e as políticas de privacidade deles."
+      ],
+      "title_fr": "Autres sites",
+      "text_fr": [
+        "Les liens vers Bible.com, GitHub et d’autres sites sont fournis par commodité. Nous ne contrôlons pas ces sites, et leurs propres conditions et politiques de confidentialité s’appliquent."
+      ],
+      "title_ko": "다른 사이트",
+      "text_ko": [
+        "Bible.com, GitHub 및 다른 사이트로 가는 링크는 편의를 위해 제공돼요. 저희는 그 사이트들을 관리하지 않으며, 그곳의 약관과 개인정보 처리방침이 적용돼요."
+      ],
+      "title_zh": "其他网站",
+      "text_zh": [
+        "指向 Bible.com、GitHub 和其他网站的链接仅为方便而提供。我们无法控制这些网站，它们适用各自的条款和隐私政策。"
       ]
     },
     {
@@ -154,7 +274,22 @@
       ],
       "text_pt": [
         "Estes termos podem mudar; a nova versão será publicada aqui com uma nova data. Eles são regidos pelas leis da Inglaterra e do País de Gales. Dúvidas: hello@bibleconnections.app."
+      ],
+      "title_fr": "Modifications et droit applicable",
+      "text_fr": [
+        "Ces conditions peuvent changer ; la nouvelle version sera publiée ici avec une nouvelle date. Elles sont régies par le droit de l’Angleterre et du pays de Galles. Questions : hello@bibleconnections.app."
+      ],
+      "title_ko": "변경과 준거법",
+      "text_ko": [
+        "이 약관은 바뀔 수 있으며, 새 버전은 새 날짜와 함께 여기에 올려요. 잉글랜드와 웨일스의 법을 따라요. 질문: hello@bibleconnections.app."
+      ],
+      "title_zh": "变更与适用法律",
+      "text_zh": [
+        "本条款可能会变更；新版本将在此处发布，并注明新的日期。本条款受英格兰和威尔士法律管辖。如有问题：hello@bibleconnections.app。"
       ]
     }
-  ]
+  ],
+  "intro_fr": "Ces conditions expliquent comment tu peux utiliser Bible Connections. En utilisant le site ou l’appli, tu les acceptes. Elles sont rédigées pour être courtes et simples.",
+  "intro_ko": "이 약관은 Bible Connections를 어떻게 쓸 수 있는지 설명해요. 사이트나 앱을 쓰면 이 약관에 동의하는 거예요. 짧고 쉽게 썼어요.",
+  "intro_zh": "本条款说明你可以如何使用 Bible Connections。使用本网站或应用，即表示你同意这些条款。条款力求简短明了。"
 }

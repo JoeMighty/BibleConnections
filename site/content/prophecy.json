@@ -6,7 +6,13 @@
       "name_pt": "Citação",
       "text": "The New Testament quotes the Old Testament passage.",
       "text_es": "El Nuevo Testamento cita el pasaje del Antiguo Testamento.",
-      "text_pt": "O Novo Testamento cita a passagem do Antigo Testamento."
+      "text_pt": "O Novo Testamento cita a passagem do Antigo Testamento.",
+      "name_fr": "Citation",
+      "text_fr": "Le Nouveau Testament cite le passage de l’Ancien Testament.",
+      "name_ko": "인용",
+      "text_ko": "신약이 구약 본문을 인용해요.",
+      "name_zh": "引用",
+      "text_zh": "新约引用这段旧约经文。"
     },
     "fulfilment": {
       "name": "Fulfilment",
@@ -14,7 +20,13 @@
       "name_pt": "Cumprimento",
       "text": "The New Testament says this happened to fulfil the passage.",
       "text_es": "El Nuevo Testamento dice que esto sucedió para cumplir el pasaje.",
-      "text_pt": "O Novo Testamento diz que isto aconteceu para cumprir a passagem."
+      "text_pt": "O Novo Testamento diz que isto aconteceu para cumprir a passagem.",
+      "name_fr": "Accomplissement",
+      "text_fr": "Le Nouveau Testament dit que cela est arrivé pour accomplir le passage.",
+      "name_ko": "성취",
+      "text_ko": "신약은 이 일이 그 본문을 이루려고 일어났다고 말해요.",
+      "name_zh": "应验",
+      "text_zh": "新约说这件事的发生是要应验这段经文。"
     },
     "pattern": {
       "name": "Pattern",
@@ -22,7 +34,13 @@
       "name_pt": "Figura",
       "text": "A person, event or practice the New Testament treats as pointing ahead to Christ.",
       "text_es": "Una persona, un hecho o una práctica que el Nuevo Testamento ve como anticipo de Cristo.",
-      "text_pt": "Uma pessoa, um acontecimento ou uma prática que o Novo Testamento vê como anúncio de Cristo."
+      "text_pt": "Uma pessoa, um acontecimento ou uma prática que o Novo Testamento vê como anúncio de Cristo.",
+      "name_fr": "Modèle",
+      "text_fr": "Une personne, un événement ou une pratique que le Nouveau Testament présente comme annonçant le Christ.",
+      "name_ko": "예표",
+      "text_ko": "신약이 그리스도를 미리 가리킨다고 보는 인물, 사건, 제도예요.",
+      "name_zh": "预表",
+      "text_zh": "新约视为预先指向基督的一个人物、事件或礼仪。"
     },
     "promise": {
       "name": "Promise",
@@ -30,7 +48,13 @@
       "name_pt": "Promessa",
       "text": "A promise of God that later passages say is kept.",
       "text_es": "Una promesa de Dios que pasajes posteriores dicen que se cumple.",
-      "text_pt": "Uma promessa de Deus que passagens posteriores dizem ter sido cumprida."
+      "text_pt": "Uma promessa de Deus que passagens posteriores dizem ter sido cumprida.",
+      "name_fr": "Promesse",
+      "text_fr": "Une promesse de Dieu que des passages ultérieurs disent tenue.",
+      "name_ko": "약속",
+      "text_ko": "이후의 본문이 지켜졌다고 말하는 하나님의 약속이에요.",
+      "name_zh": "应许",
+      "text_zh": "后来的经文表明已经成就的神的应许。"
     }
   },
   "groups": [
@@ -55,22 +79,37 @@
               "end": "Isa.53.7",
               "label": "The servant is wounded for others",
               "label_es": "El siervo es herido por otros",
-              "label_pt": "O servo é ferido por outros"
+              "label_pt": "O servo é ferido por outros",
+              "label_fr": "Le serviteur est blessé pour les autres",
+              "label_ko": "종이 다른 사람들을 위해 상처를 입어요",
+              "label_zh": "仆人为别人受伤"
             },
             {
               "ref": "Acts.8.32",
               "end": "Acts.8.35",
               "label": "Philip explains it to the Ethiopian",
               "label_es": "Felipe se lo explica al etíope",
-              "label_pt": "Filipe a explica ao etíope"
+              "label_pt": "Filipe a explica ao etíope",
+              "label_fr": "Philippe l’explique à l’Éthiopien",
+              "label_ko": "빌립이 에디오피아 내시에게 설명해요",
+              "label_zh": "腓利向埃塞俄比亚人讲解"
             },
             {
               "ref": "1Pet.2.24",
               "label": "By his wounds you have been healed",
               "label_es": "Por sus heridas han sido sanados",
-              "label_pt": "Pelas suas feridas vocês foram curados"
+              "label_pt": "Pelas suas feridas vocês foram curados",
+              "label_fr": "Par ses meurtrissures vous avez été guéris",
+              "label_ko": "그가 채찍에 맞음으로 너희는 나음을 얻었나니",
+              "label_zh": "因他受的鞭伤，你们便得了医治"
             }
-          ]
+          ],
+          "title_fr": "Le serviteur souffrant",
+          "summary_fr": "Ésaïe décrit un serviteur qui souffre en silence et porte les péchés des autres. Philippe part de ce passage pour parler de Jésus à un haut fonctionnaire éthiopien, et Pierre s’en sert pour expliquer la croix.",
+          "title_ko": "고난받는 종",
+          "summary_ko": "이사야는 잠잠히 고난을 받으며 다른 사람들의 죄를 짊어지는 종을 묘사해요. 빌립은 이 본문에서 시작해 에디오피아 내시에게 예수님을 전하고, 베드로는 이 본문으로 십자가를 설명해요.",
+          "title_zh": "受苦的仆人",
+          "summary_zh": "以赛亚描述一位默默受苦、担当别人罪孽的仆人。腓利从这段经文开始，向一位埃塞俄比亚官员讲解耶稣；彼得也用它来解释十字架。"
         },
         {
           "id": "nations",
@@ -86,21 +125,36 @@
               "ref": "Gen.12.3",
               "label": "All families of the earth will be blessed",
               "label_es": "Todas las familias de la tierra serán bendecidas",
-              "label_pt": "Todas as famílias da terra serão abençoadas"
+              "label_pt": "Todas as famílias da terra serão abençoadas",
+              "label_fr": "Toutes les familles de la terre seront bénies",
+              "label_ko": "땅의 모든 족속이 복을 받을 거예요",
+              "label_zh": "地上的万族都要因你得福"
             },
             {
               "ref": "Gal.3.8",
               "label": "The gospel announced to Abraham",
               "label_es": "El evangelio anunciado a Abraham",
-              "label_pt": "O evangelho anunciado a Abraão"
+              "label_pt": "O evangelho anunciado a Abraão",
+              "label_fr": "L’Évangile annoncé à Abraham",
+              "label_ko": "아브라함에게 먼저 전한 복음",
+              "label_zh": "预先传给亚伯拉罕的福音"
             },
             {
               "ref": "Rev.7.9",
               "label": "A crowd from every nation",
               "label_es": "Una multitud de todas las naciones",
-              "label_pt": "Uma multidão de todas as nações"
+              "label_pt": "Uma multidão de todas as nações",
+              "label_fr": "Une foule de toutes les nations",
+              "label_ko": "각 나라에서 온 큰 무리",
+              "label_zh": "来自各国的一大群人"
             }
-          ]
+          ],
+          "title_fr": "Une bénédiction pour toutes les nations",
+          "summary_fr": "Dieu promet à Abraham que toutes les nations seront bénies en lui. Paul y voit l’Évangile annoncé d’avance, et l’Apocalypse montre des gens de toutes les nations qui adorent ensemble.",
+          "title_ko": "모든 민족을 위한 복",
+          "summary_ko": "하나님은 아브라함에게 모든 민족이 그로 말미암아 복을 받을 것이라고 약속하세요. 바울은 이것을 먼저 전한 복음이라 부르고, 요한계시록은 각 나라에서 온 사람들이 함께 예배하는 모습을 보여 줘요.",
+          "title_zh": "万国的福",
+          "summary_zh": "神应许亚伯拉罕，万国都必因他得福。保罗称这是预先传给亚伯拉罕的福音，启示录则显出各国的人一同敬拜。"
         },
         {
           "id": "david",
@@ -117,23 +171,38 @@
               "end": "2Sam.7.16",
               "label": "A throne established for ever",
               "label_es": "Un trono establecido para siempre",
-              "label_pt": "Um trono firmado para sempre"
+              "label_pt": "Um trono firmado para sempre",
+              "label_fr": "Un trône affermi pour toujours",
+              "label_ko": "영원히 견고한 왕위",
+              "label_zh": "王位坚定，直到永远"
             },
             {
               "ref": "Luke.1.32",
               "end": "Luke.1.33",
               "label": "He will receive David's throne",
               "label_es": "Recibirá el trono de David",
-              "label_pt": "Ele receberá o trono de Davi"
+              "label_pt": "Ele receberá o trono de Davi",
+              "label_fr": "Il recevra le trône de David",
+              "label_ko": "그가 다윗의 왕위를 받을 거예요",
+              "label_zh": "他要得着大卫的王位"
             },
             {
               "ref": "Acts.2.30",
               "end": "Acts.2.36",
               "label": "Raised to sit on David's throne",
               "label_es": "Resucitado para sentarse en el trono de David",
-              "label_pt": "Ressuscitado para se assentar no trono de Davi"
+              "label_pt": "Ressuscitado para se assentar no trono de Davi",
+              "label_fr": "Ressuscité pour s’asseoir sur le trône de David",
+              "label_ko": "다윗의 왕위에 앉으시려고 다시 살아나셨어요",
+              "label_zh": "复活后坐在大卫的宝座上"
             }
-          ]
+          ],
+          "title_fr": "Le roi de la famille de David",
+          "summary_fr": "Dieu promet à David un descendant dont le règne durera pour toujours. L’ange dit à Marie que son fils recevra le trône de David, et Pierre dit que la résurrection montre que Jésus est ce roi.",
+          "title_ko": "다윗 가문에서 나신 왕",
+          "summary_ko": "하나님은 다윗에게 나라가 영원히 이어질 후손을 약속하세요. 천사는 마리아에게 그 아들이 다윗의 왕위를 받을 것이라고 말하고, 베드로는 부활이 예수님이 바로 이 왕이심을 보여 준다고 말해요.",
+          "title_zh": "大卫家族的王",
+          "summary_zh": "神应许大卫，他的后裔所建立的国要存到永远。天使告诉马利亚，她的儿子要得着大卫的王位；彼得说复活证明耶稣就是这位王。"
         },
         {
           "id": "bethlehem",
@@ -149,15 +218,27 @@
               "ref": "Mic.5.2",
               "label": "A ruler from little Bethlehem",
               "label_es": "Un gobernante de la pequeña Belén",
-              "label_pt": "Um governante da pequena Belém"
+              "label_pt": "Um governante da pequena Belém",
+              "label_fr": "Un chef issu de la petite Bethléhem",
+              "label_ko": "작은 베들레헴에서 나올 통치자",
+              "label_zh": "从小小的伯利恒出来的掌权者"
             },
             {
               "ref": "Matt.2.6",
               "label": "The scholars answer Herod",
               "label_es": "Los maestros responden a Herodes",
-              "label_pt": "Os mestres respondem a Herodes"
+              "label_pt": "Os mestres respondem a Herodes",
+              "label_fr": "Les scribes répondent à Hérode",
+              "label_ko": "서기관들이 헤롯에게 대답해요",
+              "label_zh": "学者们回答希律"
             }
-          ]
+          ],
+          "title_fr": "Né à Bethléhem",
+          "summary_fr": "Michée désigne Bethléhem comme lieu de naissance d’un chef pour Israël. Quand Hérode demande où le Messie doit naître, les scribes répondent avec ce passage.",
+          "title_ko": "베들레헴에서 나심",
+          "summary_ko": "미가는 베들레헴을 이스라엘을 다스릴 자가 태어날 곳으로 말해요. 헤롯이 그리스도가 어디서 나겠느냐고 묻자, 서기관들은 이 본문으로 대답해요.",
+          "title_zh": "生在伯利恒",
+          "summary_zh": "弥迦指出伯利恒是以色列掌权者的出生地。希律问基督当生在何处，学者们就用这段经文回答。"
         },
         {
           "id": "immanuel",
@@ -173,16 +254,28 @@
               "ref": "Isa.7.14",
               "label": "A sign: a son called Immanuel",
               "label_es": "Una señal: un hijo llamado Emanuel",
-              "label_pt": "Um sinal: um filho chamado Emanuel"
+              "label_pt": "Um sinal: um filho chamado Emanuel",
+              "label_fr": "Un signe : un fils appelé Emmanuel",
+              "label_ko": "징조: 임마누엘이라 불릴 아들",
+              "label_zh": "兆头：一个名叫以马内利的儿子"
             },
             {
               "ref": "Matt.1.22",
               "end": "Matt.1.23",
               "label": "This took place to fulfil it",
               "label_es": "Esto sucedió para que se cumpliera",
-              "label_pt": "Isto aconteceu para que se cumprisse"
+              "label_pt": "Isto aconteceu para que se cumprisse",
+              "label_fr": "Tout cela arriva afin que s’accomplisse",
+              "label_ko": "이 모든 일이 된 것은 이 말씀을 이루려 함이라",
+              "label_zh": "这一切的事成就，是要应验"
             }
-          ]
+          ],
+          "title_fr": "Emmanuel, Dieu avec nous",
+          "summary_fr": "Ésaïe donne un signe au roi Achaz : un enfant appelé Emmanuel. Matthieu voit le sens plein de ce signe dans la naissance de Jésus. Beaucoup de lecteurs y voient aussi un premier accomplissement à l’époque d’Ésaïe.",
+          "title_ko": "임마누엘, 하나님이 우리와 함께",
+          "summary_ko": "이사야는 아하스 왕에게 징조를 주어요. 임마누엘이라 불릴 아기예요. 마태는 예수님의 탄생에서 이 징조의 온전한 의미를 봐요. 많은 독자는 이사야 당시에 있었던 첫 번째 성취도 함께 봐요.",
+          "title_zh": "以马内利，神与我们同在",
+          "summary_zh": "以赛亚给亚哈斯王一个兆头：有一个孩子名叫以马内利。马太在耶稣的降生中看见这兆头的完整意义。许多读者也认为，这兆头在以赛亚自己的时代已经初步应验。"
         },
         {
           "id": "psalm22",
@@ -198,27 +291,45 @@
               "ref": "Ps.22.1",
               "label": "Why have you forsaken me?",
               "label_es": "¿Por qué me has abandonado?",
-              "label_pt": "Por que me abandonaste?"
+              "label_pt": "Por que me abandonaste?",
+              "label_fr": "Pourquoi m’as-tu abandonné ?",
+              "label_ko": "어찌하여 나를 버리셨나이까?",
+              "label_zh": "你为什么离弃我？"
             },
             {
               "ref": "Ps.22.18",
               "label": "They divide my clothes",
               "label_es": "Reparten mi ropa",
-              "label_pt": "Repartem entre si as minhas roupas"
+              "label_pt": "Repartem entre si as minhas roupas",
+              "label_fr": "Ils se partagent mes vêtements",
+              "label_ko": "내 겉옷을 나누며",
+              "label_zh": "他们分我的外衣"
             },
             {
               "ref": "Matt.27.46",
               "label": "Jesus prays the psalm on the cross",
               "label_es": "Jesús ora el salmo en la cruz",
-              "label_pt": "Jesus ora o salmo na cruz"
+              "label_pt": "Jesus ora o salmo na cruz",
+              "label_fr": "Jésus prie le psaume sur la croix",
+              "label_ko": "예수님이 십자가에서 이 시편으로 기도하세요",
+              "label_zh": "耶稣在十字架上以这篇诗篇祷告"
             },
             {
               "ref": "John.19.24",
               "label": "The soldiers cast lots",
               "label_es": "Los soldados echan suertes",
-              "label_pt": "Os soldados tiram sortes"
+              "label_pt": "Os soldados tiram sortes",
+              "label_fr": "Les soldats tirent au sort",
+              "label_ko": "군인들이 제비를 뽑아요",
+              "label_zh": "兵丁拈阄"
             }
-          ]
+          ],
+          "title_fr": "Le psaume de la croix",
+          "summary_fr": "Le psaume de David passe du sentiment d’être abandonné par Dieu à la louange. Sur la croix, Jésus prie sa première ligne, et les auteurs des Évangiles remarquent des détails du psaume dans la crucifixion.",
+          "title_ko": "십자가의 시편",
+          "summary_ko": "다윗의 시는 하나님께 버림받은 느낌에서 찬양으로 나아가요. 십자가에서 예수님은 이 시의 첫 줄로 기도하시고, 복음서 기자들은 십자가 사건에서 이 시편의 세부 내용을 발견해요.",
+          "title_zh": "十字架的诗篇",
+          "summary_zh": "大卫的这篇诗从觉得被神离弃转向赞美。耶稣在十字架上说出它的第一句，福音书作者也留意到诗篇中的细节在钉十字架时一一应验。"
         },
         {
           "id": "passover",
@@ -234,21 +345,36 @@
               "ref": "Exod.12.13",
               "label": "When I see the blood, I will pass over",
               "label_es": "Cuando vea la sangre, pasaré de largo",
-              "label_pt": "Quando eu vir o sangue, passarei adiante"
+              "label_pt": "Quando eu vir o sangue, passarei adiante",
+              "label_fr": "Je verrai le sang et je passerai par-dessus",
+              "label_ko": "내가 피를 볼 때에 너희를 넘어가리니",
+              "label_zh": "我一见这血，就越过你们去"
             },
             {
               "ref": "John.1.29",
               "label": "The Lamb of God",
               "label_es": "El Cordero de Dios",
-              "label_pt": "O Cordeiro de Deus"
+              "label_pt": "O Cordeiro de Deus",
+              "label_fr": "L’Agneau de Dieu",
+              "label_ko": "하나님의 어린양",
+              "label_zh": "神的羔羊"
             },
             {
               "ref": "1Cor.5.7",
               "label": "Christ our Passover lamb",
               "label_es": "Cristo, nuestro cordero pascual",
-              "label_pt": "Cristo, nosso cordeiro pascal"
+              "label_pt": "Cristo, nosso cordeiro pascal",
+              "label_fr": "Christ, notre Pâque",
+              "label_ko": "우리의 유월절 양 그리스도",
+              "label_zh": "基督我们逾越节的羔羊"
             }
-          ]
+          ],
+          "title_fr": "L’agneau de la Pâque",
+          "summary_fr": "Lors de la première Pâque, le sang d’un agneau protège Israël du jugement. Jean-Baptiste appelle Jésus l’Agneau de Dieu, et Paul dit que Christ est notre Pâque.",
+          "title_ko": "유월절 어린양",
+          "summary_ko": "첫 유월절에 어린양의 피가 이스라엘을 심판에서 지켜 줘요. 세례 요한은 예수님을 하나님의 어린양이라 부르고, 바울은 그리스도를 우리의 유월절 양이라고 불러요.",
+          "title_zh": "逾越节的羔羊",
+          "summary_zh": "在第一个逾越节，羔羊的血保护以色列人免受审判。施洗约翰称耶稣为神的羔羊，保罗称基督为我们逾越节的羔羊。"
         },
         {
           "id": "newcovenant",
@@ -265,22 +391,37 @@
               "end": "Jer.31.34",
               "label": "A covenant written on the heart",
               "label_es": "Un pacto escrito en el corazón",
-              "label_pt": "Uma aliança escrita no coração"
+              "label_pt": "Uma aliança escrita no coração",
+              "label_fr": "Une alliance écrite dans le cœur",
+              "label_ko": "마음에 기록한 언약",
+              "label_zh": "写在心上的约"
             },
             {
               "ref": "Luke.22.20",
               "label": "The cup of the new covenant",
               "label_es": "La copa del nuevo pacto",
-              "label_pt": "O cálice da nova aliança"
+              "label_pt": "O cálice da nova aliança",
+              "label_fr": "La coupe de la nouvelle alliance",
+              "label_ko": "새 언약의 잔",
+              "label_zh": "新约的杯"
             },
             {
               "ref": "Heb.8.8",
               "end": "Heb.8.12",
               "label": "A better covenant",
               "label_es": "Un pacto mejor",
-              "label_pt": "Uma aliança superior"
+              "label_pt": "Uma aliança superior",
+              "label_fr": "Une alliance meilleure",
+              "label_ko": "더 좋은 언약",
+              "label_zh": "更美之约"
             }
-          ]
+          ],
+          "title_fr": "La nouvelle alliance",
+          "summary_fr": "Jérémie promet une nouvelle alliance, avec la loi écrite dans les cœurs et les péchés pardonnés. Lors de la Cène, Jésus appelle la coupe la nouvelle alliance en son sang, et l’épître aux Hébreux explique qu’elle est meilleure que l’ancienne.",
+          "title_ko": "새 언약",
+          "summary_ko": "예레미야는 율법을 마음에 기록하고 죄를 용서하시는 새 언약을 약속해요. 마지막 만찬에서 예수님은 잔을 내 피로 세우는 새 언약이라 부르시고, 히브리서는 이 언약이 옛 언약보다 더 좋다고 설명해요.",
+          "title_zh": "新约",
+          "summary_zh": "耶利米应许一个新约：律法写在心上，罪得赦免。在最后的晚餐中，耶稣称这杯是用他的血所立的新约，希伯来书则解释它比旧约更美。"
         },
         {
           "id": "donkey",
@@ -296,21 +437,36 @@
               "ref": "Zech.9.9",
               "label": "Your king comes, humble on a donkey",
               "label_es": "Tu rey viene, humilde, en un asno",
-              "label_pt": "O seu rei vem, humilde, montado em um jumento"
+              "label_pt": "O seu rei vem, humilde, montado em um jumento",
+              "label_fr": "Ton roi vient, humble et monté sur un âne",
+              "label_ko": "네 왕이 겸손하여 나귀를 타고 오시나니",
+              "label_zh": "你的王来了，谦和地骑着驴"
             },
             {
               "ref": "Matt.21.5",
               "label": "Jesus enters Jerusalem",
               "label_es": "Jesús entra en Jerusalén",
-              "label_pt": "Jesus entra em Jerusalém"
+              "label_pt": "Jesus entra em Jerusalém",
+              "label_fr": "Jésus entre à Jérusalem",
+              "label_ko": "예수님이 예루살렘에 들어가세요",
+              "label_zh": "耶稣进入耶路撒冷"
             },
             {
               "ref": "John.12.16",
               "label": "Later the disciples understood",
               "label_es": "Después los discípulos entendieron",
-              "label_pt": "Depois os discípulos entenderam"
+              "label_pt": "Depois os discípulos entenderam",
+              "label_fr": "Plus tard, les disciples comprirent",
+              "label_ko": "나중에야 제자들이 깨달았어요",
+              "label_zh": "门徒后来才明白"
             }
-          ]
+          ],
+          "title_fr": "Le roi monté sur un âne",
+          "summary_fr": "Zacharie montre le roi de Jérusalem arrivant humblement, monté sur un âne. Jésus entre ainsi à Jérusalem, et Jean note que les disciples n’ont compris que plus tard.",
+          "title_ko": "나귀를 타신 왕",
+          "summary_ko": "스가랴는 예루살렘의 왕이 겸손히 나귀를 타고 오시는 모습을 그려요. 예수님은 이렇게 예루살렘에 들어가시고, 요한은 제자들이 나중에야 깨달았다고 기록해요.",
+          "title_zh": "骑驴的王",
+          "summary_zh": "撒迦利亚描绘耶路撒冷的王谦和地骑着驴而来。耶稣正是这样进入耶路撒冷，约翰还提到，门徒到后来才明白。"
         },
         {
           "id": "spirit",
@@ -327,16 +483,28 @@
               "end": "Joel.2.29",
               "label": "I will pour out my Spirit",
               "label_es": "Derramaré mi Espíritu",
-              "label_pt": "Derramarei o meu Espírito"
+              "label_pt": "Derramarei o meu Espírito",
+              "label_fr": "Je répandrai mon Esprit",
+              "label_ko": "내가 내 영을 부어 주리니",
+              "label_zh": "我要将我的灵浇灌"
             },
             {
               "ref": "Acts.2.16",
               "end": "Acts.2.21",
               "label": "This is what Joel spoke about",
               "label_es": "Esto es lo que dijo Joel",
-              "label_pt": "É isto que Joel anunciou"
+              "label_pt": "É isto que Joel anunciou",
+              "label_fr": "C’est ce qu’avait annoncé Joël",
+              "label_ko": "이것은 요엘이 말한 것이에요",
+              "label_zh": "这正是先知约珥所说的"
             }
-          ]
+          ],
+          "title_fr": "L’Esprit répandu",
+          "summary_fr": "Joël promet que Dieu répandra son Esprit sur toutes sortes de personnes. À la Pentecôte, Pierre dit que c’est ce qu’avait annoncé le prophète.",
+          "title_ko": "부어 주신 성령",
+          "summary_ko": "요엘은 하나님이 모든 사람에게 그분의 영을 부어 주실 것이라고 약속해요. 오순절에 베드로는 이것이 선지자가 말한 바로 그 일이라고 말해요.",
+          "title_zh": "圣灵浇灌",
+          "summary_zh": "约珥应许神要将他的灵浇灌各样的人。在五旬节，彼得说这正是先知所说的。"
         },
         {
           "id": "sonofman",
@@ -353,21 +521,36 @@
               "end": "Dan.7.14",
               "label": "One like a son of man",
               "label_es": "Uno como un hijo de hombre",
-              "label_pt": "Alguém como um filho de homem"
+              "label_pt": "Alguém como um filho de homem",
+              "label_fr": "Quelqu’un de semblable à un fils d’homme",
+              "label_ko": "인자 같은 이",
+              "label_zh": "有一位像人子的"
             },
             {
               "ref": "Mark.14.62",
               "label": "Jesus answers at his trial",
               "label_es": "Jesús responde en su juicio",
-              "label_pt": "Jesus responde no seu julgamento"
+              "label_pt": "Jesus responde no seu julgamento",
+              "label_fr": "Jésus répond lors de son procès",
+              "label_ko": "재판에서 예수님이 대답하세요",
+              "label_zh": "耶稣受审时的回答"
             },
             {
               "ref": "Rev.1.7",
               "label": "Coming with the clouds",
               "label_es": "Viene con las nubes",
-              "label_pt": "Vem com as nuvens"
+              "label_pt": "Vem com as nuvens",
+              "label_fr": "Il vient avec les nuées",
+              "label_ko": "구름을 타고 오시는 이",
+              "label_zh": "驾云降临"
             }
-          ]
+          ],
+          "title_fr": "Le Fils de l’homme",
+          "summary_fr": "Daniel voit quelqu’un de semblable à un fils d’homme recevoir un règne éternel. Lors de son procès, Jésus s’applique cette vision, et l’Apocalypse décrit son retour dans les mêmes termes.",
+          "title_ko": "인자",
+          "summary_ko": "다니엘은 인자 같은 이가 영원한 나라를 받는 것을 봐요. 재판에서 예수님은 이 환상을 자신에게 적용하시고, 요한계시록은 같은 표현으로 그분의 다시 오심을 그려요.",
+          "title_zh": "人子",
+          "summary_zh": "但以理看见一位像人子的，得了永远的国度。耶稣受审时把这异象用在自己身上，启示录也用同样的话描绘他的再来。"
         },
         {
           "id": "serpent",
@@ -383,23 +566,41 @@
               "ref": "Gen.3.15",
               "label": "The offspring will crush the serpent",
               "label_es": "La descendencia aplastará a la serpiente",
-              "label_pt": "A descendência esmagará a serpente"
+              "label_pt": "A descendência esmagará a serpente",
+              "label_fr": "La descendance écrasera le serpent",
+              "label_ko": "여자의 후손이 뱀의 머리를 상하게 할 거예요",
+              "label_zh": "女人的后裔要伤蛇的头"
             },
             {
               "ref": "Rom.16.20",
               "label": "God will crush Satan",
               "label_es": "Dios aplastará a Satanás",
-              "label_pt": "Deus esmagará Satanás"
+              "label_pt": "Deus esmagará Satanás",
+              "label_fr": "Dieu écrasera Satan",
+              "label_ko": "하나님이 사탄을 상하게 하실 거예요",
+              "label_zh": "神要将撒但践踏"
             },
             {
               "ref": "Rev.12.9",
               "label": "The ancient serpent thrown down",
               "label_es": "La serpiente antigua es arrojada",
-              "label_pt": "A antiga serpente é lançada fora"
+              "label_pt": "A antiga serpente é lançada fora",
+              "label_fr": "Le serpent ancien précipité",
+              "label_ko": "옛 뱀이 내쫓겨요",
+              "label_zh": "古蛇被摔下去"
             }
-          ]
+          ],
+          "title_fr": "Le serpent écrasé",
+          "summary_fr": "Après la chute, Dieu dit que la descendance de la femme écrasera le serpent. Paul et Jean reprennent cette image du mal vaincu. Beaucoup de chrétiens ont lu Genèse 3:15 comme la première annonce de l’Évangile.",
+          "title_ko": "짓밟힌 뱀",
+          "summary_ko": "타락 후 하나님은 여자의 후손이 뱀의 머리를 상하게 할 것이라고 말씀하세요. 바울과 요한은 악이 패배하는 이 그림을 사용해요. 많은 그리스도인이 창세기 3:15을 복음의 첫 약속으로 읽어 왔어요.",
+          "title_zh": "蛇被伤头",
+          "summary_zh": "人堕落之后，神说女人的后裔要伤蛇的头。保罗和约翰都用这幅图画来描述邪恶被击败。许多基督徒把创世记 3:15 视为最早的福音应许。"
         }
-      ]
+      ],
+      "name_fr": "Prophéties et accomplissements",
+      "name_ko": "예언과 성취",
+      "name_zh": "预言与应验"
     },
     {
       "id": "covenants",
@@ -422,16 +623,28 @@
               "end": "Gen.9.13",
               "label": "The rainbow sign",
               "label_es": "La señal del arcoíris",
-              "label_pt": "O sinal do arco-íris"
+              "label_pt": "O sinal do arco-íris",
+              "label_fr": "Le signe de l’arc-en-ciel",
+              "label_ko": "무지개 언약의 증거",
+              "label_zh": "彩虹的记号"
             },
             {
               "ref": "Isa.54.9",
               "end": "Isa.54.10",
               "label": "As I swore in Noah's day",
               "label_es": "Como juré en los días de Noé",
-              "label_pt": "Como jurei nos dias de Noé"
+              "label_pt": "Como jurei nos dias de Noé",
+              "label_fr": "Comme je l’ai juré au temps de Noé",
+              "label_ko": "노아의 때에 맹세한 것같이",
+              "label_zh": "如我在挪亚的日子起誓"
             }
-          ]
+          ],
+          "title_fr": "L’alliance avec Noé",
+          "summary_fr": "Après le déluge, Dieu promet de ne plus jamais détruire la terre par un déluge, avec l’arc-en-ciel comme signe. Ésaïe rappelle cette promesse comme une image de l’amour fidèle de Dieu.",
+          "title_ko": "노아와 맺은 언약",
+          "summary_ko": "홍수 후 하나님은 다시는 홍수로 땅을 멸하지 않겠다고 약속하시고 무지개를 그 증거로 주세요. 이사야는 이 약속을 떠올리며 하나님의 변함없는 사랑을 그려요.",
+          "title_zh": "与挪亚立的约",
+          "summary_zh": "洪水之后，神应许不再用洪水毁灭大地，以彩虹为记号。以赛亚回想这个应许，用来描绘神坚定不移的爱。"
         },
         {
           "id": "cov-abraham",
@@ -448,27 +661,45 @@
               "end": "Gen.15.6",
               "label": "Count the stars",
               "label_es": "Cuenta las estrellas",
-              "label_pt": "Conte as estrelas"
+              "label_pt": "Conte as estrelas",
+              "label_fr": "Compte les étoiles",
+              "label_ko": "별을 세어 보라",
+              "label_zh": "数算天上的星"
             },
             {
               "ref": "Gen.17.7",
               "label": "An everlasting covenant",
               "label_es": "Un pacto eterno",
-              "label_pt": "Uma aliança eterna"
+              "label_pt": "Uma aliança eterna",
+              "label_fr": "Une alliance éternelle",
+              "label_ko": "영원한 언약",
+              "label_zh": "永远的约"
             },
             {
               "ref": "Rom.4.16",
               "label": "The promise comes by faith",
               "label_es": "La promesa viene por la fe",
-              "label_pt": "A promessa vem pela fé"
+              "label_pt": "A promessa vem pela fé",
+              "label_fr": "La promesse vient par la foi",
+              "label_ko": "약속은 믿음으로 주어져요",
+              "label_zh": "应许是本乎信"
             },
             {
               "ref": "Gal.3.29",
               "label": "Heirs according to the promise",
               "label_es": "Herederos según la promesa",
-              "label_pt": "Herdeiros segundo a promessa"
+              "label_pt": "Herdeiros segundo a promessa",
+              "label_fr": "Héritiers selon la promesse",
+              "label_ko": "약속대로 유업을 이을 자",
+              "label_zh": "照着应许承受产业的人"
             }
-          ]
+          ],
+          "title_fr": "L’alliance avec Abraham",
+          "summary_fr": "Dieu promet à Abraham une famille, une terre et la bénédiction pour les nations. Paul dit que la promesse a toujours reposé sur la foi, et qu’elle s’adresse à tous ceux qui croient.",
+          "title_ko": "아브라함과 맺은 언약",
+          "summary_ko": "하나님은 아브라함에게 자손과 땅, 그리고 열방을 위한 복을 약속하세요. 바울은 이 약속이 처음부터 믿음에 관한 것이었고 믿는 모든 사람에게 주어진다고 말해요.",
+          "title_zh": "与亚伯拉罕立的约",
+          "summary_zh": "神应许亚伯拉罕后裔、土地，并要使万国得福。保罗说这应许始终是凭着信，并且临到一切相信的人。"
         },
         {
           "id": "cov-sinai",
@@ -485,22 +716,37 @@
               "end": "Exod.19.6",
               "label": "My treasured possession",
               "label_es": "Mi tesoro especial",
-              "label_pt": "O meu tesouro especial"
+              "label_pt": "O meu tesouro especial",
+              "label_fr": "Mon trésor particulier",
+              "label_ko": "내 소유가 되겠고",
+              "label_zh": "属我的子民"
             },
             {
               "ref": "Exod.24.8",
               "label": "The blood of the covenant",
               "label_es": "La sangre del pacto",
-              "label_pt": "O sangue da aliança"
+              "label_pt": "O sangue da aliança",
+              "label_fr": "Le sang de l’alliance",
+              "label_ko": "언약의 피",
+              "label_zh": "立约的血"
             },
             {
               "ref": "Heb.9.18",
               "end": "Heb.9.22",
               "label": "Explained in Hebrews",
               "label_es": "Explicado en Hebreos",
-              "label_pt": "Explicado em Hebreus"
+              "label_pt": "Explicado em Hebreus",
+              "label_fr": "Expliqué dans l’épître aux Hébreux",
+              "label_ko": "히브리서의 설명",
+              "label_zh": "希伯来书中的解释"
             }
-          ]
+          ],
+          "title_fr": "L’alliance du Sinaï",
+          "summary_fr": "Au Sinaï, Dieu fait d’Israël son peuple précieux et scelle l’alliance par le sang. L’épître aux Hébreux revient sur cette alliance pour expliquer ce que signifie le sang de Jésus.",
+          "title_ko": "시내산 언약",
+          "summary_ko": "시내산에서 하나님은 이스라엘을 자기의 소유된 백성으로 삼으시고 피로 언약을 세우세요. 히브리서는 이 언약을 돌아보며 예수님의 피가 무엇을 뜻하는지 설명해요.",
+          "title_zh": "西奈之约",
+          "summary_zh": "在西奈山，神使以色列成为属他的子民，并用血立约。希伯来书回顾这个约，解释耶稣的血有什么意义。"
         },
         {
           "id": "cov-david",
@@ -516,23 +762,38 @@
               "ref": "2Sam.7.16",
               "label": "Your throne established for ever",
               "label_es": "Tu trono establecido para siempre",
-              "label_pt": "O seu trono firmado para sempre"
+              "label_pt": "O seu trono firmado para sempre",
+              "label_fr": "Ton trône affermi pour toujours",
+              "label_ko": "네 왕위가 영원히 견고하리라",
+              "label_zh": "你的王位必坚定，直到永远"
             },
             {
               "ref": "Ps.89.3",
               "end": "Ps.89.4",
               "label": "Sworn to David my servant",
               "label_es": "Juré a David mi siervo",
-              "label_pt": "Jurei a Davi, meu servo"
+              "label_pt": "Jurei a Davi, meu servo",
+              "label_fr": "Juré à David, mon serviteur",
+              "label_ko": "내 종 다윗에게 맹세하기를",
+              "label_zh": "向我的仆人大卫起了誓"
             },
             {
               "ref": "Luke.1.32",
               "end": "Luke.1.33",
               "label": "The throne of his father David",
               "label_es": "El trono de su padre David",
-              "label_pt": "O trono de seu pai Davi"
+              "label_pt": "O trono de seu pai Davi",
+              "label_fr": "Le trône de David, son père",
+              "label_ko": "그 조상 다윗의 왕위",
+              "label_zh": "他祖大卫的位"
             }
-          ]
+          ],
+          "title_fr": "L’alliance avec David",
+          "summary_fr": "Dieu promet que la maison et le royaume de David dureront pour toujours. Les psaumes célèbrent cette promesse, et le Nouveau Testament annonce Jésus comme le fils de David qui l’accomplit.",
+          "title_ko": "다윗과 맺은 언약",
+          "summary_ko": "하나님은 다윗의 집과 나라가 영원히 이어질 것이라고 약속하세요. 시편은 이 약속을 노래하고, 신약은 이 약속을 지키시는 다윗의 자손으로 예수님을 선포해요.",
+          "title_zh": "与大卫立的约",
+          "summary_zh": "神应许大卫的家和国必存到永远。诗篇歌颂这个应许，新约则宣告耶稣就是成就这应许的大卫子孙。"
         },
         {
           "id": "cov-new",
@@ -548,30 +809,51 @@
               "ref": "Jer.31.33",
               "label": "My law on their hearts",
               "label_es": "Mi ley en su corazón",
-              "label_pt": "A minha lei no coração deles"
+              "label_pt": "A minha lei no coração deles",
+              "label_fr": "Ma loi dans leur cœur",
+              "label_ko": "내 법을 그들의 마음에",
+              "label_zh": "我要将我的律法写在他们心上"
             },
             {
               "ref": "Ezek.36.26",
               "end": "Ezek.36.27",
               "label": "A new heart and my Spirit",
               "label_es": "Un corazón nuevo y mi Espíritu",
-              "label_pt": "Um coração novo e o meu Espírito"
+              "label_pt": "Um coração novo e o meu Espírito",
+              "label_fr": "Un cœur nouveau et mon Esprit",
+              "label_ko": "새 마음과 나의 영",
+              "label_zh": "新心和我的灵"
             },
             {
               "ref": "Luke.22.20",
               "label": "The new covenant in my blood",
               "label_es": "El nuevo pacto en mi sangre",
-              "label_pt": "A nova aliança no meu sangue"
+              "label_pt": "A nova aliança no meu sangue",
+              "label_fr": "La nouvelle alliance en mon sang",
+              "label_ko": "내 피로 세우는 새 언약",
+              "label_zh": "用我血所立的新约"
             },
             {
               "ref": "Heb.9.15",
               "label": "Mediator of a new covenant",
               "label_es": "Mediador de un nuevo pacto",
-              "label_pt": "Mediador de uma nova aliança"
+              "label_pt": "Mediador de uma nova aliança",
+              "label_fr": "Médiateur d’une nouvelle alliance",
+              "label_ko": "새 언약의 중보자",
+              "label_zh": "新约的中保"
             }
-          ]
+          ],
+          "title_fr": "La nouvelle alliance",
+          "summary_fr": "Jérémie et Ézéchiel promettent un cœur nouveau et l’Esprit de Dieu au-dedans. Jésus inaugure la nouvelle alliance lors de la Cène, et l’épître aux Hébreux l’appelle son médiateur.",
+          "title_ko": "새 언약",
+          "summary_ko": "예레미야와 에스겔은 새 마음과 그 안에 두실 하나님의 영을 약속해요. 예수님은 마지막 만찬에서 새 언약을 시작하시고, 히브리서는 그분을 새 언약의 중보자라고 불러요.",
+          "title_zh": "新约",
+          "summary_zh": "耶利米和以西结应许一颗新心，以及神的灵住在里面。耶稣在最后的晚餐中设立新约，希伯来书称他为新约的中保。"
         }
-      ]
+      ],
+      "name_fr": "Alliances",
+      "name_ko": "언약",
+      "name_zh": "圣约"
     },
     {
       "id": "symbols",
@@ -593,27 +875,45 @@
               "ref": "Gen.22.8",
               "label": "God will provide the lamb",
               "label_es": "Dios proveerá el cordero",
-              "label_pt": "Deus proverá o cordeiro"
+              "label_pt": "Deus proverá o cordeiro",
+              "label_fr": "Dieu pourvoira à l’agneau",
+              "label_ko": "하나님이 어린양을 준비하시리라",
+              "label_zh": "神必自己预备羔羊"
             },
             {
               "ref": "Isa.53.7",
               "label": "Like a lamb led to the slaughter",
               "label_es": "Como cordero llevado al matadero",
-              "label_pt": "Como cordeiro levado ao matadouro"
+              "label_pt": "Como cordeiro levado ao matadouro",
+              "label_fr": "Comme un agneau mené à l’abattoir",
+              "label_ko": "도살장으로 끌려가는 어린양같이",
+              "label_zh": "像羊羔被牵到宰杀之地"
             },
             {
               "ref": "John.1.29",
               "label": "The Lamb of God",
               "label_es": "El Cordero de Dios",
-              "label_pt": "O Cordeiro de Deus"
+              "label_pt": "O Cordeiro de Deus",
+              "label_fr": "L’Agneau de Dieu",
+              "label_ko": "하나님의 어린양",
+              "label_zh": "神的羔羊"
             },
             {
               "ref": "Rev.5.6",
               "label": "The Lamb on the throne",
               "label_es": "El Cordero en el trono",
-              "label_pt": "O Cordeiro no trono"
+              "label_pt": "O Cordeiro no trono",
+              "label_fr": "L’Agneau sur le trône",
+              "label_ko": "보좌 위의 어린양",
+              "label_zh": "宝座上的羔羊"
             }
-          ]
+          ],
+          "title_fr": "L’agneau",
+          "summary_fr": "D’Isaac sur la montagne jusqu’au trône du ciel, l’agneau représente le sacrifice offert à la place des autres.",
+          "title_ko": "어린양",
+          "summary_ko": "산 위의 이삭부터 하늘 보좌까지, 어린양은 다른 이를 대신하는 희생을 상징해요.",
+          "title_zh": "羔羊",
+          "summary_zh": "从山上的以撒到天上的宝座，羔羊代表替别人献上的祭。"
         },
         {
           "id": "sym-shepherd",
@@ -629,27 +929,45 @@
               "ref": "Ps.23.1",
               "label": "The Lord is my shepherd",
               "label_es": "El Señor es mi pastor",
-              "label_pt": "O Senhor é o meu pastor"
+              "label_pt": "O Senhor é o meu pastor",
+              "label_fr": "L’Éternel est mon berger",
+              "label_ko": "여호와는 나의 목자시니",
+              "label_zh": "耶和华是我的牧者"
             },
             {
               "ref": "Ezek.34.23",
               "label": "One shepherd over them",
               "label_es": "Un solo pastor sobre ellos",
-              "label_pt": "Um só pastor sobre elas"
+              "label_pt": "Um só pastor sobre elas",
+              "label_fr": "Un seul berger pour elles",
+              "label_ko": "한 목자를 그들 위에 세워",
+              "label_zh": "一个牧人牧养他们"
             },
             {
               "ref": "John.10.11",
               "label": "I am the good shepherd",
               "label_es": "Yo soy el buen pastor",
-              "label_pt": "Eu sou o bom pastor"
+              "label_pt": "Eu sou o bom pastor",
+              "label_fr": "Je suis le bon berger",
+              "label_ko": "나는 선한 목자라",
+              "label_zh": "我是好牧人"
             },
             {
               "ref": "1Pet.5.4",
               "label": "The Chief Shepherd",
               "label_es": "El Príncipe de los pastores",
-              "label_pt": "O Supremo Pastor"
+              "label_pt": "O Supremo Pastor",
+              "label_fr": "Le souverain berger",
+              "label_ko": "목자장",
+              "label_zh": "牧长"
             }
-          ]
+          ],
+          "title_fr": "Le berger",
+          "summary_fr": "Dieu prend soin de son peuple comme un berger, il promet un bon berger quand les chefs d’Israël échouent, et Jésus dit qu’il est ce berger.",
+          "title_ko": "목자",
+          "summary_ko": "하나님은 목자처럼 백성을 돌보시고, 이스라엘의 지도자들이 실패할 때 선한 목자를 약속하세요. 예수님은 자신이 바로 그 목자라고 말씀하세요.",
+          "title_zh": "牧人",
+          "summary_zh": "神像牧人一样看顾他的百姓；当以色列的领袖失职时，他应许一位好牧人，耶稣说他就是那位牧人。"
         },
         {
           "id": "sym-vine",
@@ -665,22 +983,37 @@
               "ref": "Ps.80.8",
               "label": "A vine brought out of Egypt",
               "label_es": "Una vid traída de Egipto",
-              "label_pt": "Uma videira trazida do Egito"
+              "label_pt": "Uma videira trazida do Egito",
+              "label_fr": "Une vigne arrachée d’Égypte",
+              "label_ko": "애굽에서 가져온 포도나무",
+              "label_zh": "从埃及挪出的葡萄树"
             },
             {
               "ref": "Isa.5.7",
               "label": "The vineyard that disappointed",
               "label_es": "La viña que decepcionó",
-              "label_pt": "A vinha que decepcionou"
+              "label_pt": "A vinha que decepcionou",
+              "label_fr": "La vigne qui a déçu",
+              "label_ko": "실망을 안긴 포도원",
+              "label_zh": "令人失望的葡萄园"
             },
             {
               "ref": "John.15.1",
               "end": "John.15.5",
               "label": "I am the true vine",
               "label_es": "Yo soy la vid verdadera",
-              "label_pt": "Eu sou a videira verdadeira"
+              "label_pt": "Eu sou a videira verdadeira",
+              "label_fr": "Je suis le vrai cep",
+              "label_ko": "나는 참포도나무요",
+              "label_zh": "我是真葡萄树"
             }
-          ]
+          ],
+          "title_fr": "La vigne",
+          "summary_fr": "Israël est décrit comme la vigne de Dieu qui n’a pas porté de bon fruit. Jésus se dit le vrai cep, et ses disciples sont les sarments.",
+          "title_ko": "포도나무",
+          "summary_ko": "이스라엘은 좋은 열매를 맺지 못한 하나님의 포도나무로 그려져요. 예수님은 자신을 참포도나무라 부르시고, 제자들을 가지라고 하세요.",
+          "title_zh": "葡萄树",
+          "summary_zh": "以色列被比作神的葡萄树，却没有结出好果子。耶稣称自己是真葡萄树，跟随他的人是枝子。"
         },
         {
           "id": "sym-temple",
@@ -697,28 +1030,46 @@
               "end": "1Kgs.8.11",
               "label": "God's glory fills the temple",
               "label_es": "La gloria de Dios llena el templo",
-              "label_pt": "A glória de Deus enche o templo"
+              "label_pt": "A glória de Deus enche o templo",
+              "label_fr": "La gloire de Dieu remplit le temple",
+              "label_ko": "여호와의 영광이 성전에 가득하여",
+              "label_zh": "神的荣光充满圣殿"
             },
             {
               "ref": "John.2.19",
               "end": "John.2.21",
               "label": "The temple of his body",
               "label_es": "El templo de su cuerpo",
-              "label_pt": "O templo do seu corpo"
+              "label_pt": "O templo do seu corpo",
+              "label_fr": "Le temple de son corps",
+              "label_ko": "자기 육체의 성전",
+              "label_zh": "他以身体为殿"
             },
             {
               "ref": "1Cor.3.16",
               "label": "You are God's temple",
               "label_es": "Ustedes son templo de Dios",
-              "label_pt": "Vocês são templo de Deus"
+              "label_pt": "Vocês são templo de Deus",
+              "label_fr": "Vous êtes le temple de Dieu",
+              "label_ko": "너희는 하나님의 성전",
+              "label_zh": "你们是神的殿"
             },
             {
               "ref": "Rev.21.22",
               "label": "God is its temple",
               "label_es": "Dios es su templo",
-              "label_pt": "Deus é o seu templo"
+              "label_pt": "Deus é o seu templo",
+              "label_fr": "Dieu est son temple",
+              "label_ko": "하나님이 그 성전이시라",
+              "label_zh": "神为城的殿"
             }
-          ]
+          ],
+          "title_fr": "Le temple",
+          "summary_fr": "Le temple est le lieu où Dieu habite au milieu de son peuple. Jésus parle de son corps comme du temple, Paul appelle l’Église le temple de Dieu, et dans la nouvelle création Dieu lui-même est le temple.",
+          "title_ko": "성전",
+          "summary_ko": "성전은 하나님이 백성 가운데 거하시는 곳이에요. 예수님은 자기 몸을 성전이라 말씀하시고, 바울은 교회를 하나님의 성전이라 부르며, 새 창조에서는 하나님이 친히 성전이 되세요.",
+          "title_zh": "圣殿",
+          "summary_zh": "圣殿是神住在他百姓中间的地方。耶稣以他的身体为殿，保罗称教会为神的殿，而在新造的世界里，神自己就是殿。"
         },
         {
           "id": "sym-water",
@@ -734,28 +1085,46 @@
               "ref": "Ezek.36.25",
               "label": "I will sprinkle clean water",
               "label_es": "Rociaré agua limpia",
-              "label_pt": "Aspergirei água pura"
+              "label_pt": "Aspergirei água pura",
+              "label_fr": "Je répandrai sur vous une eau pure",
+              "label_ko": "맑은 물을 너희에게 뿌려",
+              "label_zh": "我必用清水洒在你们身上"
             },
             {
               "ref": "Ezek.47.9",
               "label": "Where the river flows, life",
               "label_es": "Donde llega el río, hay vida",
-              "label_pt": "Onde o rio chega, há vida"
+              "label_pt": "Onde o rio chega, há vida",
+              "label_fr": "Là où va le fleuve, la vie",
+              "label_ko": "강물이 흐르는 곳마다 생명이",
+              "label_zh": "这河水所到之处，都必生活"
             },
             {
               "ref": "John.4.14",
               "label": "A spring of water welling up",
               "label_es": "Una fuente de agua que brota",
-              "label_pt": "Uma fonte de água que jorra"
+              "label_pt": "Uma fonte de água que jorra",
+              "label_fr": "Une source d’eau qui jaillit",
+              "label_ko": "솟아나는 샘물",
+              "label_zh": "泉源直涌到永生"
             },
             {
               "ref": "John.7.38",
               "end": "John.7.39",
               "label": "Rivers of living water",
               "label_es": "Ríos de agua viva",
-              "label_pt": "Rios de água viva"
+              "label_pt": "Rios de água viva",
+              "label_fr": "Des fleuves d’eau vive",
+              "label_ko": "생수의 강",
+              "label_zh": "活水的江河"
             }
-          ]
+          ],
+          "title_fr": "L’eau vive",
+          "summary_fr": "L’eau représente la purification et la vie nouvelle que donne l’Esprit de Dieu, du fleuve d’Ézéchiel à l’eau que Jésus offre.",
+          "title_ko": "생수",
+          "summary_ko": "에스겔의 강부터 예수님이 주시는 물까지, 물은 정결함과 하나님의 영이 주시는 새 생명을 상징해요.",
+          "title_zh": "活水",
+          "summary_zh": "水象征洁净，以及神的灵所赐的新生命，从以西结所见的河，到耶稣所赐的水。"
         },
         {
           "id": "sym-light",
@@ -771,29 +1140,50 @@
               "ref": "Gen.1.3",
               "label": "Let there be light",
               "label_es": "Sea la luz",
-              "label_pt": "Haja luz"
+              "label_pt": "Haja luz",
+              "label_fr": "Que la lumière soit",
+              "label_ko": "빛이 있으라",
+              "label_zh": "要有光"
             },
             {
               "ref": "Isa.9.2",
               "label": "A great light",
               "label_es": "Una gran luz",
-              "label_pt": "Uma grande luz"
+              "label_pt": "Uma grande luz",
+              "label_fr": "Une grande lumière",
+              "label_ko": "큰 빛",
+              "label_zh": "大光"
             },
             {
               "ref": "John.8.12",
               "label": "I am the light of the world",
               "label_es": "Yo soy la luz del mundo",
-              "label_pt": "Eu sou a luz do mundo"
+              "label_pt": "Eu sou a luz do mundo",
+              "label_fr": "Je suis la lumière du monde",
+              "label_ko": "나는 세상의 빛이니",
+              "label_zh": "我是世界的光"
             },
             {
               "ref": "Rev.22.5",
               "label": "The Lord will be their light",
               "label_es": "El Señor será su luz",
-              "label_pt": "O Senhor será a sua luz"
+              "label_pt": "O Senhor será a sua luz",
+              "label_fr": "Le Seigneur sera leur lumière",
+              "label_ko": "주 하나님이 그들에게 비치심이라",
+              "label_zh": "主神要光照他们"
             }
-          ]
+          ],
+          "title_fr": "La lumière",
+          "summary_fr": "Du premier jour de la création à la ville qui n’a pas besoin de soleil, la lumière représente la présence et la vérité de Dieu qui l’emportent sur les ténèbres.",
+          "title_ko": "밝게",
+          "summary_ko": "창조의 첫날부터 해가 필요 없는 성까지, 빛은 어둠을 이기는 하나님의 임재와 진리를 상징해요.",
+          "title_zh": "光",
+          "summary_zh": "从创造的第一天，到不需要日头的那城，光象征神的同在和真理胜过黑暗。"
         }
-      ]
+      ],
+      "name_fr": "Symboles et images",
+      "name_ko": "상징과 이미지",
+      "name_zh": "象征与意象"
     }
   ]
 }
