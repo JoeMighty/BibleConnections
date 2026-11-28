@@ -1,5 +1,16 @@
 [
   {
+    "id": "year",
+    "name": "A year of connections",
+    "name_es": "Un año de conexiones",
+    "name_pt": "Um ano de conexões",
+    "description": "The whole Bible in a year, a few chapters a day, with the passages each day's reading points to in other books.",
+    "description_es": "Toda la Biblia en un año, unos capítulos al día, con los pasajes de otros libros a los que apunta la lectura de cada día.",
+    "description_pt": "A Bíblia inteira em um ano, alguns capítulos por dia, com as passagens de outros livros para as quais a leitura de cada dia aponta.",
+    "source": "year",
+    "perDay": 3
+  },
+  {
     "id": "advent",
     "name": "Advent: promise and fulfilment",
     "name_es": "Adviento: promesa y cumplimiento",

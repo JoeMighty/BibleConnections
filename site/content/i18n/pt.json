@@ -1019,7 +1019,9 @@
     "Previous connection": "Conexão anterior",
     "Next connection": "Próxima conexão",
     "{n} of {m}": "{n} de {m}",
-    "Both use: {w}": "Ambos usam: {w}"
+    "Both use: {w}": "Ambos usam: {w}",
+    "Read today’s chapters on Bible.com, then follow where they lead.": "Leia os capítulos de hoje no Bible.com e depois siga para onde eles levam.",
+    "Where today’s reading leads": "Para onde a leitura de hoje leva"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",

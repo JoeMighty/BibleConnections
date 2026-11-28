@@ -1193,3 +1193,11 @@ body:not(.landing-open) .tagline { display: none; }
 .conn-step { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 12px; }
 .conn-pos { color: var(--muted); font-size: var(--t-footnote); font-variant-numeric: tabular-nums; }
 .why-line { margin: 0 0 12px; padding: 8px 12px; border-radius: var(--radius-s); background: var(--accent-soft); color: var(--text); font-size: var(--t-subhead); }
+
+/* A year of connections: today's chapters and where they lead */
+.read-chapters { margin-bottom: 16px; }
+.year-links { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 8px; }
+.year-link { display: grid; gap: 4px; width: 100%; padding: 12px 16px; border: 0; border-radius: var(--radius); background: var(--surface-2); color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.year-link:hover { background: var(--surface-3); }
+.year-refs { font-weight: 600; }
+.year-note { color: var(--muted); font-size: var(--t-subhead); }

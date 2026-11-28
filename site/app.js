@@ -2205,7 +2205,8 @@
       }
     }
     let days = [];
-    if (plan.source === 'themes') {
+    if (plan.source === 'year') days = yearDays();
+    else if (plan.source === 'themes') {
       days = THEMES.map(t => ({ title: nameOf(t), items: t.verses.slice(0, plan.perDay).map(o => {
         const v = osisToIndex(o), i = strongestFor(v);
         return i >= 0 ? { a: v, b: F[i] === v ? T[i] : F[i], ref: i } : null;
@@ -2215,6 +2216,52 @@
     }
     planCache.set(plan.id, days);
     return days;
+  }
+  // A year of connections: the whole Bible in 365 days, whole chapters only, about the same number of verses each day,
+  // and each day's strongest links from those chapters to other books (worked out when the day is opened)
+  function yearDays() {
+    const total = TOTAL, DAYS = 365, out = [];
+    let ci = 0;
+    for (let d = 0; d < DAYS && ci < chapters.length; d++) {
+      const target = Math.round(total * (d + 1) / DAYS), first = ci;
+      do ci++; while (ci < chapters.length && chapters[ci].start + chapters[ci].count / 2 <= target);
+      out.push(yearDay(chapters.slice(first, ci)));
+    }
+    return out;
+  }
+  function yearDay(chs) {
+    const start = chs[0].start, last = chs[chs.length - 1], end = last.start + last.count;
+    // "Ruth 1-4, 1 Samuel 1": one part per book
+    const parts = [];
+    for (const c of chs) { const p = parts[parts.length - 1]; if (p && p.book === c.book) p.to = c.chapter; else parts.push({ book: c.book, from: c.chapter, to: c.chapter }); }
+    const title = parts.map(p => `${BOOKS[p.book].name} ${p.from}${p.to !== p.from ? '-' + p.to : ''}`).join(', ');
+    let items = null;
+    return {
+      title, read: chs.map(c => c.start), start, end,
+      get items() {
+        if (items) return items;
+        // the strongest links from these chapters to other books, one per other book, up to three
+        const books = new Set(chs.map(c => c.book)), cand = [];
+        for (let i = 0; i < N; i++) {
+          const fIn = F[i] >= start && F[i] < end, tIn = T[i] >= start && T[i] < end;
+          if (fIn === tIn) continue;
+          if (books.has(verseBook[fIn ? T[i] : F[i]])) continue;
+          cand.push(i);
+        }
+        cand.sort((x, y) => V[y] - V[x]);
+        const used = new Set(), usedVerse = new Set();
+        items = [];
+        for (const i of cand) {
+          const inside = F[i] >= start && F[i] < end ? F[i] : T[i], other = inside === F[i] ? T[i] : F[i];
+          // different books and different verses, so the three links show three directions
+          if (used.has(verseBook[other]) || usedVerse.has(inside)) continue;
+          used.add(verseBook[other]); usedVerse.add(inside);
+          items.push({ a: inside, b: other, ref: i });
+          if (items.length === 3) break;
+        }
+        return items;
+      },
+    };
   }
   const planProgress = (id) => (store.get('plans', {})[id] || { done: [] });
   function setPlanDone(id, day, done) {
@@ -2250,7 +2297,14 @@
     let html = `<p class="step-count">${esc(nameOf(plan))} · Day ${d + 1} of ${days.length}</p>
       <div class="progress" aria-hidden="true"><span style="width:${(done.size / days.length) * 100}%"></span></div>`;
     if (day.title) html += `<h3 class="step-title">${esc(day.title)}</h3>`;
-    for (const it of day.items) {
+    if (day.read) html += `<p class="hint">${esc(tr('Read today’s chapters on Bible.com, then follow where they lead.'))}</p>
+      <ul class="chip-list read-chapters">${day.read.map(v => `<li>${ext(bibleUrl(v, v, true), `${esc(BOOKS[verseBook[v]].name)} ${verseChap[v]}`, 'chip')}</li>`).join('')}</ul>
+      <h3>${esc(tr('Where today’s reading leads'))}</h3>`;
+    // the year plan lists its links compactly: tap one to see it on the map
+    if (day.read) html += `<ul class="year-links">${day.items.map(it => { const n = noteMap.get(it.ref); return `<li><button type="button" class="year-link" data-ref="${it.ref}">
+        <span class="year-refs">${esc(refLabel(it.a))} <span aria-hidden="true">→</span><span class="sr-only"> ${esc(tr('connects to'))} </span> ${esc(refLabel(it.b))}</span>
+        <span class="year-note"${n && LANG !== 'en' ? ' lang="en"' : ''}>${esc(n ? n.text : tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[it.ref].toLocaleString(LANGS[LANG].locale)))}</span></button></li>`; }).join('')}</ul>`;
+    for (const it of day.read ? [] : day.items) {
       const note = it.note || (it.ref !== undefined && noteMap.get(it.ref)?.text);
       html += `<div class="plan-item">${it.title ? `<p class="series-title">${esc(it.title)}</p>` : ''}
         ${refCard(it.a, it.a, pal.marker)}<p class="link-arrow" aria-hidden="true">connects to</p>${refCard(it.b, it.b, pal.marker)}
