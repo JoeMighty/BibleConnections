@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- **New notes for review:** 32 draft notes on why passages connect, for the strongest connections that had none, in `docs/NOTES-DRAFT.md` for a pastor to approve, change or remove. They are not on the site until approved; `scripts/approve-notes.mjs` moves approved ones in.
+
 ### Changed
 - **Simpler settings:** three short groups, Reading (language and translations), Look (appearance, arc colors, animations) and Accessibility (text size, easier-to-read font, high contrast, kids mode), with installing, offline, backup, hidden links and reset folded under "This device and your data".
 

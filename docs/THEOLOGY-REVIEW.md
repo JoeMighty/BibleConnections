@@ -363,3 +363,7 @@ Dates are approximate. Many early dates are debated, and Genesis 1 to 11 is left
 | The early church | about AD 95 | John's vision on Patmos | Revelation 1:9 to Revelation 1:20 |
 
 **Questions for you:** Are any notes or dates misleading? Should the exodus and crucifixion dates show one view or both?
+
+## New notes waiting for review
+
+A first batch of 32 draft notes for the strongest connections without one is in [NOTES-DRAFT.md](NOTES-DRAFT.md). They go live only after review (see `scripts/approve-notes.mjs`).
