@@ -1033,7 +1033,10 @@
     "Open data": "Datos abiertos",
     "Verse": "Versículo",
     "Listen": "Escuchar",
-    "Stop": "Detener"
+    "Stop": "Detener",
+    "Reading": "Lectura",
+    "Look": "Aspecto",
+    "This device and your data": "Este dispositivo y tus datos"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

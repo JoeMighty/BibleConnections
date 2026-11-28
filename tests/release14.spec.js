@@ -19,6 +19,7 @@ test('a weak link can be reported on GitHub, or hidden and shown again on this d
   await page.locator('[data-action=hideLink]').click();
   await openSettings(page);
   await expect(page.locator('#hiddenStatus')).toHaveText('You have hidden 1 link on this device.');
+  await page.evaluate(() => { const d = document.querySelector('.set-more'); if (d) d.open = true; });
   await page.locator('#unhideAll').click();
   await expect(page.locator('#hiddenStatus')).toHaveText('You have not hidden any links.');
 });

@@ -1214,3 +1214,12 @@ body:not(.landing-open) .tagline { display: none; }
 .segmented.lang-choice label { white-space: nowrap; }
 /* Korean wraps between words, not inside them */
 :lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
+
+/* Settings in three short groups, with the device tools folded underneath */
+.set-group { border-top: 0.5px solid var(--separator); padding-top: 12px; margin-top: 12px; }
+.set-group:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+.set-group > h3, .set-more > summary h3 { margin: 0 0 8px; font-size: var(--t-headline); }
+.set-more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.set-more > summary::-webkit-details-marker { display: none; }
+.set-more > summary::after { content: ''; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); margin-right: 4px; }
+.set-more[open] > summary::after { transform: rotate(225deg); }

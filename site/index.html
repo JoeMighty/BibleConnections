@@ -443,87 +443,95 @@
   <dialog id="settings" aria-labelledby="settingsTitle">
     <form class="dialog-inner" id="settingsForm" method="dialog">
       <h2 id="settingsTitle">Settings</h2>
-      <fieldset class="field">
-        <legend>Language / Idioma</legend>
-        <div class="segmented lang-choice">
-          <label><input type="radio" name="language" value="en"> English</label>
-          <label lang="es"><input type="radio" name="language" value="es"> Español</label>
-          <label lang="pt"><input type="radio" name="language" value="pt"> Português</label>
-          <label lang="fr"><input type="radio" name="language" value="fr"> Français</label>
-          <label lang="ko"><input type="radio" name="language" value="ko"> 한국어</label>
-          <label lang="zh-Hans"><input type="radio" name="language" value="zh"> 简体中文</label>
+      <section class="set-group" aria-labelledby="setReading"><h3 id="setReading">Reading</h3>
+        <fieldset class="field">
+          <legend>Language / Idioma</legend>
+          <div class="segmented lang-choice">
+            <label><input type="radio" name="language" value="en"> English</label>
+            <label lang="es"><input type="radio" name="language" value="es"> Español</label>
+            <label lang="pt"><input type="radio" name="language" value="pt"> Português</label>
+            <label lang="fr"><input type="radio" name="language" value="fr"> Français</label>
+            <label lang="ko"><input type="radio" name="language" value="ko"> 한국어</label>
+            <label lang="zh-Hans"><input type="radio" name="language" value="zh"> 简体中文</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="versionSel">Open verses on Bible.com in</label>
+          <select id="versionSel"></select>
         </div>
-      </fieldset>
-      <fieldset class="field">
-        <legend>Appearance</legend>
-        <div class="segmented three">
-          <label><input type="radio" name="appearance" value="system"> System</label>
-          <label><input type="radio" name="appearance" value="light"> Light</label>
-          <label><input type="radio" name="appearance" value="dark"> Dark</label>
+        <div class="field">
+          <label for="version2Sel">Compare with a second translation (optional)</label>
+          <select id="version2Sel"></select>
+          <p class="hint">Verses are not stored on this site. Links open the passage on Bible.com in this translation.</p>
         </div>
-      </fieldset>
-      <fieldset class="field">
-        <legend>Arc colors</legend>
-        <div class="arc-styles" id="arcStyles"></div>
-        <p class="hint">Colors show how far apart the two passages are. To color arcs by type of book instead, use “Color arcs by” in the filters.</p>
-      </fieldset>
-      <fieldset class="field">
-        <legend>Text size</legend>
-        <div class="segmented three">
-          <label><input type="radio" name="textsize" value="standard"> Standard</label>
-          <label><input type="radio" name="textsize" value="large"> Large</label>
-          <label><input type="radio" name="textsize" value="xlarge"> Extra large</label>
+      </section>
+      <section class="set-group" aria-labelledby="setLook"><h3 id="setLook">Look</h3>
+        <fieldset class="field">
+          <legend>Appearance</legend>
+          <div class="segmented three">
+            <label><input type="radio" name="appearance" value="system"> System</label>
+            <label><input type="radio" name="appearance" value="light"> Light</label>
+            <label><input type="radio" name="appearance" value="dark"> Dark</label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Arc colors</legend>
+          <div class="arc-styles" id="arcStyles"></div>
+          <p class="hint">Colors show how far apart the two passages are. To color arcs by type of book instead, use “Color arcs by” in the filters.</p>
+        </fieldset>
+        <div class="field check">
+          <label for="motionToggle"><span>Animations (on larger screens with a mouse or trackpad)</span><input type="checkbox" class="switch" id="motionToggle"></label>
         </div>
-      </fieldset>
-      <div class="field check">
-        <label for="motionToggle"><span>Animations (on larger screens with a mouse or trackpad)</span><input type="checkbox" class="switch" id="motionToggle"></label>
-      </div>
-      <div class="field check">
-        <label for="readableToggle"><span>Easier-to-read font (Atkinson Hyperlegible, designed for low vision and helpful for dyslexia)</span><input type="checkbox" class="switch" id="readableToggle"></label>
-      </div>
-      <div class="field check">
-        <label for="kidsToggle"><span>Kids mode (bigger text, simpler words and journeys for children)</span><input type="checkbox" class="switch" id="kidsToggle"></label>
-      </div>
-      <div class="field check">
-        <label for="contrastToggle"><span>High contrast (bolder arcs and text)</span><input type="checkbox" class="switch" id="contrastToggle"></label>
-      </div>
-      <div class="field">
-        <label for="versionSel">Open verses on Bible.com in</label>
-        <select id="versionSel"></select>
-      </div>
-      <div class="field">
-        <label for="version2Sel">Compare with a second translation (optional)</label>
-        <select id="version2Sel"></select>
-        <p class="hint">Verses are not stored on this site. Links open the passage on Bible.com in this translation.</p>
-      </div>
-      <div class="field">
-        <p class="label-like">Use it like an app</p>
-        <button type="button" class="btn ghost" id="installBtn" hidden>Install Bible Connections</button>
-        <p class="hint" id="installHelp">Works offline after your first visit. To install, use your browser menu and choose “Install app” or “Add to Home Screen”. On iPhone, tap Share then Add to Home Screen.</p>
-      </div>
-      <div class="field">
-        <p class="label-like">Save for offline</p>
-        <button type="button" class="btn ghost" id="offlineBtn">Save everything for offline</button>
-        <p class="hint" id="offlineStatus" role="status">Downloads the Hebrew and Greek text, word studies and places (about 25 MB) so they work without a connection. Bible.com links still need the internet.</p>
-      </div>
-      <div class="field">
-        <p class="label-like">Your data</p>
-        <div class="actions tight">
-          <button type="button" class="btn ghost" id="backupBtn">Back up everything</button>
-          <label class="btn ghost file-btn">Restore a backup<input type="file" id="restoreFile" accept="application/json,.json"></label>
+      </section>
+      <section class="set-group" aria-labelledby="setAccess"><h3 id="setAccess">Accessibility</h3>
+        <fieldset class="field">
+          <legend>Text size</legend>
+          <div class="segmented three">
+            <label><input type="radio" name="textsize" value="standard"> Standard</label>
+            <label><input type="radio" name="textsize" value="large"> Large</label>
+            <label><input type="radio" name="textsize" value="xlarge"> Extra large</label>
+          </div>
+        </fieldset>
+        <div class="field check">
+          <label for="readableToggle"><span>Easier-to-read font (Atkinson Hyperlegible, designed for low vision and helpful for dyslexia)</span><input type="checkbox" class="switch" id="readableToggle"></label>
         </div>
-        <p class="hint" id="backupStatus" role="status">Notes, saved items, collections, reading plan progress and settings are kept on this device only. Back them up to one file to keep a copy or move them to another device.</p>
-      </div>
-      <div class="field">
-        <p class="label-like">Hidden links</p>
-        <p class="hint" id="hiddenStatus" role="status">You have not hidden any links.</p>
-        <button type="button" class="btn ghost" id="unhideAll" hidden>Show all hidden links again</button>
-      </div>
-      <div class="field">
-        <p class="label-like">Start again</p>
-        <button type="button" class="btn ghost danger" id="resetSettings">Reset settings</button>
-        <p class="hint">Puts appearance, text size, colors and translations back to how they were at first. Your notes, saved items, collections and plan progress are kept.</p>
-      </div>
+        <div class="field check">
+          <label for="contrastToggle"><span>High contrast (bolder arcs and text)</span><input type="checkbox" class="switch" id="contrastToggle"></label>
+        </div>
+        <div class="field check">
+          <label for="kidsToggle"><span>Kids mode (bigger text, simpler words and journeys for children)</span><input type="checkbox" class="switch" id="kidsToggle"></label>
+        </div>
+      </section>
+      <details class="set-group set-more"><summary><h3>This device and your data</h3></summary>
+        <div class="field">
+          <p class="label-like">Use it like an app</p>
+          <button type="button" class="btn ghost" id="installBtn" hidden>Install Bible Connections</button>
+          <p class="hint" id="installHelp">Works offline after your first visit. To install, use your browser menu and choose “Install app” or “Add to Home Screen”. On iPhone, tap Share then Add to Home Screen.</p>
+        </div>
+        <div class="field">
+          <p class="label-like">Save for offline</p>
+          <button type="button" class="btn ghost" id="offlineBtn">Save everything for offline</button>
+          <p class="hint" id="offlineStatus" role="status">Downloads the Hebrew and Greek text, word studies and places (about 25 MB) so they work without a connection. Bible.com links still need the internet.</p>
+        </div>
+        <div class="field">
+          <p class="label-like">Your data</p>
+          <div class="actions tight">
+            <button type="button" class="btn ghost" id="backupBtn">Back up everything</button>
+            <label class="btn ghost file-btn">Restore a backup<input type="file" id="restoreFile" accept="application/json,.json"></label>
+          </div>
+          <p class="hint" id="backupStatus" role="status">Notes, saved items, collections, reading plan progress and settings are kept on this device only. Back them up to one file to keep a copy or move them to another device.</p>
+        </div>
+        <div class="field">
+          <p class="label-like">Hidden links</p>
+          <p class="hint" id="hiddenStatus" role="status">You have not hidden any links.</p>
+          <button type="button" class="btn ghost" id="unhideAll" hidden>Show all hidden links again</button>
+        </div>
+        <div class="field">
+          <p class="label-like">Start again</p>
+          <button type="button" class="btn ghost danger" id="resetSettings">Reset settings</button>
+          <p class="hint">Puts appearance, text size, colors and translations back to how they were at first. Your notes, saved items, collections and plan progress are kept.</p>
+        </div>
+      </details>
       <button class="btn">Done</button>
     </form>
   </dialog>

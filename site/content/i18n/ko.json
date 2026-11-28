@@ -1034,7 +1034,10 @@
     "Open data": "공개 데이터",
     "Verse": "구절",
     "Listen": "듣기",
-    "Stop": "멈추기"
+    "Stop": "멈추기",
+    "Reading": "읽기",
+    "Look": "화면",
+    "This device and your data": "이 기기와 내 데이터"
   },
   "patterns": {
     "Showing {a} of {b} connections": "연결 {b}개 중 {a}개 표시",

@@ -1034,7 +1034,10 @@
     "Open data": "开放数据",
     "Verse": "经文",
     "Listen": "收听",
-    "Stop": "停止"
+    "Stop": "停止",
+    "Reading": "阅读",
+    "Look": "外观",
+    "This device and your data": "此设备和你的数据"
   },
   "patterns": {
     "Showing {a} of {b} connections": "显示 {b} 条连接中的 {a} 条",

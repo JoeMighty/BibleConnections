@@ -173,6 +173,7 @@ test('three different resets: clear all, reset filters, reset settings', async (
   const { openSettings } = require('./helpers');
   await openSettings(page);
   page.once('dialog', (d) => d.dismiss());
+  await page.evaluate(() => { const d = document.querySelector('.set-more'); if (d) d.open = true; });
   await page.click('#resetSettings');
   expect(await page.evaluate(() => localStorage.getItem('bc.textsize'))).toBe('"large"');
   page.once('dialog', (d) => d.accept());

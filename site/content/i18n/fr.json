@@ -1034,7 +1034,10 @@
     "Open data": "Données ouvertes",
     "Verse": "Verset",
     "Listen": "Écouter",
-    "Stop": "Arrêter"
+    "Stop": "Arrêter",
+    "Reading": "Lecture",
+    "Look": "Apparence",
+    "This device and your data": "Cet appareil et tes données"
   },
   "patterns": {
     "Showing {a} of {b} connections": "{a} connexions affichées sur {b}",

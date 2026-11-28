@@ -10,6 +10,7 @@ test('everything can be backed up to one file and restored', async ({ page }, in
   await expect(page.locator('#noteStatus')).toHaveText('Saved on this device.');
   await page.evaluate(() => { localStorage.setItem('bc.textsize', JSON.stringify('large')); localStorage.setItem('bc.plans', JSON.stringify({ story: { done: [1, 2] } })); });
   await openSettings(page);
+  await page.evaluate(() => { const d = document.querySelector('.set-more'); if (d) d.open = true; });
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#backupBtn')]);
   expect(dl.suggestedFilename()).toMatch(/^bible-connections-backup-\d{4}-\d{2}-\d{2}\.json$/);
   const file = info.outputPath('backup.json');
@@ -48,6 +49,7 @@ test('everything can be saved for offline use', async ({ page }) => {
   await page.reload();
   await ready(page);
   await openSettings(page);
+  await page.evaluate(() => { const d = document.querySelector('.set-more'); if (d) d.open = true; });
   await page.click('#offlineBtn');
   await expect(page.locator('#offlineStatus')).toHaveText('Everything is saved for offline use on this device.', { timeout: 90000 });
   const cached = await page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return (await c.keys()).map(r => new URL(r.url).pathname); });
