@@ -5,6 +5,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- **Search completes chapters and verses:** typing "John 3:" suggests that chapter's most connected verses first (John 3:16 at the top), and "Psalm 2" suggests Psalms 2, 20, 21, 22 and on. A reference that does not exist is caught as you type ("John has 21 chapters.").
+
 ### Changed
 - Roadmap: in progress are more notes on why passages connect, search that suggests as you type, read aloud and simpler settings. Next: make your own journey, Sunday readings, see what you have explored, reading streaks and a daily challenge. Later adds group mode, moving to a new device with a QR code, an App Store listing and more languages.
 

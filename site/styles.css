@@ -1201,3 +1201,4 @@ body:not(.landing-open) .tagline { display: none; }
 .year-link:hover { background: var(--surface-3); }
 .year-refs { font-weight: 600; }
 .year-note { color: var(--muted); font-size: var(--t-subhead); }
+.suggest-list .suggest-note { color: var(--danger); font-size: var(--t-subhead); cursor: default; }

@@ -3717,6 +3717,14 @@
   }
 
 
+  // how many connections touch each verse, worked out once, for ranking suggestions
+  let verseDeg = null;
+  function verseDegree() {
+    if (verseDeg) return verseDeg;
+    verseDeg = new Uint32Array(TOTAL);
+    for (let i = 0; i < N; i++) { verseDeg[F[i]]++; if (T[i] !== F[i]) verseDeg[T[i]]++; }
+    return verseDeg;
+  }
   // ---------- Search suggestions (books, recent searches, topics, people and places) ----------
   function attachSuggest(input, submit) {
     const list = document.createElement('ul');
@@ -3736,15 +3744,33 @@
     const build = () => {
       const q = input.value.trim(), n = norm(q);
       const out = [];
+      let badRef = '';
       const add = (value, label, kind) => { if (out.length < 8 && !out.some(o => o.value.toLowerCase() === value.toLowerCase())) out.push({ value, label, kind }); };
       if (!q) for (const r of store.get('searches', [])) add(r, r, 'Recent');
       else {
         // a book name, with any chapter and verse typed after it
-        const m = q.match(/^([1-3]?\s*[^\d:]+?)\s*(\d+(?:\s*[:.]\s*\d+)?)?\s*$/);
+        const m = q.match(/^([1-3]?\s*[^\d:]+?)\s*(\d+(?:\s*[:.]\s*\d*)?)?\s*$/);
         if (m) {
           const bi = findBook(m[1], true);
           const tail = m[2] ? ' ' + m[2].replace(/\s+/g, '').replace('.', ':') : '';
-          if (bi >= 0) add(BOOKS[bi].name + tail, BOOKS[bi].name + tail, 'Book');
+          if (bi >= 0) {
+            const b = BOOKS[bi], cv = (m[2] || '').replace(/\s+/g, '').replace('.', ':').split(':');
+            const c = +cv[0];
+            // a reference that does not exist is caught as you type ("John has 21 chapters")
+            if (cv[0] && (c < 1 || c > b.chapters.length)) { badRef = tr(`${b.name} has ${b.chapters.length} chapters.`); }
+            else if (cv.length === 2 && cv[1] && (+cv[1] < 1 || +cv[1] > b.chapters[c - 1])) { badRef = tr(`${b.name} ${c} has ${b.chapters[c - 1]} verses.`); }
+            else if (cv.length === 2) {
+              // "John 3:" or "John 3:1": verses of that chapter starting with what is typed, most connected first
+              const start = b.chapterStart[c - 1], count = b.chapters[c - 1], deg = verseDegree();
+              const vs = [...Array(count).keys()].map(k => k + 1).filter(v => !cv[1] || String(v).startsWith(cv[1])).sort((x, y) => deg[start + y - 1] - deg[start + x - 1] || x - y);
+              for (const v of vs.slice(0, 6)) add(`${b.name} ${c}:${v}`, `${b.name} ${c}:${v}`, 'Verse');
+            } else if (cv[0]) {
+              add(b.name + tail, b.name + tail, 'Chapter');
+              // "Psalm 2": also Psalm 20, 21, 22, 23 and the other chapters starting with 2, in order
+              const chs = [...Array(b.chapters.length).keys()].map(k => k + 1).filter(ch => ch !== c && String(ch).startsWith(cv[0])).slice(0, 5);
+              for (const ch of chs) add(`${b.name} ${ch}`, `${b.name} ${ch}`, 'Chapter');
+            } else add(b.name, b.name, 'Book');
+          }
           const nb = norm(m[1]);
           if (nb.length >= 2) for (const b of BOOKS) if (norm(b.name).startsWith(nb)) add(b.name + tail, b.name + tail, 'Book');
         }
@@ -3756,8 +3782,9 @@
         }
       }
       items = out;
-      if (!out.length || document.activeElement !== input) { close(); return; }
-      list.innerHTML = out.map((o, i) => `<li role="option" id="${list.id}-${i}" data-i="${i}" aria-selected="false"><span>${esc(o.label)}</span><span class="muted">${esc(tr(o.kind))}</span></li>`).join('');
+      if ((!out.length && !badRef) || document.activeElement !== input) { close(); return; }
+      list.innerHTML = (badRef ? `<li class="suggest-note" role="presentation"><span>${esc(badRef)}</span></li>` : '')
+        + out.map((o, i) => `<li role="option" id="${list.id}-${i}" data-i="${i}" aria-selected="false"><span>${esc(o.label)}</span><span class="muted">${esc(tr(o.kind))}</span></li>`).join('');
       list.hidden = false; input.setAttribute('aria-expanded', 'true'); setActive(-1);
     };
     let blurTimer = 0;

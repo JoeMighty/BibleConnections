@@ -1031,7 +1031,8 @@
     "Cross references from OpenBible.info (CC BY 4.0). Made with bibleconnections.app.": "Referências cruzadas do OpenBible.info (CC BY 4.0). Feito com bibleconnections.app.",
     "Downloaded.": "Baixado.",
     "Sorry, the file could not be made. Please try again.": "Desculpe, não foi possível criar o arquivo. Tente novamente.",
-    "Open data": "Dados abertos"
+    "Open data": "Dados abertos",
+    "Verse": "Versículo"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",
