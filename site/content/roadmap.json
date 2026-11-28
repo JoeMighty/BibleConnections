@@ -235,6 +235,27 @@
   ],
   "shipped": [
     {
+      "version": "0.29.0",
+      "items": [
+        "Simpler settings: Reading, Look and Accessibility"
+      ],
+      "items_es": [
+        "Ajustes más sencillos: Lectura, Aspecto y Accesibilidad"
+      ],
+      "items_pt": [
+        "Ajustes mais simples: Leitura, Aparência e Acessibilidade"
+      ],
+      "items_fr": [
+        "Réglages plus simples : Lecture, Apparence et Accessibilité"
+      ],
+      "items_ko": [
+        "더 간단해진 설정: 읽기, 화면, 접근성"
+      ],
+      "items_zh": [
+        "更简洁的设置：阅读、外观和无障碍"
+      ]
+    },
+    {
       "version": "0.28.0",
       "items": [
         "French, Korean and Simplified Chinese",
