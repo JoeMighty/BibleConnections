@@ -1021,7 +1021,16 @@
     "{n} of {m}": "{n} de {m}",
     "Both use: {w}": "Ambos usam: {w}",
     "Read today’s chapters on Bible.com, then follow where they lead.": "Leia os capítulos de hoje no Bible.com e depois siga para onde eles levam.",
-    "Where today’s reading leads": "Para onde a leitura de hoje leva"
+    "Where today’s reading leads": "Para onde a leitura de hoje leva",
+    "Word document": "Documento do Word",
+    "Markdown": "Markdown",
+    "Read {r} on Bible.com": "Ler {r} no Bible.com",
+    "My notes on {r}": "Minhas notas sobre {r}",
+    "Prepared with Bible Connections": "Preparado com o Bible Connections",
+    "Read each passage in your own Bible or on Bible.com. No Bible text is included here.": "Leia cada passagem na sua própria Bíblia ou no Bible.com. Nenhum texto bíblico está incluído aqui.",
+    "Cross references from OpenBible.info (CC BY 4.0). Made with bibleconnections.app.": "Referências cruzadas do OpenBible.info (CC BY 4.0). Feito com bibleconnections.app.",
+    "Downloaded.": "Baixado.",
+    "Sorry, the file could not be made. Please try again.": "Desculpe, não foi possível criar o arquivo. Tente novamente."
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexões",

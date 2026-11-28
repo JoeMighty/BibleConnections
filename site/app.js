@@ -4082,10 +4082,72 @@
     if (!col.items.length) html += '<p class="muted">This collection is empty.</p>';
     html += `<div class="actions">${col.items.length ? '<button type="button" class="btn" data-action="playCollection" data-idx="0">Step through</button>' : ''}
       <button type="button" class="btn ghost small" data-action="shareCollection">Share collection</button>
+      ${col.items.length ? `<button type="button" class="btn ghost small" data-action="exportCollection" data-format="docx">${esc(tr('Word document'))}</button>
+      <button type="button" class="btn ghost small" data-action="exportCollection" data-format="md">${esc(tr('Markdown'))}</button>` : ''}
       ${col.items.length ? `<a class="btn ghost small" href="slides.html?c=${encodeCollection(col)}${LANG !== 'en' ? '&lang=' + LANG : ''}" target="_blank" rel="noopener">Show as slides<span class="sr-only"> (opens in a new tab)</span></a>` : ''}
       ${col.shared ? '<button type="button" class="btn ghost small" data-action="keepCollection">Save to my collections</button>' : ''}
       <button type="button" class="btn ghost small" data-action="mode" data-mode="collections">All collections</button></div>`;
     return [col.name, html];
+  }
+  // ---------- Sermon prep export: a collection and your notes as a Word document or Markdown ----------
+  // Only references, links, the site's own notes and your notes go in: never Bible text.
+  let exportLib = null;
+  const loadExport = () => (exportLib ||= new Promise((ok, fail) => { const sc = document.createElement('script'); sc.src = 'export.js'; sc.onload = () => ok(window.bcExport); sc.onerror = fail; document.head.append(sc); }));
+  function collectionOutline(col) {
+    const base = location.origin + location.pathname, mine = getNotes();
+    const read = (v) => ({ text: tr('Read {r} on Bible.com').replace('{r}', refLabel(v)), link: bibleUrl(v), kind: 'item' });
+    const myNote = (v) => (mine[noteKey(v)] && mine[noteKey(v)].text ? [{ text: tr('My notes on {r}').replace('{r}', refLabel(v)), kind: 'label' }, { text: mine[noteKey(v)].text, kind: 'quote' }] : []);
+    const sections = col.items.map(x => {
+      const p = new URLSearchParams(x.url.replace(/^[^?]*\?/, '')), paras = [];
+      const c = p.get('c'), ref = p.get('ref');
+      if (c) {
+        const [a, b] = c.split(/[~_]/).map(osisToIndex), i = a >= 0 && b >= 0 ? findRef(a, b) : -1;
+        if (i >= 0) {
+          const n = noteMap.get(i);
+          if (n) paras.push({ text: `${n.type}: ${n.text}` });
+          paras.push({ text: tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[i].toLocaleString(LANGS[LANG].locale)) });
+          paras.push(read(F[i]), read(T[i]));
+          paras.push(...myNote(F[i]), ...myNote(T[i]));
+        }
+      } else if (ref) {
+        const r = parseReference(ref);
+        if (r && !r.error) {
+          paras.push(read(r.start));
+          // the strongest connections to follow from here
+          const links = [];
+          for (let i = 0; i < N; i++) if ((F[i] >= r.start && F[i] < r.end) !== (T[i] >= r.start && T[i] < r.end)) links.push(i);
+          links.sort((x2, y) => V[y] - V[x2]);
+          if (links.length) {
+            paras.push({ text: tr('Strongest connections'), kind: 'label' });
+            for (const i of links.slice(0, 5)) {
+              const other = F[i] >= r.start && F[i] < r.end ? T[i] : F[i], n = noteMap.get(i);
+              paras.push({ text: `${refLabel(other)}${n ? ': ' + n.text : ''}`, kind: 'item' });
+            }
+          }
+          paras.push(...myNote(r.start));
+        }
+      }
+      paras.push({ text: tr('Open in Bible Connections'), link: base + x.url.replace(/^[^?]*/, ''), kind: 'item' });
+      return { heading: x.label, paragraphs: paras };
+    });
+    return {
+      title: col.name,
+      subtitle: `${tr('Prepared with Bible Connections')} · ${new Date().toLocaleDateString(LANGS[LANG].locale, { day: 'numeric', month: 'long', year: 'numeric' })}`,
+      intro: tr('Read each passage in your own Bible or on Bible.com. No Bible text is included here.'),
+      sections,
+      footer: tr('Cross references from OpenBible.info (CC BY 4.0). Made with bibleconnections.app.'),
+    };
+  }
+  async function exportCollection(format) {
+    const col = state.collection;
+    try {
+      const lib = await loadExport(), outline = collectionOutline(col);
+      const blob = format === 'md' ? lib.markdown(outline) : lib.docx(outline);
+      const safe = (col.name || 'collection').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').toLowerCase() || 'collection';
+      downloadBlob(blob, `${safe}.${format === 'md' ? 'md' : 'docx'}`);
+      track('collection/export/' + format);
+      announce(tr('Downloaded.'));
+    } catch { announce(tr('Sorry, the file could not be made. Please try again.')); }
   }
   function openCollection(col, { push = true } = {}) {
     state.mode = 'collection'; state.collection = col; state.selected = -1; state.focus = null; state.journey = null;
@@ -4486,6 +4548,7 @@
     else if (a === 'presentJourney') { startJourney(+btn.dataset.j); enterPresenter(); }
     else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
     else if (a === 'stepConn') { trailStepping = true; stepSelection(+btn.dataset.d); requestAnimationFrame(() => el.panelBody.querySelector(`[data-action="stepConn"][data-d="${btn.dataset.d}"]`)?.focus()); }
+    else if (a === 'exportCollection') exportCollection(btn.dataset.format);
     else if (a === 'share') { share(); if (!navigator.share) confirmBtn(btn, tr('Copied')); }
     else if (a === 'copy') { copyText(shareInfo().text); confirmBtn(btn, tr('Copied')); }
     else if (a === 'heat') {
