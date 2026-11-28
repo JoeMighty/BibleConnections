@@ -5,6 +5,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.28.0] - 2026-11-28 - Every Tongue
+
 ### Added
 - **French, Korean and Simplified Chinese:** the whole site in three more languages: the interface, every page, the 16 journeys, reading plans, book introductions, questions, prophecy chains, timeline, people and places, topics, How to use, Help and the legal pages. Each opens in its own Bible on Bible.com by default (La Bible Segond 21, 개역한글, 新标点和合本), and search understands each language's book names ("Jean 3:16", "요한복음 3:16", "约翰福音 3:16"). Chosen automatically from the device (Traditional Chinese devices stay in English), and in Settings and every footer. Drafted and checked against the English; native speakers are invited to suggest improvements on GitHub.
 - **Read aloud:** a Listen button on journey steps, notes on connections and reading plan days reads them in the device's own voice, in the site's language (notes written in English are read with an English voice). Tap again to stop; opening something else stops it too. Bible text is never read, since none is stored.

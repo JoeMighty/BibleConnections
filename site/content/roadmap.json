@@ -43,34 +43,6 @@
       "text_zh": "为最强的连接撰写注释，从大家最常打开的开始，每条都经过牧师审核。"
     },
     {
-      "title": "Search that suggests as you type",
-      "title_es": "Búsqueda que sugiere mientras escribes",
-      "title_pt": "Busca que sugere enquanto você digita",
-      "text": "Book names, chapters, topics and people appear as you type, and a reference that does not exist is caught before you search.",
-      "text_es": "Aparecen nombres de libros, capítulos, temas y personas mientras escribes, y una referencia que no existe se detecta antes de buscar.",
-      "text_pt": "Nomes de livros, capítulos, temas e pessoas aparecem enquanto você digita, e uma referência que não existe é percebida antes da busca.",
-      "title_fr": "Une recherche qui suggère pendant la saisie",
-      "text_fr": "Les noms de livres, les chapitres, les sujets et les personnages apparaissent pendant que tu tapes, et une référence qui n’existe pas est repérée avant la recherche.",
-      "title_ko": "입력하는 동안 추천하는 검색",
-      "text_ko": "입력하는 동안 책 이름, 장, 주제, 인물이 나타나고, 존재하지 않는 구절 주소는 검색하기 전에 알려 줘요.",
-      "title_zh": "边输入边提示的搜索",
-      "text_zh": "输入时会显示书卷名、章、话题和人物，不存在的经文出处会在搜索前被发现。"
-    },
-    {
-      "title": "Read aloud",
-      "title_es": "Lectura en voz alta",
-      "title_pt": "Leitura em voz alta",
-      "text": "Hear the notes, journeys and plans read by your device's own voice, for accessibility, the car or the screen at church.",
-      "text_es": "Escucha las notas, los recorridos y los planes con la voz de tu dispositivo, para accesibilidad, el coche o la pantalla de la iglesia.",
-      "text_pt": "Ouça as notas, as jornadas e os planos com a voz do seu aparelho, para acessibilidade, o carro ou o telão da igreja.",
-      "title_fr": "Lecture à voix haute",
-      "text_fr": "Écoute les notes, les parcours et les plans lus par la voix de ton appareil, pour l’accessibilité, en voiture ou sur l’écran à l’Église.",
-      "title_ko": "소리 내어 읽기",
-      "text_ko": "접근성을 위해, 차 안에서, 또는 교회 화면에서, 기기 자체 음성으로 설명, 여정, 계획을 들어 보세요.",
-      "title_zh": "朗读",
-      "text_zh": "用你设备自带的语音朗读注释、旅程和计划，方便无障碍使用、开车时收听或在教会屏幕上播放。"
-    },
-    {
       "title": "Simpler settings",
       "title_es": "Ajustes más sencillos",
       "title_pt": "Ajustes mais simples",
@@ -276,6 +248,39 @@
     }
   ],
   "shipped": [
+    {
+      "version": "0.28.0",
+      "items": [
+        "French, Korean and Simplified Chinese",
+        "Search completes chapters and verses",
+        "Read aloud for journeys, notes and plans"
+      ],
+      "items_es": [
+        "Francés, coreano y chino simplificado",
+        "La búsqueda completa capítulos y versículos",
+        "Lectura en voz alta de recorridos, notas y planes"
+      ],
+      "items_pt": [
+        "Francês, coreano e chinês simplificado",
+        "A busca completa capítulos e versículos",
+        "Leitura em voz alta de jornadas, notas e planos"
+      ],
+      "items_fr": [
+        "Français, coréen et chinois simplifié",
+        "La recherche complète chapitres et versets",
+        "Lecture à voix haute des parcours, notes et plans"
+      ],
+      "items_ko": [
+        "프랑스어, 한국어, 중국어 간체",
+        "장과 절을 자동으로 완성하는 검색",
+        "여정, 설명, 읽기 계획을 소리 내어 읽기"
+      ],
+      "items_zh": [
+        "法文、韩文和简体中文",
+        "搜索可补全章节和经节",
+        "旅程、注释和读经计划可朗读"
+      ]
+    },
     {
       "version": "0.27.0",
       "items": [
