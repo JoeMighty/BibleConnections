@@ -49,7 +49,7 @@ for (const t of JSON.parse(fs.readFileSync(site('content/topics.json'), 'utf8'))
 fs.writeFileSync(site('data/entities.json'), JSON.stringify(entities));
 
 // 4. book names in each interface language, so any page can search "Juan 3:16" or "João 3:16"
-for (const lang of ['es', 'pt']) {
+for (const lang of ['es', 'pt', 'fr', 'ko', 'zh'].filter(l => fs.existsSync(site(`content/i18n/${l}.json`)))) {
   const t = JSON.parse(fs.readFileSync(site(`content/i18n/${lang}.json`), 'utf8'));
   fs.writeFileSync(site(`content/i18n/books-${lang}.json`), JSON.stringify({ books: t.books, abbr: t.abbr }));
   // the standalone pages (handout, guide, roadmap, slides, card) need only their own strings and the book names

@@ -760,5 +760,12 @@
     "name": "Hindi Holy Bible",
     "lang": "hi",
     "label": "HHBD"
+  },
+  {
+    "code": "CUNPSS",
+    "id": 48,
+    "name": "新标点和合本, 神版 (简体)",
+    "lang": "zh",
+    "label": "和合本"
   }
 ]

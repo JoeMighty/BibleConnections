@@ -6,6 +6,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 ## [Unreleased]
 
 ### Added
+- **Read aloud:** a Listen button on journey steps, notes on connections and reading plan days reads them in the device's own voice, in the site's language (notes written in English are read with an English voice). Tap again to stop; opening something else stops it too. Bible text is never read, since none is stored.
 - **Search completes chapters and verses:** typing "John 3:" suggests that chapter's most connected verses first (John 3:16 at the top), and "Psalm 2" suggests Psalms 2, 20, 21, 22 and on. A reference that does not exist is caught as you type ("John has 21 chapters.").
 
 ### Changed

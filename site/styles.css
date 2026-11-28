@@ -1202,3 +1202,9 @@ body:not(.landing-open) .tagline { display: none; }
 .year-refs { font-weight: 600; }
 .year-note { color: var(--muted); font-size: var(--t-subhead); }
 .suggest-list .suggest-note { color: var(--danger); font-size: var(--t-subhead); cursor: default; }
+
+/* read aloud */
+.speak-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; margin: 4px 0 8px; border: 0; border-radius: 999px;
+  background: var(--accent-soft); color: var(--link); font: 600 var(--t-subhead) var(--font); cursor: pointer; }
+.speak-btn .i { width: 20px; height: 20px; }
+.speak-btn[aria-pressed="true"] { color: var(--text); }

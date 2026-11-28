@@ -1031,7 +1031,9 @@
     "Downloaded.": "Descargado.",
     "Sorry, the file could not be made. Please try again.": "Lo siento, no se pudo crear el archivo. Inténtalo de nuevo.",
     "Open data": "Datos abiertos",
-    "Verse": "Versículo"
+    "Verse": "Versículo",
+    "Listen": "Escuchar",
+    "Stop": "Detener"
   },
   "patterns": {
     "Showing {a} of {b} connections": "Mostrando {a} de {b} conexiones",

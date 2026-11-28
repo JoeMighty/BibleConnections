@@ -31,7 +31,7 @@
     ln: ['Lingala', 'Lingála'], kg: ['Kikongo (Kituba)', 'Kikongo ya Leta'], lua: ['Tshiluba', 'Tshiluba'],
     zu: ['Zulu', 'isiZulu'], xh: ['Xhosa', 'isiXhosa'], af: ['Afrikaans', 'Afrikaans'], ki: ['Kikuyu', 'Gĩkũyũ'], luo: ['Luo', 'Dholuo'],
     tl: ['Tagalog', 'Tagalog'], ceb: ['Cebuano', 'Cebuano'], ilo: ['Ilocano', 'Ilokano'],
-    ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
+    zh: ['Chinese (Simplified)', '简体中文'], ml: ['Malayalam', 'മലയാളം'], ta: ['Tamil', 'தமிழ்'], te: ['Telugu', 'తెలుగు'], hi: ['Hindi', 'हिन्दी'],
   };
   const pickers = [];
   const VERSION = '0.27.0';
@@ -75,10 +75,13 @@
     en: { name: 'English', locale: 'en-US', bible: 'NIV', listed: true },
     es: { name: 'Español', locale: 'es', bible: 'NVI', listed: true },
     pt: { name: 'Português', locale: 'pt-BR', bible: 'NVI-PT', listed: true },
+    fr: { name: 'Français', locale: 'fr-FR', bible: 'S21', listed: false },
+    ko: { name: '한국어', locale: 'ko-KR', bible: 'KRV', listed: false },
+    zh: { name: '简体中文', locale: 'zh-CN', bible: 'CUNPSS', listed: false },
   };
   // Language: a ?lang= link wins, then the saved choice, then the device language.
   const urlLang = new URLSearchParams(location.search).get('lang');
-  const deviceLang = (navigator.language || 'en').toLowerCase().slice(0, 2);
+  const deviceLang = /^zh-(tw|hk|mo|hant)/i.test(navigator.language || '') ? 'en' : (navigator.language || 'en').toLowerCase().slice(0, 2);
   const savedLang = store.get('lang', LANGS[deviceLang] && LANGS[deviceLang].listed ? deviceLang : 'en');
   const LANG = LANGS[urlLang] ? urlLang : LANGS[savedLang] && LANGS[savedLang].listed ? savedLang : 'en';
   // a field in the reader's language when it has been written, else the English: loc(day, 'title') reads title_es in Spanish
@@ -327,7 +330,7 @@
       b.nameEn = b.name;
       b.nameEs = (names.es && names.es.books[i]) || b.name; b.namePt = (names.pt && names.pt.books[i]) || b.name;
       b.abbr = T && T.abbr ? T.abbr[i] : b.osis;
-      if (T && T.books) b.name = T.books[i];
+      if (T && T.books) { b.name = T.books[i]; if (!['es', 'pt'].includes(LANG)) b.nameLocal = T.books[i]; }
     });
     if (!T) return;
     I18N.strings = T.strings || {};
@@ -407,7 +410,7 @@
   };
   const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
     .replace(/^(iii|3rd|third)\s+/, '3').replace(/^(ii|2nd|second)\s+/, '2').replace(/^(i|1st|first)\s+/, '1')
-    .replace(/[^a-z0-9]/g, '');
+    .replace(/[^\p{L}\p{N}]/gu, '');
   // edit distance with swapped letters counted as one change, for misspelled book names ("Phillipians")
   function editDistance(a, b) {
     const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
@@ -423,7 +426,7 @@
     if (!n) return -1;
     if (ALIASES[n]) return BOOKS.findIndex(b => b.nameEn === ALIASES[n]);
     // Portuguese names count too ("João 3:16"), except two-letter ones like Jó that would clash with English searches
-    const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr, norm(b.namePt).length > 2 ? b.namePt : ''].map(norm).filter(Boolean);
+    const names = (b) => [b.nameEn, b.nameEs, b.osis, b.abbr, b.nameLocal || '', norm(b.namePt).length > 2 ? b.namePt : ''].map(norm).filter(Boolean);
     let bi = BOOKS.findIndex(b => names(b).includes(n));
     if (bi < 0 && allowPrefix && n.length >= 2) {
       bi = BOOKS.findIndex(b => norm(b.name).startsWith(n));
@@ -439,7 +442,7 @@
   }
   function parseReference(input) {
     input = input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    const m = input.trim().match(/^([1-3]?\s*[a-z][a-z .]*?)\s*(\d+)?(?:\s*[:.\s]\s*(\d+)(?:\s*-\s*(\d+))?)?\s*$/i);
+    const m = input.trim().match(/^([1-3]?\s*\p{L}[\p{L} .]*?)\s*(\d+)?(?:\s*[:.\s：]\s*(\d+)(?:\s*-\s*(\d+))?)?\s*$/iu);
     if (!m) return null;
     // a bare word only counts as a book when it is a full book name ("Mark"); otherwise it is a word search
     const bi = findBook(m[1], !!m[2]);
@@ -1350,10 +1353,34 @@
     share: '<path d="M12 3.5v11M8 7.5l4-4 4 4M6.5 11H5.5v8.5h13V11h-1"/>',
     collect: '<path d="M4 7.5h6l1.5 2H20v9H4z"/><path d="M12 12v4.5M9.75 14.25h4.5"/>',
     check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    speak: '<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    stop: '<rect x="7" y="7" width="10" height="10" rx="1.5" fill="currentColor"/>',
     more: '<circle cx="6" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="1.3" fill="currentColor"/>',
   };
   const ICON = (n) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON_PATHS[n]}</svg>`;
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' }[c]));
+  // ---------- Read aloud: the site's own notes and journeys, in the device's own voice (never Bible text) ----------
+  const canSpeak = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance === 'function';
+  const speakBtn = (target) => (canSpeak ? `<button type="button" class="speak-btn" data-action="speak" data-target="${target}" aria-pressed="false">${ICON('speak')}<span>${esc(tr('Listen'))}</span></button>` : '');
+  function speakToggle(btn) {
+    const synth = window.speechSynthesis;
+    const reset = () => document.querySelectorAll('.speak-btn[aria-pressed="true"]').forEach(b => { b.setAttribute('aria-pressed', 'false'); b.innerHTML = `${ICON('speak')}<span>${esc(tr('Listen'))}</span>`; });
+    if (btn.getAttribute('aria-pressed') === 'true') { synth.cancel(); reset(); return; }
+    synth.cancel(); reset();
+    const box = document.querySelector(btn.dataset.target);
+    if (!box) return;
+    // headings, the note and the question, without button labels
+    const text = [...box.querySelectorAll('[data-say]')].map(x => x.textContent.trim()).filter(Boolean).join('. ');
+    if (!text) return;
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = box.closest('[lang]') && box.closest('[lang]').getAttribute('lang') === 'en' && LANG !== 'en' ? 'en-US' : LANGS[LANG].locale;
+    u.rate = 0.95;
+    u.onend = u.onerror = reset;
+    btn.setAttribute('aria-pressed', 'true');
+    btn.innerHTML = `${ICON('stop')}<span>${esc(tr('Stop'))}</span>`;
+    synth.speak(u);
+    track('speak');
+  }
   const ext = (href, html, cls = 'btn ghost small') =>
     `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${html}<span class="sr-only"> (opens Bible.com in a new tab)</span>${ICON('ext')}</a>`;
 
@@ -1390,7 +1417,7 @@
     + (second() ? ` ${ext(bibleUrl(v, v, false, second()), `${esc(vLabel(second()))}<span class="sr-only">: ${esc(refLabel(v))}</span>`, 'mini-link')}` : '');
   const readBoth = (v, text) => ext(bibleUrl(v), `${text} in ${esc(vLabel(settings.version))}`)
     + (second() ? ext(bibleUrl(v, v, false, second()), `${text} in ${esc(vLabel(second()))}`) : '');
-  const noteHTML = (n) => `<div class="note"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>${LANG !== 'en' ? '<p class="hint">Note available in English only.</p>' : ''}</div>`;
+  const noteHTML = (n) => `<div class="note" id="connNote"><p class="note-head"><span class="tag">${esc(n.type)}</span> Why it connects</p><p data-say${LANG !== 'en' ? ' lang="en"' : ''}>${esc(n.text)}</p>${LANG !== 'en' ? '<p class="hint">Note available in English only.</p>' : ''}${speakBtn('#connNote')}</div>`;
 
   function connItem(i, otherSide) {
     const cur = i === state.selected ? ' aria-current="true"' : '';
@@ -1442,6 +1469,7 @@
 
   let lastPanelSel = -2, studyTextReady = false, studyWaiting = false;
   function renderPanel() {
+    if (canSpeak && window.speechSynthesis.speaking) window.speechSynthesis.cancel();   // a new view stops reading the old one
     document.body.dataset.section = sectionOf(state.mode);
     document.body.dataset.search = (state.mode === 'explore' && !state.focus && state.selected < 0) || state.mode === 'study' ? 'show' : 'hide';
     // a verse, chapter or book uses the book introductions: fetch them, then show the panel again
@@ -1627,8 +1655,9 @@
     const J = JOURNEYS[j], steps = journeySteps[j], s = steps[step];
     let html = `<p class="step-count">${esc(J.name)} · Step ${step + 1} of ${steps.length}</p>
       <div class="progress" aria-hidden="true"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div>
-      <h3 class="step-title">${esc(s.title)}</h3><p class="step-note">${esc(s.note)}</p>
-      ${s.question ? `<div class="question"><p class="note-head">Talk about it</p><p>${esc(s.question)}</p></div>` : ''}`;
+      <div id="stepText"><h3 class="step-title" data-say>${esc(s.title)}</h3><p class="step-note" data-say>${esc(s.note)}</p>
+      ${s.question ? `<div class="question"><p class="note-head" data-say>${esc(tr('Talk about it'))}</p><p data-say>${esc(s.question)}</p></div>` : ''}</div>
+      ${speakBtn('#stepText')}`;
     html += refCard(s.ia, s.ia, pal.marker) + `<p class="link-arrow" aria-hidden="true">connects to</p>` + refCard(s.ib, s.ib, pal.marker, { primary: false });
     html += `<div class="actions nav-row">
       <button type="button" class="btn ghost" data-action="stepPrev" ${step === 0 ? 'disabled' : ''}>Previous</button>
@@ -2297,21 +2326,22 @@
     const done = new Set(planProgress(plan.id).done);
     let html = `<p class="step-count">${esc(nameOf(plan))} · Day ${d + 1} of ${days.length}</p>
       <div class="progress" aria-hidden="true"><span style="width:${(done.size / days.length) * 100}%"></span></div>`;
-    if (day.title) html += `<h3 class="step-title">${esc(day.title)}</h3>`;
+    if (day.title) html += `<h3 class="step-title" data-say>${esc(day.title)}</h3>`;
     if (day.read) html += `<p class="hint">${esc(tr('Read today’s chapters on Bible.com, then follow where they lead.'))}</p>
       <ul class="chip-list read-chapters">${day.read.map(v => `<li>${ext(bibleUrl(v, v, true), `${esc(BOOKS[verseBook[v]].name)} ${verseChap[v]}`, 'chip')}</li>`).join('')}</ul>
       <h3>${esc(tr('Where today’s reading leads'))}</h3>`;
     // the year plan lists its links compactly: tap one to see it on the map
     if (day.read) html += `<ul class="year-links">${day.items.map(it => { const n = noteMap.get(it.ref); return `<li><button type="button" class="year-link" data-ref="${it.ref}">
         <span class="year-refs">${esc(refLabel(it.a))} <span aria-hidden="true">→</span><span class="sr-only"> ${esc(tr('connects to'))} </span> ${esc(refLabel(it.b))}</span>
-        <span class="year-note"${n && LANG !== 'en' ? ' lang="en"' : ''}>${esc(n ? n.text : tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[it.ref].toLocaleString(LANGS[LANG].locale)))}</span></button></li>`; }).join('')}</ul>`;
+        <span class="year-note" data-say${n && LANG !== 'en' ? ' lang="en"' : ''}>${esc(n ? n.text : tr('{n} readers agree on this link (OpenBible.info)').replace('{n}', V[it.ref].toLocaleString(LANGS[LANG].locale)))}</span></button></li>`; }).join('')}</ul>`;
     for (const it of day.read ? [] : day.items) {
       const note = it.note || (it.ref !== undefined && noteMap.get(it.ref)?.text);
       html += `<div class="plan-item">${it.title ? `<p class="series-title">${esc(it.title)}</p>` : ''}
         ${refCard(it.a, it.a, pal.marker)}<p class="link-arrow" aria-hidden="true">connects to</p>${refCard(it.b, it.b, pal.marker)}
-        ${note ? `<p${!it.note && LANG !== 'en' ? ' lang="en"' : ''}>${esc(note)}</p>` : ''}</div>`;
+        ${note ? `<p data-say${!it.note && LANG !== 'en' ? ' lang="en"' : ''}>${esc(note)}</p>` : ''}</div>`;
     }
     const isDone = done.has(d);
+    html = `<div id="planText">${html}</div>${speakBtn('#planText')}`;
     html += `<div class="actions"><button type="button" class="btn${isDone ? ' ghost' : ''}" data-action="planDone" aria-pressed="${isDone}">${isDone ? '✓ Day complete' : 'Mark day complete'}</button></div>
       <div class="actions nav-row">
         <button type="button" class="btn ghost" data-action="planDay" data-day="${d - 1}" ${d === 0 ? 'disabled' : ''}>Previous day</button>
@@ -4577,6 +4607,7 @@
     else if (a === 'focusRef') { const r = parseReference(btn.dataset.q); if (r && !r.error) { setFocus(r, { zoom: true }); focusPanelHeading(); } }
     else if (a === 'stepConn') { trailStepping = true; stepSelection(+btn.dataset.d); requestAnimationFrame(() => el.panelBody.querySelector(`[data-action="stepConn"][data-d="${btn.dataset.d}"]`)?.focus()); }
     else if (a === 'exportCollection') exportCollection(btn.dataset.format);
+    else if (a === 'speak') speakToggle(btn);
     else if (a === 'share') { share(); if (!navigator.share) confirmBtn(btn, tr('Copied')); }
     else if (a === 'copy') { copyText(shareInfo().text); confirmBtn(btn, tr('Copied')); }
     else if (a === 'heat') {
